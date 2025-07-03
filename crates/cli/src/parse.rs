@@ -14,6 +14,7 @@ use tree_sitter::{
     ffi, InputEdit, Language, LogType, ParseOptions, ParseState, Parser, Point, Range, Tree,
     TreeCursor,
 };
+use std::sync::{Arc, Mutex};
 
 use super::util;
 use crate::{fuzz::edits::Edit, test::paint};
@@ -265,6 +266,26 @@ pub struct ParseResult {
     pub duration: Option<Duration>,
 }
 
+/* 자료 타입 정의 */
+#[derive(Debug)]
+enum ParseAction {
+    Reduce { sym: String, child_count: u32 },
+    Shift { state: u32 },
+    Accept,
+}
+
+impl fmt::Display for ParseAction {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            ParseAction::Reduce { sym, child_count } => {
+                write!(f, "[REDUCE] sym: {}, child_count: {}", sym, child_count)
+            }
+            ParseAction::Shift { state } => write!(f, "[SHIFT] state: {}", state),
+            ParseAction::Accept => write!(f, "[ACCEPT]"),
+        }
+    }
+}
+
 pub fn parse_file_at_path(
     parser: &mut Parser,
     language: &Language,
@@ -273,6 +294,8 @@ pub fn parse_file_at_path(
     max_path_length: usize,
     opts: &mut ParseFileOptions,
 ) -> Result<()> {
+    /* vector 컨테이너로 parse action 저장 */
+    let parse_actions = Arc::new(Mutex::new(Vec::new()));
     let mut _log_session = None;
     parser.set_language(language)?;
     let mut source_code = fs::read(path).with_context(|| format!("Error reading {name:?}"))?;
@@ -286,6 +309,8 @@ pub fn parse_file_at_path(
         let mut curr_version: usize = 0;
         let use_color = std::env::var("NO_COLOR").map_or(true, |v| v != "1");
         let debug = opts.debug;
+
+        let parse_actions = Arc::clone(&parse_actions);
         parser.set_logger(Some(Box::new(move |log_type, message| {
             if debug == ParseDebugType::Normal {
                 if log_type == LogType::Lex {
@@ -312,6 +337,32 @@ pub fn parse_file_at_path(
                 } else {
                     None
                 };
+
+                /* 
+                    컨테이너에 parse action 저장 
+
+                    1. 로그에서 특정 문자열 검색
+                    2. 필요한 데이터만 잘라 저장    
+                */
+                if message.starts_with("reduce") {
+                    let parts: Vec<&str> = message.split_whitespace().collect();
+                    if parts.len() >= 3 {
+                        let sym = parts[1].replace("sym:", "").replace(",", "");
+                        if let Ok(child_count) = parts[2].replace("child_count:", "").parse::<u32>() {
+                            parse_actions.lock().unwrap().push(ParseAction::Reduce { sym, child_count });
+                        }
+                    }
+                } else if message.starts_with("shift") {
+                    let parts: Vec<&str> = message.split_whitespace().collect();
+                    if parts.len() >= 2 {
+                        if let Ok(state) = parts[1].replace("state:", "").parse::<u32>() {
+                            parse_actions.lock().unwrap().push(ParseAction::Shift { state });
+                        }
+                    }
+                } else if message.starts_with("accept") {
+                    parse_actions.lock().unwrap().push(ParseAction::Accept);
+                }
+
                 let mut out = if log_type == LogType::Lex {
                     "  ".to_string()
                 } else {
@@ -418,6 +469,15 @@ pub fn parse_file_at_path(
         ),
     };
     let parse_duration = parse_time.elapsed();
+
+    /* 텍스트 파일에 저장하는 부분 */
+    if opts.debug != ParseDebugType::Quiet {
+        let mut content = String::new();
+        for action in parse_actions.lock().unwrap().iter() {
+            content.push_str(&format!("{}\n", action));
+        }
+        fs::write("parse_actions.txt", content)?;
+    }
 
     let stdout = io::stdout();
     let mut stdout = stdout.lock();
