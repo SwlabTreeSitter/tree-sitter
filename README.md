@@ -19,3 +19,12 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
 [matrix]: https://img.shields.io/matrix/tree-sitter-chat%3Amatrix.org?logo=matrix&label=matrix
+
+<br><br>
+
+## 경재 - 작업 상황
+- [수정중인 파일](https://github.com/SwlabTreeSitter/tree-sitter/blob/main/crates/cli/src/parse.rs)
+
+<br>
+
+parse action을 저장할 자료형 및 컨테이너 정의, 파일에 parse action 저장
