@@ -471,13 +471,13 @@ pub fn parse_file_at_path(
     let parse_duration = parse_time.elapsed();
 
     /* 텍스트 파일에 저장하는 부분 */
-    if opts.debug != ParseDebugType::Quiet {
-        let mut content = String::new();
-        for action in parse_actions.lock().unwrap().iter() {
-            content.push_str(&format!("{}\n", action));
-        }
-        fs::write("parse_actions.txt", content)?;
-    }
+    // if opts.debug != ParseDebugType::Quiet {
+    //     let mut content = String::new();
+    //     for action in parse_actions.lock().unwrap().iter() {
+    //         content.push_str(&format!("{}\n", action));
+    //     }
+    //     fs::write("parse_actions.txt", content)?;
+    // }
 
     let stdout = io::stdout();
     let mut stdout = stdout.lock();

@@ -89,6 +89,9 @@ typedef struct {
   uint32_t byte_index;
 } TokenCache;
 
+// parse action 을 저장할 타입 선언
+typedef Array(TSParseAction) TSParseActionArray;
+
 struct TSParser {
   Lexer lexer;
   Stack *stack;
@@ -96,6 +99,9 @@ struct TSParser {
   const TSLanguage *language;
   TSWasmStore *wasm_store;
   ReduceActionSet reduce_actions;
+
+  // parse action 저장 자료구조
+  TSParseActionArray parse_actions;
   Subtree finished_tree;
   SubtreeArray trailing_extras;
   SubtreeArray trailing_extras2;
@@ -1146,13 +1152,14 @@ static bool ts_parser__do_all_potential_reductions(
             if (!action.shift.extra && !action.shift.repetition) has_shift_action = true;
             break;
           case TSParseActionTypeReduce:
-            if (action.reduce.child_count > 0)
+            if (action.reduce.child_count > 0) {
               ts_reduce_action_set_add(&self->reduce_actions, (ReduceAction) {
                 .symbol = action.reduce.symbol,
                 .count = action.reduce.child_count,
                 .dynamic_precedence = action.reduce.dynamic_precedence,
                 .production_id = action.reduce.production_id,
               });
+            }
             break;
           default:
             break;
@@ -1639,10 +1646,13 @@ static bool ts_parser__advance(
             LOG("shift state:%u", next_state);
           }
 
+          // TSParseActionArray parse_action shift 요소 추가
+          array_push(&self->parse_actions, action);
+
           if (ts_subtree_child_count(lookahead) > 0) {
             ts_parser__breakdown_lookahead(self, &lookahead, state, &self->reusable_node);
             next_state = ts_language_next_state(self->language, state, ts_subtree_symbol(lookahead));
-          }
+          } 
 
           ts_parser__shift(self, version, next_state, lookahead, action.shift.extra);
           if (did_reuse) reusable_node_advance(&self->reusable_node);
@@ -1653,6 +1663,10 @@ static bool ts_parser__advance(
           bool is_fragile = table_entry.action_count > 1;
           bool end_of_non_terminal_extra = lookahead.ptr == NULL;
           LOG("reduce sym:%s, child_count:%u", SYM_NAME(action.reduce.symbol), action.reduce.child_count);
+
+          // TSParseActionArray parse_actions reduce 요소 추가
+          array_push(&self->parse_actions, action);
+
           StackVersion reduction_version = ts_parser__reduce(
             self, version, action.reduce.symbol, action.reduce.child_count,
             action.reduce.dynamic_precedence, action.reduce.production_id,
@@ -1667,6 +1681,10 @@ static bool ts_parser__advance(
 
         case TSParseActionTypeAccept: {
           LOG("accept");
+
+          // TSParseActionArray parse_actions accept 요소 추가
+          array_push(&self->parse_actions, action);
+
           ts_parser__accept(self, version, lookahead);
           return true;
         }
@@ -1944,6 +1962,8 @@ TSParser *ts_parser_new(void) {
   ts_lexer_init(&self->lexer);
   array_init(&self->reduce_actions);
   array_reserve(&self->reduce_actions, 4);
+  array_init(&self->parse_actions);
+  array_reserve(&self->parse_actions, 2048); // 초기 용량 설정
   self->tree_pool = ts_subtree_pool_new(32);
   self->stack = ts_stack_new(&self->tree_pool);
   self->finished_tree = NULL_SUBTREE;
@@ -1972,6 +1992,9 @@ void ts_parser_delete(TSParser *self) {
   ts_stack_delete(self->stack);
   if (self->reduce_actions.contents) {
     array_delete(&self->reduce_actions);
+  }
+  if (self->parse_actions.contents) { // 메모리 해제
+    array_delete(&self->parse_actions);
   }
   if (self->included_range_differences.contents) {
     array_delete(&self->included_range_differences);
@@ -2123,7 +2146,7 @@ TSTree *ts_parser_parse(
 
   if (ts_parser_has_outstanding_parse(self)) {
     LOG("resume_parsing");
-    if (self->canceled_balancing) goto balance;
+    if (self->canceled_balancing) goto balance; // goto label
   } else {
     ts_parser__external_scanner_create(self);
     if (self->has_scanner_error) goto exit;
@@ -2215,6 +2238,38 @@ balance:
   self->canceled_balancing = false;
   LOG("done");
   LOG_TREE(self->finished_tree);
+
+  // ***************************************************************************
+  // parse action log 를 .txt 파일에 저장하는 코드 부분
+  if (self->parse_options.debug_pretty_print) {
+    FILE *fp = fopen("parse_actions.txt", "w");
+    if (fp) {
+      for (uint32_t i = 0; i < self->parse_actions.size; ++i) {
+        TSParseAction action = self->parse_actions.contents[i];
+        switch (action.type) {
+          case TSParseActionTypeShift:
+            fprintf(fp, "[SHIFT] state: %u\n", action.shift.state);
+            //LOG("김경재");
+            break;
+          case TSParseActionTypeReduce: {
+            const char *symbol_name = ts_language_symbol_name(self->language, action.reduce.symbol);
+            if (symbol_name == NULL) {
+                symbol_name = "UNKNOWN_SYMBOL"; 
+            }
+            fprintf(fp, "[REDUCE] sym: %s, child_count: %u\n", symbol_name, action.reduce.child_count);
+            break;
+          }
+          case TSParseActionTypeAccept:
+            fprintf(fp, "[ACCEPT]\n");
+            break;
+          default:
+            break;
+        }
+      }
+      fclose(fp);
+    }
+  }
+  // *****************************************************************************
 
   result = ts_tree_new(
     self->finished_tree,

@@ -99,6 +99,8 @@ typedef struct TSParseState {
 typedef struct TSParseOptions {
   void *payload;
   bool (*progress_callback)(TSParseState *state);
+  bool debug_pretty_print;
+  const char *debug_output_file_path;
 } TSParseOptions;
 
 typedef enum TSLogType {
