@@ -2447,39 +2447,46 @@ balance:
           // shift로 인해 이때까지 쌓인(reduce 이후로 쌓인) 심볼들을 문자열로 변경한다.
           // ex) identifier|for|if
           // ===========================
-          Array(char*) *src = &segShifts;
-          char *key = NULL;
 
+          Array(char*) *src = &segShifts;
           if (src->size == 0) 
           {
-            // 아무 토큰도 없는 경우: "<EMPTY>"
-            // reduce 액션 후 바로 reduce 액션이 왔을 때
-            key = (char *)ts_malloc(8);              // 7 + 1('\0')
+            src = &symTrees;   // segShifts 비면 symTrees로 대체
+          }
+
+          uint32_t use = rhsLength;
+          if (use > src->size) 
+          {
+            use = src->size;
+          }
+
+          char *key = NULL;
+
+          if (use == 0) 
+          {
+            // 아무것도 없으면 "<EMPTY>"
+            key = (char *)ts_malloc(8);
             memcpy(key, "<EMPTY>", 8);
           } 
           else 
           {
-            size_t total = 1; // '\0'
-            uint32_t k;
+            uint32_t start = src->size - use;
 
-            for (k = 0; k < src->size; ++k) 
+            // 총 길이 계산: 토큰 합 + " | " * (use-1) + '\0'
+            size_t total = 1; // '\0'
+            for (uint32_t k = start; k < src->size; ++k) 
             {
               total += strlen(*array_get(src, k));
             }
-            
-            // 토큰 갯수 - 1 해서 '|' 갯수 정하기
-            if (src->size > 1) 
+            if (use > 1) 
             {
-              total += (src->size - 1); // '|' 개수
+              total += (use - 1) * 3; // " | "의 3바이트 * (use-1)
             }
-              
-            key = (char *)ts_malloc(total);
 
+            key = (char *)ts_malloc(total);
             size_t pos = 0;
-            // 다음을 추가하는 과정
-            // token1|  <- 추가
-            // token2|  <- 추가  
-            for (k = 0; k < src->size; ++k) 
+
+            for (uint32_t k = start; k < src->size; ++k) 
             {
               char *ss = *array_get(src, k);
               size_t sl = strlen(ss);
@@ -2487,122 +2494,39 @@ balance:
               pos += sl;
               if (k + 1 < src->size) 
               {
+                key[pos++] = ' ';
                 key[pos++] = '|';
+                key[pos++] = ' ';
               }
             }
             key[pos] = '\0';
+          }
 
-          // 같은 (state, key) 후보가 있다면 count를 1 증가시킨다.
-          // 다른 (state, key) 라면 새로 생성한다.
           {
             bool found = false;
-            for (uint32_t i = 0; i < acc.size; ++i) 
+            for (uint32_t ai = 0; ai < acc.size; ++ai) 
             {
-              StateCandCount *e = array_get(&acc, i);
+              StateCandCount *e = array_get(&acc, ai);
               if (e->state == current_state && strcmp(e->key, key) == 0) 
               {
-                e->count += 1; 
-                found = true; 
+                e->count += 1;
+                found = true;
                 break;
               }
             }
-
             if (!found) 
             {
               StateCandCount ne;
               ne.state = current_state;
-              ne.key   = key;   // 새로 만든 문자열 소유권 이전
+              ne.key   = key; 
               ne.count = 1;
               array_push(&acc, ne);
             } 
             else 
             {
-              ts_free(key);     // 기존 엔트리에 합쳤으면 임시 문자열 해제
+              ts_free(key); 
             }
           }
-
-          /******************* 방금 수정된 버전 ********************* */
-
-          // Array(char*) *src = &segShifts;
-          // if (src->size == 0) 
-          // {
-          //   src = &symTrees;   // segShifts 비면 symTrees로 대체
-          // }
-
-          // // 사용할 창(window): 뒤에서 rhsLength개 (src가 더 짧으면 전체)
-          // uint32_t use = rhsLength;
-          // if (use > src->size) 
-          // {
-          //   use = src->size;
-          // }
-
-          // char *key = NULL;
-
-          // if (use == 0) 
-          // {
-          //   // 아무것도 없으면 "<EMPTY>"
-          //   key = (char *)ts_malloc(8);
-          //   memcpy(key, "<EMPTY>", 8);
-          // } 
-          // else 
-          // {
-          //   uint32_t start = src->size - use;
-
-          //   // 총 길이 계산: 토큰 합 + " | " * (use-1) + '\0'
-          //   size_t total = 1; // '\0'
-          //   for (uint32_t k = start; k < src->size; ++k) 
-          //   {
-          //     total += strlen(*array_get(src, k));
-          //   }
-          //   if (use > 1) 
-          //   {
-          //     total += (use - 1) * 3; // " | "의 3바이트 * (use-1)
-          //   }
-
-          //   key = (char *)ts_malloc(total);
-          //   size_t pos = 0;
-
-          //   for (uint32_t k = start; k < src->size; ++k) 
-          //   {
-          //     char *ss = *array_get(src, k);
-          //     size_t sl = strlen(ss);
-          //     memcpy(key + pos, ss, sl);
-          //     pos += sl;
-          //     if (k + 1 < src->size) 
-          //     {
-          //       key[pos++] = ' ';
-          //       key[pos++] = '|';
-          //       key[pos++] = ' ';
-          //     }
-          //   }
-          //   key[pos] = '\0';
-          // }
-
-          // {
-          //   bool found = false;
-          //   for (uint32_t ai = 0; ai < acc.size; ++ai) 
-          //   {
-          //     StateCandCount *e = array_get(&acc, ai);
-          //     if (e->state == current_state && strcmp(e->key, key) == 0) 
-          //     {
-          //       e->count += 1;
-          //       found = true;
-          //       break;
-          //     }
-          //   }
-          //   if (!found) 
-          //   {
-          //     StateCandCount ne;
-          //     ne.state = current_state;
-          //     ne.key   = key; 
-          //     ne.count = 1;
-          //     array_push(&acc, ne);
-          //   } 
-          //   else 
-          //   {
-          //     ts_free(key); 
-          //   }
-          // }
         }
 
         // ------------------------------------------------------
