@@ -92,6 +92,26 @@ typedef struct {
 // parse action 을 저장할 타입 선언
 typedef Array(TSParseAction) TSParseActionArray;
 
+// shift 는 입력 심볼을 하나 소모
+// 그 후 심볼과 상태를 스택에 push
+
+// reduce 는 생성 규칙이 맞으면
+// 스택에 있던 심볼을 축약
+
+typedef struct {
+  TSParseActionType type;   // Shift / Reduce / Accept
+
+  // Shift: 해당 액션에서 소비한 토큰 심볼
+  // Reduce: 축약된 비단말 심볼
+  TSSymbol symbol;          
+  uint32_t child_count;     // reduce 액션에 축약되는 심볼 갯수
+  TSStateId next_state;     // 다음에 갈 상태를 가리킨다
+  bool extra;               // Parse Action 규칙 참조
+  bool repetition;          // Parse Action 규칙 참조
+} TSLoggedAction;
+
+typedef Array(TSLoggedAction) TSLoggedActionArray;
+
 struct TSParser {
   Lexer lexer;
   Stack *stack;
@@ -102,6 +122,10 @@ struct TSParser {
 
   // parse action 저장 자료구조
   TSParseActionArray parse_actions;
+
+  // Log 저장 자료구조 
+  TSLoggedActionArray logged_actions;
+
   Subtree finished_tree;
   SubtreeArray trailing_extras;
   SubtreeArray trailing_extras2;
@@ -1649,6 +1673,21 @@ static bool ts_parser__advance(
           // TSParseActionArray parse_action shift 요소 추가
           array_push(&self->parse_actions, action);
 
+          /*************** Log *************** */
+          TSSymbol tok_sym = ts_subtree_leaf_symbol(lookahead);
+
+          // 사람이 읽는 로그에도 남김
+          TSLoggedAction la_shift = (TSLoggedAction) {
+            .type = TSParseActionTypeShift,
+            .symbol = tok_sym,
+            .child_count = 0,
+            .next_state = next_state,
+            .extra = action.shift.extra,
+            .repetition = action.shift.repetition
+          };
+          array_push(&self->logged_actions, la_shift);
+          /*************** Log *************** */
+
           if (ts_subtree_child_count(lookahead) > 0) {
             ts_parser__breakdown_lookahead(self, &lookahead, state, &self->reusable_node);
             next_state = ts_language_next_state(self->language, state, ts_subtree_symbol(lookahead));
@@ -1667,6 +1706,18 @@ static bool ts_parser__advance(
           // TSParseActionArray parse_actions reduce 요소 추가
           array_push(&self->parse_actions, action);
 
+          /*************** Log *************** */
+          TSLoggedAction la_red = (TSLoggedAction) {
+            .type = TSParseActionTypeReduce,
+            .symbol = action.reduce.symbol,         // LHS 비단말
+            .child_count = action.reduce.child_count,
+            .next_state = 0,
+            .extra = false,
+            .repetition = false
+          };
+          array_push(&self->logged_actions, la_red);
+          /*************** Log *************** */
+
           StackVersion reduction_version = ts_parser__reduce(
             self, version, action.reduce.symbol, action.reduce.child_count,
             action.reduce.dynamic_precedence, action.reduce.production_id,
@@ -1684,6 +1735,18 @@ static bool ts_parser__advance(
 
           // TSParseActionArray parse_actions accept 요소 추가
           array_push(&self->parse_actions, action);
+
+          /*************** Log *************** */
+          TSLoggedAction la_acc = (TSLoggedAction) {
+            .type = TSParseActionTypeAccept,
+            .symbol = ts_builtin_sym_end,
+            .child_count = 0,
+            .next_state = 0,
+            .extra = false,
+            .repetition = false
+          };
+          array_push(&self->logged_actions, la_acc);
+          /*************** Log *************** */
 
           ts_parser__accept(self, version, lookahead);
           return true;
@@ -1962,8 +2025,15 @@ TSParser *ts_parser_new(void) {
   ts_lexer_init(&self->lexer);
   array_init(&self->reduce_actions);
   array_reserve(&self->reduce_actions, 4);
+  
+  // parse action array 초기화
   array_init(&self->parse_actions);
   array_reserve(&self->parse_actions, 2048); // 초기 용량 설정
+
+  // parse logged array 초기화
+  array_init(&self->logged_actions);
+  array_reserve(&self->logged_actions, 2048);
+
   self->tree_pool = ts_subtree_pool_new(32);
   self->stack = ts_stack_new(&self->tree_pool);
   self->finished_tree = NULL_SUBTREE;
@@ -1993,9 +2063,17 @@ void ts_parser_delete(TSParser *self) {
   if (self->reduce_actions.contents) {
     array_delete(&self->reduce_actions);
   }
-  if (self->parse_actions.contents) { // 메모리 해제
+
+  // parse action array 메모리 해제
+  if (self->parse_actions.contents) { 
     array_delete(&self->parse_actions);
   }
+  
+  // parse logged array 메모리 해제
+  if (self->logged_actions.contents) {
+    array_delete(&self->logged_actions);
+  }
+
   if (self->included_range_differences.contents) {
     array_delete(&self->included_range_differences);
   }
@@ -2270,6 +2348,373 @@ balance:
     }
   }
   // *****************************************************************************
+
+  // 하스켈 코드의 기능
+  /*
+    shift 액션을 통해 입력을 소모하고 스택에 토큰과 상태를 쌓는다.
+    reduce 액션을 통해 스택에 있는 토큰과 상태를 축약한다.
+    
+    만약 스택의 일정 범위를 넘어가는 reduce 액션이 나왔을 때, 그때 일정 범위까지 쌓여있던 토큰들을 저장한다.
+    해당 토큰들은 후보자가 된다.
+  */
+
+  // --------------------------------------------------------------------------- 
+  // 작업 요약
+  // 3개의 컨테이너
+  // 1) StateCandCount : 후보 심볼들의 정보를 모아놓은 구조체 배열
+  //    작업 마지막에 해당 배열을 순회하며 파일에 쓰기 및 로그 찍기 가능
+  // 2) segShifts : reduce 이전까지의 shift 토큰들을 모아놓은 배열
+  //    커서 위치를 저장해놓기 위한 배열
+  // 3) symTrees : 모든 shift, reduce 액션에서 나오는 정보를 저장하는 배열
+
+
+  // hs_candidates.txt 생성 : 후보 심볼들과 Count의 출력을 저장해놓은 txt 파일
+  //   - SHIFT가 나올 때마다 해당 토큰명을 segShifts에 누적
+  //   - REDUCE 시점에 segShifts 길이를 rhs와 비교하여
+  //       * segShifts.size <= rhsLength  → 후보로 결정 O
+  //       * segShifts.size  > rhs        → 후보로 결정 X
+  //   - REDUCE는 항상 스택 축약(symTrees) 수행: rhs만큼 pop 후 "<NonT:NAME>" push
+  //   - REDUCE 이후에는 다음 세그먼트를 새로 시작하기 위해 segShifts를 항상 비움
+  // ---------------------------------------------------------------------------
+
+  if (self->logged_actions.size > 0) 
+  {
+    typedef struct 
+    {
+      TSStateId state; // reduce 가 발생했을 때의 LR 파서 상태
+      char *key;       // reduce 직전에 관찰된 후보 토큰 시퀀스의 문자열
+      uint32_t count;  // 같은 (state, key) 카운트
+    } StateCandCount;  // 후보 심볼들의 정보를 모으는 구조체
+
+    Array(StateCandCount) acc = array_new();  // 후보 심볼들의 정보가 모아진 구조체 배열
+    Array(char*) segShifts = array_new();     // 직전 REDUCE 이후 ~ 다음 REDUCE 직전까지의 SHIFT* 토큰들
+    Array(char*) symTrees  = array_new();     // REDUCE 시뮬용 스택(터미널/비단말 문자열 저장)
+
+    TSStateId current_state = 1; // 초기 상태
+    uint32_t i = 0;
+
+    while (i < self->logged_actions.size) 
+    {
+      TSLoggedAction act = self->logged_actions.contents[i];
+
+      if (act.type == TSParseActionTypeShift) 
+      {
+        // extra가 아닌 SHIFT는 파서 상태 갱신
+        // extra(공백, 주석 등 문법 외 토큰) 가 아니면 LR 오토마톤의 다음 상태로 실제로 이동
+        if (!act.extra) current_state = act.next_state;
+
+        // SHIFT된 토큰 이름 문자열화
+        const char *tokenName = ts_language_symbol_name(self->language, act.symbol);
+        if (!tokenName) 
+        {
+          tokenName = "UNKNOWN";
+        }
+        LOG("token name********************************************* : %s", tokenName);
+        // 1) reduce 후 새로 쌓이는 스택(배열), reduce의 rhs 길이가 해당 스택의 길이보다 짧다면
+        //    그때 후보들은 무시
+        {
+          size_t len = strlen(tokenName) + 1;
+          char *s1 = (char *)ts_malloc(len);
+          memcpy(s1, tokenName, len);
+          array_push(&segShifts, s1);
+        }
+
+        // 2) 전체 스택(배열)
+        {
+          size_t len = strlen(tokenName) + 1;
+          char *s2 = (char *)ts_malloc(len);
+          memcpy(s2, tokenName, len);
+          array_push(&symTrees, s2);
+        }
+
+        i++;
+        continue;
+        // shift 라면 아래로 내려가지 않는다.
+      }
+
+      if (act.type == TSParseActionTypeReduce) 
+      {
+        // rhs Length
+        uint32_t rhsLength = act.child_count;
+
+        // ------------------------------------------------------
+        // 우리가 원하는 reduce action 인가?
+        // 통과하면 후보로 수집 
+        // ------------------------------------------------------
+        if (segShifts.size <= rhsLength) 
+        {
+          // ===========================
+          // shift로 인해 이때까지 쌓인(reduce 이후로 쌓인) 심볼들을 문자열로 변경한다.
+          // ex) identifier|for|if
+          // ===========================
+          Array(char*) *src = &segShifts;
+          char *key = NULL;
+
+          if (src->size == 0) 
+          {
+            // 아무 토큰도 없는 경우: "<EMPTY>"
+            // reduce 액션 후 바로 reduce 액션이 왔을 때
+            key = (char *)ts_malloc(8);              // 7 + 1('\0')
+            memcpy(key, "<EMPTY>", 8);
+          } 
+          else 
+          {
+            size_t total = 1; // '\0'
+            uint32_t k;
+
+            for (k = 0; k < src->size; ++k) 
+            {
+              total += strlen(*array_get(src, k));
+            }
+            
+            // 토큰 갯수 - 1 해서 '|' 갯수 정하기
+            if (src->size > 1) 
+            {
+              total += (src->size - 1); // '|' 개수
+            }
+              
+            key = (char *)ts_malloc(total);
+
+            size_t pos = 0;
+            // 다음을 추가하는 과정
+            // token1|  <- 추가
+            // token2|  <- 추가  
+            for (k = 0; k < src->size; ++k) 
+            {
+              char *ss = *array_get(src, k);
+              size_t sl = strlen(ss);
+              memcpy(key + pos, ss, sl);
+              pos += sl;
+              if (k + 1 < src->size) 
+              {
+                key[pos++] = '|';
+              }
+            }
+            key[pos] = '\0';
+
+          // 같은 (state, key) 후보가 있다면 count를 1 증가시킨다.
+          // 다른 (state, key) 라면 새로 생성한다.
+          {
+            bool found = false;
+            for (uint32_t i = 0; i < acc.size; ++i) 
+            {
+              StateCandCount *e = array_get(&acc, i);
+              if (e->state == current_state && strcmp(e->key, key) == 0) 
+              {
+                e->count += 1; 
+                found = true; 
+                break;
+              }
+            }
+
+            if (!found) 
+            {
+              StateCandCount ne;
+              ne.state = current_state;
+              ne.key   = key;   // 새로 만든 문자열 소유권 이전
+              ne.count = 1;
+              array_push(&acc, ne);
+            } 
+            else 
+            {
+              ts_free(key);     // 기존 엔트리에 합쳤으면 임시 문자열 해제
+            }
+          }
+
+          /******************* 방금 수정된 버전 ********************* */
+
+          // Array(char*) *src = &segShifts;
+          // if (src->size == 0) 
+          // {
+          //   src = &symTrees;   // segShifts 비면 symTrees로 대체
+          // }
+
+          // // 사용할 창(window): 뒤에서 rhsLength개 (src가 더 짧으면 전체)
+          // uint32_t use = rhsLength;
+          // if (use > src->size) 
+          // {
+          //   use = src->size;
+          // }
+
+          // char *key = NULL;
+
+          // if (use == 0) 
+          // {
+          //   // 아무것도 없으면 "<EMPTY>"
+          //   key = (char *)ts_malloc(8);
+          //   memcpy(key, "<EMPTY>", 8);
+          // } 
+          // else 
+          // {
+          //   uint32_t start = src->size - use;
+
+          //   // 총 길이 계산: 토큰 합 + " | " * (use-1) + '\0'
+          //   size_t total = 1; // '\0'
+          //   for (uint32_t k = start; k < src->size; ++k) 
+          //   {
+          //     total += strlen(*array_get(src, k));
+          //   }
+          //   if (use > 1) 
+          //   {
+          //     total += (use - 1) * 3; // " | "의 3바이트 * (use-1)
+          //   }
+
+          //   key = (char *)ts_malloc(total);
+          //   size_t pos = 0;
+
+          //   for (uint32_t k = start; k < src->size; ++k) 
+          //   {
+          //     char *ss = *array_get(src, k);
+          //     size_t sl = strlen(ss);
+          //     memcpy(key + pos, ss, sl);
+          //     pos += sl;
+          //     if (k + 1 < src->size) 
+          //     {
+          //       key[pos++] = ' ';
+          //       key[pos++] = '|';
+          //       key[pos++] = ' ';
+          //     }
+          //   }
+          //   key[pos] = '\0';
+          // }
+
+          // {
+          //   bool found = false;
+          //   for (uint32_t ai = 0; ai < acc.size; ++ai) 
+          //   {
+          //     StateCandCount *e = array_get(&acc, ai);
+          //     if (e->state == current_state && strcmp(e->key, key) == 0) 
+          //     {
+          //       e->count += 1;
+          //       found = true;
+          //       break;
+          //     }
+          //   }
+          //   if (!found) 
+          //   {
+          //     StateCandCount ne;
+          //     ne.state = current_state;
+          //     ne.key   = key; 
+          //     ne.count = 1;
+          //     array_push(&acc, ne);
+          //   } 
+          //   else 
+          //   {
+          //     ts_free(key); 
+          //   }
+          // }
+        }
+
+        // ------------------------------------------------------
+        // 다음 세그먼트를 새로 시작하기 위해 segShifts는 항상 비운다.
+        // REDUCE 이후엔 다음 REDUCE까지의 SHIFT*를 새로 누적한다.
+        // ------------------------------------------------------
+        {
+          for (uint32_t i = 0; i < segShifts.size; ++i) 
+          {
+            ts_free(*array_get(&segShifts, i));
+          }
+          array_clear(&segShifts);
+        }
+
+        // ===========================
+        // 전체 스택 symTrees 에 쌓여있던 원소들을 reduce의 RHS 만큼 제거하고
+        // LHS 로 채워넣는다. 
+        // ===========================
+        {
+          // symTrees에 쌓여있는 원소 개수가 현재 REDUCE의 rhsLength(우변 길이)보다
+          // 많지 않으면 (<=) 전체가 빨려 들어가는 상황으로 보고 스택을 비움.
+          if (symTrees.size <= rhsLength) 
+          {
+            // symTrees에 저장된 문자열들 메모리 해제
+            uint32_t t;
+            for (t = 0; t < symTrees.size; ++t) 
+            {
+              ts_free(*array_get(&symTrees, t));
+            }
+            array_clear(&symTrees);
+          } 
+          else 
+          {
+            // 반대로, 스택에 rhsLength보다 더 많이 쌓여 있으면
+            // rhsLength 개수만큼 pop(뒤에서부터 제거)해서 REDUCE의 축약
+            uint32_t popc = rhsLength;
+            while (popc-- > 0 && symTrees.size > 0) 
+            {
+              char *p = array_pop(&symTrees);
+              ts_free(p);
+            }
+            // LHS 비단말 이름 문자열화하여 "<NonT:NAME>" push
+            const char *nonTerminalName = ts_language_symbol_name(self->language, act.symbol);
+            if (!nonTerminalName) 
+            {
+              nonTerminalName = "UNKNOWN";
+            }
+            
+            size_t ntLength = strlen(nonTerminalName);
+            size_t bl = 7 + ntLength + 1; // "<NonT:"(6) + name(nl) + ">"(1) + '\0'(1) = nl + 8
+            char *nonterm = (char *)ts_malloc(bl);
+            snprintf(nonterm, bl, "<NonT:%s>", nonTerminalName);
+            array_push(&symTrees, nonterm);
+          }
+        }
+
+        i++;
+        continue;
+      }
+      // reduce action 처리 끝 지점 ------------------------------------
+
+      if (act.type == TSParseActionTypeAccept) 
+      {
+        // ACCEPT를 만나면 후보 집계 종료
+        break;
+      }
+
+      // 그 외 액션은 건너뜀
+      i++;
+    }
+
+    // 결과 파일로 내보내기
+    {
+      FILE *fp2 = fopen("hs_candidates.txt", "w");
+      if (fp2) 
+      {
+        for (uint32_t i = 0; i < acc.size; ++i) 
+        {
+          StateCandCount *e = array_get(&acc, i);
+          fprintf(fp2, "[state %u] %s  -> %u\n", e->state, e->key, e->count);
+        }
+        fclose(fp2);
+      }
+    }
+
+    // 메모리 정리
+    {
+      uint32_t t;
+      for (t = 0; t < segShifts.size; ++t) 
+      {
+        ts_free(*array_get(&segShifts, t));
+      }
+      array_delete(&segShifts);
+      
+      for (t = 0; t < symTrees.size; ++t) 
+      {
+        ts_free(*array_get(&symTrees, t));
+      }
+
+      array_delete(&symTrees);
+      for (t = 0; t < acc.size; ++t) 
+      {
+        StateCandCount *e = array_get(&acc, t);
+        ts_free(e->key);
+      }
+      array_delete(&acc);
+    }
+  }
+  // ---------------------------------------------------------------------------
+
+
+
 
   result = ts_tree_new(
     self->finished_tree,
