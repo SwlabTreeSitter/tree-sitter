@@ -22,9 +22,18 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 
 <br><br>
 
-## 경재 - 작업 상황
-- [수정중인 파일](https://github.com/SwlabTreeSitter/tree-sitter/blob/main/crates/cli/src/parse.rs)
+## 사용 방법
+
+만들고자 하는 parser의 문법이 있는(grammar.js) 경로에서 해당 명령어 수행 시 문법 생성
+```
+..\tree-sitter\target\debug\tree-sitter generate --debug-build
+```
 
 <br>
 
-parse action을 저장할 자료형 및 컨테이너 정의, 파일에 parse action 저장
+만들고자 하는 parser의 문법이 있는(grammar.js) 경로에서 해당 명령어 수행 시 후보 심볼 수집
+```
+..\tree-sitter\target\debug\tree-sitter parse --debug pretty (소스코드 파일 이름)
+```
+
+
