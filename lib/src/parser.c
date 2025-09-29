@@ -1487,11 +1487,20 @@ static void ts_parser__recover(
   self->has_error = has_error;
 }
 
+// 오류 났을 때 들리는 함수
 static void ts_parser__handle_error(
   TSParser *self,
   StackVersion version,
   Subtree lookahead
 ) {
+  // ========================[ 로그 ]========================
+  Length error_pos = length_add(ts_stack_position(self->stack, version), ts_subtree_padding(lookahead));
+  TSLoggedAction recovery_action_log = (TSLoggedAction) {
+    .type = TSParseActionTypeRecover, // 이 타입을 신호로 사용합니다.
+    .start_point = error_pos.extent,   // 정확한 오류 발생 위치입니다.
+  };
+  array_push(&self->logged_actions, recovery_action_log);
+  // ========================================================================
   uint32_t previous_version_count = ts_stack_version_count(self->stack);
 
   // Perform any reductions that can happen in this state, regardless of the lookahead. After
@@ -1702,7 +1711,6 @@ static bool ts_parser__advance(
 
           if (lexeme_len > 0)
           {
-              // 1. Tree-sitter의 공식 'read' 콜백 함수를 사용합니다.
               uint32_t bytes_read = 0;
               const char *source_chunk = self->lexer.input.read(
                   self->lexer.input.payload,
@@ -1711,10 +1719,8 @@ static bool ts_parser__advance(
                   &bytes_read
               );
 
-              // 2. read 콜백이 성공적으로 소스 코드 조각을 반환했는지 확인합니다.
               if (source_chunk && bytes_read >= lexeme_len)
               {
-                  // 3. 반환된 소스 코드 조각에서 렉심을 안전하게 복사합니다.
                   lexeme_copy = (char *)ts_malloc(lexeme_len + 1);
                   memcpy(lexeme_copy, source_chunk, lexeme_len);
                   lexeme_copy[lexeme_len] = '\0';
@@ -1803,17 +1809,6 @@ static bool ts_parser__advance(
         }
 
         case TSParseActionTypeRecover: {
-          TSLoggedAction la_rec = (TSLoggedAction) {
-            .type = TSParseActionTypeRecover,
-            .symbol = ts_subtree_symbol(lookahead),
-            .child_count = 0,
-            .next_state = 0,
-            .extra = false,
-            .repetition = false,
-            .start_point = self->lexer.token_start_position.extent,
-            .ParseAction = action 
-          };
-          array_push(&self->logged_actions, la_rec);
 
           if (ts_subtree_child_count(lookahead) > 0) {
             ts_parser__breakdown_lookahead(self, &lookahead, ERROR_STATE, &self->reusable_node);
@@ -1821,7 +1816,7 @@ static bool ts_parser__advance(
 
           ts_parser__recover(self, version, lookahead);
           if (did_reuse) reusable_node_advance(&self->reusable_node);
-          return ;
+          return true;
         }
       }
     }
@@ -2454,6 +2449,7 @@ if (self->logged_actions.size > 0)
 
     // 분석 결과를 저장할 파일을 엽니다.
     FILE *OutputFile = fopen("Test.data", "w");
+    bool bIsRecover = false;
 
     // 모든 non-extra SHIFT 액션의 인덱스를 저장할 동적 배열을 생성합니다.
     Array(uint32_t) ShiftIndices = array_new();
@@ -2512,8 +2508,19 @@ if (self->logged_actions.size > 0)
                     array_push(&SimStack, NewNonTerminalEntry);
                 }
             }
+            else if(CurrentAction.type == TSParseActionTypeRecover)
+            {
+                fprintf(OutputFile, "Recover Error Line : %u,%u\n", CurrentAction.start_point.row + 1, CurrentAction.start_point.column + 1);
+                bIsRecover = true;
+                break;
+            }
         }
         array_delete(&SimStack);
+
+        if(bIsRecover) 
+        {
+            break;
+        }
 
         // --- 결과 출력 루프 ---
         for (uint32_t k = i; k < ShiftIndices.size; ++k)
@@ -2542,16 +2549,16 @@ if (self->logged_actions.size > 0)
                 Array(StackEntry) headerStack = array_new();
 
                 for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) {
-                    TSLoggedAction currentAction = self->logged_actions.contents[j];
+                    TSLoggedAction CurrentAction = self->logged_actions.contents[j];
 
-                    if (currentAction.type == TSParseActionTypeShift && !currentAction.extra) 
+                    if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 
                     {
-                        StackEntry newEntry = {currentAction, j, true};
+                        StackEntry newEntry = {CurrentAction, j, true};
                         array_push(&headerStack, newEntry);
                     } 
-                    else if (currentAction.type == TSParseActionTypeReduce) 
+                    else if (CurrentAction.type == TSParseActionTypeReduce) 
                     {
-                        uint32_t rhsLength = currentAction.child_count;
+                        uint32_t rhsLength = CurrentAction.child_count;
                         if (headerStack.size >= rhsLength) 
                         {
                             for (uint32_t pop_idx = 0; pop_idx < rhsLength; ++pop_idx) 
@@ -2560,7 +2567,7 @@ if (self->logged_actions.size > 0)
                             }
                             
                             TSLoggedAction nonTerminalAction = {0};
-                            nonTerminalAction.symbol = currentAction.symbol;
+                            nonTerminalAction.symbol = CurrentAction.symbol;
                             StackEntry newNonTerminalEntry = {nonTerminalAction, j, false};
                             array_push(&headerStack, newNonTerminalEntry);
                         }
