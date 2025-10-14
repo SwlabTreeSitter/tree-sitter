@@ -1494,10 +1494,12 @@ static void ts_parser__handle_error(
   Subtree lookahead
 ) {
   // ========================[ 로그 ]========================
+  TSStateId state_at_error = ts_stack_state(self->stack, version);
   Length error_pos = length_add(ts_stack_position(self->stack, version), ts_subtree_padding(lookahead));
   TSLoggedAction recovery_action_log = (TSLoggedAction) {
     .type = TSParseActionTypeRecover, // 이 타입을 신호로 사용합니다.
     .start_point = error_pos.extent,   // 정확한 오류 발생 위치입니다.
+    .next_state = state_at_error
   };
   array_push(&self->logged_actions, recovery_action_log);
   // ========================================================================
@@ -2255,6 +2257,55 @@ void ts_parser_reset(TSParser *self) {
   self->parse_state = (TSParseState) {0};
 }
 
+static TSStateId TsParserFindClosestRecoverState(
+  TSParser *Self,
+  uint32_t TargetRow,
+  uint32_t TargetCol,
+  TSLoggedAction* OutLog
+) {
+    TSStateId ClosestStateId = 0; // 찾은 상태 ID를 저장할 변수 (0은 '못 찾음')
+    uint32_t MinRowDiff = UINT32_MAX;  // 최소 행 차이
+    uint32_t MinColDiff = UINT32_MAX;  // 최소 열 차이
+
+    for (uint32_t I = 0; I < Self->logged_actions.size; ++I)
+    {
+        TSLoggedAction CurrentAction = Self->logged_actions.contents[I];
+
+        if (CurrentAction.type == TSParseActionTypeRecover)
+        {
+            // Recover 액션의 위치 
+            uint32_t RecoverRow = CurrentAction.start_point.row + 1;
+            uint32_t RecoverCol = CurrentAction.start_point.column + 1;
+
+            // 목표 위치와의 거리(차이)를 계산합니다. (절대값)
+            uint32_t RowDiff = (RecoverRow > TargetRow) ? (RecoverRow - TargetRow) : (TargetRow - RecoverRow);
+            uint32_t ColDiff = (RecoverCol > TargetCol) ? (RecoverCol - TargetCol) : (TargetCol - RecoverCol);
+
+            // 더 가까운 Recover 액션인지 판별
+            // 1. 행 차이
+            if (RowDiff < MinRowDiff)
+            {
+                MinRowDiff = RowDiff;
+                MinColDiff = ColDiff;
+                ClosestStateId = CurrentAction.next_state;
+                *OutLog = CurrentAction;
+            }
+            // 2. 행 차이가 같은 경우, 열 차이가 더 작은 것 선택
+            else if (RowDiff == MinRowDiff)
+            {
+                if (ColDiff < MinColDiff)
+                {
+                    MinColDiff = ColDiff;
+                    ClosestStateId = CurrentAction.next_state;
+                    *OutLog = CurrentAction;
+                }
+            }
+        }
+    }
+
+    return ClosestStateId;
+}
+
 TSTree *ts_parser_parse(
   TSParser *self,
   const TSTree *old_tree,
@@ -2510,17 +2561,18 @@ if (self->logged_actions.size > 0)
             }
             else if(CurrentAction.type == TSParseActionTypeRecover)
             {
+                fprintf(OutputFile, "%u ", CurrentAction.next_state);
                 fprintf(OutputFile, "Recover Error Line : %u,%u\n", CurrentAction.start_point.row + 1, CurrentAction.start_point.column + 1);
-                bIsRecover = true;
-                break;
+                // bIsRecover = true;
+                // break;
             }
         }
         array_delete(&SimStack);
 
-        if(bIsRecover) 
-        {
-            break;
-        }
+        // if(bIsRecover) 
+        // {
+        //     break;
+        // }
 
         // --- 결과 출력 루프 ---
         for (uint32_t k = i; k < ShiftIndices.size; ++k)
@@ -2595,7 +2647,6 @@ if (self->logged_actions.size > 0)
                 const char* SymbolName = ts_language_symbol_name(self->language, self->logged_actions.contents[InnerPrintIndex].symbol);
                 fprintf(OutputFile, "%s ", SymbolName);
             }
-            // '-> Symbol' 부분 삭제
             fprintf(OutputFile, "\n");
             
             // 내용물(렉심) 라인 출력
@@ -2623,10 +2674,36 @@ if (self->logged_actions.size > 0)
         i = next_shift_array_index - 1;
     }
 
+    // ========================[ 가장 가까운 recover action 찾는 로직 ]========================
+    // 행,열 임의 설정
+    uint32_t TargetRow = 9;
+    uint32_t TargetCol = 15;
+
+    // TsParserFindClosestRecoverState 가장 가까운 recover action의 parse state를 찾기 위한 메서드
+
+    TSLoggedAction TempLog;
+    TSStateId FoundState = TsParserFindClosestRecoverState(self, TargetRow, TargetCol, &TempLog);
+
+    // 찾은 parse state를 임의로 파일에 저장
+    fprintf(OutputFile, "\n-------------------------------------------------------\n");
+    fprintf(OutputFile, "--- Searching for closest Recover State ID to (%u, %u) ---\n", TargetRow, TargetCol);
+    if (FoundState != 0) 
+    {
+        fprintf(OutputFile, "[RESULT] Closest Recover State ID is: %u\n", FoundState);
+        fprintf(OutputFile, "[RESULT] Closest Recover State Row And Column : (%u, %u)\n", TempLog.start_point.row + 1, TempLog.start_point.column + 1);
+    } 
+    else 
+    {
+        fprintf(OutputFile, "[RESULT] No Recover actions were found in the log.\n");
+    }
+    fprintf(OutputFile, "-------------------------------------------------------\n");
+
     // 파일 핸들 및 동적 배열 메모리 해제
     fclose(OutputFile);
     array_delete(&ShiftIndices);
 }
+
+
 
 
   result = ts_tree_new(
