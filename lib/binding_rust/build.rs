@@ -48,6 +48,33 @@ fn main() {
         .compile("tree-sitter");
 
     println!("cargo:include={}", include_path.display());
+
+
+    if std::env::var("CARGO_CFG_TARGET_ENV").unwrap() == "msvc" {
+        use std::env;
+        use std::fs;
+        use std::path::PathBuf;
+
+        // Cargo가 .lib 파일을 생성하는 임시 경로 (예: target/debug/build/tree-sitter-xxxx/out)
+        let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+        
+        // .lib 파일의 전체 경로
+        let lib_path = out_dir.join("tree-sitter.lib");
+    
+        // .lib 파일을 복사할 최종 목적지 경로 (target/debug/)
+        // OUT_DIR에서 세 단계 위로 올라가면 target/debug 폴더가 됩니다.
+        let dest_dir = out_dir.join("../../../");
+
+        // .lib 파일이 존재하는지 확인하고 복사합니다.
+        if lib_path.exists() {
+            match fs::copy(&lib_path, dest_dir.join("treesitter.lib")) {
+                Ok(_) => println!("cargo:warning=Copied treesitter.lib to target/debug folder."),
+                Err(e) => println!("cargo:warning=Failed to copy treesitter.lib: {}", e),
+            }
+        } else {
+             println!("cargo:warning=treesitter.lib not found in OUT_DIR, skipping copy.");
+        }
+    }
 }
 
 #[cfg(feature = "bindgen")]

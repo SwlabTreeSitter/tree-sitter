@@ -144,6 +144,10 @@ struct TSParser {
   // Log 저장 자료구조 
   TSLoggedActionArray logged_actions;
 
+  // 파싱 멈출 행열
+  uint32_t StopRow;
+  uint32_t StopColumn;
+
   Subtree finished_tree;
   SubtreeArray trailing_extras;
   SubtreeArray trailing_extras2;
@@ -565,6 +569,19 @@ static Subtree ts_parser__lex(
 
   const Length start_position = ts_stack_position(self->stack, version);
   const Subtree external_token = ts_stack_last_external_token(self->stack, version);
+
+  // ========================[ 중단점 확인 로직 추가 ]========================
+  if (start_position.extent.row > self->StopRow ||
+      (start_position.extent.row == self->StopRow && start_position.extent.column >= self->StopColumn)) {
+
+      return ts_subtree_new_leaf(
+          &self->tree_pool, ts_builtin_sym_end,
+          length_zero(), length_zero(), 0,
+          parse_state, false, false, false,
+          self->language
+      );
+  }
+  // ========================================================================
 
   bool found_external_token = false;
   bool error_mode = parse_state == ERROR_STATE;
@@ -2085,6 +2102,10 @@ TSParser *ts_parser_new(void) {
   array_init(&self->reduce_actions);
   array_reserve(&self->reduce_actions, 4);
   
+  // 멈출 행열 초기화
+  self->StopRow = UINT32_MAX;
+  self->StopColumn = UINT32_MAX;
+
   // parse action array 초기화
   array_init(&self->parse_actions);
   array_reserve(&self->parse_actions, 2048); // 초기 용량 설정
@@ -2231,6 +2252,10 @@ const TSRange *ts_parser_included_ranges(const TSParser *self, uint32_t *count) 
 }
 
 void ts_parser_reset(TSParser *self) {
+  // 멈출 행열 초기화
+  self->StopRow = UINT32_MAX;
+  self->StopColumn = UINT32_MAX;
+
   ts_parser__external_scanner_destroy(self);
   if (self->wasm_store) {
     ts_wasm_store_reset(self->wasm_store);
@@ -2257,15 +2282,24 @@ void ts_parser_reset(TSParser *self) {
   self->parse_state = (TSParseState) {0};
 }
 
+// 멈추는 지점 Setter 메서드
+void ts_parser_set_stop_position(TSParser *self, TSPoint stop_point) {
+    if (self) {
+        self->StopRow = stop_point.row;
+        self->StopColumn = stop_point.column;
+    }
+}
+
+// 가장 가까운 Recover Action 찾는 메서드
 static TSStateId TsParserFindClosestRecoverState(
   TSParser *Self,
   uint32_t TargetRow,
   uint32_t TargetCol,
   TSLoggedAction* OutLog
 ) {
-    TSStateId ClosestStateId = 0; // 찾은 상태 ID를 저장할 변수 (0은 '못 찾음')
-    uint32_t MinRowDiff = UINT32_MAX;  // 최소 행 차이
-    uint32_t MinColDiff = UINT32_MAX;  // 최소 열 차이
+    TSStateId ClosestStateId = 0; 
+    uint32_t MinRowDiff = UINT32_MAX;  
+    uint32_t MinColDiff = UINT32_MAX;
 
     for (uint32_t I = 0; I < Self->logged_actions.size; ++I)
     {
@@ -2273,11 +2307,9 @@ static TSStateId TsParserFindClosestRecoverState(
 
         if (CurrentAction.type == TSParseActionTypeRecover)
         {
-            // Recover 액션의 위치 
             uint32_t RecoverRow = CurrentAction.start_point.row + 1;
             uint32_t RecoverCol = CurrentAction.start_point.column + 1;
 
-            // 목표 위치와의 거리(차이)를 계산합니다. (절대값)
             uint32_t RowDiff = (RecoverRow > TargetRow) ? (RecoverRow - TargetRow) : (TargetRow - RecoverRow);
             uint32_t ColDiff = (RecoverCol > TargetCol) ? (RecoverCol - TargetCol) : (TargetCol - RecoverCol);
 
@@ -2318,7 +2350,7 @@ TSTree *ts_parser_parse(
     if (!self->wasm_store) return NULL;
     ts_wasm_store_start(self->wasm_store, &self->lexer.data, self->language);
   }
-
+  
   ts_lexer_set_input(&self->lexer, input);
   array_clear(&self->included_range_differences);
   self->included_range_difference_index = 0;
@@ -2466,6 +2498,21 @@ if (ActionFile)
                     CurrentAction.child_count);
                 break;
             }
+            case TSParseActionTypeRecover:
+            {
+                const char *SymbolName = ts_language_symbol_name(self->language, CurrentAction.symbol);
+                if (!SymbolName)
+                {
+                    SymbolName = "UNKNOWN_SYMBOL";
+                }
+
+                fprintf(ActionFile, "[Recover] symbol: %s, Row: %u, Column:%u\n",
+                    SymbolName,
+                    CurrentAction.start_point.row,
+                    CurrentAction.start_point.column
+                );
+                break;
+            }
             case TSParseActionTypeAccept:
             {
                 fprintf(ActionFile, "[ACCEPT]\n");
@@ -2479,7 +2526,6 @@ if (ActionFile)
         }
     }
 
-    // 파일 작업을 모두 마친 후에는 반드시 닫아주어야 합니다.
     fclose(ActionFile);
 }
 
@@ -2563,16 +2609,10 @@ if (self->logged_actions.size > 0)
             {
                 fprintf(OutputFile, "%u ", CurrentAction.next_state);
                 fprintf(OutputFile, "Recover Error Line : %u,%u\n", CurrentAction.start_point.row + 1, CurrentAction.start_point.column + 1);
-                // bIsRecover = true;
-                // break;
+                bIsRecover = true;
             }
         }
         array_delete(&SimStack);
-
-        // if(bIsRecover) 
-        // {
-        //     break;
-        // }
 
         // --- 결과 출력 루프 ---
         for (uint32_t k = i; k < ShiftIndices.size; ++k)
@@ -2675,29 +2715,28 @@ if (self->logged_actions.size > 0)
     }
 
     // ========================[ 가장 가까운 recover action 찾는 로직 ]========================
-    // 행,열 임의 설정
-    uint32_t TargetRow = 9;
-    uint32_t TargetCol = 15;
 
     // TsParserFindClosestRecoverState 가장 가까운 recover action의 parse state를 찾기 위한 메서드
 
+  
     TSLoggedAction TempLog;
-    TSStateId FoundState = TsParserFindClosestRecoverState(self, TargetRow, TargetCol, &TempLog);
-
+    TSStateId FoundState = TsParserFindClosestRecoverState(self, self->StopRow, self->StopColumn, &TempLog);
+    
     // 찾은 parse state를 임의로 파일에 저장
     fprintf(OutputFile, "\n-------------------------------------------------------\n");
-    fprintf(OutputFile, "--- Searching for closest Recover State ID to (%u, %u) ---\n", TargetRow, TargetCol);
+    fprintf(OutputFile, "해당 행, 열 위치까지만 파일을 읽습니다 : (%u, %u) \n", self->StopRow + 1, self->StopColumn + 1);
     if (FoundState != 0) 
     {
-        fprintf(OutputFile, "[RESULT] Closest Recover State ID is: %u\n", FoundState);
-        fprintf(OutputFile, "[RESULT] Closest Recover State Row And Column : (%u, %u)\n", TempLog.start_point.row + 1, TempLog.start_point.column + 1);
+        fprintf(OutputFile, "[결과] 가장 가까운 Recover 상태 ID : %u\n", FoundState);
+        fprintf(OutputFile, "[결과] 가장 가까운 Recover action 의 발생 지점 : (%u, %u)\n", TempLog.start_point.row + 1, TempLog.start_point.column + 1);
     } 
     else 
     {
-        fprintf(OutputFile, "[RESULT] No Recover actions were found in the log.\n");
+        fprintf(OutputFile, "[결과] Recover action이 발생하지 않음\n");
     }
     fprintf(OutputFile, "-------------------------------------------------------\n");
-
+    
+    
     // 파일 핸들 및 동적 배열 메모리 해제
     fclose(OutputFile);
     array_delete(&ShiftIndices);

@@ -391,6 +391,18 @@ void ts_parser_set_timeout_micros(TSParser *self, uint64_t timeout_micros);
  */
 uint64_t ts_parser_timeout_micros(const TSParser *self);
 
+// ========================[ KJ Custom ]========================
+
+/**
+ * 파서가 특정 지점에서 파싱을 멈추도록 설정한다.
+ *
+ * @param self 파서 인스턴스
+ * @param stop_point 파싱을 중단할 위치 (0-based index)
+ */
+void ts_parser_set_stop_position(TSParser *self, TSPoint stop_point);
+
+// ========================================================================
+
 /**
  * @deprecated use [`ts_parser_parse_with_options`] and pass in a callback instead, this will be removed in 0.26.
  *
