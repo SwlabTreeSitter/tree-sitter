@@ -148,6 +148,10 @@ struct TSParser {
   uint32_t StopRow;
   uint32_t StopColumn;
 
+  // 읽을 행열
+  uint32_t ReadRow;
+  uint32_t ReadColumn;
+
   Subtree finished_tree;
   SubtreeArray trailing_extras;
   SubtreeArray trailing_extras2;
@@ -2283,10 +2287,21 @@ void ts_parser_reset(TSParser *self) {
 }
 
 // 멈추는 지점 Setter 메서드
-void ts_parser_set_stop_position(TSParser *self, TSPoint stop_point) {
-    if (self) {
+void ts_parser_set_stop_position(TSParser *self, TSPoint stop_point) 
+{
+    if (self) 
+    {
         self->StopRow = stop_point.row;
         self->StopColumn = stop_point.column;
+    }
+}
+
+void ts_parser_set_threshold_read_cursor(TSParser *self, TSPoint stop_point)
+{
+    if (self)
+    {
+      self->ReadRow = stop_point.row;
+      self->StopColumn = stop_point.column;
     }
 }
 
@@ -2724,7 +2739,6 @@ if (self->logged_actions.size > 0)
     
     // 찾은 parse state를 임의로 파일에 저장
     fprintf(OutputFile, "\n-------------------------------------------------------\n");
-    fprintf(OutputFile, "해당 행, 열 위치까지만 파일을 읽습니다 : (%u, %u) \n", self->StopRow + 1, self->StopColumn + 1);
     if (FoundState != 0) 
     {
         fprintf(OutputFile, "[결과] 가장 가까운 Recover 상태 ID : %u\n", FoundState);
