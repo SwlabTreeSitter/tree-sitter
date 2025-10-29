@@ -574,19 +574,6 @@ static Subtree ts_parser__lex(
   const Length start_position = ts_stack_position(self->stack, version);
   const Subtree external_token = ts_stack_last_external_token(self->stack, version);
 
-  // ========================[ 중단점 확인 로직 추가 ]========================
-  if (start_position.extent.row > self->StopRow ||
-      (start_position.extent.row == self->StopRow && start_position.extent.column >= self->StopColumn)) {
-
-      return ts_subtree_new_leaf(
-          &self->tree_pool, ts_builtin_sym_end,
-          length_zero(), length_zero(), 0,
-          parse_state, false, false, false,
-          self->language
-      );
-  }
-  // ========================================================================
-
   bool found_external_token = false;
   bool error_mode = parse_state == ERROR_STATE;
   bool skipped_error = false;
@@ -1517,10 +1504,12 @@ static void ts_parser__handle_error(
   // ========================[ 로그 ]========================
   TSStateId state_at_error = ts_stack_state(self->stack, version);
   Length error_pos = length_add(ts_stack_position(self->stack, version), ts_subtree_padding(lookahead));
+  
   TSLoggedAction recovery_action_log = (TSLoggedAction) {
     .type = TSParseActionTypeRecover, // 이 타입을 신호로 사용합니다.
     .start_point = error_pos.extent,   // 정확한 오류 발생 위치입니다.
-    .next_state = state_at_error
+    .next_state = state_at_error,
+    .symbol = ts_subtree_symbol(lookahead) // 오류 유발 토큰의 ID 저장
   };
   array_push(&self->logged_actions, recovery_action_log);
   // ========================================================================
@@ -2622,8 +2611,6 @@ if (self->logged_actions.size > 0)
             }
             else if(CurrentAction.type == TSParseActionTypeRecover)
             {
-                fprintf(OutputFile, "%u ", CurrentAction.next_state);
-                fprintf(OutputFile, "Recover Error Line : %u,%u\n", CurrentAction.start_point.row + 1, CurrentAction.start_point.column + 1);
                 bIsRecover = true;
             }
         }
@@ -2741,8 +2728,16 @@ if (self->logged_actions.size > 0)
     fprintf(OutputFile, "\n-------------------------------------------------------\n");
     if (FoundState != 0) 
     {
-        fprintf(OutputFile, "[결과] 가장 가까운 Recover 상태 ID : %u\n", FoundState);
-        fprintf(OutputFile, "[결과] 가장 가까운 Recover action 의 발생 지점 : (%u, %u)\n", TempLog.start_point.row + 1, TempLog.start_point.column + 1);
+        fprintf(OutputFile, "[결과] Parse State ID : %u\n", FoundState);
+        fprintf(OutputFile, "[결과] 에러 발생 지점 : (%u, %u)\n", TempLog.start_point.row + 1, TempLog.start_point.column + 1);
+
+        TSSymbol error_causing_symbol_id = TempLog.symbol;
+        // 해당 ID의 문자열 이름도 함께 출력해줍니다 (디버깅 편의성).
+        const char* error_symbol_name = ts_language_symbol_name(self->language, error_causing_symbol_id);
+        fprintf(OutputFile, "[결과] 오류를 유발한 토큰 ID : %u (%s)\n",
+                error_causing_symbol_id,
+                error_symbol_name ? error_symbol_name : "UNKNOWN");
+    
     } 
     else 
     {

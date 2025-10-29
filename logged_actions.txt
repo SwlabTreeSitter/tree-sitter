@@ -1,8 +1,45 @@
-[SHIFT] lexeme: 'TextWindow', next_state: 188
-[SHIFT] lexeme: '.', next_state: 259
-[SHIFT] lexeme: 'ForegroundColor', next_state: 214
-[SHIFT] lexeme: '=', next_state: 75
-[SHIFT] lexeme: '"Yellow"', next_state: 9
+[SHIFT] lexeme: 'If', next_state: 66
+[SHIFT] lexeme: '(', next_state: 80
+[SHIFT] lexeme: 'Clock', next_state: 4
+[SHIFT] lexeme: '.', next_state: 248
+[SHIFT] lexeme: 'Hour', next_state: 23
+[REDUCE] symbol: Primary, child_count: 3
+[REDUCE] symbol: UnaryExpr, child_count: 1
+[REDUCE] symbol: MultiplicativeExpr, child_count: 1
+[REDUCE] symbol: AdditiveExpr, child_count: 1
+[REDUCE] symbol: CompExpr, child_count: 1
+[SHIFT] lexeme: '<', next_state: 131
+[SHIFT] lexeme: '12', next_state: 51
+[REDUCE] symbol: Primary, child_count: 1
+[REDUCE] symbol: UnaryExpr, child_count: 1
+[REDUCE] symbol: MultiplicativeExpr, child_count: 1
+[REDUCE] symbol: AdditiveExpr, child_count: 1
+[REDUCE] symbol: CompExpr, child_count: 3
+[REDUCE] symbol: EqNeqExpr, child_count: 1
+[REDUCE] symbol: AndExpr, child_count: 1
+[REDUCE] symbol: OrExpr, child_count: 1
+[REDUCE] symbol: CondExpr, child_count: 1
+[REDUCE] symbol: Expr, child_count: 1
+[SHIFT] lexeme: ')', next_state: 53
+[REDUCE] symbol: Primary, child_count: 3
+[REDUCE] symbol: UnaryExpr, child_count: 1
+[REDUCE] symbol: MultiplicativeExpr, child_count: 1
+[REDUCE] symbol: AdditiveExpr, child_count: 1
+[REDUCE] symbol: CompExpr, child_count: 1
+[REDUCE] symbol: EqNeqExpr, child_count: 1
+[REDUCE] symbol: AndExpr, child_count: 1
+[REDUCE] symbol: OrExpr, child_count: 1
+[REDUCE] symbol: CondExpr, child_count: 1
+[REDUCE] symbol: Expr, child_count: 1
+[SHIFT] lexeme: 'Then', next_state: 121
+[SHIFT] lexeme: '
+', next_state: 109
+[REDUCE] symbol: CR, child_count: 1
+[SHIFT] lexeme: 'TextWindow', next_state: 184
+[SHIFT] lexeme: '.', next_state: 255
+[SHIFT] lexeme: 'WriteLine', next_state: 221
+[SHIFT] lexeme: '(', next_state: 27
+[SHIFT] lexeme: '"Good Morning World"', next_state: 51
 [REDUCE] symbol: Primary, child_count: 1
 [REDUCE] symbol: UnaryExpr, child_count: 1
 [REDUCE] symbol: MultiplicativeExpr, child_count: 1
@@ -13,13 +50,16 @@
 [REDUCE] symbol: OrExpr, child_count: 1
 [REDUCE] symbol: CondExpr, child_count: 1
 [REDUCE] symbol: Expr, child_count: 1
-[REDUCE] symbol: ExprStatement, child_count: 5
+[REDUCE] symbol: MoreThanOneExpr, child_count: 1
+[REDUCE] symbol: Exprs, child_count: 1
+[SHIFT] lexeme: ')', next_state: 210
+[REDUCE] symbol: ExprStatement, child_count: 6
 [REDUCE] symbol: Stmt, child_count: 1
-[REDUCE] symbol: MoreThanOneStmt, child_count: 1
-[REDUCE] symbol: Prog, child_count: 1
-[SHIFT] lexeme: 'TextWindow', next_state: 188
-[SHIFT] lexeme: '.', next_state: 259
-[SHIFT] lexeme: 'For', next_state: 214
-[Recover] symbol: end, Row: 1, Column:14
-[REDUCE] symbol: Start, child_count: 1
+[SHIFT] lexeme: '
+', next_state: 109
+[REDUCE] symbol: CR, child_count: 1
+[REDUCE] symbol: TheRest, child_count: 2
+[SHIFT] lexeme: 'End', next_state: 184
+[Recover] symbol: end, Row: 2, Column:3
+[REDUCE] symbol: Start, child_count: 0
 [ACCEPT]

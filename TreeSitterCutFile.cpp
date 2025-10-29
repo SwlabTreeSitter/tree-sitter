@@ -35,7 +35,7 @@ size_t FindByteOffsetForPosition(const std::string& text, uint32_t target_row, u
 
     while (current_offset < text.length()) {
         // 목표 위치에 도달했는지 확인 (현재 위치가 목표 위치 이상이면 중단)
-        if (current_row > target_row || (current_row == target_row && current_col >= target_col)) {
+        if (current_row > target_row || (current_row == target_row && current_col > target_col)) {
             return current_offset;
         }
 
