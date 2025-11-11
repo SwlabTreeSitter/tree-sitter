@@ -2565,10 +2565,13 @@ if (self->logged_actions.size > 0)
     // --- 바깥 루프: 모든 Shift를 시작점(커서)으로 순회 ---
     for (uint32_t i = 0; i < ShiftIndices.size; ++i)
     {
-        uint32_t CursorLogIndex = *array_get(&ShiftIndices, i);
-        
         Array(StackEntry) SimStack = array_new();
+
+        // 시작 토큰의 인덱스
+        uint32_t CursorLogIndex = *array_get(&ShiftIndices, i);
+        // 마지막 토큰의 인덱스
         uint32_t EndLogIndex = self->logged_actions.size;
+        // Reduce 액션의 인덱스
         uint32_t finalReduceLogIndex = UINT32_MAX;
 
         // --- 안쪽 루프: 시작점부터 "문장 끝(포함하는 Reduce)" 찾기 ---
@@ -2599,6 +2602,7 @@ if (self->logged_actions.size > 0)
                     EndLogIndex = LastConsumedIndex;
                     finalReduceLogIndex = j;
                     break;
+                    // 츨력 로직으로 이동
                 }
                 else
                 {
@@ -2617,6 +2621,7 @@ if (self->logged_actions.size > 0)
         array_delete(&SimStack);
 
         // --- 결과 출력 루프 ---
+        // 시작 토큰의 인덱스부터 1씩 증가
         for (uint32_t k = i; k < ShiftIndices.size; ++k)
         {
             uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, k);
@@ -2638,11 +2643,13 @@ if (self->logged_actions.size > 0)
             if (StartState == 0) StartState = 1;
             
             // '상위 심볼(스택 상태)' 헤더 라인 출력
+            // 문법 단위 출력
             if (k == i && finalReduceLogIndex != UINT32_MAX)
             {
                 Array(StackEntry) headerStack = array_new();
 
-                for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) {
+                for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) 
+                {
                     TSLoggedAction CurrentAction = self->logged_actions.contents[j];
 
                     if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 

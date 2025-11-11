@@ -139,13 +139,110 @@ pub fn build_tables(
     let mut file_parse_state_info = File::create("saved_parse_state_info.txt")
         .expect("Unable to create file");
 
-    for (i, state_info) in parse_state_info.iter().enumerate() {
+    // for (i, state_info) in parse_state_info.iter().enumerate() {
+    //     writeln!(file_parse_state_info, "==============================").unwrap();
+    //     writeln!(file_parse_state_info, "Parse State #{}", i).unwrap();
+    //     writeln!(file_parse_state_info, "------------------------------").unwrap();
+    //     writeln!(file_parse_state_info, "{:#?}", state_info).unwrap();
+    //     writeln!(file_parse_state_info).unwrap();
+    // }
+
+    // for (i, state_info) in parse_state_info.iter().enumerate() {
+    //     writeln!(file_parse_state_info, "==============================").unwrap();
+    //     writeln!(file_parse_state_info, "Parse State #{}", i).unwrap();
+    //     writeln!(file_parse_state_info, "------------------------------").unwrap();
+    //     //writeln!(file_parse_state_info, "{:#?}", state_info).unwrap();
+    //     /*
+    //         1. state_info 에서 ParseItemSet을 가져오기
+    //         2. foreach parseItemSetEntry in ParseItemSet
+    //             2.1 variable index 숫자를 non-terminal 이름을 가져와 출력
+    //             2.2 step에 있는 심볼들을 문자열로 바꿔 출력 (이름 가져오기)
+    //             2.3 rhs에서 step_index 만큼 지난 다음 . 찍기
+    //         3. 주변상황 확인하기
+    //      */
+    //     writeln!(file_parse_state_info).unwrap();
+    // }
+
+    for (i, state_info) in parse_state_info.iter().enumerate() 
+    {
         writeln!(file_parse_state_info, "==============================").unwrap();
         writeln!(file_parse_state_info, "Parse State #{}", i).unwrap();
         writeln!(file_parse_state_info, "------------------------------").unwrap();
-        writeln!(file_parse_state_info, "{:#?}", state_info).unwrap();
-        writeln!(file_parse_state_info).unwrap();
+
+        // 1. state_info (튜플)에서 ParseItemSet을 가져옵니다.
+        //    (Vec<Symbol>, ParseItemSet) 형태라고 가정합니다.
+        let item_set = &state_info.1;
+
+        // 2. foreach parseItemSetEntry in ParseItemSet
+        for entry in &item_set.entries {
+            let item = &entry.item;
+
+            // 2.1 variable index 숫자를 non-terminal 이름 대신 출력
+            //     (u32::MAX는 S' -> .S 와 같은 증강된 시작 규칙을 의미)
+            let lhs_str = if item.variable_index == u32::MAX {
+                "ACCEPT".to_string()
+            } else {
+                format!("Variable({})", item.variable_index)
+            };
+
+            let mut rhs_string = String::new();
+
+            // 2.2 step에 있는 심볼들을 문자열(Debug 포맷)로 바꿔 출력
+            for (step_index, step) in item.production.steps.iter().enumerate() {
+                
+                // 2.3 rhs에서 step_index 만큼 지난 다음 . 찍기
+                if step_index == (item.step_index as usize) {
+                    rhs_string.push_str(". ");
+                }
+                
+                // 심볼의 kind와 index를 직접 포맷팅합니다.
+                rhs_string.push_str(&format!(
+                    "{:?}({})", 
+                    step.symbol.kind, 
+                    step.symbol.index
+                ));
+                rhs_string.push(' ');
+            }
+
+            // 만약 점(.)이 규칙의 맨 끝에 와야 한다면 (Reduce 아이템)
+            if (item.step_index as usize) == item.production.steps.len() {
+                rhs_string.push_str(". ");
+            }
+
+            // --- [수정된 부분] ---
+            // 최종 포맷으로 출력 (::= 대신 -> 사용)
+            writeln!(
+                file_parse_state_info,
+                "    {} -> {}", // "::=" 에서 "->" 로 변경
+                lhs_str,
+                rhs_string.trim_end()
+            ).unwrap();
+            // --- [수정 끝] ---
+
+            // 3. 주변상황 확인하기 (Lookaheads)
+            let mut lookaheads_str = String::from("    Lookaheads: [");
+            let mut first = true;
+            for symbol in entry.lookaheads.iter() {
+                if !first {
+                    lookaheads_str.push_str(", ");
+                }
+                lookaheads_str.push_str(&format!(
+                    "{:?}({})",
+                    symbol.kind,
+                    symbol.index
+                ));
+                first = false;
+            }
+            lookaheads_str.push(']');
+            writeln!(file_parse_state_info, "{}", lookaheads_str).unwrap();
+        }
+
+        writeln!(file_parse_state_info).unwrap(); // 마지막 줄바꿈
     }
+    // lhs -> rhs . rhs' 포멧
+    /*
+
+     */
 
     let mut file_parse_table = File::create("saved_parse_table.txt")
         .expect("Unable to create file");
