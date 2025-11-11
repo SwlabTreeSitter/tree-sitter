@@ -95,68 +95,51 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 
 
 ## 코드 로직
-1. 개요
-이 분석 코드는 표준 Tree-sitter 라이브러리(parser.c)에서 작동하지 않으며, parser.c 파일이 다음과 같이 사전에 수정되었다.
 
-TSLoggedAction 구조체 정의: SHIFT, REDUCE, RECOVER 액션의 상세 정보를 저장할 수 있는 커스텀 구조체가 정의되어 있어야 한다.
+**1. 개요**
 
-TSParser 구조체 확장: struct TSParser 내부에 다음 멤버 변수가 추가되어 있어야 한다.
+이 분석 코드는 표준 Tree-sitter 라이브러리(parser.c)에서 작동하지 않으며, `parser.c` 파일이 다음과 같이 사전에 수정되어야 합니다.
 
-TSLoggedActionArray logged_actions;: 파싱 액션을 기록할 동적 배열.
+*   **`TSLoggedAction` 구조체 정의:** `SHIFT`, `REDUCE`, `RECOVER` 액션의 상세 정보를 저장할 수 있는 커스텀 구조체가 정의되어 있어야 합니다.
+*   **`TSParser` 구조체 확장:** `struct TSParser` 내부에 다음 멤버 변수가 추가되어 있어야 합니다.
+    *   `TSLoggedActionArray logged_actions;`: 파싱 액션을 기록할 동적 배열.
+    *   `uint32_t StopRow;`: 오류를 찾을 기준 커서의 행 (1-based).
+    *   `uint32_t StopColumn;`: 오류를 찾을 기준 커서의 열 (1-based).
+*   **`ts_parser__advance` 수정:** `SHIFT` 및 `REDUCE` 액션이 발생할 때마다 `TSLoggedAction` 객체를 생성하여 `self->logged_actions` 배열에 `array_push` 하도록 수정되어 있어야 합니다.
+*   **`ts_parser__handle_error` 수정:** 오류 복구가 시작될 때 `TSParseActionTypeRecover` 타입의 `TSLoggedAction`을 생성하고, `next_state` (오류 발생 시점의 상태 ID)와 `symbol` (오류 유발 토큰 ID)을 `logged_actions` 배열에 `array_push` 하도록 수정되어 있어야 합니다.
+*   **`TsParserFindClosestRecoverState` 함수 구현:** `parser.c` 파일 내 어딘가에 이 분석 코드가 호출하는 `TsParserFindClosestRecoverState` 함수가 구현되어 있어야 합니다.
 
-uint32_t StopRow;: 오류를 찾을 기준 커서의 행 (1-based).
+**2. 동작 원리**
 
-uint32_t StopColumn;: 오류를 찾을 기준 커서의 열 (1-based).
+분석기는 크게 3단계로 동작합니다.
 
-ts_parser__advance 수정: SHIFT 및 REDUCE 액션이 발생할 때마다 TSLoggedAction 객체를 생성하여 self->logged_actions 배열에 array_push 하도록 수정되어 있어야 한다.
+**2.1. 1단계: Shift 인덱싱**
 
-ts_parser__handle_error 수정: 오류 복구가 시작될 때 TSParseActionTypeRecover 타입의 TSLoggedAction을 생성하고, next_state (오류 발생 시점의 상태 ID)와 symbol (오류 유발 토큰 ID)을 logged_actions 배열에 array_push 하도록 수정되어 있어야 한다.
+*   전체 `logged_actions` 배열을 빠르게 순회하여 "엑스트라"가 아닌 모든 `SHIFT` 액션(실제 토큰)의 인덱스만 `ShiftIndices` 배열에 저장합니다.
+*   이 배열은 분석을 시작할 "시작점(커서)" 목록이 됩니다.
 
-TsParserFindClosestRecoverState 함수 구현: parser.c 파일 내 어딘가에 이 분석 코드가 호출하는 TsParserFindClosestRecoverState 함수가 구현되어 있어야 한다.
+**2.2. 2단계: "완전한 문법 단위" 경계 탐색**
 
-2. 동작 원리
-분석기는 크게 3단계로 동작한다.
+*   `for (uint32_t i = 0...)` 루프는 `ShiftIndices` 배열을 순회하며 각 `SHIFT` 토큰을 문법 단위의 시작점(`CursorLogIndex`)으로 설정합니다.
+*   **가상 스택 시뮬레이션 (`SimStack`):** `for (uint32_t j = CursorLogIndex...)` 루프는 `CursorLogIndex`부터 파싱을 시뮬레이션합니다.
+    *   **`SHIFT` 처리:** `SHIFT`를 만나면 `SimStack`에 푸시(push)합니다.
+    *   **`REDUCE` 처리:** `REDUCE` 액션을 만나면 스택에서 항목들을 팝(pop)해야 합니다.
+    *   **문법 단위 끝 찾기 (`ConsumesCursor`):** `REDUCE`가 스택에서 제거할 항목 중에 문법 단위의 시작점(`CursorLogIndex`)이 포함되는지 검사합니다.
+        *   **`if (ConsumesCursor)` (문법 단위 끝 발견):**
+            *   `REDUCE`가 시작 토큰을 포함한다는 것은, `If`로 시작해서 `EndIf`로 끝나는 완전한 문법 단위("청크")를 찾았다는 의미입니다.
+            *   이 문법 단위의 마지막 토큰 위치(`EndLogIndex`)와 `Reduce` 액션의 위치(`finalReduceLogIndex`)를 저장하고 시뮬레이션을 중단(`break`)합니다. 이 `break`는 경계 탐색 임무가 완료되었으므로 "2.3단계: 슬라이딩 윈도우 출력"으로 넘어가기 위해 의도된 동작입니다.
+        *   **`else` (중간 단계 `Reduce`):**
+            *   `Clock.Hour`가 `Primary`로 축약되는 것처럼, 문법 단위 내부의 작은 `Reduce`입니다.
+            *   스택에서 `ID`, `.`, `ID`를 팝(pop)하고, 그 결과물인 `Primary`(논터미널)를 `IsTerminal = false`로 설정하여 스택에 다시 푸시(push)하고 시뮬레이션을 계속합니다.
+    *   **오류 처리 (`bIsRecover`):** 시뮬레이션 중 `RECOVER` 액션을 만나면 `bIsRecover` 플래그를 `true`로 설정합니다. (단, 현재 코드에서는 이 플래그를 사용하지 않아 분석이 오류를 무시하고 계속 진행됩니다.)
 
-2.1. 1단계: Shift 인덱싱
-먼저, 전체 logged_actions 배열을 빠르게 순회하여 "엑스트라"가 아닌 모든 SHIFT 액션(실제 토큰)의 인덱스만 ShiftIndices 배열에 저장한다. 이 배열은 분석을 시작할 "시작점(커서)" 목록이 된다.
+**2.3. 3단계: 슬라이딩 윈도우 출력 (k 루프)**
 
-2.2. 2단계: "완전한 문법 단위" 경계 탐색
-for (uint32_t i = 0...) 루프는 ShiftIndices 배열을 순회하며 각 SHIFT 토큰을 문법 단위의 시작점(CursorLogIndex)으로 설정한다.
-
-가상 스택 시뮬레이션 (SimStack): for (uint32_t j = CursorLogIndex...) 루프는 CursorLogIndex부터 파싱을 시뮬레이션한다.
-
-SHIFT를 만나면 SimStack에 푸시(push)한다.
-
-Reduce 처리: REDUCE 액션을 만나면 스택에서 항목들을 팝(pop)해야 한다.
-
-문법 단위 끝 찾기 (ConsumesCursor): REDUCE가 스택에서 제거할 항목 중에 문법 단위의 시작점(CursorLogIndex)이 포함되는지 검사한다.
-
-if (ConsumesCursor) (문법 단위 끝 발견):
-
-Reduce가 시작 토큰을 포함한다는 것은, If로 시작해서 EndIf로 끝나는 완전한 문법 단위("청크")를 찾았다는 의미이다.
-
-이 문법 단위의 마지막 토큰 위치(EndLogIndex)와 Reduce 액션의 위치(finalReduceLogIndex)를 저장하고 시뮬레이션을 중단(break)한다. 이 break는 경계 탐색 임무가 완료되었으므로 "3.3단계: 출력 루프"로 넘어가기 위해 의도된 동작이다.
-
-else (중간 단계 Reduce):
-
-Clock.Hour가 Primary로 축약되는 것처럼, 문법 단위 내부의 작은 Reduce이다.
-
-스택에서 ID, ., ID를 팝(pop)하고, 그 결과물인 Primary(논터미널)를 IsTerminal = false로 설정하여 스택에 다시 푸시(push)하고 시뮬레이션을 계속한다.
-
-오류 처리 (bIsRecover): 시뮬레이션 중 RECOVER 액션을 만나면 bIsRecover 플래그를 true로 설정한다. (단, 현재 코드에서는 이 플래그를 사용하지 않아 분석이 오류를 무시하고 계속 진행된다.)
-
-2.3. 3단계: 슬라이딩 윈도우 출력 (k 루프)
-"완전한 문법 단위"의 범위(시작 i부터 끝 EndLogIndex까지)가 확정되면, 이 범위 내의 모든 부분 시퀀스를 출력한다.
-
-슬라이딩 윈도우 생성: for (uint32_t k = i...) 루프는 k 값을 i부터 1씩 증가시키며 윈도우의 시작점을 한 칸씩 뒤로 민다.
-
-StartState 계산: 각 윈도우(k)가 시작하기 직전의 파서 상태 ID를 logged_actions를 역방향으로 탐색하여 찾아낸다. (예: ( Clock ... 시퀀스의 StartState는 ( 토큰의 next_state 값이다.)
-
-'상위 심볼' 헤더 출력: if (k == i && ...) 블록은 전체 문법 단위(k=i일 때)에 대해서만 파싱 시뮬레이션을 한 번 더 수행한다(headerStack). 이 시뮬레이션은 중간 Reduce의 결과(논터미널, 예: Expr)를 스택에 반영하여 1 Stmt_token9 Expr Stmt_token10 ... 같은 라인을 출력한다.
-
-'터미널 심볼' 헤더 출력: 모든 k값에 대해, 해당 윈도우 시퀀스에 포함된 터미널 심볼(예: ID, STR)로만 구성된 헤더 라인(예: 1 Stmt_token9 ( ID . ID < ...)을 출력한다.
-
-내용물(렉심) 출력: fprintf(OutputFile, " %u,%u: %s\n", ...) 구문이 k부터 EndLogIndex까지의 실제 렉심(토큰 텍스트)과 위치(행,열)를 출력한다.
-
-루프 인덱스 갱신: k 루프가 모두 끝나면, 바깥쪽 i 루프의 인덱스를 EndLogIndex 다음의 Shift 토큰의 인덱스로 "점프"시킨다. 이는 이미 분석된 If문의 하위 토큰들(예: (, Clock 등)을 건너뛰고 다음 문법 단위부터 분석을 재개하기 위함이다.
+*   "완전한 문법 단위"의 범위(시작 `i`부터 끝 `EndLogIndex`까지)가 확정되면, 이 범위 내의 모든 부분 시퀀스를 출력합니다.
+*   **슬라이딩 윈도우 생성:** `for (uint32_t k = i...)` 루프는 `k` 값을 `i`부터 1씩 증가시키며 윈도우의 시작점을 한 칸씩 뒤로 밉니다.
+*   **`StartState` 계산:** 각 윈도우(`k`)가 시작하기 직전의 파서 상태 ID를 `logged_actions`를 역방향으로 탐색하여 찾아냅니다. (예: `( Clock ...` 시퀀스의 `StartState`는 `(` 토큰의 `next_state` 값입니다.)
+*   **'상위 심볼' 헤더 출력:** `if (k == i && ...)` 블록은 전체 문법 단위(`k=i`일 때)에 대해서만 파싱 시뮬레이션을 한 번 더 수행합니다(`headerStack`). 이 시뮬레이션은 중간 `Reduce`의 결과(논터미널, 예: `Expr`)를 스택에 반영하여 `1 Stmt_token9 Expr Stmt_token10 ...` 같은 라인을 출력합니다.
+*   **'터미널 심볼' 헤더 출력:** 모든 `k` 값에 대해, 해당 윈도우 시퀀스에 포함된 터미널 심볼(예: `ID`, `STR`)로만 구성된 헤더 라인(예: `1 Stmt_token9 ( ID . ID < ...`)을 출력합니다.
+*   **내용물(렉심) 출력:** `fprintf(OutputFile, " %u,%u: %s\n", ...)` 구문이 `k`부터 `EndLogIndex`까지의 실제 렉심(토큰 텍스트)과 위치(행,열)를 출력합니다.
+*   **루프 인덱스 갱신:** `k` 루프가 모두 끝나면, 바깥쪽 `i` 루프의 인덱스를 `EndLogIndex` 다음의 `Shift` 토큰의 인덱스로 "점프"시킵니다. 이는 이미 분석된 `If`문의 하위 토큰들(예: `(`, `Clock` 등)을 건너뛰고 다음 문법 단위부터 분석을 재개하기 위함입니다.
 
