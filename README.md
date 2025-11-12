@@ -1,4 +1,4 @@
-# tree-sitter
+<img width="1700" height="778" alt="image" src="https://github.com/user-attachments/assets/6ded77c8-fd53-4717-8d17-c1a69ee0e6d3" /># tree-sitter
 
 [![DOI](https://zenodo.org/badge/14164618.svg)](https://zenodo.org/badge/latestdoi/14164618)
 [![discord][discord]](https://discord.gg/w7nTvsVJhm)
@@ -107,13 +107,25 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 *   전체 `logged_actions` 배열을 빠르게 순회하여 "엑스트라"가 아닌 모든 `SHIFT` 액션(실제 토큰)의 인덱스만 `ShiftIndices` 배열에 저장한다.
 *   이 배열은 분석을 시작할 "시작점(커서)" 목록이 된다.
 *   이것의 의미는 현재 커서의 위치를 나타낸다.
+*   코드
+<img width="2372" height="418" alt="image" src="https://github.com/user-attachments/assets/7de74779-f3bb-4b72-9fbf-135fd75e55b2" />
+
+<br><br>
 
 **2단계: "완전한 문법 단위" 경계 탐색**
 
 *   `for (uint32_t i = 0...)` 루프는 `ShiftIndices` 배열을 순회하며 각 `SHIFT` 토큰을 문법 단위의 시작점(`CursorLogIndex`)으로 설정한다.
 *   **가상 스택 시뮬레이션 (`SimStack`):** `for (uint32_t j = CursorLogIndex...)` 루프는 `CursorLogIndex`부터 파싱을 시뮬레이션한다.
     *   **`SHIFT` 처리:** `SHIFT`를 만나면 `SimStack`에 푸시(push)한다.
+    *   SHIFT 처리 부분 코드
+    *   <img width="1746" height="374" alt="image" src="https://github.com/user-attachments/assets/2ef6566c-be5e-473f-bfdf-42b3426f348f" />
+    
     *   **`REDUCE` 처리:** `REDUCE` 액션을 만나면 스택에서 항목들을 팝(pop)해야 한다.
+    *   REDUCE 처리 부분 코드
+    *   <img width="1694" height="790" alt="image" src="https://github.com/user-attachments/assets/5a653213-4b1b-4b3c-a013-f88bad680067" />
+    *   <img width="1700" height="778" alt="image" src="https://github.com/user-attachments/assets/f8d68145-436a-40ef-b478-d5b66aac6ba7" />
+
+
     *   **문법 단위 끝 찾기 (`ConsumesCursor`):** `REDUCE`가 스택에서 제거할 항목 중에 문법 단위의 시작점(`CursorLogIndex`)이 포함되는지 검사한다.
         *   **`if (ConsumesCursor)` (문법 단위 끝 발견):**
             *   `REDUCE`가 시작 토큰을 포함한다는 것은, `If`로 시작해서 `EndIf`로 끝나는 완전한 문법 단위를 찾았다는 의미이다.
