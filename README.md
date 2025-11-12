@@ -1,4 +1,4 @@
-<img width="1700" height="778" alt="image" src="https://github.com/user-attachments/assets/6ded77c8-fd53-4717-8d17-c1a69ee0e6d3" /># tree-sitter
+
 
 [![DOI](https://zenodo.org/badge/14164618.svg)](https://zenodo.org/badge/latestdoi/14164618)
 [![discord][discord]](https://discord.gg/w7nTvsVJhm)
