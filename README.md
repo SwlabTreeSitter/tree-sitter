@@ -115,8 +115,8 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
     *   **`REDUCE` 처리:** `REDUCE` 액션을 만나면 스택에서 항목들을 팝(pop)해야 한다.
     *   **문법 단위 끝 찾기 (`ConsumesCursor`):** `REDUCE`가 스택에서 제거할 항목 중에 문법 단위의 시작점(`CursorLogIndex`)이 포함되는지 검사한다.
         *   **`if (ConsumesCursor)` (문법 단위 끝 발견):**
-            *   `REDUCE`가 시작 토큰을 포함한다는 것은, `If`로 시작해서 `EndIf`로 끝나는 완전한 문법 단위("청크")를 찾았다는 의미이다.
-            *   이 문법 단위의 마지막 토큰 위치(`EndLogIndex`)와 `Reduce` 액션의 위치(`finalReduceLogIndex`)를 저장하고 시뮬레이션을 중단(`break`)한다. 이 `break`는 경계 탐색 임무가 완료되었으므로 "2.3단계: 슬라이딩 윈도우 출력"으로 넘어가기 위해 의도된 동작이다.
+            *   `REDUCE`가 시작 토큰을 포함한다는 것은, `If`로 시작해서 `EndIf`로 끝나는 완전한 문법 단위를 찾았다는 의미이다.
+            *   이 문법 단위의 마지막 토큰 위치(`EndLogIndex`)와 `Reduce` 액션의 위치(`finalReduceLogIndex`)를 저장하고 시뮬레이션을 중단(`break`)한다. 이 `break`는 경계 탐색 임무가 완료되었으므로 "3단계: 출력"으로 넘어가기 위해 의도된 동작이다.
         *   **`else` (중간 단계 `Reduce`):**
             *   `Clock.Hour`가 `Primary`로 축약되는 것처럼, 문법 단위 내부의 작은 `Reduce`이다.
             *   스택에서 `ID`, `.`, `ID`를 팝(pop)하고, 그 결과물인 `Primary`(논터미널)를 `IsTerminal = false`로 설정하여 스택에 다시 푸시(push)하고 시뮬레이션을 계속한다.
@@ -124,7 +124,7 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 **3단계: 결과 출력**
 
 *   "완전한 문법 단위"의 범위(시작 `i`부터 끝 `EndLogIndex`까지)가 확정되면, 이 범위 내의 모든 부분 시퀀스를 출력한다.
-*   **슬라이딩 윈도우 생성:** `for (uint32_t k = i...)` 루프는 `k` 값을 `i`부터 1씩 증가시키며 윈도우의 시작점을 한 칸씩 뒤로 민다.
+*   **모든 부분 시퀀스를 출력:** `for (uint32_t k = i...)` 루프는 `k` 값을 `i`부터 1씩 증가시키며 윈도우의 시작점을 한 칸씩 뒤로 민다.
 *   **`StartState` 계산:** 각 윈도우(`k`)가 시작하기 직전의 파서 상태 ID를 `logged_actions`를 역방향으로 탐색하여 찾아냅니다. (예: `( Clock ...` 시퀀스의 `StartState`는 `(` 토큰의 `next_state` 값이다.)
 *   **'상위 심볼' 헤더 출력:** `if (k == i && ...)` 블록은 전체 문법 단위(`k=i`일 때)에 대해서만 파싱 시뮬레이션을 한 번 더 수행한다(`headerStack`). 이 시뮬레이션은 중간 `Reduce`의 결과(논터미널, 예: `Expr`)를 스택에 반영하여 `1 Stmt_token9 Expr Stmt_token10 ...` 같은 라인을 출력한다.
 *   **'터미널 심볼' 헤더 출력:** 모든 `k` 값에 대해, 해당 윈도우 시퀀스에 포함된 터미널 심볼(예: `ID`, `STR`)로만 구성된 헤더 라인(예: `1 Stmt_token9 ( ID . ID < ...`)을 출력한다.
