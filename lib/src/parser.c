@@ -2565,6 +2565,7 @@ if (self->logged_actions.size > 0)
     // --- 바깥 루프: 모든 Shift를 시작점(커서)으로 순회 ---
     for (uint32_t i = 0; i < ShiftIndices.size; ++i)
     {
+        // 문법 단위동안 쌓을 shift, reduce 액션 배열
         Array(StackEntry) SimStack = array_new();
 
         // 시작 토큰의 인덱스
@@ -2575,6 +2576,12 @@ if (self->logged_actions.size > 0)
         uint32_t finalReduceLogIndex = UINT32_MAX;
 
         // --- 안쪽 루프: 시작점부터 "문장 끝(포함하는 Reduce)" 찾기 ---
+        /*
+            ID . ID = STR 
+            . ID = STR 
+            ID = STR 
+            이렇게 한칸씩 이동하면서 커서 포지션 넘어가는 reduce 액션 찾는 과정
+        */
         for (uint32_t j = CursorLogIndex; j < self->logged_actions.size; ++j)
         {
             TSLoggedAction CurrentAction = self->logged_actions.contents[j];
@@ -2585,18 +2592,23 @@ if (self->logged_actions.size > 0)
             }
             else if (CurrentAction.type == TSParseActionTypeReduce)
             {
+                // 커서 포지션을 넘어가는지 검사
                 uint32_t RhsLength = CurrentAction.child_count;
                 if (SimStack.size < RhsLength) continue;
 
                 bool ConsumesCursor = false;
                 uint32_t LastConsumedIndex = 0;
+
+                // 문법 단위의 끝인지 검사
+                  // ex) IF 로 시작해서 END IF 로 끝나는지...
                 for (uint32_t k = 0; k < RhsLength; ++k)
                 {
                     StackEntry *Entry = array_get(&SimStack, SimStack.size - 1 - k);
                     if (k == 0) LastConsumedIndex = Entry->LogIndex;
                     if (Entry->IsTerminal && Entry->LogIndex == CursorLogIndex) ConsumesCursor = true;
                 }
-
+                
+                // 문법 단위의 끝이라면
                 if (ConsumesCursor)
                 {
                     EndLogIndex = LastConsumedIndex;
@@ -2604,6 +2616,7 @@ if (self->logged_actions.size > 0)
                     break;
                     // 츨력 로직으로 이동
                 }
+                // 문법 단위의 끝이 아니라 중간 reduce 액션이라면
                 else
                 {
                     for(uint32_t k = 0; k < RhsLength; ++k) array_pop(&SimStack); 
@@ -2621,29 +2634,37 @@ if (self->logged_actions.size > 0)
         array_delete(&SimStack);
 
         // --- 결과 출력 루프 ---
+        // 바깥쪽 루프(i) 에서 EndLogIndex 를 찾은 후 실행된다.
         // 시작 토큰의 인덱스부터 1씩 증가
         for (uint32_t k = i; k < ShiftIndices.size; ++k)
         {
+            // 현재 보고있는 커서 위치의 시작 토큰이 logged_actions 배열의 몇 번째 인덱스인지 가져온다.
             uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, k);
+            // 문법 단위를 넘어가면 출력을 끝내고 루프를 탈출한다.
             if (CurrentPrintIndex > EndLogIndex) break;
 
             TSStateId StartState = 0;
             if (CurrentPrintIndex > 0) 
             {
-                 for (int l = CurrentPrintIndex - 1; l >= 0; --l) 
-                 {
-                    TSLoggedAction PrevAction = self->logged_actions.contents[l];
-                    if (!PrevAction.extra && (PrevAction.type == TSParseActionTypeShift)) 
-                    {
-                        StartState = PrevAction.next_state;
-                        break;
-                    }
+                for (int l = CurrentPrintIndex - 1; l >= 0; --l) 
+                {
+                   TSLoggedAction PrevAction = self->logged_actions.contents[l];
+                   if (!PrevAction.extra && (PrevAction.type == TSParseActionTypeShift)) 
+                   {
+                       StartState = PrevAction.next_state;
+                       break;
+                   }
                 }
             }
             if (StartState == 0) StartState = 1;
             
             // '상위 심볼(스택 상태)' 헤더 라인 출력
-            // 문법 단위 출력
+            // 문법 단위에서 한 번만 실행
+            /*
+              상위 심볼 헤더를 출력하기 위함
+              ID . ID = Expr 
+              ID . ID = STR 
+            */
             if (k == i && finalReduceLogIndex != UINT32_MAX)
             {
                 Array(StackEntry) headerStack = array_new();
@@ -2688,6 +2709,7 @@ if (self->logged_actions.size > 0)
             }
 
             // '터미널 심볼' 헤더 라인 출력
+            // 188 . ID = STR  
             fprintf(OutputFile, "%u ", StartState);
             for(uint32_t l = k; l < ShiftIndices.size; ++l) 
             {
@@ -2699,6 +2721,12 @@ if (self->logged_actions.size > 0)
             fprintf(OutputFile, "\n");
             
             // 내용물(렉심) 라인 출력
+            /*
+              1,11: .
+              1,12: ForegroundColor
+              1,28: =
+              1,30: "Yellow"
+            */
             for(uint32_t l = k; l < ShiftIndices.size; ++l) 
             {
                 uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
