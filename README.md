@@ -100,6 +100,7 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 **동작 원리**
 
 주요 로직은 3단계로 진행된다.
+*   ts_parser_parse() - balance: 라벨 이후, 2536라인 (최종 목표) 읽으면 됩니다.
 
 **1단계: Shift 인덱싱**
 
