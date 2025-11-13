@@ -1,3 +1,5 @@
+// 이름을 번호로 변경한 부분을 찾던가, GPT에게 물어봐보자.
+
 mod build_lex_table;
 mod build_parse_table;
 mod coincident_tokens;
@@ -127,7 +129,7 @@ pub fn build_tables(
     // let mut file_parse_table = File::create("saved_parse_table.txt").expect("Unable to create file");
     // writeln!(file_parse_table, "{:#?}", parse_table).expect("Unable to write to file");
 
-    
+    // 렉서의 정규식, 파서의 문법, 파서 상태(LR 아이템) 이런 정보들이 구조체에 저장되어 있다.     
     let mut file_lexical_grammar = File::create("saved_lexical_grammar.txt").expect("Unable to create file");
     writeln!(file_lexical_grammar, "{:#?}", lexical_grammar).expect("Unable to write to file");
 
@@ -163,11 +165,12 @@ pub fn build_tables(
     //     writeln!(file_parse_state_info).unwrap();
     // }
 
+    // writeln! 매크로를 사용하기 위해 std::io::Write가 use 되어 있어야 합니다.
+// use std::io::Write; 
+
     for (i, state_info) in parse_state_info.iter().enumerate() 
     {
-        writeln!(file_parse_state_info, "==============================").unwrap();
         writeln!(file_parse_state_info, "Parse State #{}", i).unwrap();
-        writeln!(file_parse_state_info, "------------------------------").unwrap();
 
         // 1. state_info (튜플)에서 ParseItemSet을 가져옵니다.
         //    (Vec<Symbol>, ParseItemSet) 형태라고 가정합니다.
@@ -209,7 +212,6 @@ pub fn build_tables(
                 rhs_string.push_str(". ");
             }
 
-            // --- [수정된 부분] ---
             // 최종 포맷으로 출력 (::= 대신 -> 사용)
             writeln!(
                 file_parse_state_info,
@@ -217,9 +219,10 @@ pub fn build_tables(
                 lhs_str,
                 rhs_string.trim_end()
             ).unwrap();
-            // --- [수정 끝] ---
 
-            // 3. 주변상황 확인하기 (Lookaheads)
+            // --- [수정된 부분] ---
+            // 3. Lookaheads 출력 로직 전체를 삭제(또는 주석 처리)합니다.
+            /*
             let mut lookaheads_str = String::from("    Lookaheads: [");
             let mut first = true;
             for symbol in entry.lookaheads.iter() {
@@ -235,21 +238,22 @@ pub fn build_tables(
             }
             lookaheads_str.push(']');
             writeln!(file_parse_state_info, "{}", lookaheads_str).unwrap();
-        }
+            */
+            // --- [수정 끝] ---
 
-        writeln!(file_parse_state_info).unwrap(); // 마지막 줄바꿈
-    }
+        } // end for entry
+
+        writeln!(file_parse_state_info).unwrap(); // ParseItemSetEntry 간의 줄바꿈 (이것은 유지)
+    } // end for state_info
     // lhs -> rhs . rhs' 포멧
-    /*
-
-     */
-
+    
+    // parse table에 있는 shift, reduce 액션 분석
     let mut file_parse_table = File::create("saved_parse_table.txt")
         .expect("Unable to create file");
     writeln!(file_parse_table, "{:#?}", parse_table)
         .expect("Unable to write to file");
 
-
+   
     Ok(Tables {
         parse_table,
         main_lex_table: lex_tables.main_lex_table,

@@ -97,9 +97,9 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 
 ## 코드 로직
 
-**동작 원리**
+**컬렉션 단계의 동작 원리**
 
-주요 로직은 3단계로 진행된다.
+컬렉션의 주요 로직은 3단계로 진행된다.
 *   ts_parser_parse() - balance: 라벨 이후, 2536라인 (최종 목표) 읽으면 됩니다.
 
 **1단계: Shift 인덱싱**
@@ -144,3 +144,47 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 *   **내용물(렉심) 출력:** `fprintf(OutputFile, " %u,%u: %s\n", ...)` 구문이 `k`부터 `EndLogIndex`까지의 실제 렉심(토큰 텍스트)과 위치(행,열)를 출력한다.
 *   **루프 인덱스 갱신:** `k` 루프가 모두 끝나면, 바깥쪽 `i` 루프의 인덱스를 `EndLogIndex` 다음의 `Shift` 토큰의 인덱스로 "점프"시킨다. 이는 이미 분석된 `If`문의 하위 토큰들(예: `(`, `Clock` 등)을 건너뛰고 다음 문법 단위부터 분석을 재개하기 위함이다.
 
+
+
+**컨버젼의 동작 원리**
+
+
+
+
+<br>
+
+# To-Do list
+1. 컬렉션과 컨버젼을 명확하게 구분하도록 코드를 리펙토링 (옵션 추가)
+2. 터미널과 논터미널 심볼들의 이름이 번호로 되어있는 것을 사람이 이해하는 문자열로 변경하기
+3. parse state, parse table, lexical grammar, syntax grammar 사람이 보기 편하게 출력하기 (우선순위 낮을 수 있음)
+
+<br>
+
+## 2번 To-Do list
+Stmt: $ => choice(
+        $.ExprStatement,
+        seq(/[Ww][Hh][Ii][Ll][Ee]/, $.Expr, repeat($.CRStmtCRs), /[Ee][Nn][Dd][Ww][Hh][Ii][Ll][Ee]/),
+        seq($.ID, ":"),
+        seq(/[Gg][Oo][Tt][Oo]/, $.ID),
+        seq(/[Ff][Oo][Rr]/, $.ID, "=", $.Expr, /[Tt][Oo]/, $.Expr, optional($.OptStep), repeat($.CRStmtCRs), /[Ee][Nn][Dd][Ff][Oo][Rr]/),
+        seq(/[Ss][Uu][Bb]/, $.ID, $.CRStmtCRs, /[Ee][Nn][Dd][Ss][Uu][Bb]/),
+        seq(/[Ii][Ff]/, $.Expr, /[Tt][Hh][Ee][Nn]/, repeat($.CRStmtCRs), $.MoreThanZeroElseIf)
+      ),
+
+1. Grammar에 있는 Terminal, Non-Terminal 이름들을 유지시켜줘야 한다.
+    1.1 이름을 알아야 gpt 에게 코드 생성을 요청할 수 있기 때문에..
+2. non-terminal -> 스트링 매핑 찾기
+    2.1 tree-sitter 에서 non-terminal 을 숫자로 바꿈(최적화), 그래서 숫자로 바꾸기 전에 이름을 저장할 필요가 있다.
+    2.2 숫자 이름 mapping 되어 있는 것을 저장한다. 
+3. terminal -> 우리가 직접 따로 뽑아서 매뉴얼하게 이름을 붙인다거나, gpt 에게 일 시키기.
+    3.1 정규식이라서 이름이 없다.
+
+// 정규식에 해당하는 토큰인데 어떤 정규식인지 알고싶다.
+// 이게 러스트 코드에선 어떻게 컨버전 했는지, 숫자로 변환했는지 알고싶다.
+build_tables.rs, grammar.js, parser.c 파일들을 분석을 하면 최종 코드가 아마도 효율성을 위해서 터미널 심볼, 논터미널 심볼들이 숫자로 변경된것으로 파악된다.
+하지만 나는 grammar.js 에 있는 사람이 읽을 수 있는 심볼로 이해를 하고 싶다.
+또는 사람이 이해할 수 있는 논터미널 심볼로 이해하고 싶다.
+터미널 같은 경우는 터미널 심볼을 grammar.js로 직접 작성한 경우라면 그 심볼 이름으로도 알고 싶고, 논터미널의 경우 사람이 심볼 이름을 안 정할수 있는데, 그럼 정규식으로 쓸거임
+논터미널의 숫자와 이름의 관계를 알고싶다.
+러스트 코드에선 어디에 저장이 되어 있을까?
+그 정보를 저장하려면 러스트 코드를 어떤 방식으로 작성하고 끼워넣어야할까?
