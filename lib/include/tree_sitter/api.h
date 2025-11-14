@@ -403,8 +403,6 @@ void ts_parser_set_stop_position(TSParser *self, TSPoint stop_point);
 
 void ts_parser_set_find_state_mode(TSParser *self, bool InFindStateMode);
 
-void ts_parser_set_threshold_read_cursor(TSParser *self, TSPoint stop_point);
-
 // ========================================================================
 
 /**

@@ -153,10 +153,6 @@ struct TSParser {
   uint32_t StopRow;
   uint32_t StopColumn;
 
-  // 읽을 행열
-  uint32_t ReadRow;
-  uint32_t ReadColumn;
-
   // 컬렉션, Parse State ID 를 찾는 기능을 구분하기 위한 변수
   // false (0) = Parse State ID 찾기 모드 
   // true (1) = 컬렉션 모드
@@ -2305,15 +2301,6 @@ void ts_parser_set_find_state_mode(TSParser *self, bool InFindStateMode)
     if (self) 
     {
         self->bIsCollectionOrParseStateID = InFindStateMode;
-    }
-}
-
-void ts_parser_set_threshold_read_cursor(TSParser *self, TSPoint stop_point)
-{
-    if (self)
-    {
-      self->ReadRow = stop_point.row;
-      self->StopColumn = stop_point.column;
     }
 }
 

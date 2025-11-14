@@ -54,16 +54,16 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 
 실행법
 ```
-.\[프로그램 이름] [언어 이름] [라이브러리 경로] [파싱할 파일 경로] [행 열]
+.\[프로그램 이름] [언어 이름] [라이브러리 경로] [파싱할 파일 경로] [행 열] [컬렉션 모드/컨버젼 모드 선택], 0이면 컬렉션 모드 1이면 컨벼전 모드 
 ```
 
 ```
 // smallbasic 은 다른 언어와 다르게 사용
-.\TreeSitterCutFile.exe smallbasic C:\Work\tree-sitter-smallbasic\SB_Sample\02_FontYellowColorRecover2.sb 2 1
+.\TreeSitterCutFile.exe smallbasic C:\Work\tree-sitter-smallbasic\SB_Sample\02_FontYellowColorRecover2.sb 2 1 0
 
-.\TreeSitterCutFile.exe cpp C:\Work\tree-sitter-cpp\cpp.dll C:\Work\tree-sitter-cpp\main.cpp 3 2
+.\TreeSitterCutFile.exe cpp C:\Work\tree-sitter-cpp\cpp.dll C:\Work\tree-sitter-cpp\main.cpp 3 2 0
 
-.\TreeSitterCutFile.exe python C:\Work\tree-sitter-python\python.dll C:\Work\tree-sitter-python\Test.py 3 2
+.\TreeSitterCutFile.exe python C:\Work\tree-sitter-python\python.dll C:\Work\tree-sitter-python\Test.py 3 2 0
 ```
 
 
