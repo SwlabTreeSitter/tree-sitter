@@ -54,11 +54,13 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 
 실행법
 ```
-.\[프로그램 이름] [언어 이름] [라이브러리 경로] [파싱할 파일 경로] [행 열] [컬렉션 모드/컨버젼 모드 선택], 0이면 컬렉션 모드 1이면 컨벼전 모드 
+.\[프로그램 이름] [언어 이름] [라이브러리 경로] [파싱할 파일 경로] [행 열] [컬렉션 모드/컨버젼 모드 선택], 0이면 컨버젼(parse state id 를 반환하는) 모드 1이면 컬렉션 모드 
 ```
 
+경로는 자신의 환경에 맞춰야한다.
 ```
 // smallbasic 은 다른 언어와 다르게 사용
+// smallbasic 은 dll 파일이 없어 라이브러리 경로를 입력해주지 않아도 된다. 
 .\TreeSitterCutFile.exe smallbasic C:\Work\tree-sitter-smallbasic\SB_Sample\02_FontYellowColorRecover2.sb 2 1 0
 
 .\TreeSitterCutFile.exe cpp C:\Work\tree-sitter-cpp\cpp.dll C:\Work\tree-sitter-cpp\main.cpp 3 2 0
@@ -66,6 +68,14 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 .\TreeSitterCutFile.exe python C:\Work\tree-sitter-python\python.dll C:\Work\tree-sitter-python\Test.py 3 2 0
 ```
 
+## 파일 수정시
+parser.c 파일을 수정한다면 다음과 같은 빌드 규칙을 따라야한다.
+1. tree-sitter cargo build
+    -> tree-sitter 가 설치된 디렉터리 경로에서 cargo build 명령어를 실행할 것
+2. cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPATH:./target/debug treesitter.lib /OUT:TreeSitterCutFile.exe
+    -> tree-sitter 를 실행해주는 인터페이스와 같은 프로그램이다.
+    -> tree-sitter 코드를 정적 라이브러리로 만들어 TreeSitterCutFile 프로그램 내에서 사용하고 있기 때문에 parser.c가 수정되면 TreeSitterCutFile 프로그램도 빌드를 다시 해줘야한다.
+    -> C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build 경로에 있는 vcvars64.bat 파일을 터미널에 드로그 앤 드랍 하면 명령어가 생기는데 그것을 실행한 후 2. 에 있는 명령어를 복사해 사용하면 된다.
 
 
 ## 수정 파일
