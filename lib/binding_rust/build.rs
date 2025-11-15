@@ -49,33 +49,46 @@ fn main() {
 
     println!("cargo:include={}", include_path.display());
 
-
+    // MSVC 환경인지 확인
     if std::env::var("CARGO_CFG_TARGET_ENV").unwrap() == "msvc" {
         use std::env;
         use std::fs;
         use std::path::PathBuf;
 
-        // Cargo가 .lib 파일을 생성하는 임시 경로 (예: target/debug/build/tree-sitter-xxxx/out)
+        // 1. Cargo가 .lib 파일을 생성한 위치 (예: .../out/tree-sitter.lib)
         let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
-        
-        // .lib 파일의 전체 경로
         let lib_path = out_dir.join("tree-sitter.lib");
-    
-        // .lib 파일을 복사할 최종 목적지 경로 (target/debug/)
-        // OUT_DIR에서 세 단계 위로 올라가면 target/debug 폴더가 됩니다.
-        let dest_dir = out_dir.join("../../../");
 
-        // .lib 파일이 존재하는지 확인하고 복사합니다.
+        // 2. 최종 목적지(target) 폴더 경로를 더 안정적으로 찾기
+        // CARGO_TARGET_DIR 환경 변수가 있으면 사용, 없으면 manifest 기준 'target' 폴더
+        let target_dir = if let Ok(target_dir) = env::var("CARGO_TARGET_DIR") {
+            PathBuf::from(target_dir)
+        } else {
+            PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap()).join("target")
+        };
+
+        // 3. 'debug' 또는 'release' 프로필 경로
+        let profile = env::var("PROFILE").unwrap();
+        let dest_dir = target_dir.join(profile); // 예: .../target/debug
+
+        // 4. .lib 파일 복사
         if lib_path.exists() {
-            match fs::copy(&lib_path, dest_dir.join("treesitter.lib")) {
-                Ok(_) => println!("cargo:warning=Copied treesitter.lib to target/debug folder."),
-                Err(e) => println!("cargo:warning=Failed to copy treesitter.lib: {}", e),
+            // 목적지 폴더가 없으면 생성
+            if let Err(e) = fs::create_dir_all(&dest_dir) {
+                println!("cargo:warning=Failed to create dest_dir {}: {}", dest_dir.display(), e);
+                return;
+            }
+
+            let dest_path = dest_dir.join("treesitter.lib");
+            match fs::copy(&lib_path, &dest_path) {
+                Ok(_) => println!("cargo:warning=Copied treesitter.lib to {}", dest_path.display()),
+                Err(e) => println!("cargo:warning=Failed to copy treesitter.lib to {}: {}", dest_path.display(), e),
             }
         } else {
-             println!("cargo:warning=treesitter.lib not found in OUT_DIR, skipping copy.");
+            println!("cargo:warning=treesitter.lib not found in {}, skipping copy.", lib_path.display());
         }
     }
-}
+} 
 
 #[cfg(feature = "bindgen")]
 fn generate_bindings(out_dir: &std::path::Path) {
