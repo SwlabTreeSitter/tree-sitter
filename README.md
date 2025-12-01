@@ -28,36 +28,80 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 
 ## 사용 방법
 
-1. cargo build 명령어
+### 0. 폴더 구조 가정
+```
+C:\Work\
+  tree-sitter\
+  tree-sitter-python\
+  tree-sitter-cpp\
+  tree-sitter-smallbasic\
+```
+아래 명령어들은 이 구조를 기준으로 씁니다.
+경로만 본인 환경에 맞게 바꾸면 됩니다.
 
-2. 테스트하려는 언어의 디렉터리에서 아래 명령어들을 순서대로 실행한다. (예: tree-sitter-python)
+### 1. tree-sitter 자체 빌드
+```
+cd C:\Work\tree-sitter
+cargo build
+```
+- target\debug\tree-sitter.exe 가 생깁니다.
+- 뒤에서 ..\tree-sitter\target\debug\tree-sitter 형태로 사용됩니다.
 
-```rust
-Generate: 문법 변경 사항을 C 코드로 생성한다.
+
+### 2. 언어별 파서 생성/빌드/테스트
+예시 : Small Basic (tree-sitter-smallbasic)
+
+```
+cd C:\Work\tree-sitter-smallbasic
+
+Generate: 문법 → C 코드(parser.c 등) 생성
 ..\tree-sitter\target\debug\tree-sitter generate --debug-build
 
-Build: 생성된 C 코드를 컴파일하여 파서 라이브러리를 빌드한다.
+Build: 생성된 C 코드로 파서 DLL 빌드
 ..\tree-sitter\target\debug\tree-sitter build --debug
 
-Parse: 빌드된 로컬 파서로 실제 파일을 파싱하여 테스트한다.
-..\tree-sitter\target\debug\tree-sitter parse --debug pretty [파일이름]
+Parse: 실제 파일을 파싱해서 상태 확인
+..\tree-sitter\target\debug\tree-sitter parse --debug pretty .\examples\smallbasic\01_HelloWorld.sb
+
 ```
+- 01_HelloWorld.sb 는 tree-sitter-smallbasic\examples\smallbasic 폴더 안에 있는 예제 파일
+- 이때 파싱 상태를 기록한 텍스트 파일이 생기도록 코드가 짜여있음
 
-3-1. 이후 파싱 상태를 기록한 파일이 해당 경로에 생긴다. (예: test.txt)
 
-3-2. C++ 실행 프로그램 제작, 파일의 특정 행열까지 읽은 후 거기까지 내용을 tree-sitter에 전달
+### 3. C++ 인터페이스 프로그램(TreeSitterCutFile) 빌드
+tree-sitter 코어 + parser.c + TreeSitterCutFile.cpp를 하나로 묶어서
+TreeSitterCutFile.exe 를 만드는 단계
 
-cl 컴파일러 이용
+#### 3-1. Visual Studio 빌드 환경 열기 (powershell 또는 cmd)
 ```
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build 경로에 있는
+vcvars64.bat 파일을 터미널에 드래그 앤 드랍
+```
+이걸 실행하면 cl 컴파일러를 쓸 수 있는 환경이 세팅됩니다.
+
+
+#### 3-2. TreeSitterCutFile 빌드
+```
+cd C:\Work\tree-sitter 
 cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPATH:./target/debug treesitter.lib /OUT:TreeSitterCutFile.exe  
 ```
+**parser.c**를 수정했다면
+- cargo build 다시 하고
+- 위 cl ... 명령도 다시 해서 TreeSitterCutFile.exe 를 재빌드해야 합니다.
+- 정적 라이브러리 + parser.c 를 같이 링크 하기 때문
 
-실행법
-```
-.\[프로그램 이름] [언어 이름] [라이브러리 경로] [파싱할 파일 경로] [행 열] [컬렉션 모드/컨버젼 모드 선택], 0이면 컨버젼(parse state id 를 반환하는) 모드 1이면 컬렉션 모드 
-```
 
-경로는 자신의 환경에 맞춰야한다.
+### 4. TreeSitterCutFile 실행 예시
+#### 4-1. 경로 및 형식
+```
+cd C:\Work\tree-sitter
+.\TreeSitterCutFile.exe [언어 이름] [라이브러리 경로 or 생략] [파싱할 파일 경로] [행] [열] [모드]
+```
+- 마지막 인자:
+  - 0 → 컨버전 모드(parse state id 반환)
+  - 1 → 컬렉션 모드(상태 데이터 수집)
+
+#### 4-2. 언어별 실행 예시
 ```
 // smallbasic 은 다른 언어와 다르게 사용
 // smallbasic 은 dll 파일이 없어 라이브러리 경로를 입력해주지 않아도 된다. 
@@ -68,14 +112,6 @@ cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPAT
 .\TreeSitterCutFile.exe python C:\Work\tree-sitter-python\python.dll C:\Work\tree-sitter-python\Test.py 3 2 0
 ```
 
-## 파일 수정시
-parser.c 파일을 수정한다면 다음과 같은 빌드 규칙을 따라야한다.
-1. tree-sitter cargo build
-    -> tree-sitter 가 설치된 디렉터리 경로에서 cargo build 명령어를 실행할 것
-2. cl TreeSitterCutFile.cpp parser.c /MD /EHsc /std:c++17 /I./include /link /LIBPATH:./target/debug treesitter.lib /OUT:TreeSitterCutFile.exe
-    -> tree-sitter 를 실행해주는 인터페이스와 같은 프로그램이다.
-    -> tree-sitter 코드를 정적 라이브러리로 만들어 TreeSitterCutFile 프로그램 내에서 사용하고 있기 때문에 parser.c가 수정되면 TreeSitterCutFile 프로그램도 빌드를 다시 해줘야한다.
-    -> C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build 경로에 있는 vcvars64.bat 파일을 터미널에 드로그 앤 드랍 하면 명령어가 생기는데 그것을 실행한 후 2. 에 있는 명령어를 복사해 사용하면 된다.
 
 
 ## 수정 파일
