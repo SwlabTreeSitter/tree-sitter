@@ -22,6 +22,79 @@ Tree-sitter is a parser generator tool and an incremental parsing library. It ca
 
 <br><br>
 
+# Tree-sitter 시스템 아키텍처 및 동작 메커니즘
+
+### 1. 개요
+Tree-sitter는 소스 코드의 구문 분석(Parsing)을 위한 고성능 라이브러리로, **범용 코어 엔진(Core Engine)** 과 **개별 언어 모듈(Language Module)** 이 철저히 분리된 구조를 가진다. 이를 통해 단일 엔진으로 다수의 프로그래밍 언어(C, Python, Small Basic 등)를 처리하는 확장성을 확보하고 있다.
+
+<br>
+
+### 2. 시스템 아키텍처
+경로 예시
+```
+C:\Work\
+  tree-sitter\
+  tree-sitter-python\
+  tree-sitter-cpp\
+  tree-sitter-smallbasic\
+```
+
+#### 2-1. 코어 엔진
+- 위치: ```tree-sitter/lib/src``` (parser.c, lexer.c, stack.c 등)
+- 역할: 실제 파싱 알고리즘을 수행하는 실행 장치
+- 특징: 특정 언어에 종속되지 않은 순수 C 언어 로직으로 구현되어 있다.
+- 핵심 파일:
+  - lib.c: 엔진의 모든 소스 파일(parser.c, lexer.c 등)을 하나로 묶어 빌드하는 파일
+  - parser.c: 파싱의 상태 전이와 스택 관리, 에러 복구를 담당 (+ 상태 정보 추출 로직 커스텀)
+- 사용 방법:
+  ```
+  cd C:\Work\tree-sitter
+  cargo build
+  ```
+  - target\debug\tree-sitter.exe 가 생성
+  - 후에 ..\tree-sitter\target\debug\tree-sitter 형태로 사용된다.
+
+
+#### 2-2. 언어 모듈
+- 위치: ```tree-sitter-<language>/src``` (parser.c)
+- 역할: 특정 언어(예: Small Basic)의 문법 규칙을 담고 있는 데이터베이스
+- 생성 과정: grammar.js로 정의된 문법을, tree-sitter generate 명령어가 이를 분석하여 C 언어 형태의 거대 배열(State Table, Symbol Table)로 변환한다. [3-1. 생성](3-1.-생성)
+- 인터페이스: 생성된 C 코드의 마지막에는 반드시 tree_sitter_\<language\>() 함수가 존재하며, 이는 엔진에게 문법 데이터(TSLanguage 구조체)의 메모리 주소를 전달하는 역할을 한다.
+
+<br>
+
+### 3. 언어 모듈별 동작 프로세스
+``` cd tree-sitter-<language> ```
+이 위치에서 생성(Generation) → 빌드(Build) → 런타임(Runtime)
+
+#### 3-1. 생성
+``` ..\tree-sitter\target\debug\tree-sitter generate --debug-build ```
+- ..\tree-sitter\target\debug\tree-sitter(tree-sitter.exe)에 generate 인자
+- 내부 로직
+  - Input: grammar.js (문법 정의서, 현재 경로 tree-sitter-\<language\>에서 읽어옴)
+  - Process: 문법을 분석하여 상태 기계를 계산한다.
+  - Output: tree-sitter-\<language\>/src/parser.c (C 코드로 변환된 파싱 테이블 데이터(static const int table[]))
+
+#### 3-2. 빌드
+``` ..\tree-sitter\target\debug\tree-sitter build --debug ```
+- ..\tree-sitter\target\debug\tree-sitter(tree-sitter.exe)에 build 인자
+- 내부 로직
+  - cl.exe가 tree-sitter-\<language\>/src/parser.c를 가지고 smallbasic.dll 생성
+    (코어 엔진이 런타임에 동적으로 로드하여 사용하는 언어별 문법 데이터베이스)
+
+#### 3-3. 런타임(파싱)
+``` ..\tree-sitter\target\debug\tree-sitter parse --debug pretty .\examples\smallbasic\01_HelloWorld.sb ```
+- ..\tree-sitter\target\debug\tree-sitter(tree-sitter.exe)에 parse 인자
+- 내부 로직
+  - 초기화: ts_parser_new()로 엔진 인스턴스를 생성
+  - 언어 장착: ts_parser_set_language(parser, language)를 호출하여, 엔진에게 "지금부터 참조할 문법 테이블은 이것이다"라고 포인터를 전달
+  - 파싱 수행
+
+
+ ----------------------------------------------
+
+
+
 ## swlab Links
 - [진행상황 기록 노션](https://www.notion.so/tree-sitter-2238687479db805f9f88debfffb48a45)
 - [vscode UI 추가](https://github.com/kimkyungjae1112/CodeCompletion) 
