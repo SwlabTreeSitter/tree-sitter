@@ -90,8 +90,45 @@ C:\Work\
   - 언어 장착: ts_parser_set_language(parser, language)를 호출하여, 엔진에게 "지금부터 참조할 문법 테이블은 이것이다"라고 포인터를 전달
   - 파싱 수행
 
+<br><br>
 
- ----------------------------------------------
+# 커스텀 파싱 엔진 검증을 위한 C++ 프로그램 (TreeSitterCutFile)
+
+### 1. 개요
+Tree-sitter 코어 엔진을 수정하여 중단점 기반 상태 추출 기능을 구현하였다. tree-sitter에서 제공하는 명령어로는 파일의 특정 행과 열까지만 읽기는 불가능하기 때문에 중단점(특정 행과 열)을 인자로 받을 수 있는 C++ 프로그램 TreeSitterCutFile을 제작하였다. TreeSitterCutFile은 CLI(Command Line Interface) 기반으로 커스텀 API가 의도대로 동작하는지 확인한다.
+
+
+### 2. 프로그램 아키텍처 및 동작 흐름
+
+#### 2-1. 동적/정적 언어 로딩
+- Small Basic: parser.c를 실행 파일에 정적 링크(Static Link)하여 직접 호출한다.
+- Others: C, Python 등의 언어들은 .dll 파일을 런타임에 동적 로드(Dynamic Load)한다.
+
+#### 2-2. 좌표 매핑
+- 인자로 (Row, Column) 좌표를 받지만, 파싱 엔진은 선형적인 Byte Offset을 사용한다.
+- FindByteOffsetForPosition 함수를 통해 좌표 변환을 수행한다.
+- 파서가 정확히 사용자의 커서 위치에서 멈출 수 있도록 effective_length를 계산하여 전달한다.
+
+#### 2-3. 커스텀 엔진 제어
+코어 엔진(api.h, parser.c)에 추가한 제어 함수들을 호출하여 파싱 모드를 설정한다.
+- ts_parser_set_stop_position(parser, {row, col}): 파싱 중단 목표 지점을 주입한다.
+- ts_parser_set_find_state_mode(parser, flag):
+  - Mode 0 (State Extraction): 자동완성을 위한 현재 문맥의 State ID 추출.
+  - Mode 1 (Data Collection): 문법 패턴 분석을 위한 파싱 액션 로그 수집.
+
+#### 2-4. 파싱 실행
+- ts_parser_parse_string -> ts_parser_parse_string_encoding -> **ts_parser_parse** (파싱루프)
+- 실행 단계
+  - ts_parser__advance() 내부에서 logged_actions 배열에 현재 어떤 행동을 했는지 실시간으로 기록
+  - ts_parser__lex() 등에서 StopRow, StopColumn을 체크하여, 목표 지점에 도달하면 파싱을 멈춤
+
+- 후처리 분석
+  - Mode 1 (Collection): logged_actions 배열을 처음부터 끝까지 다시 훑어 문장 완성 패턴을 찾아서 Test.data 파일에 쓴다.
+  - Mode 0 (State ID Extraction): TsParserFindClosestRecoverState를 호출하여, 파싱이 멈춘 지점(커서)에서 가장 가까운 에러 복구 상태(State ID)를 찾는다.
+
+
+
+<br><br>
 
 
 
