@@ -8,6 +8,7 @@ use crate::{
     rules::{Rule, Symbol},
 };
 
+// intern_symbols의 반환 타입
 pub type InternSymbolsResult<T> = Result<T, InternSymbolsError>;
 
 #[derive(Debug, Error, Serialize)]
@@ -24,19 +25,29 @@ pub enum InternSymbolsError {
     UndefinedWordToken(String),
 }
 
+// intern_symbols 함수
+//      InputGrammar(심볼이 문자열로 된 문법)
+//      InternedGrammar(심볼이 인덱스로 대체된 문법)로 변환
 pub(super) fn intern_symbols(grammar: &InputGrammar) -> InternSymbolsResult<InternedGrammar> {
+    
+    // 문자열 -> 인덱스 매핑을 위한 Interner 생성
     let interner = Interner { grammar };
 
+    // 시작 규칙(variable[0])이 숨겨진 규칙이면 에러
     if variable_type_for_name(&grammar.variables[0].name) == VariableType::Hidden {
         Err(InternSymbolsError::HiddenStartRule)?;
     }
 
+    // ==== 1) Non-terminal 변환 ====
+    // grammar.variables : 입력용, 문자열 기반
+    // variables : 출력용, 인덱스 기반
     let mut variables = Vec::with_capacity(grammar.variables.len());
     for variable in &grammar.variables {
         variables.push(Variable {
-            name: variable.name.clone(),
+            name: variable.name.clone(),    // 문자열 유지
             kind: variable_type_for_name(&variable.name),
             rule: interner.intern_rule(&variable.rule, Some(&variable.name))?,
+            source_content: None,
         });
     }
 
@@ -48,7 +59,7 @@ pub(super) fn intern_symbols(grammar: &InputGrammar) -> InternSymbolsResult<Inte
         } else {
             (String::new(), VariableType::Anonymous)
         };
-        external_tokens.push(Variable { name, kind, rule });
+        external_tokens.push(Variable { name, kind, rule, source_content: None, });
     }
 
     let mut extra_symbols = Vec::with_capacity(grammar.extra_symbols.len());

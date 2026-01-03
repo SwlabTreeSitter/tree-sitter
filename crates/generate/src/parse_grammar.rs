@@ -265,6 +265,7 @@ pub(crate) fn parse_grammar(input: &str) -> ParseGrammarResult<InputGrammar> {
             name: name.clone(),
             kind: VariableType::Named,
             rule: rule.clone(),
+            source_content: None,
         });
     }
 
@@ -420,12 +421,14 @@ mod tests {
                 Variable {
                     name: "file".to_string(),
                     kind: VariableType::Named,
-                    rule: Rule::repeat(Rule::NamedSymbol("statement".to_string()))
+                    rule: Rule::repeat(Rule::NamedSymbol("statement".to_string())),
+                    source_content: None
                 },
                 Variable {
                     name: "statement".to_string(),
                     kind: VariableType::Named,
-                    rule: Rule::String("foo".to_string())
+                    rule: Rule::String("foo".to_string()),
+                    source_content: None
                 },
             ]
         );

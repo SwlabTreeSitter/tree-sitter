@@ -333,6 +333,8 @@ impl TokenExtractor {
                 return Ok(Symbol::terminal(i));
             }
         }
+        // 내용 추출
+        let source_content = get_rule_content(rule);
 
         let index = self.extracted_variables.len();
         let variable = if let Some(string_value) = string_value {
@@ -345,16 +347,19 @@ impl TokenExtractor {
                 name: string_value.clone(),
                 kind: VariableType::Anonymous,
                 rule: rule.clone(),
+                source_content,
             }
         } else {
+            // string_value가 없을 때 (즉, 정규식이나 익명 토큰일 때)
             self.current_variable_token_count += 1;
             Variable {
                 name: format!(
-                    "{}_token{}",
+                    "{}_token{}",   // <-- Stmt_token4 같은 이름 생성
                     self.current_variable_name, self.current_variable_token_count
                 ),
                 kind: VariableType::Auxiliary,
                 rule: rule.clone(),
+                source_content,
             }
         };
 
@@ -634,5 +639,15 @@ mod test {
             variables,
             ..Default::default()
         }
+    }
+}
+
+// Rule에서 내용을 추출하는 헬퍼 함수
+fn get_rule_content(rule: &Rule) -> Option<String> {
+    match rule {
+        Rule::String(s) => Some(format!("'{}'", s)),
+        Rule::Pattern(p, _) => Some(format!("/{}/", p)),
+        // 필요한 경우 Seq, Choice 등 추가
+        _ => None,
     }
 }

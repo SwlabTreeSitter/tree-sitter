@@ -20,6 +20,7 @@ pub struct Variable {
     pub name: String,
     pub kind: VariableType,
     pub rule: Rule,
+    pub source_content: Option<String>, // 원본 정규식/리터럴 내용 저장
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -56,6 +57,7 @@ pub struct LexicalVariable {
     pub kind: VariableType,
     pub implicit_precedence: i32,
     pub start_state: u32,
+    pub source_content: Option<String>, // 원본 정규식/리터럴 내용 저장
 }
 
 #[derive(Debug, Default, PartialEq, Eq)]
@@ -177,6 +179,7 @@ impl Variable {
             name: name.to_string(),
             kind: VariableType::Named,
             rule,
+            source_content: None,
         }
     }
 
@@ -185,6 +188,7 @@ impl Variable {
             name: name.to_string(),
             kind: VariableType::Auxiliary,
             rule,
+            source_content: None,
         }
     }
 
@@ -193,6 +197,7 @@ impl Variable {
             name: name.to_string(),
             kind: VariableType::Hidden,
             rule,
+            source_content: None,
         }
     }
 
@@ -201,6 +206,7 @@ impl Variable {
             name: name.to_string(),
             kind: VariableType::Anonymous,
             rule,
+            source_content: None,
         }
     }
 }

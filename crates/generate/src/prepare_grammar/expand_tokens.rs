@@ -129,6 +129,7 @@ pub fn expand_tokens(mut grammar: ExtractedLexicalGrammar) -> ExpandTokensResult
             kind: variable.kind,
             implicit_precedence: get_implicit_precedence(&variable.rule),
             start_state: builder.nfa.last_state_id(),
+            source_content: variable.source_content,
         });
     }
 

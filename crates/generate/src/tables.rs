@@ -45,8 +45,8 @@ pub struct ParseTableEntry {
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct ParseState {
     pub id: ParseStateId,
-    pub terminal_entries: IndexMap<Symbol, ParseTableEntry, BuildHasherDefault<FxHasher>>,
-    pub nonterminal_entries: IndexMap<Symbol, GotoAction, BuildHasherDefault<FxHasher>>,
+    pub terminal_entries: IndexMap<Symbol, ParseTableEntry, BuildHasherDefault<FxHasher>>,  // Symbol : lookahead token
+    pub nonterminal_entries: IndexMap<Symbol, GotoAction, BuildHasherDefault<FxHasher>>,    // non terminal symbol - goto
     pub reserved_words: TokenSet,
     pub lex_state_id: usize,
     pub external_lex_state_id: usize,

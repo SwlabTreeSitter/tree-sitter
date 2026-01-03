@@ -388,11 +388,13 @@ mod tests {
                     name: "token_0".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::pattern("[a-f]1|0x\\d", ""),
+                    source_content: None,
                 },
                 Variable {
                     name: "token_1".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::pattern("d*ef", ""),
+                    source_content: None,
                 },
             ],
         })
@@ -419,16 +421,19 @@ mod tests {
                     name: "in".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("in"),
+                    source_content: None,
                 },
                 Variable {
                     name: "identifier".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::pattern("\\w+", ""),
+                    source_content: None,
                 },
                 Variable {
                     name: "instanceof".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("instanceof"),
+                    source_content: None,
                 },
             ],
         })
@@ -474,11 +479,13 @@ mod tests {
                     name: "x".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("x"),
+                    source_content: None,
                 },
                 Variable {
                     name: "newline".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("\n"),
+                    source_content: None,
                 },
             ],
         })
@@ -501,11 +508,13 @@ mod tests {
                     name: "x".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("x"),
+                    source_content: None,
                 },
                 Variable {
                     name: "anything".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::prec(Precedence::Integer(-1), Rule::pattern(".*", "")),
+                    source_content: None,
                 },
             ],
         })

@@ -1,4 +1,4 @@
-#ifndef TREE_SITTER_PARSER_H_
+﻿#ifndef TREE_SITTER_PARSER_H_
 #define TREE_SITTER_PARSER_H_
 
 #ifdef __cplusplus
@@ -8,6 +8,8 @@ extern "C" {
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+
+#include "tree_sitter/api.h"
 
 #define ts_builtin_sym_error ((TSSymbol)-1)
 #define ts_builtin_sym_end 0
@@ -56,12 +58,12 @@ struct TSLexer {
   void (*log)(const TSLexer *, const char *, ...);
 };
 
-typedef enum {
-  TSParseActionTypeShift,
-  TSParseActionTypeReduce,
-  TSParseActionTypeAccept,
-  TSParseActionTypeRecover,
-} TSParseActionType;
+// typedef enum {
+//   TSParseActionTypeShift,
+//   TSParseActionTypeReduce,
+//   TSParseActionTypeAccept,
+//   TSParseActionTypeRecover,
+// } TSParseActionType;
 
 typedef union {
   struct {

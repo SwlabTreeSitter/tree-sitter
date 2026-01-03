@@ -329,6 +329,7 @@ mod tests {
                     ),
                     Rule::non_terminal(7),
                 ]),
+                source_content: None,
             })
             .unwrap();
 
@@ -390,6 +391,7 @@ mod tests {
                     ),
                     Rule::non_terminal(7),
                 ]),
+                source_content: None,
             })
             .unwrap();
 
@@ -432,6 +434,7 @@ mod tests {
                     Precedence::Integer(101),
                     Rule::seq(vec![Rule::non_terminal(1), Rule::non_terminal(2)]),
                 ),
+                source_content: None,
             })
             .unwrap();
 
@@ -456,6 +459,7 @@ mod tests {
                     Precedence::Integer(101),
                     Rule::seq(vec![Rule::non_terminal(1)]),
                 ),
+                source_content: None,
             })
             .unwrap();
 
@@ -484,6 +488,7 @@ mod tests {
                         Rule::field("second-thing".to_string(), Rule::terminal(3)),
                     ]),
                 ]),
+                source_content: None,
             })
             .unwrap();
 
@@ -528,6 +533,7 @@ mod tests {
                     Rule::non_terminal(1),
                     Rule::non_terminal(2),
                 ]),
+                source_content: None,
             }],
         });
 

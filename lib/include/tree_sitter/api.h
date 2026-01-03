@@ -1,4 +1,4 @@
-#ifndef TREE_SITTER_API_H_
+﻿#ifndef TREE_SITTER_API_H_
 #define TREE_SITTER_API_H_
 
 #ifndef TREE_SITTER_HIDE_SYMBOLS
@@ -184,6 +184,27 @@ typedef struct TSQueryCursorOptions {
   void *payload;
   bool (*progress_callback)(TSQueryCursorState *state);
 } TSQueryCursorOptions;
+
+typedef enum {
+  TSParseActionTypeShift,
+  TSParseActionTypeReduce,
+  TSParseActionTypeAccept,
+  TSParseActionTypeRecover,
+} TSParseActionType;
+
+typedef struct {
+  TSParseActionType type;   // Shift / Reduce / Accept
+  // TSParseAction ParseAction; -- 삭제
+  // Shift: 해당 액션에서 소비한 토큰 심볼
+  // Reduce: 축약된 비단말 심볼
+  TSSymbol symbol;          
+  uint32_t child_count;     // reduce 액션에 축약되는 심볼 갯수
+  TSStateId next_state;     // 다음에 갈 상태를 가리킨다
+  bool extra;               // Parse Action 규칙 참조
+  bool repetition;          // Parse Action 규칙 참조
+  TSPoint start_point;
+  char *lexeme;
+} TSLoggedAction;
 
 /**
  * The metadata associated with a language.

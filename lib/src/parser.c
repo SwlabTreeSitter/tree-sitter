@@ -1,4 +1,4 @@
-#include <time.h>
+﻿#include <time.h>
 #include <stdio.h>
 #include <limits.h>
 #include <stdbool.h>
@@ -119,19 +119,19 @@ typedef Array(TSParseAction) TSParseActionArray;
 //     Shift  symbol, next_state, extra, 
 //   | Reduce 
 //   | Accept
-typedef struct {
-  TSParseActionType type;   // Shift / Reduce / Accept
-  TSParseAction ParseAction;
-  // Shift: 해당 액션에서 소비한 토큰 심볼
-  // Reduce: 축약된 비단말 심볼
-  TSSymbol symbol;          
-  uint32_t child_count;     // reduce 액션에 축약되는 심볼 갯수
-  TSStateId next_state;     // 다음에 갈 상태를 가리킨다
-  bool extra;               // Parse Action 규칙 참조
-  bool repetition;          // Parse Action 규칙 참조
-  TSPoint start_point;
-  char *lexeme;
-} TSLoggedAction;
+// typedef struct {   ==> api.h로 이동
+//   TSParseActionType type;   // Shift / Reduce / Accept
+//   // TSParseAction ParseAction; -- 삭제
+//   // Shift: 해당 액션에서 소비한 토큰 심볼
+//   // Reduce: 축약된 비단말 심볼
+//   TSSymbol symbol;          
+//   uint32_t child_count;     // reduce 액션에 축약되는 심볼 갯수
+//   TSStateId next_state;     // 다음에 갈 상태를 가리킨다
+//   bool extra;               // Parse Action 규칙 참조
+//   bool repetition;          // Parse Action 규칙 참조
+//   TSPoint start_point;
+//   char *lexeme;
+// } TSLoggedAction;
 
 typedef Array(TSLoggedAction) TSLoggedActionArray;
 
@@ -1754,8 +1754,8 @@ static bool ts_parser__advance(
             .extra = action.shift.extra,
             .repetition = action.shift.repetition,
             .start_point = self->lexer.token_start_position.extent,
-            .lexeme = lexeme_copy,
-            .ParseAction = action
+            .lexeme = lexeme_copy
+            // .ParseAction = action
           };
           array_push(&self->logged_actions, la_shift);
           /*************** Log *************** */
@@ -1785,8 +1785,8 @@ static bool ts_parser__advance(
             .child_count = action.reduce.child_count,
             .next_state = 0,
             .extra = false,
-            .repetition = false,
-            .ParseAction = action
+            .repetition = false
+            // .ParseAction = action
           };
           array_push(&self->logged_actions, la_red);
           /*************** Log *************** */
@@ -1816,8 +1816,8 @@ static bool ts_parser__advance(
             .child_count = 0,
             .next_state = 0,
             .extra = false,
-            .repetition = false,
-            .ParseAction = action
+            .repetition = false
+            // .ParseAction = action
           };
           array_push(&self->logged_actions, la_acc);
           /*************** Log *************** */
@@ -2310,7 +2310,7 @@ void ts_parser_set_find_state_mode(TSParser *self, bool InFindStateMode)
     // 
     // TSStateId, OutLog.start_point.row, start_point.column 을 묶어서 리턴하는 구조체 
     // FindCursorPositionParserState
-static TSStateId TsParserFindClosestRecoverState(
+TSStateId TsParserFindClosestRecoverState(
   TSParser *Self,
   uint32_t TargetRow,
   uint32_t TargetCol,
@@ -2367,6 +2367,7 @@ TSTree *ts_parser_parse(
   const TSTree *old_tree,
   TSInput input
 ) {
+  // 1단계 : 파싱 준비
   TSTree *result = NULL;
   if (!self->language || !input.read) return NULL;
 
@@ -2414,6 +2415,7 @@ TSTree *ts_parser_parse(
     }
   }
 
+  // 2단계 : 파싱 루프
   uint32_t position = 0, last_position = 0, version_count = 0;
   do {
     for (
@@ -2481,9 +2483,11 @@ balance:
   LOG("done");
   LOG_TREE(self->finished_tree);
 
-/*******************************************************************/
+
+// 3단계 : 데이터 수집 및 상태 추출 (커스텀 로직)
 FILE *ActionFile = fopen("logged_actions.txt", "w");
 
+// 3-1. 파싱 중에 수집된 모든 액션을 파일로 덤프
 if (ActionFile)
 {
     for (uint32_t I = 0; I < self->logged_actions.size; ++I)
@@ -2553,11 +2557,7 @@ if (ActionFile)
     fclose(ActionFile);
 }
 
-/****************************************************************************
- * 
- * 컬렉션 단계의 Entry *
- *
- ****************************************************************************/
+// 3-2. 컬렉션 모드
 if (self->logged_actions.size > 0)
 {
     // 가상 스택 시뮬레이션을 위한 스택 엔트리 구조체 정의
@@ -2854,6 +2854,8 @@ if (self->logged_actions.size > 0)
           i = next_shift_array_index - 1;
       }
     }
+
+    // 3-3. 상태 ID 추출 모드
     else
     {
       // ========================[ 현재 커서에서 발생한 recover action 찾는 로직 ]========================
@@ -2887,15 +2889,9 @@ if (self->logged_actions.size > 0)
         }
         fprintf(OutputFile, "-------------------------------------------------------\n");
     }
-
     // 파일 핸들 해제
     fclose(OutputFile);
-
 }
-
-
-
-
   result = ts_tree_new(
     self->finished_tree,
     self->language,

@@ -814,11 +814,13 @@ mod tests {
                         Rule::field("f1".to_string(), Rule::named("v2")),
                         Rule::field("f2".to_string(), Rule::string(";")),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "v2".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("x"),
+                    source_content: None,
                 },
                 // This rule is not reachable from the start symbol
                 // so it won't be present in the node_types
@@ -826,6 +828,7 @@ mod tests {
                     name: "v3".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("y"),
+                    source_content: None,
                 },
             ],
             ..Default::default()
@@ -910,11 +913,13 @@ mod tests {
                         Rule::field("f1".to_string(), Rule::named("v2")),
                         Rule::field("f2".to_string(), Rule::string(";")),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "v2".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("x"),
+                    source_content: None,
                 },
                 // This rule is not reachable from the start symbol, but
                 // it is reachable from the 'extra_symbols' so it
@@ -923,6 +928,7 @@ mod tests {
                     name: "v3".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("y"),
+                    source_content: None,
                 },
             ],
             ..Default::default()
@@ -1016,6 +1022,7 @@ mod tests {
                     name: "v1".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::field("f1".to_string(), Rule::named("_v2")),
+                    source_content: None,
                 },
                 Variable {
                     name: "_v2".to_string(),
@@ -1025,16 +1032,19 @@ mod tests {
                         Rule::named("v4"),
                         Rule::string("*"),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "v3".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("x"),
+                    source_content: None,
                 },
                 Variable {
                     name: "v4".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("y"),
+                    source_content: None,
                 },
             ],
             ..Default::default()
@@ -1105,6 +1115,7 @@ mod tests {
                         Rule::field("f1".to_string(), Rule::named("v3")),
                         Rule::named("v4"),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "v2".to_string(),
@@ -1114,16 +1125,19 @@ mod tests {
                         Rule::choice(vec![Rule::named("v3"), Rule::Blank]),
                         Rule::string("}"),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "v3".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("x"),
+                    source_content: None,
                 },
                 Variable {
                     name: "v4".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("y"),
+                    source_content: None,
                 },
             ],
             ..Default::default()
@@ -1198,17 +1212,20 @@ mod tests {
                     name: "v1".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::seq(vec![Rule::named("v2"), Rule::named("v3")]),
+                    source_content: None,
                 },
                 // v2 should not appear in the node types, since it is inlined
                 Variable {
                     name: "v2".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::alias(Rule::string("a"), "x".to_string(), true),
+                    source_content: None,
                 },
                 Variable {
                     name: "v3".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("b"),
+                    source_content: None,
                 },
             ],
             ..Default::default()
@@ -1249,6 +1266,7 @@ mod tests {
                     name: "thing".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::choice(vec![Rule::named("type"), Rule::named("expression")]),
+                    source_content: None,
                 },
                 Variable {
                     name: "type".to_string(),
@@ -1261,6 +1279,7 @@ mod tests {
                         ),
                         Rule::string("void"),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "expression".to_string(),
@@ -1273,16 +1292,19 @@ mod tests {
                             true,
                         ),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "identifier".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::pattern("\\w+", ""),
+                    source_content: None,
                 },
                 Variable {
                     name: "foo_identifier".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::pattern("[\\w-]+", ""),
+                    source_content: None,
                 },
             ],
             ..Default::default()
@@ -1329,16 +1351,19 @@ mod tests {
                         ]),
                         Rule::repeat(Rule::named("c")),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "b".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("b"),
+                    source_content: None,
                 },
                 Variable {
                     name: "c".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::string("c"),
+                    source_content: None,
                 },
             ],
             ..Default::default()
@@ -1389,6 +1414,7 @@ mod tests {
                     Rule::field("a".to_string(), Rule::pattern("hi", "")),
                     Rule::field("b".to_string(), Rule::pattern("bye", "")),
                 ]),
+                source_content: None,
             }],
             ..Default::default()
         });
@@ -1419,6 +1445,7 @@ mod tests {
                         // Rule `b` is aliased as rule `a`
                         Rule::alias(Rule::named("b"), "a".to_string(), true),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "a".to_string(),
@@ -1427,6 +1454,7 @@ mod tests {
                         Rule::field("f1".to_string(), Rule::string("1")),
                         Rule::field("f2".to_string(), Rule::string("2")),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "b".to_string(),
@@ -1436,6 +1464,7 @@ mod tests {
                         Rule::field("f2".to_string(), Rule::string("222")),
                         Rule::field("f3".to_string(), Rule::string("3")),
                     ]),
+                    source_content: None,
                 },
             ],
             ..Default::default()
@@ -1539,12 +1568,14 @@ mod tests {
                     name: "a".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::seq(vec![Rule::named("b"), Rule::named("c")]),
+                    source_content: None,
                 },
                 // Ordinarily, `b` nodes have two named `c` children.
                 Variable {
                     name: "b".to_string(),
                     kind: VariableType::Named,
                     rule: Rule::seq(vec![Rule::named("c"), Rule::string("B"), Rule::named("c")]),
+                    source_content: None,
                 },
                 Variable {
                     name: "c".to_string(),
@@ -1555,6 +1586,7 @@ mod tests {
                         // with no children.
                         Rule::alias(Rule::string("D"), "b".to_string(), true),
                     ]),
+                    source_content: None,
                 },
             ],
             ..Default::default()
@@ -1917,6 +1949,7 @@ mod tests {
                 kind: VariableType::Named,
                 implicit_precedence: 0,
                 start_state: 0,
+                source_content: None,
             });
         }
         lexical_grammar

@@ -532,6 +532,7 @@ mod tests {
                 kind: VariableType::Named,
                 implicit_precedence: 0,
                 start_state: 0,
+                source_content: None,
             }],
             ..Default::default()
         };

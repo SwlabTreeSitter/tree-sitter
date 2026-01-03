@@ -261,6 +261,7 @@ mod tests {
                         Rule::prec_left(Precedence::Name("b".to_string()), Rule::string("w")),
                         Rule::prec(Precedence::Name("c".to_string()), Rule::string("x")),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "v2".to_string(),
@@ -269,7 +270,9 @@ mod tests {
                         Rule::prec_left(Precedence::Name("omg".to_string()), Rule::string("y")),
                         Rule::prec(Precedence::Name("c".to_string()), Rule::string("z")),
                     ])),
+                    source_content: None,
                 },
+                
             ],
             ..Default::default()
         };
@@ -303,6 +306,7 @@ mod tests {
                         Rule::prec_left(Precedence::Name("b".to_string()), Rule::string("w")),
                         Rule::prec(Precedence::Name("c".to_string()), Rule::string("x")),
                     ]),
+                    source_content: None,
                 },
                 Variable {
                     name: "v2".to_string(),
@@ -311,6 +315,7 @@ mod tests {
                         Rule::prec_left(Precedence::Name("a".to_string()), Rule::string("y")),
                         Rule::prec(Precedence::Name("c".to_string()), Rule::string("z")),
                     ])),
+                    source_content: None,
                 },
             ],
             ..Default::default()

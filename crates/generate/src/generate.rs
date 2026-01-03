@@ -223,6 +223,8 @@ where
     write_file(&header_path.join("array.h"), ARRAY_HEADER)?;
     write_file(&header_path.join("parser.h"), tree_sitter::PARSER_HEADER)?;
 
+    write_file(
+    &header_path.join("api.h"), include_str!("../../../lib/include/tree_sitter/api.h"))?;
     Ok(())
 }
 
@@ -262,6 +264,7 @@ fn generate_parser_for_grammar_with_opts(
     let tables = build_tables(
         &syntax_grammar,
         &lexical_grammar,
+        &input_grammar,
         &simple_aliases,
         &variable_info,
         &inlines,

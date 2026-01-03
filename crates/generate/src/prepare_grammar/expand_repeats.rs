@@ -82,6 +82,7 @@ impl Expander {
                     name: rule_name,
                     kind: VariableType::Auxiliary,
                     rule: self.wrap_rule_in_binary_tree(repeat_symbol, inner_rule),
+                    source_content: None,
                 });
 
                 Rule::Symbol(repeat_symbol)

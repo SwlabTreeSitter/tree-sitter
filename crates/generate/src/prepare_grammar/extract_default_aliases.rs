@@ -220,24 +220,28 @@ mod tests {
                     kind: VariableType::Anonymous,
                     implicit_precedence: 0,
                     start_state: 0,
+                    source_content: None,
                 },
                 LexicalVariable {
                     name: "t1".to_string(),
                     kind: VariableType::Anonymous,
                     implicit_precedence: 0,
                     start_state: 0,
+                    source_content: None,
                 },
                 LexicalVariable {
                     name: "t2".to_string(),
                     kind: VariableType::Anonymous,
                     implicit_precedence: 0,
                     start_state: 0,
+                    source_content: None,
                 },
                 LexicalVariable {
                     name: "t3".to_string(),
                     kind: VariableType::Anonymous,
                     implicit_precedence: 0,
                     start_state: 0,
+                    source_content: None,
                 },
             ],
         };
