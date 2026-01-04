@@ -97,27 +97,69 @@ C:\Work\
 ### 1. 개요
 Tree-sitter 코어 엔진을 수정하여 중단점 기반 상태 추출 기능을 구현하였다. tree-sitter에서 제공하는 명령어로는 파일의 특정 행과 열까지만 읽기는 불가능하기 때문에 중단점(특정 행과 열)을 인자로 받을 수 있는 C++ 프로그램 TreeSitterCutFile을 제작하였다. TreeSitterCutFile은 CLI(Command Line Interface) 기반으로 커스텀 API가 의도대로 동작하는지 확인한다.
 
+### 2. 빌드 및 실행 예시
+#### 2-1. Visual Studio 빌드 환경 열기 (powershell 또는 cmd)
+```
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build 경로에 있는
+vcvars64.bat 파일을 터미널에 드래그 앤 드랍
+```
+cl 컴파일러를 쓸 수 있는 환경이 세팅된다.
 
-### 2. 프로그램 아키텍처 및 동작 흐름
+#### 2-2. TreeSitterCutFile 빌드
+```
+cd C:\Work\tree-sitter
+cl TreeSitterCutFile.cpp /MD /EHsc /std:c++17 /I./include /link /LIBPATH:./target/debug treesitter.lib /OUT:TreeSitterCutFile.exe
+```
 
-#### 2-1. 동적/정적 언어 로딩
-- Small Basic: parser.c를 실행 파일에 정적 링크(Static Link)하여 직접 호출한다.
-- Others: C, Python 등의 언어들은 .dll 파일을 런타임에 동적 로드(Dynamic Load)한다.
+#### 2-3. 실행 경로 및 형식
+```
+cd C:\Work\tree-sitter
+.\TreeSitterCutFile.exe [언어 이름] [라이브러리 경로] [파싱할 파일 경로] [행] [열] [모드]
+```
+- 마지막 인자:
+  - 0 → 컨버전 모드(parse state id 반환)
+  - 1 → 컬렉션 모드(상태 데이터 수집)
 
-#### 2-2. 좌표 매핑
+#### 2-4. 언어별 실행 예시
+```
+.\TreeSitterCutFile.exe smallbasic C:\PL\tree-sitter-smallbasic\smallbasic.dll C:\PL\tree-sitter-smallbasic\SB_Sample\01_HelloWorld.sb 1 12 0
+
+.\TreeSitterCutFile.exe cpp C:\Work\tree-sitter-cpp\cpp.dll C:\Work\tree-sitter-cpp\main.cpp 3 2 0
+
+.\TreeSitterCutFile.exe python C:\Work\tree-sitter-python\python.dll C:\Work\tree-sitter-python\Test.py 3 2 0
+```
+Test.data에 실행 결과를 기록한다.
+
+- 컨버전 모드로 실행 후 Test.data
+  - .\TreeSitterCutFile.exe smallbasic C:\PL\tree-sitter-smallbasic\smallbasic.dll C:\PL\tree-sitter-smallbasic\SB_Sample\01_HelloWorld.sb 1 12 0 
+<img width="612" height="165" alt="image" src="https://github.com/user-attachments/assets/f29d8fd1-4483-408c-aeb0-e4324b66f9ba" />
+
+
+- 컬렉션 모드로 실행 후 Test.data
+  - .\TreeSitterCutFile.exe smallbasic C:\PL\tree-sitter-smallbasic\smallbasic.dll C:\PL\tree-sitter-smallbasic\SB_Sample\01_HelloWorld.sb 2 0 0 
+<img width="412" height="400" alt="image" src="https://github.com/user-attachments/assets/bc4a488c-90b6-4bad-b6bf-6bc2e8bbb131" />
+
+
+### 3. 프로그램 아키텍처 및 동작 흐름
+
+#### 3-1. 언어 로딩
+- 동적 로딩 (Dynamic Load): Small Basic을 포함한 모든 언어가 런타임에 동적 라이브러리(.dll 또는 .so)를 로드하는 방식
+- 심볼 탐색: 라이브러리를 열고 tree_sitter_<language_name> 함수 포인터를 획득하여 언어 객체를 생성
+
+#### 3-2. 좌표 매핑
 - 인자로 (Row, Column) 좌표를 받지만, 파싱 엔진은 선형적인 Byte Offset을 사용한다.
 - FindByteOffsetForPosition 함수를 통해 좌표 변환을 수행한다.
 - 파서가 정확히 사용자의 커서 위치에서 멈출 수 있도록 effective_length를 계산하여 전달한다.
 
-#### 2-3. 커스텀 엔진 제어
+#### 3-3. 커스텀 엔진 제어
 코어 엔진(api.h, parser.c)에 추가한 제어 함수들을 호출하여 파싱 모드를 설정한다.
 - ts_parser_set_stop_position(parser, {row, col}): 파싱 중단 목표 지점을 주입한다.
 - ts_parser_set_find_state_mode(parser, flag):
   - Mode 0 (State Extraction): 자동완성을 위한 현재 문맥의 State ID 추출.
   - Mode 1 (Data Collection): 문법 패턴 분석을 위한 파싱 액션 로그 수집.
 
-#### 2-4. 파싱 실행
-- ts_parser_parse_string -> ts_parser_parse_string_encoding -> **ts_parser_parse** (파싱루프)
+#### 3-4. 파싱 실행
+- 실행 흐름 : ts_parser_parse_string -> ts_parser_parse_string_encoding -> **ts_parser_parse** (파싱루프)
 - 실행 단계 (기존 로직 커스텀)
   - ts_parser__advance() 내부에서 logged_actions 배열에 현재 어떤 행동을 했는지 실시간으로 기록
   - ts_parser__lex() 등에서 StopRow, StopColumn을 체크하여, 목표 지점에 도달하면 파싱을 멈춤
