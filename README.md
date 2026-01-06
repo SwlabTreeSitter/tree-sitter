@@ -108,7 +108,7 @@ cl 컴파일러를 쓸 수 있는 환경이 세팅된다.
 #### 2-2. TreeSitterCutFile 빌드
 ```
 cd C:\Work\tree-sitter
-cl TreeSitterCutFile.cpp /MD /EHsc /std:c++17 /I./include /link /LIBPATH:./target/debug treesitter.lib /OUT:TreeSitterCutFile.exe
+cl TreeSitterCutFile.cpp lib/src/lib.c /MD /EHsc /std:c++17 /I./lib/include /I./lib/src /Fe:TreeSitterCutFile.exe
 ```
 
 #### 2-3. 실행 경로 및 형식
