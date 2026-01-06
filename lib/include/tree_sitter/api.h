@@ -192,18 +192,24 @@ typedef enum {
   TSParseActionTypeRecover,
 } TSParseActionType;
 
+// 파싱 중 발생한 하나의 액션을 기록
 typedef struct {
-  TSParseActionType type;   // Shift / Reduce / Accept
+  TSParseActionType type;   // Shift, Reduce, Accept, Recover 중 하나
   // TSParseAction ParseAction; -- 삭제
-  // Shift: 해당 액션에서 소비한 토큰 심볼
-  // Reduce: 축약된 비단말 심볼
-  TSSymbol symbol;          
-  uint32_t child_count;     // reduce 액션에 축약되는 심볼 갯수
-  TSStateId next_state;     // 다음에 갈 상태를 가리킨다
+  TSSymbol symbol;          // Shift인 경우 : 읽어들인 토큰의 심볼 번호
+                            // Reduce인 경우 : 축약되는 심볼 (규칙의 LHS) 번호
+
+  uint32_t child_count;     // (Reduce 전용) 축약될 때 스택에서 몇 개를 꺼냈는지
+  
+  TSStateId next_state;     // (Shift 전용) 이 토큰을 읽고 나서 이동할 상태
+  
+  char *lexeme;             // (Shift 전용) 소스 코드에 적혀 있던 실제 문자열
+
+  TSStateId current_state;  // 현재 상태
+
   bool extra;               // Parse Action 규칙 참조
   bool repetition;          // Parse Action 규칙 참조
   TSPoint start_point;
-  char *lexeme;
 } TSLoggedAction;
 
 /**
