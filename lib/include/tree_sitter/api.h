@@ -200,11 +200,10 @@ typedef struct {
                             // Reduce인 경우 : 축약되는 심볼 (규칙의 LHS) 번호
 
   uint32_t child_count;     // (Reduce 전용) 축약될 때 스택에서 몇 개를 꺼냈는지
-  
-  TSStateId next_state;     // (Shift 전용) 이 토큰을 읽고 나서 이동할 상태
-  
+     
   char *lexeme;             // (Shift 전용) 소스 코드에 적혀 있던 실제 문자열
-
+  
+  TSStateId next_state;
   TSStateId current_state;  // 현재 상태
 
   bool extra;               // Parse Action 규칙 참조

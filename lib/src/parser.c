@@ -2714,7 +2714,34 @@ if (self->logged_actions.size > 0)
 
           uint32_t finalReduceLogIndex = UINT32_MAX;    // 문법을 완성한 결정적 Reduce의 위치 for 유효한지 검증
 
+          // --- (A) prefix replay: 0 ~ CursorLogIndex-1 까지 SimStack 구성 ---
+          for (uint32_t j = 0; j < CursorLogIndex; ++j)
+          {
+              TSLoggedAction act = self->logged_actions.contents[j];
 
+              if (act.type == TSParseActionTypeShift && !act.extra)
+              {
+                  StackEntry e = { act, j, true };
+                  array_push(&SimStack, e);
+              }
+              else if (act.type == TSParseActionTypeReduce)
+              {
+                  uint32_t rhs = act.child_count;
+                  if (SimStack.size < rhs) continue;
+
+                  // pop
+                  for (uint32_t k = 0; k < rhs; ++k) array_pop(&SimStack);
+
+                  // push nonterminal
+                  TSLoggedAction nt = (TSLoggedAction){0};
+                  nt.symbol = act.symbol;
+                  StackEntry e = { nt, j, false };
+                  array_push(&SimStack, e);
+              }
+              // Recover 등은 필요하면 처리
+          }          
+
+          // --- (B) cursor ~ end: 커서 위치 포함하는 Reduce 찾기 ---
           // 시뮬레이션 루프 (j): 커서 위치부터 시작하여 파싱 과정을 재현(Replay)
           // 목표: 커서가 포함된 가장 작은 '완전한 문법 단위'가 언제 완성되는지 찾기
 
@@ -2810,6 +2837,94 @@ if (self->logged_actions.size > 0)
           }
           array_delete(&SimStack);
 
+          if (finalReduceLogIndex == UINT32_MAX) {
+              // 커서를 포함하는 reduce를 끝까지 못 찾음
+              // → headerStack 만들면 위험 (UINT32_MAX까지 돌려버릴 수 있음)
+              // → 이번 i(커서)는 스킵
+              continue;
+          }
+          // =========================================================
+          // [3단계] 결과 출력
+          // =========================================================
+          /* 2026-01-06 바뀐 부분  k 루프 삭제, i 사용 */ 
+          // 현재 커서 위치(k)부터 k번째 shift 액션이 들어있는 parse action의 index(logged_actions 배열)를 가져와 CurretPrintIndex 에 저장한다. 
+          uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, i);
+
+          // EndLogIndex를 넘어가면 출력을 끝내고 루프를 탈출한다.
+          if (CurrentPrintIndex > EndLogIndex) continue;
+
+          // 찾고자 하는 후보 코드 컴플리션이 시작되어야 하는 파서 스테이트 
+          // 커서 포지션의 파서 상태 StartState를 구함
+          // 
+          // logged_actions = ... shift to1 , reduce , reduce , shift to2 [CurrentPrintIndex] , ...
+          TSStateId StartState = 0;
+          if (CurrentPrintIndex > 0) 
+          {
+              // SimStack에 쌓았던 범위만큼 반복문을 돌며 Shift 액션이면 state id 를 가져온다.
+              for (int l = CurrentPrintIndex - 1; l >= 0; --l) 
+              {
+                // Parse Action 이 쌓여있는 LoggedAction에서 parse state id 값을 가져온다.
+                TSLoggedAction PrevAction = self->logged_actions.contents[l];
+                if (!PrevAction.extra && (PrevAction.type == TSParseActionTypeShift)) 
+                {
+                    StartState = PrevAction.next_state;
+                    break;
+                }
+              }
+          }
+              
+          /* 2026-01-06 바뀐 부분 */
+          Array(StackEntry) headerStack = array_new();
+
+          for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) 
+          {
+              TSLoggedAction CurrentAction = self->logged_actions.contents[j];
+              if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 
+              {
+                  StackEntry newEntry = {CurrentAction, j, true};
+                  array_push(&headerStack, newEntry);
+              } 
+              else if (CurrentAction.type == TSParseActionTypeReduce) 
+              {
+                  uint32_t rhsLength = CurrentAction.child_count;
+                  if (headerStack.size >= rhsLength) 
+                  {
+                      for (uint32_t pop_idx = 0; pop_idx < rhsLength; ++pop_idx) 
+                      {
+                          array_pop(&headerStack);
+                      }
+
+                      TSLoggedAction nonTerminalAction = {0};
+                      nonTerminalAction.symbol = CurrentAction.symbol;
+                      StackEntry newNonTerminalEntry = {nonTerminalAction, j, false};
+                      array_push(&headerStack, newNonTerminalEntry);
+                  }
+              }  
+          }
+
+          /* 2026-01-06 바뀐 부분 */
+          fprintf(OutputFile, "%u ", StartState);
+          for (uint32_t l = 0; l < headerStack.size; ++l) 
+          {
+              StackEntry *entry = array_get(&headerStack, l);
+              const char* symbolName = ts_language_symbol_name(self->language, entry->Action.symbol);
+              fprintf(OutputFile, "%s ", symbolName ? symbolName : "UNKNOWN");
+          }
+          fprintf(OutputFile, "\n");
+          array_delete(&headerStack);
+          
+          // 내용물(렉심) 라인 출력
+          for(uint32_t l = i; l < ShiftIndices.size; ++l) 
+          {
+              uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
+              if(InnerPrintIndex > EndLogIndex) break;
+              TSLoggedAction PrintAction = self->logged_actions.contents[InnerPrintIndex];
+              const char* Lexeme = PrintAction.lexeme ? PrintAction.lexeme : ts_language_symbol_name(self->language, PrintAction.symbol);
+              fprintf(OutputFile, "  %u,%u: %s\n", PrintAction.start_point.row + 1, PrintAction.start_point.column + 1, Lexeme);
+          }
+          fprintf(OutputFile, "\n");
+      }
+    }
           // =========================================================
           // [3단계] 결과 출력
           // 시뮬레이션을 통해 확정된 문법 단위(Cursor ~ EndLogIndex)를 Test.data 파일에 기록
@@ -2827,139 +2942,138 @@ if (self->logged_actions.size > 0)
           // 2. 터미널 심볼 헤더    - "1 ID . ID = STR"
           // 3. 실제 코드 내용(lexeme)  - "1,1: TextWindow", "1,11: .", ...
           // =========================================================
-
           // 출력 루프 (k): 문장의 시작점(i)부터 끝점(EndLogIndex)까지 토큰을 하나씩 전진하며 출력
-          for (uint32_t k = i; k < ShiftIndices.size; ++k)
-          {
-              // CurrentPrintIndex: 현재 출력하려는 토큰의 실제 로그 인덱스
-              uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, k);
+    //       for (uint32_t k = i; k < ShiftIndices.size; ++k)
+    //       {
+    //           // CurrentPrintIndex: 현재 출력하려는 토큰의 실제 로그 인덱스
+    //           uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, k);
 
-              // [종료 조건] 현재 토큰이 문법 단위의 끝(EndLogIndex)을 넘어가면 출력 중단
-              if (CurrentPrintIndex > EndLogIndex) break;
+    //           // [종료 조건] 현재 토큰이 문법 단위의 끝(EndLogIndex)을 넘어가면 출력 중단
+    //           if (CurrentPrintIndex > EndLogIndex) break;
 
-              // [시작 상태(Start State) 추적]
-              // 문장이 시작되는 시점의 파서 상태(State ID)를 알아낸다.
-              TSStateId StartState = 0;
-              if (CurrentPrintIndex > 0) 
-              {
-                  // 로그를 역주행하여, 바로 직전에 있었던 Shift 액션의 도착 상태(next_state)를 찾음
-                  // 그 도착 상태가 곧 현재 토큰의 시작 상태
-                  for (int l = CurrentPrintIndex - 1; l >= 0; --l) 
-                  {
-                    TSLoggedAction PrevAction = self->logged_actions.contents[l];
-                    if (!PrevAction.extra && (PrevAction.type == TSParseActionTypeShift)) 
-                    {
-                        StartState = PrevAction.next_state;
-                        break;
-                    }
-                  }
-              }
-              // [시작 상태 추적 수정 제안]
-              // logged_actions를 현재 원소가 action만 들어있는 구조를 action과 action 이 벌어진 파서 상태 쌍을 
-              // 저장하는 구조로 바꾸면
-              // logged_actions[CurrentPrintIndex] = (StartState, action) 이렇게 StartState를 구할 수 있다.
+    //           // [시작 상태(Start State) 추적]
+    //           // 문장이 시작되는 시점의 파서 상태(State ID)를 알아낸다.
+    //           TSStateId StartState = 0;
+    //           if (CurrentPrintIndex > 0) 
+    //           {
+    //               // 로그를 역주행하여, 바로 직전에 있었던 Shift 액션의 도착 상태(next_state)를 찾음
+    //               // 그 도착 상태가 곧 현재 토큰의 시작 상태
+    //               for (int l = CurrentPrintIndex - 1; l >= 0; --l) 
+    //               {
+    //                 TSLoggedAction PrevAction = self->logged_actions.contents[l];
+    //                 if (!PrevAction.extra && (PrevAction.type == TSParseActionTypeShift)) 
+    //                 {
+    //                     StartState = PrevAction.next_state;
+    //                     break;
+    //                 }
+    //               }
+    //           }
+    //           // [시작 상태 추적 수정 제안]
+    //           // logged_actions를 현재 원소가 action만 들어있는 구조를 action과 action 이 벌어진 파서 상태 쌍을 
+    //           // 저장하는 구조로 바꾸면
+    //           // logged_actions[CurrentPrintIndex] = (StartState, action) 이렇게 StartState를 구할 수 있다.
 
-              // ---------------------------------------------------------
-              // 1. 상위 심볼 헤더 출력
-              // 예: "1 ID . ID = Expr"
-              // 헤더(제목)는 문장 맨 처음에 딱 한 번만 출력
-              // ---------------------------------------------------------
-              if (k == i && finalReduceLogIndex != UINT32_MAX)
-              {
-                  Array(StackEntry) headerStack = array_new();  // 헤더 구성을 위한 임시 스택
+    //           // ---------------------------------------------------------
+    //           // 1. 상위 심볼 헤더 출력
+    //           // 예: "1 ID . ID = Expr"
+    //           // 헤더(제목)는 문장 맨 처음에 딱 한 번만 출력
+    //           // ---------------------------------------------------------
+    //           if (k == i && finalReduceLogIndex != UINT32_MAX)
+    //           {
+    //               Array(StackEntry) headerStack = array_new();  // 헤더 구성을 위한 임시 스택
 
-                  // Cursor부터 문법 완성 지점(finalReduceLogIndex)까지 다시 한번 시뮬레이션
-                  // 이번에는 '출력용'으로 스택을 쌓는다.
-                  for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) 
-                  {
-                      TSLoggedAction CurrentAction = self->logged_actions.contents[j];
+    //               // Cursor부터 문법 완성 지점(finalReduceLogIndex)까지 다시 한번 시뮬레이션
+    //               // 이번에는 '출력용'으로 스택을 쌓는다.
+    //               for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) 
+    //               {
+    //                   TSLoggedAction CurrentAction = self->logged_actions.contents[j];
 
-                      if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 
-                      {
-                          StackEntry newEntry = {CurrentAction, j, true};
-                          array_push(&headerStack, newEntry);
-                      } 
-                      else if (CurrentAction.type == TSParseActionTypeReduce) 
-                      {
-                          // Reduce 발생 시: 자식들을 Pop하고, 부모(Non-Terminal)를 Push
-                          // 이렇게 하면 스택에는 최종적으로 [ID] [.] [ID] [=] [Expr] 처럼
-                          // 문법의 뼈대(Structure)만 남게 된다.
-                          uint32_t rhsLength = CurrentAction.child_count;
-                          if (headerStack.size >= rhsLength) 
-                          {
-                              for (uint32_t pop_idx = 0; pop_idx < rhsLength; ++pop_idx) 
-                              {
-                                  array_pop(&headerStack);
-                              }
+    //                   if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 
+    //                   {
+    //                       StackEntry newEntry = {CurrentAction, j, true};
+    //                       array_push(&headerStack, newEntry);
+    //                   } 
+    //                   else if (CurrentAction.type == TSParseActionTypeReduce) 
+    //                   {
+    //                       // Reduce 발생 시: 자식들을 Pop하고, 부모(Non-Terminal)를 Push
+    //                       // 이렇게 하면 스택에는 최종적으로 [ID] [.] [ID] [=] [Expr] 처럼
+    //                       // 문법의 뼈대(Structure)만 남게 된다.
+    //                       uint32_t rhsLength = CurrentAction.child_count;
+    //                       if (headerStack.size >= rhsLength) 
+    //                       {
+    //                           for (uint32_t pop_idx = 0; pop_idx < rhsLength; ++pop_idx) 
+    //                           {
+    //                               array_pop(&headerStack);
+    //                           }
                               
-                              TSLoggedAction nonTerminalAction = {0};
-                              nonTerminalAction.symbol = CurrentAction.symbol;
-                              StackEntry newNonTerminalEntry = {nonTerminalAction, j, false};
-                              array_push(&headerStack, newNonTerminalEntry);
-                          }
-                      }
-                  }
+    //                           TSLoggedAction nonTerminalAction = {0};
+    //                           nonTerminalAction.symbol = CurrentAction.symbol;
+    //                           StackEntry newNonTerminalEntry = {nonTerminalAction, j, false};
+    //                           array_push(&headerStack, newNonTerminalEntry);
+    //                       }
+    //                   }
+    //               }
 
-                  fprintf(OutputFile, "%u ", StartState);
-                  for (uint32_t l = 0; l < headerStack.size; ++l) 
-                  {
-                      StackEntry *entry = array_get(&headerStack, l);
-                      const char* symbolName = ts_language_symbol_name(self->language, entry->Action.symbol);
-                      fprintf(OutputFile, "%s ", symbolName ? symbolName : "UNKNOWN");
-                  }
-                  fprintf(OutputFile, "\n");
+    //               fprintf(OutputFile, "%u ", StartState);
+    //               for (uint32_t l = 0; l < headerStack.size; ++l) 
+    //               {
+    //                   StackEntry *entry = array_get(&headerStack, l);
+    //                   const char* symbolName = ts_language_symbol_name(self->language, entry->Action.symbol);
+    //                   fprintf(OutputFile, "%s ", symbolName ? symbolName : "UNKNOWN");
+    //               }
+    //               fprintf(OutputFile, "\n");
 
-                  array_delete(&headerStack);
-              }
+    //               array_delete(&headerStack);
+    //           }
               
-              // ---------------------------------------------------------
-              // 2. 터미널 심볼 헤더 출력
-              // 예: "1 ID . ID = STR"
-              // ---------------------------------------------------------
-              fprintf(OutputFile, "%u ", StartState);
-              for(uint32_t l = k; l < ShiftIndices.size; ++l) 
-              {
-                  uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
-                  if(InnerPrintIndex > EndLogIndex) break;
-                  const char* SymbolName = ts_language_symbol_name(self->language, self->logged_actions.contents[InnerPrintIndex].symbol);
-                  fprintf(OutputFile, "%s ", SymbolName);
-              }
-              fprintf(OutputFile, "\n");
+    //           // ---------------------------------------------------------
+    //           // 2. 터미널 심볼 헤더 출력
+    //           // 예: "1 ID . ID = STR"
+    //           // ---------------------------------------------------------
+    //           fprintf(OutputFile, "%u ", StartState);
+    //           for(uint32_t l = k; l < ShiftIndices.size; ++l) 
+    //           {
+    //               uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
+    //               if(InnerPrintIndex > EndLogIndex) break;
+    //               const char* SymbolName = ts_language_symbol_name(self->language, self->logged_actions.contents[InnerPrintIndex].symbol);
+    //               fprintf(OutputFile, "%s ", SymbolName);
+    //           }
+    //           fprintf(OutputFile, "\n");
               
-              // ---------------------------------------------------------
-              // 3. 실제 코드 내용(Lexeme) 출력
-              // 예: "1,1: TextWindow", "1,11: .", ...
-              // ---------------------------------------------------------
-              for(uint32_t l = k; l < ShiftIndices.size; ++l) 
-              {
-                  uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
-                  if(InnerPrintIndex > EndLogIndex) break;
-                  TSLoggedAction PrintAction = self->logged_actions.contents[InnerPrintIndex];
-                  const char* Lexeme = PrintAction.lexeme ? PrintAction.lexeme : ts_language_symbol_name(self->language, PrintAction.symbol);
-                  fprintf(OutputFile, "  %u,%u: %s\n", PrintAction.start_point.row + 1, PrintAction.start_point.column + 1, Lexeme);
-              }
-              fprintf(OutputFile, "\n");
-          }
+    //           // ---------------------------------------------------------
+    //           // 3. 실제 코드 내용(Lexeme) 출력
+    //           // 예: "1,1: TextWindow", "1,11: .", ...
+    //           // ---------------------------------------------------------
+    //           for(uint32_t l = k; l < ShiftIndices.size; ++l) 
+    //           {
+    //               uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
+    //               if(InnerPrintIndex > EndLogIndex) break;
+    //               TSLoggedAction PrintAction = self->logged_actions.contents[InnerPrintIndex];
+    //               const char* Lexeme = PrintAction.lexeme ? PrintAction.lexeme : ts_language_symbol_name(self->language, PrintAction.symbol);
+    //               fprintf(OutputFile, "  %u,%u: %s\n", PrintAction.start_point.row + 1, PrintAction.start_point.column + 1, Lexeme);
+    //           }
+    //           fprintf(OutputFile, "\n");
+    //       }
 
-          // i: 현재 문장의 시작점
-          // ShiftIndices: 토큰들이 모여있는 배열
-          // EndLogIndex: 방금 찾은 문장의 끝 지점
-          uint32_t next_shift_array_index = i + 1;
-          while (next_shift_array_index < ShiftIndices.size) 
-          {
-              uint32_t next_log_index = *array_get(&ShiftIndices, next_shift_array_index);
-              // 이 토큰이 방금 끝난 문장(EndLogIndex) 바깥에 있나?
-              if (next_log_index > EndLogIndex) {
-                  break;  // 새로운 시작점 찾음
-              }
-              // 문장 안에 포함된 토큰이면 skip
-              next_shift_array_index++;
-          }
-          // 루프 인덱스(i)를 새로운 시작점으로 점프시킴
-          // (루프가 돌면서 ++i를 할 것이므로, 미리 1을 빼둠)
-          i = next_shift_array_index - 1;
-      }
-    }
+    //       // i: 현재 문장의 시작점
+    //       // ShiftIndices: 토큰들이 모여있는 배열
+    //       // EndLogIndex: 방금 찾은 문장의 끝 지점
+    //       uint32_t next_shift_array_index = i + 1;
+    //       while (next_shift_array_index < ShiftIndices.size) 
+    //       {
+    //           uint32_t next_log_index = *array_get(&ShiftIndices, next_shift_array_index);
+    //           // 이 토큰이 방금 끝난 문장(EndLogIndex) 바깥에 있나?
+    //           if (next_log_index > EndLogIndex) {
+    //               break;  // 새로운 시작점 찾음
+    //           }
+    //           // 문장 안에 포함된 토큰이면 skip
+    //           next_shift_array_index++;
+    //       }
+    //       // 루프 인덱스(i)를 새로운 시작점으로 점프시킴
+    //       // (루프가 돌면서 ++i를 할 것이므로, 미리 1을 빼둠)
+    //       i = next_shift_array_index - 1;
+    //   }
+    // }
 
     // 3-3. 상태 ID 추출 모드
     else

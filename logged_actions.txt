@@ -1,9 +1,53 @@
-[SHIFT] State 1 -> 188, symbol: ID (34, TextWindow)
-[SHIFT] State: 188 -> 259, symbol: . (17)
-[SHIFT] State 259 -> 214, symbol: ID (34, WriteLine)
-[SHIFT] State: 214 -> 25, symbol: ( (18)
-[SHIFT] State 25 -> 51, symbol: STR (35, "Hello World")
-[REDUCE] State 51 -> GOTO 29, symbol: Primary, child 1  {'STR("Hello World")' }
+[SHIFT] State 1 -> 234, symbol: Stmt_token4 (6, For)
+[SHIFT] State 234 -> 232, symbol: ID (34, i)
+[SHIFT] State: 232 -> 60, symbol: = (7)
+[SHIFT] State 60 -> 51, symbol: NUM (36, 10)
+[REDUCE] State 51 -> GOTO 29, symbol: Primary, child 1  {'NUM(10)' }
+[REDUCE] State 29 -> GOTO 38, symbol: UnaryExpr, child 1  {'Primary' }
+[REDUCE] State 38 -> GOTO 50, symbol: MultiplicativeExpr, child 1  {'UnaryExpr' }
+[REDUCE] State 50 -> GOTO 65, symbol: AdditiveExpr, child 1  {'MultiplicativeExpr' }
+[REDUCE] State 65 -> GOTO 91, symbol: CompExpr, child 1  {'AdditiveExpr' }
+[REDUCE] State 91 -> GOTO 128, symbol: EqNeqExpr, child 1  {'CompExpr' }
+[REDUCE] State 128 -> GOTO 167, symbol: AndExpr, child 1  {'EqNeqExpr' }
+[REDUCE] State 167 -> GOTO 183, symbol: OrExpr, child 1  {'AndExpr' }
+[REDUCE] State 183 -> GOTO 195, symbol: CondExpr, child 1  {'OrExpr' }
+[REDUCE] State 195 -> GOTO 258, symbol: Expr, child 1  {'CondExpr' }
+[SHIFT] State 258 -> 58, symbol: Stmt_token5 (8, To)
+[SHIFT] State 58 -> 43, symbol: NUM (36, 1)
+[REDUCE] State 43 -> GOTO 44, symbol: Primary, child 1  {'NUM(1)' }
+[REDUCE] State 44 -> GOTO 42, symbol: UnaryExpr, child 1  {'Primary' }
+[REDUCE] State 42 -> GOTO 48, symbol: MultiplicativeExpr, child 1  {'UnaryExpr' }
+[REDUCE] State 48 -> GOTO 59, symbol: AdditiveExpr, child 1  {'MultiplicativeExpr' }
+[REDUCE] State 59 -> GOTO 90, symbol: CompExpr, child 1  {'AdditiveExpr' }
+[REDUCE] State 90 -> GOTO 135, symbol: EqNeqExpr, child 1  {'CompExpr' }
+[REDUCE] State 135 -> GOTO 169, symbol: AndExpr, child 1  {'EqNeqExpr' }
+[REDUCE] State 169 -> GOTO 181, symbol: OrExpr, child 1  {'AndExpr' }
+[REDUCE] State 181 -> GOTO 194, symbol: CondExpr, child 1  {'OrExpr' }
+[REDUCE] State 194 -> GOTO 140, symbol: Expr, child 1  {'CondExpr' }
+[SHIFT] State 140 -> 62, symbol: OptStep_token1 (1, Step)
+[SHIFT] State: 62 -> 193, symbol: - (29)
+[SHIFT] State 193 -> 43, symbol: NUM (36, 1)
+[REDUCE] State 43 -> GOTO 32, symbol: Primary, child 1  {'NUM(1)' }
+[REDUCE] State 32 -> GOTO 42, symbol: UnaryExpr, child 2  {'-' 'Primary' }
+[REDUCE] State 42 -> GOTO 48, symbol: MultiplicativeExpr, child 1  {'UnaryExpr' }
+[REDUCE] State 48 -> GOTO 59, symbol: AdditiveExpr, child 1  {'MultiplicativeExpr' }
+[REDUCE] State 59 -> GOTO 90, symbol: CompExpr, child 1  {'AdditiveExpr' }
+[REDUCE] State 90 -> GOTO 135, symbol: EqNeqExpr, child 1  {'CompExpr' }
+[REDUCE] State 135 -> GOTO 169, symbol: AndExpr, child 1  {'EqNeqExpr' }
+[REDUCE] State 169 -> GOTO 181, symbol: OrExpr, child 1  {'AndExpr' }
+[REDUCE] State 181 -> GOTO 194, symbol: CondExpr, child 1  {'OrExpr' }
+[REDUCE] State 194 -> GOTO 204, symbol: Expr, child 1  {'CondExpr' }
+[REDUCE] State 204 -> GOTO 178, symbol: OptStep, child 2  {'OptStep_token1(Step)' 'Expr' }
+[SHIFT] State 178 -> 137, symbol: CR_token2 (38, 
+)
+[REDUCE] State 137 -> GOTO 88, symbol: CR, child 1  {'CR_token2(
+)' }
+[SHIFT] State 88 -> 184, symbol: ID (34, TextWindow)
+[SHIFT] State: 184 -> 255, symbol: . (17)
+[SHIFT] State 255 -> 221, symbol: ID (34, WriteLine)
+[SHIFT] State: 221 -> 27, symbol: ( (18)
+[SHIFT] State 27 -> 4, symbol: ID (34, i)
+[REDUCE] State 4 -> GOTO 29, symbol: Primary, child 1  {'ID(i)' }
 [REDUCE] State 29 -> GOTO 38, symbol: UnaryExpr, child 1  {'Primary' }
 [REDUCE] State 38 -> GOTO 50, symbol: MultiplicativeExpr, child 1  {'UnaryExpr' }
 [REDUCE] State 50 -> GOTO 65, symbol: AdditiveExpr, child 1  {'MultiplicativeExpr' }
@@ -14,10 +58,18 @@
 [REDUCE] State 183 -> GOTO 195, symbol: CondExpr, child 1  {'OrExpr' }
 [REDUCE] State 195 -> GOTO 217, symbol: Expr, child 1  {'CondExpr' }
 [REDUCE] State 217 -> GOTO 242, symbol: MoreThanOneExpr, child 1  {'Expr' }
-[REDUCE] State 242 -> GOTO 240, symbol: Exprs, child 1  {'MoreThanOneExpr' }
-[SHIFT] State: 240 -> 175, symbol: ) (19)
-[REDUCE] State 175 -> GOTO 147, symbol: ExprStatement, child 6  {'ID(TextWindow)' '.' 'ID(WriteLine)' '(' 'Exprs' ')' }
-[REDUCE] State 147 -> GOTO 164, symbol: Stmt, child 1  {'ExprStatement' }
+[REDUCE] State 242 -> GOTO 238, symbol: Exprs, child 1  {'MoreThanOneExpr' }
+[SHIFT] State: 238 -> 210, symbol: ) (19)
+[REDUCE] State 210 -> GOTO 226, symbol: ExprStatement, child 6  {'ID(TextWindow)' '.' 'ID(WriteLine)' '(' 'Exprs' ')' }
+[REDUCE] State 226 -> GOTO 203, symbol: Stmt, child 1  {'ExprStatement' }
+[SHIFT] State 203 -> 137, symbol: CR_token2 (38, 
+)
+[REDUCE] State 137 -> GOTO 138, symbol: CR, child 1  {'CR_token2(
+)' }
+[REDUCE] State 138 -> GOTO 96, symbol: TheRest, child 2  {'Stmt' 'CR' }
+[REDUCE] State 96 -> GOTO 180, symbol: CRStmtCRs, child 2  {'CR' 'TheRest' }
+[SHIFT] State 180 -> 168, symbol: Stmt_token6 (9, EndFor)
+[REDUCE] State 168 -> GOTO 164, symbol: Stmt, child 9  {'Stmt_token4(For)' 'ID(i)' '=' 'Expr' 'Stmt_token5(To)' 'Expr' 'OptStep' 'CRStmtCRs' 'Stmt_token6(EndFor)' }
 [REDUCE] State 164 -> GOTO 159, symbol: MoreThanOneStmt, child 1  {'Stmt' }
 [REDUCE] State 159 -> GOTO 97, symbol: Prog, child 1  {'MoreThanOneStmt' }
 [REDUCE] State 97 -> GOTO 241, symbol: Start, child 1  {'Prog' }
