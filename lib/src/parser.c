@@ -108,33 +108,9 @@ typedef struct {
 // parse action 을 저장할 타입 선언
 typedef Array(TSParseAction) TSParseActionArray;
 
-// shift 는 입력 심볼을 하나 소모
-// 그 후 심볼과 상태를 스택에 push
-
-// reduce 는 생성 규칙이 맞으면
-// 스택에 있던 심볼을 축약
-
-// 정리하기
-// data TsLoggedAction = 
-//     Shift  symbol, next_state, extra, 
-//   | Reduce 
-//   | Accept
-// typedef struct {   ==> api.h로 이동
-//   TSParseActionType type;   // Shift / Reduce / Accept
-//   // TSParseAction ParseAction; -- 삭제
-//   // Shift: 해당 액션에서 소비한 토큰 심볼
-//   // Reduce: 축약된 비단말 심볼
-//   TSSymbol symbol;          
-//   uint32_t child_count;     // reduce 액션에 축약되는 심볼 갯수
-//   TSStateId next_state;     // 다음에 갈 상태를 가리킨다
-//   bool extra;               // Parse Action 규칙 참조
-//   bool repetition;          // Parse Action 규칙 참조
-//   TSPoint start_point;
-//   char *lexeme;
-// } TSLoggedAction;
-
 // 기록 저장소 타입
 typedef Array(TSLoggedAction) TSLoggedActionArray;
+
 
 struct TSParser {
   Lexer lexer;
@@ -1163,6 +1139,7 @@ static void ts_parser__accept(
   ts_stack_halt(self->stack, version);
 }
 
+// 에러 복구 중 reduce 시도
 static bool ts_parser__do_all_potential_reductions(
   TSParser *self,
   StackVersion starting_version,
@@ -1228,11 +1205,31 @@ static bool ts_parser__do_all_potential_reductions(
     for (uint32_t j = 0; j < self->reduce_actions.size; j++) {
       ReduceAction action = *array_get(&self->reduce_actions, j);
 
+      // 현재 상태(Reduce 직전) 백업
+      TSStateId state_before_reduce = ts_stack_state(self->stack, version);
+
+      // 실제 Reduce 실행
       reduction_version = ts_parser__reduce(
         self, version, action.symbol, action.count,
         action.dynamic_precedence, action.production_id,
         true, false
       );
+
+      // Reduce가 성공해서 새로운 버전이 생기면 로그
+      if (reduction_version != STACK_VERSION_NONE) {
+        // Reduce 후 이동한 상태(GOTO) 확인
+        TSStateId goto_state = ts_stack_state(self->stack, reduction_version);
+        
+        TSLoggedAction v_reduce_log = (TSLoggedAction) {
+            .type = TSParseActionTypeReduce,
+            .symbol = action.symbol,       // 축약된 심볼 (예: Expr)
+            .child_count = action.count,   // 자식 개수
+            .current_state = state_before_reduce, // 시작점
+            .next_state = goto_state,      // 도착점 (Parent)
+            .is_virtual = true             // 에러 복구 중 발생했으므로 가상 취급
+        };
+        array_push(&self->logged_actions, v_reduce_log);
+      }
     }
 
     if (has_shift_action) {
@@ -1522,6 +1519,7 @@ static void ts_parser__handle_error(
   // ========================================================================
   uint32_t previous_version_count = ts_stack_version_count(self->stack);
 
+  // 일단 Reduce 시도
   // Perform any reductions that can happen in this state, regardless of the lookahead. After
   // skipping one or more invalid tokens, the parser might find a token that would have allowed
   // a reduction to take place.
@@ -1571,7 +1569,23 @@ static void ts_parser__handle_error(
             missing_tree, false,
             state_after_missing_symbol
           );
-
+          // ===================[ 추가 로그: Virtual Shift ]===================
+          // 가짜 토큰(Missing Node)을 통해 이동한 상태(Virtual Shift)를 기록합니다.
+          // 이 로그가 있어야 'ClosestState' 함수가 51 -> 240 연결 고리를 찾습니다.
+          {
+              TSLoggedAction virtual_shift_log = (TSLoggedAction) {
+                  .type = TSParseActionTypeShift, // Shift로 위장해야 로직이 따라갑니다.
+                  .start_point = position.extent, // 가짜 토큰의 위치
+                  .current_state = state,         // 이전 상태 (예: 51)
+                  .next_state = state_after_missing_symbol, // 다음 상태 (예: 240)
+                  .symbol = missing_symbol,       // 가짜 토큰 심볼
+                  .lexeme = "virtual",
+                  .extra = false,
+                  .is_virtual = true              // 가짜임을 표시
+              };
+              array_push(&self->logged_actions, virtual_shift_log);
+          }
+          // =======================================================================
           if (ts_parser__do_all_potential_reductions(
             self, version_with_missing_tree,
             ts_subtree_leaf_symbol(lookahead)
@@ -1722,7 +1736,6 @@ static bool ts_parser__advance(
           // TSParseActionArray parse_action shift 요소 추가
           array_push(&self->parse_actions, action);
 
-          /*************** Log *************** */
           TSSymbol tok_sym = ts_subtree_leaf_symbol(lookahead);
 
           uint32_t start_byte = self->lexer.token_start_position.bytes;
@@ -1749,7 +1762,7 @@ static bool ts_parser__advance(
               }
           }
          
-          // 사람이 읽는 로그에도 남김
+          /*************** Log *************** */
           TSLoggedAction la_shift = (TSLoggedAction) {
             .type = TSParseActionTypeShift,
             .symbol = tok_sym,
@@ -1759,8 +1772,8 @@ static bool ts_parser__advance(
             .extra = action.shift.extra,
             .repetition = action.shift.repetition,
             .start_point = self->lexer.token_start_position.extent,
-            .lexeme = lexeme_copy
-            // .ParseAction = action
+            .lexeme = lexeme_copy,
+            .is_virtual = false
           };
           array_push(&self->logged_actions, la_shift);
           /*************** Log *************** */
@@ -1803,8 +1816,8 @@ static bool ts_parser__advance(
             .next_state = goto_state,
             .current_state = state,
             .extra = false,
-            .repetition = false
-            // .ParseAction = action
+            .repetition = false,
+            .is_virtual = false
           };
           array_push(&self->logged_actions, la_red);
           /*************** Log *************** */
@@ -1831,8 +1844,8 @@ static bool ts_parser__advance(
             .next_state = 0,
             .current_state = state,
             .extra = false,
-            .repetition = false
-            // .ParseAction = action
+            .repetition = false,
+            .is_virtual = false
           };
           array_push(&self->logged_actions, la_acc);
           /*************** Log *************** */
@@ -1941,6 +1954,7 @@ static bool ts_parser__advance(
   }
 }
 
+// 에러 수리
 static unsigned ts_parser__condense_stack(TSParser *self) {
   bool made_changes = false;
   unsigned min_error_cost = UINT_MAX;
@@ -2020,6 +2034,7 @@ static unsigned ts_parser__condense_stack(TSParser *self) {
           LOG("resume version:%u", i);
           min_error_cost = ts_stack_error_cost(self->stack, i);
           Subtree lookahead = ts_stack_resume(self->stack, i);
+          // 수리 방법
           ts_parser__handle_error(self, i, lookahead);
           has_unpaused_version = true;
         } else {
@@ -2399,6 +2414,258 @@ TSStateId TsParserFindClosestRecoverState(
     return ClosestStateId;
 }
 
+// [디버깅용] TsParserFindClosestState
+// TSStateId TsParserFindClosestState(
+//   TSParser *Self,
+//   uint32_t TargetRow,
+//   uint32_t TargetCol,
+//   TSLoggedAction* OutLog
+// ) {
+//     TSStateId BestStateId = 0; 
+//     uint32_t MaxRow = 0;
+//     uint32_t MaxCol = 0;
+//     bool FoundAny = false;
+//     bool IsTrackingReductions = false;
+
+//     printf("\n=== [DEBUG START] Target: (%u, %u) ===\n", TargetRow, TargetCol);
+
+//     for (uint32_t I = 0; I < Self->logged_actions.size; ++I)
+//     {
+//         TSLoggedAction CurrentAction = Self->logged_actions.contents[I];
+
+//         if (CurrentAction.type == TSParseActionTypeShift || 
+//             CurrentAction.type == TSParseActionTypeRecover)
+//         {
+//             uint32_t ActionRow = CurrentAction.start_point.row + 1;
+//             uint32_t ActionCol = CurrentAction.start_point.column + 1;
+
+//             // 디버깅 정보 출력
+//             if (CurrentAction.is_virtual) {
+//                 printf("[CHECK V-SHIFT] Index:%u | Loc:(%u, %u) | State: %u->%u\n", 
+//                        I, ActionRow, ActionCol, CurrentAction.current_state, CurrentAction.next_state);
+//             }
+
+//             // 1. 필터링 조건 확인
+//             bool IsPastOrCurrent = (ActionRow < TargetRow) || 
+//                                    (ActionRow == TargetRow && ActionCol <= TargetCol) ||
+//                                    CurrentAction.is_virtual;
+
+//             if (IsPastOrCurrent)
+//             {
+//                 // 2. 갱신 조건 확인
+//                 // bool IsLaterThanBest = (ActionRow > MaxRow) || 
+//                 //                        (ActionRow == MaxRow && ActionCol >= MaxCol);
+//                 // [수정 후] 가짜 토큰(VIP)이라면, 위치가 조금 뒤쳐져도 무조건 갱신(Update) 허용!
+//                 bool IsLaterThanBest = (ActionRow > MaxRow) || 
+//                                        (ActionRow == MaxRow && ActionCol >= MaxCol) ||
+//                                        CurrentAction.is_virtual;
+
+//                 // 여기서 왜 갱신이 안되는지 확인!
+//                 if (CurrentAction.is_virtual) {
+//                      printf("  -> IsPastOrCurrent: PASS\n");
+//                      printf("  -> Max was: (%u, %u)\n", MaxRow, MaxCol);
+//                      printf("  -> IsLaterThanBest: %s\n", IsLaterThanBest ? "TRUE" : "FALSE (Why?)");
+//                 }
+
+//                 if (!FoundAny || IsLaterThanBest)
+//                 {
+//                     MaxRow = ActionRow;
+//                     MaxCol = ActionCol;
+//                     *OutLog = CurrentAction;
+//                     FoundAny = true;
+
+//                     if (CurrentAction.is_virtual) {
+//                         BestStateId = CurrentAction.current_state; 
+//                         printf("  -> UPDATE! BestStateId set to: %u (Virtual)\n", BestStateId);
+//                         IsTrackingReductions = false; 
+//                     } 
+//                     else if (CurrentAction.type == TSParseActionTypeRecover) {
+//                         BestStateId = CurrentAction.next_state;
+//                         printf("  -> UPDATE! BestStateId set to: %u (Recover)\n", BestStateId);
+//                         IsTrackingReductions = true;
+//                     } 
+//                     else {
+//                         BestStateId = CurrentAction.next_state;    
+//                         // printf("  -> UPDATE! BestStateId set to: %u (Real)\n", BestStateId); // 너무 많이 뜨면 주석
+//                         IsTrackingReductions = false;
+//                     }
+//                 }
+//             } else {
+//                  if (CurrentAction.is_virtual) printf("  -> IsPastOrCurrent: FAIL (This shouldn't happen!)\n");
+//             }
+//         }
+//         else if (CurrentAction.type == TSParseActionTypeReduce)
+//         {
+//              // Reduce 추적 로그 (필요시 주석 해제)
+//              // if (IsTrackingReductions && CurrentAction.current_state == BestStateId) {
+//              //    printf("[REDUCE TRACK] %u -> %u\n", CurrentAction.current_state, CurrentAction.next_state);
+//              //    BestStateId = CurrentAction.next_state;
+//              // }
+//         }
+//     }
+    
+//     printf("=== [DEBUG END] Final BestStateId: %u ===\n\n", BestStateId);
+//     return BestStateId;
+// }
+
+/**
+ * @brief 커서 위치의 현재 상태 ID 반환
+ */
+TSStateId TsParserFindClosestState(
+  TSParser *Self,
+  uint32_t TargetRow, // 1-based (커서 행)
+  uint32_t TargetCol, // 1-based (커서 열)
+  TSLoggedAction* OutLog
+) {
+    // [초기화]
+    TSStateId ShiftStateId = 0; 
+
+    // [추적 변수] 지금까지 찾은 것 중 제일 늦은 위치
+    uint32_t MaxRow = 0;
+    uint32_t MaxCol = 0;
+    bool FoundAny = false;
+
+    // [탐색] 모든 액션 순회
+    for (uint32_t I = 0; I < Self->logged_actions.size; ++I)
+    {
+        TSLoggedAction CurrentAction = Self->logged_actions.contents[I];
+
+        // =========================================================
+        // [Case 1] Shift
+        // =========================================================
+        if (CurrentAction.type == TSParseActionTypeShift) 
+        {
+            if (CurrentAction.is_virtual) continue;
+            
+            // Tree-sitter 내부(0-based) -> VS Code 기준(1-based) 변환
+            uint32_t ActionRow = CurrentAction.start_point.row + 1;
+            uint32_t ActionCol = CurrentAction.start_point.column + 1;
+
+            // [필터링] "과거~현재" 범위 체크
+            // 커서보다 미래에 있는 토큰은 아무리 가까워도 무시
+            bool IsPastOrCurrent = (ActionRow < TargetRow) || 
+                                   (ActionRow == TargetRow && ActionCol <= TargetCol);
+
+            if (IsPastOrCurrent)
+            {
+                // [갱신] 최신 상태 찾기 (MaxRow/MaxCol 갱신)
+                // 현재 찾은 것이 지금까지 찾은 것보다 더 뒤(커서에 더 가까움)에 있다면 갱신
+                bool IsLaterThanBest = (ActionRow > MaxRow) || 
+                                       (ActionRow == MaxRow && ActionCol >= MaxCol);
+
+                if (!FoundAny || IsLaterThanBest)
+                {
+                    MaxRow = ActionRow;
+                    MaxCol = ActionCol;
+                    
+                    ShiftStateId = CurrentAction.next_state;
+
+                    if (OutLog) *OutLog = CurrentAction;
+                    FoundAny = true;
+                    
+                }
+            }
+        }
+    }
+    return ShiftStateId;  
+}
+
+
+/**
+ * @brief 커서 위치와 관련된 상태 경로(집합)를 구조체로 반환
+ */
+TSStatePath TsParserFindStatePath(
+  TSParser *Self,
+  uint32_t TargetRow, // 0-based
+  uint32_t TargetCol  // 0-based
+) {
+    // 1. 리턴할 구조체 초기화
+    TSStatePath Result;
+    Result.count = 0; 
+
+    // 2. Shift 탐색
+    int32_t BestIndex = -1;   // Shift를 찾은 인덱스
+    uint32_t MaxRow = 0;
+    uint32_t MaxCol = 0;
+    TSStateId CurrentTipState = 0;    // Reduce 추적 시 연결고리 상태
+
+    // [탐색] 모든 액션 순회
+    for (uint32_t I = 0; I < Self->logged_actions.size; ++I)
+    {
+        TSLoggedAction CurrentAction = Self->logged_actions.contents[I];
+
+        // =========================================================
+        // [Case 1] Shift
+        // =========================================================
+        if (CurrentAction.type == TSParseActionTypeShift) 
+        {
+            if (CurrentAction.is_virtual) continue;
+            
+            uint32_t ActionRow = CurrentAction.start_point.row ;
+            uint32_t ActionCol = CurrentAction.start_point.column;
+
+            // [필터링] "과거~현재" 범위 체크
+            // 커서보다 미래에 있는 토큰은 아무리 가까워도 무시
+            bool IsPastOrCurrent = (ActionRow < TargetRow) || 
+                                   (ActionRow == TargetRow && ActionCol <= TargetCol);
+
+            if (IsPastOrCurrent)
+            {
+                // [갱신] 최신 상태 찾기 (MaxRow/MaxCol 갱신)
+                // 현재 찾은 것이 지금까지 찾은 것보다 더 뒤(커서에 더 가까움)에 있다면 갱신
+                bool IsLaterThanBest = (ActionRow > MaxRow) || 
+                                       (ActionRow == MaxRow && ActionCol >= MaxCol);
+
+                if (BestIndex == -1 || IsLaterThanBest)
+                {
+                    MaxRow = ActionRow;
+                    MaxCol = ActionCol;
+                    
+                    BestIndex = I;    // 여기서부터 Reduce 추적 시작
+                    CurrentTipState = CurrentAction.next_state;
+                }
+            }
+        }
+    }
+    
+    // Shift를 하나도 못 찾은 경우
+    if (BestIndex == -1) return Result;
+
+    // 3. Reduce 추적
+    Result.states[Result.count++] = CurrentTipState;  // 경로 초기화
+
+    for (uint32_t J = BestIndex + 1; J < Self->logged_actions.size; ++J)
+    {
+        TSLoggedAction NextAction = Self->logged_actions.contents[J];
+
+        // 다른 Shift 나오면 추적 종료
+        if (NextAction.type == TSParseActionTypeShift) {
+          break;
+        }
+
+        if (NextAction.type == TSParseActionTypeReduce) {
+
+          // 지금 내 끝 상태(CurrentTip)에서 시작하는 Reduce 인지?
+          if (NextAction.current_state == CurrentTipState)
+          {
+            CurrentTipState = NextAction.next_state;  // 끝 상태 업데이트
+
+            if (Result.count < 64) {
+              Result.states[Result.count++] = CurrentTipState;
+            } 
+          }
+          else {
+            break;
+          }
+        }
+
+        if (NextAction.type == TSParseActionTypeRecover) {
+        }
+    }
+    // 4. 리턴
+    return Result;
+}
+
 TSTree *ts_parser_parse(
   TSParser *self,
   const TSTree *old_tree,
@@ -2547,12 +2814,17 @@ if (ActionFile)
                 if (!SymbolName) { SymbolName = "UNKNOWN_SYM"; }
                 if (!lexeme) { lexeme = "UNKNOWN"; }
 
+                // 가짜(Virtual) Shift 여부 표시
+                // 출력 시 [SHIFT] 대신 [V-SHIFT] 등을 사용하여 구분
+                const char* ActionLabel = CurrentAction.is_virtual ? "[V-SHIFT]" : "[SHIFT]";
+
                 bool bIsSame = (strcmp(SymbolName, lexeme) == 0);
                 if (bIsSame)
                 {
                   // 1. 같으면: Lexeme 생략하고 출력
                   // 출력 예: [SHIFT] State: 0 -> 5, symbol: if (25)
-                  fprintf(ActionFile, "[SHIFT] State: %u -> %u, symbol: %s (%u)\n",
+                  fprintf(ActionFile, "%s State: %u -> %u, symbol: %s (%u)\n",
+                        ActionLabel,
                         CurrentAction.current_state,
                         CurrentAction.next_state,
                         SymbolName,
@@ -2568,7 +2840,8 @@ if (ActionFile)
                 else
                 {
                   // 출력 예: [SHIFT] State: 5 -> 12, symbol: identifier (26, myVar)
-                  fprintf(ActionFile, "[SHIFT] State %u -> %u, symbol: %s (%u, %s)\n",
+                  fprintf(ActionFile, "%s State %u -> %u, symbol: %s (%u, %s)\n",
+                        ActionLabel,
                         CurrentAction.current_state,
                         CurrentAction.next_state,
                         SymbolName,
@@ -2592,7 +2865,12 @@ if (ActionFile)
                 const char *SymbolName = ts_language_symbol_name(self->language, CurrentAction.symbol);
                 if (!SymbolName) { SymbolName = "UNKNOWN_SYMBOL"; }
 
-                fprintf(ActionFile, "[REDUCE] State %u -> GOTO %u, symbol: %s, child %u ",
+                // 가짜(Virtual) Reduce 여부 표시
+                // 출력 시 [REDUCE] 대신 [V-REDUCE] 등을 사용하여 구분
+                const char* ActionLabel = CurrentAction.is_virtual ? "[V-REDUCE]" : "[REDUCE]";
+                
+                fprintf(ActionFile, "%s State %u -> GOTO %u, symbol: %s, child %u",
+                      ActionLabel,
                       CurrentAction.current_state,
                       CurrentAction.next_state,
                       SymbolName,
@@ -2641,8 +2919,8 @@ if (ActionFile)
                 fprintf(ActionFile, "[Recover] State %u, symbol: %s, Row: %u, Column:%u\n",
                     CurrentAction.current_state,
                   SymbolName,
-                    CurrentAction.start_point.row,
-                    CurrentAction.start_point.column
+                    CurrentAction.start_point.row + 1,
+                    CurrentAction.start_point.column + 1
                 );
                 break;
             }
@@ -2855,24 +3133,14 @@ if (self->logged_actions.size > 0)
 
           // 찾고자 하는 후보 코드 컴플리션이 시작되어야 하는 파서 스테이트 
           // 커서 포지션의 파서 상태 StartState를 구함
-          // 
-          // logged_actions = ... shift to1 , reduce , reduce , shift to2 [CurrentPrintIndex] , ...
           TSStateId StartState = 0;
-          if (CurrentPrintIndex > 0) 
+          if (CurrentPrintIndex < self->logged_actions.size) 
           {
-              // SimStack에 쌓았던 범위만큼 반복문을 돌며 Shift 액션이면 state id 를 가져온다.
-              for (int l = CurrentPrintIndex - 1; l >= 0; --l) 
-              {
-                // Parse Action 이 쌓여있는 LoggedAction에서 parse state id 값을 가져온다.
-                TSLoggedAction PrevAction = self->logged_actions.contents[l];
-                if (!PrevAction.extra && (PrevAction.type == TSParseActionTypeShift)) 
-                {
-                    StartState = PrevAction.next_state;
-                    break;
-                }
-              }
+              // 현재 처리하려는 액션이 시작되기 직전의 상태(current_state)가 
+              // 바로 우리가 찾는 StartState
+              StartState = self->logged_actions.contents[CurrentPrintIndex].current_state;
           }
-              
+
           /* 2026-01-06 바뀐 부분 */
           Array(StackEntry) headerStack = array_new();
 
@@ -3074,44 +3342,86 @@ if (self->logged_actions.size > 0)
     //       i = next_shift_array_index - 1;
     //   }
     // }
-
     // 3-3. 상태 ID 추출 모드
     else
     {
-      // ========================[ 현재 커서에서 발생한 recover action 찾는 로직 ]========================
-
-      // TsParserFindClosestRecoverState 현재 커서에서 발생한 recover action의 parse state를 찾기 위한 메서드
-        // 커서 포지션의 앞에서 프로그램을 완성하지 않아 파서 에러가 발생하고 거기서도 parse recover이 발생할 수 있다.
-        // 그 recover는 통과를 하고 현재 커서 위치에서 발생한 parse error 를 찾아야 한다.
-
-        // Todo TSLoggedAction 이름 변경
-        TSLoggedAction TempLog;
-        TSStateId FoundState = TsParserFindClosestRecoverState(self, self->StopRow, self->StopColumn, &TempLog);
+        // ========================[ State Path Extraction ]========================
         
-        // 찾은 parse state를 임의로 파일에 저장
+        // [수정] 단일 상태 찾기 함수 대신, 경로(Path) 찾기 함수 사용
+        // self->StopRow, StopColumn은 addon.cc에서 이미 0-based로 변환되어 넘어온 값이라고 가정합니다.
+        TSStatePath FoundPath = TsParserFindStatePath(self, self->StopRow, self->StopColumn);
+
+        // 찾은 parse state path를 파일에 저장
         fprintf(OutputFile, "\n-------------------------------------------------------\n");
-        if (FoundState != 0) 
-        {
-            fprintf(OutputFile, "[결과] Parse State ID : %u\n", FoundState);
-            fprintf(OutputFile, "[결과] 에러 발생 지점 : (%u, %u)\n", TempLog.start_point.row + 1, TempLog.start_point.column + 1);
-
-            TSSymbol error_causing_symbol_id = TempLog.symbol;
-            // 해당 ID의 문자열 이름도 함께 출력해줍니다 (디버깅 편의성).
-            const char* error_symbol_name = ts_language_symbol_name(self->language, error_causing_symbol_id);
-            fprintf(OutputFile, "[결과] 오류를 유발한 토큰 ID : %u (%s)\n",
-                    error_causing_symbol_id,
-                    error_symbol_name ? error_symbol_name : "UNKNOWN");
         
+        if (FoundPath.count > 0) 
+        {
+            // 1. 찾은 상태 개수 출력
+            fprintf(OutputFile, "[결과] Found State Path (Count: %u)\n", FoundPath.count);
+            
+            // 2. 상태 배열 전체 출력 (예: [188, 65, 240])
+            fprintf(OutputFile, "[결과] Path: [ ");
+            for (uint32_t i = 0; i < FoundPath.count; i++) {
+                fprintf(OutputFile, "%u", FoundPath.states[i]);
+                if (i < FoundPath.count - 1) {
+                    fprintf(OutputFile, ", ");
+                }
+            }
+            fprintf(OutputFile, " ]\n");
+
+            // 3. (선택사항) 시작점(Anchor)과 끝점(Tip) 명시
+            fprintf(OutputFile, "[상세] Anchor(Shift): %u -> Tip(Top): %u\n", 
+                    FoundPath.states[0], 
+                    FoundPath.states[FoundPath.count - 1]);
         } 
         else 
         {
-            fprintf(OutputFile, "[결과] Recover action이 발생하지 않음\n");
+            fprintf(OutputFile, "[결과] 해당 위치에서 유효한 State(Shift)를 찾지 못함\n");
         }
         fprintf(OutputFile, "-------------------------------------------------------\n");
     }
+    
     // 파일 핸들 해제
     fclose(OutputFile);
 }
+    // // 3-3. 상태 ID 추출 모드
+    // else
+    // {
+    //   // ========================[ 현재 커서에서 발생한 recover action 찾는 로직 ]========================
+
+    //   // TsParserFindClosestRecoverState 현재 커서에서 발생한 recover action의 parse state를 찾기 위한 메서드
+    //     // 커서 포지션의 앞에서 프로그램을 완성하지 않아 파서 에러가 발생하고 거기서도 parse recover이 발생할 수 있다.
+    //     // 그 recover는 통과를 하고 현재 커서 위치에서 발생한 parse error 를 찾아야 한다.
+
+    //     // Todo TSLoggedAction 이름 변경
+    //     TSLoggedAction TempLog;
+    //     // TSStateId FoundState = TsParserFindClosestRecoverState(self, self->StopRow, self->StopColumn, &TempLog);
+    //     TSStateId FoundState = TsParserFindClosestState(self, self->StopRow, self->StopColumn, &TempLog);
+
+    //     // 찾은 parse state를 임의로 파일에 저장
+    //     fprintf(OutputFile, "\n-------------------------------------------------------\n");
+    //     if (FoundState != 0) 
+    //     {
+    //         fprintf(OutputFile, "[결과] Parse State ID : %u\n", FoundState);
+    //         fprintf(OutputFile, "[결과] 에러 발생 지점 : (%u, %u)\n", TempLog.start_point.row + 1, TempLog.start_point.column + 1);
+
+    //         TSSymbol error_causing_symbol_id = TempLog.symbol;
+    //         // 해당 ID의 문자열 이름도 함께 출력해줍니다 (디버깅 편의성).
+    //         const char* error_symbol_name = ts_language_symbol_name(self->language, error_causing_symbol_id);
+    //         fprintf(OutputFile, "[결과] 오류를 유발한 토큰 ID : %u (%s)\n",
+    //                 error_causing_symbol_id,
+    //                 error_symbol_name ? error_symbol_name : "UNKNOWN");
+        
+    //     } 
+    //     else 
+    //     {
+    //         fprintf(OutputFile, "[결과] Recover action이 발생하지 않음\n");
+    //     }
+    //     fprintf(OutputFile, "-------------------------------------------------------\n");
+    // }
+    // 파일 핸들 해제
+//     fclose(OutputFile);
+// }
   result = ts_tree_new(
     self->finished_tree,
     self->language,
