@@ -33,6 +33,73 @@ pub fn minimize_parse_table(
     minimizer.remove_unit_reductions();
     minimizer.remove_unused_states();
     minimizer.reorder_states_by_descending_size();
+    // =========================================================================
+    // [CUSTOM LOGIC] Step 2: Merge Core Items into Final State Dump
+    // =========================================================================
+    {
+        use std::fs::{self, File};
+        use std::io::Write;
+        use std::collections::HashMap;
+
+        println!("[Custom] Merging 'LR_Items_By_Core.txt' into final 'LR_Items_Dump.txt'...");
+
+        // 1. Step 1에서 만든 Core 파일 읽기
+        // (만약 파일이 없으면 빌드 순서 문제이므로 무시하거나 에러 처리)
+        if let Ok(content) = fs::read_to_string("LR_Items_By_Core.txt") {
+            
+            // 2. 텍스트를 파싱해서 메모리에 맵으로 저장 (Core ID -> Item Text)
+            let mut core_map: HashMap<usize, String> = HashMap::new();
+            let mut current_core_id = None;
+            let mut buffer = String::new();
+
+            for line in content.lines() {
+                // "Core 42:" 같은 헤더를 찾음
+                if line.starts_with("Core ") && line.ends_with(":") {
+                    // 이전 Core 저장
+                    if let Some(id) = current_core_id {
+                        core_map.insert(id, buffer.clone());
+                    }
+                    
+                    // 새로운 Core ID 파싱
+                    let id_str = line.trim_start_matches("Core ").trim_end_matches(":");
+                    if let Ok(id) = id_str.parse::<usize>() {
+                        current_core_id = Some(id);
+                        buffer.clear();
+                    }
+                } else {
+                    // 내용물 누적
+                    buffer.push_str(line);
+                    buffer.push('\n');
+                }
+            }
+            // 마지막 항목 저장
+            if let Some(id) = current_core_id {
+                core_map.insert(id, buffer);
+            }
+
+            // 3. 최종 파일 생성 (State ID 순서대로 Core 내용 가져와서 쓰기)
+            let mut file = File::create("LR_Items_Dump.txt").expect("Failed to create final dump file");
+            writeln!(file, "=== Tree-sitter Final LR Items (State ID -> Core Items) ===\n").unwrap();
+
+            // minimizer.parse_table.states의 인덱스가 곧 최종 State ID입니다.
+            for (final_state_id, state) in minimizer.parse_table.states.iter().enumerate() {
+                writeln!(file, "State {}:", final_state_id).unwrap();
+
+                // 이 상태가 사용하는 Core ID에 해당하는 텍스트를 가져와서 붙여넣기
+                if let Some(items_text) = core_map.get(&state.core_id) {
+                    // items_text는 이미 줄바꿈이 포함되어 있음
+                    write!(file, "{}", items_text).unwrap();
+                } else {
+                    writeln!(file, "  (No items found for Core {})", state.core_id).unwrap();
+                }
+            }
+
+            println!("[Custom] Merge Complete. 'LR_Items_Dump.txt' is ready.");
+
+        } else {
+            println!("[Custom] Could not find 'LR_Items_By_Core.txt'. Skipping merge.");
+        }
+    }
 }
 
 struct Minimizer<'a> {

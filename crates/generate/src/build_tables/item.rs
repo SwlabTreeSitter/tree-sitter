@@ -29,6 +29,7 @@ static START_PRODUCTION: LazyLock<Production> = LazyLock::new(|| Production {
 });
 
 /// A [`ParseItem`] represents an in-progress match of a single production in a grammar.
+/// ParseItem (가장 작은 단위: 점이 찍힌 규칙)
 #[derive(Clone, Copy, Debug)]
 pub struct ParseItem<'a> {
     /// The index of the parent rule within the grammar.
@@ -57,11 +58,13 @@ pub struct ParseItem<'a> {
 /// grammar, and for each in-progress match, a set of "lookaheads" - tokens that
 /// are allowed to *follow* the in-progress rule. This object corresponds directly
 /// to a state in the final parse table.
+/// ParseItemSet (하나의 상태: State)
 #[derive(Clone, Debug, PartialEq, Eq, Default)]
 pub struct ParseItemSet<'a> {
     pub entries: Vec<ParseItemSetEntry<'a>>,
 }
 
+/// ParseItemSetEntry (아이템 + 예측 정보)
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct ParseItemSetEntry<'a> {
     pub item: ParseItem<'a>,
@@ -184,6 +187,7 @@ impl<'a> ParseItemSet<'a> {
     }
 }
 
+/// "Stmt -> For • ID" 처럼 예쁘게 출력
 impl fmt::Display for ParseItemDisplay<'_> {
     fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
         if self.0.is_augmented() {

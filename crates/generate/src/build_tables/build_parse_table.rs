@@ -50,6 +50,7 @@ struct ParseStateQueueEntry {
     preceding_auxiliary_symbols: AuxiliarySymbolSequence,
 }
 
+// LR 파싱 테이블을 만드는 모든 상태(State)와 문맥을 관리
 struct ParseTableBuilder<'a> {
     item_set_builder: ParseItemSetBuilder<'a>,
     syntax_grammar: &'a SyntaxGrammar,
@@ -57,7 +58,11 @@ struct ParseTableBuilder<'a> {
     variable_info: &'a [VariableInfo],
     core_ids_by_core: HashMap<ParseItemSetCore<'a>, usize>,
     state_ids_by_item_set: IndexMap<ParseItemSet<'a>, ParseStateId, BuildHasherDefault<FxHasher>>,
+    // 상태 ID와 그 상태의 상세 정보(LR Items)를 매핑해둔 저장소
     parse_state_info_by_id: Vec<ParseStateInfo<'a>>,
+            // ParseStateInfo<'a>
+            // 어떤 상태(State ID)가 어떤 경로(SymbolSequence)를 통해 도달했는지,
+            // 그 상태가 가진 문법 규칙들(ParseItemSet)이 무엇인지 쌍으로 저장
     parse_state_queue: VecDeque<ParseStateQueueEntry>,
     non_terminal_extra_states: Vec<(Symbol, usize)>,
     actual_conflicts: HashSet<Vec<Symbol>>,
@@ -351,7 +356,58 @@ impl<'a> ParseTableBuilder<'a> {
                 );
             }
         }
+        // =========================================================================
+        // [CUSTOM LOGIC] Step 1: Dump Items by Core ID (with Lookahead)
+        // =========================================================================
+        {
+            use std::fs::File;
+            use std::io::Write;
+            use std::collections::HashSet;
+            // TokenSetDisplay 필수
+            use super::item::{ParseItemDisplay, TokenSetDisplay};
 
+            println!("[Custom] Dumping Core Items to 'LR_Items_By_Core.txt'...");
+
+            let mut file = File::create("LR_Items_By_Core.txt").expect("Failed to create file");
+            writeln!(file, "=== Tree-sitter Core Items (Key: Core ID) ===\n").unwrap();
+            
+            let mut dumped_cores = HashSet::new();
+
+            for (state_id, (_path, item_set)) in self.parse_state_info_by_id.iter().enumerate() {
+                let core_id = self.parse_table.states[state_id].core_id;
+
+                if dumped_cores.contains(&core_id) {
+                    continue;
+                }
+                dumped_cores.insert(core_id);
+
+                writeln!(file, "Core {}:", core_id).unwrap();
+
+                // 1. 클로저 확장
+                let closure_set = self.item_set_builder.transitive_closure(item_set);
+
+                for entry in &closure_set.entries {
+                    // 2. Item 포맷팅
+                    let item_fmt = ParseItemDisplay(
+                        &entry.item, 
+                        self.syntax_grammar, 
+                        self.lexical_grammar
+                    );
+                    
+                    // 3. [복구] Lookahead 포맷팅
+                    let lookahead_fmt = TokenSetDisplay(
+                        &entry.lookaheads, 
+                        self.syntax_grammar, 
+                        self.lexical_grammar
+                    );
+
+                    // 4. 파일에 기록 (Lookahead 포함)
+                    writeln!(file, "  {}  [Lookahead: {}]", item_fmt, lookahead_fmt).unwrap();
+                }
+                writeln!(file, "").unwrap();
+            }
+            println!("[Custom] Step 1 Complete.");
+        }
         Ok((self.parse_table, self.parse_state_info_by_id))
     }
 
