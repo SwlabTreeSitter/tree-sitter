@@ -34,6 +34,7 @@ extern "C" {
  */
 #define TREE_SITTER_MIN_COMPATIBLE_LANGUAGE_VERSION 13
 
+#define MAX_PATH_SIZE 64
 /*******************/
 /* Section - Types */
 /*******************/
@@ -185,40 +186,37 @@ typedef struct TSQueryCursorOptions {
   bool (*progress_callback)(TSQueryCursorState *state);
 } TSQueryCursorOptions;
 
-// typedef enum {
-//   TSParseActionTypeShift,
-//   TSParseActionTypeReduce,
-//   TSParseActionTypeAccept,
-//   TSParseActionTypeRecover,
-// } TSParseActionType;
+typedef enum {
+  TSParseActionTypeShift,
+  TSParseActionTypeReduce,
+  TSParseActionTypeAccept,
+  TSParseActionTypeRecover,
+} TSParseActionType;
 
-// // 파싱 중 발생한 하나의 액션을 기록
-// typedef struct {
-//   TSParseActionType type;   // 액션의 종류 (SHIFT, REDUCE, RECOVER, ACCEPT)
+// 파싱 중 발생한 하나의 액션을 기록
+typedef struct {
+  TSParseActionType type;   // 액션의 종류 (SHIFT, REDUCE, RECOVER, ACCEPT)
 
-//   TSStateId current_state;  // 해당 액션을 수행하기 직전의 파서 상태 ID
-//   TSStateId next_state;     // 액션 수행 후 이동한 파서 상태 ID (GOTO)
+  TSStateId current_state;  // 해당 액션을 수행하기 직전의 파서 상태 ID
+  TSStateId next_state;     // 액션 수행 후 이동한 파서 상태 ID (GOTO)
 
-//   TSSymbol symbol;          // Shift인 경우 : 읽어들인 토큰의 심볼 번호
-//                             // Reduce인 경우 : 축약되는 심볼 (규칙의 LHS) 번호
+  TSSymbol symbol;          // Shift인 경우 : 읽어들인 토큰의 심볼 번호
+                            // Reduce인 경우 : 축약되는 심볼 (규칙의 LHS) 번호
 
-//   char *lexeme;             // (Shift 전용) 소스 코드에 적혀 있던 실제 문자열
-//   uint32_t child_count;     // (Reduce 전용) 축약될 때 스택에서 몇 개를 꺼냈는지
-//   bool is_virtual;          // (V-Shift 전용) Recover로 인한 가짜 토큰 여부 플래그
+  char *lexeme;             // (Shift 전용) 소스 코드에 적혀 있던 실제 문자열
+  uint32_t child_count;     // (Reduce 전용) 축약될 때 스택에서 몇 개를 꺼냈는지
+  bool is_virtual;          // (V-Shift 전용) Recover로 인한 가짜 토큰 여부 플래그
 
-//   bool extra;               // Parse Action 규칙 참조
-//   bool repetition;          // Parse Action 규칙 참조
-//   TSPoint start_point;
-// } TSLoggedAction;
+  bool extra;               // Parse Action 규칙 참조
+  bool repetition;          // Parse Action 규칙 참조
+  TSPoint start_point;
+} TSLoggedAction;
 
 // 컨버전 리턴값
-#define MAX_PATH_SIZE 64
 typedef struct {
   TSStateId states[MAX_PATH_SIZE];  // 찾은 상태들 담을 배열
   uint32_t count;
 } TSStatePath;
-
-bool ts_parser_has_recovery(const TSParser *self);
 
 /**
  * The metadata associated with a language.

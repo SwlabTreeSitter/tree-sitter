@@ -68,16 +68,7 @@ struct Stack {
   StackNodeArray node_pool;
   StackNode *base_node;
   SubtreePool *subtree_pool;
-
-  // [new]
-  // TSStackLogger logger;
-  // void *logger_payload;
 };
-
-// void ts_stack_set_logger(Stack *self, TSStackLogger logger, void *payload) {
-//   self->logger = logger;
-//   self->logger_payload = payload;
-// }
 
 typedef unsigned StackAction;
 enum {
@@ -307,14 +298,7 @@ static StackVersion ts_stack__add_version(
   array_push(&self->heads, head);
   stack_node_retain(node);
   if (head.last_external_token.ptr) ts_subtree_retain(head.last_external_token);
-  StackVersion new_version = (StackVersion)(self->heads.size - 1);
-  // ----------------------------------------------------------------
-  // if (self->logger) {
-  //   TSVersionEvent event = {.type = TSSTackEventTypeAdd,.v_from = original_version,.v_to = new_version};
-  //   self->logger(self->logger_payload, TSLogEntryTypeVersion, event);
-  // }
-  // ----------------------------------------------------------------
-  return new_version;
+  return (StackVersion)(self->heads.size - 1);
 }
 
 static void ts_stack__add_slice(
@@ -344,17 +328,14 @@ static StackSliceArray stack__iter(
   void *payload,
   int goal_subtree_count
 ) {
-  // 초기화
-  array_clear(&self->slices);     // 결과 담을 배열
-  array_clear(&self->iterators);  // 스택 탐색용 iterator 목록
+  array_clear(&self->slices);
+  array_clear(&self->iterators);
 
-  // 현재 스택의 꼭대기
   StackHead *head = array_get(&self->heads, version);
-  // 첫 번째 iterator 생성
   StackIterator new_iterator = {
-    .node = head->node,       // 시작점: 현재 헤드
-    .subtrees = array_new(),  // 수집 결과: 비어있음
-    .subtree_count = 0,       // 모은 개수: 0개
+    .node = head->node,
+    .subtrees = array_new(),
+    .subtree_count = 0,
     .is_pending = true,
   };
 
@@ -364,7 +345,6 @@ static StackSliceArray stack__iter(
     array_reserve(&new_iterator.subtrees, (uint32_t)ts_subtree_alloc_size(goal_subtree_count) / sizeof(Subtree));
   }
 
-  // iterator를 목록에 추가
   array_push(&self->iterators, new_iterator);
 
   while (self->iterators.size > 0) {
@@ -399,16 +379,13 @@ static StackSliceArray stack__iter(
         continue;
       }
 
-      // 현재 노드에 연결된 부모(링크)의 개수 만큼 반복
       for (uint32_t j = 1; j <= node->link_count; j++) {
         StackIterator *next_iterator;
         StackLink link;
-        // 외길인 경우
         if (j == node->link_count) {
           link = node->links[0];
           next_iterator = array_get(&self->iterators, i);
         } else {
-          // 갈림길인 경우 (Merge되었던 스택이 다시 Split)
           if (self->iterators.size >= MAX_ITERATOR_COUNT) continue;
           link = node->links[j];
           StackIterator current_iterator = *array_get(&self->iterators, i);
@@ -554,7 +531,6 @@ forceinline StackAction pop_count_callback(void *payload, const StackIterator *i
   }
 }
 
-// 현재 스택 버전에서 count 개수만큼 꺼냄
 StackSliceArray ts_stack_pop_count(Stack *self, StackVersion version, uint32_t count) {
   return stack__iter(self, version, pop_count_callback, &count, (int)count);
 }
@@ -694,23 +670,11 @@ bool ts_stack_has_advanced_since_error(const Stack *self, StackVersion version) 
 
 void ts_stack_remove_version(Stack *self, StackVersion version) {
   stack_head_delete(array_get(&self->heads, version), &self->node_pool, self->subtree_pool);
-  // ----------------------------------------------------------------
-  // if (self->logger) {
-  //   TSVersionEvent event = {.type = TSStackEventTypeRemove,.v_from = version,.v_to = STACK_VERSION_NONE};
-  //   self->logger(self->logger_payload, TSLogEntryTypeVersion, event);
-  // }
-  // ----------------------------------------------------------------
   array_erase(&self->heads, version);
 }
 
 void ts_stack_renumber_version(Stack *self, StackVersion v1, StackVersion v2) {
   if (v1 == v2) return;
-  // ----------------------------------------------------------------
-  // if (self->logger) {
-  //   TSVersionEvent event = {.type = TSStackEventTypeRenumber,.v_from = v1,.v_to = v2};
-  //   self->logger(self->logger_payload, TSLogEntryTypeVersion, event);
-  // }
-  // ----------------------------------------------------------------
   ts_assert(v2 < v1);
   ts_assert((uint32_t)v1 < self->heads.size);
   StackHead *source_head = array_get(&self->heads, v1);
@@ -725,12 +689,6 @@ void ts_stack_renumber_version(Stack *self, StackVersion v1, StackVersion v2) {
 }
 
 void ts_stack_swap_versions(Stack *self, StackVersion v1, StackVersion v2) {
-  // ----------------------------------------------------------------
-  // if (self->logger) {
-  //   TSVersionEvent event = {.type = TSStackEventTypeSwap,.v_from = v1,.v_to = v2};
-  //   self->logger(self->logger_payload, TSLogEntryTypeVersion, event);
-  // }
-  // ----------------------------------------------------------------
   StackHead temporary_head = *array_get(&self->heads, v1);
   *array_get(&self->heads, v1) = *array_get(&self->heads, v2);
   *array_get(&self->heads, v2) = temporary_head;
@@ -744,14 +702,7 @@ StackVersion ts_stack_copy_version(Stack *self, StackVersion version) {
   stack_node_retain(head->node);
   if (head->last_external_token.ptr) ts_subtree_retain(head->last_external_token);
   head->summary = NULL;
-  StackVersion new_version = self->heads.size - 1;
-  // ----------------------------------------------------------------
-  // if (self->logger) {
-  //   TSVersionEvent event = {.type = TSStackEventTypeCopy,.v_from = version,.v_to = new_version};
-  //   self->logger(self->logger_payload, TSLogEntryTypeVersion, event);
-  // }
-  // ----------------------------------------------------------------
-  return new_version;
+  return self->heads.size - 1;
 }
 
 bool ts_stack_merge(Stack *self, StackVersion version1, StackVersion version2) {
@@ -761,12 +712,6 @@ bool ts_stack_merge(Stack *self, StackVersion version1, StackVersion version2) {
   for (uint32_t i = 0; i < head2->node->link_count; i++) {
     stack_node_add_link(head1->node, head2->node->links[i], self->subtree_pool);
   }
-  // ----------------------------------------------------------------
-  // if (self->logger) {
-  //   TSVersionEvent event = {.type = TSStackEventTypeMerge,.v_from = version2,.v_to = version1};
-  //   self->logger(self->logger_payload, TSLogEntryTypeVersion, event);
-  // }
-  // ----------------------------------------------------------------
   if (head1->node->state == ERROR_STATE) {
     head1->node_count_at_last_error = head1->node->node_count;
   }
@@ -823,12 +768,6 @@ void ts_stack_clear(Stack *self) {
   for (uint32_t i = 0; i < self->heads.size; i++) {
     stack_head_delete(array_get(&self->heads, i), &self->node_pool, self->subtree_pool);
   }
-  // ----------------------------------------------------------------
-  // if (self->logger) {
-  //   TSVersionEvent event = {.type = TSStackEventTypeClear,.v_from = STACK_VERSION_NONE,.v_to = STACK_VERSION_NONE};
-  //   self->logger(self->logger_payload, TSLogEntryTypeVersion, event);
-  // }
-  // ----------------------------------------------------------------
   array_clear(&self->heads);
   array_push(&self->heads, ((StackHead) {
     .node = self->base_node,

@@ -58,12 +58,12 @@ struct TSLexer {
   void (*log)(const TSLexer *, const char *, ...);
 };
 
-typedef enum {
-  TSParseActionTypeShift,
-  TSParseActionTypeReduce,
-  TSParseActionTypeAccept,
-  TSParseActionTypeRecover,
-} TSParseActionType;
+// typedef enum {
+//   TSParseActionTypeShift,
+//   TSParseActionTypeReduce,
+//   TSParseActionTypeAccept,
+//   TSParseActionTypeRecover,
+// } TSParseActionType;
 
 typedef union {
   struct {
@@ -81,51 +81,6 @@ typedef union {
   } reduce;
   uint8_t type;
 } TSParseAction;
-
-// 파싱 중 발생한 하나의 액션을 기록
-typedef struct {
-  TSParseActionType type;   // 액션의 종류 (SHIFT, REDUCE, RECOVER, ACCEPT)
-  uint32_t version_id;
-  TSStateId current_state;  // 해당 액션을 수행하기 직전의 파서 상태 ID
-  TSStateId next_state;     // 액션 수행 후 이동한 파서 상태 ID (GOTO)
-  TSSymbol symbol;          // Shift인 경우 : 읽어들인 토큰의 심볼 번호
-                            // Reduce인 경우 : 축약되는 심볼 (규칙의 LHS) 번호
-
-  char *lexeme;             // (Shift 전용) 소스 코드에 적혀 있던 실제 문자열
-  uint32_t child_count;     // (Reduce 전용) 축약될 때 스택에서 몇 개를 꺼냈는지
-  bool is_virtual;          // (V-Shift 전용) Recover로 인한 가짜 토큰 여부 플래그
-  bool extra;               
-  TSPoint start_point;
-} TSLoggedAction;
-
-// typedef enum {
-//   TSSTackEventTypeAdd,
-//   TSStackEventTypeRemove,
-//   TSStackEventTypeRenumber,
-//   TSStackEventTypeSwap,
-//   TSStackEventTypeCopy,
-//   TSStackEventTypeMerge,
-//   TSStackEventTypeClear
-// } TSStackEventType;
-
-// typedef struct {
-//   TSStackEventType type;
-//   uint32_t v_from;
-//   uint32_t v_to;
-// } TSVersionEvent;
-
-// typedef enum {
-//   TSLogEntryTypeAction,
-//   TSLogEntryTypeVersion,
-// } TSLogEntryType;
-
-// typedef struct {
-//   TSLogEntryType entry_type;
-//   union {
-//     TSLoggedAction action;
-//     TSVersionEvent version;
-//   };
-// } TSLogEntry;
 
 typedef struct {
   uint16_t lex_state;
