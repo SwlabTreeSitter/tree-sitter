@@ -155,8 +155,8 @@ typedef struct {
 
 // The fundamental building block of a syntax tree.
 typedef union {
-  SubtreeInlineData data;
-  const SubtreeHeapData *ptr;
+  SubtreeInlineData data;       // 작은 데이터(Inline)
+  const SubtreeHeapData *ptr;   // 큰 데이터의 주소(Heap Ptr)
 } Subtree;
 
 // Like Subtree, but mutable.

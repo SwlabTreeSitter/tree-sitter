@@ -15,8 +15,8 @@ typedef unsigned StackVersion;
 #define STACK_VERSION_NONE ((StackVersion)-1)
 
 typedef struct {
-  SubtreeArray subtrees;
-  StackVersion version;
+  SubtreeArray subtrees;  // 내용물: 꺼내온 자식 노드들 (예: [1, +, 2])
+  StackVersion version;   // 출처: 이 경로의 버전 ID
 } StackSlice;
 typedef Array(StackSlice) StackSliceArray;
 
@@ -125,6 +125,11 @@ void ts_stack_remove_version(Stack *self, StackVersion version);
 void ts_stack_clear(Stack *self);
 
 bool ts_stack_print_dot_graph(Stack *self, const TSLanguage *language, FILE *f);
+
+// [new]
+// typedef void (*TSStackLogger)(void *payload, TSLogEntryType entry_type, TSVersionEvent event);
+
+// void ts_stack_set_logger(Stack *self, TSStackLogger logger, void *payload);
 
 #ifdef __cplusplus
 }

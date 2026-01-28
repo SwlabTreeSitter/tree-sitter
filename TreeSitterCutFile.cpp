@@ -196,6 +196,18 @@ int main(int argc, char* argv[]) {
         );
         std::cout << "DEBUG: Parsing finished." << std::endl;
 
+        // --- 복구 발생 여부 체크 ---
+        if (bIsCollectionMode && ts_parser_has_recovery(parser)) {
+            std::cout << "INFO: Recovery detected during collection. Exiting with code 10." << std::endl;
+            // 메모리 정리 후 즉시 종료
+            if (tree) ts_tree_delete(tree);
+            ts_parser_delete(parser);
+            if (library_handle) CLOSE_LIBRARY(library_handle);
+
+            // 핵심: Python 스크립트에게 '스킵하라'는 신호(10)를 보냄
+            return 10;
+        }
+        
         // --- 결과 출력 ---
         if (tree) {
             TSNode root_node = ts_tree_root_node(tree);
