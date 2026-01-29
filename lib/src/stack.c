@@ -328,14 +328,17 @@ static StackSliceArray stack__iter(
   void *payload,
   int goal_subtree_count
 ) {
-  array_clear(&self->slices);
-  array_clear(&self->iterators);
+  // 초기화
+  array_clear(&self->slices);     // 결과 담을 배열
+  array_clear(&self->iterators);  // 스택 탐색용 iterator 목록
 
+  // 현재 스택의 꼭대기
   StackHead *head = array_get(&self->heads, version);
+  // 첫 번째 iterator 생성
   StackIterator new_iterator = {
-    .node = head->node,
-    .subtrees = array_new(),
-    .subtree_count = 0,
+    .node = head->node,       // 시작점: 현재 헤드
+    .subtrees = array_new(),  // 수집 결과: 비어있음
+    .subtree_count = 0,       // 모은 개수: 0개
     .is_pending = true,
   };
 
@@ -345,6 +348,7 @@ static StackSliceArray stack__iter(
     array_reserve(&new_iterator.subtrees, (uint32_t)ts_subtree_alloc_size(goal_subtree_count) / sizeof(Subtree));
   }
 
+  // iterator를 목록에 추가
   array_push(&self->iterators, new_iterator);
 
   while (self->iterators.size > 0) {
@@ -379,13 +383,16 @@ static StackSliceArray stack__iter(
         continue;
       }
 
+      // 현재 노드에 연결된 부모(링크)의 개수 만큼 반복
       for (uint32_t j = 1; j <= node->link_count; j++) {
         StackIterator *next_iterator;
         StackLink link;
+        // 외길인 경우
         if (j == node->link_count) {
           link = node->links[0];
           next_iterator = array_get(&self->iterators, i);
         } else {
+          // 갈림길인 경우 (Merge되었던 스택이 다시 Split)
           if (self->iterators.size >= MAX_ITERATOR_COUNT) continue;
           link = node->links[j];
           StackIterator current_iterator = *array_get(&self->iterators, i);

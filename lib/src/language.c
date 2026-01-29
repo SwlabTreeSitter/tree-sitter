@@ -69,6 +69,7 @@ uint32_t ts_language_field_count(const TSLanguage *self) {
   return self->field_count;
 }
 
+// 토큰(Symbol)과 현재 상태(State)를 가지고 파싱 테이블을 조회하여 수행할 액션 목록을 반환
 void ts_language_table_entry(
   const TSLanguage *self,
   TSStateId state,
