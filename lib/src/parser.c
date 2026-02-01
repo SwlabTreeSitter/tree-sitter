@@ -2351,6 +2351,28 @@ void ts_parser_set_cursor_position(TSParser *self, TSPoint cursor_point) {
   }
 }
 
+// [new] 줄바꿈 인코딩
+static void print_escaped_string(FILE *file, const char *input) {
+  if (!input) {
+    fprintf(file, "(null)");
+    return;
+  }
+  for (const char *c = input; *c != '\0'; c++) {
+    // Windows 스타일 개행 (\r\n) 처리
+    if (*c == '\r' && *(c + 1) == '\n') {
+      fprintf(file, "\\r\\n");
+      c++; // 다음 글자(\n) 건너뜀
+    }
+    // Unix 스타일 개행 (\n)
+    else if (*c == '\n') {
+      fprintf(file, "\\n");
+    }
+    else {
+      fputc(*c, file);
+    }
+  }
+}
+
 // [new] 파싱 중에 수집된 모든 액션을 파일로 덤프하는 함수 (디버깅용)
 // note: 문법적 모호성 발생 시 다른 스택 버전도 포함됨
 void ts_parser_write_logged_actions(
@@ -2396,8 +2418,14 @@ void ts_parser_write_logged_actions(
         else {
           // 다르면: Lexeme 포함하여 출력
           // 출력 예: [SHIFT] State: 5 -> 12, symbol: identifier (26, myVar)
-          fprintf(ActionFile, "%s State %u -> %u, symbol: %s (%u, %s)\n",
-                    ActionLabel,Action->current_state,Action->next_state,SymbolName,SymbolNum,lexeme);
+          // fprintf(ActionFile, "%s State %u -> %u, symbol: %s (%u, %s)\n",
+          //           ActionLabel,Action->current_state,Action->next_state,SymbolName,SymbolNum,lexeme);
+          fprintf(ActionFile, "%s State %u -> %u, symbol: %s (%u, ",
+                    ActionLabel, Action->current_state, Action->next_state, SymbolName, SymbolNum);
+          // lexeme을 이스케이프 처리하여 출력
+          print_escaped_string(ActionFile, lexeme);
+          fprintf(ActionFile, ")\n");
+
           // 스택 저장용 문자열 생성 (이름(값) 형태)
           size_t StrLen = strlen(SymbolName) + strlen(lexeme) + 4; // '(',')', '\0', 여유분
           char *FormattedStr = (char *)ts_malloc(StrLen);
@@ -2426,7 +2454,10 @@ void ts_parser_write_logged_actions(
             if (StartIndex + k < DebugLogStack.size) {
               // 스택에 저장된 "Symbol(Lexeme)" 문자열을 꺼냄
               char *ChildStr = *array_get(&DebugLogStack, StartIndex + k);
-              fprintf(ActionFile, "'%s' ", ChildStr);
+              // fprintf(ActionFile, "'%s' ", ChildStr);
+              fprintf(ActionFile, "'");
+              print_escaped_string(ActionFile, ChildStr);
+              fprintf(ActionFile, "' ");
               // 사용한 자식 문자열 메모리 해제! (Pop 대신 여기서 해제)
               ts_free(ChildStr); 
             }
@@ -2819,9 +2850,11 @@ bool ts_parser_run_collection(
             if (!text) text = ts_language_symbol_name(self->language, act->symbol);
 
             // 포맷: "Row,Col: Text"
+            // fprintf(file, "  %u,%u: ", act->start_point.row + 1, act->start_point.column + 1);
+            // fprintf(file, "%s\n", text); 
             fprintf(file, "  %u,%u: ", act->start_point.row + 1, act->start_point.column + 1);
-            // print_escaped_string(OutputFile, text); 
-            fprintf(file, "%s\n", text); 
+            print_escaped_string(file, text);
+            fprintf(file, "\n");
         }
       }
       fprintf(file, "\n"); // 후보 간 구분선
