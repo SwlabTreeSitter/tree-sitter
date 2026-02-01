@@ -42,7 +42,7 @@ extern "C" {
     void ts_parser_write_conversion_result(TSParser *self, TSStatePath *path, FILE *fp);
 
     // 3. 컬렉션 로직 실행
-    void ts_parser_run_collection(TSParser *self, FILE *OutputFile);
+    bool ts_parser_run_collection(TSParser *self, FILE *OutputFile);
 
     // 4. 로그 덤프
     void ts_parser_write_logged_actions(TSParser *self, const char *filename);
@@ -255,10 +255,22 @@ int main(int argc, char* argv[]) {
             
             if (collection_fp) {
                 // 2. 열린 파일 포인터를 넘겨줍니다.
-                ts_parser_run_collection(parser, collection_fp);
+                bool is_success = ts_parser_run_collection(parser, collection_fp);
                 
                 // 3. 사용 후 닫습니다.
                 fclose(collection_fp);
+
+                if (!is_success) {
+                    // 1. SKIP 로그 출력 (Python 스크립트 등에서 캡처하기 좋게 태그를 답니다)
+                    std::cerr << "[SKIP] Recovery detected in file: " << file_path << std::endl;
+                    std::cout << "WARNING: Collection skipped due to parse errors." << std::endl;
+
+                    // 2. 오염된/빈 데이터 파일 삭제
+                    // 에러가 있는 파일의 데이터가 Test.data에 남지 않도록 지워버립니다.
+                    remove("Test.data");
+                } else {
+                    std::cout << "DEBUG: Collection completed successfully." << std::endl;
+                }
             } else {
                 std::cerr << "ERROR: Could not open Test.data for writing." << std::endl;
             }

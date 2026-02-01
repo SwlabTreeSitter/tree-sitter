@@ -64,7 +64,6 @@ def main():
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     print(f"[*] Found {len(data_files)} files.")
-    print(f"[*] Output dir: {OUTPUT_DIR}")
 
     success = 0
     for i, file_path in enumerate(data_files, 1):

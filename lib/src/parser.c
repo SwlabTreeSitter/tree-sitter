@@ -2704,11 +2704,20 @@ void ts_parser_write_conversion_result(
 }
 
 // [new] 컬렉션 구현체
-void ts_parser_run_collection(
+// [수정] 반환 타입을 bool로 변경 (성공: true, 복구 발생/실패: false)
+bool ts_parser_run_collection(
   TSParser *self,
   FILE *file
 ) {
   if (!self->logged_actions.contents || !file) return;
+
+  // 0. [Pre-scan] Recover 액션이 하나라도 있는지 먼저 확인
+  // 에러가 있는 파일은 학습 데이터로 사용하지 않도록 즉시 중단
+  for (uint32_t i = 0; i < self->logged_actions.size; ++i) {
+    if (self->logged_actions.contents[i].type == TSParseActionTypeRecover) {
+        return false; // Recover 감지 -> Skip 신호 반환
+    }
+  }
 
   // 시뮬레이션용 스택 엔트리 정의
   typedef struct {
@@ -2819,6 +2828,7 @@ void ts_parser_run_collection(
     }
     array_delete(&sim_stack);
   }
+  return true;
 }
 // void ts_parser_run_collection(TSParser *self, FILE *OutputFile) {
 //     // 1. 데이터 없음 or 파일 포인터 없음 -> 종료
