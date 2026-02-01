@@ -33,13 +33,26 @@
     // dlerror()는 null을 반환할 수 있으므로 안전하게 처리
     #define GET_ERROR_MSG() (dlerror() ? std::string(dlerror()) : std::string("Unknown error"))
 #endif
-// ==========================================================
+
+extern "C" {
+    // 1. 컨버전 로직 실행
+    TSStatePath ts_parser_run_conversion(TSParser *self);
+
+    // 2. 컨버전 결과 출력 (파일 or 화면)
+    void ts_parser_write_conversion_result(TSParser *self, TSStatePath *path, FILE *fp);
+
+    // 3. 컬렉션 로직 실행
+    void ts_parser_run_collection(TSParser *self, FILE *OutputFile);
+
+    // 4. 로그 덤프
+    void ts_parser_write_logged_actions(TSParser *self, const char *filename);
+}
 
 // TSLanguage*를 반환하는 함수 포인터 타입을 정의 (동적 로딩용)
 typedef TSLanguage *(*LanguageFunction)();
 
 
-// ==================[ 헬퍼 함수: 위치 -> 바이트 오프셋 ]=================
+// 헬퍼 함수: 위치 -> 바이트 오프셋
 size_t FindByteOffsetForPosition(const std::string& text, uint32_t target_row, uint32_t target_col) {
     size_t current_offset = 0;
     uint32_t current_row = 0; 
@@ -78,9 +91,18 @@ size_t FindByteOffsetForPosition(const std::string& text, uint32_t target_row, u
     }
     return text.length();
 }
-// ====================================================================
 
+// 로커 콜백 (트리시터 자체 로그 기록용)
+void LogToFileCallback(void *payload, TSLogType type, const char *buffer) {
+    FILE *fp = (FILE *)payload;
+    if (fp) {
+        fprintf(fp, "[%s] %s\n", (type == TSLogTypeParse ? "Parse" : "Lex"), buffer);
+    }
+}
 
+// ==========================================================
+// [Main]
+// ==========================================================
 int main(int argc, char* argv[]) {
     std::cout << "DEBUG: Program started." << std::endl;
 
@@ -163,8 +185,8 @@ int main(int argc, char* argv[]) {
         std::cout << "DEBUG: Parser created and language set." << std::endl;
 
         // 플래그 및 중단 위치 설정
-        ts_parser_set_stop_position(parser, {stop_row, stop_col});
-        ts_parser_set_find_state_mode(parser, bIsCollectionMode); 
+        ts_parser_set_cursor_position(parser, {stop_row, stop_col});
+        // ts_parser_set_find_state_mode(parser, bIsCollectionMode); 
         
         // --- 파일 읽기 ---
         std::cout << "DEBUG: Reading source file: " << file_path << std::endl;
@@ -176,14 +198,33 @@ int main(int argc, char* argv[]) {
         buffer << file.rdbuf();
         std::string source_code = buffer.str();
 
+        // 파싱 길이 결정
         size_t effective_length = source_code.length();
 
         // 중단 위치 계산
-        if (stop_position_provided) {
+        // if (stop_position_provided) {
+        //     std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
+        //     size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
+        //     effective_length = source_code.length() < stop_offset ? source_code.length() : stop_offset;
+        //     std::cout << "DEBUG: Effective parsing length set to " << effective_length << " bytes." << std::endl;
+        // }
+
+        if (!bIsCollectionMode) {
             std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
             size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
             effective_length = source_code.length() < stop_offset ? source_code.length() : stop_offset;
             std::cout << "DEBUG: Effective parsing length set to " << effective_length << " bytes." << std::endl;
+        } else {
+            std::cout << "DEBUG: Full Mode (Length: " << effective_length << ")" << std::endl;
+        }
+
+        // 로깅 시작 debug_log.txt
+        FILE *debug_fp = fopen("debug_log.txt", "w");
+        if (debug_fp) {
+            TSLogger logger;
+            logger.payload = debug_fp;
+            logger.log = LogToFileCallback;
+            ts_parser_set_logger(parser, logger);
         }
 
         // --- 파싱 실행 ---
@@ -196,7 +237,50 @@ int main(int argc, char* argv[]) {
         );
         std::cout << "DEBUG: Parsing finished." << std::endl;
 
-        // --- 결과 출력 ---
+        // 로깅 종료
+        if (debug_fp) {
+            ts_parser_set_logger(parser, {0}); // 로거 해제
+            fclose(debug_fp);
+        }
+        
+        // [로그 덤프] logged_actions.txt 저장
+        ts_parser_write_logged_actions(parser, "logged_actions.txt");
+
+        // 후처리 분기
+        if (bIsCollectionMode) {
+            std::cout << "DEBUG: Running Collection..." << std::endl;
+            // 컬렉션 로직 호출 (결과는 함수 내부 로직에 따라 처리됨)
+            // 1. 여기서 파일을 엽니다.
+            FILE *collection_fp = fopen("Test.data", "w");
+            
+            if (collection_fp) {
+                // 2. 열린 파일 포인터를 넘겨줍니다.
+                ts_parser_run_collection(parser, collection_fp);
+                
+                // 3. 사용 후 닫습니다.
+                fclose(collection_fp);
+            } else {
+                std::cerr << "ERROR: Could not open Test.data for writing." << std::endl;
+            }
+        } 
+        else {
+            std::cout << "DEBUG: Running Conversion..." << std::endl;
+            
+            // 1. 경로 계산 (순수 로직)
+            TSStatePath path = ts_parser_run_conversion(parser);
+
+            // 2. 결과 출력 (화면 + 파일)
+            // (A) 화면 출력
+            ts_parser_write_conversion_result(parser, &path, stdout);
+
+            // (B) 파일 출력 (Test.data)
+            FILE *test_data_fp = fopen("Test.data", "w");
+            if (test_data_fp) {
+                ts_parser_write_conversion_result(parser, &path, test_data_fp);
+                fclose(test_data_fp);
+            }
+        }
+        // --- 결과 출력 및 리소스 정리 ---
         if (tree) {
             TSNode root_node = ts_tree_root_node(tree);
             char *tree_string = ts_node_string(root_node);

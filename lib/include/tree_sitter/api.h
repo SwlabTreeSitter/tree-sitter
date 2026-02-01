@@ -186,37 +186,13 @@ typedef struct TSQueryCursorOptions {
   bool (*progress_callback)(TSQueryCursorState *state);
 } TSQueryCursorOptions;
 
-// typedef enum {
-//   TSParseActionTypeShift,
-//   TSParseActionTypeReduce,
-//   TSParseActionTypeAccept,
-//   TSParseActionTypeRecover,
-// } TSParseActionType;
-
-// 파싱 중 발생한 하나의 액션을 기록
-// typedef struct {
-//   TSParseActionType type;   // 액션의 종류 (SHIFT, REDUCE, RECOVER, ACCEPT)
-
-//   TSStateId current_state;  // 해당 액션을 수행하기 직전의 파서 상태 ID
-//   TSStateId next_state;     // 액션 수행 후 이동한 파서 상태 ID (GOTO)
-
-//   TSSymbol symbol;          // Shift인 경우 : 읽어들인 토큰의 심볼 번호
-//                             // Reduce인 경우 : 축약되는 심볼 (규칙의 LHS) 번호
-
-//   char *lexeme;             // (Shift 전용) 소스 코드에 적혀 있던 실제 문자열
-//   uint32_t child_count;     // (Reduce 전용) 축약될 때 스택에서 몇 개를 꺼냈는지
-//   bool is_virtual;          // (V-Shift 전용) Recover로 인한 가짜 토큰 여부 플래그
-
-//   bool extra;               // Parse Action 규칙 참조
-//   bool repetition;          // Parse Action 규칙 참조
-//   TSPoint start_point;
-// } TSLoggedAction;
-
+// ==================================================================
 // 컨버전 리턴값
 typedef struct {
   TSStateId states[MAX_PATH_SIZE];  // 찾은 상태들 담을 배열
   uint32_t count;
 } TSStatePath;
+// ==================================================================
 
 /**
  * The metadata associated with a language.
@@ -424,19 +400,10 @@ void ts_parser_set_timeout_micros(TSParser *self, uint64_t timeout_micros);
  */
 uint64_t ts_parser_timeout_micros(const TSParser *self);
 
-// ========================[ KJ Custom ]========================
+// ==================================================================
+void ts_parser_set_cursor_position(TSParser *self, TSPoint stop_point);
 
-/**
- * 파서가 특정 지점에서 파싱을 멈추도록 설정한다.
- *
- * @param self 파서 인스턴스
- * @param stop_point 파싱을 중단할 위치 (0-based index)
- */
-void ts_parser_set_stop_position(TSParser *self, TSPoint stop_point);
-
-void ts_parser_set_find_state_mode(TSParser *self, bool InFindStateMode);
-
-// ========================================================================
+// ==================================================================
 
 /**
  * @deprecated use [`ts_parser_parse_with_options`] and pass in a callback instead, this will be removed in 0.26.

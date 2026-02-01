@@ -125,9 +125,9 @@ struct TSParser {
   // 파싱 로그 저장 자료구조 
   TSLoggedActionArray logged_actions;
 
-  // 파싱 중단점
-  uint32_t StopRow;
-  uint32_t StopColumn;
+  // 커서 위치
+  uint32_t cursor_row;
+  uint32_t cursor_col;
 
   // 컨버전, 컬렉션 모드 설정 변수
   // false (0) = 컨버전 모드
@@ -1819,7 +1819,7 @@ static bool ts_parser__advance(
           bool end_of_non_terminal_extra = lookahead.ptr == NULL;   // Null이면 EOF
                 // 문법이 완성되어 마무리 짓는 과정이거나
                 // Extra 규칙(주석 등)을 파싱하다가 입력이 끊겨서 복귀하는 과정
-          LOG("reduce sym:%s, child_count:%u", SYM_NAME(action.reduce.symbol), action.reduce.child_count);
+          // LOG("reduce sym:%s, child_count:%u", SYM_NAME(action.reduce.symbol), action.reduce.child_count);
 
           // 실제 reduce 실행
           // heads 배열에서 새로 생긴 버전들의 시작 인덱스
@@ -2169,12 +2169,6 @@ static bool ts_parser_has_outstanding_parse(TSParser *self) {
   );
 }
 
-// [new] 파일 로거 콜백
-static void log_to_file_callback(void *payload, TSLogType type, const char *buffer) {
-  FILE *file = (FILE *)payload;
-  if (file) fprintf(file, "%s\n", buffer);
-}
-
 // Parser - Public
 
 // [custom] TSParser 생성자
@@ -2186,8 +2180,8 @@ TSParser *ts_parser_new(void) {
   
   // -----------------------------------------------------
   // 중단점 비활성화 (default: 별도 설정 없으면 파일 끝까지 파싱)
-  self->StopRow = UINT32_MAX;
-  self->StopColumn = UINT32_MAX;
+  self->cursor_row = UINT32_MAX;
+  self->cursor_col = UINT32_MAX;
 
   array_init(&self->parse_actions);
   array_reserve(&self->parse_actions, 2048);
@@ -2337,9 +2331,9 @@ const TSRange *ts_parser_included_ranges(const TSParser *self, uint32_t *count) 
 // [custom] TSParser 초기화 함수
 void ts_parser_reset(TSParser *self) {
   // -----------------------------------------------------
-  // 중단점 초기화
-  self->StopRow = UINT32_MAX;
-  self->StopColumn = UINT32_MAX;
+  // 커서 위치 초기화
+  self->cursor_row = UINT32_MAX;
+  self->cursor_col = UINT32_MAX;
   // -----------------------------------------------------
 
   ts_parser__external_scanner_destroy(self);
@@ -2368,11 +2362,11 @@ void ts_parser_reset(TSParser *self) {
   self->parse_state = (TSParseState) {0};
 }
 
-// [new] 중단점(커서 위치) 설정 함수
-void ts_parser_set_stop_position(TSParser *self, TSPoint stop_point) {
+// [new] 커서 위치 설정 함수
+void ts_parser_set_cursor_position(TSParser *self, TSPoint cursor_point) {
   if (self) {
-    self->StopRow = stop_point.row;
-    self->StopColumn = stop_point.column;
+    self->cursor_row = cursor_point.row;
+    self->cursor_col = cursor_point.column;
   }
 }
 
@@ -2385,7 +2379,10 @@ void ts_parser_set_find_state_mode(TSParser *self, bool InFindStateMode) {
 
 // [new] 파싱 중에 수집된 모든 액션을 파일로 덤프하는 함수 (디버깅용)
 // note: 문법적 모호성 발생 시 다른 스택 버전도 포함됨
-static void ts_parser_write_log(TSParser *self, const char *filename) {
+void ts_parser_write_logged_actions(
+  TSParser *self, 
+  const char *filename
+) {
   FILE *ActionFile = fopen(filename, "w");
   if (!ActionFile) return;
 
@@ -2443,7 +2440,7 @@ static void ts_parser_write_log(TSParser *self, const char *filename) {
         // 가짜(Virtual) Reduce 여부 표시
         // 출력 시 [REDUCE] 대신 [V-REDUCE] 등을 사용하여 구분
         const char* ActionLabel = Action->is_virtual ? "[V-REDUCE]" : "[REDUCE]";
-        fprintf(ActionFile, "%s State %u -> GOTO %u, symbol: %s, child %u",
+        fprintf(ActionFile, "%s State %u -> GOTO %u, symbol: %s, child %u \n",
                 ActionLabel,Action->current_state,Action->next_state,SymbolName,Action->child_count);
         
         // 자식 노드 정보 출력
@@ -2510,14 +2507,16 @@ static void ts_parser_write_log(TSParser *self, const char *filename) {
 }
 
 // [new] 커서 위치 직전의 Shift(로그 인덱스)를 찾는 함수
-int32_t TsParserFindAnchorIndex(
-  TSParser *Self,
-  uint32_t TargetRow,
-  uint32_t TargetCol
+static int32_t ts_conversion__find_cursor_shift_index(
+  TSParser *self
+  // uint32_t TargetRow,
+  // uint32_t TargetCol
 ) {
+  uint32_t target_row = self->cursor_row;
+  uint32_t target_col = self->cursor_col;
   // 배열의 끝에서부터 시작
-  for (int32_t I = (int32_t)Self->logged_actions.size - 1; I >= 0; --I) {
-    TSLoggedAction *Action = &Self->logged_actions.contents[I];
+  for (int32_t I = (int32_t)self->logged_actions.size - 1; I >= 0; --I) {
+    TSLoggedAction *Action = &self->logged_actions.contents[I];
     
     // 가상 토큰이 아닌 실제 Shift만 탐색
     if (Action->type == TSParseActionTypeShift && !Action->is_virtual) {
@@ -2527,7 +2526,7 @@ int32_t TsParserFindAnchorIndex(
       // [조건] 커서보다 과거인 위치인가?
       // todo: 커서와 같은 위치 (C <= TargetCol) 포함 여부 판단 
       // 뒤에서부터 왔으므로, 이 조건을 만족하는 '첫 번째'가 곧 '가장 늦은' 위치임.
-      bool IsPastOrCurrent = (R < TargetRow) || (R == TargetRow && C < TargetCol);
+      bool IsPastOrCurrent = (R < target_row) || (R == target_row && C < target_col);
       if (IsPastOrCurrent) {
           return I; // 찾자마자 즉시 반환
       }
@@ -2537,10 +2536,9 @@ int32_t TsParserFindAnchorIndex(
 }
 
 // [new] 현재 커서 위치를 기준으로 파싱 스택 복원 함수
-TSStatePath TsParserReconstructStack(
+static TSStatePath ts_conversion__reconstruct_stack(
   TSParser *Self,
-  uint32_t TargetRow,
-  uint32_t TargetCol
+  int32_t shift_index
 ) {
   // 1. 결과 초기화
   TSStatePath ResultStack = {0};
@@ -2548,16 +2546,14 @@ TSStatePath TsParserReconstructStack(
     return ResultStack;
   }
 
-  // 2. 앵커(마지막 유효 Shift) 찾기
-  int32_t BestIndex = TsParserFindAnchorIndex(Self, TargetRow, TargetCol);
-  if (BestIndex == -1) return ResultStack;
+  if (shift_index == -1) return ResultStack;
 
   // 3. 시뮬레이션 스택 준비
   TSStateId SimStack[2048];
   uint32_t SimTop = 0;
 
   // 4. 로그 순차 실행 (Linear Scan)
-  for (uint32_t i = 0; i <= (uint32_t)BestIndex; ++i) {
+  for (uint32_t i = 0; i <= (uint32_t)shift_index; ++i) {
     if (i >= Self->logged_actions.size) break;
     TSLoggedAction *Action = &Self->logged_actions.contents[i];
 
@@ -2608,17 +2604,18 @@ TSStatePath TsParserReconstructStack(
 }
 
 // [new] 액션 테이블에서 reduce 조회
-void FindReduceActions (
-  TSParser *Self,
-  TSStateId State,
-  TSSymbolArray *Results
+// for conversion
+void ts_conversion_find_reduce (
+  TSParser *self,
+  const TSStateId state,
+  TSSymbolArray *result
 ) {
-  if (!Self || !Self->language) return;
-  const TSLanguage *language = Self->language;
+  if (!self || !self->language) return;
+  const TSLanguage *language = self->language;
 
   // 모든 심볼 순회하여 reduce 가능 여부 확인
   for(TSSymbol s = 0; s < language->symbol_count; s++) {
-    uint32_t idx = ts_language_lookup(language, State, s);
+    uint32_t idx = ts_language_lookup(language, state, s);
     if (idx == 0) continue;
 
     const TSParseActionEntry *entry = &language->parse_actions[idx];
@@ -2627,7 +2624,7 @@ void FindReduceActions (
     // 해당 심볼의 액션 중 하나라도 reduce면 수집
     for (uint32_t i = 0; i < entry->entry.count; i++) {
       if (actions[i].type == TSParseActionTypeReduce) {
-        array_push(Results, s);
+        array_push(result, s);
         break;
       }
     }
@@ -2655,7 +2652,7 @@ void FindReduceActions (
 
 //   // 2-1. reduce 가능한 lookaheads 찾기
 //   TSSymbolArray lookaheads = array_new();
-//   FindReduceActions(Self, CurrentState, &lookaheads);
+//   ts_conversion_find_reduce(Self, CurrentState, &lookaheads);
 
 //   // debug: lookaheads 출력
 //   printf(">>> [Debug] RecursiveCurrentStates: State %u has %u Reduce-Triggering Lookaheads:\n",
@@ -2768,31 +2765,33 @@ void FindReduceActions (
 //     }
 //   }
 // }
-void RecursiveCurrentStates (
-  TSParser *Self,
-  const TSStatePath *CurrentStack,
-  TSStatePath *ResultSet
+
+// [new]
+static void ts_conversion__recursive_current_states (
+  TSParser *self,
+  const TSStatePath *stack,
+  TSStatePath *result
 ) {
-  if (CurrentStack->count == 0) return;
-  TSStateId CurrentState = CurrentStack->states[0];
-  const TSLanguage *language = Self->language;
+  if (stack->count == 0) return;
+  TSStateId current_state = stack->states[0];
+  const TSLanguage *language = self->language;
 
   // 1. 결과 집합에 현재 상태 추가 (이미 방문한 상태면 중단)
-  for (uint32_t i = 0; i < ResultSet->count; i++) {
-    if (ResultSet->states[i] == CurrentState) return;
+  for (uint32_t i = 0; i < result->count; i++) {
+    if (result->states[i] == current_state) return;
   }
-  if (ResultSet->count < 64) {
-    ResultSet->states[ResultSet->count++] = CurrentState;
+  if (result->count < 64) {
+    result->states[result->count++] = current_state;
   }
 
   // 2. PRD 집합 추출
   // 2-1. reduce 가능한 lookaheads 찾기
   TSSymbolArray lookaheads = array_new();
-  FindReduceActions(Self, CurrentState, &lookaheads);
+  ts_conversion_find_reduce(self, current_state, &lookaheads);
 
   // 2-2. lookaheads 순회하며 중복 없는 PRD 수집
   // ReduceProduction PRD[256];
-  uint32_t PRDCount = 0;
+  uint32_t prd_count = 0;
   ReduceProduction PRD[256];
   // ReduceProduction *PRD = (ReduceProduction *)malloc(sizeof(ReduceProduction) * 128);
   if (!PRD) {
@@ -2806,7 +2805,7 @@ void RecursiveCurrentStates (
 
     // 파싱 테이블 조회
     // CurrentState에서 sym에 대한 액션 인덱스 확인
-    uint32_t idx = ts_language_lookup(language, CurrentState, sym);
+    uint32_t idx = ts_language_lookup(language, current_state, sym);
     if (idx == 0) continue;   // idx가 0이면 정의된 행동 없음
 
     /*
@@ -2826,17 +2825,17 @@ void RecursiveCurrentStates (
       if (actions[j].type == TSParseActionTypeReduce) {
         // 중복 규칙 검사
         bool exists = false;
-        for (uint32_t k = 0; k < PRDCount; k++) {
+        for (uint32_t k = 0; k < prd_count; k++) {
           if (PRD[k].symbol == actions[j].reduce.symbol &&
             PRD[k].child_count == actions[j].reduce.child_count) {
             exists = true;
             break;
           }
           // 새로운 규칙이면 추가
-          if (!exists && PRDCount < 128) {
-            PRD[PRDCount].child_count = actions[j].reduce.child_count;
-            PRD[PRDCount].symbol = actions[j].reduce.symbol;
-            PRDCount++;
+          if (!exists && prd_count < 128) {
+            PRD[prd_count].child_count = actions[j].reduce.child_count;
+            PRD[prd_count].symbol = actions[j].reduce.symbol;
+            prd_count++;
           } 
         }
       }
@@ -2845,383 +2844,256 @@ void RecursiveCurrentStates (
   array_delete(&lookaheads);
 
   // 3. 각 PRD에 대해 reduce 수행 및 재귀
-  for (uint32_t i = 0; i < PRDCount; i++) {
+  for (uint32_t i = 0; i < prd_count; i++) {
     ReduceProduction *prod = &PRD[i];
     // 스택 언더플로우 검사
-    if (CurrentStack->count <= prod->child_count) {
+    if (stack->count <= prod->child_count) {
       // printf("    [SKIP] PRD %u: Need stack > %u, but have %u. (Ancestor missing)\n", 
       //         i, prod->child_count, CurrentStack.count);
       continue;
     }
 
     // 3-1. 조상 상태(Ancestor) 찾기 (Pop)
-    TSStateId AncestorState = CurrentStack->states[prod->child_count];
+    TSStateId AncestorState = stack->states[prod->child_count];
 
     // 3-2. 다음 상태(NextState) 찾기 (Goto)
     uint32_t lookup_result = ts_language_lookup(language, AncestorState, prod->symbol);
 
     if (lookup_result > 0) {
       // 주석의 정의에 따라, 논터미널 조회 결과는 그 자체로 후속 상태(Successor State)
-      TSStateId NextState = (TSStateId)lookup_result;
+      TSStateId next_state = (TSStateId)lookup_result;
 
       // 3-3. 새로운 스택(Stack1) 구성
-      TSStatePath NextStack;
-      NextStack.count = 0;
-      NextStack.states[NextStack.count++] = NextState; 
+      TSStatePath next_stack;
+      next_stack.count = 0;
+      next_stack.states[next_stack.count++] = next_state; 
         
-      for (uint32_t k = prod->child_count; k < CurrentStack->count; k++) {
-        if (NextStack.count < 64) {
-          NextStack.states[NextStack.count++] = CurrentStack->states[k];
+      for (uint32_t k = prod->child_count; k < stack->count; k++) {
+        if (next_stack.count < 64) {
+          next_stack.states[next_stack.count++] = stack->states[k];
         }
       }
       // 3-4. 재귀 호출
-      RecursiveCurrentStates(Self, &NextStack, ResultSet);
+      ts_conversion__recursive_current_states(self, &next_stack, result);
     }
   }
   // free(PRD);
 }
 
 // [new] 컨버전 구현체
-TSStatePath TsParserConversion(
-  TSParser *Self,
-  uint32_t TargetRow,
-  uint32_t TargetCol
+TSStatePath ts_parser_run_conversion(
+  TSParser *self
+  // uint32_t row,
+  // uint32_t col
 ) {
-  TSStatePath ResultSet = {0};
+  TSStatePath result = {0};
 
-  // 1. 물리적 스택 복원 (파서가 멈춘 상태)
-  TSStatePath PhysicalStack = TsParserReconstructStack(Self, TargetRow, TargetCol);
-  if (PhysicalStack.count == 0) return ResultSet;
+  // 1. 커서 위치 직전의 Shift(로그 인덱스)를 찾음
+  int32_t shift_index = ts_conversion__find_cursor_shift_index(self);
 
-  // 2. CurrentStates 탐색 시작
-  RecursiveCurrentStates(Self, &PhysicalStack, &ResultSet);
+  // 2. 커서 위치까지의 물리적 스택 복원
+  TSStatePath re_stack = ts_conversion__reconstruct_stack(self, shift_index);
+  if (re_stack.count == 0) return result;
 
-  return ResultSet;
+  // 3. current states 탐색 시작
+  ts_conversion__recursive_current_states(self, &re_stack, &result);
+
+  return result;
 }
 
-/**
- * @brief 커서 위치와 가장 가까운 'Recover(복구)' 액션의 상태 ID를 탐색
- *
- * [배경]
- * 사용자가 코드를 작성 중인 커서 위치(TargetRow, TargetCol)는 문법적으로 불완전하여
- * 파서가 'Error/Recover' 상태에 빠졌을 확률이 높다.
- *
- * [목적]
- * 기록된 파싱 로그(logged_actions)를 전수 조사하여 커서와 물리적 거리가 가장 가까운
- * Recover 액션을 찾아, 당시의 파서 상태(State ID)를 반환한다.
- * 이 State ID는 자동완성 후보 DB를 조회하는 Key로 사용된다.
- *
- * * @param Self 파서 인스턴스 (logged_actions 포함)
- * @param TargetRow 사용자의 커서 행
- * @param TargetCol 사용자의 커서 열
- * @param OutLog [Out] 찾은 Recover 액션의 상세 정보를 담을 포인터 (검증용)
- * @return TSStateId 커서 위치에 해당하는 파싱 상태 ID
- */
-TSStateId TsParserFindClosestRecoverState(
-  TSParser *Self,
-  uint32_t TargetRow,
-  uint32_t TargetCol,
-  TSLoggedAction* OutLog
+// [new] 컨버전 결과 출력 함수
+void ts_parser_write_conversion_result(
+  TSParser *self,
+  TSStatePath *path,
+  FILE *fp
 ) {
-    // [초기화] 최소 거리값을 무한대로 설정
-    TSStateId ClosestStateId = 0; 
-    uint32_t MinRowDiff = UINT32_MAX;  
-    uint32_t MinColDiff = UINT32_MAX;
-
-    // [탐색] 기록된 모든 파싱 액션을 순회
-    for (uint32_t I = 0; I < Self->logged_actions.size; ++I)
-    {
-        TSLoggedAction CurrentAction = Self->logged_actions.contents[I];
-
-        // [필터링] Recover 액션만 검사 대상
-        if (CurrentAction.type == TSParseActionTypeRecover)
-        {
-            uint32_t RecoverRow = CurrentAction.start_point.row + 1;
-            uint32_t RecoverCol = CurrentAction.start_point.column + 1;
-
-            /* [Todo]
-             *  커서 포지션의 Row, Column 과 Recover Action이 발생한 Row, Column이 똑같은지 검사하는 로직도 정상적으로 동작하는지 확인 필요
-             *  정상적으로 동작한다면 아래의 코드를 대체하는게 바람직하다.
-             */
-            
-            // 거리 계산 (절대값)
-            uint32_t RowDiff = (RecoverRow > TargetRow) ? (RecoverRow - TargetRow) : (TargetRow - RecoverRow);
-            uint32_t ColDiff = (RecoverCol > TargetCol) ? (RecoverCol - TargetCol) : (TargetCol - RecoverCol);
-
-            // [갱신 전략] 더 가까운 Recover 액션을 선택
-            // 1순위: 행(Row) 차이가 더 작은 경우
-            // 2순위: 행 차이가 같다면, 열(Col) 차이가 더 작은 경우
-            if (RowDiff < MinRowDiff)
-            {
-                MinRowDiff = RowDiff;
-                MinColDiff = ColDiff;
-                ClosestStateId = CurrentAction.next_state;
-                *OutLog = CurrentAction;
-            }
-            else if (RowDiff == MinRowDiff)
-            {
-                if (ColDiff < MinColDiff)
-                {
-                    MinColDiff = ColDiff;
-                    ClosestStateId = CurrentAction.next_state;
-                    *OutLog = CurrentAction;
-                }
-            }
-        }
+  if (!fp) fp = stdout;   // Null이면 터미널(stdout)로 출력
+  if (path->count > 0) {
+    fprintf(fp, "[conversion] Found States (%u)\n", path->count);
+    fprintf(fp, "Path: ");
+    for (uint32_t i = 0; i < path->count; i++) {
+      fprintf(fp, "%u", path->states[i]);
+      if (i < path->count - 1) fprintf(fp, ", ");
     }
-    return ClosestStateId;
+    fprintf(fp, "\n");
+  }
+  else {
+    fprintf(fp, "[conversion] Not Found\n");
+  }
+  if (fp == stdout) fflush(stdout);
 }
 
-// [디버깅용] TsParserFindClosestState
-// TSStateId TsParserFindClosestState(
-//   TSParser *Self,
-//   uint32_t TargetRow,
-//   uint32_t TargetCol,
-//   TSLoggedAction* OutLog
-// ) {
-//     TSStateId BestStateId = 0; 
-//     uint32_t MaxRow = 0;
-//     uint32_t MaxCol = 0;
-//     bool FoundAny = false;
-//     bool IsTrackingReductions = false;
+// [new] 컬렉션 구현체
+void ts_parser_run_collection(TSParser *self, FILE *OutputFile) {
+    // 1. 데이터 없음 or 파일 포인터 없음 -> 종료
+    if (!self->logged_actions.contents || !OutputFile) return;
 
-//     printf("\n=== [DEBUG START] Target: (%u, %u) ===\n", TargetRow, TargetCol);
+    // ---------------------------------------------------------
+    // 그대로 복사해온 로직 (구조체 정의 포함)
+    // ---------------------------------------------------------
+    typedef struct {
+        TSLoggedAction Action;
+        uint32_t LogIndex;
+        bool IsTerminal;
+    } StackEntry;
 
-//     for (uint32_t I = 0; I < Self->logged_actions.size; ++I)
-//     {
-//         TSLoggedAction CurrentAction = Self->logged_actions.contents[I];
+    // [삭제됨] fopen("Test.data") -> 이미 인자로 받음
 
-//         if (CurrentAction.type == TSParseActionTypeShift || 
-//             CurrentAction.type == TSParseActionTypeRecover)
-//         {
-//             uint32_t ActionRow = CurrentAction.start_point.row + 1;
-//             uint32_t ActionCol = CurrentAction.start_point.column + 1;
+    // [삭제됨] if(self->bIsCollectionOrParseStateID) -> 호출했으면 무조건 실행
 
-//             // 디버깅 정보 출력
-//             if (CurrentAction.is_virtual) {
-//                 printf("[CHECK V-SHIFT] Index:%u | Loc:(%u, %u) | State: %u->%u\n", 
-//                        I, ActionRow, ActionCol, CurrentAction.current_state, CurrentAction.next_state);
-//             }
+    bool bIsRecover = false;
 
-//             // 1. 필터링 조건 확인
-//             bool IsPastOrCurrent = (ActionRow < TargetRow) || 
-//                                    (ActionRow == TargetRow && ActionCol <= TargetCol) ||
-//                                    CurrentAction.is_virtual;
-
-//             if (IsPastOrCurrent)
-//             {
-//                 // 2. 갱신 조건 확인
-//                 // bool IsLaterThanBest = (ActionRow > MaxRow) || 
-//                 //                        (ActionRow == MaxRow && ActionCol >= MaxCol);
-//                 // [수정 후] 가짜 토큰(VIP)이라면, 위치가 조금 뒤쳐져도 무조건 갱신(Update) 허용!
-//                 bool IsLaterThanBest = (ActionRow > MaxRow) || 
-//                                        (ActionRow == MaxRow && ActionCol >= MaxCol) ||
-//                                        CurrentAction.is_virtual;
-
-//                 // 여기서 왜 갱신이 안되는지 확인!
-//                 if (CurrentAction.is_virtual) {
-//                      printf("  -> IsPastOrCurrent: PASS\n");
-//                      printf("  -> Max was: (%u, %u)\n", MaxRow, MaxCol);
-//                      printf("  -> IsLaterThanBest: %s\n", IsLaterThanBest ? "TRUE" : "FALSE (Why?)");
-//                 }
-
-//                 if (!FoundAny || IsLaterThanBest)
-//                 {
-//                     MaxRow = ActionRow;
-//                     MaxCol = ActionCol;
-//                     *OutLog = CurrentAction;
-//                     FoundAny = true;
-
-//                     if (CurrentAction.is_virtual) {
-//                         BestStateId = CurrentAction.current_state; 
-//                         printf("  -> UPDATE! BestStateId set to: %u (Virtual)\n", BestStateId);
-//                         IsTrackingReductions = false; 
-//                     } 
-//                     else if (CurrentAction.type == TSParseActionTypeRecover) {
-//                         BestStateId = CurrentAction.next_state;
-//                         printf("  -> UPDATE! BestStateId set to: %u (Recover)\n", BestStateId);
-//                         IsTrackingReductions = true;
-//                     } 
-//                     else {
-//                         BestStateId = CurrentAction.next_state;    
-//                         // printf("  -> UPDATE! BestStateId set to: %u (Real)\n", BestStateId); // 너무 많이 뜨면 주석
-//                         IsTrackingReductions = false;
-//                     }
-//                 }
-//             } else {
-//                  if (CurrentAction.is_virtual) printf("  -> IsPastOrCurrent: FAIL (This shouldn't happen!)\n");
-//             }
-//         }
-//         else if (CurrentAction.type == TSParseActionTypeReduce)
-//         {
-//              // Reduce 추적 로그 (필요시 주석 해제)
-//              // if (IsTrackingReductions && CurrentAction.current_state == BestStateId) {
-//              //    printf("[REDUCE TRACK] %u -> %u\n", CurrentAction.current_state, CurrentAction.next_state);
-//              //    BestStateId = CurrentAction.next_state;
-//              // }
-//         }
-//     }
-    
-//     printf("=== [DEBUG END] Final BestStateId: %u ===\n\n", BestStateId);
-//     return BestStateId;
-// }
-
-/**
- * @brief 커서 위치의 현재 상태 ID 반환
- */
-TSStateId TsParserFindClosestState(
-  TSParser *Self,
-  uint32_t TargetRow, // 1-based (커서 행)
-  uint32_t TargetCol, // 1-based (커서 열)
-  TSLoggedAction* OutLog
-) {
-    // [초기화]
-    TSStateId ShiftStateId = 0; 
-
-    // [추적 변수] 지금까지 찾은 것 중 제일 늦은 위치
-    uint32_t MaxRow = 0;
-    uint32_t MaxCol = 0;
-    bool FoundAny = false;
-
-    // [탐색] 모든 액션 순회
-    for (uint32_t I = 0; I < Self->logged_actions.size; ++I)
+    // =========================================================
+    // [1단계] 모든 시작점 후보 수집 (ShiftIndices)
+    // =========================================================
+    Array(uint32_t) ShiftIndices = array_new();
+    for (uint32_t I = 0; I < self->logged_actions.size; ++I)
     {
-        TSLoggedAction CurrentAction = Self->logged_actions.contents[I];
-
-        // =========================================================
-        // [Case 1] Shift
-        // =========================================================
-        if (CurrentAction.type == TSParseActionTypeShift) 
+        if (self->logged_actions.contents[I].type == TSParseActionTypeShift && !self->logged_actions.contents[I].extra)
         {
-            if (CurrentAction.is_virtual) continue;
-            
-            // Tree-sitter 내부(0-based) -> VS Code 기준(1-based) 변환
-            uint32_t ActionRow = CurrentAction.start_point.row + 1;
-            uint32_t ActionCol = CurrentAction.start_point.column + 1;
-
-            // [필터링] "과거~현재" 범위 체크
-            // 커서보다 미래에 있는 토큰은 아무리 가까워도 무시
-            bool IsPastOrCurrent = (ActionRow < TargetRow) || 
-                                   (ActionRow == TargetRow && ActionCol <= TargetCol);
-
-            if (IsPastOrCurrent)
-            {
-                // [갱신] 최신 상태 찾기 (MaxRow/MaxCol 갱신)
-                // 현재 찾은 것이 지금까지 찾은 것보다 더 뒤(커서에 더 가까움)에 있다면 갱신
-                bool IsLaterThanBest = (ActionRow > MaxRow) || 
-                                       (ActionRow == MaxRow && ActionCol >= MaxCol);
-
-                if (!FoundAny || IsLaterThanBest)
-                {
-                    MaxRow = ActionRow;
-                    MaxCol = ActionCol;
-                    
-                    ShiftStateId = CurrentAction.next_state;
-
-                    if (OutLog) *OutLog = CurrentAction;
-                    FoundAny = true;
-                    
-                }
-            }
+            array_push(&ShiftIndices, I);
         }
     }
-    return ShiftStateId;  
-}
 
-
-/**
- * @brief 커서 위치와 관련된 상태 경로(집합)를 구조체로 반환
- */
-TSStatePath TsParserFindStatePath(
-  TSParser *Self,
-  uint32_t TargetRow, // 0-based
-  uint32_t TargetCol  // 0-based
-) {
-    // 1. 리턴할 구조체 초기화
-    TSStatePath Result;
-    Result.count = 0; 
-
-    // 2. Shift 탐색
-    int32_t BestIndex = -1;   // Shift를 찾은 인덱스
-    uint32_t MaxRow = 0;
-    uint32_t MaxCol = 0;
-    TSStateId CurrentTipState = 0;    // Reduce 추적 시 연결고리 상태
-
-    // [탐색] 모든 액션 순회
-    for (uint32_t I = 0; I < Self->logged_actions.size; ++I)
+    // =========================================================
+    // [2단계] 경계 탐색 - 가상 스택 시뮬레이션
+    // =========================================================
+    for (uint32_t i = 0; i < ShiftIndices.size; ++i)
     {
-        TSLoggedAction CurrentAction = Self->logged_actions.contents[I];
+        Array(StackEntry) SimStack = array_new();   // 가상 스택
+        uint32_t CursorLogIndex = *array_get(&ShiftIndices, i);
+        uint32_t EndLogIndex = self->logged_actions.size;
+        uint32_t finalReduceLogIndex = UINT32_MAX;
 
-        // =========================================================
-        // [Case 1] Shift
-        // =========================================================
-        if (CurrentAction.type == TSParseActionTypeShift) 
+        // --- (A) prefix replay ---
+        for (uint32_t j = 0; j < CursorLogIndex; ++j)
         {
-            if (CurrentAction.is_virtual) continue;
-            
-            uint32_t ActionRow = CurrentAction.start_point.row ;
-            uint32_t ActionCol = CurrentAction.start_point.column;
+            TSLoggedAction act = self->logged_actions.contents[j];
 
-            // [필터링] "과거~현재" 범위 체크
-            // 커서보다 미래에 있는 토큰은 아무리 가까워도 무시
-            bool IsPastOrCurrent = (ActionRow < TargetRow) || 
-                                   (ActionRow == TargetRow && ActionCol <= TargetCol);
-
-            if (IsPastOrCurrent)
+            if (act.type == TSParseActionTypeShift && !act.extra)
             {
-                // [갱신] 최신 상태 찾기 (MaxRow/MaxCol 갱신)
-                // 현재 찾은 것이 지금까지 찾은 것보다 더 뒤(커서에 더 가까움)에 있다면 갱신
-                bool IsLaterThanBest = (ActionRow > MaxRow) || 
-                                       (ActionRow == MaxRow && ActionCol >= MaxCol);
+                StackEntry e = { act, j, true };
+                array_push(&SimStack, e);
+            }
+            else if (act.type == TSParseActionTypeReduce)
+            {
+                uint32_t rhs = act.child_count;
+                if (SimStack.size < rhs) continue;
+                for (uint32_t k = 0; k < rhs; ++k) array_pop(&SimStack);
 
-                if (BestIndex == -1 || IsLaterThanBest)
+                TSLoggedAction nt = (TSLoggedAction){0};
+                nt.symbol = act.symbol;
+                StackEntry e = { nt, j, false };
+                array_push(&SimStack, e);
+            }
+        }          
+
+        // --- (B) cursor ~ end ---
+        for (uint32_t j = CursorLogIndex; j < self->logged_actions.size; ++j)
+        {
+            TSLoggedAction CurrentAction = self->logged_actions.contents[j];
+
+            if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra)
+            {
+                StackEntry NewEntry = {CurrentAction, j, true};
+                array_push(&SimStack, NewEntry);
+            }
+            else if (CurrentAction.type == TSParseActionTypeReduce)
+            {
+                uint32_t RhsLength = CurrentAction.child_count;
+                if (SimStack.size < RhsLength) continue;
+
+                bool ConsumesCursor = false;
+                uint32_t LastConsumedIndex = 0;
+
+                for (uint32_t k = 0; k < RhsLength; ++k)
                 {
-                    MaxRow = ActionRow;
-                    MaxCol = ActionCol;
-                    
-                    BestIndex = I;    // 여기서부터 Reduce 추적 시작
-                    CurrentTipState = CurrentAction.next_state;
+                    StackEntry *Entry = array_get(&SimStack, SimStack.size - 1 - k);
+                    if (k == 0) LastConsumedIndex = Entry->LogIndex;
+                    if (Entry->IsTerminal && Entry->LogIndex == CursorLogIndex) ConsumesCursor = true;
+                }
+                
+                if (ConsumesCursor)
+                {
+                    EndLogIndex = LastConsumedIndex;
+                    finalReduceLogIndex = j;
+                    break;
+                }
+                else
+                {
+                    for(uint32_t k = 0; k < RhsLength; ++k) array_pop(&SimStack); 
+                    TSLoggedAction NonTerminalAction = {0};
+                    NonTerminalAction.symbol = CurrentAction.symbol;
+                    StackEntry NewNonTerminalEntry = {NonTerminalAction, j, false};
+                    array_push(&SimStack, NewNonTerminalEntry);
                 }
             }
+            else if(CurrentAction.type == TSParseActionTypeRecover)
+            {
+                bIsRecover = true;
+            }
         }
-    }
-    
-    // Shift를 하나도 못 찾은 경우
-    if (BestIndex == -1) return Result;
+        array_delete(&SimStack);
 
-    // 3. Reduce 추적
-    Result.states[Result.count++] = CurrentTipState;  // 경로 초기화
+        if (finalReduceLogIndex == UINT32_MAX) continue;
 
-    for (uint32_t J = BestIndex + 1; J < Self->logged_actions.size; ++J)
-    {
-        TSLoggedAction NextAction = Self->logged_actions.contents[J];
+        // =========================================================
+        // [3단계] 결과 출력 (OutputFile 사용)
+        // =========================================================
+        uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, i);
+        if (CurrentPrintIndex > EndLogIndex) continue;
 
-        // 다른 Shift 나오면 추적 종료
-        if (NextAction.type == TSParseActionTypeShift) {
-          break;
+        TSStateId StartState = 0;
+        if (CurrentPrintIndex < self->logged_actions.size) 
+        {
+            StartState = self->logged_actions.contents[CurrentPrintIndex].current_state;
         }
 
-        if (NextAction.type == TSParseActionTypeReduce) {
-
-          // 지금 내 끝 상태(CurrentTip)에서 시작하는 Reduce 인지?
-          if (NextAction.current_state == CurrentTipState)
-          {
-            CurrentTipState = NextAction.next_state;  // 끝 상태 업데이트
-
-            if (Result.count < 64) {
-              Result.states[Result.count++] = CurrentTipState;
+        Array(StackEntry) headerStack = array_new();
+        for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) 
+        {
+            TSLoggedAction CurrentAction = self->logged_actions.contents[j];
+            if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 
+            {
+                StackEntry newEntry = {CurrentAction, j, true};
+                array_push(&headerStack, newEntry);
             } 
-          }
-          else {
-            break;
-          }
+            else if (CurrentAction.type == TSParseActionTypeReduce) 
+            {
+                uint32_t rhsLength = CurrentAction.child_count;
+                if (headerStack.size >= rhsLength) 
+                {
+                    for (uint32_t pop_idx = 0; pop_idx < rhsLength; ++pop_idx) array_pop(&headerStack);
+                    TSLoggedAction nonTerminalAction = {0};
+                    nonTerminalAction.symbol = CurrentAction.symbol;
+                    StackEntry newNonTerminalEntry = {nonTerminalAction, j, false};
+                    array_push(&headerStack, newNonTerminalEntry);
+                }
+            }  
         }
 
-        if (NextAction.type == TSParseActionTypeRecover) {
+        fprintf(OutputFile, "%u ", StartState);
+        for (uint32_t l = 0; l < headerStack.size; ++l) 
+        {
+            StackEntry *entry = array_get(&headerStack, l);
+            const char* symbolName = ts_language_symbol_name(self->language, entry->Action.symbol);
+            fprintf(OutputFile, "%s ", symbolName ? symbolName : "UNKNOWN");
         }
+        fprintf(OutputFile, "\n");
+        array_delete(&headerStack);
+        
+        for(uint32_t l = i; l < ShiftIndices.size; ++l) 
+        {
+            uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
+            if(InnerPrintIndex > EndLogIndex) break;
+            TSLoggedAction PrintAction = self->logged_actions.contents[InnerPrintIndex];
+            const char* Lexeme = PrintAction.lexeme ? PrintAction.lexeme : ts_language_symbol_name(self->language, PrintAction.symbol);
+            fprintf(OutputFile, "  %u,%u: %s\n", PrintAction.start_point.row + 1, PrintAction.start_point.column + 1, Lexeme);
+        }
+        fprintf(OutputFile, "\n");
     }
-    // 4. 리턴
-    return Result;
+
+    array_delete(&ShiftIndices);
 }
 
 TSTree *ts_parser_parse(
@@ -3229,13 +3101,9 @@ TSTree *ts_parser_parse(
   const TSTree *old_tree,
   TSInput input
 ) {
-  FILE *debug_fp = fopen("debug_log.txt", "w"); // 파일 열기
-  if (debug_fp) {
-    TSLogger file_logger = {
-      .payload = debug_fp,         // 파일 포인터를 전달
-      .log = log_to_file_callback  // 콜백 함수 연결
-    };
-    ts_parser_set_logger(self, file_logger); // 파서에 장착
+  // 초기화
+  if (self->logged_actions.contents) {
+      array_clear(&self->logged_actions);
   }
 
   // 1단계 : 파싱 준비
@@ -3356,643 +3224,6 @@ balance:
   LOG("done");
   LOG_TREE(self->finished_tree);
 
-// -----------------------------------------------------
-// 3단계 : 커스텀 데이터 후처리
-// 3-1. 로그 덤프
-ts_parser_write_log(self, "logged_actions.txt");
-if (debug_fp) fclose(debug_fp);
-
-// FILE *ActionFile = fopen("logged_actions.txt", "w");
-
-// // 3-1. 파싱 중에 수집된 모든 액션을 파일로 덤프
-// if (ActionFile)
-// {
-//     // 로그 출력용 임시 이름 스택
-//     Array(char *) DebugLogStack = array_new();
-
-//     for (uint32_t I = 0; I < self->logged_actions.size; ++I)
-//     {
-//         TSLoggedAction CurrentAction = self->logged_actions.contents[I];
-
-//         switch (CurrentAction.type)
-//         {
-//             // case 1: Shift 액션
-//             case TSParseActionTypeShift:
-//             {
-//                 TSSymbol SymbolNum = CurrentAction.symbol;
-//                 const char *SymbolName = ts_language_symbol_name(self->language, CurrentAction.symbol);
-//                 const char *lexeme = CurrentAction.lexeme;
-//                 if (!SymbolName) { SymbolName = "UNKNOWN_SYM"; }
-//                 if (!lexeme) { lexeme = "UNKNOWN"; }
-
-//                 // 가짜(Virtual) Shift 여부 표시
-//                 // 출력 시 [SHIFT] 대신 [V-SHIFT] 등을 사용하여 구분
-//                 const char* ActionLabel = CurrentAction.is_virtual ? "[V-SHIFT]" : "[SHIFT]";
-
-//                 bool bIsSame = (strcmp(SymbolName, lexeme) == 0);
-//                 if (bIsSame)
-//                 {
-//                   // 1. 같으면: Lexeme 생략하고 출력
-//                   // 출력 예: [SHIFT] State: 0 -> 5, symbol: if (25)
-//                   fprintf(ActionFile, "%s State: %u -> %u, symbol: %s (%u)\n",
-//                         ActionLabel,
-//                         CurrentAction.current_state,
-//                         CurrentAction.next_state,
-//                         SymbolName,
-//                         SymbolNum);
-
-//                   // 2. 스택 저장용 문자열 생성 (간단하게 이름만)
-//                   size_t StrLen = strlen(SymbolName) + 1;
-//                   char *FormattedStr = (char *)ts_malloc(StrLen);
-//                   snprintf(FormattedStr, StrLen, "%s", SymbolName);
-                    
-//                   array_push(&DebugLogStack, FormattedStr);
-//                 }
-//                 else
-//                 {
-//                   // 출력 예: [SHIFT] State: 5 -> 12, symbol: identifier (26, myVar)
-//                   fprintf(ActionFile, "%s State %u -> %u, symbol: %s (%u, %s)\n",
-//                         ActionLabel,
-//                         CurrentAction.current_state,
-//                         CurrentAction.next_state,
-//                         SymbolName,
-//                         SymbolNum,
-//                         lexeme);
-
-//                   // 2. 스택 저장용 문자열 생성 (이름(값) 형태)
-//                   size_t StrLen = strlen(SymbolName) + strlen(lexeme) + 4; // '(',')', '\0', 여유분
-//                   char *FormattedStr = (char *)ts_malloc(StrLen);
-//                   snprintf(FormattedStr, StrLen, "%s(%s)", SymbolName, lexeme);
-                    
-//                   array_push(&DebugLogStack, FormattedStr);
-//                 }
-                
-//                 break;
-//             }
-
-//             // case 2: Reduce 액션
-//             case TSParseActionTypeReduce:
-//             {
-//                 const char *SymbolName = ts_language_symbol_name(self->language, CurrentAction.symbol);
-//                 if (!SymbolName) { SymbolName = "UNKNOWN_SYMBOL"; }
-
-//                 // 가짜(Virtual) Reduce 여부 표시
-//                 // 출력 시 [REDUCE] 대신 [V-REDUCE] 등을 사용하여 구분
-//                 const char* ActionLabel = CurrentAction.is_virtual ? "[V-REDUCE]" : "[REDUCE]";
-                
-//                 fprintf(ActionFile, "%s State %u -> GOTO %u, symbol: %s, child %u",
-//                       ActionLabel,
-//                       CurrentAction.current_state,
-//                       CurrentAction.next_state,
-//                       SymbolName,
-//                       CurrentAction.child_count);
-                
-//                 // 자식 노드 정보 출력
-//                 if (CurrentAction.child_count > 0)
-//                 {
-//                     fprintf(ActionFile, " {" );
-//                     uint32_t StartIndex = DebugLogStack.size - CurrentAction.child_count;
-                    
-//                     for (uint32_t k = 0; k < CurrentAction.child_count; ++k)
-//                     {
-//                         if (StartIndex + k < DebugLogStack.size) {
-//                             // 스택에 저장된 "Symbol(Lexeme)" 문자열을 꺼냄
-//                             char *ChildStr = *array_get(&DebugLogStack, StartIndex + k);
-//                             fprintf(ActionFile, "'%s' ", ChildStr);
-                            
-//                             // 사용한 자식 문자열 메모리 해제! (Pop 대신 여기서 해제)
-//                             ts_free(ChildStr); 
-//                         }
-//                     }
-//                     fprintf(ActionFile, "}\n");
-//                 }
-//                 // 스택 포인터만 줄임 (실제 데이터는 위에서 free 했음)
-//                 for (uint32_t k = 0; k < CurrentAction.child_count; ++k) {
-//                   if (DebugLogStack.size > 0) array_pop(&DebugLogStack);
-//                 }
-
-//                 // 부모 노드(Reduce 결과)도 동적 할당해서 넣어야 규칙이 유지됨
-//                 // 부모는 Lexeme이 없으므로 SymbolName만 복사해서 넣음
-//                 size_t ParentLen = strlen(SymbolName) + 1;
-//                 char *ParentStr = (char *)ts_malloc(ParentLen);
-//                 strcpy(ParentStr, SymbolName);
-//                 array_push(&DebugLogStack, ParentStr);
-//                 break;
-//             }
-
-//             // case 3: Recover 액션
-//             case TSParseActionTypeRecover:
-//             {
-//                 const char *SymbolName = ts_language_symbol_name(self->language, CurrentAction.symbol);
-//                 if (!SymbolName) { SymbolName = "UNKNOWN_SYMBOL"; }
-                
-//                 // 에러 복구 발생 위치 출력
-//                 fprintf(ActionFile, "[Recover] State %u, symbol: %s, Row: %u, Column:%u\n",
-//                     CurrentAction.current_state,
-//                   SymbolName,
-//                     CurrentAction.start_point.row + 1,
-//                     CurrentAction.start_point.column + 1
-//                 );
-//                 break;
-//             }
-//             case TSParseActionTypeAccept:
-//             {
-//                 fprintf(ActionFile, "[ACCEPT] State %u\n", CurrentAction.current_state);
-//                 break;
-//             }
-//             default:
-//             {
-//                 fprintf(ActionFile, "[OTHER]\n");
-//                 break;
-//             }
-//         }
-//     }
-//     for (uint32_t i = 0; i < DebugLogStack.size; i++) {
-//         char *Str = *array_get(&DebugLogStack, i);
-//         ts_free(Str);
-//     }
-//     array_delete(&DebugLogStack);
-
-//     fclose(ActionFile);
-// }
-
-
-// 3-2. 컬렉션 모드
-if (self->logged_actions.size > 0)
-{
-    // StackEntry 구조체 : 가상 스택 시뮬레이션을 위해 사용
-    typedef struct {
-        TSLoggedAction Action;  // SHIFT 또는 REDUCE 액션 정보
-        // LogIndex 는 완전한 문법 단위의 끝을 찾을 때, 현재 Reduce 액션이
-        // 우리가 찾던 시작 토큰을 포함하는지 비교하기 위해 반드시 필요하다.
-        uint32_t LogIndex;      // logged_actions 배열에서의 원본 인덱스
-        bool IsTerminal;        // 이 엔트리가 터미널(SHIFT)인지 비터미널(REDUCE 결과)인지 구분
-    } StackEntry;
-
-    // Test.data에 분석 결과 저장
-    FILE *OutputFile = fopen("Test.data", "w");
-    
-    if(self->bIsCollectionOrParseStateID)
-    {
-      bool bIsRecover = false;
-
-      // =========================================================
-      // [1단계] 모든 시작점 후보 수집 (ShiftIndices)
-      // 코드에 존재하는 모든 토큰(Shift Action)의 위치를 수집
-      // 나중에 이 위치들을 하나씩 '커서(Cursor)'라고 가정하고 시뮬레이션을 돌림
-      // =========================================================
-      Array(uint32_t) ShiftIndices = array_new();
-      for (uint32_t I = 0; I < self->logged_actions.size; ++I)
-      {
-          if (self->logged_actions.contents[I].type == TSParseActionTypeShift && !self->logged_actions.contents[I].extra)
-          {
-              array_push(&ShiftIndices, I);
-          }
-      }
-
-      // =========================================================
-      // [2단계] 경계 탐색 - 가상 스택 시뮬레이션
-      // 바깥 루프 (i): 수집한 모든 토큰 위치를 순회하며 '커서'로 설정
-      // =========================================================
-      for (uint32_t i = 0; i < ShiftIndices.size; ++i)
-      {
-          Array(StackEntry) SimStack = array_new();   // 가상 스택
-
-          uint32_t CursorLogIndex = *array_get(&ShiftIndices, i);   // 현재 주인공인 커서의 로그 인덱스
-
-          uint32_t EndLogIndex = self->logged_actions.size;   // 찾은 문법의 끝 위치 (초기값: 끝까지) for 파일출력
-
-          uint32_t finalReduceLogIndex = UINT32_MAX;    // 문법을 완성한 결정적 Reduce의 위치 for 유효한지 검증
-
-          // --- (A) prefix replay: 0 ~ CursorLogIndex-1 까지 SimStack 구성 ---
-          for (uint32_t j = 0; j < CursorLogIndex; ++j)
-          {
-              TSLoggedAction act = self->logged_actions.contents[j];
-
-              if (act.type == TSParseActionTypeShift && !act.extra)
-              {
-                  StackEntry e = { act, j, true };
-                  array_push(&SimStack, e);
-              }
-              else if (act.type == TSParseActionTypeReduce)
-              {
-                  uint32_t rhs = act.child_count;
-                  if (SimStack.size < rhs) continue;
-
-                  // pop
-                  for (uint32_t k = 0; k < rhs; ++k) array_pop(&SimStack);
-
-                  // push nonterminal
-                  TSLoggedAction nt = (TSLoggedAction){0};
-                  nt.symbol = act.symbol;
-                  StackEntry e = { nt, j, false };
-                  array_push(&SimStack, e);
-              }
-              // Recover 등은 필요하면 처리
-          }          
-
-          // --- (B) cursor ~ end: 커서 위치 포함하는 Reduce 찾기 ---
-          // 시뮬레이션 루프 (j): 커서 위치부터 시작하여 파싱 과정을 재현(Replay)
-          // 목표: 커서가 포함된 가장 작은 '완전한 문법 단위'가 언제 완성되는지 찾기
-
-          // --- 안쪽 루프: 시작점부터 "문장 끝(포함하는 Reduce)" 찾기 ---
-          /*
-              ID . ID = STR 
-              . ID = STR 
-              ID = STR 
-              이렇게 한칸씩 이동하면서 커서 포지션 넘어가는 reduce 액션 찾는 과정
-              커서 포지션 : 프로그래머가 자동 완성을 요청한 커서 위치
-          */
-          /*
-              j 는 logged_actions 배열에서 현재 reduce 액션이 위치하는 인덱스
-              LogIndex는 원본 위치  
-          */
-          for (uint32_t j = CursorLogIndex; j < self->logged_actions.size; ++j)
-          {
-              TSLoggedAction CurrentAction = self->logged_actions.contents[j];
-
-              // case 1: Shift 액션
-              // 스택에 토큰을 쌓음
-              if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra)
-              {
-                  StackEntry NewEntry = {CurrentAction, j, true};
-                  array_push(&SimStack, NewEntry);
-              }
-
-              // case 2: Reduce 액션
-              // 스택에 쌓인 토큰들을 꺼내서 하나의 넌터미널로 만듦
-              else if (CurrentAction.type == TSParseActionTypeReduce)
-              {
-                  uint32_t RhsLength = CurrentAction.child_count; // 자식 개수 (pop할 개수)
-                  if (SimStack.size < RhsLength) continue;
-
-                  bool ConsumesCursor = false;    // 이번 Reduce가 내 커서를 포함하는가?
-                  uint32_t LastConsumedIndex = 0; // 이번 Reduce에 사용된 마지막 토큰의 위치
-
-                  // 커서 포지션까지 도달, 또는 포지션을 넘어가는 심볼들을 reduce 하는지 검사
-                    // ex) stmt -> for ID = Expr . to Expr CRStmtCR EndFor
-                    //                       커서 포지션 (for ID = Expr 까지 프로그래머가 작성하고 나머지 요청)
-                    // reduce 할 때, . 위치까지 심볼들에 도달하거나 넘어가는 reduce 인지 검사
-                    // 예를 들어, CRStmtCR 논터미널로 redcue 되는 경우 . 에 도달하지 않기 때문에 관심이 없는 reduce 이다.
-                    // 예를 들어, for ID = Expr to Expr CRStmtCR EndFor 이 심볼들을 stmt 논터미널로 reduce 되는 경우 관심이 있는 reduce 이다.
-
-                  // 검증 루프 (k): 스택에서 꺼낼 자식들을 미리 훑어봄
-                  // 목적: 이번에 합쳐질 토큰들 중에 내 커서(CursorLogIndex)가 섞여 있는지 확인
-                  for (uint32_t k = 0; k < RhsLength; ++k)
-                  {
-                      // 스택의 Top에서 k번째 아래에 있는 항목을 가져온다.
-                      StackEntry *Entry = array_get(&SimStack, SimStack.size - 1 - k);
-
-                      if (k == 0) LastConsumedIndex = Entry->LogIndex;  // 가장 마지막에 들어온 토큰의 위치 기억
-
-                      // 1. IsTerminal: 실제 토큰이어야 함
-                      // 2. LogIndex == CursorLogIndex: 그 토큰이 바로 내가 추적 중인 커서여야 함
-                      if (Entry->IsTerminal && Entry->LogIndex == CursorLogIndex) ConsumesCursor = true;
-                  }
-                  
-                  // 검증 결과 1: 내 커서를 포함하는 Reduce라면
-                  if (ConsumesCursor)
-                  {
-                      EndLogIndex = LastConsumedIndex;  // 문법의 끝 위치 확정
-                      finalReduceLogIndex = j;          // Reduce 위치 저장
-                      
-                      break;  // 시뮬레이션 루프(j) 즉시 탈출 -> [3단계] 출력
-                  }
-                  
-                  // 검증 결과 2: 시작점(커서)와 상관없는 Reduce이면
-                  else
-                  {
-                      // 시뮬레이션을 계속 이어 나감
-                      // 1. 스택에서 자식들(rhs)을 모두 제거(pop)
-                      for(uint32_t k = 0; k < RhsLength; ++k) array_pop(&SimStack); 
-
-                      // 2. Reduce 결과로 만들어진 넌터미널을 새로 만듦
-                      TSLoggedAction NonTerminalAction = {0};
-                      NonTerminalAction.symbol = CurrentAction.symbol;
-
-                      // 3. 생성된 결과를 다시 스택에 쌓음(Push)
-                      // IsTerminal = false로 설정하여, 이것이 '합쳐진 덩어리'임을 표시
-                      StackEntry NewNonTerminalEntry = {NonTerminalAction, j, false};
-                      array_push(&SimStack, NewNonTerminalEntry);
-                  }
-              }
-
-              // case 3: Recover 액션 (에러 복구)
-              // 이건 Recover action이 나왔을 때 옵션을 주고자 했지만, 여기서 더 나아가지 못함
-              // 지금은 아무런 의미없는 코드
-              else if(CurrentAction.type == TSParseActionTypeRecover)
-              {
-                  bIsRecover = true;
-              }
-          }
-          array_delete(&SimStack);
-
-          if (finalReduceLogIndex == UINT32_MAX) {
-              // 커서를 포함하는 reduce를 끝까지 못 찾음
-              // → headerStack 만들면 위험 (UINT32_MAX까지 돌려버릴 수 있음)
-              // → 이번 i(커서)는 스킵
-              continue;
-          }
-          // =========================================================
-          // [3단계] 결과 출력
-          // =========================================================
-          /* 2026-01-06 바뀐 부분  k 루프 삭제, i 사용 */ 
-          // 현재 커서 위치(k)부터 k번째 shift 액션이 들어있는 parse action의 index(logged_actions 배열)를 가져와 CurretPrintIndex 에 저장한다. 
-          uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, i);
-
-          // EndLogIndex를 넘어가면 출력을 끝내고 루프를 탈출한다.
-          if (CurrentPrintIndex > EndLogIndex) continue;
-
-          // 찾고자 하는 후보 코드 컴플리션이 시작되어야 하는 파서 스테이트 
-          // 커서 포지션의 파서 상태 StartState를 구함
-          TSStateId StartState = 0;
-          if (CurrentPrintIndex < self->logged_actions.size) 
-          {
-              // 현재 처리하려는 액션이 시작되기 직전의 상태(current_state)가 
-              // 바로 우리가 찾는 StartState
-              StartState = self->logged_actions.contents[CurrentPrintIndex].current_state;
-          }
-
-          /* 2026-01-06 바뀐 부분 */
-          Array(StackEntry) headerStack = array_new();
-
-          for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) 
-          {
-              TSLoggedAction CurrentAction = self->logged_actions.contents[j];
-              if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 
-              {
-                  StackEntry newEntry = {CurrentAction, j, true};
-                  array_push(&headerStack, newEntry);
-              } 
-              else if (CurrentAction.type == TSParseActionTypeReduce) 
-              {
-                  uint32_t rhsLength = CurrentAction.child_count;
-                  if (headerStack.size >= rhsLength) 
-                  {
-                      for (uint32_t pop_idx = 0; pop_idx < rhsLength; ++pop_idx) 
-                      {
-                          array_pop(&headerStack);
-                      }
-
-                      TSLoggedAction nonTerminalAction = {0};
-                      nonTerminalAction.symbol = CurrentAction.symbol;
-                      StackEntry newNonTerminalEntry = {nonTerminalAction, j, false};
-                      array_push(&headerStack, newNonTerminalEntry);
-                  }
-              }  
-          }
-
-          /* 2026-01-06 바뀐 부분 */
-          fprintf(OutputFile, "%u ", StartState);
-          for (uint32_t l = 0; l < headerStack.size; ++l) 
-          {
-              StackEntry *entry = array_get(&headerStack, l);
-              const char* symbolName = ts_language_symbol_name(self->language, entry->Action.symbol);
-              fprintf(OutputFile, "%s ", symbolName ? symbolName : "UNKNOWN");
-          }
-          fprintf(OutputFile, "\n");
-          array_delete(&headerStack);
-          
-          // 내용물(렉심) 라인 출력
-          for(uint32_t l = i; l < ShiftIndices.size; ++l) 
-          {
-              uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
-              if(InnerPrintIndex > EndLogIndex) break;
-              TSLoggedAction PrintAction = self->logged_actions.contents[InnerPrintIndex];
-              const char* Lexeme = PrintAction.lexeme ? PrintAction.lexeme : ts_language_symbol_name(self->language, PrintAction.symbol);
-              fprintf(OutputFile, "  %u,%u: %s\n", PrintAction.start_point.row + 1, PrintAction.start_point.column + 1, Lexeme);
-          }
-          fprintf(OutputFile, "\n");
-      }
-    }
-          // =========================================================
-          // [3단계] 결과 출력
-          // 시뮬레이션을 통해 확정된 문법 단위(Cursor ~ EndLogIndex)를 Test.data 파일에 기록
-          // 기록 포맷:
-              /*
-                1 ID . ID = Expr
-                1 ID . ID = STR 
-                  1,1: TextWindow                              
-                  1,11: .
-                  1,12: ForegroundColor
-                  1,28: =
-                  1,30: "Yellow"
-              */
-          // 1. 상위 심볼 헤더      - "1 ID . ID = Expr"
-          // 2. 터미널 심볼 헤더    - "1 ID . ID = STR"
-          // 3. 실제 코드 내용(lexeme)  - "1,1: TextWindow", "1,11: .", ...
-          // =========================================================
-          // 출력 루프 (k): 문장의 시작점(i)부터 끝점(EndLogIndex)까지 토큰을 하나씩 전진하며 출력
-    //       for (uint32_t k = i; k < ShiftIndices.size; ++k)
-    //       {
-    //           // CurrentPrintIndex: 현재 출력하려는 토큰의 실제 로그 인덱스
-    //           uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, k);
-
-    //           // [종료 조건] 현재 토큰이 문법 단위의 끝(EndLogIndex)을 넘어가면 출력 중단
-    //           if (CurrentPrintIndex > EndLogIndex) break;
-
-    //           // [시작 상태(Start State) 추적]
-    //           // 문장이 시작되는 시점의 파서 상태(State ID)를 알아낸다.
-    //           TSStateId StartState = 0;
-    //           if (CurrentPrintIndex > 0) 
-    //           {
-    //               // 로그를 역주행하여, 바로 직전에 있었던 Shift 액션의 도착 상태(next_state)를 찾음
-    //               // 그 도착 상태가 곧 현재 토큰의 시작 상태
-    //               for (int l = CurrentPrintIndex - 1; l >= 0; --l) 
-    //               {
-    //                 TSLoggedAction PrevAction = self->logged_actions.contents[l];
-    //                 if (!PrevAction.extra && (PrevAction.type == TSParseActionTypeShift)) 
-    //                 {
-    //                     StartState = PrevAction.next_state;
-    //                     break;
-    //                 }
-    //               }
-    //           }
-    //           // [시작 상태 추적 수정 제안]
-    //           // logged_actions를 현재 원소가 action만 들어있는 구조를 action과 action 이 벌어진 파서 상태 쌍을 
-    //           // 저장하는 구조로 바꾸면
-    //           // logged_actions[CurrentPrintIndex] = (StartState, action) 이렇게 StartState를 구할 수 있다.
-
-    //           // ---------------------------------------------------------
-    //           // 1. 상위 심볼 헤더 출력
-    //           // 예: "1 ID . ID = Expr"
-    //           // 헤더(제목)는 문장 맨 처음에 딱 한 번만 출력
-    //           // ---------------------------------------------------------
-    //           if (k == i && finalReduceLogIndex != UINT32_MAX)
-    //           {
-    //               Array(StackEntry) headerStack = array_new();  // 헤더 구성을 위한 임시 스택
-
-    //               // Cursor부터 문법 완성 지점(finalReduceLogIndex)까지 다시 한번 시뮬레이션
-    //               // 이번에는 '출력용'으로 스택을 쌓는다.
-    //               for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) 
-    //               {
-    //                   TSLoggedAction CurrentAction = self->logged_actions.contents[j];
-
-    //                   if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 
-    //                   {
-    //                       StackEntry newEntry = {CurrentAction, j, true};
-    //                       array_push(&headerStack, newEntry);
-    //                   } 
-    //                   else if (CurrentAction.type == TSParseActionTypeReduce) 
-    //                   {
-    //                       // Reduce 발생 시: 자식들을 Pop하고, 부모(Non-Terminal)를 Push
-    //                       // 이렇게 하면 스택에는 최종적으로 [ID] [.] [ID] [=] [Expr] 처럼
-    //                       // 문법의 뼈대(Structure)만 남게 된다.
-    //                       uint32_t rhsLength = CurrentAction.child_count;
-    //                       if (headerStack.size >= rhsLength) 
-    //                       {
-    //                           for (uint32_t pop_idx = 0; pop_idx < rhsLength; ++pop_idx) 
-    //                           {
-    //                               array_pop(&headerStack);
-    //                           }
-                              
-    //                           TSLoggedAction nonTerminalAction = {0};
-    //                           nonTerminalAction.symbol = CurrentAction.symbol;
-    //                           StackEntry newNonTerminalEntry = {nonTerminalAction, j, false};
-    //                           array_push(&headerStack, newNonTerminalEntry);
-    //                       }
-    //                   }
-    //               }
-
-    //               fprintf(OutputFile, "%u ", StartState);
-    //               for (uint32_t l = 0; l < headerStack.size; ++l) 
-    //               {
-    //                   StackEntry *entry = array_get(&headerStack, l);
-    //                   const char* symbolName = ts_language_symbol_name(self->language, entry->Action.symbol);
-    //                   fprintf(OutputFile, "%s ", symbolName ? symbolName : "UNKNOWN");
-    //               }
-    //               fprintf(OutputFile, "\n");
-
-    //               array_delete(&headerStack);
-    //           }
-              
-    //           // ---------------------------------------------------------
-    //           // 2. 터미널 심볼 헤더 출력
-    //           // 예: "1 ID . ID = STR"
-    //           // ---------------------------------------------------------
-    //           fprintf(OutputFile, "%u ", StartState);
-    //           for(uint32_t l = k; l < ShiftIndices.size; ++l) 
-    //           {
-    //               uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
-    //               if(InnerPrintIndex > EndLogIndex) break;
-    //               const char* SymbolName = ts_language_symbol_name(self->language, self->logged_actions.contents[InnerPrintIndex].symbol);
-    //               fprintf(OutputFile, "%s ", SymbolName);
-    //           }
-    //           fprintf(OutputFile, "\n");
-              
-    //           // ---------------------------------------------------------
-    //           // 3. 실제 코드 내용(Lexeme) 출력
-    //           // 예: "1,1: TextWindow", "1,11: .", ...
-    //           // ---------------------------------------------------------
-    //           for(uint32_t l = k; l < ShiftIndices.size; ++l) 
-    //           {
-    //               uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
-    //               if(InnerPrintIndex > EndLogIndex) break;
-    //               TSLoggedAction PrintAction = self->logged_actions.contents[InnerPrintIndex];
-    //               const char* Lexeme = PrintAction.lexeme ? PrintAction.lexeme : ts_language_symbol_name(self->language, PrintAction.symbol);
-    //               fprintf(OutputFile, "  %u,%u: %s\n", PrintAction.start_point.row + 1, PrintAction.start_point.column + 1, Lexeme);
-    //           }
-    //           fprintf(OutputFile, "\n");
-    //       }
-
-    //       // i: 현재 문장의 시작점
-    //       // ShiftIndices: 토큰들이 모여있는 배열
-    //       // EndLogIndex: 방금 찾은 문장의 끝 지점
-    //       uint32_t next_shift_array_index = i + 1;
-    //       while (next_shift_array_index < ShiftIndices.size) 
-    //       {
-    //           uint32_t next_log_index = *array_get(&ShiftIndices, next_shift_array_index);
-    //           // 이 토큰이 방금 끝난 문장(EndLogIndex) 바깥에 있나?
-    //           if (next_log_index > EndLogIndex) {
-    //               break;  // 새로운 시작점 찾음
-    //           }
-    //           // 문장 안에 포함된 토큰이면 skip
-    //           next_shift_array_index++;
-    //       }
-    //       // 루프 인덱스(i)를 새로운 시작점으로 점프시킴
-    //       // (루프가 돌면서 ++i를 할 것이므로, 미리 1을 빼둠)
-    //       i = next_shift_array_index - 1;
-    //   }
-    // }
-
-    // 3-3. 컨버전 모드
-    else
-    {
-        // self->StopRow, StopColumn은 addon.cc에서 이미 0-based로 변환되어 넘어온 값이라고 가정합니다.
-        // TSStatePath FoundPath = TsParserFindStatePath(self, self->StopRow, self->StopColumn);
-        TSStatePath FoundPath = TsParserConversion(self, self->StopRow, self->StopColumn);
-
-        // 찾은 parse state path를 파일에 저장
-        fprintf(OutputFile, "\n-------------------------------------------------------\n");
-        
-        if (FoundPath.count > 0) 
-        {
-            // 1. 찾은 상태 개수 출력
-            fprintf(OutputFile, "[결과] Found State Path (Count: %u)\n", FoundPath.count);
-            
-            // 2. 상태 배열 전체 출력 (예: [188, 65, 240])
-            fprintf(OutputFile, "[결과] Path: [ ");
-            for (uint32_t i = 0; i < FoundPath.count; i++) {
-                fprintf(OutputFile, "%u", FoundPath.states[i]);
-                if (i < FoundPath.count - 1) {
-                    fprintf(OutputFile, ", ");
-                }
-            }
-            fprintf(OutputFile, " ]\n");
-
-            // 3. (선택사항) 시작점(Anchor)과 끝점(Tip) 명시
-            fprintf(OutputFile, "[상세] Anchor(Shift): %u -> Tip(Top): %u\n", 
-                    FoundPath.states[0], 
-                    FoundPath.states[FoundPath.count - 1]);
-        } 
-        else 
-        {
-            fprintf(OutputFile, "[결과] 해당 위치에서 유효한 State(Shift)를 찾지 못함\n");
-        }
-        fprintf(OutputFile, "-------------------------------------------------------\n");
-    }
-    
-    // 파일 핸들 해제
-    fclose(OutputFile);
-}
-    // // 3-3. 상태 ID 추출 모드
-    // else
-    // {
-    //   // ========================[ 현재 커서에서 발생한 recover action 찾는 로직 ]========================
-
-    //   // TsParserFindClosestRecoverState 현재 커서에서 발생한 recover action의 parse state를 찾기 위한 메서드
-    //     // 커서 포지션의 앞에서 프로그램을 완성하지 않아 파서 에러가 발생하고 거기서도 parse recover이 발생할 수 있다.
-    //     // 그 recover는 통과를 하고 현재 커서 위치에서 발생한 parse error 를 찾아야 한다.
-
-    //     // Todo TSLoggedAction 이름 변경
-    //     TSLoggedAction TempLog;
-    //     // TSStateId FoundState = TsParserFindClosestRecoverState(self, self->StopRow, self->StopColumn, &TempLog);
-    //     TSStateId FoundState = TsParserFindClosestState(self, self->StopRow, self->StopColumn, &TempLog);
-
-    //     // 찾은 parse state를 임의로 파일에 저장
-    //     fprintf(OutputFile, "\n-------------------------------------------------------\n");
-    //     if (FoundState != 0) 
-    //     {
-    //         fprintf(OutputFile, "[결과] Parse State ID : %u\n", FoundState);
-    //         fprintf(OutputFile, "[결과] 에러 발생 지점 : (%u, %u)\n", TempLog.start_point.row + 1, TempLog.start_point.column + 1);
-
-    //         TSSymbol error_causing_symbol_id = TempLog.symbol;
-    //         // 해당 ID의 문자열 이름도 함께 출력해줍니다 (디버깅 편의성).
-    //         const char* error_symbol_name = ts_language_symbol_name(self->language, error_causing_symbol_id);
-    //         fprintf(OutputFile, "[결과] 오류를 유발한 토큰 ID : %u (%s)\n",
-    //                 error_causing_symbol_id,
-    //                 error_symbol_name ? error_symbol_name : "UNKNOWN");
-        
-    //     } 
-    //     else 
-    //     {
-    //         fprintf(OutputFile, "[결과] Recover action이 발생하지 않음\n");
-    //     }
-    //     fprintf(OutputFile, "-------------------------------------------------------\n");
-    // }
-    // 파일 핸들 해제
-//     fclose(OutputFile);
-// }
   result = ts_tree_new(
     self->finished_tree,
     self->language,
