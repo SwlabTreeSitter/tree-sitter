@@ -2709,7 +2709,7 @@ bool ts_parser_run_collection(
   TSParser *self,
   FILE *file
 ) {
-  if (!self->logged_actions.contents || !file) return;
+  if (!self->logged_actions.contents || !file) return false;
 
   // 0. [Pre-scan] Recover 액션이 하나라도 있는지 먼저 확인
   // 에러가 있는 파일은 학습 데이터로 사용하지 않도록 즉시 중단
