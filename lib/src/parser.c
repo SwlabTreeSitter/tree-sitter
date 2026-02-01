@@ -106,11 +106,6 @@ typedef Array(TSLoggedAction) TSLoggedActionArray;
 
 typedef Array(TSSymbol) TSSymbolArray;
 
-typedef struct{
-  uint32_t child_count;
-  TSSymbol symbol;
-} ReduceProduction;
-
 struct TSParser {
   Lexer lexer;
   Stack *stack;
@@ -2356,13 +2351,6 @@ void ts_parser_set_cursor_position(TSParser *self, TSPoint cursor_point) {
   }
 }
 
-// [new] 컬렉션/컨버전 모드 설정 함수
-void ts_parser_set_find_state_mode(TSParser *self, bool InFindStateMode) {
-  if (self) {
-    self->bIsCollectionOrParseStateID = InFindStateMode;
-  }
-}
-
 // [new] 파싱 중에 수집된 모든 액션을 파일로 덤프하는 함수 (디버깅용)
 // note: 문법적 모호성 발생 시 다른 스택 버전도 포함됨
 void ts_parser_write_logged_actions(
@@ -2426,12 +2414,12 @@ void ts_parser_write_logged_actions(
         // 가짜(Virtual) Reduce 여부 표시
         // 출력 시 [REDUCE] 대신 [V-REDUCE] 등을 사용하여 구분
         const char* ActionLabel = Action->is_virtual ? "[V-REDUCE]" : "[REDUCE]";
-        fprintf(ActionFile, "%s State %u -> GOTO %u, symbol: %s, child %u \n",
+        fprintf(ActionFile, "%s State %u -> GOTO %u, symbol: %s, child %u",
                 ActionLabel,Action->current_state,Action->next_state,SymbolName,Action->child_count);
         
         // 자식 노드 정보 출력
         if (Action->child_count > 0) {
-          fprintf(ActionFile, " {" );
+          fprintf(ActionFile, " { " );
           uint32_t StartIndex = DebugLogStack.size - Action->child_count;
           
           for (uint32_t k = 0; k < Action->child_count; ++k) {
@@ -2493,21 +2481,19 @@ void ts_parser_write_logged_actions(
 }
 
 // [new] 커서 위치 직전의 Shift(로그 인덱스)를 찾는 함수
-static int32_t ts_conversion__find_cursor_shift_index(
-  TSParser *self
-  // uint32_t TargetRow,
-  // uint32_t TargetCol
-) {
+static int32_t ts_conversion__find_cursor_shift_index(TSParser *self) {
+  // 커서 위치
   uint32_t target_row = self->cursor_row;
   uint32_t target_col = self->cursor_col;
+
   // 배열의 끝에서부터 시작
   for (int32_t I = (int32_t)self->logged_actions.size - 1; I >= 0; --I) {
-    TSLoggedAction *Action = &self->logged_actions.contents[I];
+    TSLoggedAction *action = &self->logged_actions.contents[I];
     
     // 가상 토큰이 아닌 실제 Shift만 탐색
-    if (Action->type == TSParseActionTypeShift && !Action->is_virtual) {
-      uint32_t R = Action->start_point.row;
-      uint32_t C = Action->start_point.column;
+    if (action->type == TSParseActionTypeShift && !action->is_virtual && !action->extra) {
+      uint32_t R = action->start_point.row;
+      uint32_t C = action->start_point.column;
       
       // [조건] 커서보다 과거인 위치인가?
       // todo: 커서와 같은 위치 (C <= TargetCol) 포함 여부 판단 
@@ -2523,236 +2509,67 @@ static int32_t ts_conversion__find_cursor_shift_index(
 
 // [new] 현재 커서 위치를 기준으로 파싱 스택 복원 함수
 static TSStatePath ts_conversion__reconstruct_stack(
-  TSParser *Self,
-  int32_t shift_index
+  TSParser *self,
+  const int32_t shift_index
 ) {
   // 1. 결과 초기화
   TSStatePath ResultStack = {0};
-  if (Self->logged_actions.size == 0 || Self->logged_actions.contents == NULL) {
+  if (self->logged_actions.size == 0 || self->logged_actions.contents == NULL) {
     return ResultStack;
   }
-
   if (shift_index == -1) return ResultStack;
 
-  // 3. 시뮬레이션 스택 준비
+  // 2. 시뮬레이션 스택 준비
   TSStateId SimStack[2048];
   uint32_t SimTop = 0;
 
-  // 4. 로그 순차 실행 (Linear Scan)
+  // 3. 로그 순차 실행 (Linear Scan)
   for (uint32_t i = 0; i <= (uint32_t)shift_index; ++i) {
-    if (i >= Self->logged_actions.size) break;
-    TSLoggedAction *Action = &Self->logged_actions.contents[i];
+    if (i >= self->logged_actions.size) break;
+    TSLoggedAction *action = &self->logged_actions.contents[i];
 
-    // Gap Detection
-    if (SimTop == 0 || SimStack[SimTop - 1] != Action->current_state) {
-      if (SimTop < 2048) {
-        SimStack[SimTop++] = Action->current_state;
-      }
-    }
-    if (SimTop == 0) {
-      SimStack[SimTop++] = Action->current_state;
+    // 시뮬레이터 스택이 비어있거나, 현재 추적 중인 상태와 로그의 상태가 어긋나면
+    // 로그의 current_state를 신뢰하여 스택에 추가
+    if (SimTop == 0 || SimStack[SimTop - 1] != action->current_state) {
+      if (SimTop < 2048) SimStack[SimTop++] = action->current_state;
     }
 
     // 스택 액션 수행
-    if (Action->type == TSParseActionTypeShift) {
-            // Shift: 다음 상태 Push
-            if (SimTop < 2048) {
-                SimStack[SimTop++] = Action->next_state; 
-            }
-        }
-        else if (Action->type == TSParseActionTypeReduce) {
-            // Reduce: 자식 수만큼 Pop -> 결과 상태 Push
-            uint32_t PopCount = Action->child_count;
-            if (SimTop >= PopCount) {
-                SimTop -= PopCount; 
-            } else {
-                // 스택 언더플로우 방어 (로그가 꼬였을 경우 대비)
-                SimTop = 0; 
-            }
-            if (SimTop < 2048) {
-                SimStack[SimTop++] = Action->next_state; 
-            }
-        }
-        else if (Action->type == TSParseActionTypeRecover) {
-            // Recover: 상태 전이 발생
-             if (SimTop < 2048) {
-                SimStack[SimTop++] = Action->next_state;
-              }
-        }
+    // Shift: 다음 상태 Push
+    if (action->type == TSParseActionTypeShift && !action->extra) {
+      if (SimTop < 2048) SimStack[SimTop++] = action->next_state; 
+    }
+
+    // Reduce: 자식 수만큼 Pop -> 결과 상태 Push
+    else if (action->type == TSParseActionTypeReduce) {
+      uint32_t PopCount = action->child_count;
+      if (SimTop >= PopCount) SimTop -= PopCount; 
+      else SimTop = 0; // 스택 언더플로우 방어
+            
+      if (SimTop < 2048) SimStack[SimTop++] = action->next_state; 
+    }
+    
+    // Recover: 상태 전이 발생
+    else if (action->type == TSParseActionTypeRecover) {
+      // recover는 단순 마커
+    }
+    else if (action->type == TSParseActionTypeAccept) {
+      // accept는 파싱 종료이므로 스택 변화 없음
+    }
   }
-  // 결과 반환
+
+  // 4. 결과 반환 (스택 뒤집기)
   for (uint32_t i = 0; i < SimTop; ++i) {
-        if (ResultStack.count < 64) {
-            ResultStack.states[ResultStack.count++] = SimStack[SimTop - 1 - i];
-        }
-      }
+    if (ResultStack.count < 64) {
+      ResultStack.states[ResultStack.count++] = SimStack[SimTop - 1 - i];
+    } else {
+      break;
+    }
+  }
   return ResultStack;
 }
 
-// [new] 액션 테이블에서 reduce 조회
-// for conversion
-void ts_conversion_find_reduce (
-  TSParser *self,
-  const TSStateId state,
-  TSSymbolArray *result
-) {
-  if (!self || !self->language) return;
-  const TSLanguage *language = self->language;
-
-  // 모든 심볼 순회하여 reduce 가능 여부 확인
-  for(TSSymbol s = 0; s < language->symbol_count; s++) {
-    uint32_t idx = ts_language_lookup(language, state, s);
-    if (idx == 0) continue;
-
-    const TSParseActionEntry *entry = &language->parse_actions[idx];
-    const TSParseAction *actions = (const TSParseAction *)(entry + 1);
-
-    // 해당 심볼의 액션 중 하나라도 reduce면 수집
-    for (uint32_t i = 0; i < entry->entry.count; i++) {
-      if (actions[i].type == TSParseActionTypeReduce) {
-        array_push(result, s);
-        break;
-      }
-    }
-  }
-}
-
-// [new] Algorithm 2 로직
-// static void RecursiveCurrentStates (
-//   TSParser *Self,
-//   TSStatePath CurrentStack,
-//   TSStatePath *ResultSet
-// ) {
-//   if (CurrentStack.count == 0) return;
-//   TSStateId CurrentState = CurrentStack.states[0];
-
-//   // 1. 결과 집합에 현재 상태 추가 (이미 방문한 상태면 중단)
-//   for (uint32_t i = 0; i < ResultSet->count; i++) {
-//     if (ResultSet->states[i] == CurrentState) return;
-//   }
-//   if (ResultSet->count < 64) {
-//     ResultSet->states[ResultSet->count++] = CurrentState;
-//   }
-//   // 2. PRD 집합 추출
-//   const TSLanguage *language = Self->language;
-
-//   // 2-1. reduce 가능한 lookaheads 찾기
-//   TSSymbolArray lookaheads = array_new();
-//   ts_conversion_find_reduce(Self, CurrentState, &lookaheads);
-
-//   // debug: lookaheads 출력
-//   printf(">>> [Debug] RecursiveCurrentStates: State %u has %u Reduce-Triggering Lookaheads:\n",
-//          CurrentState, lookaheads.size);
-
-//   for (uint32_t i = 0; i < lookaheads.size; i++) {
-//     TSSymbol sym = lookaheads.contents[i];
-
-//     // 심볼 ID를 문자열 이름으로 변환
-//     const char *name = ts_language_symbol_name(language, sym);
-//     if (!name) name = "UNKNOWN";
-//     printf("    [%u] Symbol: %s (ID: %u)\n", i, name, sym);
-//   }
-//   printf("------------------------------------------------------------------\n");
-
-//   // 2-2. lookaheads 순회하며 중복 없는 PRD 수집
-//   ReduceProduction PRD[256];
-//   uint32_t PRDCount = 0;
-
-//   for (uint32_t i = 0; i < lookaheads.size; i++) {
-//     // 현재 순서의 lookahead를 꺼냄
-//     TSSymbol sym = lookaheads.contents[i];
-
-//     // 파싱 테이블 조회
-//     // CurrentState에서 sym에 대한 액션 인덱스 확인
-//     uint32_t idx = ts_language_lookup(language, CurrentState, sym);
-//     if (idx == 0) continue;   // idx가 0이면 정의된 행동 없음
-
-//     /*
-//       typedef union {
-//         TSParseAction action;
-//         struct {
-//           uint8_t count;
-//           bool reusable;
-//         } entry;
-//       } TSParseActionEntry;
-//       };    
-//     */
-//     const TSParseActionEntry *entry = &language->parse_actions[idx];    // 헤더 (엔트리)
-//     const TSParseAction *actions = (const TSParseAction *)(entry + 1);  // 실제 액션 데이터 시작점
-//     for (uint32_t j = 0; j < entry->entry.count; j++) {
-//       if (actions[j].type == TSParseActionTypeReduce) {
-//         // 중복 규칙 검사
-//         bool exists = false;
-//         for (uint32_t k = 0; k < PRDCount; k++) {
-//           if (PRD[k].symbol == actions[j].reduce.symbol &&
-//             PRD[k].child_count == actions[j].reduce.child_count) {
-//             exists = true;
-//             break;
-//           }
-//         }
-//         // 새로운 규칙이면 추가
-//         if (!exists && PRDCount < 256) {
-//           PRD[PRDCount].child_count = actions[j].reduce.child_count;
-//           PRD[PRDCount].symbol = actions[j].reduce.symbol;
-//           PRDCount++;
-//         }
-//       }
-//     }
-//   }
-//   array_delete(&lookaheads);
-
-//   // 3. 각 PRD에 대해 reduce 수행 및 재귀
-//   printf(">>> [Debug] Starting Simulation Loop. PRDCount: %u, StackCount: %u\n",
-//          PRDCount, CurrentStack.count);
-
-//   for (uint32_t i = 0; i < PRDCount; i++) {
-//     ReduceProduction *prod = &PRD[i];
-
-//     // [디버깅 로그 추가]
-//     if (CurrentStack.count <= prod->child_count) {
-//         printf("    [SKIP] PRD %u: Need stack > %u, but have %u. (Ancestor missing)\n",
-//                i, prod->child_count, CurrentStack.count);
-//         continue;
-//     }
-//     // 스택 언더플로우 체크
-//     if (CurrentStack.count <= prod->child_count) continue;
-
-//     // 3-1. 조상 상태(Ancestor) 찾기 (Pop)
-//     TSStateId AncestorState = CurrentStack.states[prod->child_count];
-//     printf("    [TRY] PRD %u: AncestorState: %u, Symbol: %u\n",
-//            i, AncestorState, prod->symbol);
-
-//     // 3-2. 다음 상태(NextState) 찾기 (Goto)
-
-//     // [수정] lookup 결과는 인덱스이므로, 실제 액션을 읽어야 합니다.
-//     uint32_t goto_idx = ts_language_lookup(language, AncestorState, prod->symbol);
-
-//     if (goto_idx > 0) {
-//       // 인덱스를 통해 액션 엔트리 읽기
-//       const TSParseActionEntry *entry = &language->parse_actions[goto_idx];
-//       const TSParseAction *action = (const TSParseAction *)(entry + 1);
-
-//       // GOTO는 Shift 액션으로 인코딩되어 있다.
-//       if (action->type == TSParseActionTypeShift) {
-//         TSStateId NextState = action->shift.state; // 여기가 진짜 다음 상태!
-//         // 3-3. 새로운 스택(Stack1) 구성
-//         TSStatePath NextStack;
-//         NextStack.count = 0;
-//         NextStack.states[NextStack.count++] = NextState;
-
-//         for (uint32_t k = prod->child_count; k < CurrentStack.count; k++) {
-//           if (NextStack.count < 64) {
-//             NextStack.states[NextStack.count++] = CurrentStack.states[k];
-//           }
-//         }
-//         // 3-4. 재귀 호출
-//         RecursiveCurrentStates(Self, NextStack, ResultSet);
-//       }
-//     }
-//   }
-// }
-
-// [new]
+// [new] reduce로 가능한 current states 재귀적으로 찾는 함수 
 static void ts_conversion__recursive_current_states (
   TSParser *self,
   const TSStatePath *stack,
@@ -2768,74 +2585,56 @@ static void ts_conversion__recursive_current_states (
   }
   if (result->count < 64) {
     result->states[result->count++] = current_state;
-  }
-
-  // 2. PRD 집합 추출
-  // 2-1. reduce 가능한 lookaheads 찾기
-  TSSymbolArray lookaheads = array_new();
-  ts_conversion_find_reduce(self, current_state, &lookaheads);
-
-  // 2-2. lookaheads 순회하며 중복 없는 PRD 수집
-  // ReduceProduction PRD[256];
-  uint32_t prd_count = 0;
-  ReduceProduction PRD[256];
-  // ReduceProduction *PRD = (ReduceProduction *)malloc(sizeof(ReduceProduction) * 128);
-  if (!PRD) {
-    array_delete(&lookaheads);
+  } else {
     return;
   }
 
-  for (uint32_t i = 0; i < lookaheads.size; i++) {
-    // 현재 순서의 lookahead를 꺼냄
-    TSSymbol sym = lookaheads.contents[i];
+  // 2. PRD(Productions) 수집
+  // 현재 상태에서 Reduce를 유발하는 모든 규칙 찾기
+  typedef struct {
+    uint32_t child_count;
+    TSSymbol symbol;
+  } ReduceProduction;
 
-    // 파싱 테이블 조회
-    // CurrentState에서 sym에 대한 액션 인덱스 확인
+  ReduceProduction PRD[256];
+  uint32_t prd_count = 0;
+
+  // reduce 액션 찾기
+  // 모든 심볼에 대해 액션 조회
+  for(TSSymbol sym = 0; sym < language->symbol_count; sym++) {
     uint32_t idx = ts_language_lookup(language, current_state, sym);
-    if (idx == 0) continue;   // idx가 0이면 정의된 행동 없음
+    if (idx == 0) continue;
 
-    /*
-      typedef union {
-        TSParseAction action;
-        struct {
-          uint8_t count;
-          bool reusable;
-        } entry;
-      } TSParseActionEntry;
-      };    
-    */
-    const TSParseActionEntry *entry = &language->parse_actions[idx];    // 헤더 (엔트리)
-    const TSParseAction *actions = (const TSParseAction *)(entry + 1);  // 실제 액션 데이터 시작점
+    const TSParseActionEntry *entry = &language->parse_actions[idx];
+    const TSParseAction *actions = (const TSParseAction *)(entry + 1);
 
-    for (uint32_t j = 0; j < entry->entry.count; j++) {
-      if (actions[j].type == TSParseActionTypeReduce) {
+    // 해당 심볼의 액션 중 하나라도 reduce면 확인
+    for (uint32_t i = 0; i < entry->entry.count; i++) {
+      if (actions[i].type == TSParseActionTypeReduce) {
         // 중복 규칙 검사
         bool exists = false;
         for (uint32_t k = 0; k < prd_count; k++) {
-          if (PRD[k].symbol == actions[j].reduce.symbol &&
-            PRD[k].child_count == actions[j].reduce.child_count) {
+          if (PRD[k].symbol == actions[i].reduce.symbol &&
+            PRD[k].child_count == actions[i].reduce.child_count) {
             exists = true;
             break;
-          }
-          // 새로운 규칙이면 추가
-          if (!exists && prd_count < 128) {
-            PRD[prd_count].child_count = actions[j].reduce.child_count;
-            PRD[prd_count].symbol = actions[j].reduce.symbol;
-            prd_count++;
           } 
+        }
+        // 새로운 규칙이면 추가
+        if (!exists && prd_count < 128) {
+          PRD[prd_count].child_count = actions[i].reduce.child_count;
+          PRD[prd_count].symbol = actions[i].reduce.symbol;
+          prd_count++;
         }
       }
     }
   }
-  array_delete(&lookaheads);
 
   // 3. 각 PRD에 대해 reduce 수행 및 재귀
   for (uint32_t i = 0; i < prd_count; i++) {
     ReduceProduction *prod = &PRD[i];
     // 스택 언더플로우 검사
     if (stack->count <= prod->child_count) {
-      // printf("    [SKIP] PRD %u: Need stack > %u, but have %u. (Ancestor missing)\n", 
-      //         i, prod->child_count, CurrentStack.count);
       continue;
     }
 
@@ -2863,15 +2662,10 @@ static void ts_conversion__recursive_current_states (
       ts_conversion__recursive_current_states(self, &next_stack, result);
     }
   }
-  // free(PRD);
 }
 
 // [new] 컨버전 구현체
-TSStatePath ts_parser_run_conversion(
-  TSParser *self
-  // uint32_t row,
-  // uint32_t col
-) {
+TSStatePath ts_parser_run_conversion(TSParser *self) {
   TSStatePath result = {0};
 
   // 1. 커서 위치 직전의 Shift(로그 인덱스)를 찾음
@@ -2910,177 +2704,293 @@ void ts_parser_write_conversion_result(
 }
 
 // [new] 컬렉션 구현체
-void ts_parser_run_collection(TSParser *self, FILE *OutputFile) {
-    // 1. 데이터 없음 or 파일 포인터 없음 -> 종료
-    if (!self->logged_actions.contents || !OutputFile) return;
+void ts_parser_run_collection(
+  TSParser *self,
+  FILE *file
+) {
+  if (!self->logged_actions.contents || !file) return;
 
-    // ---------------------------------------------------------
-    // 그대로 복사해온 로직 (구조체 정의 포함)
-    // ---------------------------------------------------------
-    typedef struct {
-        TSLoggedAction Action;
-        uint32_t LogIndex;
-        bool IsTerminal;
-    } StackEntry;
+  // 시뮬레이션용 스택 엔트리 정의
+  typedef struct {
+    TSSymbol symbol;    // 심볼 ID
+    bool is_terminal;   // Terminal(Shift)인지 Non-terminal(Reduce 결과)인지
+  } SimEntry;
 
-    // [삭제됨] fopen("Test.data") -> 이미 인자로 받음
+  // 전체 로그 순회
+  // shift인 경우만 필터링하여 시뮬레이션
+  for (uint32_t i = 0; i < self->logged_actions.size; ++i) {
+    TSLoggedAction *start_action = &self->logged_actions.contents[i];
 
-    // [삭제됨] if(self->bIsCollectionOrParseStateID) -> 호출했으면 무조건 실행
-
-    bool bIsRecover = false;
-
-    // =========================================================
-    // [1단계] 모든 시작점 후보 수집 (ShiftIndices)
-    // =========================================================
-    Array(uint32_t) ShiftIndices = array_new();
-    for (uint32_t I = 0; I < self->logged_actions.size; ++I)
-    {
-        if (self->logged_actions.contents[I].type == TSParseActionTypeShift && !self->logged_actions.contents[I].extra)
-        {
-            array_push(&ShiftIndices, I);
-        }
+    // Shift 액션(토큰 입력)에서만 후보 수집 시작
+    if (start_action->type != TSParseActionTypeShift || start_action->extra) {
+      continue;
     }
 
-    // =========================================================
-    // [2단계] 경계 탐색 - 가상 스택 시뮬레이션
-    // =========================================================
-    for (uint32_t i = 0; i < ShiftIndices.size; ++i)
-    {
-        Array(StackEntry) SimStack = array_new();   // 가상 스택
-        uint32_t CursorLogIndex = *array_get(&ShiftIndices, i);
-        uint32_t EndLogIndex = self->logged_actions.size;
-        uint32_t finalReduceLogIndex = UINT32_MAX;
+    // Shift 액션인 경우
+    TSStateId start_state = start_action->current_state;
+    Array(SimEntry) sim_stack = array_new();
 
-        // --- (A) prefix replay ---
-        for (uint32_t j = 0; j < CursorLogIndex; ++j)
-        {
-            TSLoggedAction act = self->logged_actions.contents[j];
+    bool found_candidate = false;
+    uint32_t end_log_index = i;
 
-            if (act.type == TSParseActionTypeShift && !act.extra)
-            {
-                StackEntry e = { act, j, true };
-                array_push(&SimStack, e);
-            }
-            else if (act.type == TSParseActionTypeReduce)
-            {
-                uint32_t rhs = act.child_count;
-                if (SimStack.size < rhs) continue;
-                for (uint32_t k = 0; k < rhs; ++k) array_pop(&SimStack);
+    // 미래 시뮬레이션
+    for (uint32_t j = i; j < self->logged_actions.size; ++j) {
+      TSLoggedAction *future_action = &self->logged_actions.contents[j];
 
-                TSLoggedAction nt = (TSLoggedAction){0};
-                nt.symbol = act.symbol;
-                StackEntry e = { nt, j, false };
-                array_push(&SimStack, e);
-            }
-        }          
+      if (future_action->type == TSParseActionTypeShift && !future_action->extra) {
+        SimEntry entry = { .symbol = future_action->symbol, .is_terminal = true };
+        array_push(&sim_stack, entry);
+      }
 
-        // --- (B) cursor ~ end ---
-        for (uint32_t j = CursorLogIndex; j < self->logged_actions.size; ++j)
-        {
-            TSLoggedAction CurrentAction = self->logged_actions.contents[j];
+      else if (future_action->type == TSParseActionTypeReduce) {
+        uint32_t rhs_len = future_action->child_count;
 
-            if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra)
-            {
-                StackEntry NewEntry = {CurrentAction, j, true};
-                array_push(&SimStack, NewEntry);
-            }
-            else if (CurrentAction.type == TSParseActionTypeReduce)
-            {
-                uint32_t RhsLength = CurrentAction.child_count;
-                if (SimStack.size < RhsLength) continue;
-
-                bool ConsumesCursor = false;
-                uint32_t LastConsumedIndex = 0;
-
-                for (uint32_t k = 0; k < RhsLength; ++k)
-                {
-                    StackEntry *Entry = array_get(&SimStack, SimStack.size - 1 - k);
-                    if (k == 0) LastConsumedIndex = Entry->LogIndex;
-                    if (Entry->IsTerminal && Entry->LogIndex == CursorLogIndex) ConsumesCursor = true;
-                }
-                
-                if (ConsumesCursor)
-                {
-                    EndLogIndex = LastConsumedIndex;
-                    finalReduceLogIndex = j;
-                    break;
-                }
-                else
-                {
-                    for(uint32_t k = 0; k < RhsLength; ++k) array_pop(&SimStack); 
-                    TSLoggedAction NonTerminalAction = {0};
-                    NonTerminalAction.symbol = CurrentAction.symbol;
-                    StackEntry NewNonTerminalEntry = {NonTerminalAction, j, false};
-                    array_push(&SimStack, NewNonTerminalEntry);
-                }
-            }
-            else if(CurrentAction.type == TSParseActionTypeRecover)
-            {
-                bIsRecover = true;
-            }
-        }
-        array_delete(&SimStack);
-
-        if (finalReduceLogIndex == UINT32_MAX) continue;
-
-        // =========================================================
-        // [3단계] 결과 출력 (OutputFile 사용)
-        // =========================================================
-        uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, i);
-        if (CurrentPrintIndex > EndLogIndex) continue;
-
-        TSStateId StartState = 0;
-        if (CurrentPrintIndex < self->logged_actions.size) 
-        {
-            StartState = self->logged_actions.contents[CurrentPrintIndex].current_state;
+        // [핵심 종료 조건] |RHS| >= |symbols|
+        // 현재까지 모은 심볼들이 이번 Reduce에 의해 모두 부모 노드로 흡수되는 경우
+        if (rhs_len >= sim_stack.size) {
+          found_candidate = true;
+          end_log_index = j; // 여기까지가 하나의 후보(Candidate)
+          break;
         }
 
-        Array(StackEntry) headerStack = array_new();
-        for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) 
-        {
-            TSLoggedAction CurrentAction = self->logged_actions.contents[j];
-            if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 
-            {
-                StackEntry newEntry = {CurrentAction, j, true};
-                array_push(&headerStack, newEntry);
-            } 
-            else if (CurrentAction.type == TSParseActionTypeReduce) 
-            {
-                uint32_t rhsLength = CurrentAction.child_count;
-                if (headerStack.size >= rhsLength) 
-                {
-                    for (uint32_t pop_idx = 0; pop_idx < rhsLength; ++pop_idx) array_pop(&headerStack);
-                    TSLoggedAction nonTerminalAction = {0};
-                    nonTerminalAction.symbol = CurrentAction.symbol;
-                    StackEntry newNonTerminalEntry = {nonTerminalAction, j, false};
-                    array_push(&headerStack, newNonTerminalEntry);
-                }
-            }  
+        // 이번 Reduce로 처리되지 않는 경우
+        // 스택 뒷부분(RHS)을 Pop하고, LHS(Non-terminal)를 Push
+        if (sim_stack.size >= rhs_len) {
+          sim_stack.size -= rhs_len; 
+        } else {
+          sim_stack.size = 0; 
         }
 
-        fprintf(OutputFile, "%u ", StartState);
-        for (uint32_t l = 0; l < headerStack.size; ++l) 
-        {
-            StackEntry *entry = array_get(&headerStack, l);
-            const char* symbolName = ts_language_symbol_name(self->language, entry->Action.symbol);
-            fprintf(OutputFile, "%s ", symbolName ? symbolName : "UNKNOWN");
-        }
-        fprintf(OutputFile, "\n");
-        array_delete(&headerStack);
-        
-        for(uint32_t l = i; l < ShiftIndices.size; ++l) 
-        {
-            uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
-            if(InnerPrintIndex > EndLogIndex) break;
-            TSLoggedAction PrintAction = self->logged_actions.contents[InnerPrintIndex];
-            const char* Lexeme = PrintAction.lexeme ? PrintAction.lexeme : ts_language_symbol_name(self->language, PrintAction.symbol);
-            fprintf(OutputFile, "  %u,%u: %s\n", PrintAction.start_point.row + 1, PrintAction.start_point.column + 1, Lexeme);
-        }
-        fprintf(OutputFile, "\n");
+        SimEntry entry = { .symbol = future_action->symbol, .is_terminal = false };
+        array_push(&sim_stack, entry);
+      }
+
+      else if (future_action->type == TSParseActionTypeAccept) {
+        found_candidate = true;
+        end_log_index = j;
+        break;
+      }
+
+      else if (future_action->type == TSParseActionTypeRecover) {
+        found_candidate = false; // 에러가 섞인 후보는 학습하지 않음
+        break;
+      }
     }
 
-    array_delete(&ShiftIndices);
+    // 결과 출력 (파일 저장)
+    /*
+      188 = Expr 
+        1,8: =
+        1,10: 100
+    */
+    if (found_candidate && sim_stack.size > 0) {
+      // Line 1: 상태 및 구조 후보
+      /*
+        188 = Expr
+      */
+      fprintf(file, "%u", start_state);
+      for (uint32_t k = 0; k < sim_stack.size; ++k) {
+        SimEntry *e = array_get(&sim_stack, k);
+        const char *name = ts_language_symbol_name(self->language, e->symbol);
+        fprintf(file, " %s", name ? name : "UNKNOWN");
+      }
+      fprintf(file, "\n");
+
+      // Line 2: 실제 Lexeme 데이터
+      // Cursor(i) 부터 End(end_log_index) 직전까지의 실제 텍스트 출력
+      /*
+          1,8: =
+          1,10: 100
+      */
+      for (uint32_t k = i; k < end_log_index; ++k) {
+        TSLoggedAction *act = &self->logged_actions.contents[k];
+        if (act->type == TSParseActionTypeShift && !act->extra) {
+            // Lexeme 우선, 없으면 심볼 이름
+            const char *text = act->lexeme; 
+            if (!text) text = ts_language_symbol_name(self->language, act->symbol);
+
+            // 포맷: "Row,Col: Text"
+            fprintf(file, "  %u,%u: ", act->start_point.row + 1, act->start_point.column + 1);
+            // print_escaped_string(OutputFile, text); 
+            fprintf(file, "%s\n", text); 
+        }
+      }
+      fprintf(file, "\n"); // 후보 간 구분선
+    }
+    array_delete(&sim_stack);
+  }
 }
+// void ts_parser_run_collection(TSParser *self, FILE *OutputFile) {
+//     // 1. 데이터 없음 or 파일 포인터 없음 -> 종료
+//     if (!self->logged_actions.contents || !OutputFile) return;
+
+//     // ---------------------------------------------------------
+//     // 그대로 복사해온 로직 (구조체 정의 포함)
+//     // ---------------------------------------------------------
+//     typedef struct {
+//         TSLoggedAction Action;
+//         uint32_t LogIndex;
+//         bool IsTerminal;
+//     } StackEntry;
+
+//     // [삭제됨] fopen("Test.data") -> 이미 인자로 받음
+
+//     // [삭제됨] if(self->bIsCollectionOrParseStateID) -> 호출했으면 무조건 실행
+
+//     bool bIsRecover = false;
+
+//     // =========================================================
+//     // [1단계] 모든 시작점 후보 수집 (ShiftIndices)
+//     // =========================================================
+//     Array(uint32_t) ShiftIndices = array_new();
+//     for (uint32_t I = 0; I < self->logged_actions.size; ++I)
+//     {
+//         if (self->logged_actions.contents[I].type == TSParseActionTypeShift && !self->logged_actions.contents[I].extra)
+//         {
+//             array_push(&ShiftIndices, I);
+//         }
+//     }
+
+//     // =========================================================
+//     // [2단계] 경계 탐색 - 가상 스택 시뮬레이션
+//     // =========================================================
+//     for (uint32_t i = 0; i < ShiftIndices.size; ++i)
+//     {
+//         Array(StackEntry) SimStack = array_new();   // 가상 스택
+//         uint32_t CursorLogIndex = *array_get(&ShiftIndices, i);
+//         uint32_t EndLogIndex = self->logged_actions.size;
+//         uint32_t finalReduceLogIndex = UINT32_MAX;
+
+//         // --- (A) prefix replay ---
+//         for (uint32_t j = 0; j < CursorLogIndex; ++j)
+//         {
+//             TSLoggedAction act = self->logged_actions.contents[j];
+
+//             if (act.type == TSParseActionTypeShift && !act.extra)
+//             {
+//                 StackEntry e = { act, j, true };
+//                 array_push(&SimStack, e);
+//             }
+//             else if (act.type == TSParseActionTypeReduce)
+//             {
+//                 uint32_t rhs = act.child_count;
+//                 if (SimStack.size < rhs) continue;
+//                 for (uint32_t k = 0; k < rhs; ++k) array_pop(&SimStack);
+
+//                 TSLoggedAction nt = (TSLoggedAction){0};
+//                 nt.symbol = act.symbol;
+//                 StackEntry e = { nt, j, false };
+//                 array_push(&SimStack, e);
+//             }
+//         }          
+
+//         // --- (B) cursor ~ end ---
+//         for (uint32_t j = CursorLogIndex; j < self->logged_actions.size; ++j)
+//         {
+//             TSLoggedAction CurrentAction = self->logged_actions.contents[j];
+
+//             if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra)
+//             {
+//                 StackEntry NewEntry = {CurrentAction, j, true};
+//                 array_push(&SimStack, NewEntry);
+//             }
+//             else if (CurrentAction.type == TSParseActionTypeReduce)
+//             {
+//                 uint32_t RhsLength = CurrentAction.child_count;
+//                 if (SimStack.size < RhsLength) continue;
+
+//                 bool ConsumesCursor = false;
+//                 uint32_t LastConsumedIndex = 0;
+
+//                 for (uint32_t k = 0; k < RhsLength; ++k)
+//                 {
+//                     StackEntry *Entry = array_get(&SimStack, SimStack.size - 1 - k);
+//                     if (k == 0) LastConsumedIndex = Entry->LogIndex;
+//                     if (Entry->IsTerminal && Entry->LogIndex == CursorLogIndex) ConsumesCursor = true;
+//                 }
+                
+//                 if (ConsumesCursor)
+//                 {
+//                     EndLogIndex = LastConsumedIndex;
+//                     finalReduceLogIndex = j;
+//                     break;
+//                 }
+//                 else
+//                 {
+//                     for(uint32_t k = 0; k < RhsLength; ++k) array_pop(&SimStack); 
+//                     TSLoggedAction NonTerminalAction = {0};
+//                     NonTerminalAction.symbol = CurrentAction.symbol;
+//                     StackEntry NewNonTerminalEntry = {NonTerminalAction, j, false};
+//                     array_push(&SimStack, NewNonTerminalEntry);
+//                 }
+//             }
+//             else if(CurrentAction.type == TSParseActionTypeRecover)
+//             {
+//                 bIsRecover = true;
+//             }
+//         }
+//         array_delete(&SimStack);
+
+//         if (finalReduceLogIndex == UINT32_MAX) continue;
+
+//         // =========================================================
+//         // [3단계] 결과 출력 (OutputFile 사용)
+//         // =========================================================
+//         uint32_t CurrentPrintIndex = *array_get(&ShiftIndices, i);
+//         if (CurrentPrintIndex > EndLogIndex) continue;
+
+//         TSStateId StartState = 0;
+//         if (CurrentPrintIndex < self->logged_actions.size) 
+//         {
+//             StartState = self->logged_actions.contents[CurrentPrintIndex].current_state;
+//         }
+
+//         Array(StackEntry) headerStack = array_new();
+//         for (uint32_t j = CursorLogIndex; j < finalReduceLogIndex; ++j) 
+//         {
+//             TSLoggedAction CurrentAction = self->logged_actions.contents[j];
+//             if (CurrentAction.type == TSParseActionTypeShift && !CurrentAction.extra) 
+//             {
+//                 StackEntry newEntry = {CurrentAction, j, true};
+//                 array_push(&headerStack, newEntry);
+//             } 
+//             else if (CurrentAction.type == TSParseActionTypeReduce) 
+//             {
+//                 uint32_t rhsLength = CurrentAction.child_count;
+//                 if (headerStack.size >= rhsLength) 
+//                 {
+//                     for (uint32_t pop_idx = 0; pop_idx < rhsLength; ++pop_idx) array_pop(&headerStack);
+//                     TSLoggedAction nonTerminalAction = {0};
+//                     nonTerminalAction.symbol = CurrentAction.symbol;
+//                     StackEntry newNonTerminalEntry = {nonTerminalAction, j, false};
+//                     array_push(&headerStack, newNonTerminalEntry);
+//                 }
+//             }  
+//         }
+
+//         fprintf(OutputFile, "%u ", StartState);
+//         for (uint32_t l = 0; l < headerStack.size; ++l) 
+//         {
+//             StackEntry *entry = array_get(&headerStack, l);
+//             const char* symbolName = ts_language_symbol_name(self->language, entry->Action.symbol);
+//             fprintf(OutputFile, "%s ", symbolName ? symbolName : "UNKNOWN");
+//         }
+//         fprintf(OutputFile, "\n");
+//         array_delete(&headerStack);
+        
+//         for(uint32_t l = i; l < ShiftIndices.size; ++l) 
+//         {
+//             uint32_t InnerPrintIndex = *array_get(&ShiftIndices, l);
+//             if(InnerPrintIndex > EndLogIndex) break;
+//             TSLoggedAction PrintAction = self->logged_actions.contents[InnerPrintIndex];
+//             const char* Lexeme = PrintAction.lexeme ? PrintAction.lexeme : ts_language_symbol_name(self->language, PrintAction.symbol);
+//             fprintf(OutputFile, "  %u,%u: %s\n", PrintAction.start_point.row + 1, PrintAction.start_point.column + 1, Lexeme);
+//         }
+//         fprintf(OutputFile, "\n");
+//     }
+
+//     array_delete(&ShiftIndices);
+// }
 
 TSTree *ts_parser_parse(
   TSParser *self,
