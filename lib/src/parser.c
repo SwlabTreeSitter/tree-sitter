@@ -119,9 +119,6 @@ struct TSParser {
   TSWasmStore *wasm_store;
   ReduceActionSet reduce_actions;
 
-  // 파싱 액션 저장 자료구조
-  TSParseActionArray parse_actions;
-
   // 파싱 로그 저장 자료구조 
   TSLoggedActionArray logged_actions;
 
@@ -1226,6 +1223,7 @@ static bool ts_parser__do_all_potential_reductions(
         true, false
       );
 
+      // --------------------------- 데이터 저장 ---------------------------------
       // Reduce가 성공해서 새로운 버전이 생기면 로그
       if (reduction_version != STACK_VERSION_NONE) {
         // Reduce 후 이동한 상태(GOTO) 확인
@@ -1240,6 +1238,7 @@ static bool ts_parser__do_all_potential_reductions(
             .is_virtual = true             // 에러 복구 중 발생했으므로 가상 취급
         };
         array_push(&self->logged_actions, v_reduce_log);
+        // -----------------------------------------------------------------
       }
     }
 
@@ -1321,7 +1320,7 @@ static bool ts_parser__recover_to_state(
   return previous_version != STACK_VERSION_NONE;
 }
 
-// [Error Recovery] 문법 오류 발생 시 호출
+// [info] 에러 처리 함수
 // 두 가지 복구 전략(1. 과거로 되감기, 2. 토큰 버리기)을 동시에 시도하여
 // 파싱 경로를 분기시키고, 최적의 복구 경로를 탐색하도록 함
 static void ts_parser__recover(
@@ -1513,24 +1512,26 @@ static void ts_parser__recover(
   self->has_error = has_error;
 }
 
-// [custom] tree-sitter 파서가 문법 오류를 만났을 때 호출되는 에러 복구 및 처리 함수
+// [custom] ts_parser__condense_stack의 에러 수리 함수
+// 분기 1: v-shift 시도
+// 분기 2: ts_parser__recover
 static void ts_parser__handle_error(
   TSParser *self,
   StackVersion version,
   Subtree lookahead
 ) {
-  // ========================[ 로그 ]========================
+  // --------------------------- 데이터 저장 ---------------------------------
   TSStateId state_at_error = ts_stack_state(self->stack, version);
   Length error_pos = length_add(ts_stack_position(self->stack, version), ts_subtree_padding(lookahead));
   
   TSLoggedAction recovery_action_log = (TSLoggedAction) {
-    .type = TSParseActionTypeRecover,      // "여기서 에러가 나서 복구를 시도함" 표시
+    .type = TSParseActionTypeRecover,
     .start_point = error_pos.extent,       // 에러가 발생한 정확한 좌표
     .next_state = state_at_error,          // 에러 당시의 파서 상태
     .symbol = ts_subtree_symbol(lookahead) // 문법에 맞지 않아 에러를 유발한 토큰
   };
   array_push(&self->logged_actions, recovery_action_log);
-  // ========================================================================
+  // -----------------------------------------------------------------
   uint32_t previous_version_count = ts_stack_version_count(self->stack);
 
   // 일단 Reduce 시도
@@ -1583,23 +1584,20 @@ static void ts_parser__handle_error(
             missing_tree, false,
             state_after_missing_symbol
           );
-          // ===================[ 추가 로그: Virtual Shift ]===================
-          // 가짜 토큰(Missing Node)을 통해 이동한 상태(Virtual Shift)를 기록합니다.
-          // 이 로그가 있어야 'ClosestState' 함수가 51 -> 240 연결 고리를 찾습니다.
-          {
-              TSLoggedAction virtual_shift_log = (TSLoggedAction) {
-                  .type = TSParseActionTypeShift, // Shift로 위장해야 로직이 따라갑니다.
-                  .start_point = position.extent, // 가짜 토큰의 위치
-                  .current_state = state,         // 이전 상태 (예: 51)
-                  .next_state = state_after_missing_symbol, // 다음 상태 (예: 240)
-                  .symbol = missing_symbol,       // 가짜 토큰 심볼
-                  .lexeme = "virtual",
-                  .extra = false,
-                  .is_virtual = true              // 가짜임을 표시
-              };
-              array_push(&self->logged_actions, virtual_shift_log);
-          }
-          // =======================================================================
+          // --------------------------- 데이터 저장 ---------------------------------
+          // 가짜 토큰(Missing Node)을 통해 이동한 상태(Virtual Shift)를 기록
+          TSLoggedAction virtual_shift_log = (TSLoggedAction) {
+            .type = TSParseActionTypeShift,
+            .start_point = position.extent, // 가짜 토큰의 위치
+            .current_state = state,
+            .next_state = state_after_missing_symbol,
+            .symbol = missing_symbol,       // 가짜 토큰 심볼
+            .lexeme = "virtual",
+            .extra = false,
+            .is_virtual = true              // 가짜임을 표시
+          };
+          array_push(&self->logged_actions, virtual_shift_log);
+          // -----------------------------------------------------------------
           if (ts_parser__do_all_potential_reductions(
             self, version_with_missing_tree,
             ts_subtree_leaf_symbol(lookahead)
@@ -1758,6 +1756,13 @@ static bool ts_parser__advance(
             LOG("shift state:%u", next_state);
           }
 
+          // 예전에 만들어둔 트리의 덩어리(Node)를 재활용하려고 가져온 경우 (증분 파싱)
+          if (ts_subtree_child_count(lookahead) > 0) {
+            ts_parser__breakdown_lookahead(self, &lookahead, state, &self->reusable_node);
+            next_state = ts_language_next_state(self->language, state, ts_subtree_symbol(lookahead));
+          } 
+
+          // --------------------------- 데이터 저장 ---------------------------------
           // lookahead 파악
           TSSymbol tok_sym = ts_subtree_leaf_symbol(lookahead);
 
@@ -1767,7 +1772,6 @@ static bool ts_parser__advance(
           uint32_t lexeme_len = end_byte - start_byte;
 
           char *lexeme_copy = NULL;
-
           if (lexeme_len > 0) {
             uint32_t bytes_read = 0;
             const char *source_chunk = self->lexer.input.read (
@@ -1776,17 +1780,12 @@ static bool ts_parser__advance(
               self->lexer.token_start_position.extent,
               &bytes_read
             );
-
             if (source_chunk && bytes_read >= lexeme_len) {
               lexeme_copy = (char *)ts_malloc(lexeme_len + 1);
               memcpy(lexeme_copy, source_chunk, lexeme_len);
               lexeme_copy[lexeme_len] = '\0';
             }
           }
-         
-          // --------------------------- 데이터 저장 ---------------------------------
-          // 원본 액션 기록
-          array_push(&self->parse_actions, action);
 
           // 가공된 로그 기록
           TSLoggedAction la_shift = (TSLoggedAction) {
@@ -1802,11 +1801,6 @@ static bool ts_parser__advance(
           };
           array_push(&self->logged_actions, la_shift);
           // -----------------------------------------------------------------
-
-          if (ts_subtree_child_count(lookahead) > 0) {
-            ts_parser__breakdown_lookahead(self, &lookahead, state, &self->reusable_node);
-            next_state = ts_language_next_state(self->language, state, ts_subtree_symbol(lookahead));
-          } 
 
           ts_parser__shift(self, version, next_state, lookahead, action.shift.extra);
           if (did_reuse) reusable_node_advance(&self->reusable_node);
@@ -1830,17 +1824,14 @@ static bool ts_parser__advance(
           );
 
           // --------------------------- 데이터 저장 ---------------------------------
-          // 원본 액션 기록
-          array_push(&self->parse_actions, action);
-          
           // 가공된 로그 기록
           // 분기된 새 버전들
           if (reduction_version != STACK_VERSION_NONE) {
             uint32_t current_count = ts_stack_version_count(self->stack);
             for (StackVersion v = reduction_version; v < current_count; v++) {
               TSStateId goto_state_new = ts_stack_state(self->stack, v);
-              LOG("reduce sym:%s, child_count:%u, goto:%u", 
-                  SYM_NAME(action.reduce.symbol), action.reduce.child_count, goto_state_new);
+              LOG("reduce sym:%s, child_count:%u, goto:%u, version:%u", 
+                  SYM_NAME(action.reduce.symbol), action.reduce.child_count, goto_state_new, v);
 
               TSLoggedAction la_red = (TSLoggedAction) {
                 .type = TSParseActionTypeReduce,
@@ -1865,14 +1856,10 @@ static bool ts_parser__advance(
         case TSParseActionTypeAccept: {
           LOG("accept");
           // --------------------------- 데이터 저장 ---------------------------------
-          // 원본 액션 기록
-          array_push(&self->parse_actions, action);
-          
           // 가공된 로그 기록
           TSLoggedAction la_acc = (TSLoggedAction) {
             .type = TSParseActionTypeAccept,
             .current_state = state,
-            .next_state = 0,
             .symbol = ts_builtin_sym_end,
             .child_count = 0,
             .is_virtual = false,
@@ -1886,6 +1873,10 @@ static bool ts_parser__advance(
         }
 
         case TSParseActionTypeRecover: {
+          // 파싱 테이블을 조회했더니, 액션 목록에 RECVOER가 존재. 명시적 에러 처리
+            // grammar.js에서 직접 에러 처리를 정의했거나
+            // 파서 생성기가 테이블에 액션을 정의한 경우
+
           // --------------------------- 데이터 저장 ---------------------------------
           // 에러 복구 진입 시점에 바로 기록
           // 현재 상태: 에러를 감지한 시점
@@ -1895,7 +1886,6 @@ static bool ts_parser__advance(
           TSLoggedAction la_recover = (TSLoggedAction) {
             .type = TSParseActionTypeRecover,
             .current_state = state_at_recover,
-            .next_state = 0,
             .symbol = ts_subtree_symbol(lookahead),
             .start_point = error_pos.extent
           };
@@ -1989,6 +1979,8 @@ static bool ts_parser__advance(
       continue;
     }
 
+    // 파싱 테이블에 아무런 액션도 없는 경우
+    // 해당 스택 버전을 멈춤 -> ts_parser_parse에서 ts_parser__condense_stack가 처리
     // Otherwise, there is definitely an error in this version of the parse stack.
     // Mark this version as paused and continue processing any other stack
     // versions that exist. If some other version advances successfully, then
@@ -2000,7 +1992,7 @@ static bool ts_parser__advance(
   }
 }
 
-// [info] 에러 수리 함수
+// [info] ts_parser_parse의 암시적 에러 처리
 static unsigned ts_parser__condense_stack(TSParser *self) {
   bool made_changes = false;
   unsigned min_error_cost = UINT_MAX;
@@ -2183,9 +2175,6 @@ TSParser *ts_parser_new(void) {
   self->cursor_row = UINT32_MAX;
   self->cursor_col = UINT32_MAX;
 
-  array_init(&self->parse_actions);
-  array_reserve(&self->parse_actions, 2048);
-
   array_init(&self->logged_actions);
   array_reserve(&self->logged_actions, 2048);
 
@@ -2224,9 +2213,6 @@ void ts_parser_delete(TSParser *self) {
     array_delete(&self->reduce_actions);
   }
   // -----------------------------------------------------
-  if (self->parse_actions.contents) { 
-    array_delete(&self->parse_actions);
-  }
   if (self->logged_actions.contents) {
     array_delete(&self->logged_actions);
   }
@@ -2479,7 +2465,7 @@ void ts_parser_write_logged_actions(
         if (!SymbolName) { SymbolName = "UNKNOWN_SYMBOL"; }
         
         // 에러 복구 발생 위치 출력
-        fprintf(ActionFile, "[Recover] State %u, symbol: %s, Row: %u, Column:%u\n",
+        fprintf(ActionFile, "[RECOVER] State %u, symbol: %s, Row: %u, Column:%u\n",
             Action->current_state,SymbolName,
             Action->start_point.row + 1,
             Action->start_point.column + 1
@@ -3191,6 +3177,8 @@ TSTree *ts_parser_parse(
       }
     }
 
+    // 모든 버전의 advance가 끝난 후, 가상 shift 하거나 나쁜 버전을 삭제
+    // 여러 가능성 중 최적의 경로(에러가 가장 적은) 선택
     // After advancing each version of the stack, re-sort the versions by their cost,
     // removing any versions that are no longer worth pursuing.
     unsigned min_error_cost = ts_parser__condense_stack(self);
