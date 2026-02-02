@@ -2633,7 +2633,13 @@ static void ts_conversion__recursive_current_states (
 
   // reduce 액션 찾기
   // 모든 심볼에 대해 액션 조회
-  for(TSSymbol sym = 0; sym < language->symbol_count; sym++) {
+
+  // 1. 전체 터미널(실제 토큰) 개수 계산
+  //    (기본 토큰 + 외부 토큰)
+  uint32_t total_terminal_count = language->token_count + language->external_token_count;
+
+  for(TSSymbol sym = 0; sym < total_terminal_count; sym++) {
+    // if (sym == 0) continue;
     uint32_t idx = ts_language_lookup(language, current_state, sym);
     if (idx == 0) continue;
 
