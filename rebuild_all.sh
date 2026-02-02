@@ -29,13 +29,23 @@ if [ ! -f "$TS_CLI" ]; then echo "Error: tree-sitter CLI build failed"; exit 1; 
 echo ""
 echo "=== [2] Generate/Build (tree-sitter-smallbasic) ==="
 cd "$LANG_DIR"
+
+# 기존 산출물 완전 삭제 (Clean)
+echo " -> Cleaning up old artifacts..."
+rm -rf src/             # parser.c가 생성되는 폴더
+rm -rf build/           # 컴파일된 객체 파일(.o) 폴더
+rm -f binding.gyp       # 빌드 설정
+rm -f *.so              # 리눅스 라이브러리
+rm -f *.json            # 캐시 파일들
+rm -f LR_Items_Dump.txt # 덤프 파일도 삭제
+
 # 기존 리눅스용 라이브러리(.so) 빌드
 "$TS_CLI" generate
 "$TS_CLI" build
 
 echo ""
 echo "=== [3] Optional Parse Smoke Test ==="
-SAMPLE="$LANG_DIR/examples/smallbasic/01_HelloWorld.sb"
+SAMPLE="$LANG_DIR/SB_Sample/01_HelloWorld.sb"
 if [ -f "$SAMPLE" ]; then
     "$TS_CLI" parse "$SAMPLE" --quiet
     echo " -> Parse test passed."

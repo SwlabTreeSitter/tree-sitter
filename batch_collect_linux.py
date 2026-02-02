@@ -9,7 +9,7 @@ import glob
 EXE_PATH = "/home/hyeonjin/PL/tree-sitter/TreeSitterCutFile.exe"
 
 # 2. Small Basic 파서 라이브러리 (.so) 경로
-LIB_PATH = "/home/hyeonjin/PL/tree-sitter-smallbasic/libsmallbasic.so"
+LIB_PATH = "/home/hyeonjin/PL/tree-sitter-smallbasic/smallbasic.so"
 
 # 3. 샘플 프로그램(.sb)들이 들어있는 폴더
 SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/LEARN_BENCH"
@@ -84,7 +84,10 @@ def main():
 
         except subprocess.CalledProcessError as e:
             print(f"[Failed]")
-            print(f"  Error details: {e.stderr.decode('utf-8')}")
+            err_msg = e.stderr
+            if hasattr(err_msg, 'decode'):
+                err_msg = err_msg.decode('utf-8')
+            print(f"  Error details: {err_msg}")
             continue
 
         # 2. 결과 파일 이동
