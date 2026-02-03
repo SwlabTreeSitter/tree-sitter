@@ -2624,6 +2624,7 @@ static void ts_conversion__recursive_current_states (
   // 2. PRD(Productions) 수집
   // 현재 상태에서 Reduce를 유발하는 모든 규칙 찾기
   typedef struct {
+    TSSymbol lookahead;
     uint32_t child_count;
     TSSymbol symbol;
   } ReduceProduction;
@@ -2634,12 +2635,14 @@ static void ts_conversion__recursive_current_states (
   // reduce 액션 찾기
   // 모든 심볼에 대해 액션 조회
 
-  // 1. 전체 터미널(실제 토큰) 개수 계산
-  //    (기본 토큰 + 외부 토큰)
+  // 전체 터미널(실제 토큰) 개수 계산
+  // (기본 토큰 + 외부 토큰)
   uint32_t total_terminal_count = language->token_count + language->external_token_count;
 
+  // Before: 모든 심볼 검사 (Non-Terminal 포함)
+  // for (TSSymbol sym = 0; sym < language->symbol_count; sym++)
   for(TSSymbol sym = 0; sym < total_terminal_count; sym++) {
-    // if (sym == 0) continue;
+    if (sym == ts_builtin_sym_end) continue;
     uint32_t idx = ts_language_lookup(language, current_state, sym);
     if (idx == 0) continue;
 
@@ -2660,6 +2663,7 @@ static void ts_conversion__recursive_current_states (
         }
         // 새로운 규칙이면 추가
         if (!exists && prd_count < 128) {
+          PRD[prd_count].lookahead = sym;
           PRD[prd_count].child_count = actions[i].reduce.child_count;
           PRD[prd_count].symbol = actions[i].reduce.symbol;
           prd_count++;
@@ -2685,6 +2689,10 @@ static void ts_conversion__recursive_current_states (
     if (lookup_result > 0) {
       // 주석의 정의에 따라, 논터미널 조회 결과는 그 자체로 후속 상태(Successor State)
       TSStateId next_state = (TSStateId)lookup_result;
+
+      const char *SymbolName = ts_language_symbol_name(self->language, prod->symbol);
+      if (!SymbolName) { SymbolName = "UNKNOWN_SYMBOL"; }
+      printf("[DEBUG-RECURSIVE] by %d, ancestor: %d lhs: %s  goto: %d\n", prod->lookahead,AncestorState, SymbolName, next_state);
 
       // 3-3. 새로운 스택(Stack1) 구성
       TSStatePath next_stack;
@@ -2728,10 +2736,6 @@ TSStatePath ts_parser_run_conversion(TSParser *self) {
   printf("[DEBUG] Step 3: recursive_current_states calling...\n");
   ts_conversion__recursive_current_states(self, &re_stack, &result);
   printf("[DEBUG] === ts_parser_run_conversion END ===\n");
-  printf("[DEBUG] Final Result Count: %d\n", result.count);
-  for(int i=0; i<result.count; i++) {
-      printf("[DEBUG] Final State[%d]: %d\n", i, result.states[i]);
-  }
 
   return result;
 }

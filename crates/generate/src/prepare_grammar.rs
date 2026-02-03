@@ -10,6 +10,8 @@ use std::{
     cmp::Ordering,
     collections::{hash_map, HashMap, HashSet},
     mem,
+    fs::File,   // for token mapping
+    io::Write   // for token mapping
 };
 
 use anyhow::Result;
@@ -144,6 +146,28 @@ pub fn prepare_grammar(
 
     let interned_grammar = intern_symbols(input_grammar)?;
     let (syntax_grammar, lexical_grammar) = extract_tokens(interned_grammar)?;
+    // ------------------------------------------
+    if let Ok(mut file) = File::create("token_mapping.json") {
+        writeln!(file, "{{").unwrap();
+
+        let len = lexical_grammar.variables.len();
+        for (i, variable) in lexical_grammar.variables.iter().enumerate() {
+            let (type_str, content) = match &variable.rule {
+                Rule::String(s) => ("STRING", s.clone()),
+                Rule::Pattern(regex, _) => ("PATTERN", regex.clone()),
+                _ => ("COMPLEX", format!("{:?}", variable.rule)),
+            };
+            // JSON 문자열 이스케이프
+            let safe_content = content.replace('\\', "\\\\").replace('"', "\\\"");
+            // 마지막 요소면 콤마 제거
+            let comma = if i == len - 1 { "" } else { "," };
+            writeln!(file, "  \"{}\": {{ \"type\": \"{}\", \"content\": \"{}\" }}{}", 
+                variable.name, type_str, safe_content, comma).unwrap();
+        }
+        writeln!(file, "}}").unwrap();
+        println!("[Custom] Generated token_mapping.json");
+    }
+    // ------------------------------------------
     let syntax_grammar = expand_repeats(syntax_grammar);
     let mut syntax_grammar = flatten_grammar(syntax_grammar)?;
     let lexical_grammar = expand_tokens(lexical_grammar)?;

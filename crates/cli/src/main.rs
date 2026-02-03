@@ -800,7 +800,7 @@ impl Generate {
                         version.parse().expect("invalid abi version flag")
                     }
                 });
-        if let Err(err) = tree_sitter_generate::generate_parser_in_directory(
+        if let Err(err) = tree_sitter_generate::generate_parser_in_directory(   // generate.rs
             current_dir,
             self.output.as_deref(),
             self.grammar_path.as_deref(),

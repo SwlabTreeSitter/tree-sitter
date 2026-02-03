@@ -133,13 +133,10 @@ pub fn build_tables(
     let mut file_lexical_grammar = File::create("saved_lexical_grammar.txt").expect("Unable to create file");
     writeln!(file_lexical_grammar, "{:#?}", lexical_grammar).expect("Unable to write to file");
 
-    let mut file_syntax_grammar = File::create("saved_syntax_grammar.txt")
-        .expect("Unable to create file");
-    writeln!(file_syntax_grammar, "{:#?}", syntax_grammar)
-        .expect("Unable to write to file");
+    let mut file_syntax_grammar = File::create("saved_syntax_grammar.txt").expect("Unable to create file");
+    writeln!(file_syntax_grammar, "{:#?}", syntax_grammar).expect("Unable to write to file");
 
-    let mut file_parse_state_info = File::create("saved_parse_state_info.txt")
-        .expect("Unable to create file");
+    let mut file_parse_state_info = File::create("saved_parse_state_info.txt").expect("Unable to create file");
 
     let mut file_parse_state_info_name = File::create("saved_parse_state_info_name.txt")
         .expect("Unable to create file");
@@ -302,6 +299,7 @@ pub fn build_tables(
             if (item.step_index as usize) == item.production.steps.len() {
                 rhs_string.push_str(". ");
             }
+            
 
             writeln!(
                 file_parse_state_info_name,
