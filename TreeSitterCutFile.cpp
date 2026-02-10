@@ -46,6 +46,9 @@ extern "C" {
 
     // 4. 로그 덤프
     void ts_parser_write_logged_actions(TSParser *self, const char *filename);
+
+    // 5. 배치 컨버전 실행 (모든 위치의 State Path 출력)
+    void ts_parser_run_batch_conversion(TSParser *self, FILE *out_stream);
 }
 
 // TSLanguage*를 반환하는 함수 포인터 타입을 정의 (동적 로딩용)
@@ -100,100 +103,97 @@ void LogToFileCallback(void *payload, TSLogType type, const char *buffer) {
     }
 }
 
-// ==========================================================
+void RunCustomEvalLogic(TSParser* parser, const char* target_path) {
+
+}
+
 // [Main]
-// ==========================================================
 int main(int argc, char* argv[]) {
     std::cout << "DEBUG: Program started." << std::endl;
 
-    // 1. 인자 파싱
-    if (argc < 4) {
-        std::cerr << "Usage: " << argv[0] << " <lang> <lib_path> <file_path> [<stop_row> <stop_col> <flag>]" << std::endl;
-        std::cerr << "\n  <flag>: 1 = Collection Mode, 0 = Parse State ID Mode" << std::endl;
-        std::cerr << "\n  Examples:" << std::endl;
-        std::cerr << "    " << argv[0] << " smallbasic ./tree-sitter-smallbasic.dll ./test.sb" << std::endl;
-        std::cerr << "    " << argv[0] << " smallbasic ./tree-sitter-smallbasic.dll ./test.sb 5 10 1" << std::endl;
-        std::cerr << "    " << argv[0] << " python ./python.dll ./test.py 20 5 0" << std::endl;
-        return 1;
-    }
+    // 인자 파싱 변수
+    std::string language_name;
+    const char* library_path = nullptr;
+    const char* target_path = nullptr;
 
-    // 인자 할당
-    std::string language_name = argv[1];
-    const char* library_path = argv[2]; // 2번째 인자는 무조건 DLL/SO 경로
-    const char* file_path = argv[3];    // 3번째 인자는 무조건 파일 경로
-
-    TSLanguage *language = nullptr;
-    LibraryHandle library_handle = nullptr; // 통합된 타입 사용
+    LibraryHandle library_handle = nullptr;
 
     bool stop_position_provided = false;
     uint32_t stop_row = 0; 
     uint32_t stop_col = 0; 
-    bool bIsCollectionMode = false; // 플래그 값 저장
 
-    // 옵션 인자 처리 (7개일 때)
-    // 순서: exe(0) lang(1) dll(2) file(3) row(4) col(5) flag(6)
-    if (argc == 7) {
+    bool bIsCollectionMode = false;
+    bool bIsBatchMode = false;
+
+    // ==========================================================
+    // 1. 인자 파싱 및 검증
+    // 사용법 1 (기본): exe lang dll file
+    // 사용법 2 (옵션): exe lang dll file row col flag
+    // 사용법 3 (batch): exe lang dll file --batch
+    // ==========================================================
+    if (argc == 5 && std::string(argv[4]) == "--batch") {
+        // [Batch Mode]
+        language_name = argv[1];
+        library_path = argv[2];
+        target_path = argv[3];
+        bIsBatchMode = true;
+    } 
+    else if (argc == 7) {
+        // [Collection / Conversion Mode]
+        language_name = argv[1];
+        library_path = argv[2];
+        target_path = argv[3];
+        
         stop_position_provided = true;
         stop_row = std::stoul(argv[4]);
         stop_col = std::stoul(argv[5]);
-
-        std::string flag_str = argv[6];
-        // 1이면 true (Collection), 0이면 false (Parse State ID)
-        bIsCollectionMode = (flag_str == "1");
-        std::cout << "DEBUG: Flag set to: " 
-                  << (bIsCollectionMode ? "Collection Mode (1)" : "Parse State ID Mode (0)") 
-                  << std::endl;
-
-    } else if (argc != 4) {
-        // 인자가 4개(기본)도 아니고 7개(옵션포함)도 아니면 에러
-        std::cerr << "Error: Incorrect number of arguments. Expected 4 or 7." << std::endl;
+        bIsCollectionMode = (std::string(argv[6]) == "1");
+        
+        std::cout << "DEBUG: Mode set to " 
+                  << (bIsCollectionMode ? "COLLECTION" : "CONVERSION") << std::endl;
+    } 
+    else if (argc == 4) {
+        // [Default]
+        language_name = argv[1];
+        library_path = argv[2];
+        target_path = argv[3];
+        // 기본 모드 (Conversion)
+    } 
+    else {
+        std::cerr << "Usage:" << std::endl;
+        std::cerr << "  1. Standard:   " << argv[0] << " <lang> <dll> <file>" << std::endl;
+        std::cerr << "  2. Collection: " << argv[0] << " <lang> <dll> <file> <row> <col> <1|0>" << std::endl;
+        std::cerr << "  3. Batch:      " << argv[0] << " <lang> <dll> <file> --batch" << std::endl;
         return 1;
     }
 
-    // --- 언어 로딩 (동적 로딩으로 통일) ---
+    // ==========================================================
+    // 2. 언어 로딩 (동적 로딩으로 통일)
+    // ==========================================================
     try {
-        // 1. DLL 파일 열기
-        std::cout << "DEBUG: Loading dynamic library: " << library_path << std::endl;
-
+        // DLL 파일 열기
         library_handle = LOAD_LIBRARY(library_path);
+        // std::cout << "DEBUG: Loading dynamic library: " << library_path << std::endl;
+        if (!library_handle) { throw std::runtime_error("Could not load library: " + GET_ERROR_MSG()); }
 
-        if (!library_handle) {
-            throw std::runtime_error("Could not load library: " + GET_ERROR_MSG());
-        }
-        std::cout << "DEBUG: Library loaded successfully." << std::endl;
-
-        // 2. 함수 심볼 찾기 (tree_sitter_언어이름)
+        // 함수 심볼 찾기 (tree_sitter_언어이름)
         std::string language_func_name = "tree_sitter_" + language_name;
-        std::cout << "DEBUG: Searching for function: '" << language_func_name << "'..." << std::endl;
-        
+        // std::cout << "DEBUG: Searching for function: '" << language_func_name << "'..." << std::endl;
         LanguageFunction language_function = (LanguageFunction)GET_PROC_ADDRESS(library_handle, language_func_name.c_str());
+        if (!language_function) { throw std::runtime_error("Could not find function '" + language_func_name + "' in library."); }
 
-        if (!language_function) {
-            throw std::runtime_error("Could not find function '" + language_func_name + "' in library.");
-        }
-        std::cout << "DEBUG: Function found." << std::endl;
-        
-        // 3. 언어 포인터 획득
-        language = language_function();
-        if (!language) {
-            throw std::runtime_error("Failed to get language pointer from function.");
-        }
+        // 언어 포인터 획득
+        TSLanguage *language = language_function();
+        if (!language) { throw std::runtime_error("Failed to get language pointer from function."); }
 
-        // --- 파싱 준비 ---
+        // 파싱 준비
         TSParser *parser = ts_parser_new();
         ts_parser_set_language(parser, language);
-        std::cout << "DEBUG: Parser created and language set." << std::endl;
+        // std::cout << "DEBUG: Parser created and language set." << std::endl;
 
-        // 플래그 및 중단 위치 설정
-        ts_parser_set_cursor_position(parser, {stop_row, stop_col});
-        // ts_parser_set_find_state_mode(parser, bIsCollectionMode); 
-        
-        // --- 파일 읽기 ---
-        std::cout << "DEBUG: Reading source file: " << file_path << std::endl;
-        std::ifstream file(file_path);
-        if (!file) {
-            throw std::runtime_error("Could not open source file " + std::string(file_path));
-        }
+        // 파일 읽기
+        std::ifstream file(target_path);
+        if (!file) { throw std::runtime_error("Could not open source file " + std::string(target_path)); }
         std::stringstream buffer;
         buffer << file.rdbuf();
         std::string source_code = buffer.str();
@@ -201,108 +201,117 @@ int main(int argc, char* argv[]) {
         // 파싱 길이 결정
         size_t effective_length = source_code.length();
 
-        // 중단 위치 계산
-        // if (stop_position_provided) {
-        //     std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
-        //     size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
-        //     effective_length = source_code.length() < stop_offset ? source_code.length() : stop_offset;
-        //     std::cout << "DEBUG: Effective parsing length set to " << effective_length << " bytes." << std::endl;
-        // }
-
+        // ==========================================================
+        // 3. 실행 분기
+        // ==========================================================
         if (!bIsCollectionMode) {
             std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
             size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
             effective_length = source_code.length() < stop_offset ? source_code.length() : stop_offset;
             std::cout << "DEBUG: Effective parsing length set to " << effective_length << " bytes." << std::endl;
         } else {
-            std::cout << "DEBUG: Full Mode (Length: " << effective_length << ")" << std::endl;
+            if (!bIsBatchMode) std::cout << "DEBUG: Full mode (Length: " << effective_length << ")" << std::endl;
         }
 
         // 로깅 시작 debug_log.txt
-        FILE *debug_fp = fopen("debug_log.txt", "w");
-        if (debug_fp) {
-            TSLogger logger;
-            logger.payload = debug_fp;
-            logger.log = LogToFileCallback;
-            ts_parser_set_logger(parser, logger);
+        FILE *debug_fp = nullptr;
+        if (!bIsBatchMode) {
+            debug_fp = fopen("debug_log.txt", "w");
+            if (debug_fp) {
+                TSLogger logger;
+                logger.payload = debug_fp;
+                logger.log = LogToFileCallback;
+                ts_parser_set_logger(parser, logger);
+            }
         }
 
-        // --- 파싱 실행 ---
-        std::cout << "DEBUG: Starting parse..." << std::endl;
+        // 파싱 실행
+        if (!bIsBatchMode) std::cout << "DEBUG: Parsing start ..." << std::endl;
         TSTree *tree = ts_parser_parse_string(
             parser,
             NULL,
             source_code.c_str(),
             static_cast<uint32_t>(effective_length)
         );
-        std::cout << "DEBUG: Parsing finished." << std::endl;
+        if (!bIsBatchMode) std::cout << "DEBUG: Parsing finished." << std::endl;
 
         // 로깅 종료
         if (debug_fp) {
             ts_parser_set_logger(parser, {0}); // 로거 해제
             fclose(debug_fp);
         }
-        
+            
         // [로그 덤프] logged_actions.txt 저장
         ts_parser_write_logged_actions(parser, "logged_actions.txt");
 
         // 후처리 분기
-        if (bIsCollectionMode) {
-            std::cout << "DEBUG: Running Collection..." << std::endl;
-            // 컬렉션 로직 호출 (결과는 함수 내부 로직에 따라 처리됨)
-            // 1. 여기서 파일을 엽니다.
-            FILE *collection_fp = fopen("Test.data", "w");
+        if (bIsBatchMode) { 
+            // [Batch Mode]
+            // 파이썬 스크립트가 파싱하기 쉽도록 명확한 태그 사용
+            // stdout으로 결과 출력
+            std::cout << "@@BATCH_START@@" << std::endl;
             
-            if (collection_fp) {
-                // 2. 열린 파일 포인터를 넘겨줍니다.
-                bool is_success = ts_parser_run_collection(parser, collection_fp);
-                
-                // 3. 사용 후 닫습니다.
-                fclose(collection_fp);
-
-                if (!is_success) {
-                    // 1. SKIP 로그 출력 (Python 스크립트 등에서 캡처하기 좋게 태그를 답니다)
-                    std::cerr << "[SKIP] Recovery detected in file: " << file_path << std::endl;
-                    std::cout << "WARNING: Collection skipped due to parse errors." << std::endl;
-
-                    // 2. 오염된/빈 데이터 파일 삭제
-                    // 에러가 있는 파일의 데이터가 Test.data에 남지 않도록 지워버립니다.
-                    remove("Test.data");
-                } else {
-                    std::cout << "DEBUG: Collection completed successfully." << std::endl;
-                }
-            } else {
-                std::cerr << "ERROR: Could not open Test.data for writing." << std::endl;
-            }
-        } 
+            // parser.c에 추가한 Batch 함수 호출
+            ts_parser_run_batch_conversion(parser, stdout);
+            
+            std::cout << "@@BATCH_END@@" << std::endl;
+        }
         else {
-            std::cout << "DEBUG: Running Conversion..." << std::endl;
-            
-            // 1. 경로 계산 (순수 로직)
-            TSStatePath path = ts_parser_run_conversion(parser);
+            // [Collection / Conversion Mode]
 
-            // 2. 결과 출력 (화면 + 파일)
-            // (A) 화면 출력
-            ts_parser_write_conversion_result(parser, &path, stdout);
+            if (bIsCollectionMode) {
+                std::cout << "DEBUG: Running Collection..." << std::endl;
+                // 컬렉션 로직 호출 (결과는 함수 내부 로직에 따라 처리됨)
 
-            // (B) 파일 출력 (Test.data)
-            FILE *test_data_fp = fopen("Test.data", "w");
-            if (test_data_fp) {
-                ts_parser_write_conversion_result(parser, &path, test_data_fp);
-                fclose(test_data_fp);
+                FILE *collection_fp = fopen("Test.data", "w");
+                if (collection_fp) {
+                    // 열린 파일 포인터를 넘겨줌
+                    bool is_success = ts_parser_run_collection(parser, collection_fp);
+                    fclose(collection_fp);
+
+                    if (!is_success) {
+                        // SKIP 로그 출력 (Python 스크립트 등에서 캡처하기 좋게 태그)
+                        std::cerr << "[SKIP] Recovery detected in file: " << target_path << std::endl;
+                        std::cout << "WARNING: Collection skipped due to parse errors." << std::endl;
+
+                        // 오염된/빈 데이터 파일 삭제
+                        remove("Test.data");
+                    } else {
+                        std::cout << "DEBUG: Collection completed successfully." << std::endl;
+                    }
+                } else {
+                    std::cerr << "ERROR: Could not open Test.data for writing." << std::endl;
+                }
+            } 
+            else {
+                std::cout << "DEBUG: Running Conversion..." << std::endl;
+                
+                // 1. 경로 계산 (순수 로직)
+                TSStatePath path = ts_parser_run_conversion(parser);
+
+                // 2. 결과 출력 (화면 + 파일)
+                // (A) 화면 출력
+                ts_parser_write_conversion_result(parser, &path, stdout);
+
+                // (B) 파일 출력 (Test.data)
+                FILE *test_data_fp = fopen("Test.data", "w");
+                if (test_data_fp) {
+                    ts_parser_write_conversion_result(parser, &path, test_data_fp);
+                    fclose(test_data_fp);
+                }
+            }
+            // 결과 출력 및 리소스 정리
+            if (tree) {
+                TSNode root_node = ts_tree_root_node(tree);
+                char *tree_string = ts_node_string(root_node);
+                std::cout << "\nParse Tree for " << language_name << ":\n" << tree_string << std::endl;
+                free(tree_string);
+                ts_tree_delete(tree);
+            } else {
+                std::cout << "WARNING: Parsing completed, but no tree was returned." << std::endl;
             }
         }
-        // --- 결과 출력 및 리소스 정리 ---
-        if (tree) {
-            TSNode root_node = ts_tree_root_node(tree);
-            char *tree_string = ts_node_string(root_node);
-            std::cout << "\nParse Tree for " << language_name << ":\n" << tree_string << std::endl;
-            free(tree_string);
-            ts_tree_delete(tree);
-        } else {
-            std::cout << "WARNING: Parsing completed, but no tree was returned." << std::endl;
-        }
-
+        // 파서 해제
         ts_parser_delete(parser);
 
     } catch (const std::exception& e) {
@@ -313,7 +322,6 @@ int main(int argc, char* argv[]) {
 
     // 핸들 해제
     if (library_handle) CLOSE_LIBRARY(library_handle);
-
     std::cout << "DEBUG: Program finished." << std::endl;
     return 0;
 }

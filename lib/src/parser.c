@@ -2762,6 +2762,55 @@ void ts_parser_write_conversion_result(
   if (fp == stdout) fflush(stdout);
 }
 
+// [Batch] 모든 Shift 위치에 대해 State Path를 계산하고 출력하는 함수
+void ts_parser_run_batch_conversion(TSParser *self, FILE *file) {
+  // 1. 유효성 검사
+  if (!self->logged_actions.contents || !file) return;
+
+  // 2. 에러(Recover) 체크
+  // 파싱 중에 에러 복구(Recover)가 발생한 파일은 학습/검증 데이터로 쓰기 부적합하므로 중단
+  for (uint32_t i = 0; i < self->logged_actions.size; ++i) {
+    if (self->logged_actions.contents[i].type == TSParseActionTypeRecover) {
+        return; 
+    }
+  }
+
+  // 3. 전체 로그 순회
+  for (uint32_t i = 0; i < self->logged_actions.size; ++i) {
+    TSLoggedAction *action = &self->logged_actions.contents[i];
+
+    // [조건] Shift 액션이면서, 주석/공백(Extra)이 아닌 경우
+    // action->extra가 false여야 실제 코드의 의미 있는 토큰 위치
+    if (action->type == TSParseActionTypeShift && !action->extra) {
+        
+        // (A) 해당 시점(i)까지의 스택 복원
+        TSStatePath re_stack = ts_conversion__reconstruct_stack(self, (int32_t)i);
+        
+        // 스택 복원에 실패했거나 비어있으면 스킵
+        if (re_stack.count == 0) continue;
+
+        // (B) 현재 스택을 기반으로 State Path 계산
+        TSStatePath result_path = {0}; 
+        ts_conversion__recursive_current_states(self, &re_stack, &result_path);
+
+        // (C) 결과 출력
+        // 파이썬 스크립트가 파싱하기 쉬운 포맷: "ROW,COL|STATE1 STATE2 STATE3..."
+        // Tree-sitter의 row/col은 0부터 시작하므로 +1을 해줌
+        fprintf(file, "%u,%u|", 
+                action->start_point.row + 1, 
+                action->start_point.column + 1);
+        
+        for (uint32_t k = 0; k < result_path.count; ++k) {
+            fprintf(file, "%u", result_path.states[k]);
+            
+            // 숫자 사이에 공백 추가 (마지막 숫자 뒤에는 공백 없음)
+            if (k < result_path.count - 1) fprintf(file, " ");
+        }
+        fprintf(file, "\n");
+    }
+  }
+}
+
 // [new] 컬렉션 구현체
 // [수정] 반환 타입을 bool로 변경 (성공: true, 복구 발생/실패: false)
 bool ts_parser_run_collection(
