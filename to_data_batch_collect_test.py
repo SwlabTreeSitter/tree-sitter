@@ -11,11 +11,11 @@ EXE_PATH = "/home/hyeonjin/PL/tree-sitter/TreeSitterCutFile.exe"
 # 2. Small Basic 파서 라이브러리 (.so) 경로
 LIB_PATH = "/home/hyeonjin/PL/tree-sitter-smallbasic/smallbasic.so"
 
-# 3. 샘플 프로그램(.sb)들이 들어있는 폴더
-SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/LEARN_BENCH"
+# 3. 샘플 프로그램(.sb)들이 들어있는 폴더 (LEARN/TEST)
+SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST_BENCH" 
 
-# 4. 결과 파일(.data)을 저장할 폴더 (새로 생성될 폴더)
-OUTPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/LEARN_BENCH_data"
+# 4. 결과 파일(.data)을 저장할 폴더 (새로 생성될 폴더) (LEARN/TEST)
+OUTPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data"
 
 # 5. 실행 인자 설정
 ARG_LANG = "smallbasic"

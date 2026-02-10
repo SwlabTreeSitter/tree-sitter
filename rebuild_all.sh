@@ -82,11 +82,11 @@ fi
 echo ""
 echo "=== [5] Run Collection ==="
 # Python 스크립트 실행
-if [ -f "batch_collect_linux.py" ]; then
-    python3 batch_collect_linux.py
-    python3 aggregate_results_json.py
+if [ -f "to_data_batch_collect_learn.py" ]; then
+    python3 to_data_batch_collect_learn.py
+    python3 to_json_aggregate_results.py
 else
-    echo " -> (skip) batch_collect.py not found"
+    echo " -> (skip) to_data_batch_collect_learn.py not found"
 fi
 
 echo ""

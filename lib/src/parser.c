@@ -2615,7 +2615,7 @@ static void ts_conversion__recursive_current_states (
     if (result->states[i] == current_state) return;
   }
   if (result->count < 64) {
-    printf("[DEBUG-RECURSIVE] Add State: %d \n", current_state);
+    // printf("[DEBUG-RECURSIVE] Add State: %d \n", current_state);
     result->states[result->count++] = current_state;
   } else {
     return;
@@ -2692,7 +2692,7 @@ static void ts_conversion__recursive_current_states (
 
       const char *SymbolName = ts_language_symbol_name(self->language, prod->symbol);
       if (!SymbolName) { SymbolName = "UNKNOWN_SYMBOL"; }
-      printf("[DEBUG-RECURSIVE] by %d, ancestor: %d lhs: %s  goto: %d\n", prod->lookahead,AncestorState, SymbolName, next_state);
+      // printf("[DEBUG-RECURSIVE] by %d, ancestor: %d lhs: %s  goto: %d\n", prod->lookahead,AncestorState, SymbolName, next_state);
 
       // 3-3. 새로운 스택(Stack1) 구성
       TSStatePath next_stack;
@@ -2712,30 +2712,30 @@ static void ts_conversion__recursive_current_states (
 
 // [new] 컨버전 구현체
 TSStatePath ts_parser_run_conversion(TSParser *self) {
-  printf("\n[DEBUG] === ts_parser_run_conversion START ===\n");
+  // printf("\n[DEBUG] === ts_parser_run_conversion START ===\n");
   TSStatePath result = {0};
 
   // 1. 커서 위치 직전의 Shift(로그 인덱스)를 찾음
   int32_t shift_index = ts_conversion__find_cursor_shift_index(self);
-  printf("[DEBUG] Step 1: shift_index = %d\n", shift_index);
+  // printf("[DEBUG] Step 1: shift_index = %d\n", shift_index);
 
   // 2. 커서 위치까지의 물리적 스택 복원
   TSStatePath re_stack = ts_conversion__reconstruct_stack(self, shift_index);
-  printf("[DEBUG] Step 2: re_stack.count = %d\n", re_stack.count);
+  // printf("[DEBUG] Step 2: re_stack.count = %d\n", re_stack.count);
   
-  if (re_stack.count > 0) {
-      // 복원된 스택의 최상단 상태(Tip)가 무엇인지 확인
-      printf("[DEBUG] Step 2 Tip State: %d\n", re_stack.states[re_stack.count - 1]);
-  } else {
-      printf("[DEBUG] Step 2 Failed: Stack is empty.\n");
-      return result;
-  }
+  // if (re_stack.count > 0) {
+  //     // 복원된 스택의 최상단 상태(Tip)가 무엇인지 확인
+  //     printf("[DEBUG] Step 2 Tip State: %d\n", re_stack.states[re_stack.count - 1]);
+  // } else {
+  //     printf("[DEBUG] Step 2 Failed: Stack is empty.\n");
+  //     return result;
+  // }
   if (re_stack.count == 0) return result;
 
   // 3. current states 탐색 시작
-  printf("[DEBUG] Step 3: recursive_current_states calling...\n");
+  // printf("[DEBUG] Step 3: recursive_current_states calling...\n");
   ts_conversion__recursive_current_states(self, &re_stack, &result);
-  printf("[DEBUG] === ts_parser_run_conversion END ===\n");
+  // printf("[DEBUG] === ts_parser_run_conversion END ===\n");
 
   return result;
 }
@@ -2784,10 +2784,15 @@ void ts_parser_run_batch_conversion(TSParser *self, FILE *file) {
     if (action->type == TSParseActionTypeShift && !action->extra) {
         
         // (A) 해당 시점(i)까지의 스택 복원
-        TSStatePath re_stack = ts_conversion__reconstruct_stack(self, (int32_t)i);
+        TSStatePath re_stack = ts_conversion__reconstruct_stack(self, (int32_t)i-1);
         
-        // 스택 복원에 실패했거나 비어있으면 스킵
-        if (re_stack.count == 0) continue;
+        // 스택이 비어있는 경우 (특히 파일의 첫 번째 토큰 i=0 일 때)
+        // 현재 액션의 'current_state'(시작 상태)를 수동으로 넣어줌
+        if (re_stack.count == 0) {
+            // action->current_state는 해당 액션을 수행하기 직전의 상태를 담고 있음
+            re_stack.states[0] = action->current_state;
+            re_stack.count = 1;
+        }
 
         // (B) 현재 스택을 기반으로 State Path 계산
         TSStatePath result_path = {0}; 

@@ -204,7 +204,7 @@ int main(int argc, char* argv[]) {
         // ==========================================================
         // 3. 실행 분기
         // ==========================================================
-        if (!bIsCollectionMode) {
+        if (!bIsCollectionMode && !bIsBatchMode) {
             std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
             size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
             effective_length = source_code.length() < stop_offset ? source_code.length() : stop_offset;

@@ -2,10 +2,10 @@ import os
 import glob
 import json
 
-# =================[ 설정 ]=================
-INPUT_DIR = "..\\tree-sitter-smallbasic\\SB_Data_TS"
-OUTPUT_DIR = "..\\moniExtension\Small-Basic-Extension\\src\\SB_EV_json"  # 폴더로 출력
-# ==========================================
+# =================[ 리눅스 경로 설정 ]=================
+INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data"
+OUTPUT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
+# =========================================================
 
 def format_pattern_clean(raw_pattern: str) -> str:
     """
