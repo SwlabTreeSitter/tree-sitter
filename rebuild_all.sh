@@ -36,7 +36,6 @@ rm -rf src/             # parser.c가 생성되는 폴더
 rm -rf build/           # 컴파일된 객체 파일(.o) 폴더
 rm -f binding.gyp       # 빌드 설정
 rm -f *.so              # 리눅스 라이브러리
-rm -f *.json            # 캐시 파일들
 rm -f LR_Items_Dump.txt # 덤프 파일도 삭제
 
 # 기존 리눅스용 라이브러리(.so) 빌드
