@@ -2719,17 +2719,17 @@ TSStatePath ts_parser_run_conversion(TSParser *self) {
   int32_t shift_index = ts_conversion__find_cursor_shift_index(self);
   // printf("[DEBUG] Step 1: shift_index = %d\n", shift_index);
 
+  if (shift_index == -1) {
+      TSStatePath start_stack = {0};
+      start_stack.states[0] = 1; // Start State
+      start_stack.count = 1;
+      ts_conversion__recursive_current_states(self, &start_stack, &result);
+      return result;
+  }
+  
   // 2. 커서 위치까지의 물리적 스택 복원
   TSStatePath re_stack = ts_conversion__reconstruct_stack(self, shift_index);
   // printf("[DEBUG] Step 2: re_stack.count = %d\n", re_stack.count);
-  
-  // if (re_stack.count > 0) {
-  //     // 복원된 스택의 최상단 상태(Tip)가 무엇인지 확인
-  //     printf("[DEBUG] Step 2 Tip State: %d\n", re_stack.states[re_stack.count - 1]);
-  // } else {
-  //     printf("[DEBUG] Step 2 Failed: Stack is empty.\n");
-  //     return result;
-  // }
   if (re_stack.count == 0) return result;
 
   // 3. current states 탐색 시작
