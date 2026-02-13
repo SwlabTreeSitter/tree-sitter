@@ -3011,7 +3011,7 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
 
 // [new]
 void collect_recursive(CollectionContext *ctx, Subtree tree, TSStateId parent_state) {
-uint32_t count = ts_subtree_child_count(tree);
+  uint32_t count = ts_subtree_child_count(tree);
 
   if (count > 0) {
     Subtree *children = ts_subtree_children(tree);
@@ -3025,26 +3025,35 @@ uint32_t count = ts_subtree_child_count(tree);
       TSSymbol child_sym = ts_subtree_symbol(child);
 
       // ---------------------------------------------------------
-      // 1. 상태 동기화 및 복구 (Resync)
+      // 1. 상태 동기화 (Resync) - [핵심 수정]
       // ---------------------------------------------------------
+      // (A) 첫 번째 자식: 부모가 준 상태(parent_state)를 무조건 따름
       if (i == 0) {
-        // [핵심 수정] 첫 번째 자식은 부모가 전달해준 상태(parent_state)로 시작!
-        // 단, 부모 상태가 0이라면(루트 등) 트리의 저장된 상태를 사용
-        // (여기서 parent_state가 97이면 running_state도 97이 됨)
-        running_state = parent_state; 
-        
-        // 만약 전달받은 상태가 0이라면 안전하게 child의 상태를 믿음
+        running_state = parent_state;
+        // 부모 상태가 0(Root)인 경우에만 자식의 저장된 상태 사용
         if (running_state == 0) {
-            running_state = (TSStateId)ts_subtree_parse_state(child);
+             running_state = (TSStateId)ts_subtree_parse_state(child);
         }
         state_is_valid = true;
       } 
-      else if (!state_is_valid || running_state == 0) {
-        // 체인이 끊겼을 때만 child의 상태로 복구
-        running_state = (TSStateId)ts_subtree_parse_state(child);
-        state_is_valid = true;
+      // (B) 두 번째 자식부터:
+      // 우리가 계산한 running_state(101)와 자식의 실제 state(97)가 다르면,
+      // 자식의 실제 state(97)를 우선 사용 (Reduce 반영)
+      else {
+        TSStateId stored_state = (TSStateId)ts_subtree_parse_state(child);
+        
+        // stored_state가 유효하고, 우리가 계산한 값과 다르다면? -> 동기화(Resync)
+        if (stored_state > 0 && stored_state < ctx->lang->state_count) {
+             running_state = stored_state;
+             state_is_valid = true;
+        }
+        // 만약 stored_state가 이상하면(0 등), 기존 running_state 유지
+        else if (!state_is_valid || running_state == 0) {
+             running_state = stored_state;
+             state_is_valid = true;
+        }
       }
-      
+
       // [방어 코드] 상태 범위 체크
       if (running_state >= ctx->lang->state_count) {
           state_is_valid = false;
@@ -3077,20 +3086,15 @@ uint32_t count = ts_subtree_child_count(tree);
       }
 
       // ---------------------------------------------------------
-      // 3. 재귀 호출 (인자 추가됨)
+      // 3. 재귀 호출 (현재 running_state 전달)
       // ---------------------------------------------------------
-      // [핵심 수정] 현재까지 계산된 running_state를 자식에게 물려줌
-      // 자식은 이 상태를 자신의 '시작 상태'로 사용하게 됨
       collect_recursive(ctx, child, running_state);
 
       // ---------------------------------------------------------
       // 4. 다음 상태 계산 (Next State Transition)
       // ---------------------------------------------------------
-      if (ts_subtree_extra(child)) {
-          continue; 
-      }
+      if (ts_subtree_extra(child)) continue; 
 
-      // 심볼 유효성 방어
       if (child_sym == 65535 || child_sym == ts_builtin_sym_error || 
           child_sym >= ctx->lang->symbol_count) {
           state_is_valid = false;
@@ -3098,7 +3102,6 @@ uint32_t count = ts_subtree_child_count(tree);
           continue;
       }
 
-      // 상태 전이 계산
       if (state_is_valid) {
            if (running_state >= ctx->lang->state_count) {
                state_is_valid = false;
@@ -3106,7 +3109,6 @@ uint32_t count = ts_subtree_child_count(tree);
            } 
            else {
                TSStateId next = ts_language_next_state(ctx->lang, running_state, child_sym);
-               
                if (next == 0) {
                    state_is_valid = false;
                    running_state = 0;
@@ -3117,7 +3119,6 @@ uint32_t count = ts_subtree_child_count(tree);
       }
     }
   } 
-  // Leaf Node
   else {
     Length padding = ts_subtree_padding(tree);
     Length size = ts_subtree_size(tree);
