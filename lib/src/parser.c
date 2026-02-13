@@ -3010,15 +3010,15 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
 }
 
 // [new]
-void collect_recursive(CollectionContext *ctx, Subtree tree) {
-  uint32_t count = ts_subtree_child_count(tree);
+void collect_recursive(CollectionContext *ctx, Subtree tree, TSStateId parent_state) {
+uint32_t count = ts_subtree_child_count(tree);
 
   if (count > 0) {
     Subtree *children = ts_subtree_children(tree);
     if (!children) return;
 
     TSStateId running_state = 0;
-    bool state_is_valid = false; // 상태 추적 유효성 플래그
+    bool state_is_valid = false;
 
     for (uint32_t i = 0; i < count; i++) {
       Subtree child = children[i];
@@ -3027,26 +3027,33 @@ void collect_recursive(CollectionContext *ctx, Subtree tree) {
       // ---------------------------------------------------------
       // 1. 상태 동기화 및 복구 (Resync)
       // ---------------------------------------------------------
-      // (A) 첫 루프이거나
-      // (B) 상태 체인이 끊겼거나 (!state_is_valid)
-      // (C) 계산된 상태가 0이라면
-      // -> 현재 노드에 저장된 상태를 불러와 리셋합니다.
-      if (i == 0 || !state_is_valid || running_state == 0) {
+      if (i == 0) {
+        // [핵심 수정] 첫 번째 자식은 부모가 전달해준 상태(parent_state)로 시작!
+        // 단, 부모 상태가 0이라면(루트 등) 트리의 저장된 상태를 사용
+        // (여기서 parent_state가 97이면 running_state도 97이 됨)
+        running_state = parent_state; 
+        
+        // 만약 전달받은 상태가 0이라면 안전하게 child의 상태를 믿음
+        if (running_state == 0) {
+            running_state = (TSStateId)ts_subtree_parse_state(child);
+        }
+        state_is_valid = true;
+      } 
+      else if (!state_is_valid || running_state == 0) {
+        // 체인이 끊겼을 때만 child의 상태로 복구
         running_state = (TSStateId)ts_subtree_parse_state(child);
         state_is_valid = true;
       }
-
+      
+      // [방어 코드] 상태 범위 체크
       if (running_state >= ctx->lang->state_count) {
           state_is_valid = false;
-          // 출력할 때는 0이나 안전한 값으로 대체하거나, 출력을 위해 값을 유지하되
-          // 다음 상태 계산(4번 단계)에서는 쓰지 말아야 함.
       }
 
       // ---------------------------------------------------------
       // 2. 출력 (Leaf 노드만)
       // ---------------------------------------------------------
       if (ts_subtree_child_count(child) == 0) {
-        // 유효하지 않은 심볼(65535)이나 에러 심볼은 출력 제외
         bool is_invalid_sym = (child_sym == 65535) || 
                               (child_sym == ts_builtin_sym_error) ||
                               (child_sym == ts_builtin_sym_end);
@@ -3069,39 +3076,35 @@ void collect_recursive(CollectionContext *ctx, Subtree tree) {
         }
       }
 
-      // 3. 재귀 호출
-      collect_recursive(ctx, child);
+      // ---------------------------------------------------------
+      // 3. 재귀 호출 (인자 추가됨)
+      // ---------------------------------------------------------
+      // [핵심 수정] 현재까지 계산된 running_state를 자식에게 물려줌
+      // 자식은 이 상태를 자신의 '시작 상태'로 사용하게 됨
+      collect_recursive(ctx, child, running_state);
 
       // ---------------------------------------------------------
-      // 4. 다음 상태 계산 (Next State Transition) - [핵심 수정]
+      // 4. 다음 상태 계산 (Next State Transition)
       // ---------------------------------------------------------
-      
-      // (1) Extra 노드 스킵
       if (ts_subtree_extra(child)) {
           continue; 
       }
 
-      // (2) [방어 코드] 심볼 ID가 유효한지 검사
-      // - 65535 (UINT16_MAX) 체크
-      // - 언어의 전체 심볼 개수(ctx->lang->symbol_count) 범위 체크
+      // 심볼 유효성 방어
       if (child_sym == 65535 || child_sym == ts_builtin_sym_error || 
           child_sym >= ctx->lang->symbol_count) {
-          
-          // 위험한 심볼이므로 계산 중단 -> 다음 루프에서 Resync 유도
           state_is_valid = false;
           running_state = 0;
           continue;
       }
 
-      // (3) 정상적인 경우 상태 전이 계산
+      // 상태 전이 계산
       if (state_is_valid) {
            if (running_state >= ctx->lang->state_count) {
-               // 상태 값이 너무 크면 테이블 참조 시 Crash 발생함 -> 계산 포기
                state_is_valid = false;
                running_state = 0;
            } 
            else {
-               // 안전함이 확인되었으므로 계산 수행
                TSStateId next = ts_language_next_state(ctx->lang, running_state, child_sym);
                
                if (next == 0) {
@@ -3209,7 +3212,7 @@ bool ts_parser_run_collection2 (
   fprintf(stderr, "[DEBUG] Root ptr is valid. Starting recursive...\n");
   fflush(stderr);
 
-  collect_recursive(&ctx, root);
+  collect_recursive(&ctx, root, 1);
 
   fprintf(stderr, "[DEBUG] Recursive finished.\n");
   fflush(stderr);
