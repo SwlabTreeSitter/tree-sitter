@@ -12,10 +12,10 @@ EXE_PATH = ".\\TreeSitterCutFile.exe"
 LIB_PATH = "..\\tree-sitter-smallbasic\\smallbasic.dll"
 
 # 3. 샘플 프로그램(.sb)들이 들어있는 폴더
-SOURCE_DIR = "..\\tree-sitter-smallbasic\\SB_Sample1"
+SOURCE_DIR = "..\\tree-sitter-smallbasic\\SB_Sample"
 
 # 4. 결과 파일(.data)을 저장할 폴더 (새로 생성될 폴더)
-OUTPUT_DIR = "..\\tree-sitter-smallbasic\\SB_Data_TS"
+OUTPUT_DIR = "..\\tree-sitter-smallbasic\\SB_Data_TS1"
 
 # 5. 실행 인자 설정
 ARG_LANG = "smallbasic"
@@ -82,7 +82,7 @@ def main():
 
         except subprocess.CalledProcessError as e:
             print(f"[Failed]")
-            print(f"  Error details: {e.stderr.decode('utf-8')}")
+            print(f"  Error details: {e.stderr}")
             continue
 
         # 2. 결과 파일 이동

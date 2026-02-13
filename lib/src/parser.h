@@ -98,6 +98,17 @@ typedef struct {
   TSPoint start_point;
 } TSLoggedAction;
 
+// typedef struct {
+//   TSParseActionType type;
+//   TSStateId current_state;
+//   TSStateId next_state;
+//   TSSymbol symbol;
+//   uint32_t child_count;
+//   bool is_virtual;
+//   bool extra;
+//   uint32_t start_byte;
+// } TSCleanLog;
+
 typedef struct {
   uint16_t lex_state;
   uint16_t external_lex_state;

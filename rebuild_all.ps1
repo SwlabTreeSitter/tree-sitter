@@ -43,7 +43,7 @@ Pop-Location
 
 if (-not $SkipParse) {
   Write-Host "=== [3] optional parse smoke test ==="
-  $sample = Join-Path $LANG "examples\smallbasic\01_HelloWorld.sb"
+  $sample = Join-Path $LANG "SB_Sample\01_HelloWorld.sb"
   if (Test-Path $sample) {
     Push-Location $LANG
     & $TS_EXE parse --debug pretty $sample
@@ -63,8 +63,8 @@ Assert-Path (Join-Path $TS "TreeSitterCutFile.exe") "TreeSitterCutFile.exe"
 if (-not $SkipCollect) {
   Write-Host "=== [5] run collection + per-file JSON ==="
   Push-Location $TS
-  python .\batch_collect_win.py
-  python .\per_file_json.py
+  python .\to_data_batch_collect_win.py
+  python .\to_json_per_file.py
   Pop-Location
 } else {
   Write-Host "   (skip) collection/json"

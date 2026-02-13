@@ -4,8 +4,8 @@ import json
 from collections import defaultdict, Counter
 
 # =================[ 설정 ]=================
-INPUT_DIR = "..\\tree-sitter-smallbasic\\SB_Data_TS"
-OUTPUT_DIR = "..\\moniExtension\Small-Basic-Extension\\src\\SB_DB_json"  # 폴더로 출력
+INPUT_DIR = "..\\tree-sitter-smallbasic\\SB_Data_TS1"
+OUTPUT_DIR = "..\\moniExtension\Small-Basic-Extension\\src\\SB_DB_TS1_json"  # 폴더로 출력
 # ==========================================
 
 def format_pattern_clean(raw_pattern: str) -> str:

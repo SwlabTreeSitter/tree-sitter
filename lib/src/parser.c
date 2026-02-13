@@ -114,19 +114,12 @@ struct TSParser {
   TSWasmStore *wasm_store;
   ReduceActionSet reduce_actions;
 
-  // 파싱 로그 저장 자료구조 
-  TSLoggedActionArray logged_actions;
-
-  // 커서 위치
-  uint32_t cursor_row;
+  TSLoggedActionArray logged_actions; // 파싱 로그 저장 자료구조 
+  uint32_t cursor_row;   // 커서 위치
   uint32_t cursor_col;
+  bool bIsCollectionOrParseStateID; // 컨버전, 컬렉션 모드 설정 변수
 
-  // 컨버전, 컬렉션 모드 설정 변수
-  // false (0) = 컨버전 모드
-  // true (1) = 컬렉션 모드
-  bool bIsCollectionOrParseStateID;
-
-  Subtree finished_tree;
+  Subtree finished_tree;  // 최종 선택된 트리
   SubtreeArray trailing_extras;
   SubtreeArray trailing_extras2;
   SubtreeArray scratch_trees;
@@ -534,6 +527,7 @@ static bool ts_parser__can_reuse_first_leaf(
   return current_lex_mode.external_lex_state == 0 && table_entry->is_reusable;
 }
 
+// 텍스트를 분석해서 Subtree(Leaf Node) 생성
 static Subtree ts_parser__lex(
   TSParser *self,
   StackVersion version,
@@ -1015,7 +1009,7 @@ static StackVersion ts_parser__reduce(
     SubtreeArray children = slice.subtrees;
     ts_subtree_array_remove_trailing_extras(&children, &self->trailing_extras);
 
-    // 부모 노드 생성
+    // children 배열의 내용을 복사하여 부모 노드 생성
     MutableSubtree parent = ts_subtree_new_node(
       symbol, &children, production_id, self->language
     );
@@ -1066,7 +1060,7 @@ static StackVersion ts_parser__reduce(
     }
     parent.ptr->dynamic_precedence += dynamic_precedence;
 
-    // 계산된 next_state로 스택 이동
+    // 완성된 부모와 next_state를 스택에 올림
     // Push the parent node onto the stack, along with any extra tokens that
     // were previously on top of the stack.
     ts_stack_push(self->stack, slice_version, ts_subtree_from_mut(parent), false, next_state);
@@ -1667,7 +1661,7 @@ static bool ts_parser__advance(
   bool allow_node_reuse
 ) {
   // 1. 초기화 및 컨텍스트 파악
-  // 현재 상태 추출: 스택에서 현재 버전의 state(ID), position(바이트 위치)
+  // 현재 문맥: 스택 top에서 현재 버전의 state(ID), position(바이트 위치) 확인
   TSStateId state = ts_stack_state(self->stack, version);
   uint32_t position = ts_stack_position(self->stack, version).bytes;
   Subtree last_external_token = ts_stack_last_external_token(self->stack, version);
@@ -1679,6 +1673,7 @@ static bool ts_parser__advance(
 
   // 2. 토큰 확보 (재사용 시도)
   // Lexer를 돌려 새로 읽기 전에, 기존에 읽어둔 토큰 있는지 확인
+  // 증분 파싱 중이면 변하지 않은 부분의 노드(Internal Node)를 lookahead로 취급해서 스택에 넣음
   // If possible, reuse a node from the previous syntax tree.
   if (allow_node_reuse) {
     lookahead = ts_parser__reuse_node(
@@ -2156,6 +2151,28 @@ static bool ts_parser_has_outstanding_parse(TSParser *self) {
   );
 }
 
+// [new] 줄바꿈 인코딩
+static void print_escaped_string(FILE *file, const char *input) {
+  if (!input) {
+    fprintf(file, "(null)");
+    return;
+  }
+  for (const char *c = input; *c != '\0'; c++) {
+    // Windows 스타일 개행 (\r\n) 처리
+    if (*c == '\r' && *(c + 1) == '\n') {
+      fprintf(file, "\\r\\n");
+      c++; // 다음 글자(\n) 건너뜀
+    }
+    // Unix 스타일 개행 (\n)
+    else if (*c == '\n') {
+      fprintf(file, "\\n");
+    }
+    else {
+      fputc(*c, file);
+    }
+  }
+}
+
 // Parser - Public
 
 // [custom] TSParser 생성자
@@ -2166,7 +2183,7 @@ TSParser *ts_parser_new(void) {
   array_reserve(&self->reduce_actions, 4);
   
   // -----------------------------------------------------
-  // 중단점 비활성화 (default: 별도 설정 없으면 파일 끝까지 파싱)
+  // 커서 위치 초기화
   self->cursor_row = UINT32_MAX;
   self->cursor_col = UINT32_MAX;
 
@@ -2351,28 +2368,6 @@ void ts_parser_set_cursor_position(TSParser *self, TSPoint cursor_point) {
   }
 }
 
-// [new] 줄바꿈 인코딩
-static void print_escaped_string(FILE *file, const char *input) {
-  if (!input) {
-    fprintf(file, "(null)");
-    return;
-  }
-  for (const char *c = input; *c != '\0'; c++) {
-    // Windows 스타일 개행 (\r\n) 처리
-    if (*c == '\r' && *(c + 1) == '\n') {
-      fprintf(file, "\\r\\n");
-      c++; // 다음 글자(\n) 건너뜀
-    }
-    // Unix 스타일 개행 (\n)
-    else if (*c == '\n') {
-      fprintf(file, "\\n");
-    }
-    else {
-      fputc(*c, file);
-    }
-  }
-}
-
 // [new] 파싱 중에 수집된 모든 액션을 파일로 덤프하는 함수 (디버깅용)
 // note: 문법적 모호성 발생 시 다른 스택 버전도 포함됨
 void ts_parser_write_logged_actions(
@@ -2509,6 +2504,33 @@ void ts_parser_write_logged_actions(
   }
   array_delete(&DebugLogStack);
   fclose(ActionFile);
+}
+
+// [new] logged_actions 재구성
+static void simulate_parsing_flow(
+  Subtree tree
+) {
+
+  // 자식이 몇 명인지 확인
+  uint32_t count = ts_subtree_child_count(tree);
+  Subtree *children = ts_subtree_children(tree);  // 자식 노드 배열 시작점
+
+  // 자식 순회
+  // leaf node라면 건너 뜀
+  for (uint32_t i = 0; i < count; i++) {
+
+    // 가장 왼쪽 자식부터
+    // 재귀 호출이 일어나며 Leaf 노드까지 도달
+    simulate_parsing_flow(children[i]);
+  }
+
+  // Leaf 노드이거나, 자식들을 다 보고 복귀했을 때
+  if (count == 0) {
+        // [CASE: Leaf] 
+    } 
+    else {
+        // [CASE: Internal] 
+    }
 }
 
 // [new] 커서 위치 직전의 Shift(로그 인덱스)를 찾는 함수
@@ -2945,6 +2967,283 @@ bool ts_parser_run_collection(
   }
   return true;
 }
+
+typedef struct {
+    FILE *file;
+    const char *source;
+    uint32_t source_len;
+    const TSLanguage *lang;
+    uint32_t byte_offset;   // 현재 커서 위치 (Bytes)
+    TSPoint point_offset;   // 현재 커서 위치 (Row, Col)
+} CollectionContext;
+
+// [new]
+void dump_lexemes(CollectionContext *ctx, Subtree node) {
+  // 1. 노드의 크기 정보 가져오기
+  Length padding = ts_subtree_padding(node);
+  Length size = ts_subtree_size(node);
+
+  // 2. 텍스트 시작 위치 계산
+  // 현재 커서(ctx->byte_offset)에서 패딩(앞쪽 공백)만큼 건너뛴 곳이 실제 텍스트 시작점입니다.
+  uint32_t start_byte = ctx->byte_offset + padding.bytes;
+  TSPoint start_point = point_add(ctx->point_offset, padding.extent);
+  uint32_t length_byte = size.bytes;
+
+  // 3. 출력 형식: "  행,열: 렉심"
+  // 행과 열은 보통 1부터 시작하므로 +1을 해줍니다.
+  if (length_byte > 0 && start_byte < ctx->source_len) {
+    fprintf(ctx->file, "  %u,%u: ", start_point.row + 1, start_point.column + 1);
+
+    // 렉심 내용 출력 (따옴표 등으로 감싸지 않고 원본 그대로 출력)
+    if (start_byte + length_byte > ctx->source_len) {
+        length_byte = ctx->source_len - start_byte;
+    }
+    fwrite(ctx->source + start_byte, 1, length_byte, ctx->file);
+    fprintf(ctx->file, "\n");
+  }
+
+  // 4. 다음 형제를 위해 임시 컨텍스트의 커서를 이동시킴
+  ctx->byte_offset += (padding.bytes + size.bytes);
+  ctx->point_offset = point_add(ctx->point_offset, (padding.extent.row > 0 || size.extent.row > 0) 
+        ? point_add(padding.extent, size.extent) 
+        : (TSPoint){0, padding.extent.column + size.extent.column});
+}
+
+// [new]
+void collect_recursive(CollectionContext *ctx, Subtree tree) {
+  uint32_t count = ts_subtree_child_count(tree);
+
+  if (count > 0) {
+    Subtree *children = ts_subtree_children(tree);
+    if (!children) return;
+
+    TSStateId running_state = 0;
+    bool state_is_valid = false; // 상태 추적 유효성 플래그
+
+    for (uint32_t i = 0; i < count; i++) {
+      Subtree child = children[i];
+      TSSymbol child_sym = ts_subtree_symbol(child);
+
+      // ---------------------------------------------------------
+      // 1. 상태 동기화 및 복구 (Resync)
+      // ---------------------------------------------------------
+      // (A) 첫 루프이거나
+      // (B) 상태 체인이 끊겼거나 (!state_is_valid)
+      // (C) 계산된 상태가 0이라면
+      // -> 현재 노드에 저장된 상태를 불러와 리셋합니다.
+      if (i == 0 || !state_is_valid || running_state == 0) {
+        running_state = (TSStateId)ts_subtree_parse_state(child);
+        state_is_valid = true;
+      }
+
+      if (running_state >= ctx->lang->state_count) {
+          state_is_valid = false;
+          // 출력할 때는 0이나 안전한 값으로 대체하거나, 출력을 위해 값을 유지하되
+          // 다음 상태 계산(4번 단계)에서는 쓰지 말아야 함.
+      }
+
+      // ---------------------------------------------------------
+      // 2. 출력 (Leaf 노드만)
+      // ---------------------------------------------------------
+      if (ts_subtree_child_count(child) == 0) {
+        // 유효하지 않은 심볼(65535)이나 에러 심볼은 출력 제외
+        bool is_invalid_sym = (child_sym == 65535) || 
+                              (child_sym == ts_builtin_sym_error) ||
+                              (child_sym == ts_builtin_sym_end);
+
+        if (!is_invalid_sym) {
+          fprintf(ctx->file, "%u", running_state);
+          
+          for (uint32_t j = i; j < count; j++) {
+            TSSymbol sym = ts_subtree_symbol(children[j]);
+            const char *name = ts_language_symbol_name(ctx->lang, sym);
+            fprintf(ctx->file, " %s", name ? name : "UNKNOWN");
+          }
+          fprintf(ctx->file, "\n");
+
+          CollectionContext temp_ctx = *ctx;
+          for (uint32_t j = i; j < count; j++) {
+             dump_lexemes(&temp_ctx, children[j]);
+          }
+          fprintf(ctx->file, "\n");
+        }
+      }
+
+      // 3. 재귀 호출
+      collect_recursive(ctx, child);
+
+      // ---------------------------------------------------------
+      // 4. 다음 상태 계산 (Next State Transition) - [핵심 수정]
+      // ---------------------------------------------------------
+      
+      // (1) Extra 노드 스킵
+      if (ts_subtree_extra(child)) {
+          continue; 
+      }
+
+      // (2) [방어 코드] 심볼 ID가 유효한지 검사
+      // - 65535 (UINT16_MAX) 체크
+      // - 언어의 전체 심볼 개수(ctx->lang->symbol_count) 범위 체크
+      if (child_sym == 65535 || child_sym == ts_builtin_sym_error || 
+          child_sym >= ctx->lang->symbol_count) {
+          
+          // 위험한 심볼이므로 계산 중단 -> 다음 루프에서 Resync 유도
+          state_is_valid = false;
+          running_state = 0;
+          continue;
+      }
+
+      // (3) 정상적인 경우 상태 전이 계산
+      if (state_is_valid) {
+           if (running_state >= ctx->lang->state_count) {
+               // 상태 값이 너무 크면 테이블 참조 시 Crash 발생함 -> 계산 포기
+               state_is_valid = false;
+               running_state = 0;
+           } 
+           else {
+               // 안전함이 확인되었으므로 계산 수행
+               TSStateId next = ts_language_next_state(ctx->lang, running_state, child_sym);
+               
+               if (next == 0) {
+                   state_is_valid = false;
+                   running_state = 0;
+               } else {
+                   running_state = next;
+               }
+           }
+      }
+    }
+  } 
+  // Leaf Node
+  else {
+    Length padding = ts_subtree_padding(tree);
+    Length size = ts_subtree_size(tree);
+    Length total = length_add(padding, size);
+    ctx->byte_offset += total.bytes;
+    ctx->point_offset = point_add(ctx->point_offset, total.extent);
+  }
+  // uint32_t count = ts_subtree_child_count(tree);
+
+  // // Internal Node
+  // if (count > 0) {
+  //   Subtree *children = ts_subtree_children(tree);
+
+  //   for (uint32_t i = 0; i < count; i++) {
+  //     // 부모가 Leaf인 자식을 발견하면 출력
+  //     Subtree child = children[i];
+
+  //     if (ts_subtree_child_count(child) == 0) {
+  //       // eof 는 생략
+  //       TSSymbol sym = ts_subtree_symbol(child);
+  //       if (sym != ts_builtin_sym_end) {
+
+  //         // line 1: state + symbols
+  //         // 형제 노드들 순회하여 심볼 출력
+  //         fprintf(ctx->file, "%u", ts_subtree_parse_state(child));
+          
+  //         for (uint32_t j = i; j < count; j++) {
+  //           TSSymbol sym = ts_subtree_symbol(children[j]);
+  //           const char *name = ts_language_symbol_name(ctx->lang, sym);
+  //           fprintf(ctx->file, " %s", name ? name : "UNKNOWN");
+  //         }
+  //         fprintf(ctx->file, "\n");
+
+  //         // line 2: lexemes
+  //         // 형제 노드들 순회하여 렉심 출력
+  //         CollectionContext temp_ctx = *ctx;
+  //         for (uint32_t j = i; j < count; j++) {
+  //             dump_lexemes(&temp_ctx, children[j]);
+  //         }
+  //         fprintf(ctx->file, "\n");
+  //       }
+  //     }
+  //     collect_recursive(ctx, child);
+  //   }
+  // }
+  // // Leaf Node
+  // else {
+  //   // 커서 이동
+  //   Length padding = ts_subtree_padding(tree);
+  //   Length size = ts_subtree_size(tree);
+    
+  //   Length total = length_add(padding, size);
+  //   ctx->byte_offset += total.bytes;
+  //   ctx->point_offset = point_add(ctx->point_offset, total.extent);
+  // }
+
+}
+
+static inline bool ts_subtree_has_error(Subtree self) {
+    // 에러 비용이 0보다 크다면, 내부에 에러(Missing 또는 Error 노드)가 있다는 뜻입니다.
+    return ts_subtree_error_cost(self) > 0;
+}
+
+// [new] 컬렉션 ver.2
+bool ts_parser_run_collection2 (
+  TSTree *tree,
+  const char *source_code,
+  uint32_t length,
+  FILE *file
+) {
+
+  if (!tree) { fprintf(stderr, "[ERROR] Tree is NULL\n"); return false; }
+  
+  if (!file) return false;
+
+  Subtree root = tree->root;
+  if (!root.ptr) return false;
+
+  // 에러 체크
+  if (ts_subtree_has_error(root)) return false;
+
+  // 컨텍스트 설정
+  CollectionContext ctx = {
+      .file = file,
+      .source = source_code,
+      .source_len = length,
+      .lang = ts_tree_language(tree),
+      .byte_offset = 0,
+      .point_offset = {0, 0}
+  };
+
+  fprintf(stderr, "[DEBUG] Root ptr is valid. Starting recursive...\n");
+  fflush(stderr);
+
+  collect_recursive(&ctx, root);
+
+  fprintf(stderr, "[DEBUG] Recursive finished.\n");
+  fflush(stderr);
+  return true;
+}
+
+// TSStatePath ts_conversion__reconstruct_stack2(
+// ) {
+
+// }
+
+// TSStatePath ts_parser_run_conversion2 (TSParser *self) {
+//   TSStatePath result = {0};
+
+//   // 1. 커서 위치 직전의 Shift(로그 인덱스)를 찾음
+//   int32_t shift_index = ts_conversion__find_cursor_shift_index(self);
+
+//   if (shift_index == -1) {
+//       TSStatePath start_stack = {0};
+//       start_stack.states[0] = 1; // Start State
+//       start_stack.count = 1;
+//       ts_conversion__recursive_current_states(self, &start_stack, &result);
+//       return result;
+//   }
+  
+//   // 2. 커서 위치까지의 물리적 스택 복원
+//   TSStatePath re_stack = ts_conversion__reconstruct_stack2();
+//   if (re_stack.count == 0) return result;
+
+//   // 3. current states 탐색 시작
+//   ts_conversion__recursive_current_states(self, &re_stack, &result);
+
+//   return result;
+// }
 // void ts_parser_run_collection(TSParser *self, FILE *OutputFile) {
 //     // 1. 데이터 없음 or 파일 포인터 없음 -> 종료
 //     if (!self->logged_actions.contents || !OutputFile) return;
@@ -3122,14 +3421,13 @@ TSTree *ts_parser_parse(
   const TSTree *old_tree,
   TSInput input
 ) {
-  // 초기화
-  if (self->logged_actions.contents) {
-      array_clear(&self->logged_actions);
-  }
-
   // 1단계 : 파싱 준비
   TSTree *result = NULL;
   if (!self->language || !input.read) return NULL;
+
+  if (self->logged_actions.contents) {
+      array_clear(&self->logged_actions);
+  }
 
   if (ts_language_is_wasm(self->language)) {
     if (!self->wasm_store) return NULL;
@@ -3147,14 +3445,14 @@ TSTree *ts_parser_parse(
     self->end_clock = clock_null();
   }
 
-  if (ts_parser_has_outstanding_parse(self)) {
+  if (ts_parser_has_outstanding_parse(self)) {  // 파싱이 일시 정지된 경우 재개
     LOG("resume_parsing");
     if (self->canceled_balancing) goto balance; // goto label
   } else {
     ts_parser__external_scanner_create(self);
     if (self->has_scanner_error) goto exit;
 
-    if (old_tree) {
+    if (old_tree) {   // 이전버전의 트리가 있을 때 (증분 파싱)
       ts_subtree_retain(old_tree->root);
       self->old_tree = old_tree->root;
       ts_range_array_get_changed_ranges(
@@ -3169,7 +3467,7 @@ TSTree *ts_parser_parse(
         TSRange *range = array_get(&self->included_range_differences, i);
         LOG("different_included_range %u - %u", range->start_byte, range->end_byte);
       }
-    } else {
+    } else {    // 신규 파싱
       reusable_node_clear(&self->reusable_node);
       LOG("new_parse");
     }
@@ -3177,16 +3475,16 @@ TSTree *ts_parser_parse(
 
   // 2단계 : 파싱 루프
   uint32_t position = 0, last_position = 0, version_count = 0;
-  do {
-    for (
+  do {  // 파싱할 수 있는 경로가 남아있는 한 계속 진행
+    for (   // 현재 살아있는 모든 스택 버전을 하나씩 돌아가며 실행
       StackVersion version = 0;
-      version_count = ts_stack_version_count(self->stack),
+      version_count = ts_stack_version_count(self->stack),  // 매 루프마다 버전 수 다시 확인
       version < version_count;
       version++
     ) {
       bool allow_node_reuse = version_count == 1;
-      while (ts_stack_is_active(self->stack, version)) {
-        LOG(
+      while (ts_stack_is_active(self->stack, version)) {  // 한 버전이 토큰을 하나 먹을 때까지 굴림
+        LOG(                                              // (토큰 하나 읽기 위해 여러번 reduce가 필요할 수도 있기에)
           "process version:%u, version_count:%u, state:%d, row:%u, col:%u",
           version,
           ts_stack_version_count(self->stack),
@@ -3195,7 +3493,7 @@ TSTree *ts_parser_parse(
           ts_stack_position(self->stack, version).extent.column
         );
 
-        // 한 단계 전진 (Shift / Reduce / Accept / Error)
+        // 하나의 액션 수행 (Shift / Reduce / Accept / Error)
         // 이 함수 내부에서 커스텀 로직(logged_actions 기록)이 수행된다.
         if (!ts_parser__advance(self, version, allow_node_reuse)) {
           if (self->has_scanner_error) goto exit;
@@ -3237,6 +3535,8 @@ TSTree *ts_parser_parse(
     }
   } while (version_count != 0);
 
+
+// 3단계: 트리의 균형 맞추기 및 반환
 balance:
   ts_assert(self->finished_tree.ptr);
   if (!ts_parser__balance_subtree(self)) {

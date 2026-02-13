@@ -42,8 +42,9 @@ extern "C" {
     void ts_parser_write_conversion_result(TSParser *self, TSStatePath *path, FILE *fp);
 
     // 3. 컬렉션 로직 실행
-    bool ts_parser_run_collection(TSParser *self, FILE *OutputFile);
-
+    // bool ts_parser_run_collection(TSParser *self, FILE *OutputFile);
+    bool ts_parser_run_collection2(TSTree *tree, const char *source_code, uint32_t length, FILE *OutputFile);
+    
     // 4. 로그 덤프
     void ts_parser_write_logged_actions(TSParser *self, const char *filename);
 
@@ -258,7 +259,7 @@ int main(int argc, char* argv[]) {
         }
         else {
             // [Collection / Conversion Mode]
-
+            
             if (bIsCollectionMode) {
                 std::cout << "DEBUG: Running Collection..." << std::endl;
                 // 컬렉션 로직 호출 (결과는 함수 내부 로직에 따라 처리됨)
@@ -266,7 +267,7 @@ int main(int argc, char* argv[]) {
                 FILE *collection_fp = fopen("Test.data", "w");
                 if (collection_fp) {
                     // 열린 파일 포인터를 넘겨줌
-                    bool is_success = ts_parser_run_collection(parser, collection_fp);
+                    bool is_success = ts_parser_run_collection2(tree, source_code.c_str(), static_cast<uint32_t>(effective_length), collection_fp);
                     fclose(collection_fp);
 
                     if (!is_success) {
@@ -300,6 +301,7 @@ int main(int argc, char* argv[]) {
                     fclose(test_data_fp);
                 }
             }
+            
             // 결과 출력 및 리소스 정리
             if (tree) {
                 TSNode root_node = ts_tree_root_node(tree);

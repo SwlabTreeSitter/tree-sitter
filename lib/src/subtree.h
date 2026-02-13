@@ -93,8 +93,8 @@ struct SubtreeInlineData {
 struct SubtreeInlineData {
   bool is_inline : 1;
   SUBTREE_BITS
-  uint8_t symbol;
-  uint16_t parse_state;
+  uint8_t symbol;         // 토큰의 종류
+  uint16_t parse_state;   // 토큰을 읽기 전의 상태
   SUBTREE_SIZE
 };
 
@@ -113,11 +113,14 @@ typedef struct {
   Length padding;
   Length size;
   uint32_t lookahead_bytes;
-  uint32_t error_cost;
-  uint32_t child_count;
-  TSSymbol symbol;
-  TSStateId parse_state;
 
+  // 파싱 로직
+  uint32_t error_cost;    // 에러 비용
+  uint32_t child_count;   // 자식 개수
+  TSSymbol symbol;        // 문법 심볼 ID
+  TSStateId parse_state;  // 파싱 시작 전 상태
+
+  // 속성 플래그
   bool visible : 1;
   bool named : 1;
   bool extra : 1;
@@ -131,14 +134,17 @@ typedef struct {
   bool is_keyword : 1;
 
   union {
+    // 자식이 있다 -> 내부 노드 정보
     // Non-terminal subtrees (`child_count > 0`)
     struct {
       uint32_t visible_child_count;
       uint32_t named_child_count;
       uint32_t visible_descendant_count;
-      int32_t dynamic_precedence;
-      uint16_t repeat_depth;
-      uint16_t production_id;
+      int32_t dynamic_precedence;   // GLR 발생 시 우선순위 점수
+      uint16_t repeat_depth;        
+      uint16_t production_id;   // 생성 규칙 ID
+      
+      // 이 서브 트리의 가장 왼쪽에 있는 첫번째 Leaf 노드 정보
       struct {
         TSSymbol symbol;
         TSStateId parse_state;
@@ -155,8 +161,8 @@ typedef struct {
 
 // The fundamental building block of a syntax tree.
 typedef union {
-  SubtreeInlineData data;
-  const SubtreeHeapData *ptr;
+  SubtreeInlineData data;       // 크기가 작은 노드 (Leaf Node)
+  const SubtreeHeapData *ptr;   // 크기가 큰 노드 (Internal or Leaf Node)
 } Subtree;
 
 // Like Subtree, but mutable.

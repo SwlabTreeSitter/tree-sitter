@@ -15,10 +15,10 @@ typedef struct {
 } ParentCacheEntry;
 
 struct TSTree {
-  Subtree root;
-  const TSLanguage *language;
-  TSRange *included_ranges;
-  unsigned included_range_count;
+  Subtree root;                   // Syntax Tree의 진입점
+  const TSLanguage *language;     // 파싱에 사용된 언어
+  TSRange *included_ranges;       // 분석 범위
+  unsigned included_range_count;  // 범위 개수
 };
 
 TSTree *ts_tree_new(Subtree root, const TSLanguage *language, const TSRange *included_ranges, unsigned included_range_count);

@@ -163,6 +163,8 @@ static inline bool ts_subtree_can_inline(Length padding, Length size, uint32_t l
     lookahead_bytes < 16;
 }
 
+// 입력 정보를 바탕으로 
+// 가장 효율적인 형태(Inline 또는 Heap)의 Subtree 객체를 만들어서 반환
 Subtree ts_subtree_new_leaf(
   SubtreePool *pool, TSSymbol symbol, Length padding, Length size,
   uint32_t lookahead_bytes, TSStateId parse_state,
@@ -486,14 +488,20 @@ MutableSubtree ts_subtree_new_node(
   TSSymbolMetadata metadata = ts_language_symbol_metadata(language, symbol);
   bool fragile = symbol == ts_builtin_sym_error || symbol == ts_builtin_sym_error_repeat;
 
+  // 1. 필요한 전체 크기 계산 (자식들 크기 + 부모 헤더 크기)
   // Allocate the node's data at the end of the array of children.
   size_t new_byte_size = ts_subtree_alloc_size(children->size);
+
+  // 2. 메모리 확장 (Realloc)
   if (children->capacity * sizeof(Subtree) < new_byte_size) {
     children->contents = ts_realloc(children->contents, new_byte_size);
     children->capacity = (uint32_t)(new_byte_size / sizeof(Subtree));
   }
+  // 3. 부모 헤더의 위치 잡기
+  // 자식 배열(contents)의 맨 끝 인덱스(&contents[size]) 주소를 부모 데이터(data)의 시작점으로 잡음
   SubtreeHeapData *data = (SubtreeHeapData *)&children->contents[children->size];
 
+  // 4. 부모 데이터 채우기
   *data = (SubtreeHeapData) {
     .ref_count = 1,
     .symbol = symbol,
@@ -511,6 +519,9 @@ MutableSubtree ts_subtree_new_node(
       .first_leaf = {.symbol = 0, .parse_state = 0},
     }}
   };
+
+  // 5. 결과 반환
+  // 포인터(ptr)는 이 끝부분에 있는 헤더를 가리킴
   MutableSubtree result = {.ptr = data};
   ts_subtree_summarize_children(result, language);
   return result;

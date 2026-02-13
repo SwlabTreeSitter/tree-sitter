@@ -1,11 +1,13 @@
 #include "./subtree.h"
 
+// 트리를 순회할 때 현재 어디에 있는지를 기록하는 스냅샷
 typedef struct {
-  Subtree tree;
-  uint32_t child_index;
-  uint32_t byte_offset;
+  Subtree tree;           // 현재 방문 중인 노드
+  uint32_t child_index;   // 그 노드의 몇 번째 자식을 볼 차례인지
+  uint32_t byte_offset;   // 이 노드의 파일 내 절대 시작 위치 (byte)
 } StackEntry;
 
+// 트리의 특정 위치를 가리키는 커서
 typedef struct {
   Array(StackEntry) stack;
   Subtree last_external_token;
@@ -15,6 +17,7 @@ static inline ReusableNode reusable_node_new(void) {
   return (ReusableNode) {array_new(), NULL_SUBTREE};
 }
 
+// 신규 파싱 시 재사용할 노드를 찾는 도구 초기화
 static inline void reusable_node_clear(ReusableNode *self) {
   array_clear(&self->stack);
   self->last_external_token = NULL_SUBTREE;
@@ -78,14 +81,19 @@ static inline void reusable_node_advance_past_leaf(ReusableNode *self) {
   reusable_node_advance(self);
 }
 
+// 옛날 트리에서 재사용할 수 있는 노드를 찾는 도구 초기화
 static inline void reusable_node_reset(ReusableNode *self, Subtree tree) {
+  // 기존 스택 비우기
   reusable_node_clear(self);
+
+  // 옛날 트리의 루트를 스택에 넣음
   array_push(&self->stack, ((StackEntry) {
     .tree = tree,
     .child_index = 0,
     .byte_offset = 0,
   }));
 
+  // 루트를 바로 쪼개서 자식으로 내려감 (reusable_node_descend)
   // Never reuse the root node, because it has a non-standard internal structure
   // due to transformations that are applied when it is accepted: adding the EOF
   // child and any extra children.
