@@ -15,7 +15,7 @@ LIB_PATH = "/home/hyeonjin/PL/tree-sitter-smallbasic/smallbasic.so"
 SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST_BENCH" 
 
 # 4. 결과 파일(.data)을 저장할 폴더 (새로 생성될 폴더) (LEARN/TEST)
-OUTPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data"
+OUTPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data2"
 
 # 5. 실행 인자 설정
 ARG_LANG = "smallbasic"

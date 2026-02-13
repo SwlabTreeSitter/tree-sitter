@@ -11,7 +11,7 @@ from collections import defaultdict
 
 EXE_PATH = "/home/hyeonjin/PL/tree-sitter/TreeSitterCutFile.exe"
 LIB_PATH = "/home/hyeonjin/PL/tree-sitter-smallbasic/smallbasic.so"
-DB_PATH = "/home/hyeonjin/PL/extension/small-basic-extension/src/smallbasic_candidates.json"
+DB_PATH = "/home/hyeonjin/PL/extension/small-basic-extension/src/smallbasic_candidates2.json"
 
 # 데이터셋 경로
 SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST_BENCH"
@@ -19,8 +19,8 @@ ANSWER_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
 
 # 리포트 저장 경로 (폴더)
 REPORT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
-FILE_REPORT_NAME = "sb_file_performance.txt"
-RANK_REPORT_NAME = "sb_rank_distribution.txt"
+FILE_REPORT_NAME = "sb_file_performance2.txt"
+RANK_REPORT_NAME = "sb_rank_distribution2.txt"
 
 # [제한] 분석할 최대 순위
 MAX_CANDIDATE_LIST_SIZE = 20
@@ -193,7 +193,7 @@ class FileReporter:
         print(f"[Saved] File Report (TXT) -> {txt_path}")
 
         # 2. CSV 리포트 저장 (추가된 로직)
-        csv_path = os.path.join(REPORT_DIR, "sb_file_performance.csv")
+        csv_path = os.path.join(REPORT_DIR, "sb_file_performance2.csv")
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             # 헤더 작성
@@ -255,7 +255,7 @@ class FileReporter:
 
         # 2. CSV 리포트 저장 (추가된 로직)
         if self.global_queries > 0:
-            csv_path = os.path.join(REPORT_DIR, "sb_rank_distribution.csv")
+            csv_path = os.path.join(REPORT_DIR, "sb_rank_distribution2.csv")
             with open(csv_path, "w", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
                 # 헤더 작성

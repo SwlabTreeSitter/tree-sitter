@@ -3,7 +3,7 @@ import glob
 import json
 
 # =================[ 리눅스 경로 설정 ]=================
-INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data"
+INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data2"
 OUTPUT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
 # =========================================================
 
