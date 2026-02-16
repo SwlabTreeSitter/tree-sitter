@@ -7,6 +7,8 @@ import json
 # 다른 언어 작업 시 여기 경로만 수정
 INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/LEARN_BENCH_data2"
 OUTPUT_FILE = "/home/hyeonjin/PL/extension/small-basic-extension/src/smallbasic_candidates2.json"
+# INPUT_DIR =  "/home/hyeonjin/PL/benchmarks_collection/c11/LEARN_BENCH_data"
+# OUTPUT_FILE = "/home/hyeonjin/PL/extension/small-basic-extension/src/c11_candidates.json"
 TEMP_DB_FILE = "temp_aggregation.db" 
 # ==========================================
 
@@ -19,6 +21,15 @@ def format_pattern_clean(raw_pattern):
     return "[" + ", ".join(tokens) + "]"
 
 def main():
+    # 0. 기존 결과 파일 삭제 (Clean Start)
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            os.remove(OUTPUT_FILE)
+            print(f"[Info] Removed existing output file: {OUTPUT_FILE}")
+        except OSError as e:
+            print(f"[Error] Failed to remove output file: {e}")
+            return
+
     # 1. 파일 확인
     data_files = glob.glob(os.path.join(INPUT_DIR, "*.data"))
     total_files = len(data_files)

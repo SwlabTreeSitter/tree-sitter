@@ -19,17 +19,24 @@ OUTPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data
 
 # 5. 실행 인자 설정
 ARG_LANG = "smallbasic"
-ARG_ROW = "999999"  # 파일 끝까지 읽기
+ARG_ROW = "2147483647"  # 파일 끝까지 읽기
 ARG_COL = "0"
 ARG_MODE = "1"      # 1 = Collection Mode
 
 # =========================================================
 
 def main():
-    # 결과 폴더 생성
-    if not os.path.exists(OUTPUT_DIR):
-        os.makedirs(OUTPUT_DIR)
-        print(f"[Info] Created output directory: {OUTPUT_DIR}")
+    if os.path.exists(OUTPUT_DIR):
+        try:
+            shutil.rmtree(OUTPUT_DIR) # rm -rf 와 동일한 역할
+            print(f"[Info] Removed existing directory: {OUTPUT_DIR}")
+        except Exception as e:
+            print(f"[Error] Failed to remove directory: {e}")
+            return
+
+    # 결과 폴더 재생성
+    os.makedirs(OUTPUT_DIR)
+    print(f"[Info] Created output directory: {OUTPUT_DIR}")
 
     # [추가] 스킵된 파일 목록 저장용 로그 파일 초기화
     SKIP_LOG_PATH = os.path.join(OUTPUT_DIR, "skipped_files.txt")
@@ -54,6 +61,11 @@ def main():
         # 확장자 변경 (.sb -> .data)
         output_filename = filename.replace(".sb", ".data")
         final_output_path = os.path.join(OUTPUT_DIR, output_filename)
+        generated_file = "Test.data"
+
+        # [안전장치] 이전 루프의 잔여 파일 삭제
+        if os.path.exists(generated_file):
+            os.remove(generated_file)
 
         # [수정] end=" " 제거 (로그 출력을 위해 줄바꿈 허용)
         print(f"Processing: {filename} ...")
@@ -62,6 +74,9 @@ def main():
         # 인자 순서: [EXE] [Lang] [LibPath] [FilePath] [Row] [Col] [Mode]
         cmd = [EXE_PATH, ARG_LANG, LIB_PATH, sb_file, ARG_ROW, ARG_COL, ARG_MODE]
         
+        is_skipped = False
+        skip_reason = ""
+
         try:
             # 실행
             # subprocess.run(
@@ -73,41 +88,53 @@ def main():
             # [수정] 실행 및 출력 캡처
             result = subprocess.run(
                 cmd,
-                check=True,
+                check=False,
                 capture_output=True, # stdout/stderr 캡처
                 text=True            # 텍스트 모드
             )
 
-            # C++ 프로그램이 stderr로 출력한 내용([SKIP] 메시지 등)이 있으면 출력
-            if result.stderr:
-                print(result.stderr.strip())
+            # 1. stderr에서 [Skip] 메시지 감지
+            if "[Skip]" in result.stderr:
+                is_skipped = True
+                skip_reason = "Syntax Error / High Cost"
+                print(f"  -> Detected SKIP signal: {result.stderr.strip()}")
+            
+            # 2. C++ 프로그램이 에러 코드로 종료된 경우
+            elif result.returncode != 0:
+                is_skipped = True
+                skip_reason = f"Process Error (Exit Code {result.returncode})"
+                print(f"  -> Process failed: {result.stderr.strip()}")
 
-        except subprocess.CalledProcessError as e:
-            print(f"[Failed]")
-            err_msg = e.stderr
-            if hasattr(err_msg, 'decode'):
-                err_msg = err_msg.decode('utf-8')
-            print(f"  Error details: {err_msg}")
-            continue
+        except Exception as e:
+            is_skipped = True
+            skip_reason = str(e)
+            print(f"  -> Exception: {e}")
 
         # 2. 결과 파일 이동
         # C++ 프로그램은 현재 작업 디렉토리에 'Test.data'를 생성
-        generated_file = "Test.data" 
-        
-        if os.path.exists(generated_file):
+        if not is_skipped and os.path.exists(generated_file) and os.path.getsize(generated_file) > 0:
             if os.path.exists(final_output_path):
                 os.remove(final_output_path)
             
             shutil.move(generated_file, final_output_path)
-            print("Done.")
+            # print("  -> Done.")
             success_count += 1
         else:
-            print("[Failed] 'Test.data' was not created.")
+            # 실패했거나 스킵된 경우
             skipped_count += 1
+            
+            # 잔여 파일 정리 (빈 파일이 생겼을 수 있음)
+            if os.path.exists(generated_file):
+                os.remove(generated_file)
+            
+            # 로그 메시지 결정
+            if not is_skipped: # is_skipped는 false인데 파일이 없거나 0바이트인 경우
+                skip_reason = "No output generated or empty file"
+                print(f"  -> Failed: {skip_reason}")
 
-            # 로그 파일에 기록
+            # 로그 기록
             with open(SKIP_LOG_PATH, "a", encoding="utf-8") as log_f:
-                log_f.write(f"{filename}\n")
+                log_f.write(f"{filename} | {skip_reason}\n")
 
     print(f"[*] Completed.")
     print(f"    - Success: {success_count}")

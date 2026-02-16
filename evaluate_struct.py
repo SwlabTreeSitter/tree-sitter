@@ -44,6 +44,27 @@ class FileReporter:
         # 리포트 폴더 생성
         if not os.path.exists(REPORT_DIR):
             os.makedirs(REPORT_DIR)
+        else:
+            # 기존 리포트 파일 삭제 (초기화)
+            # TXT 파일 삭제
+            for report_file in [FILE_REPORT_NAME, RANK_REPORT_NAME]:
+                path = os.path.join(REPORT_DIR, report_file)
+                if os.path.exists(path):
+                    try:
+                        os.remove(path)
+                        # print(f"[Info] Removed old report: {path}")
+                    except OSError:
+                        pass
+            
+            # CSV 파일 삭제 (코드 하단에서 생성하는 파일명과 일치해야 함)
+            for csv_file in ["sb_file_performance2.csv", "sb_rank_distribution2.csv"]:
+                path = os.path.join(REPORT_DIR, csv_file)
+                if os.path.exists(path):
+                    try:
+                        os.remove(path)
+                        # print(f"[Info] Removed old CSV: {path}")
+                    except OSError:
+                        pass
 
     def load_json(self, path):
         if not os.path.exists(path):

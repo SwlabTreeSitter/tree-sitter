@@ -2995,10 +2995,10 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
     fprintf(ctx->file, "  %u,%u: ", start_point.row + 1, start_point.column + 1);
 
     // 렉심 내용 출력 (따옴표 등으로 감싸지 않고 원본 그대로 출력)
-    if (start_byte + length_byte > ctx->source_len) {
-        length_byte = ctx->source_len - start_byte;
-    }
-    fwrite(ctx->source + start_byte, 1, length_byte, ctx->file);
+    // if (start_byte + length_byte > ctx->source_len) {
+    //     length_byte = ctx->source_len - start_byte;
+    // }
+    // fwrite(ctx->source + start_byte, 1, length_byte, ctx->file);
     fprintf(ctx->file, "\n");
   }
 
@@ -3033,7 +3033,7 @@ void collect_recursive(
   if (!children) return;
 
   TSStateId current_node_state = ts_subtree_parse_state(tree);
-  if (current_node_state == 65535) {
+  if (current_node_state == 0 || current_node_state == 65535) {
     current_node_state = state_from_parent;
   }
 
@@ -3080,7 +3080,6 @@ void collect_recursive(
         running_state = next;
       }
     }
-
   }
 }
 
@@ -3100,7 +3099,11 @@ bool ts_parser_run_collection2 (
   if (!root.ptr) return false;
 
   // 에러 체크
-  // if (ts_subtree_has_error(root)) return false;
+  if (ts_subtree_error_cost(root) > 0) {
+    fprintf(stderr, "[Skip] Syntax errors detected in file.\n");
+    fflush(stderr);
+    return false; 
+  }
 
   // 컨텍스트 설정
   CollectionContext ctx = {
@@ -3117,7 +3120,6 @@ bool ts_parser_run_collection2 (
   fflush(stderr);
   return true;
 }
-
 
 // TSStatePath ts_conversion__reconstruct_stack2(
 // ) {

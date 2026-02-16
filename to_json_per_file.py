@@ -57,12 +57,21 @@ def process_one_data_file(file_path: str) -> dict:
     return result
 
 def main():
+    if os.path.exists(OUTPUT_DIR):
+        try:
+            shutil.rmtree(OUTPUT_DIR) # rm -rf 와 동일한 역할
+            print(f"[Info] Removed existing directory: {OUTPUT_DIR}")
+        except Exception as e:
+            print(f"[Error] Failed to remove directory: {e}")
+            return
+    os.makedirs(OUTPUT_DIR)
+    print(f"[Info] Created output directory: {OUTPUT_DIR}")
+
+
     data_files = sorted(glob.glob(os.path.join(INPUT_DIR, "*.data")))
     if not data_files:
         print(f"[Error] No .data files found in {INPUT_DIR}")
         return
-
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
     print(f"[*] Found {len(data_files)} files.")
 
     success = 0

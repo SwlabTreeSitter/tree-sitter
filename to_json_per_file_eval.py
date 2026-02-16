@@ -1,10 +1,13 @@
 import os
 import glob
 import json
+import shutil
 
 # =================[ 리눅스 경로 설정 ]=================
 INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data2"
 OUTPUT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
+# INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/c11/TEST_BENCH_data"
+# OUTPUT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/c11"
 # =========================================================
 
 def format_pattern_clean(raw_pattern: str) -> str:
@@ -68,9 +71,16 @@ def process_one_data_file(file_path: str) -> dict:
     return extracted_data
 
 def main():
-    if not os.path.exists(OUTPUT_DIR):
-        os.makedirs(OUTPUT_DIR)
-        print(f"[Info] Created output directory: {OUTPUT_DIR}")
+    if os.path.exists(OUTPUT_DIR):
+        try:
+            shutil.rmtree(OUTPUT_DIR) # rm -rf 와 동일한 역할
+            print(f"[Info] Removed existing directory: {OUTPUT_DIR}")
+        except Exception as e:
+            print(f"[Error] Failed to remove directory: {e}")
+            return
+    os.makedirs(OUTPUT_DIR)
+    print(f"[Info] Created output directory: {OUTPUT_DIR}")
+
 
     data_files = glob.glob(os.path.join(INPUT_DIR, "*.data"))
     print(f"[*] Found {len(data_files)} files.")
