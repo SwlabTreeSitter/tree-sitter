@@ -916,4 +916,30 @@ bool ts_stack_print_dot_graph(Stack *self, const TSLanguage *language, FILE *f) 
   return true;
 }
 
+// [New] 특정 버전의 전체 스택 히스토리를 추출하는 함수
+// states: 결과를 담을 배열 포인터
+// max_count: 배열의 최대 크기
+// 반환값: 실제 담긴 스택의 깊이
+uint32_t ts_stack_get_history(const Stack *self, StackVersion version, TSStateId *states, uint32_t max_count) {
+  // 1. 해당 버전의 Head 노드 가져오기
+  // (StackHead 구조체가 stack.c 내부에 정의되어 있으므로 접근 가능)
+  if (version >= self->heads.size) return 0;
+  StackNode *node = self->heads.contents[version].node;
+
+  uint32_t count = 0;
+
+  // 2. 역방향 순회 (Top -> Root)
+  while (node && count < max_count) {
+    states[count++] = node->state;
+
+    // 이전 노드로 이동 (Back-pointer)
+    if (node->link_count > 0) {
+      node = node->links[0].node;
+    } else {
+      node = NULL; // Root 도달
+    }
+  }
+  return count;
+}
+
 #undef forceinline

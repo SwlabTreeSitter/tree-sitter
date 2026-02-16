@@ -126,6 +126,9 @@ void ts_stack_clear(Stack *self);
 
 bool ts_stack_print_dot_graph(Stack *self, const TSLanguage *language, FILE *f);
 
+// custom
+uint32_t ts_stack_get_history(const Stack *self, StackVersion version, TSStateId *states, uint32_t max_count);
+
 #ifdef __cplusplus
 }
 #endif

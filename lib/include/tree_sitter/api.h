@@ -371,6 +371,14 @@ TSTree *ts_parser_parse_string_encoding(
   TSInputEncoding encoding
 );
 
+// custom
+TSStatePath ts_parser_parse_string_return_stack(
+  TSParser *self,
+  const TSTree *old_tree,
+  const char *string,
+  uint32_t length
+);
+
 /**
  * Instruct the parser to start the next parse from the beginning.
  *

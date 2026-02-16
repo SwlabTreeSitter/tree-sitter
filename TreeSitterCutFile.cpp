@@ -37,6 +37,8 @@
 extern "C" {
     // 1. 컨버전 로직 실행
     TSStatePath ts_parser_run_conversion(TSParser *self);
+    TSStatePath ts_parser_parse_return_stack(TSParser *self, const TSTree *old_tree, TSInput input, uint32_t input_length);
+    TSStatePath ts_parser_run_conversion2(TSParser *self, TSStatePath *stack);
 
     // 2. 컨버전 결과 출력 (파일 or 화면)
     void ts_parser_write_conversion_result(TSParser *self, TSStatePath *path, FILE *fp);
@@ -287,17 +289,33 @@ int main(int argc, char* argv[]) {
             else {
                 std::cout << "DEBUG: Running Conversion..." << std::endl;
                 
+                // std::cout << "DEBUG: original" << std::endl;
+                // // 1. 경로 계산 (순수 로직)
+                // TSStatePath path = ts_parser_run_conversion(parser);
+
+                // // 2. 결과 출력 (화면 + 파일)
+                // // (A) 화면 출력
+                // ts_parser_write_conversion_result(parser, &path, stdout);
+
+                std::cout << "DEBUG: update" << std::endl;
                 // 1. 경로 계산 (순수 로직)
-                TSStatePath path = ts_parser_run_conversion(parser);
+                TSStatePath stack = ts_parser_parse_string_return_stack (
+                    parser,
+                    NULL,
+                    source_code.c_str(),
+                    static_cast<uint32_t>(effective_length)
+                );
+
+                TSStatePath path2 = ts_parser_run_conversion2(parser, &stack);
 
                 // 2. 결과 출력 (화면 + 파일)
                 // (A) 화면 출력
-                ts_parser_write_conversion_result(parser, &path, stdout);
+                ts_parser_write_conversion_result(parser, &path2, stdout);
 
                 // (B) 파일 출력 (Test.data)
                 FILE *test_data_fp = fopen("Test.data", "w");
                 if (test_data_fp) {
-                    ts_parser_write_conversion_result(parser, &path, test_data_fp);
+                    ts_parser_write_conversion_result(parser, &path2, test_data_fp);
                     fclose(test_data_fp);
                 }
             }

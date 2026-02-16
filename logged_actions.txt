@@ -1,91 +1,32 @@
-[SHIFT] State 1 -> 188, symbol: ID (34, GraphicsWindow)
+[SHIFT] State 1 -> 188, symbol: ID (34, TextWindow)
 [SHIFT] State: 188 -> 259, symbol: . (17)
-[SHIFT] State 259 -> 214, symbol: ID (34, BackgroundColor)
-[SHIFT] State: 214 -> 75, symbol: = (7)
-[SHIFT] State 75 -> 9, symbol: STR (35, "SteelBlue")
-[REDUCE] State 9 -> GOTO 12, symbol: Primary, child 1 { 'STR("SteelBlue")' }
-[REDUCE] State 12 -> GOTO 11, symbol: UnaryExpr, child 1 { 'Primary' }
-[REDUCE] State 11 -> GOTO 10, symbol: MultiplicativeExpr, child 1 { 'UnaryExpr' }
-[REDUCE] State 10 -> GOTO 28, symbol: AdditiveExpr, child 1 { 'MultiplicativeExpr' }
-[REDUCE] State 28 -> GOTO 61, symbol: CompExpr, child 1 { 'AdditiveExpr' }
-[REDUCE] State 61 -> GOTO 108, symbol: EqNeqExpr, child 1 { 'CompExpr' }
-[REDUCE] State 108 -> GOTO 127, symbol: AndExpr, child 1 { 'EqNeqExpr' }
-[REDUCE] State 127 -> GOTO 139, symbol: OrExpr, child 1 { 'AndExpr' }
-[REDUCE] State 139 -> GOTO 154, symbol: CondExpr, child 1 { 'OrExpr' }
-[REDUCE] State 154 -> GOTO 162, symbol: Expr, child 1 { 'CondExpr' }
-[REDUCE] State 162 -> GOTO 147, symbol: ExprStatement, child 5 { 'ID(GraphicsWindow)' '.' 'ID(BackgroundColor)' '=' 'Expr' }
+[SHIFT] State 259 -> 214, symbol: ID (34, Write)
+[SHIFT] State: 214 -> 25, symbol: ( (18)
+[SHIFT] State 25 -> 51, symbol: STR (35, "Enter your Name: ")
+[REDUCE] State 51 -> GOTO 29, symbol: Primary, child 1 { 'STR("Enter your Name: ")' }
+[REDUCE] State 29 -> GOTO 38, symbol: UnaryExpr, child 1 { 'Primary' }
+[REDUCE] State 38 -> GOTO 50, symbol: MultiplicativeExpr, child 1 { 'UnaryExpr' }
+[REDUCE] State 50 -> GOTO 65, symbol: AdditiveExpr, child 1 { 'MultiplicativeExpr' }
+[REDUCE] State 65 -> GOTO 91, symbol: CompExpr, child 1 { 'AdditiveExpr' }
+[REDUCE] State 91 -> GOTO 128, symbol: EqNeqExpr, child 1 { 'CompExpr' }
+[REDUCE] State 128 -> GOTO 167, symbol: AndExpr, child 1 { 'EqNeqExpr' }
+[REDUCE] State 167 -> GOTO 183, symbol: OrExpr, child 1 { 'AndExpr' }
+[REDUCE] State 183 -> GOTO 195, symbol: CondExpr, child 1 { 'OrExpr' }
+[REDUCE] State 195 -> GOTO 217, symbol: Expr, child 1 { 'CondExpr' }
+[REDUCE] State 217 -> GOTO 242, symbol: MoreThanOneExpr, child 1 { 'Expr' }
+[REDUCE] State 242 -> GOTO 240, symbol: Exprs, child 1 { 'MoreThanOneExpr' }
+[SHIFT] State: 240 -> 175, symbol: ) (19)
+[REDUCE] State 175 -> GOTO 147, symbol: ExprStatement, child 6 { 'ID(TextWindow)' '.' 'ID(Write)' '(' 'Exprs' ')' }
 [REDUCE] State 147 -> GOTO 164, symbol: Stmt, child 1 { 'ExprStatement' }
 [REDUCE] State 164 -> GOTO 159, symbol: MoreThanOneStmt, child 1 { 'Stmt' }
 [REDUCE] State 159 -> GOTO 97, symbol: Prog, child 1 { 'MoreThanOneStmt' }
-[SHIFT] State 97 -> 188, symbol: ID (34, GraphicsWindow)
-[SHIFT] State: 188 -> 259, symbol: . (17)
-[SHIFT] State 259 -> 214, symbol: ID (34, Title)
-[SHIFT] State: 214 -> 75, symbol: = (7)
-[SHIFT] State 75 -> 9, symbol: STR (35, "My Graphics Window")
-[REDUCE] State 9 -> GOTO 12, symbol: Primary, child 1 { 'STR("My Graphics Window")' }
-[REDUCE] State 12 -> GOTO 11, symbol: UnaryExpr, child 1 { 'Primary' }
-[REDUCE] State 11 -> GOTO 10, symbol: MultiplicativeExpr, child 1 { 'UnaryExpr' }
-[REDUCE] State 10 -> GOTO 28, symbol: AdditiveExpr, child 1 { 'MultiplicativeExpr' }
-[REDUCE] State 28 -> GOTO 61, symbol: CompExpr, child 1 { 'AdditiveExpr' }
-[REDUCE] State 61 -> GOTO 108, symbol: EqNeqExpr, child 1 { 'CompExpr' }
-[REDUCE] State 108 -> GOTO 127, symbol: AndExpr, child 1 { 'EqNeqExpr' }
-[REDUCE] State 127 -> GOTO 139, symbol: OrExpr, child 1 { 'AndExpr' }
-[REDUCE] State 139 -> GOTO 154, symbol: CondExpr, child 1 { 'OrExpr' }
-[REDUCE] State 154 -> GOTO 162, symbol: Expr, child 1 { 'CondExpr' }
-[REDUCE] State 162 -> GOTO 147, symbol: ExprStatement, child 5 { 'ID(GraphicsWindow)' '.' 'ID(Title)' '=' 'Expr' }
-[REDUCE] State 147 -> GOTO 164, symbol: Stmt, child 1 { 'ExprStatement' }
-[REDUCE] State 164 -> GOTO 159, symbol: MoreThanOneStmt, child 1 { 'Stmt' }
-[REDUCE] State 159 -> GOTO 101, symbol: Prog, child 1 { 'MoreThanOneStmt' }
-[REDUCE] State 101 -> GOTO 97, symbol: Start_repeat1, child 2 { 'Prog' 'Prog' }
-[SHIFT] State 97 -> 188, symbol: ID (34, GraphicsWindow)
-[SHIFT] State: 188 -> 259, symbol: . (17)
-[SHIFT] State 259 -> 214, symbol: ID (34, Width)
-[SHIFT] State: 214 -> 75, symbol: = (7)
-[SHIFT] State 75 -> 9, symbol: NUM (36, 320)
-[REDUCE] State 9 -> GOTO 12, symbol: Primary, child 1 { 'NUM(320)' }
-[REDUCE] State 12 -> GOTO 11, symbol: UnaryExpr, child 1 { 'Primary' }
-[REDUCE] State 11 -> GOTO 10, symbol: MultiplicativeExpr, child 1 { 'UnaryExpr' }
-[REDUCE] State 10 -> GOTO 28, symbol: AdditiveExpr, child 1 { 'MultiplicativeExpr' }
-[REDUCE] State 28 -> GOTO 61, symbol: CompExpr, child 1 { 'AdditiveExpr' }
-[REDUCE] State 61 -> GOTO 108, symbol: EqNeqExpr, child 1 { 'CompExpr' }
-[REDUCE] State 108 -> GOTO 127, symbol: AndExpr, child 1 { 'EqNeqExpr' }
-[REDUCE] State 127 -> GOTO 139, symbol: OrExpr, child 1 { 'AndExpr' }
-[REDUCE] State 139 -> GOTO 154, symbol: CondExpr, child 1 { 'OrExpr' }
-[REDUCE] State 154 -> GOTO 162, symbol: Expr, child 1 { 'CondExpr' }
-[REDUCE] State 162 -> GOTO 147, symbol: ExprStatement, child 5 { 'ID(GraphicsWindow)' '.' 'ID(Width)' '=' 'Expr' }
-[REDUCE] State 147 -> GOTO 164, symbol: Stmt, child 1 { 'ExprStatement' }
-[REDUCE] State 164 -> GOTO 159, symbol: MoreThanOneStmt, child 1 { 'Stmt' }
-[REDUCE] State 159 -> GOTO 101, symbol: Prog, child 1 { 'MoreThanOneStmt' }
-[REDUCE] State 101 -> GOTO 97, symbol: Start_repeat1, child 2 { 'Start_repeat1' 'Prog' }
-[SHIFT] State 97 -> 188, symbol: ID (34, GraphicsWindow)
-[SHIFT] State: 188 -> 259, symbol: . (17)
-[SHIFT] State 259 -> 214, symbol: ID (34, Height)
-[SHIFT] State: 214 -> 75, symbol: = (7)
-[SHIFT] State 75 -> 9, symbol: NUM (36, 200)
-[REDUCE] State 9 -> GOTO 12, symbol: Primary, child 1 { 'NUM(200)' }
-[REDUCE] State 12 -> GOTO 11, symbol: UnaryExpr, child 1 { 'Primary' }
-[REDUCE] State 11 -> GOTO 10, symbol: MultiplicativeExpr, child 1 { 'UnaryExpr' }
-[REDUCE] State 10 -> GOTO 28, symbol: AdditiveExpr, child 1 { 'MultiplicativeExpr' }
-[REDUCE] State 28 -> GOTO 61, symbol: CompExpr, child 1 { 'AdditiveExpr' }
-[REDUCE] State 61 -> GOTO 108, symbol: EqNeqExpr, child 1 { 'CompExpr' }
-[REDUCE] State 108 -> GOTO 127, symbol: AndExpr, child 1 { 'EqNeqExpr' }
-[REDUCE] State 127 -> GOTO 139, symbol: OrExpr, child 1 { 'AndExpr' }
-[REDUCE] State 139 -> GOTO 154, symbol: CondExpr, child 1 { 'OrExpr' }
-[REDUCE] State 154 -> GOTO 162, symbol: Expr, child 1 { 'CondExpr' }
-[REDUCE] State 162 -> GOTO 147, symbol: ExprStatement, child 5 { 'ID(GraphicsWindow)' '.' 'ID(Height)' '=' 'Expr' }
-[REDUCE] State 147 -> GOTO 164, symbol: Stmt, child 1 { 'ExprStatement' }
-[REDUCE] State 164 -> GOTO 159, symbol: MoreThanOneStmt, child 1 { 'Stmt' }
-[REDUCE] State 159 -> GOTO 101, symbol: Prog, child 1 { 'MoreThanOneStmt' }
-[REDUCE] State 101 -> GOTO 97, symbol: Start_repeat1, child 2 { 'Start_repeat1' 'Prog' }
-[SHIFT] State 97 -> 188, symbol: ID (34, GraphicsWindow)
-[SHIFT] State: 188 -> 259, symbol: . (17)
-[SHIFT] State 259 -> 214, symbol: ID (34, Show)
-[SHIFT] State: 214 -> 25, symbol: ( (18)
-[SHIFT] State: 25 -> 162, symbol: ) (19)
-[REDUCE] State 162 -> GOTO 147, symbol: ExprStatement, child 5 { 'ID(GraphicsWindow)' '.' 'ID(Show)' '(' ')' }
-[REDUCE] State 147 -> GOTO 164, symbol: Stmt, child 1 { 'ExprStatement' }
-[REDUCE] State 164 -> GOTO 159, symbol: MoreThanOneStmt, child 1 { 'Stmt' }
-[REDUCE] State 159 -> GOTO 101, symbol: Prog, child 1 { 'MoreThanOneStmt' }
-[REDUCE] State 101 -> GOTO 97, symbol: Start_repeat1, child 2 { 'Start_repeat1' 'Prog' }
+[SHIFT] State 97 -> 188, symbol: ID (34, name)
+[RECOVER] State 0, symbol: end, Row: 2, Column:6
+[V-SHIFT] State 188 -> 171, symbol: : (4, virtual)
+[V-REDUCE] State 171 -> GOTO 164, symbol: Stmt, child 2 { 'ID(name)' ':(virtual)' }
+[V-REDUCE] State 164 -> GOTO 159, symbol: MoreThanOneStmt, child 1 { 'Stmt' }
+[V-REDUCE] State 159 -> GOTO 101, symbol: Prog, child 1 { 'MoreThanOneStmt' }
+[V-REDUCE] State 101 -> GOTO 97, symbol: Start_repeat1, child 2 { 'Prog' 'Prog' }
 [REDUCE] State 97 -> GOTO 241, symbol: Start, child 1 { 'Start_repeat1' }
 [ACCEPT] State 241
+[REDUCE] State 1 -> GOTO 241, symbol: Start, child 0[ACCEPT] State 241
