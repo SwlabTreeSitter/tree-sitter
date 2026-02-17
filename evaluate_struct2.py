@@ -109,6 +109,20 @@ class FileReporter:
                 return rank
         return 0
 
+    # [NEW] 상세 예측 로그 저장 함수
+    def save_prediction_log(self, filename, log_data):
+        # reports/smallbasic/debug_logs 폴더에 저장
+        debug_dir = os.path.join(REPORT_DIR, "debug_logs_v2")
+        if not os.path.exists(debug_dir):
+            os.makedirs(debug_dir)
+
+        csv_path = os.path.join(debug_dir, f"{filename}_v2.csv")
+        
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(["Location", "Ground Truth", "Predicted (Top-5)", "Rank"])
+            writer.writerows(log_data)
+
     # -------------------------------------------------------------------------
     # [Main Logic] 파일 단위 평가
     # -------------------------------------------------------------------------
@@ -133,6 +147,9 @@ class FileReporter:
         file_top5_count = 0
         file_top10_count = 0
         file_top20_count = 0
+
+        # 로그 데이터 리스트
+        prediction_logs = []
 
         # [Iterative Loop] 정답지의 모든 좌표에 대해 실행
         total_locations = len(answers)
@@ -167,6 +184,10 @@ class FileReporter:
             
             rank = self.get_rank(top_candidates, ground_truth)
 
+            # [NEW] 로그 데이터 추가
+            top5_str = str([k for k, v in top_candidates[:5]])
+            prediction_logs.append([loc_key, ground_truth, top5_str, rank])
+
             # 5. 통계 집계
             self.global_queries += 1
             file_query_count += 1
@@ -194,9 +215,9 @@ class FileReporter:
             "top20": file_top20_count
         })
 
-    # ... (save_file_performance_report, save_rank_distribution_report는 기존과 동일) ...
-    # [코드 절약을 위해 생략했습니다. 기존 evaluate_struct.py의 저장 함수들을 그대로 쓰시면 됩니다]
-    
+        # [NEW] 로그 저장
+        self.save_prediction_log(filename, prediction_logs)
+
     # ==========================================================================
     # 파일 1: 파일별 성능 요약 저장
     # ==========================================================================

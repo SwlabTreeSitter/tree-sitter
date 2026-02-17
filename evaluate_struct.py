@@ -121,6 +121,21 @@ class FileReporter:
         print(f"    [Fail] Target not found in top {len(candidates)}.")
         return 0
 
+    # [NEW] 상세 예측 로그 저장 함수
+    def save_prediction_log(self, filename, log_data):
+        # reports/smallbasic/debug_logs 폴더에 저장
+        debug_dir = os.path.join(REPORT_DIR, "debug_logs_v1")
+        if not os.path.exists(debug_dir):
+            os.makedirs(debug_dir)
+
+        csv_path = os.path.join(debug_dir, f"{filename}_v1.csv")
+        
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            # 헤더: 위치, 정답, 예측값(Top-5만), 순위
+            writer.writerow(["Location", "Ground Truth", "Predicted (Top-5)", "Rank"])
+            writer.writerows(log_data)
+    
     # [main] 단일 파일 평가
     def evaluate_file(self, sb_file):
         filename = os.path.basename(sb_file)
@@ -140,6 +155,9 @@ class FileReporter:
         file_top10_count = 0
         file_top20_count = 0
 
+        # 로그 데이터 저장을 위한 리스트
+        prediction_logs = []
+
         # 파서의 결과 { "1,1": [states], ... }를 기준으로 루프 실행
         for loc, states in preds.items():
             
@@ -158,6 +176,11 @@ class FileReporter:
 
             # 순위 확인
             rank = self.get_rank(top_candidates, ground_truth)
+
+            # [NEW] 로그 데이터 추가
+            # 예측값은 보기 좋게 Top-5만 문자열로 변환
+            top5_str = str([k for k, v in top_candidates[:5]])
+            prediction_logs.append([loc, ground_truth, top5_str, rank])
 
             # 통계 집계
             self.global_queries += 1
@@ -183,6 +206,8 @@ class FileReporter:
             "top10": file_top10_count,
             "top20": file_top20_count
         })
+        # [NEW] 파일별 분석이 끝나면 로그 저장
+        self.save_prediction_log(filename, prediction_logs)
 
 
     # ==========================================================================
