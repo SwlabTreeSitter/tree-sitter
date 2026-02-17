@@ -2812,6 +2812,16 @@ void ts_parser_run_batch_conversion(TSParser *self, FILE *file) {
   }
 }
 
+// 배치 모드 V2: 파일 전체를 스트리밍하며 Shift 직전의 컨버전 결과 출력
+void ts_parser_run_batch_conversion_stream(
+  TSParser *self, 
+  const char *source_code, 
+  uint32_t len, 
+  FILE *out_stream
+) {
+
+}
+
 // [new] 컬렉션 구현체
 // [수정] 반환 타입을 bool로 변경 (성공: true, 복구 발생/실패: false)
 bool ts_parser_run_collection(

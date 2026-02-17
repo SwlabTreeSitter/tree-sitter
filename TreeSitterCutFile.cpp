@@ -298,7 +298,7 @@ int main(int argc, char* argv[]) {
                 // ts_parser_write_conversion_result(parser, &path, stdout);
 
                 std::cout << "DEBUG: update" << std::endl;
-                // 1. 경로 계산 (순수 로직)
+                // 1. 커서 위치까지 파싱 후 스택 추출
                 TSStatePath stack = ts_parser_parse_string_return_stack (
                     parser,
                     NULL,
@@ -306,13 +306,21 @@ int main(int argc, char* argv[]) {
                     static_cast<uint32_t>(effective_length)
                 );
 
+                // 2. 컨버전 수행
                 TSStatePath path2 = ts_parser_run_conversion2(parser, &stack);
 
-                // 2. 결과 출력 (화면 + 파일)
-                // (A) 화면 출력
-                ts_parser_write_conversion_result(parser, &path2, stdout);
+                // 3. 결과 출력 (화면 + 파일)
+                // python 스크립트 용 출력
+                std::cout << "@@PREDICT:";
+                for (int i = 0; i < path2.count; i++) {
+                    std::cout << " " << path2.states[i];
+                }
+                std::cout << std::endl;
 
-                // (B) 파일 출력 (Test.data)
+                // (옵션) 화면 출력
+                // ts_parser_write_conversion_result(parser, &path2, stdout);
+
+                // (옵션) 파일 출력 (Test.data)
                 FILE *test_data_fp = fopen("Test.data", "w");
                 if (test_data_fp) {
                     ts_parser_write_conversion_result(parser, &path2, test_data_fp);
