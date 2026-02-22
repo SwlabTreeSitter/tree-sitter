@@ -36,6 +36,7 @@
 
 extern "C" {
     // 1. 컨버전 로직 실행
+    TSStatePath ts_parser_run_conversion(TSParser *self);
     TSStatePath ts_parser_parse_string_for_conversion(TSParser *self, const TSTree *old_tree, const char *string, uint32_t length);
 
     // 2. 컨버전 결과 출력 (파일 or 화면)
@@ -287,13 +288,13 @@ int main(int argc, char* argv[]) {
             else {
                 std::cout << "DEBUG: Running Conversion..." << std::endl;
                 
-                // std::cout << "DEBUG: original" << std::endl;
-                // // 1. 경로 계산 (순수 로직)
-                // TSStatePath path = ts_parser_run_conversion(parser);
+                std::cout << "DEBUG: original" << std::endl;
+                // 1. 경로 계산 (순수 로직)
+                TSStatePath path = ts_parser_run_conversion(parser);
 
-                // // 2. 결과 출력 (화면 + 파일)
-                // // (A) 화면 출력
-                // ts_parser_write_conversion_result(parser, &path, stdout);
+                // 2. 결과 출력 (화면 + 파일)
+                // (A) 화면 출력
+                ts_parser_write_conversion_result(parser, &path, stdout);
 
                 std::cout << "DEBUG: update" << std::endl;
                 TSStatePath path2 = ts_parser_parse_string_for_conversion(

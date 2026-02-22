@@ -940,39 +940,89 @@ static void simulate_reduce_pop_dfs(
 ) {
   // 1. 목표치만큼 Pop 완료 (조상 노드에 도달)
   if (count == 0) {
-    // Goto(Next State) 계산: 조상 노드의 State에서 reduce_symbol을 만났을 때 갈 곳
     TSStateId ancestor_state = node->state;
     TSStateId next_state = ts_language_next_state(language, ancestor_state, reduce_symbol);
     
-    // 유효한 Goto가 있다면, 그 State를 가진 가상의 새 노드를 만들 필요 없이
-    // '상태 값'만 업데이트된 것처럼 간주하고 현재 상태 수집 함수를 다시 호출
     if (next_state != 0 && next_state != ancestor_state) {
-        
-        // 상태를 수집하고, 그 상태에서 일어날 수 있는 연쇄 Reduce를 잡기 위해
-        // 임시 StackNode를 하나 만들어 넘김
-        StackNode temp_node = *node;
+        StackNode temp_node = {0};
         temp_node.state = next_state;
+        temp_node.link_count = 1;
+        temp_node.links[0].node = node; 
+        temp_node.links[0].subtree.ptr = NULL; // 가상 노드이므로 트리는 NULL
         
         simulate_current_states_dfs(&temp_node, language, result);
     }
     return;
   }
 
-  // 2. 현재 노드로 병합(Merge)되었던 모든 과거 경로(links)들을 순회하며, 
-  //    각 갈래길마다 독립적으로 Pop 수행
+  // 2. 현재 노드의 모든 과거 경로(links) 순회
   for (uint32_t i = 0; i < node->link_count; i++) {
     StackNode *prev_node = node->links[i].node;
     uint32_t next_count = count;
 
-    // Extra 토큰(공백/주석)은 Pop 카운트에 포함시키지 않음
-    if (node->links[i].subtree.ptr != NULL && !ts_subtree_extra(node->links[i].subtree)) {
+    // [수정된 부분] NULL 트리(가상 노드)도 정상적으로 카운트 차감
+    bool is_extra = false;
+    if (node->links[i].subtree.ptr != NULL) {
+        is_extra = ts_subtree_extra(node->links[i].subtree);
+    }
+    
+    // Extra 토큰(주석/공백)이 아닐 때만 카운트를 줄임
+    // 즉, 정상 토큰이거나 가상 노드(NULL)인 경우 정상적으로 1 Pop으로 인정됨
+    if (!is_extra) {
       next_count--;
     }
 
-    // 재귀 호출
     simulate_reduce_pop_dfs(prev_node, next_count, reduce_symbol, language, result);
   }
 }
+// static void simulate_reduce_pop_dfs(
+//   StackNode *node, 
+//   uint32_t count, 
+//   TSSymbol reduce_symbol, 
+//   const TSLanguage *language, 
+//   TSStatePath *result
+// ) {
+//   // 1. 목표치만큼 Pop 완료 (조상 노드에 도달)
+//   if (count == 0) {
+//     // Goto(Next State) 계산: 조상 노드의 State에서 reduce_symbol을 만났을 때 갈 곳
+//     TSStateId ancestor_state = node->state;
+//     TSStateId next_state = ts_language_next_state(language, ancestor_state, reduce_symbol);
+    
+//     // 유효한 Goto가 있다면
+//     if (next_state != 0 && next_state != ancestor_state) {
+
+//       // [수정된 부분] 조상 노드를 복사하지 않고, 완전히 새로운 가상 노드를 생성
+//       StackNode temp_node = {0}; 
+//       temp_node.state = next_state;
+          
+//       // 새 노드의 과거(link)를 방금 도달한 조상 노드(node)로 연결
+//       // 이것이 스택에 새로운 상태를 Push하는 동작
+//       temp_node.link_count = 1;
+//       temp_node.links[0].node = node; 
+          
+//       // 서브트리는 가상 시뮬레이션이므로 비워둠
+//       temp_node.links[0].subtree.ptr = NULL; 
+      
+//       simulate_current_states_dfs(&temp_node, language, result);
+//     }
+//     return;
+//   }
+
+//   // 2. 현재 노드로 병합(Merge)되었던 모든 과거 경로(links)들을 순회하며, 
+//   //    각 갈래길마다 독립적으로 Pop 수행
+//   for (uint32_t i = 0; i < node->link_count; i++) {
+//     StackNode *prev_node = node->links[i].node;
+//     uint32_t next_count = count;
+
+//     // Extra 토큰(공백/주석)은 Pop 카운트에 포함시키지 않음
+//     if (node->links[i].subtree.ptr != NULL && !ts_subtree_extra(node->links[i].subtree)) {
+//       next_count--;
+//     }
+
+//     // 재귀 호출
+//     simulate_reduce_pop_dfs(prev_node, next_count, reduce_symbol, language, result);
+//   }
+// }
 
 // [new] (Helper 1) 현재 노드의 상태(State)에서 파싱 테이블을 뒤져 Reduce를 찾고 시뮬레이션
 static void simulate_current_states_dfs(StackNode *node, const TSLanguage *language, TSStatePath *result) {

@@ -961,26 +961,17 @@ static StackVersion ts_parser__reduce(
   uint32_t count,         // 스택에서 pop할 자식 개수
   int dynamic_precedence,
   uint16_t production_id,
-  bool is_fragile,       // 이 reduce가 모호한 GLR 경로에서 발생했는가
+  bool is_fragile,
   bool end_of_non_terminal_extra
 ) {
 
-  // 0. 기준점 기록
-  // reduce 시작 시점의 version 수를 기록
+  // 기준점(reduce 시작 시점의 version 수) 기록
   uint32_t initial_version_count = ts_stack_version_count(self->stack);
 
-  // 1. 스택에서 count개 노드 pop
+  // 스택에서 count개 노드 pop
   // 스택이 이전에 GLR 분기로 인해 여러 버전이 합쳐진 경우, 경로가 여러개일 수 있음
   // 각 경로마다 하나의 StackSlice를 만들어 배열로 반환
-
-  // StackSlice:
-  //   .version  : 해당 경로가 pop 후 도달한 스택 버전 번호
-  //   .subtrees : 경로를 따라 수집된 자식 서브트리 배열
-
-  // 예시:
-  //   GLR에서 if_stmt -> IF cond THEN body 를 reduce할 때
-  //   이전에 cond에서 두 가지 파싱 경로(v0, v1)가 합쳐진 상태라면
-  //   pop 결과는 slice[0], slice[1] 두 개가 나올 수 있다.
+  // 이 배열의 크기만큼 새로운 스택 버전 파생 (Re-split)
 
   // Pop the given number of nodes from the given version of the parse stack.
   // If stack versions have previously merged, then there may be more than one
@@ -1031,7 +1022,8 @@ static StackVersion ts_parser__reduce(
       symbol, &children, production_id, self->language
     );
 
-    // 단 하나의 최적해 선정
+    // 여러 갈래로 pop 했는데, 동일한 출발점으로 수렴하는 경로가 있는 경우
+    // ts_parser__select_children 함수로 가장 적합한 하나만 선택
     // This pop operation may have caused multiple stack versions to collapse
     // into one, because they all diverged from a common state. In that case,
     // choose one of the arrays of trees to be the parent node's children, and
@@ -1085,6 +1077,7 @@ static StackVersion ts_parser__reduce(
       ts_stack_push(self->stack, slice_version, *array_get(&self->trailing_extras, j), false, next_state);
     }
 
+    // 같은 상태에 도달한 버전들 병합
     for (StackVersion j = 0; j < slice_version; j++) {
       if (j == version) continue;
       if (ts_stack_merge(self->stack, j, slice_version)) {
@@ -1834,7 +1827,11 @@ static bool ts_parser__advance(
           bool end_of_non_terminal_extra = lookahead.ptr == NULL;   // Null이면 EOF
           // LOG("reduce sym:%s, child_count:%u", SYM_NAME(action.reduce.symbol), action.reduce.child_count);
 
-          // 실제 reduce 실행
+          // ts_parser__reduce
+          // 트리시터는 원본 프로세스(version)는 그대로 둔 채, 
+          // 원본을 복제하여 Reduce 연산을 적용한 새로운 버전들을 heads 배열 끝에 추가(Push)
+
+          // reduction_version : 이번 reduce 연산을 통해
           // heads 배열에서 새로 생긴 버전들의 시작 인덱스
           StackVersion reduction_version = ts_parser__reduce(
             self, version, action.reduce.symbol, action.reduce.child_count,
@@ -2011,7 +2008,7 @@ static bool ts_parser__advance(
   }
 }
 
-// [info] ts_parser_parse의 암시적 에러 처리
+// [info] 상태 병합(Merge)과 에러 복구에 따른 가지치기(Prune)를 동시에 수행
 static unsigned ts_parser__condense_stack(TSParser *self) {
   bool made_changes = false;
   unsigned min_error_cost = UINT_MAX;
@@ -2044,6 +2041,8 @@ static unsigned ts_parser__condense_stack(TSParser *self) {
           j = i;
           break;
 
+        // 비용이 비슷하거나(None) 
+        // 한쪽을 약간 선호(PreferLeft/PreferRight)할 때 병합
         case ErrorComparisonPreferLeft:
         case ErrorComparisonNone:
           if (ts_stack_merge(self->stack, j, i)) {
@@ -3364,24 +3363,21 @@ TSTree *ts_parser_parse(
   } else {
 
     // 새 파싱 초기화
-    // - 외부 스캐너 초기화
+
     ts_parser__external_scanner_create(self);
     if (self->has_scanner_error) goto exit;
 
-    // - old tree 있음 -> 증분 파싱 준비
-    //    이전 트리의 노드 최대한 재사용할 수 있도록 세팅
+    // old tree 있음 -> 증분 파싱 준비
+    // 이전 트리의 노드 최대한 재사용할 수 있도록 세팅
     if (old_tree) {
-      // 공동 소유권 획득 및 파서에 저장
-      ts_subtree_retain(old_tree->root);
+      ts_subtree_retain(old_tree->root);    // 공동 소유권 획득 및 파서에 저장
       self->old_tree = old_tree->root;
-      // 재사용 불가 구간 목록 계산
-      ts_range_array_get_changed_ranges(
+      ts_range_array_get_changed_ranges(    // 재사용 불가 구간 목록 계산
         old_tree->included_ranges, old_tree->included_range_count,
         self->lexer.included_ranges, self->lexer.included_range_count,
         &self->included_range_differences
       );
-      // 재사용 커서를 old_tree의 첫 자식에 위치시킴
-      reusable_node_reset(&self->reusable_node, old_tree->root);
+      reusable_node_reset(&self->reusable_node, old_tree->root);    // 재사용 커서를 old_tree의 첫 자식에 위치시킴
       LOG("parse_after_edit");
       LOG_TREE(self->old_tree);
       for (unsigned i = 0; i < self->included_range_differences.size; i++) {
@@ -3389,7 +3385,7 @@ TSTree *ts_parser_parse(
         LOG("different_included_range %u - %u", range->start_byte, range->end_byte);
       }
     } else {
-      // - old tree 없음 -> 완전 새 파싱
+      // old tree 없음 -> 완전 새 파싱
       reusable_node_clear(&self->reusable_node);
       LOG("new_parse");
     }
@@ -3457,6 +3453,7 @@ TSTree *ts_parser_parse(
     }
 
     // 모든 version이 한 번씩 Shift한 후 (for문 종료)
+    // 같은 상태에 도달한 프로세스들을 하나로 병합
     // After advancing each version of the stack, re-sort the versions by their cost,
     // removing any versions that are no longer worth pursuing.
     unsigned min_error_cost = ts_parser__condense_stack(self);
