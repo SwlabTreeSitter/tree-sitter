@@ -127,7 +127,9 @@ void ts_stack_clear(Stack *self);
 bool ts_stack_print_dot_graph(Stack *self, const TSLanguage *language, FILE *f);
 
 // custom
-uint32_t ts_stack_get_history(const Stack *self, StackVersion version, TSStateId *states, uint32_t max_count);
+// 특정 스택 버전의 그래프 구조를 역추적하여, 
+// Reduce 시뮬레이션을 통해 도출된 모든 가능성 있는 후보 상태들을 배열로 반환
+TSStatePath ts_stack_simulate_conversion(Stack *self, StackVersion version, const TSLanguage *language);
 
 #ifdef __cplusplus
 }

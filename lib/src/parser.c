@@ -956,17 +956,32 @@ static void ts_parser__shift(
 
 static StackVersion ts_parser__reduce(
   TSParser *self,
-  StackVersion version,
-  TSSymbol symbol,
-  uint32_t count,
+  StackVersion version,   // 현재 reduce를 수행할 스택 버전
+  TSSymbol symbol,        // 새로 생성할 비단말 심볼
+  uint32_t count,         // 스택에서 pop할 자식 개수
   int dynamic_precedence,
   uint16_t production_id,
-  bool is_fragile,
+  bool is_fragile,       // 이 reduce가 모호한 GLR 경로에서 발생했는가
   bool end_of_non_terminal_extra
 ) {
+
+  // 0. 기준점 기록
+  // reduce 시작 시점의 version 수를 기록
   uint32_t initial_version_count = ts_stack_version_count(self->stack);
 
-  // 과거의 경로를 탐색하여 노드들을 회수(Pop)
+  // 1. 스택에서 count개 노드 pop
+  // 스택이 이전에 GLR 분기로 인해 여러 버전이 합쳐진 경우, 경로가 여러개일 수 있음
+  // 각 경로마다 하나의 StackSlice를 만들어 배열로 반환
+
+  // StackSlice:
+  //   .version  : 해당 경로가 pop 후 도달한 스택 버전 번호
+  //   .subtrees : 경로를 따라 수집된 자식 서브트리 배열
+
+  // 예시:
+  //   GLR에서 if_stmt -> IF cond THEN body 를 reduce할 때
+  //   이전에 cond에서 두 가지 파싱 경로(v0, v1)가 합쳐진 상태라면
+  //   pop 결과는 slice[0], slice[1] 두 개가 나올 수 있다.
+
   // Pop the given number of nodes from the given version of the parse stack.
   // If stack versions have previously merged, then there may be more than one
   // path back through the stack. For each path, create a new parent node to
@@ -977,6 +992,8 @@ static StackVersion ts_parser__reduce(
   // 제거된 스택 버전의 개수: 인덱스 보정용
   uint32_t removed_version_count = 0;
   uint32_t halted_version_count = ts_stack_halted_version_count(self->stack);
+  
+  
   for (uint32_t i = 0; i < pop.size; i++) {
     StackSlice slice = *array_get(&pop, i);
     
@@ -1660,8 +1677,11 @@ static bool ts_parser__advance(
   StackVersion version,
   bool allow_node_reuse
 ) {
-  // 1. 초기화 및 컨텍스트 파악
-  // 현재 문맥: 스택 top에서 현재 버전의 state(ID), position(바이트 위치) 확인
+  // 1. 스택에서 현재 문맥 읽기
+  // 현재 문맥: 
+  //    스택 top에서 현재 버전의 state (ID), 
+  //    position (바이트 위치), 
+  //    외부 스캐너가 마지막으로 반환한 토큰 (external scanner 상태 복원용)
   TSStateId state = ts_stack_state(self->stack, version);
   uint32_t position = ts_stack_position(self->stack, version).bytes;
   Subtree last_external_token = ts_stack_last_external_token(self->stack, version);
@@ -1671,16 +1691,21 @@ static bool ts_parser__advance(
   Subtree lookahead = NULL_SUBTREE;
   TableEntry table_entry = {.action_count = 0};
 
-  // 2. 토큰 확보 (재사용 시도)
-  // Lexer를 돌려 새로 읽기 전에, 기존에 읽어둔 토큰 있는지 확인
-  // 증분 파싱 중이면 변하지 않은 부분의 노드(Internal Node)를 lookahead로 취급해서 스택에 넣음
+  // 2. 토큰 확보 (재사용 노드 시도)
+  // 렉서 실행을 건너뛰고 old_tree에서 토큰을 꺼내 씀
   // If possible, reuse a node from the previous syntax tree.
   if (allow_node_reuse) {
+      // allow_node_reuse = true  조건:
+      //  1) old_tree가 존재 (증분 파싱)
+      //  2) version_count == 1 (GLR 분기 없음, 단일 경로)
     lookahead = ts_parser__reuse_node(
       self, version, &state, position, last_external_token, &table_entry
     );
   }
 
+  // 2. 토큰 확보 (캐시된 토큰 시도)
+  // GLR에서 동일 position을 여러 version이 처리할 때 캐시 적중
+  // 렉서 실행을 건너뛰고 재사용
   // If no node from the previous syntax tree could be reused, then try to
   // reuse the token previously returned by the lexer.
   if (!lookahead.ptr) {
@@ -1716,6 +1741,7 @@ static bool ts_parser__advance(
       }
     }
 
+    // 인터럽트 체크
     // If a cancellation flag, timeout, or progress callback was provided, then check every
     // time a fixed number of parse actions has been processed.
     if (!ts_parser__check_progress(self, &lookahead, &position, 1)) {
@@ -1792,7 +1818,12 @@ static bool ts_parser__advance(
           array_push(&self->logged_actions, la_shift);
           // -----------------------------------------------------------------
 
+          // 스택에 lookahead push
+          // 현재 version의 state -> next_state로 전환
           ts_parser__shift(self, version, next_state, lookahead, action.shift.extra);
+          
+          // 재사용 노드를 소비했으면
+          // 재사용 노드 커서를 다음 노드로 이동
           if (did_reuse) reusable_node_advance(&self->reusable_node);
           return true;
         }
@@ -1801,8 +1832,6 @@ static bool ts_parser__advance(
           // 상황 판단
           bool is_fragile = table_entry.action_count > 1;           // 모호함
           bool end_of_non_terminal_extra = lookahead.ptr == NULL;   // Null이면 EOF
-                // 문법이 완성되어 마무리 짓는 과정이거나
-                // Extra 규칙(주석 등)을 파싱하다가 입력이 끊겨서 복귀하는 과정
           // LOG("reduce sym:%s, child_count:%u", SYM_NAME(action.reduce.symbol), action.reduce.child_count);
 
           // 실제 reduce 실행
@@ -2144,10 +2173,10 @@ static bool ts_parser__balance_subtree(TSParser *self) {
 
 static bool ts_parser_has_outstanding_parse(TSParser *self) {
   return (
-    self->canceled_balancing ||
-    self->external_scanner_payload ||
-    ts_stack_state(self->stack, 0) != 1 ||
-    ts_stack_node_count_since_error(self->stack, 0) != 0
+    self->canceled_balancing ||             // balance 중 취소됨
+    self->external_scanner_payload ||       // 외부 스캐너가 활성화되어 있음
+    ts_stack_state(self->stack, 0) != 1 ||  // 스택이 초기 상태가 아님
+    ts_stack_node_count_since_error(self->stack, 0) != 0    // 에러 복구 중
   );
 }
 
@@ -3105,76 +3134,89 @@ bool ts_parser_run_collection2 (
   return true;
 }
 
-// [new] 여러 스택 버전 중 에러가 가장 적은(최적의) 버전 인덱스를 찾음
-static StackVersion ts_find_best_stack_version(Stack *stack) {
-  StackVersion best_version = 0;
-  unsigned min_cost = -1; // MAX_UINT
-
-  unsigned version_count = ts_stack_version_count(stack);
-  for (StackVersion v = 0; v < version_count; v++) {
-    if (!ts_stack_is_active(stack, v)) continue;
-    
-    // 에러 비용이 가장 낮은 버전을 선택
-    unsigned cost = ts_stack_error_cost(stack, v);
-    if (cost < min_cost) {
-      min_cost = cost;
-      best_version = v;
-    }
+// [new] (Helper)
+static void add_state_to_union(TSStatePath *union_path, TSStateId state) {
+  for (uint32_t i = 0; i < union_path->count; i++) {
+    if (union_path->states[i] == state) return; // 이미 존재하면 무시
   }
-  return best_version;
-}
-
-// [new] 선택된 버전의 스택 추출
-static TSStatePath ts_extract_stack(Stack *stack, StackVersion version) {
-  TSStatePath result = {0}; // 1. 초기화 (result.count = 0, result.states = 비어있음)
-  
-  // 2. 함수 호출
-  // 여기서 'result.states'는 배열의 시작 주소(포인터)
-  // ts_stack_get_history 함수는 이 주소를 타고 들어가서 값을 채워 넣음
-  uint32_t count = ts_stack_get_history(stack, version, result.states, 256);
-  
-  // 3. 반환받은 개수를 구조체에 반영
-  result.count = count; 
-  return result;
+  if (union_path->count < 256) { // TSStatePath 최대 크기에 맞춰 안전하게 추가
+    union_path->states[union_path->count++] = state;
+  }
 }
 
 // [new]
-TSStatePath ts_parser_parse_return_stack (
+TSStatePath ts_parser_parse_for_conversion(
   TSParser *self,
   const TSTree *old_tree,
   TSInput input,
-  uint32_t input_length
+  uint32_t length
 ) {
-  TSStatePath result_stack = {0};
+  // ----------------------------------------------
+  // 1단계 : 전처리/초기화
+  // ----------------------------------------------
+  TSStatePath empty_result = {0};
+  TSStatePath final_union = {0};
 
-  // 1단계 : 파싱 준비
   TSTree *result = NULL;
-  if (!self->language || !input.read) return result_stack;
+  if (!self->language || !input.read) return empty_result;
 
-  if (self->logged_actions.contents) {
-      array_clear(&self->logged_actions);
+  if (ts_language_is_wasm(self->language)) {
+    if (!self->wasm_store) return empty_result;
+    ts_wasm_store_start(self->wasm_store, &self->lexer.data, self->language);
   }
-
+  
   ts_lexer_set_input(&self->lexer, input);
   array_clear(&self->included_range_differences);
   self->included_range_difference_index = 0;
+
   self->operation_count = 0;
   if (self->timeout_duration) {
     self->end_clock = clock_after(clock_now(), self->timeout_duration);
   } else {
     self->end_clock = clock_null();
   }
+
   ts_parser__external_scanner_create(self);
-  reusable_node_clear(&self->reusable_node);
+  if (self->has_scanner_error) goto exit;
 
-  TSStatePath prev_good_stack;     // 이전의 좋은 스택
-  unsigned prev_good_cost = 0;     // 그 스택의 에러 비용
-  bool has_good_stack = false;     // 백업 존재 여부
+  // ----------------------------------------------
+  // 2단계 : 파싱 재개 vs 새 파싱 시작 분기
+  // ----------------------------------------------
+  if (old_tree) {   // 이전버전의 트리가 있을 때 (증분 파싱)
+    ts_subtree_retain(old_tree->root);
+    self->old_tree = old_tree->root;
+    ts_range_array_get_changed_ranges(
+      old_tree->included_ranges, old_tree->included_range_count,
+      self->lexer.included_ranges, self->lexer.included_range_count,
+      &self->included_range_differences
+    );
+    reusable_node_reset(&self->reusable_node, old_tree->root);
+    LOG("parse_after_edit");
+    LOG_TREE(self->old_tree);
+    for (unsigned i = 0; i < self->included_range_differences.size; i++) {
+      TSRange *range = array_get(&self->included_range_differences, i);
+      LOG("different_included_range %u - %u", range->start_byte, range->end_byte);
+    }
+  } else {    // 신규 파싱
+    reusable_node_clear(&self->reusable_node);
+    LOG("new_parse");
+  }
 
-  // 2단계 : 파싱 루프
+  // 파싱 루프
   uint32_t position = 0, last_position = 0, version_count = 0;
-  do {  // 파싱할 수 있는 경로가 남아있는 한 계속 진행
-    for (   // 현재 살아있는 모든 스택 버전을 하나씩 돌아가며 실행
+  bool all_reached_cursor = false;   // 모든 스택이 커서에 도달했는지 확인하는 플래그
+
+  // do {...} while (version_count != 0) 
+  // 파싱할 수 있는 경로가 남아있는 한 계속 진행
+  do {
+
+    // 매 루프 시작 시 모든 스택이 도달했다고 가정
+    version_count = ts_stack_version_count(self->stack);
+    all_reached_cursor = true;
+
+    // for (version = 0; version < version_count; version++)
+    // 현재 살아있는 모든 스택 버전을 한 번씩 순회
+    for (
       StackVersion version = 0;
       version_count = ts_stack_version_count(self->stack),  // 매 루프마다 버전 수 다시 확인
       version < version_count;
@@ -3191,58 +3233,28 @@ TSStatePath ts_parser_parse_return_stack (
           ts_stack_position(self->stack, version).extent.column
         );
 
+        // 현재 버전의 읽은 바이트 수 확인
         uint32_t current_byte = ts_stack_position(self->stack, version).bytes;
-        TSStateId current_state = ts_stack_state(self->stack, version);
-        unsigned current_cost = ts_stack_error_cost(self->stack, version);
-        
-        if (current_byte >= input_length) {
-            printf("[Detect] Reached EOF. Extracting FULL stack history...\n");
 
-            bool is_bad_state = (current_state == 0) || (has_good_stack && current_cost > prev_good_cost);
-
-            if (has_good_stack && is_bad_state) {
-                // -> 방금 읽은 토큰이 파싱을 망쳤으므로 직전의 좋은 스택 사용
-                result_stack = prev_good_stack;
-            } else {
-                // -> 현재 상태가 양호하면 현재 스택 사용
-                // 1. 최적의 스택 버전 선택
-                StackVersion best_ver = ts_find_best_stack_version(self->stack);
-                // 2. 스택 상태 추출
-                result_stack = ts_extract_stack(self->stack, best_ver);
-            }
-            // 3. 즉시 종료
-            goto exit_parsing;
+        // 커서 위치(input_length)에 도달했는가?
+        if (current_byte >= length) {
+            // 더 이상 advance 하지 않고 이 상태 그대로 유지 (Freeze)
+            // 현재 while 루프만 탈출해서 다음 스택 버전을 평가하러 감.
+            break; 
         }
 
-        // 백업
-        if (current_state != 0) {
-            prev_good_stack = ts_extract_stack(self->stack, version);
-            prev_good_cost = current_cost;
-            has_good_stack = true;
-        }
+        // 커서에 아직 도달하지 못한 스택
+        all_reached_cursor = false;
 
-        Lexer lexer_backup = self->lexer;
-        Subtree lookahead = ts_parser__lex(self, version, current_state);
-        self->lexer = lexer_backup;
-        bool is_stop = (ts_subtree_symbol(lookahead) == ts_builtin_sym_error
-                              || ts_subtree_symbol(lookahead) == ts_builtin_sym_end);
-
-        if (is_stop) {
-          printf("Dangerous token detected (Sym: %d). Stopping.", ts_subtree_symbol(lookahead));
-          StackVersion best_ver = ts_find_best_stack_version(self->stack);
-          result_stack = ts_extract_stack(self->stack, version);
-          goto exit_parsing;
-        }
-
-        // 하나의 액션 수행 (Shift / Reduce / Accept / Error)
-        // 이 함수 내부에서 커스텀 로직(logged_actions 기록)이 수행된다.
+        // 정상적으로 토큰 소모
         if (!ts_parser__advance(self, version, allow_node_reuse)) {
-          printf("!ts_parser__advance");
-          if (has_good_stack) result_stack = prev_good_stack;
-          goto exit_parsing;
+          if (self->has_scanner_error) goto exit;
+          break;
         }
+
         LOG_STACK();
 
+        // GLR 동기화
         position = ts_stack_position(self->stack, version).bytes;
         if (position > last_position || (version > 0 && position == last_position)) {
           last_position = position;
@@ -3251,9 +3263,20 @@ TSStatePath ts_parser_parse_return_stack (
       }
     }
 
-    // 모든 버전의 advance가 끝난 후, 가상 shift 하거나 나쁜 버전을 삭제
-    // 여러 가능성 중 최적의 경로(에러가 가장 적은) 선택
+    // 상태가 같은 버전을 병합
+    // After advancing each version of the stack, re-sort the versions by their cost,
+    // removing any versions that are no longer worth pursuing.
     unsigned min_error_cost = ts_parser__condense_stack(self);
+
+    // 모든 활성 스택이 커서에 도달했다면 파싱 루프 종료
+    if (all_reached_cursor) {
+      break;
+    }
+
+    // If there's already a finished parse tree that's better than any in-progress version,
+    // then terminate parsing. Clear the parse stack to remove any extra references to subtrees
+    // within the finished tree, ensuring that these subtrees can be safely mutated in-place
+    // for rebalancing.
     if (self->finished_tree.ptr && ts_subtree_error_cost(self->finished_tree) < min_error_cost) {
       ts_stack_clear(self->stack);
       break;
@@ -3269,82 +3292,95 @@ TSStatePath ts_parser_parse_return_stack (
     }
   } while (version_count != 0);
 
-exit_parsing:
-  if (self->finished_tree.ptr) {
-    ts_subtree_release(&self->tree_pool, self->finished_tree);
-    self->finished_tree = NULL_SUBTREE;
+  // ----------------------------------------------
+  // 3단계 : 컨버전
+  // ----------------------------------------------
+  uint32_t final_version_count = ts_stack_version_count(self->stack);
+  if (final_version_count == 0) {
+    return final_union; 
   }
+  for (StackVersion v = 0; v < final_version_count; v++) {
+    if (!ts_stack_is_active(self->stack, v)) continue;
+
+    // stack.c에 구현된 브릿지 함수 호출
+    TSStatePath conversion_result = ts_stack_simulate_conversion(self->stack, v, self->language);
+  
+    // 결과 병합 (합집합)
+    for (uint32_t j = 0; j < conversion_result.count; j++) {
+      add_state_to_union(&final_union, conversion_result.states[j]);
+    }
+  }
+  LOG("done");
+  // LOG_TREE(self->finished_tree);
+
+exit:
   ts_parser_reset(self);
-  return result_stack;
+  return final_union;
 }
 
-// [new] 컨버전 버전 2
-TSStatePath ts_parser_run_conversion2(TSParser *self, TSStatePath *stack) {
-
-  TSStatePath result = {0};
-
-  if (stack == NULL || stack->count == 0) {
-      TSStatePath start_stack = {0};
-      start_stack.states[0] = 1; // Start State
-      start_stack.count = 1;
-      
-      // Start State를 기준으로 후보 탐색
-      ts_conversion__recursive_current_states(self, &start_stack, &result);
-      return result;
-  }
-
-  // 3. current states 탐색 시작
-  // printf("[DEBUG] Step 3: recursive_current_states calling...\n");
-  ts_conversion__recursive_current_states(self, stack, &result);
-  // printf("[DEBUG] === ts_parser_run_conversion END ===\n");
-
-  return result;
-}
-
+// [custom]
 TSTree *ts_parser_parse(
   TSParser *self,
   const TSTree *old_tree,
   TSInput input
 ) {
-  // 1단계 : 파싱 준비
+  // ----------------------------------------------
+  // 1단계 : 전처리/초기화
+  // ----------------------------------------------
   TSTree *result = NULL;
-  if (!self->language || !input.read) return NULL;
+  if (!self->language || !input.read) return NULL;    // 언어/입력 유효성 검사
 
   if (self->logged_actions.contents) {
       array_clear(&self->logged_actions);
   }
 
-  if (ts_language_is_wasm(self->language)) {
+  if (ts_language_is_wasm(self->language)) {    // 언어가 WASM 기반이면 별도 스토어 초기화
     if (!self->wasm_store) return NULL;
     ts_wasm_store_start(self->wasm_store, &self->lexer.data, self->language);
   }
   
-  ts_lexer_set_input(&self->lexer, input);
-  array_clear(&self->included_range_differences);
+  ts_lexer_set_input(&self->lexer, input);    // 입력 스트림을 Lexer에 연결
+  array_clear(&self->included_range_differences);   // 증분 파싱을 위한 변경 범위 배열 초기화
   self->included_range_difference_index = 0;
 
-  self->operation_count = 0;
+  self->operation_count = 0;    // timeout_duration이 있으면 종료 시각 계산
   if (self->timeout_duration) {
     self->end_clock = clock_after(clock_now(), self->timeout_duration);
   } else {
     self->end_clock = clock_null();
   }
 
-  if (ts_parser_has_outstanding_parse(self)) {  // 파싱이 일시 정지된 경우 재개
+  // ----------------------------------------------
+  // 2단계 : 파싱 재개 vs 새 파싱 시작 분기
+  // ----------------------------------------------
+  if (ts_parser_has_outstanding_parse(self)) {  // 이전 파싱이 타임아웃/취소로 중단된 경우
+    
+    // 재개 위치만 분기
+    // - balance: 레이블로 점프 (파싱 완료, 균형만 재개)
+    // - 파싱 루프부터 (파싱 자체를 재개)
     LOG("resume_parsing");
-    if (self->canceled_balancing) goto balance; // goto label
+    if (self->canceled_balancing) goto balance;
+
   } else {
+
+    // 새 파싱 초기화
+    // - 외부 스캐너 초기화
     ts_parser__external_scanner_create(self);
     if (self->has_scanner_error) goto exit;
 
-    if (old_tree) {   // 이전버전의 트리가 있을 때 (증분 파싱)
+    // - old tree 있음 -> 증분 파싱 준비
+    //    이전 트리의 노드 최대한 재사용할 수 있도록 세팅
+    if (old_tree) {
+      // 공동 소유권 획득 및 파서에 저장
       ts_subtree_retain(old_tree->root);
       self->old_tree = old_tree->root;
+      // 재사용 불가 구간 목록 계산
       ts_range_array_get_changed_ranges(
         old_tree->included_ranges, old_tree->included_range_count,
         self->lexer.included_ranges, self->lexer.included_range_count,
         &self->included_range_differences
       );
+      // 재사용 커서를 old_tree의 첫 자식에 위치시킴
       reusable_node_reset(&self->reusable_node, old_tree->root);
       LOG("parse_after_edit");
       LOG_TREE(self->old_tree);
@@ -3352,24 +3388,37 @@ TSTree *ts_parser_parse(
         TSRange *range = array_get(&self->included_range_differences, i);
         LOG("different_included_range %u - %u", range->start_byte, range->end_byte);
       }
-    } else {    // 신규 파싱
+    } else {
+      // - old tree 없음 -> 완전 새 파싱
       reusable_node_clear(&self->reusable_node);
       LOG("new_parse");
     }
   }
 
-  // 2단계 : 파싱 루프
+  // ----------------------------------------------
+  // 3단계 : 메인 파싱 루프 (GLR 알고리즘)
+  // ----------------------------------------------
   uint32_t position = 0, last_position = 0, version_count = 0;
-  do {  // 파싱할 수 있는 경로가 남아있는 한 계속 진행
-    for (   // 현재 살아있는 모든 스택 버전을 하나씩 돌아가며 실행
+
+  // do {...} while (version_count != 0) 
+  // 파싱할 수 있는 경로가 남아있는 한 계속 진행
+  do {
+
+    // for (version = 0; version < version_count; version++)
+    // 현재 살아있는 모든 스택 버전을 한 번씩 순회
+    for (
       StackVersion version = 0;
       version_count = ts_stack_version_count(self->stack),  // 매 루프마다 버전 수 다시 확인
       version < version_count;
       version++
     ) {
       bool allow_node_reuse = version_count == 1;
-      while (ts_stack_is_active(self->stack, version)) {  // 한 버전이 토큰을 하나 먹을 때까지 굴림
-        LOG(                                              // (토큰 하나 읽기 위해 여러번 reduce가 필요할 수도 있기에)
+
+      // while (ts_stack_is_active)
+      // 한 스택 버전이 토큰을 하나 먹을 때까지 굴림
+      // (토큰 하나 읽기 위해 여러번 reduce가 필요할 수도 있기에)
+      while (ts_stack_is_active(self->stack, version)) {
+        LOG(
           "process version:%u, version_count:%u, state:%d, row:%u, col:%u",
           version,
           ts_stack_version_count(self->stack),
@@ -3378,29 +3427,41 @@ TSTree *ts_parser_parse(
           ts_stack_position(self->stack, version).extent.column
         );
 
-        // 하나의 액션 수행 (Shift / Reduce / Accept / Error)
-        // 이 함수 내부에서 커스텀 로직(logged_actions 기록)이 수행된다.
+        // ts_parser__advance: 하나의 액션 수행 (Shift/Reduce/Accept/Recover)
+        // SHIFT 액션 → advance()가 return true 
+        //           → 진행 위치 업데이트 
+        //           → while break
+        //           → 다음 version으로 넘어감
+        //           → 모든 version이 한 번씩 Shift할 때까지 for 루프 반복
+
         if (!ts_parser__advance(self, version, allow_node_reuse)) {
+          // false 반환 케이스 1: 외부 스캐너 에러
+          // ts_parser__lex() → has_scanner_error = true → return false
           if (self->has_scanner_error) goto exit;
+
+          // false 반환 케이스 2: 취소/타임아웃
+          // ts_parser__check_progress() → 취소 신호 감지 → return false
+          // 파서 상태는 보존됨 → 다음 호출 시 재개 가능
           return NULL;
         }
 
         LOG_STACK();
 
-        position = ts_stack_position(self->stack, version).bytes;
+        // 진행 위치 업데이트
+        position = ts_stack_position(self->stack, version).bytes; 
         if (position > last_position || (version > 0 && position == last_position)) {
           last_position = position;
-          break;
+          break;  // 이 버전은 충분히 전진했으므로 다음 버전으로
         }
       }
     }
 
-    // 모든 버전의 advance가 끝난 후, 가상 shift 하거나 나쁜 버전을 삭제
-    // 여러 가능성 중 최적의 경로(에러가 가장 적은) 선택
+    // 모든 version이 한 번씩 Shift한 후 (for문 종료)
     // After advancing each version of the stack, re-sort the versions by their cost,
     // removing any versions that are no longer worth pursuing.
     unsigned min_error_cost = ts_parser__condense_stack(self);
 
+    // finished_tree 조기 종료 판단
     // If there's already a finished parse tree that's better than any in-progress version,
     // then terminate parsing. Clear the parse stack to remove any extra references to subtrees
     // within the finished tree, ensuring that these subtrees can be safely mutated in-place
@@ -3485,7 +3546,7 @@ TSTree *ts_parser_parse_string_encoding(
 }
 
 // [New Wrapper] 문자열을 받아 스택을 반환하는 편의 함수
-TSStatePath ts_parser_parse_string_return_stack(
+TSStatePath ts_parser_parse_string_for_conversion(
   TSParser *self,
   const TSTree *old_tree,
   const char *string,
@@ -3501,7 +3562,7 @@ TSStatePath ts_parser_parse_string_return_stack(
   };
 
   // 2. 커스텀 파싱 함수 호출
-  return ts_parser_parse_return_stack(self, old_tree, input, length);
+  return ts_parser_parse_for_conversion(self, old_tree, input, length);
 }
 
 void ts_parser_set_wasm_store(TSParser *self, TSWasmStore *store) {
