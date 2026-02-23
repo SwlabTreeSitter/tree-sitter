@@ -2008,6 +2008,269 @@ static bool ts_parser__advance(
   }
 }
 
+// [custom]
+static bool ts_parser__advance_for_conversion(
+  TSParser *self,
+  StackVersion version,
+  bool allow_node_reuse,
+  uint32_t target_length
+) {
+  // 1. 스택에서 현재 문맥 읽기
+  // 현재 문맥: 
+  //    스택 top에서 현재 버전의 state (ID), 
+  //    position (바이트 위치), 
+  //    외부 스캐너가 마지막으로 반환한 토큰 (external scanner 상태 복원용)
+  TSStateId state = ts_stack_state(self->stack, version);
+  uint32_t position = ts_stack_position(self->stack, version).bytes;
+  Subtree last_external_token = ts_stack_last_external_token(self->stack, version);
+
+  // 재사용 여부, lookahead 토큰, table_entry(파싱 테이블에서 꺼낸 액션 목록) 초기화
+  bool did_reuse = true;
+  Subtree lookahead = NULL_SUBTREE;
+  TableEntry table_entry = {.action_count = 0};
+
+  // 2. 토큰 확보 (재사용 노드 시도)
+  // 렉서 실행을 건너뛰고 old_tree에서 토큰을 꺼내 씀
+  // If possible, reuse a node from the previous syntax tree.
+  if (allow_node_reuse) {
+      // allow_node_reuse = true  조건:
+      //  1) old_tree가 존재 (증분 파싱)
+      //  2) version_count == 1 (GLR 분기 없음, 단일 경로)
+    lookahead = ts_parser__reuse_node(
+      self, version, &state, position, last_external_token, &table_entry
+    );
+  }
+
+  // 2. 토큰 확보 (캐시된 토큰 시도)
+  // GLR에서 동일 position을 여러 version이 처리할 때 캐시 적중
+  // 렉서 실행을 건너뛰고 재사용
+  // If no node from the previous syntax tree could be reused, then try to
+  // reuse the token previously returned by the lexer.
+  if (!lookahead.ptr) {
+    did_reuse = false;
+    lookahead = ts_parser__get_cached_token(
+      self, state, position, last_external_token, &table_entry
+    );
+  }
+
+  bool needs_lex = !lookahead.ptr;
+  for (;;) {
+    // 3. Lexing (새로운 토큰 읽기)
+    // Otherwise, re-run the lexer.
+    if (needs_lex) {
+      needs_lex = false;
+      lookahead = ts_parser__lex(self, version, state);  // Lexer 실행
+      if (self->has_scanner_error) return false;
+
+      // EOF(커서 도달)를 만났을 때의 시간 정지
+      // self->lexer.current_position.bytes >= target_length || 
+      if ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_end)) {
+          
+          // 파서의 상태를 훼손하지 않기 위해 더 이상의 처리를 중단
+          return false; 
+      }
+
+      // 토큰이 발견되면
+      if (lookahead.ptr) {
+        ts_parser__set_cached_token(self, position, last_external_token, lookahead);
+        // 현재 상태(state)에서 이 토큰(lookahead)을 만났을 때의 모든 후보 액션을
+        // 파싱 테이블에서 찾아 table_entry에 저장
+        ts_language_table_entry(self->language, state, ts_subtree_symbol(lookahead), &table_entry);
+      }
+
+      // When parsing a non-terminal extra, a null lookahead indicates the
+      // end of the rule. The reduction is stored in the EOF table entry.
+      // After the reduction, the lexer needs to be run again.
+      else {
+        // EOF 심볼로 액션을 조회
+        ts_language_table_entry(self->language, state, ts_builtin_sym_end, &table_entry);
+      }
+    }
+
+    // 인터럽트 체크
+    // If a cancellation flag, timeout, or progress callback was provided, then check every
+    // time a fixed number of parse actions has been processed.
+    if (!ts_parser__check_progress(self, &lookahead, &position, 1)) {
+      return false;
+    }
+
+    // 4. 액션 실행 루프 (핵심 로직)
+    // table_entry에 담긴 액션들을 순서대로 처리
+    // Process each parse action for the current lookahead token in
+    // the current state. If there are multiple actions, then this is
+    // an ambiguous state. REDUCE actions always create a new stack
+    // version, whereas SHIFT actions update the existing stack version
+    // and terminate this loop.
+    bool did_reduce = false;
+    StackVersion last_reduction_version = STACK_VERSION_NONE;
+    for (uint32_t i = 0; i < table_entry.action_count; i++) {
+      TSParseAction action = table_entry.actions[i];
+
+      switch (action.type) {
+        case TSParseActionTypeShift: {
+          if (action.shift.repetition) break;
+          TSStateId next_state;
+          if (action.shift.extra) {
+            next_state = state;
+            LOG("shift_extra");
+          } else {
+            next_state = action.shift.state;
+            LOG("shift state:%u", next_state);
+          }
+
+          // 예전에 만들어둔 트리의 덩어리(Node)를 재활용하려고 가져온 경우 (증분 파싱)
+          if (ts_subtree_child_count(lookahead) > 0) {
+            ts_parser__breakdown_lookahead(self, &lookahead, state, &self->reusable_node);
+            next_state = ts_language_next_state(self->language, state, ts_subtree_symbol(lookahead));
+          } 
+
+          // 스택에 lookahead push
+          // 현재 version의 state -> next_state로 전환
+          ts_parser__shift(self, version, next_state, lookahead, action.shift.extra);
+          
+          // 재사용 노드를 소비했으면
+          // 재사용 노드 커서를 다음 노드로 이동
+          if (did_reuse) reusable_node_advance(&self->reusable_node);
+          return true;
+        }
+
+        case TSParseActionTypeReduce: {
+          // 상황 판단
+          bool is_fragile = table_entry.action_count > 1;           // 모호함
+          bool end_of_non_terminal_extra = lookahead.ptr == NULL;   // Null이면 EOF
+          // LOG("reduce sym:%s, child_count:%u", SYM_NAME(action.reduce.symbol), action.reduce.child_count);
+
+          // ts_parser__reduce
+          // 트리시터는 원본 프로세스(version)는 그대로 둔 채, 
+          // 원본을 복제하여 Reduce 연산을 적용한 새로운 버전들을 heads 배열 끝에 추가(Push)
+
+          // reduction_version : 이번 reduce 연산을 통해
+          // heads 배열에서 새로 생긴 버전들의 시작 인덱스
+          StackVersion reduction_version = ts_parser__reduce(
+            self, version, action.reduce.symbol, action.reduce.child_count,
+            action.reduce.dynamic_precedence, action.reduce.production_id,
+            is_fragile, end_of_non_terminal_extra
+          );
+
+          did_reduce = true;
+          if (reduction_version != STACK_VERSION_NONE) {
+            last_reduction_version = reduction_version;
+          }
+          break;
+        }
+
+        case TSParseActionTypeAccept: {
+          LOG("accept");
+          ts_parser__accept(self, version, lookahead);
+          return true;
+        }
+
+        case TSParseActionTypeRecover: {
+          // 파싱 테이블을 조회했더니, 액션 목록에 RECVOER가 존재. 명시적 에러 처리
+            // grammar.js에서 직접 에러 처리를 정의했거나
+            // 파서 생성기가 테이블에 액션을 정의한 경우
+
+          if (ts_subtree_child_count(lookahead) > 0) {
+            ts_parser__breakdown_lookahead(self, &lookahead, ERROR_STATE, &self->reusable_node);
+          }
+
+          ts_parser__recover(self, version, lookahead);
+          if (did_reuse) reusable_node_advance(&self->reusable_node);
+          return true;
+        }
+      }
+    }
+
+    // 5. 뒷정리 및 재시도
+    // If a reduction was performed, then replace the current stack version
+    // with one of the stack versions created by a reduction, and continue
+    // processing this version of the stack with the same lookahead symbol.
+    if (last_reduction_version != STACK_VERSION_NONE) {
+      ts_stack_renumber_version(self->stack, last_reduction_version, version);
+      LOG_STACK();
+      state = ts_stack_state(self->stack, version);
+
+      // At the end of a non-terminal extra rule, the lexer will return a
+      // null subtree, because the parser needs to perform a fixed reduction
+      // regardless of the lookahead node. After performing that reduction,
+      // (and completing the non-terminal extra rule) run the lexer again based
+      // on the current parse state.
+      if (!lookahead.ptr) {
+        needs_lex = true;
+      } else {
+        ts_language_table_entry(
+          self->language,
+          state,
+          ts_subtree_leaf_symbol(lookahead),
+          &table_entry
+        );
+      }
+
+      continue;
+    }
+
+    // A reduction was performed, but was merged into an existing stack version.
+    // This version can be discarded.
+    if (did_reduce) {
+      if (lookahead.ptr) {
+        ts_subtree_release(&self->tree_pool, lookahead);
+      }
+      ts_stack_halt(self->stack, version);
+      return true;
+    }
+
+    // If the current lookahead token is a keyword that is not valid, but the
+    // default word token *is* valid, then treat the lookahead token as the word
+    // token instead.
+    if (
+      ts_subtree_is_keyword(lookahead) &&
+      ts_subtree_symbol(lookahead) != self->language->keyword_capture_token &&
+      !ts_language_is_reserved_word(self->language, state, ts_subtree_symbol(lookahead))
+    ) {
+      ts_language_table_entry(
+        self->language,
+        state,
+        self->language->keyword_capture_token,
+        &table_entry
+      );
+      if (table_entry.action_count > 0) {
+        LOG(
+          "switch from_keyword:%s, to_word_token:%s",
+          TREE_NAME(lookahead),
+          SYM_NAME(self->language->keyword_capture_token)
+        );
+
+        MutableSubtree mutable_lookahead = ts_subtree_make_mut(&self->tree_pool, lookahead);
+        ts_subtree_set_symbol(&mutable_lookahead, self->language->keyword_capture_token, self->language);
+        lookahead = ts_subtree_from_mut(mutable_lookahead);
+        continue;
+      }
+    }
+
+    // If the current lookahead token is not valid and the previous subtree on
+    // the stack was reused from an old tree, then it wasn't actually valid to
+    // reuse that previous subtree. Remove it from the stack, and in its place,
+    // push each of its children. Then try again to process the current lookahead.
+    if (ts_parser__breakdown_top_of_stack(self, version)) {
+      state = ts_stack_state(self->stack, version);
+      ts_subtree_release(&self->tree_pool, lookahead);
+      needs_lex = true;
+      continue;
+    }
+
+    // 파싱 테이블에 아무런 액션도 없는 경우
+    // 해당 스택 버전을 멈춤 -> ts_parser_parse에서 ts_parser__condense_stack가 처리
+    // Otherwise, there is definitely an error in this version of the parse stack.
+    // Mark this version as paused and continue processing any other stack
+    // versions that exist. If some other version advances successfully, then
+    // this version can simply be removed. But if all versions end up paused,
+    // then error recovery is needed.
+    LOG("detect_error lookahead:%s", TREE_NAME(lookahead));
+    ts_stack_pause(self->stack, version, lookahead);
+    return true;
+  }
+}
+
 // [info] 상태 병합(Merge)과 에러 복구에 따른 가지치기(Prune)를 동시에 수행
 static unsigned ts_parser__condense_stack(TSParser *self) {
   bool made_changes = false;
@@ -3203,7 +3466,8 @@ TSStatePath ts_parser_parse_for_conversion(
 
   // 파싱 루프
   uint32_t position = 0, last_position = 0, version_count = 0;
-  bool all_reached_cursor = false;   // 모든 스택이 커서에 도달했는지 확인하는 플래그
+  // bool all_reached_cursor = false;   // 모든 스택이 커서에 도달했는지 확인하는 플래그
+  bool reached_cursor_target = false; // 루프 전체를 탈출할 플래그
 
   // do {...} while (version_count != 0) 
   // 파싱할 수 있는 경로가 남아있는 한 계속 진행
@@ -3211,7 +3475,7 @@ TSStatePath ts_parser_parse_for_conversion(
 
     // 매 루프 시작 시 모든 스택이 도달했다고 가정
     version_count = ts_stack_version_count(self->stack);
-    all_reached_cursor = true;
+    // all_reached_cursor = true;
 
     // for (version = 0; version < version_count; version++)
     // 현재 살아있는 모든 스택 버전을 한 번씩 순회
@@ -3232,27 +3496,37 @@ TSStatePath ts_parser_parse_for_conversion(
           ts_stack_position(self->stack, version).extent.column
         );
 
-        // 현재 버전의 읽은 바이트 수 확인
-        uint32_t current_byte = ts_stack_position(self->stack, version).bytes;
+        // // 현재 버전의 읽은 바이트 수 확인
+        // uint32_t current_byte = ts_stack_position(self->stack, version).bytes;
 
-        // 커서 위치(input_length)에 도달했는가?
-        if (current_byte >= length) {
-            // 더 이상 advance 하지 않고 이 상태 그대로 유지 (Freeze)
-            // 현재 while 루프만 탈출해서 다음 스택 버전을 평가하러 감.
-            break; 
-        }
+        // // 커서 위치(input_length)에 도달했는가?
+        // if (current_byte >= length) {
+        //     // 더 이상 advance 하지 않고 이 상태 그대로 유지 (Freeze)
+        //     // 현재 while 루프만 탈출해서 다음 스택 버전을 평가하러 감.
+        //     break; 
+        // }
 
-        // 커서에 아직 도달하지 못한 스택
-        all_reached_cursor = false;
+        // // 커서에 아직 도달하지 못한 스택
+        // all_reached_cursor = false;
 
-        // 정상적으로 토큰 소모
-        if (!ts_parser__advance(self, version, allow_node_reuse)) {
-          if (self->has_scanner_error) goto exit;
-          // 커서 끝(EOF)에서 발생한 에러 방어
-          if (self->lexer.current_position.bytes >= length) {
-              goto phase_3_conversion; // 에러 복구를 무시하고 즉시 컨버전으로 점프
-          }
-          break;
+        // // 정상적으로 토큰 소모
+        // if (!ts_parser__advance(self, version, allow_node_reuse)) {
+        //   // 커서 끝(EOF)에서 발생한 에러 방어
+        //   if (self->lexer.current_position.bytes >= length) {
+        //       goto phase_3_conversion; // 에러 복구를 무시하고 즉시 컨버전으로 점프
+        //   }
+        //   if (self->has_scanner_error) goto exit;
+        //   break;
+        // }
+
+        // 커서(length)에 도달하면 false를 반환하도록 설계
+        if (!ts_parser__advance_for_conversion(self, version, allow_node_reuse, length)) {
+            if (self->has_scanner_error) goto exit;
+            
+            // advance가 false를 반환했는데 스캐너 에러가 아니다?
+            // -> 우리의 설계대로 커서(length)에 도달하여 Freeze된 것
+            reached_cursor_target = true;
+            break; // 해당 버전의 처리를 멈춤
         }
 
         LOG_STACK();
@@ -3266,15 +3540,20 @@ TSStatePath ts_parser_parse_for_conversion(
       }
     }
 
+    // 누군가 커서에 도달했다면, 즉시 컨버전
+    if (reached_cursor_target) {
+        goto phase_3_conversion;
+    }
+
     // 상태가 같은 버전을 병합
     // After advancing each version of the stack, re-sort the versions by their cost,
     // removing any versions that are no longer worth pursuing.
     unsigned min_error_cost = ts_parser__condense_stack(self);
 
-    // 모든 활성 스택이 커서에 도달했다면 파싱 루프 종료
-    if (all_reached_cursor) {
-      break;
-    }
+    // // 모든 활성 스택이 커서에 도달했다면 파싱 루프 종료
+    // if (all_reached_cursor) {
+    //   break;
+    // }
 
     // If there's already a finished parse tree that's better than any in-progress version,
     // then terminate parsing. Clear the parse stack to remove any extra references to subtrees
@@ -3304,7 +3583,7 @@ TSStatePath ts_parser_parse_for_conversion(
       return final_union; 
     }
     for (StackVersion v = 0; v < final_version_count; v++) {
-      if (!ts_stack_is_active(self->stack, v)) continue;
+      // if (!ts_stack_is_active(self->stack, v) && !ts_stack_is_paused(self->stack, v)) continue;
 
       // stack.c에 구현된 브릿지 함수 호출
       TSStatePath conversion_result = ts_stack_simulate_conversion(self->stack, v, self->language);
