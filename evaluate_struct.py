@@ -40,6 +40,9 @@ class FileReporter:
         
         # 파일별 리포트 데이터
         self.file_reports = []
+
+        # [추가된 부분] 모든 파일의 추출 데이터를 모아둘 전역 리스트
+        self.all_extracted_data = []
         
         # 리포트 폴더 생성
         if not os.path.exists(REPORT_DIR):
@@ -121,19 +124,19 @@ class FileReporter:
         print(f"    [Fail] Target not found in top {len(candidates)}.")
         return 0
 
-    # [NEW] 상세 예측 로그 저장 함수
-    def save_prediction_log(self, filename, log_data):
-        # reports/smallbasic/debug_logs 폴더에 저장
-        debug_dir = os.path.join(REPORT_DIR, "debug_logs_v1")
+    # [NEW]
+    def save_debug_log(self, filename, log_data):
+        # 저장 폴더: reports/smallbasic/debug_states_v1
+        debug_dir = os.path.join(REPORT_DIR, "debug_states_v1")
         if not os.path.exists(debug_dir):
             os.makedirs(debug_dir)
-
+        
         csv_path = os.path.join(debug_dir, f"{filename}_v1.csv")
         
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            # 헤더: 위치, 정답, 예측값(Top-5만), 순위
-            writer.writerow(["Location", "Ground Truth", "Predicted (Top-5)", "Rank"])
+            # [핵심] State List 컬럼 추가
+            writer.writerow(["Location", "Ground_Truth", "State_List", "Rank"])
             writer.writerows(log_data)
     
     # [main] 단일 파일 평가
@@ -155,8 +158,11 @@ class FileReporter:
         file_top10_count = 0
         file_top20_count = 0
 
-        # 로그 데이터 저장을 위한 리스트
-        prediction_logs = []
+        debug_logs = [] # 로그 저장용 리스트
+
+        # [중요] 비교를 위해 '정답지' 기준으로 순회 (V2와 줄 맞추기)
+        # 정답지에는 있지만 배치 결과에 없다면 파싱 실패/Skip 된 것임
+        sorted_locs = sorted(answers.keys(), key=lambda x: list(map(int, x.split(','))))
 
         # 파서의 결과 { "1,1": [states], ... }를 기준으로 루프 실행
         for loc, states in preds.items():
@@ -174,13 +180,26 @@ class FileReporter:
 
             if not ground_truth: continue
 
+            # 1. 배치 결과에서 해당 위치의 State List 가져오기
+            states = preds.get(loc, [])
+
+            # 2. State List 포맷팅 ( "[188, 51]" 문자열 형태 )
+            if states:
+                state_str = str(states) # 예: "[188, 51]"
+            else:
+                state_str = "MISSING"   # 배치 모드에서 해당 위치 파싱 실패
+
+            # -----------------------------------------------------------------
+            # [추가된 부분] 우리가 원하는 통합 포맷으로 전역 리스트에 추가
+            # [파일명, 위치, 정답 구조후보, 상태리스트]
+            # -----------------------------------------------------------------
+            self.all_extracted_data.append([filename, loc, ground_truth, state_str])
+
             # 순위 확인
             rank = self.get_rank(top_candidates, ground_truth)
-
-            # [NEW] 로그 데이터 추가
-            # 예측값은 보기 좋게 Top-5만 문자열로 변환
-            top5_str = str([k for k, v in top_candidates[:5]])
-            prediction_logs.append([loc, ground_truth, top5_str, rank])
+            
+            # 로그 저장
+            debug_logs.append([loc, ground_truth, state_str, rank])
 
             # 통계 집계
             self.global_queries += 1
@@ -207,36 +226,36 @@ class FileReporter:
             "top20": file_top20_count
         })
         # [NEW] 파일별 분석이 끝나면 로그 저장
-        self.save_prediction_log(filename, prediction_logs)
+        self.save_debug_log(filename, debug_logs)
 
 
     # ==========================================================================
     # 파일 1: 파일별 성능 요약 저장 (TXT + CSV)
     # ==========================================================================
     def save_file_performance_report(self):
-        # 1. TXT 리포트 저장 (기존 로직 유지)
-        txt_path = os.path.join(REPORT_DIR, FILE_REPORT_NAME)
-        with open(txt_path, "w", encoding="utf-8") as f:
-            f.write("="*120 + "\n")
-            f.write(f" PER-FILE PERFORMANCE SUMMARY\n")
-            f.write("="*120 + "\n")
-            f.write(f"{'File Name':<30} | {'Queries':<8} | {'Top-1':<8} | {'Top-3':<8} | {'Top-5':<8} | {'Top-10':<8} | {'Top-20':<8}\n")
-            f.write("-" * 120 + "\n")
+        # # 1. TXT 리포트 저장 (기존 로직 유지)
+        # txt_path = os.path.join(REPORT_DIR, FILE_REPORT_NAME)
+        # with open(txt_path, "w", encoding="utf-8") as f:
+        #     f.write("="*120 + "\n")
+        #     f.write(f" PER-FILE PERFORMANCE SUMMARY\n")
+        #     f.write("="*120 + "\n")
+        #     f.write(f"{'File Name':<30} | {'Queries':<8} | {'Top-1':<8} | {'Top-3':<8} | {'Top-5':<8} | {'Top-10':<8} | {'Top-20':<8}\n")
+        #     f.write("-" * 120 + "\n")
 
-            for report in self.file_reports:
-                total = report["total"]
-                acc1 = (report["top1"] / total * 100) if total > 0 else 0.0
-                acc3 = (report["top3"] / total * 100) if total > 0 else 0.0
-                acc5 = (report["top5"] / total * 100) if total > 0 else 0.0
-                acc10 = (report["top10"] / total * 100) if total > 0 else 0.0
-                acc20 = (report["top20"] / total * 100) if total > 0 else 0.0
+        #     for report in self.file_reports:
+        #         total = report["total"]
+        #         acc1 = (report["top1"] / total * 100) if total > 0 else 0.0
+        #         acc3 = (report["top3"] / total * 100) if total > 0 else 0.0
+        #         acc5 = (report["top5"] / total * 100) if total > 0 else 0.0
+        #         acc10 = (report["top10"] / total * 100) if total > 0 else 0.0
+        #         acc20 = (report["top20"] / total * 100) if total > 0 else 0.0
 
-                f.write(f"{report['name']:<30} | {total:<8} | {acc1:6.2f}% | {acc3:6.2f}% | {acc5:6.2f}% | {acc10:6.2f}% | {acc20:6.2f}%\n")
+        #         f.write(f"{report['name']:<30} | {total:<8} | {acc1:6.2f}% | {acc3:6.2f}% | {acc5:6.2f}% | {acc10:6.2f}% | {acc20:6.2f}%\n")
             
-            f.write("-" * 120 + "\n")
-            f.write(f"Total Files Processed: {self.global_files}\n")
+        #     f.write("-" * 120 + "\n")
+        #     f.write(f"Total Files Processed: {self.global_files}\n")
         
-        print(f"[Saved] File Report (TXT) -> {txt_path}")
+        # print(f"[Saved] File Report (TXT) -> {txt_path}")
 
         # 2. CSV 리포트 저장 (추가된 로직)
         csv_path = os.path.join(REPORT_DIR, "sb_file_performance2.csv")
@@ -262,42 +281,42 @@ class FileReporter:
     # 파일 2: 전체 순위 분포 저장 (TXT + CSV)
     # ==========================================================================
     def save_rank_distribution_report(self):
-        # 1. TXT 리포트 저장 (기존 로직 유지)
-        txt_path = os.path.join(REPORT_DIR, RANK_REPORT_NAME)
-        with open(txt_path, "w", encoding="utf-8") as f:
-            f.write("="*80 + "\n")
-            f.write(f" GLOBAL RANK DISTRIBUTION (Max Rank: {MAX_RANK_CHECK})\n")
-            f.write("="*80 + "\n")
+        # # 1. TXT 리포트 저장 (기존 로직 유지)
+        # txt_path = os.path.join(REPORT_DIR, RANK_REPORT_NAME)
+        # with open(txt_path, "w", encoding="utf-8") as f:
+        #     f.write("="*80 + "\n")
+        #     f.write(f" GLOBAL RANK DISTRIBUTION (Max Rank: {MAX_RANK_CHECK})\n")
+        #     f.write("="*80 + "\n")
             
-            if self.global_queries == 0:
-                f.write("No queries found.\n")
-            else:
-                f.write(f" Total Files   : {self.global_files}\n")
-                f.write(f" Total Queries : {self.global_queries}\n")
-                f.write("-" * 80 + "\n")
-                f.write(f" {'Rank':<6} | {'Count':<10} | {'Share (%)':<10} | {'Cumulative (%)':<15}\n")
-                f.write("-" * 80 + "\n")
+        #     if self.global_queries == 0:
+        #         f.write("No queries found.\n")
+        #     else:
+        #         f.write(f" Total Files   : {self.global_files}\n")
+        #         f.write(f" Total Queries : {self.global_queries}\n")
+        #         f.write("-" * 80 + "\n")
+        #         f.write(f" {'Rank':<6} | {'Count':<10} | {'Share (%)':<10} | {'Cumulative (%)':<15}\n")
+        #         f.write("-" * 80 + "\n")
 
-                cumulative_count = 0
+        #         cumulative_count = 0
                 
-                # 1위 ~ 20위
-                for r in range(1, MAX_RANK_CHECK + 1):
-                    count = self.rank_stats[r]
-                    cumulative_count += count
-                    share_pct = (count / self.global_queries) * 100
-                    cum_pct = (cumulative_count / self.global_queries) * 100
-                    bar_len = int(share_pct / 2)
-                    bar = "#" * bar_len
+        #         # 1위 ~ 20위
+        #         for r in range(1, MAX_RANK_CHECK + 1):
+        #             count = self.rank_stats[r]
+        #             cumulative_count += count
+        #             share_pct = (count / self.global_queries) * 100
+        #             cum_pct = (cumulative_count / self.global_queries) * 100
+        #             bar_len = int(share_pct / 2)
+        #             bar = "#" * bar_len
                     
-                    f.write(f" {r:<6} | {count:<10} | {share_pct:6.2f}%    | {cum_pct:13.2f}%  {bar}\n")
+        #             f.write(f" {r:<6} | {count:<10} | {share_pct:6.2f}%    | {cum_pct:13.2f}%  {bar}\n")
 
-                f.write("-" * 80 + "\n")
-                # Out
-                out_share = (self.out_of_range_count / self.global_queries) * 100
-                f.write(f" {'Out':<6} | {self.out_of_range_count:<10} | {out_share:6.2f}%    | {'-':<15}\n")
-                f.write("="*80 + "\n")
+        #         f.write("-" * 80 + "\n")
+        #         # Out
+        #         out_share = (self.out_of_range_count / self.global_queries) * 100
+        #         f.write(f" {'Out':<6} | {self.out_of_range_count:<10} | {out_share:6.2f}%    | {'-':<15}\n")
+        #         f.write("="*80 + "\n")
 
-        print(f"[Saved] Rank Report (TXT) -> {txt_path}")
+        # print(f"[Saved] Rank Report (TXT) -> {txt_path}")
 
         # 2. CSV 리포트 저장 (추가된 로직)
         if self.global_queries > 0:
@@ -324,6 +343,17 @@ class FileReporter:
 
             print(f"[Saved] Rank Report (CSV) -> {csv_path}")
 
+    # [추가된 부분] 통합 CSV 저장 메서드
+    def save_extracted_states_csv(self):
+        csv_path = os.path.join(REPORT_DIR, "batch_all_extracted_states.csv")
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            # 헤더 작성
+            writer.writerow(["File Name", "Location", "Ground_Truth_Candidate", "State_List"])
+            # 누적된 전체 데이터 작성
+            writer.writerows(self.all_extracted_data)
+        
+        print(f"[Saved] All Extracted States (CSV) -> {csv_path}")
             
     def run(self):
         files = glob.glob(os.path.join(SOURCE_DIR, "*.sb"))
@@ -339,7 +369,12 @@ class FileReporter:
         
         # 파일 저장 함수 호출
         self.save_file_performance_report()
-        self.save_rank_distribution_report()
+        # self.save_rank_distribution_report()
+
+        # [추가된 부분] 마지막에 통합 CSV 저장 함수 호출
+        self.save_extracted_states_csv()
+
+
 
 if __name__ == "__main__":
     reporter = FileReporter()

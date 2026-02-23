@@ -109,18 +109,18 @@ class FileReporter:
                 return rank
         return 0
 
-    # [NEW] 상세 예측 로그 저장 함수
-    def save_prediction_log(self, filename, log_data):
-        # reports/smallbasic/debug_logs 폴더에 저장
-        debug_dir = os.path.join(REPORT_DIR, "debug_logs_v2")
+    def save_debug_log(self, filename, log_data):
+        # 저장 폴더: reports/smallbasic/debug_states_v2
+        debug_dir = os.path.join(REPORT_DIR, "debug_states_v2")
         if not os.path.exists(debug_dir):
             os.makedirs(debug_dir)
-
+        
         csv_path = os.path.join(debug_dir, f"{filename}_v2.csv")
         
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(["Location", "Ground Truth", "Predicted (Top-5)", "Rank"])
+            # V1과 동일한 헤더 구조
+            writer.writerow(["Location", "Ground_Truth", "State_List", "Rank"])
             writer.writerows(log_data)
 
     # -------------------------------------------------------------------------
@@ -149,7 +149,9 @@ class FileReporter:
         file_top20_count = 0
 
         # 로그 데이터 리스트
-        prediction_logs = []
+        debug_logs = []
+        # 정렬하여 순회 (V1과 비교 쉽도록)
+        sorted_locs = sorted(answers.keys(), key=lambda x: list(map(int, x.split(','))))
 
         # [Iterative Loop] 정답지의 모든 좌표에 대해 실행
         total_locations = len(answers)
@@ -178,15 +180,27 @@ class FileReporter:
             # 3. [핵심] C++ 실행 (단일 위치)
             predicted_states = self.run_cpp_at_position(sb_file, row, col)
 
-            # 4. DB 조회 및 순위 계산
-            full_candidates = self.lookupDB(predicted_states)
-            top_candidates = full_candidates[:MAX_CANDIDATE_LIST_SIZE]
-            
-            rank = self.get_rank(top_candidates, ground_truth)
+            # State List 포맷팅
+            if predicted_states:
+                state_str = str(predicted_states) # 예: "[188, 51]"
+            else:
+                state_str = "FAIL" # C++ 실행 실패 또는 태그 없음
 
-            # [NEW] 로그 데이터 추가
-            top5_str = str([k for k, v in top_candidates[:5]])
-            prediction_logs.append([loc_key, ground_truth, top5_str, rank])
+            # 순위 계산
+            rank = 0
+            if predicted_states:
+                full_candidates = self.lookupDB(predicted_states)
+                top_candidates = full_candidates[:MAX_CANDIDATE_LIST_SIZE]
+                rank = self.get_rank(top_candidates, ground_truth)
+
+            # 로그 저장
+            debug_logs.append([loc_key, ground_truth, state_str, rank])
+
+            # # 4. DB 조회 및 순위 계산
+            # full_candidates = self.lookupDB(predicted_states)
+            # top_candidates = full_candidates[:MAX_CANDIDATE_LIST_SIZE]
+            
+            # rank = self.get_rank(top_candidates, ground_truth)
 
             # 5. 통계 집계
             self.global_queries += 1
@@ -216,7 +230,7 @@ class FileReporter:
         })
 
         # [NEW] 로그 저장
-        self.save_prediction_log(filename, prediction_logs)
+        self.save_debug_log(filename, debug_logs)
 
     # ==========================================================================
     # 파일 1: 파일별 성능 요약 저장

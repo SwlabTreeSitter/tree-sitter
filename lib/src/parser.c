@@ -2465,6 +2465,67 @@ static void print_escaped_string(FILE *file, const char *input) {
   }
 }
 
+// [new] (Helper)
+static void get_visual_position_from_offset(const char *text, uint32_t target_offset, uint32_t *out_row, uint32_t *out_col) {
+    uint32_t current_offset = 0;
+    uint32_t current_row = 0;
+    uint32_t current_col = 0;
+    const uint32_t tab_width = 4;
+
+    if (!text) {
+        *out_row = 0; *out_col = 0; return;
+    }
+
+    // C++의 FindByteOffsetForPosition 루프와 100% 동일한 규칙 적용
+    while (text[current_offset] != '\0' && current_offset < target_offset) {
+        unsigned char current_char = (unsigned char)text[current_offset];
+
+        if (current_char == '\n') {
+            current_row++;
+            current_col = 0;
+            current_offset++;
+        } else if (current_char == '\r' && text[current_offset + 1] == '\n') {
+            current_row++;
+            current_col = 0;
+            current_offset += 2;
+        } else if (current_char == '\t') {
+            current_col = ((current_col / tab_width) + 1) * tab_width;
+            current_offset++;
+        } else {
+            current_col++;
+            current_offset++;
+            if (current_char >= 0xC0) {
+                while (text[current_offset] != '\0' && current_offset < target_offset &&
+                      ((unsigned char)text[current_offset] & 0xC0) == 0x80) {
+                    current_offset++;
+                }
+            }
+        }
+    }
+    *out_row = current_row;
+    *out_col = current_col;
+}
+
+// 트리시터 기본 좌표(TSPoint)를 절대 바이트 오프셋으로 변환
+static uint32_t get_absolute_offset_from_point(const char *text, TSPoint point) {
+    uint32_t current_offset = 0;
+    uint32_t current_row = 0;
+    if (!text) return point.column;
+
+    while (text[current_offset] != '\0' && current_row < point.row) {
+        if (text[current_offset] == '\n') {
+            current_row++;
+            current_offset++;
+        } else if (text[current_offset] == '\r' && text[current_offset + 1] == '\n') {
+            current_row++;
+            current_offset += 2;
+        } else {
+            current_offset++;
+        }
+    }
+    return current_offset + point.column;
+}
+
 // Parser - Public
 
 // [custom] TSParser 생성자
@@ -3051,7 +3112,7 @@ void ts_parser_write_conversion_result(
 }
 
 // [Batch] 모든 Shift 위치에 대해 State Path를 계산하고 출력하는 함수
-void ts_parser_run_batch_conversion(TSParser *self, FILE *file) {
+void ts_parser_run_batch_conversion(TSParser *self, const char *source_code, FILE *file) {
   // 1. 유효성 검사
   if (!self->logged_actions.contents || !file) return;
 
@@ -3087,6 +3148,12 @@ void ts_parser_run_batch_conversion(TSParser *self, FILE *file) {
         ts_conversion__recursive_current_states(self, &re_stack, &result_path);
 
         // (C) 결과 출력
+
+        // [변경] TSPoint -> 절대 오프셋 -> Visual 좌표 계산
+        uint32_t abs_offset = get_absolute_offset_from_point(source_code, action->start_point);
+        uint32_t vis_row = 0, vis_col = 0;
+        get_visual_position_from_offset(source_code, abs_offset, &vis_row, &vis_col);
+
         // 파이썬 스크립트가 파싱하기 쉬운 포맷: "ROW,COL|STATE1 STATE2 STATE3..."
         // Tree-sitter의 row/col은 0부터 시작하므로 +1을 해줌
         fprintf(file, "%u,%u|", 
@@ -3102,16 +3169,6 @@ void ts_parser_run_batch_conversion(TSParser *self, FILE *file) {
         fprintf(file, "\n");
     }
   }
-}
-
-// 배치 모드 V2: 파일 전체를 스트리밍하며 Shift 직전의 컨버전 결과 출력
-void ts_parser_run_batch_conversion_stream(
-  TSParser *self, 
-  const char *source_code, 
-  uint32_t len, 
-  FILE *out_stream
-) {
-
 }
 
 // [new] 컬렉션 구현체
@@ -3260,22 +3317,20 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
   Length size = ts_subtree_size(node);
 
   // 2. 텍스트 시작 위치 계산
-  // 현재 커서(ctx->byte_offset)에서 패딩(앞쪽 공백)만큼 건너뛴 곳이 실제 텍스트 시작점입니다.
+  // 현재 커서(ctx->byte_offset)에서 패딩(앞쪽 공백)만큼 건너뛴 곳이 실제 텍스트 시작점(절대 바이트 오프셋)
   uint32_t start_byte = ctx->byte_offset + padding.bytes;
-  TSPoint start_point = point_add(ctx->point_offset, padding.extent);
   uint32_t length_byte = size.bytes;
 
-  // 3. 출력 형식: "  행,열: 렉심"
-  // 행과 열은 보통 1부터 시작하므로 +1을 해줍니다.
+  // 3. 출력 형식: "  행,열: "
   if (length_byte > 0 && start_byte < ctx->source_len) {
-    fprintf(ctx->file, "  %u,%u: ", start_point.row + 1, start_point.column + 1);
+    uint32_t vis_row = 0;
+    uint32_t vis_col = 0;
 
-    // 렉심 내용 출력 (따옴표 등으로 감싸지 않고 원본 그대로 출력)
-    // if (start_byte + length_byte > ctx->source_len) {
-    //     length_byte = ctx->source_len - start_byte;
-    // }
-    // fwrite(ctx->source + start_byte, 1, length_byte, ctx->file);
-    fprintf(ctx->file, "\n");
+    // [핵심 수정] 절대 바이트 오프셋을 역함수에 넣어 에디터 기준(Visual) 좌표로 변환
+    get_visual_position_from_offset(ctx->source, start_byte, &vis_row, &vis_col);
+
+    // 행과 열은 보통 1부터 시작하므로 각각 +1
+    fprintf(ctx->file, "  %u,%u: \n", vis_row + 1, vis_col + 1);
   }
 
   // 4. 다음 형제를 위해 임시 컨텍스트의 커서를 이동시킴
