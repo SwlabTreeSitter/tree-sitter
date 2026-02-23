@@ -3248,6 +3248,10 @@ TSStatePath ts_parser_parse_for_conversion(
         // 정상적으로 토큰 소모
         if (!ts_parser__advance(self, version, allow_node_reuse)) {
           if (self->has_scanner_error) goto exit;
+          // 커서 끝(EOF)에서 발생한 에러 방어
+          if (self->lexer.current_position.bytes >= length) {
+              goto phase_3_conversion; // 에러 복구를 무시하고 즉시 컨버전으로 점프
+          }
           break;
         }
 
@@ -3294,23 +3298,24 @@ TSStatePath ts_parser_parse_for_conversion(
   // ----------------------------------------------
   // 3단계 : 컨버전
   // ----------------------------------------------
-  uint32_t final_version_count = ts_stack_version_count(self->stack);
-  if (final_version_count == 0) {
-    return final_union; 
-  }
-  for (StackVersion v = 0; v < final_version_count; v++) {
-    if (!ts_stack_is_active(self->stack, v)) continue;
-
-    // stack.c에 구현된 브릿지 함수 호출
-    TSStatePath conversion_result = ts_stack_simulate_conversion(self->stack, v, self->language);
-  
-    // 결과 병합 (합집합)
-    for (uint32_t j = 0; j < conversion_result.count; j++) {
-      add_state_to_union(&final_union, conversion_result.states[j]);
+  phase_3_conversion:
+    uint32_t final_version_count = ts_stack_version_count(self->stack);
+    if (final_version_count == 0) {
+      return final_union; 
     }
-  }
-  LOG("done");
-  // LOG_TREE(self->finished_tree);
+    for (StackVersion v = 0; v < final_version_count; v++) {
+      if (!ts_stack_is_active(self->stack, v)) continue;
+
+      // stack.c에 구현된 브릿지 함수 호출
+      TSStatePath conversion_result = ts_stack_simulate_conversion(self->stack, v, self->language);
+    
+      // 결과 병합 (합집합)
+      for (uint32_t j = 0; j < conversion_result.count; j++) {
+        add_state_to_union(&final_union, conversion_result.states[j]);
+      }
+    }
+    LOG("done");
+    // LOG_TREE(self->finished_tree);
 
 exit:
   ts_parser_reset(self);
