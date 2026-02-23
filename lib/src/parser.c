@@ -2064,7 +2064,8 @@ static bool ts_parser__advance_for_conversion(
 
       // EOF(커서 도달)를 만났을 때의 시간 정지
       // self->lexer.current_position.bytes >= target_length || 
-      if ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_end)) {
+      if ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_end)
+          || ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_error) && self->lexer.current_position.bytes >= target_length)) {
           
           // 파서의 상태를 훼손하지 않기 위해 더 이상의 처리를 중단
           return false; 
