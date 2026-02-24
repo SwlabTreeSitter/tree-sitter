@@ -210,7 +210,7 @@ int main(int argc, char* argv[]) {
         if (!is_batch_mode && (execution_mode == 0 || execution_mode == 2)) {
             std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
             size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
-            effective_length = std::min(source_code.length(), stop_offset);
+            effective_length = (std::min)(source_code.length(), stop_offset);
             std::cout << "DEBUG: Effective parsing length set to " << effective_length << " bytes." << std::endl;
         } else {
             // 컬렉션 모드(1)는 파일 전체를 파싱합니다.
