@@ -919,7 +919,6 @@ bool ts_stack_print_dot_graph(Stack *self, const TSLanguage *language, FILE *f) 
 // ========================================
 //  GLR 파싱을 위한 컨버전 로직
 // ========================================
-
 typedef struct {
   TSStateId  state;
   StackNode *base_node;
@@ -947,12 +946,12 @@ static void add_state(TSStatePath *union_path, TSStateId state) {
 
 // 전방 선언
 static void simulate_reduce_pop_dfs(
-  StackNode        *node,
-  uint32_t          remaining,
-  TSSymbol          reduce_symbol,
+  StackNode *node,
+  uint32_t pop_count,
+  TSSymbol reduce_symbol,
   const TSLanguage *language,
-  TSStatePath      *result,
-  VisitedSet       *visited
+  TSStatePath *result,
+  VisitedSet *visited
 );
 
 // (state, base_node) 쌍으로 방문 여부를 추적
@@ -979,9 +978,9 @@ static bool mark_visited(VisitedSet *visited, TSStateId state, StackNode *base_n
 // 현재 상태에서 가능한 reduce 액션들을 수집
 static uint32_t collect_reduces(
   const TSLanguage  *language,
-  TSStateId          state,
-  ReduceProduction  *out,
-  uint32_t           out_cap
+  TSStateId state,
+  ReduceProduction *out,
+  uint32_t out_cap
 ) {
   uint32_t count = 0;
 
@@ -1022,18 +1021,17 @@ static uint32_t collect_reduces(
 // current_state에 도달했음을 기록하고,
 // 그 상태에서 가능한 모든 reduce를 시뮬레이션
 static void simulate_current_states_dfs(
-  TSStateId         current_state,
-  StackNode        *real_node,    // 스택 top 노드
-  bool              is_virtual,
+  TSStateId current_state,
+  StackNode *real_node,    // 스택 top 노드
+  bool is_virtual,
   const TSLanguage *language,
-  TSStatePath      *result,
-  VisitedSet       *visited
+  TSStatePath *result,
+  VisitedSet *visited
 ) {
   // 1. 도달한 상태는 무조건 결과 집합에 추가
   add_state(result, current_state);
 
-  // 2. (state, base_node) 쌍으로 재진입 차단
-  //    → 동일 컨텍스트에서 epsilon 루프 / 좌재귀 reduce 무한루프 방지
+  // 2. (state, base_node) 쌍으로 동일 컨텍스트에서 재실행 방지
   if (mark_visited(visited, current_state, real_node)) return;
 
   // 3. terminal 범위 내 reduce 수집
@@ -1067,12 +1065,12 @@ static void simulate_current_states_dfs(
 
 // reduce 시뮬레이션
 static void simulate_reduce_pop_dfs(
-  StackNode        *node,
-  uint32_t          pop_count,
-  TSSymbol          reduce_symbol,
+  StackNode *node,
+  uint32_t pop_count,
+  TSSymbol reduce_symbol,
   const TSLanguage *language,
-  TSStatePath      *result,
-  VisitedSet       *visited
+  TSStatePath *result,
+  VisitedSet *visited
 ) {
   if (!node) return;
 
