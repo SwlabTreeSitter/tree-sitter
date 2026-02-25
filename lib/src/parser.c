@@ -3522,16 +3522,12 @@ TSStatePath ts_parser_parse_for_conversion(
 
   // 파싱 루프
   uint32_t position = 0, last_position = 0, version_count = 0;
-  // bool all_reached_cursor = false;   // 모든 스택이 커서에 도달했는지 확인하는 플래그
   bool reached_cursor_target = false; // 루프 전체를 탈출할 플래그
 
   // do {...} while (version_count != 0) 
   // 파싱할 수 있는 경로가 남아있는 한 계속 진행
   do {
-
-    // 매 루프 시작 시 모든 스택이 도달했다고 가정
     version_count = ts_stack_version_count(self->stack);
-    // all_reached_cursor = true;
 
     // for (version = 0; version < version_count; version++)
     // 현재 살아있는 모든 스택 버전을 한 번씩 순회
@@ -3552,37 +3548,14 @@ TSStatePath ts_parser_parse_for_conversion(
           ts_stack_position(self->stack, version).extent.column
         );
 
-        // // 현재 버전의 읽은 바이트 수 확인
-        // uint32_t current_byte = ts_stack_position(self->stack, version).bytes;
-
-        // // 커서 위치(input_length)에 도달했는가?
-        // if (current_byte >= length) {
-        //     // 더 이상 advance 하지 않고 이 상태 그대로 유지 (Freeze)
-        //     // 현재 while 루프만 탈출해서 다음 스택 버전을 평가하러 감.
-        //     break; 
-        // }
-
-        // // 커서에 아직 도달하지 못한 스택
-        // all_reached_cursor = false;
-
-        // // 정상적으로 토큰 소모
-        // if (!ts_parser__advance(self, version, allow_node_reuse)) {
-        //   // 커서 끝(EOF)에서 발생한 에러 방어
-        //   if (self->lexer.current_position.bytes >= length) {
-        //       goto phase_3_conversion; // 에러 복구를 무시하고 즉시 컨버전으로 점프
-        //   }
-        //   if (self->has_scanner_error) goto exit;
-        //   break;
-        // }
-
         // 커서(length)에 도달하면 false를 반환하도록 설계
         if (!ts_parser__advance_for_conversion(self, version, allow_node_reuse, length)) {
-            if (self->has_scanner_error) goto exit;
+          if (self->has_scanner_error) goto exit;
             
-            // advance가 false를 반환했는데 스캐너 에러가 아니다?
-            // -> 우리의 설계대로 커서(length)에 도달하여 Freeze된 것
-            reached_cursor_target = true;
-            break; // 해당 버전의 처리를 멈춤
+          // advance가 false를 반환했는데 스캐너 에러가 아니다
+          // -> 우리의 설계대로 커서(length)에 도달하여 Freeze된 것
+          reached_cursor_target = true;
+          break; // 해당 버전의 처리를 멈춤
         }
 
         LOG_STACK();
@@ -3598,18 +3571,13 @@ TSStatePath ts_parser_parse_for_conversion(
 
     // 누군가 커서에 도달했다면, 즉시 컨버전
     if (reached_cursor_target) {
-        goto phase_3_conversion;
+      goto phase_3_conversion;
     }
 
     // 상태가 같은 버전을 병합
     // After advancing each version of the stack, re-sort the versions by their cost,
     // removing any versions that are no longer worth pursuing.
     unsigned min_error_cost = ts_parser__condense_stack(self);
-
-    // // 모든 활성 스택이 커서에 도달했다면 파싱 루프 종료
-    // if (all_reached_cursor) {
-    //   break;
-    // }
 
     // If there's already a finished parse tree that's better than any in-progress version,
     // then terminate parsing. Clear the parse stack to remove any extra references to subtrees
@@ -3639,9 +3607,7 @@ TSStatePath ts_parser_parse_for_conversion(
       return final_union; 
     }
     for (StackVersion v = 0; v < final_version_count; v++) {
-      // if (!ts_stack_is_active(self->stack, v) && !ts_stack_is_paused(self->stack, v)) continue;
-
-      // stack.c에 구현된 브릿지 함수 호출
+      // stack.c에 구현된 함수 호출
       TSStatePath conversion_result = ts_stack_simulate_conversion(self->stack, v, self->language);
     
       // 결과 병합 (합집합)
@@ -3650,7 +3616,6 @@ TSStatePath ts_parser_parse_for_conversion(
       }
     }
     LOG("done");
-    // LOG_TREE(self->finished_tree);
 
 exit:
   ts_parser_reset(self);

@@ -916,170 +916,35 @@ bool ts_stack_print_dot_graph(Stack *self, const TSLanguage *language, FILE *f) 
   return true;
 }
 
-// // [new] 결과 배열에 상태를 추가 (중복 방지)
-// static void add_state_to_result(TSStatePath *result, TSStateId state) {
-//   for (uint32_t i = 0; i < result->count; i++) {
-//     if (result->states[i] == state) return;
-//   }
-//   if (result->count < 256) { // 최대 크기 256
-//     result->states[result->count++] = state;
-//   }
-// }
+// ========================================
+//  GLR 파싱을 위한 컨버전 로직
+// ========================================
 
-// // 전방 선언
-// static void simulate_current_states_dfs(StackNode *node, const TSLanguage *language, TSStatePath *result);
+// typedef struct {
+//   TSStateId state;
+//   StackNode *base_node;
+// } VirtualHead;
 
-// // [new] (Helper 2) 지정된 count만큼 링크를 타고 과거로 거슬러 올라가서(Pop),
-// // 조상 노드를 찾은 뒤 Goto 연산을 수행하고 다시 재귀 호출하는 함수
-// static void simulate_reduce_pop_dfs(
-//   StackNode *node, 
-//   uint32_t count, 
-//   TSSymbol reduce_symbol, 
-//   const TSLanguage *language, 
-//   TSStatePath *result
-// ) {
-//   // 1. 목표치만큼 Pop 완료 (조상 노드에 도달)
-//   if (count == 0) {
-//     TSStateId ancestor_state = node->state;
-//     TSStateId next_state = ts_language_next_state(language, ancestor_state, reduce_symbol);
-    
-//     if (next_state != 0 && next_state != ancestor_state) {
-//         StackNode temp_node = {0};
-//         temp_node.state = next_state;
-//         temp_node.link_count = 1;
-//         temp_node.links[0].node = node; 
-//         temp_node.links[0].subtree.ptr = NULL; // 가상 노드이므로 트리는 NULL
-        
-//         simulate_current_states_dfs(&temp_node, language, result);
-//     }
-//     return;
-//   }
+// typedef struct {
+//   VirtualHead entries[1024]; 
+//   uint32_t count;
+// } VisitedSet;
 
-//   // 2. 현재 노드의 모든 과거 경로(links) 순회
-//   for (uint32_t i = 0; i < node->link_count; i++) {
-//     StackNode *prev_node = node->links[i].node;
-//     uint32_t next_count = count;
-
-//     // [수정된 부분] NULL 트리(가상 노드)도 정상적으로 카운트 차감
-//     bool is_extra = false;
-//     if (node->links[i].subtree.ptr != NULL) {
-//         is_extra = ts_subtree_extra(node->links[i].subtree);
-//     }
-    
-//     // Extra 토큰(주석/공백)이 아닐 때만 카운트를 줄임
-//     // 즉, 정상 토큰이거나 가상 노드(NULL)인 경우 정상적으로 1 Pop으로 인정됨
-//     if (!is_extra) {
-//       next_count--;
-//     }
-
-//     simulate_reduce_pop_dfs(prev_node, next_count, reduce_symbol, language, result);
-//   }
-// }
-
-// // [new] (Helper 1) 현재 노드의 상태(State)에서 파싱 테이블을 뒤져 Reduce를 찾고 시뮬레이션
-// static void simulate_current_states_dfs(StackNode *node, const TSLanguage *language, TSStatePath *result) {
-//   if (!node) return;
-//   TSStateId current_state = node->state;
-
-//   // 1. 결과 집합에 현재 상태 추가 (중복 시 종료하여 무한 루프/중복 연산 방지)
-//   uint32_t initial_count = result->count;
-//   add_state_to_result(result, current_state);
-//   if (result->count == initial_count) return; // 이미 방문한 상태임
-
-//   // 2. PRD(Reduce 규칙) 수집
-//   typedef struct {
-//     uint32_t child_count;
-//     TSSymbol symbol;
-//   } ReduceProduction;
-
-//   ReduceProduction PRD[256];
-//   uint32_t prd_count = 0;
-
-//   uint32_t total_terminal_count = language->token_count + language->external_token_count;
-
-//   // 파싱 테이블 순회
-//   for(TSSymbol sym = 0; sym < total_terminal_count; sym++) {
-//     if (sym == ts_builtin_sym_end) continue;
-    
-//     // 현재 상태에서 해당 심볼을 만났을 때의 액션 목록 조회
-//     uint32_t idx = ts_language_lookup(language, current_state, sym);
-//     if (idx == 0) continue;
-
-//     const TSParseActionEntry *entry = &language->parse_actions[idx];
-//     const TSParseAction *actions = (const TSParseAction *)(entry + 1);
-
-//     for (uint32_t i = 0; i < entry->entry.count; i++) {
-//       if (actions[i].type == TSParseActionTypeReduce) {
-        
-//         // 중복 규칙 검사
-//         bool exists = false;
-//         for (uint32_t k = 0; k < prd_count; k++) {
-//           if (PRD[k].symbol == actions[i].reduce.symbol &&
-//               PRD[k].child_count == actions[i].reduce.child_count) {
-//             exists = true;
-//             break;
-//           } 
-//         }
-        
-//         // 새로운 Reduce 규칙이면 추가
-//         if (!exists && prd_count < 256) {
-//           PRD[prd_count].child_count = actions[i].reduce.child_count;
-//           PRD[prd_count].symbol = actions[i].reduce.symbol;
-//           prd_count++;
-//         }
-//       }
+// static bool mark_visited(VisitedSet *visited, TSStateId state, StackNode *base_node) {
+//   for (uint32_t i = 0; i < visited->count; i++) {
+//     if (visited->entries[i].state == state && visited->entries[i].base_node == base_node) {
+//       return true; // 이미 시뮬레이션한 GSS 컨텍스트
 //     }
 //   }
-
-//   // 3. 수집된 각 Reduce 규칙에 대해 Pop & Goto 시뮬레이션 수행
-//   for (uint32_t i = 0; i < prd_count; i++) {
-//     uint32_t child_count = PRD[i].child_count;
-//     TSSymbol reduce_symbol = PRD[i].symbol;
-
-//     // Pop 시뮬레이터 호출 (과거로 돌아가 조상 상태를 찾고 Goto 연산 후 다시 이 함수로 돌아옴)
-//     simulate_reduce_pop_dfs(node, child_count, reduce_symbol, language, result);
+//   if (visited->count < 1024) {
+//     visited->entries[visited->count].state = state;
+//     visited->entries[visited->count].base_node = base_node;
+//     visited->count++;
+//   } else {
+//     return true;
 //   }
+//   return false;
 // }
-
-// [new] parser.c에서 호출할 외부 노출 함수
-// TSStatePath ts_stack_simulate_conversion(Stack *self, StackVersion version, const TSLanguage *language) {
-//   TSStatePath predictions = {0};
-  
-//   if (version >= self->heads.size) return predictions;
-//   StackHead *head = array_get(&self->heads, version);
-//   if (!head || !head->node) return predictions;
-
-//   // DFS 시뮬레이션 시작
-//   simulate_current_states_dfs(head->node, language, &predictions);
-
-//   return predictions;
-// }
-
-typedef struct {
-  TSStateId state;
-  StackNode *base_node;
-} VirtualHead;
-
-typedef struct {
-  VirtualHead entries[1024]; 
-  uint32_t count;
-} VisitedSet;
-
-static bool mark_visited(VisitedSet *visited, TSStateId state, StackNode *base_node) {
-  for (uint32_t i = 0; i < visited->count; i++) {
-    if (visited->entries[i].state == state && visited->entries[i].base_node == base_node) {
-      return true; // 이미 시뮬레이션한 GSS 컨텍스트
-    }
-  }
-  if (visited->count < 1024) {
-    visited->entries[visited->count].state = state;
-    visited->entries[visited->count].base_node = base_node;
-    visited->count++;
-  } else {
-    return true;
-  }
-  return false;
-}
 
 static void add_state(TSStatePath *union_path, TSStateId state) {
   for (uint32_t i = 0; i < union_path->count; i++) {
@@ -1090,46 +955,44 @@ static void add_state(TSStatePath *union_path, TSStateId state) {
   }
 }
 
+// // [Helper] 가상 DFS 서명 변경 (is_virtual 플래그 추가)
 // static void simulate_reduce_pop_dfs(
 //     StackNode *node, uint32_t pop_count, 
 //     TSSymbol reduce_symbol, const TSLanguage *language, 
 //     TSStatePath *result, VisitedSet *visited);
 
-// // 커서 위치에서 유효한 모든 파싱 상태의 합집합을 구하는 메인 DFS 함수
+// // [new]
 // static void simulate_current_states_dfs(
-//     TSStateId current_state,   // Algorithm 2의 'state'
-//     StackNode *base_node,      // Algorithm 2의 'stack' (GSS 상의 현재 컨텍스트)
-//     const TSLanguage *language, 
-//     TSStatePath *result,       // Algorithm 2의 'result'
-//     VisitedSet *visited
+//   TSStateId current_state,   
+//   StackNode *real_node,      
+//   bool is_virtual,           // 핵심: 가상 상태인지 진짜 스택 시작점인지 구분
+//   const TSLanguage *language, 
+//   TSStatePath *result, 
+//   VisitedSet *visited
 // ) {
-//   // 1. 순환 참조 검사 (GLR 특성상 필수적인 추가 로직)
-//   if (mark_visited(visited, current_state, base_node)) return;
-
-//   // 2. Algorithm 2: "return {state} ∪ result"
-//   // 도달한 현재 상태는 무조건 결과 집합에 추가합니다.
+//   // 도달한 상태는 무조건 결과 집합에 추가
 //   add_state(result, current_state); 
 
-//   // 3. Algorithm 2: "let PRD be the set of all productions A <- rhs used in reduce actions..."
-//   // 현재 상태(current_state)에서 유효한 모든 Reduce 규칙(PRD)을 수집합니다.
-//   typedef struct { uint32_t child_count; TSSymbol symbol; } ReduceProduction;
+//   if (mark_visited(visited, current_state, real_node)) return;
+
+//   typedef struct { 
+//     uint32_t child_count; 
+//     TSSymbol symbol; 
+//   } ReduceProduction;
 //   ReduceProduction PRD[256];
 //   uint32_t prd_count = 0;
   
 //   uint32_t total_terminal_count = language->token_count + language->external_token_count;
 
 //   for (TSSymbol sym = 0; sym < total_terminal_count; sym++) {
-//     // if (sym == ts_builtin_sym_end) continue;
+//     // 파싱 테이블을 조회해 현재 상태에서 가능한 모든 Reduce 액션 수집
 //     uint32_t idx = ts_language_lookup(language, current_state, sym);
 //     if (idx == 0) continue;
-
 //     const TSParseActionEntry *entry = &language->parse_actions[idx];
 //     const TSParseAction *actions = (const TSParseAction *)(entry + 1);
 
 //     for (uint32_t i = 0; i < entry->entry.count; i++) {
 //       if (actions[i].type == TSParseActionTypeReduce) {
-        
-//         // 중복 Reduce 규칙(동일한 자식 수와 생성 규칙) 필터링
 //         bool exists = false;
 //         for (uint32_t k = 0; k < prd_count; k++) {
 //           if (PRD[k].symbol == actions[i].reduce.symbol && 
@@ -1147,214 +1010,308 @@ static void add_state(TSStatePath *union_path, TSStateId state) {
 //     }
 //   }
 
-//   // 4. 수집된 각 Reduce 규칙에 대해 가상으로 Pop 연산을 시뮬레이션합니다.
+//   // 수집된 각 Reduce 액션들을 하나씩 꺼내어
+//   // 스택 pop 시뮬레이션 실행
 //   for (uint32_t i = 0; i < prd_count; i++) {
-//     if (PRD[i].child_count > 0) {
-//       // [버그 수정 핵심] current_state가 가상 스택의 1칸을 차지하므로,
-//       // base_node에서는 (child_count - 1) 번만 Pop 합니다.
-//       simulate_reduce_pop_dfs(
-//           base_node, 
-//           PRD[i].child_count - 1, 
-//           PRD[i].symbol, 
-//           language, result, visited
-//       );
-//     } else {
-//       // (Tree-sitter에서 child_count == 0 인 Epsilon 룰은 거의 없으므로 무시하거나 별도 처리)
+//     uint32_t pop_count = PRD[i].child_count;
+
+//     if (is_virtual) {
+//       if (pop_count == 0) {
+//         // 자식이 0개이면 제자리에서 다음 상태 이동
+//         TSStateId next_state = ts_language_lookup(language, current_state, PRD[i].symbol);
+//         if (next_state != 0) {
+//           simulate_current_states_dfs(next_state, real_node, true, language, result, visited);
+//         }
+//         continue;
+//       }
+//       // 예: A -> B C 에서 pop_count = 2 일 때
+//       // 현재 상태 C
+//       // 나머지 pop_count-1 칸만 밑으로 내려감
+//       pop_count -= 1; 
+//       simulate_reduce_pop_dfs(real_node, pop_count, PRD[i].symbol, language, result, visited);
+//     } 
+//     else {
+//       // 실제 스택
+//       if (pop_count == 0) {
+//         // 자식이 0개이면 제자리에서 다음 상태 이동
+//         TSStateId next_state = ts_language_lookup(language, current_state, PRD[i].symbol);
+//         if (next_state != 0) {
+//           simulate_current_states_dfs(next_state, real_node, true, language, result, visited);
+//         }
+//         continue;
+//       }
+//       simulate_reduce_pop_dfs(real_node, pop_count, PRD[i].symbol, language, result, visited);
 //     }
 //   }
 // }
 
-// // GSS를 거슬러 올라가며(Pop) 새로운 상태(GOTO)를 찾는 함수
 // static void simulate_reduce_pop_dfs(
-//     StackNode *node, 
-//     uint32_t pop_count, 
-//     TSSymbol reduce_symbol, 
-//     const TSLanguage *language, 
-//     TSStatePath *result,
-//     VisitedSet *visited
+//   StackNode *node, 
+//   uint32_t pop_count, 
+//   TSSymbol reduce_symbol, 
+//   const TSLanguage *language, 
+//   TSStatePath *result,
+//   VisitedSet *visited
 // ) {
-//   // 1. 목표치만큼 Pop 완료
+//   if (!node) return;
+
 //   if (pop_count == 0) {
-//     // Algorithm 2: "let stack1 be the resulting stack" -> 현재 도달한 `node`가 `stack1`입니다.
-    
-//     // 조상 노드의 상태(node->state)에서 비단말 심볼(A, reduce_symbol)을 읽었을 때의 GOTO 연산 조회
-//     // 논터미널 심볼의 lookup 반환값은 액션 인덱스가 아니라 '후속 상태(next_state)' 그 자체
 //     TSStateId next_state = ts_language_lookup(language, node->state, reduce_symbol);
-    
-//     // 유효한 GOTO 상태가 존재한다면
 //     if (next_state != 0) {
-//       simulate_current_states_dfs(next_state, node, language, result, visited);
+//       simulate_current_states_dfs(next_state, node, true, language, result, visited);
 //     }
 //     return;
 //   }
 
-//   // B. GLR 파서(GSS)의 다중 경로 탐색 부분 (Re-split 시뮬레이션)
-//   // 결정적 파서는 이전 스택 노드가 1개뿐이지만, GLR은 여러 경로(links)가 존재할 수 있습니다.
 //   for (int i = 0; i < node->link_count; i++) {
 //     StackLink link = node->links[i];
     
-//     // 각 갈래길을 따라 계속해서 스택을 거슬러 올라갑니다 (pop_count - 1).
+//     // 핵심: 링크(과거 궤적)가 Extra 토큰(주석 등)인지 확인
+//     bool is_extra = ts_subtree_extra(link.subtree);
+
+//     // Extra 토큰은 child_count 소모량에 포함시키지 않고 스킵!
+//     uint32_t next_pop_count = is_extra ? pop_count : pop_count - 1;
+
 //     simulate_reduce_pop_dfs(
-//         link.node, pop_count - 1, 
+//         link.node, next_pop_count, 
 //         reduce_symbol, language, result, visited
 //     );
 //   }
 // }
 
-// // [new]
-// TSStatePath ts_stack_simulate_conversion(Stack *self, StackVersion version, const TSLanguage *language) {
+// // [new] parser.c 에서 파싱을 멈춘 직후, 
+// //       현재 살아있는 스택 헤드 중 하나를 넘겨주며 시뮬레이션 시작 요청
+// TSStatePath ts_stack_simulate_conversion(
+//   Stack *self, 
+//   StackVersion version,   // 현재 탐색할 스텍 헤드 번호
+//   const TSLanguage *language
+// ) {
+//   // 결과 배열 및 방문 기록 초기화
 //   TSStatePath predictions = {0};
-  
 //   if (version >= self->heads.size) return predictions;
 //   StackHead *head = array_get(&self->heads, version);
 //   if (!head || !head->node) return predictions;
 
 //   VisitedSet visited = {0};
 
-//   TSStateId current_state = head->node->state;
-  
-//   // [버그 수정 핵심] 초기 base_node를 올바르게 분리
-//   // 최상단 상태(current_state)를 제외한, 그 밑동(links)들을 base_node로 넘깁니다.
-//   if (head->node->link_count > 0) {
-//     for (int i = 0; i < head->node->link_count; i++) {
-//       simulate_current_states_dfs(current_state, head->node->links[i].node, language, &predictions, &visited);
-//     }
-//   } else {
-//     // 링크가 없는 최상위 루트인 경우
-//     simulate_current_states_dfs(current_state, NULL, language, &predictions, &visited);
-//   }
+//   // 상태 확장 및 reduce 탐색
+//   simulate_current_states_dfs(
+//     head->node->state, 
+//     head->node, 
+//     false, 
+//     language, 
+//     &predictions, 
+//     &visited
+//   );
+
 //   return predictions;
 // }
 
-// [Helper] 가상 DFS 서명 변경 (is_virtual 플래그 추가)
+typedef struct {
+  TSStateId  state;
+  StackNode *base_node;
+} VisitedKey;
+
+typedef struct {
+  VisitedKey entries[1024];
+  uint32_t   count;
+} VisitedSet;
+
+typedef struct {
+  uint32_t child_count;
+  TSSymbol symbol;  // non terminal
+} ReduceProduction;
+
+// 탐색 시작 전, 스택 Top에 있는 Extra 노드들 제거
+// c.f. 트리시터는 Extra 토큰을 스택에 push하지만,
+//      바로 밑에 있는 토큰의 상태를 그대로 복사해서 가져감
+static StackNode *strip_leading_extras(StackNode *node) {
+  while (
+    node != NULL &&
+    node->link_count == 1 &&
+    node->links[0].subtree.ptr != NULL &&
+    ts_subtree_extra(node->links[0].subtree)
+  ) {
+    node = node->links[0].node;
+  }
+  return node;
+}
+
+// 전방 선언
 static void simulate_reduce_pop_dfs(
-    StackNode *node, uint32_t pop_count, 
-    TSSymbol reduce_symbol, const TSLanguage *language, 
-    TSStatePath *result, VisitedSet *visited);
+  StackNode        *node,
+  uint32_t          remaining,
+  TSSymbol          reduce_symbol,
+  const TSLanguage *language,
+  TSStatePath      *result,
+  VisitedSet       *visited
+);
 
-static void simulate_current_states_dfs(
-    TSStateId current_state,   
-    StackNode *real_node,      
-    bool is_virtual,           // 💡 핵심: 가상 상태인지 진짜 스택 시작점인지 구분
-    const TSLanguage *language, 
-    TSStatePath *result, 
-    VisitedSet *visited
+// (state, base_node) 쌍으로 방문 여부를 추적
+// 동일한 GSS 컨텍스트에서 동일한 state 재진입만 차단
+// → 다른 스택 문맥에서 같은 state 도달은 허용
+static bool mark_visited(VisitedSet *visited, TSStateId state, StackNode *base_node) {
+  for (uint32_t i = 0; i < visited->count; i++) {
+    if (visited->entries[i].state     == state &&
+        visited->entries[i].base_node == base_node) {
+      return true;  // 이미 이 (state, 컨텍스트)로 탐색한 적 있음
+    }
+  }
+  if (visited->count < 1024) {
+    visited->entries[visited->count].state     = state;
+    visited->entries[visited->count].base_node = base_node;
+    visited->count++;
+  } else {
+    // 테이블 포화 → 보수적으로 방문한 것으로 처리
+    return true;
+  }
+  return false;
+}
+
+// 현재 상태에서 가능한 reduce 액션들을 수집
+static uint32_t collect_reduces(
+  const TSLanguage  *language,
+  TSStateId          state,
+  ReduceProduction  *out,
+  uint32_t           out_cap
 ) {
-  if (mark_visited(visited, current_state, real_node)) return;
+  uint32_t count = 0;
 
-  add_state_to_union(result, current_state); 
+  // terminal 심볼 범위만 조회
+  uint32_t terminal_count = language->token_count + language->external_token_count;
 
-  typedef struct { uint32_t child_count; TSSymbol symbol; } ReduceProduction;
-  ReduceProduction PRD[256];
-  uint32_t prd_count = 0;
-  
-  uint32_t total_terminal_count = language->token_count + language->external_token_count;
-
-  for (TSSymbol sym = 0; sym < total_terminal_count; sym++) {
-    // 이전 답변에서 해결했던 EOF(0) 포함을 위해 continue 삭제 유지
-    uint32_t idx = ts_language_lookup(language, current_state, sym);
+  for (TSSymbol sym = 0; sym < terminal_count && count < out_cap; sym++) {
+    uint32_t idx = ts_language_lookup(language, state, sym);
     if (idx == 0) continue;
 
     const TSParseActionEntry *entry = &language->parse_actions[idx];
     const TSParseAction *actions = (const TSParseAction *)(entry + 1);
 
-    for (uint32_t i = 0; i < entry->entry.count; i++) {
-      if (actions[i].type == TSParseActionTypeReduce) {
-        bool exists = false;
-        for (uint32_t k = 0; k < prd_count; k++) {
-          if (PRD[k].symbol == actions[i].reduce.symbol && 
-              PRD[k].child_count == actions[i].reduce.child_count) {
-            exists = true; 
-            break;
-          } 
+    for (uint32_t a = 0; a < entry->entry.count && count < out_cap; a++) {
+      if (actions[a].type != TSParseActionTypeReduce) continue;
+
+      TSSymbol sym_r = actions[a].reduce.symbol;
+      uint32_t count_r = actions[a].reduce.child_count;
+
+      // (symbol, child_count) 중복 제거
+      bool dup = false;
+      for (uint32_t k = 0; k < count; k++) {
+        if (out[k].symbol == sym_r && out[k].child_count == count_r) {
+          dup = true;
+          break;
         }
-        if (!exists && prd_count < 256) {
-          PRD[prd_count].child_count = actions[i].reduce.child_count;
-          PRD[prd_count].symbol = actions[i].reduce.symbol;
-          prd_count++;
-        }
+      }
+      if (!dup) {
+        out[count].symbol = sym_r;
+        out[count].child_count = count_r;
+        count++;
       }
     }
   }
+  return count;
+}
 
+// current_state에 도달했음을 기록하고,
+// 그 상태에서 가능한 모든 reduce를 시뮬레이션
+static void simulate_current_states_dfs(
+  TSStateId         current_state,
+  StackNode        *real_node,    // 스택 top 노드
+  bool              is_virtual,
+  const TSLanguage *language,
+  TSStatePath      *result,
+  VisitedSet       *visited
+) {
+  // 1. 도달한 상태는 무조건 결과 집합에 추가
+  add_state(result, current_state);
+
+  // 2. (state, base_node) 쌍으로 재진입 차단
+  //    → 동일 컨텍스트에서 epsilon 루프 / 좌재귀 reduce 무한루프 방지
+  if (mark_visited(visited, current_state, real_node)) return;
+
+  // 3. terminal 범위 내 reduce 수집
+  ReduceProduction prd[256];
+  uint32_t prd_count = collect_reduces(language, current_state, prd, 256);
+
+  // 4. 각 reduce 시뮬레이션
   for (uint32_t i = 0; i < prd_count; i++) {
-    uint32_t pop_count = PRD[i].child_count;
+    uint32_t pop_count = prd[i].child_count;
+
+    if (pop_count == 0) {
+      // epsilon: 반드시 current_state 기준으로 GOTO
+      TSStateId next_state = ts_language_lookup(language, current_state, prd[i].symbol);
+      if (next_state != 0) {
+        simulate_current_states_dfs(next_state, real_node, true, language, result, visited);
+      }
+      continue;
+    }
 
     if (is_virtual) {
-      // 가상 상태(GOTO로 도달한 Non-terminal)는 문법상 정확히 1칸(non-extra)을 차지함
-      if (pop_count == 0) {
-        TSStateId next_state = ts_language_lookup(language, current_state, PRD[i].symbol);
-        if (next_state != 0) {
-          simulate_current_states_dfs(next_state, real_node, true, language, result, visited);
-        }
-        continue;
-      }
-      pop_count -= 1; 
-      simulate_reduce_pop_dfs(real_node, pop_count, PRD[i].symbol, language, result, visited);
+      // 이전 단계의 Reduce(GOTO)로 만들어진 비단말 심볼이 실제 스택에 Push되지 않고,
+      // 스택 꼭대기에 있다고 상상만 하는 상태
+      // 따라서 실제 스택 top → pop_count - 1 으로 reduce 수행
+      simulate_reduce_pop_dfs(real_node, pop_count - 1, prd[i].symbol, language, result, visited);
     } else {
-      // 실제 스택의 첫 시작점은 extra 토큰일 수 있으므로 1을 빼지 않고 그대로 Pop 시작
-      if (pop_count == 0) {
-        TSStateId next_state = ts_language_lookup(language, current_state, PRD[i].symbol);
-        if (next_state != 0) {
-          simulate_current_states_dfs(next_state, real_node, true, language, result, visited);
-        }
-        continue;
-      }
-      simulate_reduce_pop_dfs(real_node, pop_count, PRD[i].symbol, language, result, visited);
+      // 실제 스택 top → pop_count 그대로 reduce 수행
+      simulate_reduce_pop_dfs(real_node, pop_count, prd[i].symbol, language, result, visited);
     }
   }
 }
 
+// reduce 시뮬레이션
 static void simulate_reduce_pop_dfs(
-    StackNode *node, 
-    uint32_t pop_count, 
-    TSSymbol reduce_symbol, 
-    const TSLanguage *language, 
-    TSStatePath *result,
-    VisitedSet *visited
+  StackNode        *node,
+  uint32_t          pop_count,
+  TSSymbol          reduce_symbol,
+  const TSLanguage *language,
+  TSStatePath      *result,
+  VisitedSet       *visited
 ) {
   if (!node) return;
 
+  // pop 완료
   if (pop_count == 0) {
+    // GOTO로 다음 상태 계산 후 재귀적으로 탐색
     TSStateId next_state = ts_language_lookup(language, node->state, reduce_symbol);
     if (next_state != 0) {
-      // Pop 후 도달한 새로운 상태는 '가상 상태(is_virtual = true)'가 됨
       simulate_current_states_dfs(next_state, node, true, language, result, visited);
     }
     return;
   }
 
+  // link_count > 1이면 merge 흔적 → 각 링크에 대해 독립 재귀
   for (int i = 0; i < node->link_count; i++) {
     StackLink link = node->links[i];
-    
-    // 핵심: 링크(과거 궤적)가 Extra 토큰(주석 등)인지 확인
-    // bool is_extra = false;
-    // if (link.subtree.ptr) {
-    //   is_extra = link.subtree.ptr->extra;
-    // }
-    bool is_extra = ts_subtree_extra(link.subtree);
-    
-    // Extra 토큰은 child_count 소모량에 포함시키지 않고 스킵!
-    uint32_t next_pop_count = is_extra ? pop_count : pop_count - 1;
+    bool is_extra = link.subtree.ptr != NULL && ts_subtree_extra(link.subtree);
 
-    simulate_reduce_pop_dfs(
-        link.node, next_pop_count, 
-        reduce_symbol, language, result, visited
-    );
+    // extra 링크는 pop_count 소모 없이 통과
+    uint32_t next_pop = is_extra ? pop_count : pop_count - 1;
+    simulate_reduce_pop_dfs(link.node, next_pop, reduce_symbol, language, result, visited);
   }
 }
 
-TSStatePath ts_stack_simulate_conversion(Stack *self, StackVersion version, const TSLanguage *language) {
+// ts_stack_simulate_conversion  (공개 진입점)
+// 하나의 스택 버전에 대해 시뮬레이션을 수행하고
+// 도달 가능한 모든 current_state를 반환
+TSStatePath ts_stack_simulate_conversion(
+  Stack *self,
+  StackVersion version,
+  const TSLanguage *language
+) {
   TSStatePath predictions = {0};
-  
   if (version >= self->heads.size) return predictions;
   StackHead *head = array_get(&self->heads, version);
   if (!head || !head->node) return predictions;
 
   VisitedSet visited = {0};
 
-  // 초기 호출 시점은 '가상'이 아닌 '실제(Real)' 스택 구조이므로 is_virtual = false 로 시작
-  simulate_current_states_dfs(head->node->state, head->node, false, language, &predictions, &visited);
+  simulate_current_states_dfs(
+    head->node->state,    // 현재 상태
+    head->node,           // 현재 노드
+    false,                // 실제 스택 top
+    language,
+    &predictions,
+    &visited
+  );
 
   return predictions;
 }
