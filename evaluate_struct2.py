@@ -129,12 +129,12 @@ class FileReporter:
         return 0
 
     def save_debug_log(self, filename, log_data):
-        # 저장 폴더: reports/smallbasic/debug_states_v1
-        debug_dir = os.path.join(REPORT_DIR, "debug_states_v1")
+        # 저장 폴더: reports/smallbasic/debug_states_v2
+        debug_dir = os.path.join(REPORT_DIR, "debug_states_v2")
         if not os.path.exists(debug_dir):
             os.makedirs(debug_dir)
         
-        csv_path = os.path.join(debug_dir, f"{filename}_v1.csv")
+        csv_path = os.path.join(debug_dir, f"{filename}_v2.csv")
         
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
@@ -257,7 +257,7 @@ class FileReporter:
     def save_file_performance_report(self):
 
         # CSV 리포트 저장
-        csv_path = os.path.join(REPORT_DIR, "sb_file_performance_v1.csv")
+        csv_path = os.path.join(REPORT_DIR, "sb_file_performance_v2.csv")
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             # 헤더 작성

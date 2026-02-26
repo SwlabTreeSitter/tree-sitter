@@ -1,414 +1,414 @@
 {
   "1,1": {
     "state_id": 1,
-    "candidate": "[ID, ., ID, =, Expr]"
+    "candidate": "ID . ID = Expr"
   },
   "1,15": {
     "state_id": 188,
-    "candidate": "[., ID, =, Expr]"
+    "candidate": ". ID = Expr"
   },
   "1,16": {
     "state_id": 259,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "1,32": {
     "state_id": 214,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "1,34": {
     "state_id": 75,
-    "candidate": "[STR]"
+    "candidate": "STR"
   },
   "2,1": {
     "state_id": 97,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "2,3": {
     "state_id": 188,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "2,5": {
     "state_id": 73,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "3,1": {
     "state_id": 97,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "3,3": {
     "state_id": 188,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "3,5": {
     "state_id": 73,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "5,1": {
     "state_id": 97,
-    "candidate": "[Stmt_token4, ID, =, Expr, Stmt_token5, Expr, CRStmtCRs, Stmt_token6]"
+    "candidate": "Stmt_token4 ID = Expr Stmt_token5 Expr CRStmtCRs Stmt_token6"
   },
   "5,5": {
     "state_id": 234,
-    "candidate": "[ID, =, Expr, Stmt_token5, Expr, CRStmtCRs, Stmt_token6]"
+    "candidate": "ID = Expr Stmt_token5 Expr CRStmtCRs Stmt_token6"
   },
   "5,7": {
     "state_id": 232,
-    "candidate": "[=, Expr, Stmt_token5, Expr, CRStmtCRs, Stmt_token6]"
+    "candidate": "= Expr Stmt_token5 Expr CRStmtCRs Stmt_token6"
   },
   "5,9": {
     "state_id": 60,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "5,11": {
     "state_id": 258,
-    "candidate": "[Stmt_token5, Expr, CRStmtCRs, Stmt_token6]"
+    "candidate": "Stmt_token5 Expr CRStmtCRs Stmt_token6"
   },
   "5,14": {
     "state_id": 58,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "5,23": {
     "state_id": 140,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "6,5": {
     "state_id": 88,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "6,7": {
     "state_id": 184,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "6,9": {
     "state_id": 70,
-    "candidate": "[ID, ., ID, (, Exprs, )]"
+    "candidate": "ID . ID ( Exprs )"
   },
   "6,13": {
     "state_id": 5,
-    "candidate": "[., ID, (, Exprs, )]"
+    "candidate": ". ID ( Exprs )"
   },
   "6,14": {
     "state_id": 260,
-    "candidate": "[ID, (, Exprs, )]"
+    "candidate": "ID ( Exprs )"
   },
   "6,29": {
     "state_id": 24,
-    "candidate": "[(, Exprs, )]"
+    "candidate": "( Exprs )"
   },
   "6,30": {
     "state_id": 26,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "6,31": {
     "state_id": 249,
-    "candidate": "[)]"
+    "candidate": ")"
   },
   "6,35": {
     "state_id": 203,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "7,5": {
     "state_id": 96,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "7,8": {
     "state_id": 184,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "7,10": {
     "state_id": 70,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "7,16": {
     "state_id": 203,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "8,5": {
     "state_id": 96,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "8,8": {
     "state_id": 184,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "8,10": {
     "state_id": 70,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "8,15": {
     "state_id": 203,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "10,5": {
     "state_id": 96,
-    "candidate": "[Stmt_token9, Expr, Stmt_token10, CRStmtCRs, MoreThanZeroElseIf]"
+    "candidate": "Stmt_token9 Expr Stmt_token10 CRStmtCRs MoreThanZeroElseIf"
   },
   "10,8": {
     "state_id": 86,
-    "candidate": "[(, Expr, )]"
+    "candidate": "( Expr )"
   },
   "10,9": {
     "state_id": 80,
-    "candidate": "[ID]"
+    "candidate": "ID"
   },
   "10,11": {
     "state_id": 128,
-    "candidate": "[=, CompExpr]"
+    "candidate": "= CompExpr"
   },
   "10,13": {
     "state_id": 117,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "10,14": {
     "state_id": 265,
-    "candidate": "[)]"
+    "candidate": ")"
   },
   "10,16": {
     "state_id": 254,
-    "candidate": "[Stmt_token10, CRStmtCRs, MoreThanZeroElseIf]"
+    "candidate": "Stmt_token10 CRStmtCRs MoreThanZeroElseIf"
   },
   "10,25": {
     "state_id": 124,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "11,9": {
     "state_id": 67,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "11,12": {
     "state_id": 184,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "11,14": {
     "state_id": 70,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "11,21": {
     "state_id": 207,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "12,9": {
     "state_id": 68,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "12,12": {
     "state_id": 184,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "12,14": {
     "state_id": 70,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "12,21": {
     "state_id": 207,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "13,5": {
     "state_id": 122,
-    "candidate": "[OptionalElse_token1]"
+    "candidate": "OptionalElse_token1"
   },
   "13,16": {
     "state_id": 203,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "15,5": {
     "state_id": 96,
-    "candidate": "[Stmt_token9, Expr, Stmt_token10, CRStmtCRs, MoreThanZeroElseIf]"
+    "candidate": "Stmt_token9 Expr Stmt_token10 CRStmtCRs MoreThanZeroElseIf"
   },
   "15,8": {
     "state_id": 86,
-    "candidate": "[(, Expr, )]"
+    "candidate": "( Expr )"
   },
   "15,9": {
     "state_id": 80,
-    "candidate": "[ID]"
+    "candidate": "ID"
   },
   "15,11": {
     "state_id": 128,
-    "candidate": "[=, CompExpr]"
+    "candidate": "= CompExpr"
   },
   "15,13": {
     "state_id": 117,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "15,14": {
     "state_id": 265,
-    "candidate": "[)]"
+    "candidate": ")"
   },
   "15,16": {
     "state_id": 254,
-    "candidate": "[Stmt_token10, CRStmtCRs, MoreThanZeroElseIf]"
+    "candidate": "Stmt_token10 CRStmtCRs MoreThanZeroElseIf"
   },
   "15,25": {
     "state_id": 124,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "16,9": {
     "state_id": 67,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "16,12": {
     "state_id": 184,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "16,14": {
     "state_id": 70,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "16,23": {
     "state_id": 207,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "17,9": {
     "state_id": 68,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "17,12": {
     "state_id": 184,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "17,14": {
     "state_id": 70,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "17,21": {
     "state_id": 207,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "18,5": {
     "state_id": 122,
-    "candidate": "[OptionalElse_token1]"
+    "candidate": "OptionalElse_token1"
   },
   "18,16": {
     "state_id": 203,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "20,5": {
     "state_id": 96,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "20,7": {
     "state_id": 184,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "20,9": {
     "state_id": 70,
-    "candidate": "[(, Expr, )]"
+    "candidate": "( Expr )"
   },
   "20,10": {
     "state_id": 64,
-    "candidate": "[ID]"
+    "candidate": "ID"
   },
   "20,12": {
     "state_id": 65,
-    "candidate": "[+, MultiplicativeExpr]"
+    "candidate": "+ MultiplicativeExpr"
   },
   "20,14": {
     "state_id": 141,
-    "candidate": "[ID]"
+    "candidate": "ID"
   },
   "20,16": {
     "state_id": 235,
-    "candidate": "[)]"
+    "candidate": ")"
   },
   "20,18": {
     "state_id": 48,
-    "candidate": "[/, UnaryExpr]"
+    "candidate": "/ UnaryExpr"
   },
   "20,20": {
     "state_id": 157,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "20,24": {
     "state_id": 203,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "21,5": {
     "state_id": 96,
-    "candidate": "[ID, =, Expr]"
+    "candidate": "ID = Expr"
   },
   "21,7": {
     "state_id": 184,
-    "candidate": "[=, Expr]"
+    "candidate": "= Expr"
   },
   "21,9": {
     "state_id": 70,
-    "candidate": "[(, Expr, )]"
+    "candidate": "( Expr )"
   },
   "21,10": {
     "state_id": 64,
-    "candidate": "[ID]"
+    "candidate": "ID"
   },
   "21,12": {
     "state_id": 65,
-    "candidate": "[+, MultiplicativeExpr]"
+    "candidate": "+ MultiplicativeExpr"
   },
   "21,14": {
     "state_id": 141,
-    "candidate": "[ID]"
+    "candidate": "ID"
   },
   "21,16": {
     "state_id": 235,
-    "candidate": "[)]"
+    "candidate": ")"
   },
   "21,18": {
     "state_id": 48,
-    "candidate": "[/, UnaryExpr]"
+    "candidate": "/ UnaryExpr"
   },
   "21,20": {
     "state_id": 157,
-    "candidate": "[NUM]"
+    "candidate": "NUM"
   },
   "21,28": {
     "state_id": 203,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "22,5": {
     "state_id": 96,
-    "candidate": "[ID, ., ID, (, Exprs, )]"
+    "candidate": "ID . ID ( Exprs )"
   },
   "22,19": {
     "state_id": 184,
-    "candidate": "[., ID, (, Exprs, )]"
+    "candidate": ". ID ( Exprs )"
   },
   "22,20": {
     "state_id": 255,
-    "candidate": "[ID, (, Exprs, )]"
+    "candidate": "ID ( Exprs )"
   },
   "22,28": {
     "state_id": 221,
-    "candidate": "[(, Exprs, )]"
+    "candidate": "( Exprs )"
   },
   "22,29": {
     "state_id": 27,
-    "candidate": "[ID]"
+    "candidate": "ID"
   },
   "22,30": {
     "state_id": 217,
-    "candidate": "[,, MoreThanOneExpr]"
+    "candidate": ", MoreThanOneExpr"
   },
   "22,32": {
     "state_id": 54,
-    "candidate": "[ID]"
+    "candidate": "ID"
   },
   "22,33": {
     "state_id": 217,
-    "candidate": "[,, MoreThanOneExpr]"
+    "candidate": ", MoreThanOneExpr"
   },
   "22,35": {
     "state_id": 54,
-    "candidate": "[STR]"
+    "candidate": "STR"
   },
   "22,47": {
     "state_id": 238,
-    "candidate": "[)]"
+    "candidate": ")"
   },
   "22,49": {
     "state_id": 203,
-    "candidate": "[CR_token2]"
+    "candidate": "CR_token2"
   },
   "23,1": {
     "state_id": 189,
-    "candidate": "[Stmt_token6]"
+    "candidate": "Stmt_token6"
   }
 }

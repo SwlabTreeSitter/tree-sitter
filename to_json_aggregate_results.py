@@ -11,10 +11,10 @@ import json
 
 # =================[ 설정 ]=================
 # 다른 언어 작업 시 여기 경로만 수정
-INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/LEARN_BENCH_data2"
-OUTPUT_FILE = "/home/hyeonjin/PL/extension/small-basic-extension/src/smallbasic_candidates2.json"
-# INPUT_DIR =  "/home/hyeonjin/PL/benchmarks_collection/c11/LEARN_BENCH_data"
-# OUTPUT_FILE = "/home/hyeonjin/PL/extension/small-basic-extension/src/c11_candidates.json"
+# INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/LEARN_BENCH_data2"
+# OUTPUT_FILE = "/home/hyeonjin/PL/extension/small-basic-extension/src/smallbasic_candidates2.json"
+INPUT_DIR =  "/home/hyeonjin/PL/benchmarks_collection/c11/LEARN_BENCH_data"
+OUTPUT_FILE = "/home/hyeonjin/PL/extension/small-basic-extension/src/c11_candidates.json"
 TEMP_DB_FILE = "temp_aggregation.db" 
 # ==========================================
 

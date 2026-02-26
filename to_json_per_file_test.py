@@ -19,10 +19,10 @@ import json
 import shutil
 
 # =================[ 리눅스 경로 설정 ]=================
-INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data2"
-OUTPUT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
-# INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/c11/TEST_BENCH_data"
-# OUTPUT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/c11"
+# INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data2"
+# OUTPUT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
+INPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/c11/TEST_BENCH_data"
+OUTPUT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/c11"
 # =========================================================
 
 def format_pattern_clean(raw_pattern: str) -> str:
