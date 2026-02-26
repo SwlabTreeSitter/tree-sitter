@@ -3,7 +3,6 @@
 #   1) .c    -> .data  <-- here
 #   2) .data -> .json
 
-
 import os
 import subprocess
 import shutil
@@ -22,23 +21,30 @@ SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/c11/LEARN_BENCH"
 # 4. 결과 저장 폴더
 OUTPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/c11/LEARN_BENCH_data"
 
-# 5. 수집할 확장자 (엄격하게 .c와 .h만 지정)
-TARGET_EXTENSIONS = {".c", ".h"}
+# 5. 수집할 확장자 (구조적 로직 학습을 위해 .c에 집중, 필요시 ".h" 추가)
+TARGET_EXTENSIONS = {".c"}
 
-# 6. 무시할 폴더명 (빌드 폴더)
-IGNORE_DIRS = {"build"} 
+# 6. 무시할 폴더명 (학습 노이즈 제거를 위한 필터링 셋)
+IGNORE_DIRS = {
+    # 공통: 빌드 및 테스트, 문서
+    "build", "tests", "test", "tst", "fuzzing", "doc", "docs", 
+    "Examples", "sample", "scripts",
+    # GNU 프로젝트 특화: Autotools 및 환경 설정 관련
+    "build-aux", "m4", "po", "autom4te.cache", "terminfo", "utf8encodings", "etc", "mk",
+    # 특정 프로젝트 종속성
+    "unity"
+}
 
 ARG_ROW = "2147483647"  # 파일 끝까지 읽기
 ARG_COL = "0"
 ARG_MODE = "1"      # 1 = Collection Mode
-
 
 # =========================================================
 
 def main():
     if os.path.exists(OUTPUT_DIR):
         try:
-            shutil.rmtree(OUTPUT_DIR) # rm -rf 와 동일한 역할
+            shutil.rmtree(OUTPUT_DIR)
             print(f"[Info] Removed existing directory: {OUTPUT_DIR}")
         except Exception as e:
             print(f"[Error] Failed to remove directory: {e}")
@@ -48,7 +54,7 @@ def main():
     os.makedirs(OUTPUT_DIR)
     print(f"[Info] Created output directory: {OUTPUT_DIR}")
 
-    # [추가] 스킵된 파일 목록 저장용 로그 파일 초기화
+    # 스킵된 파일 목록 저장용 로그 파일 초기화
     SKIP_LOG_PATH = os.path.join(OUTPUT_DIR, "skipped_files.txt")
     with open(SKIP_LOG_PATH, "w", encoding="utf-8") as f:
         f.write("=== Skipped Files (Parse Error / Recovery Detected) ===\n")
@@ -61,7 +67,7 @@ def main():
 
     # 재귀 탐색 시작
     for root, dirs, files in os.walk(SOURCE_DIR):
-        # 무시할 폴더는 탐색에서 제외
+        # [핵심] IGNORE_DIRS에 포함된 폴더는 하위 탐색(os.walk) 대상에서 완전히 제외 (가지치기)
         dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
 
         for filename in files:
@@ -88,14 +94,12 @@ def main():
             print(f"Processing: {rel_path} ...")
 
             # 실행 명령어
-            # args: [EXE] [Lang] [LibPath] [FilePath] [Row] [Col] [Mode]
             cmd = [EXE_PATH, "c", LIB_PATH, full_source_path, ARG_ROW, ARG_COL, ARG_MODE]
 
             is_skipped = False
             skip_reason = ""
 
             try:
-                # [수정] check=False로 설정하여 에러 코드 발생 시에도 흐름 제어
                 result = subprocess.run(
                     cmd, 
                     check=False, 
@@ -140,7 +144,7 @@ def main():
                     os.remove(generated_file)
                 
                 # 로그 메시지 결정
-                if not is_skipped: # 로직상 스킵은 아닌데 파일이 없는 경우
+                if not is_skipped: 
                     skip_reason = "No output generated or empty file"
                     print(f"  -> Failed: {skip_reason}")
 

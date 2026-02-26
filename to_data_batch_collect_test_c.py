@@ -17,7 +17,7 @@ EXE_PATH = "/home/hyeonjin/PL/tree-sitter/TreeSitterCutFile.exe"
 LIB_PATH = "/home/hyeonjin/PL/tree-sitter-c/c.so" 
 
 # 3. [수정] 테스트 프로그램들이 들어있는 루트 폴더
-SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/c11/TEST_BENCH" 
+SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/c11/TEST_BENCH/ansi_c" 
 
 # 4. [수정] 결과 파일(.data)을 저장할 폴더
 OUTPUT_DIR = "/home/hyeonjin/PL/benchmarks_collection/c11/TEST_BENCH_data"
@@ -29,7 +29,7 @@ ARG_COL = "0"
 ARG_MODE = "1"      # 1 = Collection Mode
 
 # 6. [추가] 수집할 확장자 및 무시할 폴더
-TARGET_EXTENSIONS = {".c", ".h"}
+TARGET_EXTENSIONS = {".c"}
 IGNORE_DIRS = {".git", "build"}
 
 # =========================================================
@@ -64,7 +64,7 @@ def main():
         dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
 
         for filename in files:
-            # [수정] 확장자 필터링 (.c, .h 만 선택, .i, .s, 실행파일 제외)
+            # [수정] 확장자 필터링 (.c 만 선택)
             _, ext = os.path.splitext(filename)
             if ext.lower() not in TARGET_EXTENSIONS:
                 continue
