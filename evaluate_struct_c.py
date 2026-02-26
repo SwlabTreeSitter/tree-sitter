@@ -5,24 +5,24 @@ import json
 import subprocess
 import time
 import csv
+import re
 from collections import defaultdict
 
-# =================[ 리눅스 경로 설정 ]=================
+# =================[ 설정 및 경로 ]=================
 
+# 1. 실행 파일 및 라이브러리 경로 (C 언어용)
 EXE_PATH = "/home/hyeonjin/PL/tree-sitter/TreeSitterCutFile.exe"
 LIB_PATH = "/home/hyeonjin/PL/tree-sitter-c/c.so"
+
+# 2. 데이터셋 및 정답지 경로 (.c만 타겟팅)
+SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/c11/TEST_BENCH/ansi_c" 
+ANSWER_DIR = "/home/hyeonjin/PL/tree-sitter/reports/c11"
+REPORT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/c11"
+
+# 3. DB 경로 (구조 후보 추천용)
 DB_PATH = "/home/hyeonjin/PL/extension/small-basic-extension/src/c11_candidates.json"
 
-# 데이터셋 경로
-SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/c11/TEST_BENCH" 
-ANSWER_DIR = "/home/hyeonjin/PL/tree-sitter/reports/c11"
-
-# 리포트 저장 경로 (폴더)
-REPORT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/c11"
-FILE_REPORT_NAME = "c11_file_performance.txt"
-RANK_REPORT_NAME = "c11_rank_distribution.txt"
-
-# [제한] 분석할 최대 순위
+# 4. 평가 설정
 MAX_CANDIDATE_LIST_SIZE = 20
 MAX_RANK_CHECK = 20 
 
@@ -37,32 +37,17 @@ class FileReporter:
         self.out_of_range_count = 0
         self.global_queries = 0
         self.global_files = 0
-        
-        # 파일별 리포트 데이터
         self.file_reports = []
         
-        # 리포트 폴더 생성
+        # 리포트 폴더 생성 및 초기화
         if not os.path.exists(REPORT_DIR):
             os.makedirs(REPORT_DIR)
         else:
-            # 기존 리포트 파일 삭제 (초기화)
-            # TXT 파일 삭제
-            for report_file in [FILE_REPORT_NAME, RANK_REPORT_NAME]:
-                path = os.path.join(REPORT_DIR, report_file)
-                if os.path.exists(path):
-                    try:
-                        os.remove(path)
-                        # print(f"[Info] Removed old report: {path}")
-                    except OSError:
-                        pass
-            
-            # CSV 파일 삭제 (코드 하단에서 생성하는 파일명과 일치해야 함)
-            for csv_file in ["c11_file_performance.csv", "c11_rank_distribution.csv"]:
+            for csv_file in ["c11_file_performance_v3.csv", "c11_rank_distribution_v3.csv"]:
                 path = os.path.join(REPORT_DIR, csv_file)
                 if os.path.exists(path):
                     try:
                         os.remove(path)
-                        # print(f"[Info] Removed old CSV: {path}")
                     except OSError:
                         pass
 
@@ -72,32 +57,50 @@ class FileReporter:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    # [helper] 파일 내 모든 커서 위치에서의 컨버전 결과를 반환
-    def run_cpp_batch(self, target_file):
-        cmd = [EXE_PATH, "c", LIB_PATH, target_file, "--batch"]
+    # -------------------------------------------------------------------------
+    # [핵심] 단일 위치 실행 함수 (Iterative Execution)
+    # C++ 프로그램을 특정 Row, Col 좌표로 실행하여 예측값(State List)을 받아옴
+    # -------------------------------------------------------------------------
+    def run_cpp_at_position(self, target_file, row, col):
+        # 명령어: EXE "c" lib file row col 0(ConversionMode)
+        cmd = [EXE_PATH, "c", LIB_PATH, target_file, str(row), str(col), "0"]
+        
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8')
-            parsed_data = {}
-            is_capturing = False
-            for line in result.stdout.splitlines():
-                line = line.strip()
-                if "@@BATCH_START@@" in line:
-                    is_capturing = True
-                    continue
-                if "@@BATCH_END@@" in line:
-                    break
-                if is_capturing and "|" in line:
-                    try:
-                        loc, states_str = line.split("|")
-                        states = list(map(int, states_str.strip().split()))
-                        parsed_data[loc.strip()] = states
-                    except:
-                        continue
-            return parsed_data
-        except:
-            return {}
+            result = subprocess.run(
+                cmd, 
+                capture_output=True, 
+                text=True, 
+                encoding='utf-8',
+                errors='replace' # 인코딩 에러 방지
+            )
+            
+            if result.returncode != 0:
+                return []
 
-    # [helper] 컨버전 결과로 DB 조회하여 구조적 후보 추천 목록 반환
+            # 출력 파싱 (@@PREDICT: 태그 찾기)
+            for line in result.stdout.splitlines():
+                match = re.search(r"@@PREDICT:\s*([\d\s]+)", line)
+                if match:
+                    raw_nums = match.group(1).strip()
+                    if not raw_nums: 
+                        return []
+                        
+                    states = []
+                    for num_str in raw_nums.split():
+                        try:
+                            states.append(int(num_str))
+                        except ValueError:
+                            pass # 숫자가 아닌 쓰레기값 무시
+                    
+                    return states
+            
+            return [] # 태그를 못 찾음
+            
+        except Exception as e:
+            # print(f"[Error] Failed to parse output at {row},{col} - {e}")
+            return []
+
+    # [helper] DB Lookup
     def lookupDB(self, states):
         merged_map = defaultdict(int)
         for state in states:
@@ -106,49 +109,50 @@ class FileReporter:
                 for item in self.db[s_key]:
                     merged_map[item['key']] += item['value']
                     
-        sorted_result = sorted(merged_map.items(), key=lambda x: x[1], reverse=True)
-        return sorted_result
+        return sorted(merged_map.items(), key=lambda x: x[1], reverse=True)
 
-    # [helper] 정답(ground_truth)이 구조적 후보 추천 목록에서 몇번째인지 계산
+    # [helper] Rank Calculation
     def get_rank(self, candidates, ground_truth):
         gt_clean = ground_truth.replace(" ", "")
-        print(f"    [Rank Check] Target: {gt_clean}")
         for rank, (key, val) in enumerate(candidates, 1):
             key_clean = key.replace(" ", "") 
             if key_clean == gt_clean:
-                print(f"    [Match !!!!!] Target: {gt_clean} == DB: {key_clean} ({rank})")
                 return rank
-        print(f"    [Fail] Target not found in top {len(candidates)}.")
         return 0
 
-    # [main] 단일 파일 평가
+    # 디버그 로그 저장
+    def save_debug_log(self, safe_name, log_data):
+        debug_dir = os.path.join(REPORT_DIR, "debug_states_c11_v3")
+        if not os.path.exists(debug_dir):
+            os.makedirs(debug_dir)
+        
+        csv_path = os.path.join(debug_dir, f"{safe_name}_v3.csv")
+        
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(["Location", "Ground_Truth", "State_List", "Rank"])
+            writer.writerows(log_data)
+
+    # -------------------------------------------------------------------------
+    # [Main Logic] 파일 단위 평가
+    # -------------------------------------------------------------------------
     def evaluate_file(self, target_file):
-        # 1. 원본 파일의 상대 경로 계산 (예: ansi_c/chapter_1/hello.c)
+        # 1. C11 전용 safe_name 생성 규칙 적용
         try:
             rel_path = os.path.relpath(target_file, SOURCE_DIR)
         except ValueError:
-            # 경로가 꼬인 경우 파일명만 사용 (fallback)
             rel_path = os.path.basename(target_file)
-
-        # 2. 수집 스크립트와 동일한 규칙으로 'safe name' 생성
-        # (예: ansi_c_chapter_1_hello.c)
+            
         safe_name = rel_path.replace(os.path.sep, "_").replace("..", "")
-        
-        # 3. JSON 파일명 생성 (.data가 .json으로 바뀐 규칙 적용)
-        # 수집시: safe_name + ".data"
-        # 변환시: .data -> .json
-        # 결론: safe_name + ".json"
         json_name = safe_name + ".json"
-        
         json_path = os.path.join(ANSWER_DIR, json_name)
 
         if not os.path.exists(json_path):
-            # 디버깅용: 파일을 못 찾으면 경로를 출력해봄
-            # print(f"[Skip] JSON not found: {json_name}")
             return
 
         answers = self.load_json(json_path)
-        preds = self.run_cpp_batch(target_file)
+        if not answers:
+            return
 
         file_query_count = 0
         file_top1_count = 0
@@ -156,20 +160,48 @@ class FileReporter:
         file_top5_count = 0
         file_top10_count = 0
         file_top20_count = 0
+        debug_logs = []
 
-        for loc, states in preds.items():
-            full_candidates = self.lookupDB(states)
-            top_candidates = full_candidates[:MAX_CANDIDATE_LIST_SIZE]
+        total_locations = len(answers)
+        processed_locs = 0
+        print(f" -> Analyzing {safe_name} ({total_locations} points)...")
 
-            if loc not in answers: continue
-            
-            ground_truth_data = answers[loc]
-            ground_truth = ground_truth_data.get("candidate", "")
-            
+        for loc_key, gt_data in answers.items():
+            processed_locs += 1
+            if processed_locs % 10 == 0:
+                print(f"    Processing {processed_locs}/{total_locations}...", end="\r")
+
+            # 1. 좌표 파싱 (안전하게 숫자만 추출)
+            # 예: "15,2" 또는 "15:2" 포맷 모두 대응 가능하도록 정규식 사용
+            nums = re.findall(r'\d+', loc_key)
+            if len(nums) >= 2:
+                row, col = int(nums[0]), int(nums[1])
+            else:
+                continue
+
+            # 2. 정답 데이터 확인
+            ground_truth = gt_data.get("candidate", "")
             if not ground_truth: continue
 
-            rank = self.get_rank(top_candidates, ground_truth)
+            # 3. C++ 실행 (단일 위치)
+            predicted_states = self.run_cpp_at_position(target_file, row, col)
 
+            if predicted_states:
+                state_str = str(predicted_states)
+            else:
+                state_str = "FAIL"
+
+            # 4. 순위 계산
+            rank = 0
+            if predicted_states:
+                full_candidates = self.lookupDB(predicted_states)
+                top_candidates = full_candidates[:MAX_CANDIDATE_LIST_SIZE]
+                rank = self.get_rank(top_candidates, ground_truth)
+
+            # 로그 기록
+            debug_logs.append([loc_key, ground_truth, state_str, rank])
+
+            # 5. 통계 집계
             self.global_queries += 1
             file_query_count += 1
             
@@ -183,9 +215,11 @@ class FileReporter:
             else:
                 self.out_of_range_count += 1
 
+        print(f"    Done. ({file_query_count} queries)")
+
         self.global_files += 1
         self.file_reports.append({
-            "name": os.path.basename(target_file), # 리포트에는 짧은 이름 출력
+            "name": safe_name,
             "total": file_query_count,
             "top1": file_top1_count,
             "top3": file_top3_count,
@@ -194,43 +228,17 @@ class FileReporter:
             "top20": file_top20_count
         })
 
+        self.save_debug_log(safe_name, debug_logs)
 
     # ==========================================================================
-    # 파일 1: 파일별 성능 요약 저장 (TXT + CSV)
+    # 리포트 1: 파일별 성능 요약 저장
     # ==========================================================================
     def save_file_performance_report(self):
-        # 1. TXT 리포트 저장 (기존 로직 유지)
-        txt_path = os.path.join(REPORT_DIR, FILE_REPORT_NAME)
-        with open(txt_path, "w", encoding="utf-8") as f:
-            f.write("="*120 + "\n")
-            f.write(f" PER-FILE PERFORMANCE SUMMARY\n")
-            f.write("="*120 + "\n")
-            f.write(f"{'File Name':<30} | {'Queries':<8} | {'Top-1':<8} | {'Top-3':<8} | {'Top-5':<8} | {'Top-10':<8} | {'Top-20':<8}\n")
-            f.write("-" * 120 + "\n")
-
-            for report in self.file_reports:
-                total = report["total"]
-                acc1 = (report["top1"] / total * 100) if total > 0 else 0.0
-                acc3 = (report["top3"] / total * 100) if total > 0 else 0.0
-                acc5 = (report["top5"] / total * 100) if total > 0 else 0.0
-                acc10 = (report["top10"] / total * 100) if total > 0 else 0.0
-                acc20 = (report["top20"] / total * 100) if total > 0 else 0.0
-
-                f.write(f"{report['name']:<30} | {total:<8} | {acc1:6.2f}% | {acc3:6.2f}% | {acc5:6.2f}% | {acc10:6.2f}% | {acc20:6.2f}%\n")
-            
-            f.write("-" * 120 + "\n")
-            f.write(f"Total Files Processed: {self.global_files}\n")
-        
-        print(f"[Saved] File Report (TXT) -> {txt_path}")
-
-        # 2. CSV 리포트 저장 (추가된 로직)
         csv_path = os.path.join(REPORT_DIR, "c11_file_performance.csv")
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            # 헤더 작성
-            writer.writerow(["File Name", "Total Queries", "Top-1 Acc (%)", "Top-3 Acc (%)", "Top-5 Acc (%)", "Top-10 Acc (%)", "Top-20 Acc (%)"])
+            writer.writerow(["Safe File Name", "Total Queries", "Top-1 Acc (%)", "Top-3 Acc (%)", "Top-5 Acc (%)", "Top-10 Acc (%)", "Top-20 Acc (%)"])
             
-            # 데이터 작성
             for report in self.file_reports:
                 total = report["total"]
                 acc1 = (report["top1"] / total * 100) if total > 0 else 0.0
@@ -244,57 +252,16 @@ class FileReporter:
         print(f"[Saved] File Report (CSV) -> {csv_path}")
 
     # ==========================================================================
-    # 파일 2: 전체 순위 분포 저장 (TXT + CSV)
+    # 리포트 2: 랭크 분포(Rank Distribution) 저장
     # ==========================================================================
     def save_rank_distribution_report(self):
-        # 1. TXT 리포트 저장 (기존 로직 유지)
-        txt_path = os.path.join(REPORT_DIR, RANK_REPORT_NAME)
-        with open(txt_path, "w", encoding="utf-8") as f:
-            f.write("="*80 + "\n")
-            f.write(f" GLOBAL RANK DISTRIBUTION (Max Rank: {MAX_RANK_CHECK})\n")
-            f.write("="*80 + "\n")
-            
-            if self.global_queries == 0:
-                f.write("No queries found.\n")
-            else:
-                f.write(f" Total Files   : {self.global_files}\n")
-                f.write(f" Total Queries : {self.global_queries}\n")
-                f.write("-" * 80 + "\n")
-                f.write(f" {'Rank':<6} | {'Count':<10} | {'Share (%)':<10} | {'Cumulative (%)':<15}\n")
-                f.write("-" * 80 + "\n")
-
-                cumulative_count = 0
-                
-                # 1위 ~ 20위
-                for r in range(1, MAX_RANK_CHECK + 1):
-                    count = self.rank_stats[r]
-                    cumulative_count += count
-                    share_pct = (count / self.global_queries) * 100
-                    cum_pct = (cumulative_count / self.global_queries) * 100
-                    bar_len = int(share_pct / 2)
-                    bar = "#" * bar_len
-                    
-                    f.write(f" {r:<6} | {count:<10} | {share_pct:6.2f}%    | {cum_pct:13.2f}%  {bar}\n")
-
-                f.write("-" * 80 + "\n")
-                # Out
-                out_share = (self.out_of_range_count / self.global_queries) * 100
-                f.write(f" {'Out':<6} | {self.out_of_range_count:<10} | {out_share:6.2f}%    | {'-':<15}\n")
-                f.write("="*80 + "\n")
-
-        print(f"[Saved] Rank Report (TXT) -> {txt_path}")
-
-        # 2. CSV 리포트 저장 (추가된 로직)
         if self.global_queries > 0:
             csv_path = os.path.join(REPORT_DIR, "c11_rank_distribution.csv")
             with open(csv_path, "w", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
-                # 헤더 작성
                 writer.writerow(["Rank", "Count", "Share (%)", "Cumulative (%)"])
                 
                 cumulative_count = 0
-                
-                # 1위 ~ 20위 데이터
                 for r in range(1, MAX_RANK_CHECK + 1):
                     count = self.rank_stats[r]
                     cumulative_count += count
@@ -303,32 +270,25 @@ class FileReporter:
                     
                     writer.writerow([r, count, round(share_pct, 2), round(cum_pct, 2)])
                 
-                # Out 데이터
                 out_share = (self.out_of_range_count / self.global_queries) * 100
                 writer.writerow(["Out", self.out_of_range_count, round(out_share, 2), "-"])
 
-            print(f"[Saved] Rank Report (CSV) -> {csv_path}")
+            print(f"[Saved] Rank Distribution Report (CSV) -> {csv_path}")
 
-            
     def run(self):
-        print(f"[*] Scanning for C files in {SOURCE_DIR} ...")
-
         target_files = []
-        # 폴더를 깊게 들어가며 탐색
         for root, dirs, files in os.walk(SOURCE_DIR):
             for file in files:
-                # .c 또는 .h 파일만 대상
-                if file.endswith((".c", ".h")):
+                if file.endswith(".c"):
                     target_files.append(os.path.join(root, file))
-        
-        print(f"[*] Found {len(target_files)} files. Analyzing...")
+
+        print(f"[*] Found {len(target_files)} '.c' files. Starting Iterative Analysis...")
         
         start = time.time()
         for idx, f in enumerate(target_files):
-            # 진행 상황 표시
-            print(f" [{idx+1}/{len(target_files)}] Processing: {os.path.basename(f)}...", end="\r")
+            print(f" [{idx+1}/{len(target_files)}] Processing...", end="\r")
             self.evaluate_file(f)
-        
+            
         elapsed = time.time() - start
         print(f"\n[*] Analysis Complete in {elapsed:.2f} sec.\n")
         
