@@ -1,12 +1,31 @@
+# [Windows] 개발중 윈도우에서 각 파일별 컬렉션 결과를 확인하기 위함
+# For small basic
+#   1) .sb   -> .data
+#   2) .data -> .json  <-- here
+
+# 컬렉션 파일들(.data)을 읽어 
+# state별 패턴과 빈도 정보를 JSON으로 변환
+# 개별 .data 파일 -> 개별 .json 파일 (SB_DB_TS1_json 폴더)
+
+# 예) 01_HelloWorld.json
+#   "188": [
+#     {
+#       "key": "[., ID, (, Exprs, )]",
+#       "value": 1
+#     }
+#   ],
+
+
 import os
 import glob
 import json
+import shutil
 from collections import defaultdict, Counter
 
-# =================[ 설정 ]=================
+# ====================[ 윈도우 경로 설정 ]====================
 INPUT_DIR = "..\\tree-sitter-smallbasic\\SB_Data_TS1"
 OUTPUT_DIR = "..\\moniExtension\Small-Basic-Extension\\src\\SB_DB_TS1_json"  # 폴더로 출력
-# ==========================================
+# =========================================================
 
 def format_pattern_clean(raw_pattern: str) -> str:
     """
@@ -15,6 +34,7 @@ def format_pattern_clean(raw_pattern: str) -> str:
     """
     tokens = raw_pattern.split()
     return "[" + ", ".join(tokens) + "]"
+    # return "[" + ", ".join(tokens) + "]"
 
 def process_one_data_file(file_path: str) -> dict:
     """
@@ -49,7 +69,7 @@ def process_one_data_file(file_path: str) -> dict:
         items = []
         for pattern, count in counter.most_common():  # count desc
             items.append({
-                "key": format_pattern_clean(pattern),
+                "key": pattern,
                 "value": count
             })
         result[str(state_id)] = items

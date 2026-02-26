@@ -1,3 +1,12 @@
+# [Windows] 전체 빌드 / 컬렉션(개별 파일) / Extension 재빌드 스크립트
+# For c11
+
+# 컬렉션(개별 파일)
+#   1) to_data_batch_collect_win.py
+#   2) to_json_per_file_win.py
+#   => ..\moniExtension\Small-Basic-Extension\src\C11_DB_TS1_json
+
+
 param(
   [switch]$SkipParse,
   [switch]$SkipCollect,
@@ -64,7 +73,7 @@ if (-not $SkipCollect) {
   Write-Host "=== [5] run collection + per-file JSON ==="
   Push-Location $TS
   python .\to_data_batch_collect_win.py
-  python .\to_json_per_file.py
+  python .\to_json_per_file_win.py
   Pop-Location
 } else {
   Write-Host "   (skip) collection/json"

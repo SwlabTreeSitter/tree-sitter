@@ -1,3 +1,9 @@
+# [Linux] 구조 후보 평가를 위한 TEST 데이터 컬렉션 스크립트
+# For c11
+#   1) .c    -> .data  <-- here
+#   2) .data -> .json
+
+
 import os
 import subprocess
 import shutil

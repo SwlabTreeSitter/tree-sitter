@@ -1,10 +1,10 @@
-import sys
 import os
 import glob
 import json
 import subprocess
 import time
 import csv
+import re
 from collections import defaultdict
 
 # =================[ 설정 및 경로 ]=================
@@ -76,17 +76,36 @@ class FileReporter:
                 return []
 
             # 출력 파싱 (@@PREDICT: 태그 찾기)
+            # for line in result.stdout.splitlines():
+            #     if line.startswith("@@PREDICT:"):
+            #         # "@@PREDICT: 188 51 ..." -> [188, 51, ...]
+            #         raw_nums = line.replace("@@PREDICT:", "").strip()
+            #         if not raw_nums: return []
+            #         return list(map(int, raw_nums.split()))
+
             for line in result.stdout.splitlines():
-                if line.startswith("@@PREDICT:"):
-                    # "@@PREDICT: 188 51 ..." -> [188, 51, ...]
-                    raw_nums = line.replace("@@PREDICT:", "").strip()
-                    if not raw_nums: return []
-                    return list(map(int, raw_nums.split()))
+                # "@@PREDICT:" 뒤에 오는 숫자와 공백들의 조합만 캡처
+                match = re.search(r"@@PREDICT:\s*([\d\s]+)", line)
+                
+                if match:
+                    raw_nums = match.group(1).strip()
+                    if not raw_nums: 
+                        return []
+                        
+                    # 방어 3: 혹시 모를 변환 에러를 대비한 개별 try-except
+                    states = []
+                    for num_str in raw_nums.split():
+                        try:
+                            states.append(int(num_str))
+                        except ValueError:
+                            pass # 숫자가 아닌 쓰레기값은 무시하고 계속 진행
+                    
+                    return states
             
             return [] # 태그를 못 찾음
             
         except Exception as e:
-            print(f"[Error] Subprocess failed: {e}")
+            print(f"[Error] Failed to parse output at {row},{col} - {e}")
             return []
 
     # [helper] DB Lookup

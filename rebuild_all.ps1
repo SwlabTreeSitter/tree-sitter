@@ -1,3 +1,12 @@
+# [Windows] 전체 빌드 / 컬렉션(개별 파일) / Extension 재빌드 스크립트
+# For small basic
+
+# 컬렉션(개별 파일)
+#   1) to_data_batch_collect_win.py
+#   2) to_json_per_file_win.py
+#   => ..\moniExtension\Small-Basic-Extension\src\SB_DB_TS1_json
+
+
 param(
   [switch]$SkipParse,
   [switch]$SkipCollect,
@@ -6,7 +15,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-# ===== 경로 =====
+# ====================[ 윈도우 경로 설정 ]====================
 $ROOT = "C:\PL"
 $TS   = Join-Path $ROOT "tree-sitter"
 $LANG = Join-Path $ROOT "tree-sitter-smallbasic"
@@ -16,7 +25,7 @@ $TS_EXE = Join-Path $TS "target\debug\tree-sitter.exe"
 
 # VS 2022 vcvars64
 $VS_VCVARS = "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
-
+# =========================================================
 function Assert-Path($p, $name) {
   if (!(Test-Path $p)) { throw "Missing ${name}: ${p}" }
 }
@@ -64,7 +73,7 @@ if (-not $SkipCollect) {
   Write-Host "=== [5] run collection + per-file JSON ==="
   Push-Location $TS
   python .\to_data_batch_collect_win.py
-  python .\to_json_per_file.py
+  python .\to_json_per_file_win.py
   Pop-Location
 } else {
   Write-Host "   (skip) collection/json"
@@ -77,7 +86,7 @@ if (-not $SkipAddon) {
   # 의존성 설치 (이미 있으면 빠르게 끝남)
   if (Test-Path ".\package-lock.json") { npm ci } else { npm install }
 
-  # binding.gyp가 루트에 있으니 "루트에서" rebuild가 정답
+  # binding.gyp가 루트에 있으니 "루트에서" rebuild
   # node-gyp가 로컬 의존성으로 잡혀있으니 npx 권장
   npx node-gyp rebuild
 

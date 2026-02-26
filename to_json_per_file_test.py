@@ -1,3 +1,18 @@
+# [Linux] 구조 후보 평가를 위한 TEST 컬렉션 정답지 구성 스크립트
+# For all languages (by 경로 수정)
+#   1) .(lang) -> .data
+#   2) .data   -> .json  <-- here
+
+# 컬렉션 파일들(.data)을 읽어 
+# 커서 위치별 state_id와 candidate 정보를 JSON으로 변환
+# 개별 .data 파일 -> 개별 .json 파일 (reports/(language) 폴더)
+
+# 예) reports\smallbasic\01_HelloWorld.json
+#   "1,11": {
+#     "state_id": 188,
+#     "candidate": "[., ID, (, Exprs, )]"
+#   },
+
 import os
 import glob
 import json
@@ -47,7 +62,7 @@ def process_one_data_file(file_path: str) -> dict:
                     raw_candidate = parts[1] if len(parts) > 1 else ""
                     
                     # 포맷 변환
-                    current_structure = format_pattern_clean(raw_candidate)
+                    # current_structure = format_pattern_clean(raw_candidate)
                     
                     # 다음 줄에서 위치를 찾으라고 신호
                     waiting_for_location = True
@@ -62,7 +77,7 @@ def process_one_data_file(file_path: str) -> dict:
                     # 딕셔너리에 Key(Location)로 저장
                     extracted_data[loc_part] = {
                         "state_id": current_state,
-                        "candidate": current_structure
+                        "candidate": raw_candidate # current_structure
                     }
                     
                     # 해당 State 블록의 첫 위치를 찾았으므로 플래그 끔

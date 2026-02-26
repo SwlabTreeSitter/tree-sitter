@@ -252,81 +252,6 @@ int main(int argc, char* argv[]) {
         // ==========================================================
         // 5. 모드별 후처리 로직 분기
         // ==========================================================
-        // if (bIsBatchMode) { 
-        //     // [Batch Mode]
-        //     // 파이썬 스크립트가 파싱하기 쉽도록 명확한 태그 사용
-        //     // stdout으로 결과 출력
-        //     std::cout << "@@BATCH_START@@" << std::endl;
-            
-        //     // parser.c에 추가한 Batch 함수 호출
-        //     ts_parser_run_batch_conversion(parser, stdout);
-            
-        //     std::cout << "@@BATCH_END@@" << std::endl;
-        // }
-        // else {
-            // [Collection / Conversion Mode]
-            
-            // if (bIsCollectionMode) {
-            //     std::cout << "DEBUG: Running Collection..." << std::endl;
-            //     // 컬렉션 로직 호출 (결과는 함수 내부 로직에 따라 처리됨)
-
-            //     FILE *collection_fp = fopen("Test.data", "w");
-            //     if (collection_fp) {
-            //         // 열린 파일 포인터를 넘겨줌
-            //         bool is_success = ts_parser_run_collection2(tree, source_code.c_str(), static_cast<uint32_t>(effective_length), collection_fp);
-            //         fclose(collection_fp);
-
-            //         if (!is_success) {
-            //             // SKIP 로그 출력 (Python 스크립트 등에서 캡처하기 좋게 태그)
-            //             std::cerr << "[SKIP] Recovery detected in file: " << target_path << std::endl;
-            //             std::cout << "WARNING: Collection skipped due to parse errors." << std::endl;
-
-            //             // 오염된/빈 데이터 파일 삭제
-            //             remove("Test.data");
-            //         } else {
-            //             std::cout << "DEBUG: Collection completed successfully." << std::endl;
-            //         }
-            //     } else {
-            //         std::cerr << "ERROR: Could not open Test.data for writing." << std::endl;
-            //     }
-            // } 
-            // else {
-            //     // std::cout << "DEBUG: Running Conversion..." << std::endl;
-                
-            //     // std::cout << "DEBUG: original" << std::endl;
-            //     // // 1. 경로 계산 (순수 로직)
-            //     // TSStatePath path = ts_parser_run_conversion(parser);
-
-            //     // // 2. 결과 출력 (화면 + 파일)
-            //     // // (A) 화면 출력
-            //     // ts_parser_write_conversion_result(parser, &path, stdout);
-
-            //     // std::cout << "DEBUG: update" << std::endl;
-            //     TSStatePath path2 = ts_parser_parse_string_for_conversion(
-            //         parser,
-            //         NULL,
-            //         source_code.c_str(),
-            //         static_cast<uint32_t>(effective_length)
-            //     );
-
-            //     // 3. 결과 출력 (화면 + 파일)
-            //     // python 스크립트 용 출력
-            //     std::cout << "@@PREDICT:";
-            //     for (int i = 0; i < path2.count; i++) {
-            //         std::cout << " " << path2.states[i];
-            //     }
-            //     std::cout << std::endl;
-
-            //     // (옵션) 화면 출력
-            //     // ts_parser_write_conversion_result(parser, &path2, stdout);
-
-            //     // (옵션) 파일 출력 (Test.data)
-            //     FILE *test_data_fp = fopen("Test.data", "w");
-            //     if (test_data_fp) {
-            //         ts_parser_write_conversion_result(parser, &path2, test_data_fp);
-            //         fclose(test_data_fp);
-            //     }
-            // }
             if (is_batch_mode) {
                 // ------------------------------------------------------
                 // [배치 모드] 모든 위치의 State를 한 번에 출력
@@ -336,7 +261,9 @@ int main(int argc, char* argv[]) {
                 ts_parser_run_batch_conversion(parser, source_code.c_str(), stdout);
                 std::cout << "@@BATCH_END@@" << std::endl;
             }
-            else if (execution_mode == 1) {
+            else 
+        
+            if (execution_mode == 1) {
                 // ------------------------------------------------------
                 // [모드 1] Collection
                 // ------------------------------------------------------

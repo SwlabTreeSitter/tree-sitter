@@ -1,3 +1,9 @@
+# [Linux] DB 구축 위한 LEARN 컬렉션 빈도수 통합 스크립트
+# For all languages (by 경로 수정)
+#   1) .(lang) -> .data
+#   2) .data   -> .json  <-- here
+
+
 import os
 import glob
 import sqlite3
@@ -135,9 +141,9 @@ def main():
                 
                 # 패턴 포맷팅 및 리스트 추가
                 # "ID = Expr" -> "[ID, =, Expr]"
-                formatted_key = format_pattern_clean(pattern)
+                # formatted_key = format_pattern_clean(pattern)
                 current_patterns.append({
-                    "key": formatted_key,
+                    "key": pattern, # formatted_key,
                     "value": count
                 })
 

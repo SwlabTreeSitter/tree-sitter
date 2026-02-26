@@ -1,9 +1,24 @@
+# [Windows] 개발중 윈도우에서 각 파일별 컬렉션 결과를 확인하기 위함
+# For small basic
+#   1) .sb   -> .data  <-- here
+#   2) .data -> .json
+
+# TreeSitterCutFile.exe 컬렉션 모드
+# SB_Sample 폴더 내의 .sb 파일들 -> .data 로 컬렉션 (SB_Data_TS1 폴더)
+
+# 예) 01_HelloWorld.data
+# 188 . ID ( Exprs )
+#   1,11: 
+#   1,12: 
+#   ...
+
+
 import os
 import subprocess
 import shutil
 import glob
 
-# =================[ 윈도우 경로 설정 ]=================
+# ====================[ 윈도우 경로 설정 ]====================
 
 # 1. 실행 파일 경로 (현재 폴더에 빌드된 파일)
 EXE_PATH = ".\\TreeSitterCutFile.exe"

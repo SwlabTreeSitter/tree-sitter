@@ -1,3 +1,8 @@
+# [Linux] 구조 후보 평가를 위한 TEST 데이터 컬렉션 스크립트
+# For small basic
+#   1) .sb   -> .data  <-- here
+#   2) .data -> .json
+
 import os
 import subprocess
 import shutil
@@ -11,7 +16,7 @@ EXE_PATH = "/home/hyeonjin/PL/tree-sitter/TreeSitterCutFile.exe"
 # 2. Small Basic 파서 라이브러리 (.so) 경로
 LIB_PATH = "/home/hyeonjin/PL/tree-sitter-smallbasic/smallbasic.so"
 
-# 3. 샘플 프로그램(.sb)들이 들어있는 폴더 (LEARN/TEST)
+# 3. 샘플 프로그램(.sb)들이 들어있는 폴더 (TEST)
 SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST_BENCH" 
 
 # 4. 결과 파일(.data)을 저장할 폴더 (새로 생성될 폴더) (LEARN/TEST)

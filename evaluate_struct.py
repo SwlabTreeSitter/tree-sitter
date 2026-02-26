@@ -19,8 +19,8 @@ ANSWER_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
 
 # 리포트 저장 경로 (폴더)
 REPORT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
-FILE_REPORT_NAME = "sb_file_performance2.txt"
-RANK_REPORT_NAME = "sb_rank_distribution2.txt"
+FILE_REPORT_NAME = "sb_file_performance2.csv"
+RANK_REPORT_NAME = "sb_rank_distribution2.csv"
 
 # [제한] 분석할 최대 순위
 MAX_CANDIDATE_LIST_SIZE = 20
@@ -56,16 +56,6 @@ class FileReporter:
                     try:
                         os.remove(path)
                         # print(f"[Info] Removed old report: {path}")
-                    except OSError:
-                        pass
-            
-            # CSV 파일 삭제 (코드 하단에서 생성하는 파일명과 일치해야 함)
-            for csv_file in ["sb_file_performance2.csv", "sb_rank_distribution2.csv"]:
-                path = os.path.join(REPORT_DIR, csv_file)
-                if os.path.exists(path):
-                    try:
-                        os.remove(path)
-                        # print(f"[Info] Removed old CSV: {path}")
                     except OSError:
                         pass
 
@@ -233,31 +223,8 @@ class FileReporter:
     # 파일 1: 파일별 성능 요약 저장 (TXT + CSV)
     # ==========================================================================
     def save_file_performance_report(self):
-        # # 1. TXT 리포트 저장 (기존 로직 유지)
-        # txt_path = os.path.join(REPORT_DIR, FILE_REPORT_NAME)
-        # with open(txt_path, "w", encoding="utf-8") as f:
-        #     f.write("="*120 + "\n")
-        #     f.write(f" PER-FILE PERFORMANCE SUMMARY\n")
-        #     f.write("="*120 + "\n")
-        #     f.write(f"{'File Name':<30} | {'Queries':<8} | {'Top-1':<8} | {'Top-3':<8} | {'Top-5':<8} | {'Top-10':<8} | {'Top-20':<8}\n")
-        #     f.write("-" * 120 + "\n")
 
-        #     for report in self.file_reports:
-        #         total = report["total"]
-        #         acc1 = (report["top1"] / total * 100) if total > 0 else 0.0
-        #         acc3 = (report["top3"] / total * 100) if total > 0 else 0.0
-        #         acc5 = (report["top5"] / total * 100) if total > 0 else 0.0
-        #         acc10 = (report["top10"] / total * 100) if total > 0 else 0.0
-        #         acc20 = (report["top20"] / total * 100) if total > 0 else 0.0
-
-        #         f.write(f"{report['name']:<30} | {total:<8} | {acc1:6.2f}% | {acc3:6.2f}% | {acc5:6.2f}% | {acc10:6.2f}% | {acc20:6.2f}%\n")
-            
-        #     f.write("-" * 120 + "\n")
-        #     f.write(f"Total Files Processed: {self.global_files}\n")
-        
-        # print(f"[Saved] File Report (TXT) -> {txt_path}")
-
-        # 2. CSV 리포트 저장 (추가된 로직)
+        # CSV 리포트 저장 (추가된 로직)
         csv_path = os.path.join(REPORT_DIR, "sb_file_performance2.csv")
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
@@ -281,44 +248,7 @@ class FileReporter:
     # 파일 2: 전체 순위 분포 저장 (TXT + CSV)
     # ==========================================================================
     def save_rank_distribution_report(self):
-        # # 1. TXT 리포트 저장 (기존 로직 유지)
-        # txt_path = os.path.join(REPORT_DIR, RANK_REPORT_NAME)
-        # with open(txt_path, "w", encoding="utf-8") as f:
-        #     f.write("="*80 + "\n")
-        #     f.write(f" GLOBAL RANK DISTRIBUTION (Max Rank: {MAX_RANK_CHECK})\n")
-        #     f.write("="*80 + "\n")
-            
-        #     if self.global_queries == 0:
-        #         f.write("No queries found.\n")
-        #     else:
-        #         f.write(f" Total Files   : {self.global_files}\n")
-        #         f.write(f" Total Queries : {self.global_queries}\n")
-        #         f.write("-" * 80 + "\n")
-        #         f.write(f" {'Rank':<6} | {'Count':<10} | {'Share (%)':<10} | {'Cumulative (%)':<15}\n")
-        #         f.write("-" * 80 + "\n")
-
-        #         cumulative_count = 0
-                
-        #         # 1위 ~ 20위
-        #         for r in range(1, MAX_RANK_CHECK + 1):
-        #             count = self.rank_stats[r]
-        #             cumulative_count += count
-        #             share_pct = (count / self.global_queries) * 100
-        #             cum_pct = (cumulative_count / self.global_queries) * 100
-        #             bar_len = int(share_pct / 2)
-        #             bar = "#" * bar_len
-                    
-        #             f.write(f" {r:<6} | {count:<10} | {share_pct:6.2f}%    | {cum_pct:13.2f}%  {bar}\n")
-
-        #         f.write("-" * 80 + "\n")
-        #         # Out
-        #         out_share = (self.out_of_range_count / self.global_queries) * 100
-        #         f.write(f" {'Out':<6} | {self.out_of_range_count:<10} | {out_share:6.2f}%    | {'-':<15}\n")
-        #         f.write("="*80 + "\n")
-
-        # print(f"[Saved] Rank Report (TXT) -> {txt_path}")
-
-        # 2. CSV 리포트 저장 (추가된 로직)
+        # CSV 리포트 저장 (추가된 로직)
         if self.global_queries > 0:
             csv_path = os.path.join(REPORT_DIR, "sb_rank_distribution2.csv")
             with open(csv_path, "w", newline="", encoding="utf-8") as f:
