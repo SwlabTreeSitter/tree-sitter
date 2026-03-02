@@ -1,5 +1,5 @@
 Location,Ground_Truth,State_List,Rank
-"1,1",#include system_lib_string preproc_include_token2,"[1, 1820]",2
+"1,1",#include system_lib_string preproc_include_token2,"[1, 1820]",1
 "1,10",system_lib_string preproc_include_token2,[1392],1
 "1,19",preproc_include_token2,[1816],1
 "2,1",#include system_lib_string preproc_include_token2,"[361, 44, 1820]",3
@@ -11,16 +11,16 @@ Location,Ground_Truth,State_List,Rank
 "4,1",#include system_lib_string preproc_include_token2,"[361, 43, 44, 1820]",3
 "4,10",system_lib_string preproc_include_token2,[1392],1
 "4,19",preproc_include_token2,[1816],1
-"6,1",typedef _type_definition_type _type_definition_declarators ;,"[361, 43, 44, 1820]",0
+"6,1",typedef _type_definition_type _type_definition_declarators ;,"[361, 43, 44, 1820]",18
 "6,9",enum enumerator_list,[993],0
 "7,1",{ enumerator_list_repeat1 enumerator },[1666],0
-"8,3",identifier,[1296],2
+"8,3",identifier,[1296],1
 "8,8",",","[1640, 1718]",2
 "9,3",identifier,"[1485, 1308]",1
-"10,1",},"[1640, 1734]",3
+"10,1",},"[1640, 1734]",2
 "10,3",identifier,"[771, 1050, 770, 1115, 1265]",1
 "10,10",;,"[1417, 1338, 1503]",1
-"12,1",typedef _type_definition_type _type_definition_declarators ;,"[247, 43, 44, 1820]",0
+"12,1",typedef _type_definition_type _type_definition_declarators ;,"[247, 43, 44, 1820]",18
 "12,9",primitive_type,[993],1
 "12,13",( _type_declarator ),"[1138, 1115, 1265]",2
 "12,14",* _type_declarator,[1120],1
@@ -30,7 +30,7 @@ Location,Ground_Truth,State_List,Rank
 "12,29",primitive_type,[623],1
 "12,32",),"[739, 720, 1118, 1598]",4
 "12,33",;,"[1290, 1397, 1415, 1338, 1503]",1
-"14,1",identifier,"[247, 43, 44, 1820]",8
+"14,1",identifier,"[247, 43, 44, 1820]",7
 "14,9",identifier,"[408, 796, 1128, 1101]",1
 "14,23",( parameter_declaration parameter_list_repeat1 ),"[1363, 1458, 1356]",2
 "14,24",primitive_type,[624],1
@@ -50,7 +50,7 @@ Location,Ground_Truth,State_List,Rank
 "15,33",identifier,"[890, 720, 1118, 1598]",2
 "15,40",),"[1300, 1321, 1598]",2
 "15,41",;,"[1290, 1260, 1511, 1458, 1300, 1356]",4
-"17,1",identifier,"[225, 43, 44, 1820]",8
+"17,1",identifier,"[225, 43, 44, 1820]",7
 "17,14",identifier,"[408, 796, 1128, 1101]",1
 "17,21",;,"[1363, 1458, 1356]",4
 "19,1",primitive_type,"[225, 43, 44, 1820]",2
@@ -66,7 +66,7 @@ Location,Ground_Truth,State_List,Rank
 "19,31",],[420],3
 "19,32",),"[1297, 1300, 1366, 1321, 1748, 1601]",1
 "20,1",{ preproc_if_repeat1 },"[1288, 1260, 1511, 1458, 1300, 1356]",1
-"21,3",if parenthesized_expression statement,[23],4
+"21,3",if parenthesized_expression statement,[23],3
 "21,6",( expression ),[1755],1
 "21,7",! expression,[452],2
 "21,8",identifier,[541],1
@@ -77,8 +77,8 @@ Location,Ground_Truth,State_List,Rank
 "21,33",),"[715, 1025, 1572]",1
 "21,34",),"[698, 668, 837, 691, 684, 1033]",1
 "22,3",{ preproc_if_repeat1 },"[653, 362]",1
-"23,5",identifier,[27],1
-"23,9",( expression ),"[405, 801, 1139, 1056]",3
+"23,5",identifier,[27],2
+"23,9",( expression ),"[405, 801, 1139, 1056]",6
 "23,10",""" string_content ""","[988, 1256, 451]",3
 "23,11","string_content """,[1531],1
 "23,36","""",[1547],1
@@ -88,16 +88,16 @@ Location,Ground_Truth,State_List,Rank
 "24,12",identifier,[475],1
 "24,24",;,"[715, 1070]",1
 "25,3",},"[199, 244, 31, 28]",1
-"27,3",identifier,"[173, 244, 147, 25]",1
-"27,16",( expression ),"[405, 801, 1139, 1056]",3
+"27,3",identifier,"[173, 244, 147, 25]",5
+"27,16",( expression ),"[405, 801, 1139, 1056]",6
 "27,17",identifier,"[988, 1256, 451]",1
 "27,24",),"[754, 1077, 1813, 1300, 1442, 715, 1018]",1
 "27,25",;,"[761, 770, 801, 1139, 1301, 1363, 1455, 1361, 693, 668, 837, 1056]",1
 "29,3",return expression ;,"[248, 244, 31, 25, 310, 220]",5
 "29,10",identifier,[475],1
 "29,22",;,"[715, 1070]",1
-"30,1",},"[199, 244, 31, 25]",2
-"32,1",identifier,"[87, 339, 43, 44, 1820]",8
+"30,1",},"[199, 244, 31, 25]",1
+"32,1",identifier,"[87, 339, 43, 44, 1820]",7
 "32,9",identifier,"[408, 796, 1128, 1101]",1
 "32,23",( parameter_declaration parameter_list_repeat1 ),"[1363, 1458, 1356]",2
 "32,24",primitive_type,[624],1
@@ -127,7 +127,7 @@ Location,Ground_Truth,State_List,Rank
 "34,35",number_literal,[618],2
 "34,36",),"[684, 960, 1033]",1
 "35,3",{ preproc_if_repeat1 },"[653, 362]",1
-"36,5",identifier = expression,[27],2
+"36,5",identifier = expression,[27],1
 "36,13",= expression,"[405, 801, 1139, 1056]",2
 "36,15",identifier,[559],1
 "36,22",;,"[715, 982, 684, 1056]",1
@@ -135,7 +135,7 @@ Location,Ground_Truth,State_List,Rank
 "37,12",true,[475],6
 "37,16",;,"[684, 1070]",1
 "38,3",},"[199, 244, 31, 28]",1
-"39,3",else statement,"[173, 244, 147, 25]",3
+"39,3",else statement,"[173, 244, 147, 25]",2
 "39,8",if parenthesized_expression statement,[373],5
 "39,11",( expression ),[1755],1
 "39,12",identifier,[452],1
@@ -153,7 +153,7 @@ Location,Ground_Truth,State_List,Rank
 "39,40",number_literal,[618],2
 "39,41",),"[684, 960, 1033]",1
 "40,3",{ preproc_if_repeat1 },"[653, 362]",1
-"41,5",identifier = expression,[27],2
+"41,5",identifier = expression,[27],1
 "41,13",= expression,"[405, 801, 1139, 1056]",2
 "41,15",identifier,[559],1
 "41,22",;,"[715, 982, 684, 1056]",1
@@ -164,7 +164,7 @@ Location,Ground_Truth,State_List,Rank
 "45,3",return expression ;,"[173, 244, 147, 234, 224, 25]",6
 "45,10",false,[475],4
 "45,15",;,"[684, 1070]",1
-"46,1",},"[199, 244, 31, 25]",2
+"46,1",},"[199, 244, 31, 25]",1
 "48,1",primitive_type,"[87, 339, 43, 44, 1820]",2
 "48,6",identifier,"[739, 796, 1128]",1
 "48,19",( parameter_declaration ),"[1363, 1458, 1356]",3
@@ -172,25 +172,25 @@ Location,Ground_Truth,State_List,Rank
 "48,33",identifier,"[890, 720, 1118, 1598]",2
 "48,40",),"[1300, 1321, 1598]",2
 "49,1",{ preproc_if_repeat1 },"[1290, 1260, 1511, 1458, 1300, 1356]",1
-"50,3",primitive_type,[23],2
+"50,3",primitive_type,[23],1
 "50,7",identifier,"[739, 801, 1139]",1
 "50,8",;,"[1363, 1455, 1361]",1
 "51,3",while parenthesized_expression statement,"[220, 25]",9
 "51,9",( expression ),[1757],1
 "51,10",( expression ),[452],3
 "51,11",identifier = expression,[378],5
-"51,13",= expression,"[527, 1031, 1077, 1856]",13
+"51,13",= expression,"[527, 1031, 1077, 1856]",12
 "51,15",identifier,[559],1
 "51,19",( expression ),"[715, 982, 684, 1031]",4
 "51,20",identifier,[451],1
 "51,25",),"[715, 1018]",1
-"51,26",),"[693, 668, 837, 982, 684, 1031]",2
+"51,26",),"[693, 668, 837, 982, 684, 1031]",1
 "51,28",!= expression,"[664, 837, 1033]",5
 "51,31",identifier,[618],1
 "51,34",),"[715, 960, 684, 1033]",1
 "52,3",{ statement },"[653, 366]",4
-"53,5",identifier,[27],1
-"53,9",( expression argument_list_repeat1 ),"[405, 801, 1139, 1056]",5
+"53,5",identifier,[27],2
+"53,9",( expression argument_list_repeat1 ),"[405, 801, 1139, 1056]",4
 "53,10",identifier,"[988, 1256, 451]",1
 "53,17",( expression ),"[754, 1077, 1813, 1300, 1442, 715, 1018]",9
 "53,18",identifier,"[988, 623, 451, 423]",1
@@ -200,4 +200,4 @@ Location,Ground_Truth,State_List,Rank
 "53,28",),"[715, 1025, 1572]",1
 "53,29",;,"[698, 668, 837, 1056]",1
 "54,3",},"[248, 244, 28]",1
-"55,1",},"[173, 244, 198, 31, 25]",2
+"55,1",},"[173, 244, 198, 31, 25]",1

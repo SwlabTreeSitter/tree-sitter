@@ -1,11 +1,11 @@
 Location,Ground_Truth,State_List,Rank
-"1,1",#include system_lib_string preproc_include_token2,"[1, 1820]",2
+"1,1",#include system_lib_string preproc_include_token2,"[1, 1820]",1
 "1,10",system_lib_string preproc_include_token2,[1392],1
 "1,19",preproc_include_token2,[1816],1
 "3,1",#define identifier preproc_arg preproc_include_token2,"[361, 44, 1820]",5
 "3,9",identifier preproc_arg preproc_include_token2,[1879],1
 "3,17",preproc_arg preproc_include_token2,[1528],1
-"4,1",#define identifier preproc_arg preproc_include_token2,"[341, 43, 44, 1820]",7
+"4,1",#define identifier preproc_arg preproc_include_token2,"[341, 43, 44, 1820]",5
 "4,9",identifier preproc_arg preproc_include_token2,[1879],1
 "4,15",preproc_arg preproc_include_token2,[1528],1
 "5,1",preproc_include_token2,"[341, 43, 44, 1820]",0
@@ -27,7 +27,7 @@ Location,Ground_Truth,State_List,Rank
 "8,10",primitive_type,[624],1
 "8,14",),"[739, 720, 1118, 1598]",4
 "9,1",{ preproc_if_repeat1 },"[1290, 1260, 1511, 1458, 1300, 1356]",1
-"10,3",primitive_type,[23],2
+"10,3",primitive_type,[23],1
 "10,7",identifier,"[739, 801, 1139]",1
 "10,10",;,"[1363, 1455, 1361]",1
 "11,3",primitive_type,"[220, 25]",6
@@ -36,18 +36,18 @@ Location,Ground_Truth,State_List,Rank
 "11,13",identifier,[420],1
 "11,20",],"[827, 1071]",1
 "11,21",;,"[1303, 1363, 1455, 1361]",1
-"13,3",while parenthesized_expression statement,"[220, 31, 25]",11
+"13,3",while parenthesized_expression statement,"[220, 31, 25]",9
 "13,9",( expression ),[1757],1
 "13,10",( expression ),[452],3
 "13,11",identifier = expression,[378],5
-"13,15",= expression,"[527, 1031, 1077, 1856]",13
+"13,15",= expression,"[527, 1031, 1077, 1856]",12
 "13,17",identifier,[559],1
 "13,25",( expression argument_list_repeat1 ),"[715, 982, 684, 1031]",3
 "13,26",identifier,[451],1
 "13,30",", expression","[715, 1018]",2
 "13,32",identifier,[476],1
 "13,39",),"[715, 1025, 1572]",1
-"13,40",),"[698, 668, 837, 982, 684, 1031]",2
+"13,40",),"[698, 668, 837, 982, 684, 1031]",1
 "13,42",> expression,"[664, 837, 1033]",11
 "13,44",number_literal,[506],2
 "13,45",),"[684, 985, 1033]",1
@@ -59,8 +59,8 @@ Location,Ground_Truth,State_List,Rank
 "15,15",identifier,[506],1
 "15,20",),"[715, 985, 684, 1033]",1
 "16,5",{ statement },"[653, 362]",5
-"17,7",identifier,[27],1
-"17,13",( expression argument_list_repeat1 ),"[405, 801, 1139, 1056]",5
+"17,7",identifier,[27],2
+"17,13",( expression argument_list_repeat1 ),"[405, 801, 1139, 1056]",4
 "17,14",""" string_content ""","[988, 1256, 451]",3
 "17,15","string_content """,[1531],1
 "17,17","""",[1547],1
@@ -73,7 +73,7 @@ Location,Ground_Truth,State_List,Rank
 "21,3",return expression ;,"[173, 244, 198, 31, 25]",5
 "21,10",number_literal,[475],2
 "21,11",;,"[684, 1070]",1
-"22,1",},"[199, 244, 31, 25]",2
+"22,1",},"[199, 244, 31, 25]",1
 "24,1",primitive_type,"[87, 339, 43, 44, 1820]",2
 "24,5",identifier,"[739, 796, 1128]",1
 "24,13",( parameter_declaration parameter_list_repeat1 ),"[1363, 1458, 1356]",2
@@ -86,7 +86,7 @@ Location,Ground_Truth,State_List,Rank
 "24,31",identifier,"[739, 720, 1118, 1748, 1601]",2
 "24,43",),"[1300, 1321, 1748, 1601]",1
 "25,1",{ preproc_if_repeat1 },"[1288, 1260, 1511, 1458, 1300, 1356]",1
-"26,3",primitive_type,[23],2
+"26,3",primitive_type,[23],1
 "26,7",identifier,"[739, 801, 1139]",1
 "26,8",", _declaration_declarator","[1363, 1455, 1361]",4
 "26,10",identifier,[1148],1
@@ -100,16 +100,16 @@ Location,Ground_Truth,State_List,Rank
 "28,15",identifier,[479],1
 "28,17",< expression,"[715, 1034]",3
 "28,19",identifier,[506],1
-"28,32",- expression,"[715, 985, 684, 1034]",13
+"28,32",- expression,"[715, 985, 684, 1034]",14
 "28,34",number_literal,[533],2
 "28,36",&& expression,"[684, 975, 985, 1034]",7
 "28,39",( expression ),[544],2
 "28,40",identifier = expression,[378],5
-"28,42",= expression,"[527, 1031, 1077, 1856]",13
+"28,42",= expression,"[527, 1031, 1077, 1856]",12
 "28,44",identifier,[559],1
 "28,51",( ),"[715, 982, 684, 1031]",17
 "28,52",),[451],4
-"28,53",),"[696, 668, 837, 982, 684, 1031]",2
+"28,53",),"[696, 668, 837, 982, 684, 1031]",1
 "28,55",!= expression,"[664, 837, 976, 684, 1034]",7
 "28,58",identifier,[618],1
 "28,62",&& expression,"[715, 960, 684, 976, 1034]",12
@@ -123,7 +123,7 @@ Location,Ground_Truth,State_List,Rank
 "28,78",identifier,[540],1
 "28,79",) statement,"[715, 701, 684, 1027, 1922]",1
 "29,3",{ statement },[333],4
-"30,5",identifier,[27],1
+"30,5",identifier,[27],2
 "30,9",[ expression ],"[405, 801, 1139, 1056]",9
 "30,10",identifier,[528],2
 "30,11",],"[827, 1090]",1
@@ -131,7 +131,7 @@ Location,Ground_Truth,State_List,Rank
 "30,15",identifier,[559],1
 "30,16",;,"[715, 982, 684, 1056]",1
 "31,3",},"[248, 244, 28]",1
-"33,3",if parenthesized_expression statement,"[173, 244, 236, 31, 25]",3
+"33,3",if parenthesized_expression statement,"[173, 244, 236, 31, 25]",2
 "33,6",( expression ),[1755],1
 "33,7",identifier,[452],1
 "33,9",== expression,"[715, 1033]",2
@@ -140,7 +140,7 @@ Location,Ground_Truth,State_List,Rank
 "33,15",',[1562],1
 "33,16",),"[690, 684, 960, 1033]",1
 "34,3",{ preproc_if_repeat1 },"[653, 362]",1
-"35,5",identifier,[27],1
+"35,5",identifier,[27],2
 "35,9",[ expression ],"[405, 801, 1139, 1056]",9
 "35,10",identifier,[528],2
 "35,11",],"[827, 1090]",1
@@ -151,7 +151,7 @@ Location,Ground_Truth,State_List,Rank
 "36,7",identifier,[540],1
 "36,8",;,"[715, 701, 684, 1056]",1
 "37,3",},"[248, 244, 31, 28]",1
-"39,3",identifier,"[173, 244, 147, 31, 25]",1
+"39,3",identifier,"[173, 244, 147, 31, 25]",5
 "39,7",[ expression ],"[405, 801, 1139, 1056]",9
 "39,8",identifier,[528],2
 "39,9",],"[827, 1090]",1
@@ -163,4 +163,4 @@ Location,Ground_Truth,State_List,Rank
 "41,3",return expression ;,"[248, 244, 31, 25]",5
 "41,10",identifier,[475],1
 "41,11",;,"[715, 1070]",1
-"42,1",},"[199, 244, 31, 25]",2
+"42,1",},"[199, 244, 31, 25]",1

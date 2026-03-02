@@ -3364,9 +3364,9 @@ void collect_recursive(
   if (!children) return;
 
   TSStateId current_node_state = ts_subtree_parse_state(tree);
-  if (current_node_state == 0 || current_node_state == 65535) {
-    current_node_state = state_from_parent;
-  }
+  // if (current_node_state == 0 || current_node_state == 65535) {
+  //   current_node_state = state_from_parent;
+  // }
 
   TSStateId running_state = current_node_state;
 
