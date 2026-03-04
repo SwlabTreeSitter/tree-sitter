@@ -30,7 +30,7 @@ LIB_PATH = "..\\tree-sitter-smallbasic\\smallbasic.dll"
 SOURCE_DIR = "..\\tree-sitter-smallbasic\\SB_Sample"
 
 # 4. 결과 파일(.data)을 저장할 폴더 (새로 생성될 폴더)
-OUTPUT_DIR = "..\\tree-sitter-smallbasic\\SB_Data_TS1"
+OUTPUT_DIR = "..\\tree-sitter-smallbasic\\SB_Data_TS2"
 
 # 5. 실행 인자 설정
 ARG_LANG = "smallbasic"

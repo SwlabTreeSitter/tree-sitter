@@ -3340,6 +3340,118 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
         : (TSPoint){0, padding.extent.column + size.extent.column});
 }
 
+// // [new]
+// void collect_recursive(
+//   CollectionContext *ctx, 
+//   Subtree tree,
+//   TSStateId state_from_parent
+// ) {
+//   uint32_t count = ts_subtree_child_count(tree);
+
+//   // [Leaf 노드]
+//   if (count == 0) {
+//     // 커서 이동
+//     Length padding = ts_subtree_padding(tree);
+//     Length size = ts_subtree_size(tree);
+//     Length total = length_add(padding, size);
+//     ctx->byte_offset += total.bytes;
+//     ctx->point_offset = point_add(ctx->point_offset, total.extent);
+//     return;
+//   }
+
+//   // [Internal 노드]
+//   Subtree *children = ts_subtree_children(tree);
+//   if (!children) return;
+
+//   TSStateId current_node_state = ts_subtree_parse_state(tree);
+//   if (current_node_state == 0 || current_node_state == 65535) {
+//     current_node_state = state_from_parent;
+//   }
+
+//   TSStateId running_state = current_node_state;
+
+//   // 자식 순회
+//   for (uint32_t i = 0; i < count; i++) {
+//     Subtree child = children[i];
+//     TSSymbol child_sym = ts_subtree_symbol(child);
+//     uint32_t child_count = ts_subtree_child_count(child);
+//     bool is_leaf = (child_count == 0);
+//     bool is_valid_sym = (child_sym != ts_builtin_sym_end);
+//     bool is_extra = ts_subtree_extra(child);
+
+//     // 자식이 Leaf 노드이면 구조 후보 출력
+//     if (is_leaf && is_valid_sym) {
+
+//       // line 1: state + symbols
+//       fprintf(ctx->file, "%u", running_state);
+      
+//       for (uint32_t j = i; j < count; j++) {
+//         if (ts_subtree_extra(children[j])) continue;
+//         TSSymbol sym = ts_subtree_symbol(children[j]);
+//         const char *name = ts_language_symbol_name(ctx->lang, sym);
+//         fprintf(ctx->file, " %s", name ? name : "UNKNOWN");
+//       }
+//       fprintf(ctx->file, "\n");
+
+//       // line 2: lexemes
+//       CollectionContext temp_ctx = *ctx;
+//       for (uint32_t j = i; j < count; j++) {
+//         if (ts_subtree_extra(children[j])) continue;
+//         dump_lexemes(&temp_ctx, children[j]);
+//       }
+//       fprintf(ctx->file, "\n");
+//     }
+
+//     // 자식이 또 Internal 노드이면 재귀
+//     collect_recursive(ctx, child, running_state);
+
+//     if (!is_extra) {
+//       TSStateId next = ts_language_next_state(ctx->lang, running_state, child_sym);
+//       if (next != 0) {
+//         running_state = next;
+//       }
+//     }
+//   }
+// }
+
+// // [new] 컬렉션 ver.2
+// bool ts_parser_run_collection2 (
+//   TSTree *tree,
+//   const char *source_code,
+//   uint32_t length,
+//   FILE *file
+// ) {
+
+//   if (!tree) { fprintf(stderr, "[ERROR] Tree is NULL\n"); return false; }
+  
+//   if (!file) return false;
+
+//   Subtree root = tree->root;
+//   if (!root.ptr) return false;
+
+//   // 에러 체크
+//   if (ts_subtree_error_cost(root) > 0) {
+//     fprintf(stderr, "[Skip] Syntax errors detected in file.\n");
+//     fflush(stderr);
+//     return false; 
+//   }
+
+//   // 컨텍스트 설정
+//   CollectionContext ctx = {
+//       .file = file,
+//       .source = source_code,
+//       .source_len = length,
+//       .lang = ts_tree_language(tree),
+//       .byte_offset = 0,
+//       .point_offset = {0, 0}
+//   };
+
+//   collect_recursive(&ctx, root, 1);
+//   fprintf(stderr, "[DEBUG] Recursive finished.\n");
+//   fflush(stderr);
+//   return true;
+// }
+
 // [new]
 void collect_recursive(
   CollectionContext *ctx, 
@@ -3363,11 +3475,11 @@ void collect_recursive(
   Subtree *children = ts_subtree_children(tree);
   if (!children) return;
 
-  TSStateId current_node_state = ts_subtree_parse_state(tree);
-  // if (current_node_state == 0 || current_node_state == 65535) {
-  //   current_node_state = state_from_parent;
-  // }
+  // ERROR 노드 확인
+  bool current_is_error = ts_subtree_is_error(tree) ||
+                          ts_subtree_symbol(tree) == ts_builtin_sym_error_repeat;
 
+  TSStateId current_node_state = ts_subtree_parse_state(tree);
   TSStateId running_state = current_node_state;
 
   // 자식 순회
@@ -3380,32 +3492,44 @@ void collect_recursive(
     bool is_extra = ts_subtree_extra(child);
 
     // 자식이 Leaf 노드이면 구조 후보 출력
-    if (is_leaf && is_valid_sym) {
+    if (is_leaf && is_valid_sym && !current_is_error &&
+      running_state > 0 && running_state < ctx->lang->state_count) {
 
-      // line 1: state + symbols
-      fprintf(ctx->file, "%u", running_state);
-      
-      for (uint32_t j = i; j < count; j++) {
-        if (ts_subtree_extra(children[j])) continue;
-        TSSymbol sym = ts_subtree_symbol(children[j]);
-        const char *name = ts_language_symbol_name(ctx->lang, sym);
-        fprintf(ctx->file, " %s", name ? name : "UNKNOWN");
+      bool contaminated = false;
+        for (uint32_t j = i; j < count; j++) {
+          if (ts_subtree_extra(children[j])) continue;
+          if (ts_subtree_error_cost(children[j]) > 0 || ts_subtree_missing(children[j])) {
+            contaminated = true;
+            break;
+          }
       }
-      fprintf(ctx->file, "\n");
 
-      // line 2: lexemes
-      CollectionContext temp_ctx = *ctx;
-      for (uint32_t j = i; j < count; j++) {
-        if (ts_subtree_extra(children[j])) continue;
-        dump_lexemes(&temp_ctx, children[j]);
+      if (!contaminated) {
+        // line 1: state + symbols
+        fprintf(ctx->file, "%u", running_state);
+        
+        for (uint32_t j = i; j < count; j++) {
+          if (ts_subtree_extra(children[j])) continue;
+          TSSymbol sym = ts_subtree_symbol(children[j]);
+          const char *name = ts_language_symbol_name(ctx->lang, sym);
+          fprintf(ctx->file, " %s", name ? name : "UNKNOWN");
+        }
+        fprintf(ctx->file, "\n");
+
+        // line 2: lexemes
+        CollectionContext temp_ctx = *ctx;
+        for (uint32_t j = i; j < count; j++) {
+          if (ts_subtree_extra(children[j])) continue;
+          dump_lexemes(&temp_ctx, children[j]);
+        }
+        fprintf(ctx->file, "\n");
       }
-      fprintf(ctx->file, "\n");
     }
 
     // 자식이 또 Internal 노드이면 재귀
     collect_recursive(ctx, child, running_state);
 
-    if (!is_extra) {
+    if (!is_extra && running_state > 0 && running_state < ctx->lang->state_count) {
       TSStateId next = ts_language_next_state(ctx->lang, running_state, child_sym);
       if (next != 0) {
         running_state = next;
@@ -3428,13 +3552,6 @@ bool ts_parser_run_collection2 (
 
   Subtree root = tree->root;
   if (!root.ptr) return false;
-
-  // 에러 체크
-  if (ts_subtree_error_cost(root) > 0) {
-    fprintf(stderr, "[Skip] Syntax errors detected in file.\n");
-    fflush(stderr);
-    return false; 
-  }
 
   // 컨텍스트 설정
   CollectionContext ctx = {
