@@ -1156,6 +1156,7 @@ static bool ts_parser__do_all_potential_reductions(
 
   bool can_shift_lookahead_symbol = false;
   StackVersion version = starting_version;
+  // GLR 스택 순회 및 병합 (무한 루프)
   for (unsigned i = 0; true; i++) {
     uint32_t version_count = ts_stack_version_count(self->stack);
     if (version >= version_count) break;
@@ -1169,19 +1170,23 @@ static bool ts_parser__do_all_potential_reductions(
     }
     if (merged) continue;
 
+    // 탐색할 기호 범위 설정 (2가지 모드)
     TSStateId state = ts_stack_state(self->stack, version);
     bool has_shift_action = false;
     array_clear(&self->reduce_actions);
 
     TSSymbol first_symbol, end_symbol;
     if (lookahead_symbol != 0) {
+      // 모드 1: 특정 기호 검증 모드
       first_symbol = lookahead_symbol;
       end_symbol = lookahead_symbol + 1;
     } else {
+      // 모드 2: 모든 기호에 대해 reduce 모드
       first_symbol = 1;
       end_symbol = self->language->token_count;
     }
 
+    // 파싱 액션 수집
     for (TSSymbol symbol = first_symbol; symbol < end_symbol; symbol++) {
       TableEntry entry;
       ts_language_table_entry(self->language, state, symbol, &entry);
@@ -1208,6 +1213,7 @@ static bool ts_parser__do_all_potential_reductions(
       }
     }
 
+    // 수집된 모든 reduce 강제 실행
     StackVersion reduction_version = STACK_VERSION_NONE;
     for (uint32_t j = 0; j < self->reduce_actions.size; j++) {
       ReduceAction action = *array_get(&self->reduce_actions, j);
@@ -1511,7 +1517,7 @@ static void ts_parser__recover(
   self->has_error = has_error;
 }
 
-// [custom] ts_parser__condense_stack의 에러 수리 함수
+// [custom] ts_parser__condense_stack의 호출로 에러 복구를 준비하는 함수
 // 분기 1: v-shift 시도
 // 분기 2: ts_parser__recover
 static void ts_parser__handle_error(
@@ -1533,11 +1539,15 @@ static void ts_parser__handle_error(
   // -----------------------------------------------------------------
   uint32_t previous_version_count = ts_stack_version_count(self->stack);
 
-  // 일단 Reduce 시도
+  // lookahead를 무시하고, 현재 상태에서 가능한 모든 reduce를 실행해본다
+  // 상위 상태에서 lookahead가 유효할 수도 있기 때문
   // Perform any reductions that can happen in this state, regardless of the lookahead. After
   // skipping one or more invalid tokens, the parser might find a token that would have allowed
   // a reduction to take place.
   ts_parser__do_all_potential_reductions(self, version, 0);
+
+  // previous_version_count(handle_error 진입 시점)와 
+  // version_count(potential reductions 후)의 차이가 새로 만들어진 버전 수
   uint32_t version_count = ts_stack_version_count(self->stack);
   Length position = ts_stack_position(self->stack, version);
 
@@ -1545,8 +1555,12 @@ static void ts_parser__handle_error(
   // were created in the previous step.
   bool did_insert_missing_token = false;
   for (StackVersion v = version; v < version_count;) {
+
+    // missing token 삽입 시도
     if (!did_insert_missing_token) {
       TSStateId state = ts_stack_state(self->stack, v);
+
+      // 원본과 reduce로 만들어진 모든 버전 순회
       for (
         TSSymbol missing_symbol = 1;
         missing_symbol < (uint16_t)self->language->token_count;
@@ -1555,10 +1569,13 @@ static void ts_parser__handle_error(
         TSStateId state_after_missing_symbol = ts_language_next_state(
           self->language, state, missing_symbol
         );
+        // state_after_missing == 0 이면 invalid 전이 -> skip
+        // state_after_missing == state 이면 상태 변화 없음 -> skip
         if (state_after_missing_symbol == 0 || state_after_missing_symbol == state) {
           continue;
         }
 
+        // 가상 토큰을 하나 넣은 뒤의 상태에서 lookahead로 reduce가 가능한가?
         if (ts_language_has_reduce_action(
           self->language,
           state_after_missing_symbol,
@@ -1572,12 +1589,17 @@ static void ts_parser__handle_error(
           Length padding = length_sub(self->lexer.token_end_position, position);
           uint32_t lookahead_bytes = ts_subtree_total_bytes(lookahead) + ts_subtree_lookahead_bytes(lookahead);
 
+          // 현재 버전 복사해서 새 버전 만듦
           StackVersion version_with_missing_tree = ts_stack_copy_version(self->stack, v);
+          
+          // 가상 토큰 노드 생성
           Subtree missing_tree = ts_subtree_new_missing_leaf(
             &self->tree_pool, missing_symbol,
             padding, lookahead_bytes,
             self->language
           );
+
+          // 복사된 버전에 가상 토큰 push, state_after_missing_symbol 상태로 전이
           ts_stack_push(
             self->stack, version_with_missing_tree,
             missing_tree, false,
@@ -1597,6 +1619,8 @@ static void ts_parser__handle_error(
           };
           array_push(&self->logged_actions, virtual_shift_log);
           // -----------------------------------------------------------------
+          
+          // 가상 토큰 삽입 후, lookahead를 보고 reduce 시도
           if (ts_parser__do_all_potential_reductions(
             self, version_with_missing_tree,
             ts_subtree_leaf_symbol(lookahead)
@@ -1612,11 +1636,15 @@ static void ts_parser__handle_error(
         }
       }
     }
-
+    // 가상 토큰 삽입 여부와 관계없이,
+    // 원래의 스택 버전은 ERROR_STATE(상태 0)로 강제 밀어 넣음
     ts_stack_push(self->stack, v, NULL_SUBTREE, false, ERROR_STATE);
+
+    // 현재 버전과 redue로 새로 생긴 결과들만 순회
     v = (v == version) ? previous_version_count : v + 1;
   }
 
+  // reduce로 생긴 버전들 병합
   for (unsigned i = previous_version_count; i < version_count; i++) {
     bool did_merge = ts_stack_merge(self->stack, version, previous_version_count);
     ts_assert(did_merge);
@@ -1624,6 +1652,7 @@ static void ts_parser__handle_error(
 
   ts_stack_record_summary(self->stack, version, MAX_SUMMARY_DEPTH);
 
+  // (증분 파싱)
   // Begin recovery with the current lookahead node, rather than waiting for the
   // next turn of the parse loop. This ensures that the tree accounts for the
   // current lookahead token's "lookahead bytes" value, which describes how far
@@ -1632,6 +1661,9 @@ static void ts_parser__handle_error(
   if (ts_subtree_child_count(lookahead) > 0) {
     ts_parser__breakdown_lookahead(self, &lookahead, ERROR_STATE, &self->reusable_node);
   }
+
+  // ERROR_STATE로 진입한 스택을 가지고 바로 복구 시도
+  // ERROR_STATE 없이 가상 토큰이 push된 버전들은 남아있음
   ts_parser__recover(self, version, lookahead);
 
   LOG_STACK();
@@ -1917,8 +1949,10 @@ static bool ts_parser__advance(
         }
       }
     }
+    // case 1: reduce 액션만 존재한 경우
+    // case 2: table_entry.action_count == 0 (파싱 테이블에 아무 액션 없음)
 
-    // 5. 뒷정리 및 재시도
+    // (case 1) reduce 성공 후 상태 업데이트
     // If a reduction was performed, then replace the current stack version
     // with one of the stack versions created by a reduction, and continue
     // processing this version of the stack with the same lookahead symbol.
@@ -1946,6 +1980,7 @@ static bool ts_parser__advance(
       continue;
     }
 
+    // (case 1) reduce 결과물이 기존 파싱 경로와 동일한 경우 병합
     // A reduction was performed, but was merged into an existing stack version.
     // This version can be discarded.
     if (did_reduce) {
@@ -1956,6 +1991,7 @@ static bool ts_parser__advance(
       return true;
     }
 
+    // (case 2) 키워드를 일반 식별자로 처리 시도
     // If the current lookahead token is a keyword that is not valid, but the
     // default word token *is* valid, then treat the lookahead token as the word
     // token instead.
@@ -1984,6 +2020,7 @@ static bool ts_parser__advance(
       }
     }
 
+    // (case 2) 증분 파싱의 경우 재사용 노드 분해
     // If the current lookahead token is not valid and the previous subtree on
     // the stack was reused from an old tree, then it wasn't actually valid to
     // reuse that previous subtree. Remove it from the stack, and in its place,
@@ -1995,8 +2032,8 @@ static bool ts_parser__advance(
       continue;
     }
 
-    // 파싱 테이블에 아무런 액션도 없는 경우
-    // 해당 스택 버전을 멈춤 -> ts_parser_parse에서 ts_parser__condense_stack가 처리
+    // (case 2) 모든 처리가 통하지 않는 진짜 구문 오류
+    // 우선 해당 스택 버전을 멈춤, 이후 다른 버전들도 모두 멈추면 그때 에러 복구 시작
     // Otherwise, there is definitely an error in this version of the parse stack.
     // Mark this version as paused and continue processing any other stack
     // versions that exist. If some other version advances successfully, then
@@ -2272,11 +2309,15 @@ static bool ts_parser__advance_for_conversion(
   }
 }
 
-// [info] 상태 병합(Merge)과 에러 복구에 따른 가지치기(Prune)를 동시에 수행
+// [info] 매 파싱 라운드 이후 살아있는 스택 버전들을 정리
+// - 쓸모없는 버전 제거
+// - 더 나은 버전 선택/병합/정렬
+// - 에러 리커버리 트리거
 static unsigned ts_parser__condense_stack(TSParser *self) {
   bool made_changes = false;
   unsigned min_error_cost = UINT_MAX;
   for (StackVersion i = 0; i < ts_stack_version_count(self->stack); i++) {
+    // reduce 후 병합되어 더 이상 유효하지 않은 버전 제거
     // Prune any versions that have been marked for removal.
     if (ts_stack_is_halted(self->stack, i)) {
       ts_stack_remove_version(self->stack, i);
@@ -2284,6 +2325,7 @@ static unsigned ts_parser__condense_stack(TSParser *self) {
       continue;
     }
 
+    // min_error_cost 추적 (에러 없는 버전만)
     // Keep track of the minimum error cost of any stack version so
     // that it can be returned.
     ErrorStatus status_i = ts_parser__version_status(self, i);
@@ -2291,6 +2333,8 @@ static unsigned ts_parser__condense_stack(TSParser *self) {
       min_error_cost = status_i.cost;
     }
 
+    // 살아있는 모든 스택 버전들을 두 개씩 짝지어 비교
+    // 제거, 병합, 정렬
     // Examine each pair of stack versions, removing any versions that
     // are clearly worse than another version. Ensure that the versions
     // are ordered from most promising to least promising.
@@ -2334,8 +2378,9 @@ static unsigned ts_parser__condense_stack(TSParser *self) {
           break;
       }
     }
-  }
+  } // 이 루프가 끝나면 배열은 비용이 낮은 버전이 앞쪽으로 정렬
 
+  // 스택 개수가 시스템 제한 초과시, 맨 뒤쪽(가장 상태 안좋은 경로들)부터 제거
   // Enforce a hard upper bound on the number of stack versions by
   // discarding the least promising versions.
   while (ts_stack_version_count(self->stack) > MAX_VERSION_COUNT) {
@@ -2343,21 +2388,34 @@ static unsigned ts_parser__condense_stack(TSParser *self) {
     made_changes = true;
   }
 
+  // 에러 리커버리 트리거
   // If the best-performing stack version is currently paused, or all
   // versions are paused, then resume the best paused version and begin
   // the error recovery process. Otherwise, remove the paused versions.
   if (ts_stack_version_count(self->stack) > 0) {
     bool has_unpaused_version = false;
+
+    // 배열은 가장 상태가 좋은 순서로 정렬됨
     for (StackVersion i = 0, n = ts_stack_version_count(self->stack); i < n; i++) {
+      // advance에서 멈춘 스택을 발견
       if (ts_stack_is_paused(self->stack, i)) {
+
+        // 앞서 정상적인 스택이 단 하나도 없었다면
+        // 즉, 모든 버전이 pause됐을 때
         if (!has_unpaused_version && self->accept_count < MAX_VERSION_COUNT) {
           LOG("resume version:%u", i);
           min_error_cost = ts_stack_error_cost(self->stack, i);
+
+          // 스택을 깨우고 에러 처리 시작
+          // 에러 상황에서 가능한 파싱 경로를 최대한 확장
           Subtree lookahead = ts_stack_resume(self->stack, i);
-          // 수리 방법
           ts_parser__handle_error(self, i, lookahead);
+
+          // 복구를 시작했으므로 이제 유효한 경로로 취급
           has_unpaused_version = true;
         } else {
+          // 정상 스택이 있거나, 더 나은 스택이 에러 복구에 들어간 상태면 
+          // 이 paused 버전은 제거
           ts_stack_remove_version(self->stack, i);
           made_changes = true;
           i--;
@@ -3874,7 +3932,8 @@ TSTree *ts_parser_parse(
       }
     }
 
-    // 모든 version이 한 번씩 Shift한 후 (for문 종료)
+    // 매 파싱 라운드 이후 살아있는 스택 버전들을 정리
+    // 주로 모든 version이 한 번씩 Shift한 후 (for문 종료)
     // 같은 상태에 도달한 프로세스들을 하나로 병합
     // After advancing each version of the stack, re-sort the versions by their cost,
     // removing any versions that are no longer worth pursuing.

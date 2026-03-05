@@ -35,6 +35,7 @@ class FileReporter:
         # 통계 변수들
         self.rank_stats = defaultdict(int)
         self.out_of_range_count = 0
+        self.cpp_fail_count = 0
         self.global_queries = 0
         self.global_files = 0
         self.file_reports = []
@@ -212,6 +213,8 @@ class FileReporter:
                 if 1 <= rank <= 5: file_top5_count += 1
                 if 1 <= rank <= 10: file_top10_count += 1
                 if 1 <= rank <= 20: file_top20_count += 1
+            elif not predicted_states:
+                self.cpp_fail_count += 1
             else:
                 self.out_of_range_count += 1
 
@@ -251,29 +254,6 @@ class FileReporter:
 
         print(f"[Saved] File Report (CSV) -> {csv_path}")
 
-    # ==========================================================================
-    # 리포트 2: 랭크 분포(Rank Distribution) 저장
-    # ==========================================================================
-    def save_rank_distribution_report(self):
-        if self.global_queries > 0:
-            csv_path = os.path.join(REPORT_DIR, "c11_rank_distribution.csv")
-            with open(csv_path, "w", newline="", encoding="utf-8") as f:
-                writer = csv.writer(f)
-                writer.writerow(["Rank", "Count", "Share (%)", "Cumulative (%)"])
-                
-                cumulative_count = 0
-                for r in range(1, MAX_RANK_CHECK + 1):
-                    count = self.rank_stats[r]
-                    cumulative_count += count
-                    share_pct = (count / self.global_queries) * 100
-                    cum_pct = (cumulative_count / self.global_queries) * 100
-                    
-                    writer.writerow([r, count, round(share_pct, 2), round(cum_pct, 2)])
-                
-                out_share = (self.out_of_range_count / self.global_queries) * 100
-                writer.writerow(["Out", self.out_of_range_count, round(out_share, 2), "-"])
-
-            print(f"[Saved] Rank Distribution Report (CSV) -> {csv_path}")
 
     def run(self):
         target_files = []
@@ -292,8 +272,15 @@ class FileReporter:
         elapsed = time.time() - start
         print(f"\n[*] Analysis Complete in {elapsed:.2f} sec.\n")
         
+        global_top10 = sum(self.rank_stats[r] for r in range(1, 11))
+        if self.global_queries > 0:
+          print(f"[Global] Total Queries : {self.global_queries}")
+          print(f"[Global] Top-10 Count  : {global_top10}")
+          print(f"[Global] Top-10 Acc    : {global_top10 / self.global_queries * 100:.1f}%")
+          print(f"[Global] Out-of-Range  : {self.out_of_range_count}")
+          print(f"[Global] CPP Fail      : {self.cpp_fail_count}")
+
         self.save_file_performance_report()
-        self.save_rank_distribution_report()
 
 if __name__ == "__main__":
     reporter = FileReporter()

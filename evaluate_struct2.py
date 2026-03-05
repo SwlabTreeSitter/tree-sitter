@@ -39,6 +39,7 @@ class FileReporter:
         # 통계 변수
         self.rank_stats = defaultdict(int)
         self.out_of_range_count = 0
+        self.cpp_fail_count = 0
         self.global_queries = 0
         self.global_files = 0
         self.file_reports = []
@@ -232,6 +233,8 @@ class FileReporter:
                 if 1 <= rank <= 5: file_top5_count += 1
                 if 1 <= rank <= 10: file_top10_count += 1
                 if 1 <= rank <= 20: file_top20_count += 1
+            elif not predicted_states:
+                self.cpp_fail_count += 1
             else:
                 self.out_of_range_count += 1
 
@@ -287,6 +290,14 @@ class FileReporter:
         
         elapsed = time.time() - start
         print(f"\n[*] Analysis Complete in {elapsed:.2f} sec.")
+
+        global_top10 = sum(self.rank_stats[r] for r in range(1, 11))
+        if self.global_queries > 0:
+          print(f"[Global] Total Queries : {self.global_queries}")
+          print(f"[Global] Top-10 Count  : {global_top10}")
+          print(f"[Global] Top-10 Acc    : {global_top10 / self.global_queries * 100:.1f}%")
+          print(f"[Global] Out-of-Range  : {self.out_of_range_count}")
+          print(f"[Global] CPP Fail      : {self.cpp_fail_count}")
         
         self.save_file_performance_report()
 
