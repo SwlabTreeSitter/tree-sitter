@@ -38,7 +38,7 @@ class FileReporter:
         
         # 통계 변수
         self.rank_stats = defaultdict(int)
-        self.out_of_range_count = 0
+        self.beyond_top20_count = 0
         self.cpp_fail_count = 0
         self.global_queries = 0
         self.global_files = 0
@@ -236,7 +236,7 @@ class FileReporter:
             elif not predicted_states:
                 self.cpp_fail_count += 1
             else:
-                self.out_of_range_count += 1
+                self.beyond_top20_count += 1
 
         print(f"    Done. ({file_query_count} queries)")
 
@@ -292,12 +292,15 @@ class FileReporter:
         print(f"\n[*] Analysis Complete in {elapsed:.2f} sec.")
 
         global_top10 = sum(self.rank_stats[r] for r in range(1, 11))
+        global_top20 = sum(self.rank_stats[r] for r in range(1, 21))
+        global_11_to_20 = global_top20 - global_top10
         if self.global_queries > 0:
-          print(f"[Global] Total Queries : {self.global_queries}")
-          print(f"[Global] Top-10 Count  : {global_top10}")
-          print(f"[Global] Top-10 Acc    : {global_top10 / self.global_queries * 100:.1f}%")
-          print(f"[Global] Out-of-Range  : {self.out_of_range_count}")
-          print(f"[Global] CPP Fail      : {self.cpp_fail_count}")
+          print(f"[Global] Total Queries    : {self.global_queries}")
+          print(f"[Global] Top-10 Count     : {global_top10}")
+          print(f"[Global] Top-10 Acc       : {global_top10 / self.global_queries * 100:.1f}%")
+          print(f"[Global] Top11~20 Count   : {global_11_to_20}")
+          print(f"[Global] Beyond Top-20    : {self.beyond_top20_count}")
+          print(f"[Global] CPP Fail         : {self.cpp_fail_count}")
         
         self.save_file_performance_report()
 
