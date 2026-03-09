@@ -11,7 +11,7 @@ from collections import defaultdict
 
 EXE_PATH = "/home/hyeonjin/PL/tree-sitter/TreeSitterCutFile.exe"
 LIB_PATH = "/home/hyeonjin/PL/tree-sitter-smallbasic/smallbasic.so"
-DB_PATH = "/home/hyeonjin/PL/extension/small-basic-extension/src/smallbasic_candidates2.json"
+DB_PATH = "/home/hyeonjin/PL/code-completion-extension/resources/smallbasic/candidates.json"
 
 # 데이터셋 경로
 SOURCE_DIR = "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST_BENCH"

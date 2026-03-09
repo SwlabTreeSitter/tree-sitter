@@ -10,8 +10,10 @@ use std::{
     cmp::Ordering,
     collections::{hash_map, HashMap, HashSet},
     mem,
+    env,
     fs::File,   // for token mapping
-    io::Write   // for token mapping
+    io::Write,  // for token mapping
+    path::PathBuf,
 };
 
 use anyhow::Result;
@@ -147,25 +149,33 @@ pub fn prepare_grammar(
     let interned_grammar = intern_symbols(input_grammar)?;
     let (syntax_grammar, lexical_grammar) = extract_tokens(interned_grammar)?;
     // ------------------------------------------
-    if let Ok(mut file) = File::create("token_mapping.json") {
-        writeln!(file, "{{").unwrap();
+    // TOKEN_MAP_OUTPUT_DIR 환경변수가 설정되어 있으면 해당 경로에,
+    // 없으면 현재 작업 디렉토리에 token_mapping.json 생성
+    {
+        let output_path = env::var("TOKEN_MAP_OUTPUT_DIR")
+            .map(|dir| PathBuf::from(dir).join("token_mapping.json"))
+            .unwrap_or_else(|_| PathBuf::from("token_mapping.json"));
 
-        let len = lexical_grammar.variables.len();
-        for (i, variable) in lexical_grammar.variables.iter().enumerate() {
-            let (type_str, content) = match &variable.rule {
-                Rule::String(s) => ("STRING", s.clone()),
-                Rule::Pattern(regex, _) => ("PATTERN", regex.clone()),
-                _ => ("COMPLEX", format!("{:?}", variable.rule)),
-            };
-            // JSON 문자열 이스케이프
-            let safe_content = content.replace('\\', "\\\\").replace('"', "\\\"");
-            // 마지막 요소면 콤마 제거
-            let comma = if i == len - 1 { "" } else { "," };
-            writeln!(file, "  \"{}\": {{ \"type\": \"{}\", \"content\": \"{}\" }}{}", 
-                variable.name, type_str, safe_content, comma).unwrap();
+        if let Ok(mut file) = File::create(&output_path) {
+            writeln!(file, "{{").unwrap();
+
+            let len = lexical_grammar.variables.len();
+            for (i, variable) in lexical_grammar.variables.iter().enumerate() {
+                let (type_str, content) = match &variable.rule {
+                    Rule::String(s) => ("STRING", s.clone()),
+                    Rule::Pattern(regex, _) => ("PATTERN", regex.clone()),
+                    _ => ("COMPLEX", format!("{:?}", variable.rule)),
+                };
+                // JSON 문자열 이스케이프
+                let safe_content = content.replace('\\', "\\\\").replace('"', "\\\"");
+                // 마지막 요소면 콤마 제거
+                let comma = if i == len - 1 { "" } else { "," };
+                writeln!(file, "  \"{}\": {{ \"type\": \"{}\", \"content\": \"{}\" }}{}",
+                    variable.name, type_str, safe_content, comma).unwrap();
+            }
+            writeln!(file, "}}").unwrap();
+            println!("[Custom] Generated token_mapping.json -> {}", output_path.display());
         }
-        writeln!(file, "}}").unwrap();
-        println!("[Custom] Generated token_mapping.json");
     }
     // ------------------------------------------
     let syntax_grammar = expand_repeats(syntax_grammar);

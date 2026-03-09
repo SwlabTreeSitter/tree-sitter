@@ -8,7 +8,7 @@ set -e
 ROOT="/home/hyeonjin/PL"
 TS_DIR="$ROOT/tree-sitter"
 LANG_DIR="$ROOT/tree-sitter-smallbasic"
-EXT_DIR="$ROOT/extension/small-basic-extension"
+EXT_DIR="$ROOT/code-completion-extension"
 
 # 실행 파일 이름 (리눅스지만 편의상 .exe 붙여둠, 떼도 상관없음)
 EXE_NAME="TreeSitterCutFile.exe" 
@@ -39,7 +39,8 @@ rm -f *.so              # 리눅스 라이브러리
 rm -f LR_Items_Dump.txt # 덤프 파일도 삭제
 
 # 기존 리눅스용 라이브러리(.so) 빌드
-"$TS_CLI" generate
+# TOKEN_MAP_OUTPUT_DIR: token_mapping.json을 extension resources에 직접 생성
+TOKEN_MAP_OUTPUT_DIR="$EXT_DIR/resources/smallbasic" "$TS_CLI" generate
 "$TS_CLI" build
 
 echo ""
@@ -84,7 +85,7 @@ echo "=== [5] Run Collection ==="
 # Python 스크립트 실행
 if [ -f "to_data_batch_collect_learn.py" ]; then
     python3 to_data_batch_collect_learn.py
-    python3 to_json_aggregate_results.py
+    python3 to_json_aggregate_sb.py
 else
     echo " -> (skip) to_data_batch_collect_learn.py not found"
 fi

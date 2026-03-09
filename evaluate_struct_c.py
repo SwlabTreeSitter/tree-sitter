@@ -20,7 +20,7 @@ ANSWER_DIR = "/home/hyeonjin/PL/tree-sitter/reports/c11"
 REPORT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/c11"
 
 # 3. DB 경로 (구조 후보 추천용)
-DB_PATH = "/home/hyeonjin/PL/extension/small-basic-extension/src/c11_candidates.json"
+DB_PATH = "/home/hyeonjin/PL/code-completion-extension/resources/c/candidates.json"
 
 # 4. 평가 설정
 MAX_CANDIDATE_LIST_SIZE = 20

@@ -24,7 +24,7 @@ ANSWER_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
 REPORT_DIR = "/home/hyeonjin/PL/tree-sitter/reports/smallbasic"
 
 # DB 경로 (후보 추천용)
-DB_PATH = "/home/hyeonjin/PL/extension/small-basic-extension/src/smallbasic_candidates2.json"
+DB_PATH = "/home/hyeonjin/PL/code-completion-extension/resources/smallbasic/candidates.json"
 
 # 평가 설정
 MAX_CANDIDATE_LIST_SIZE = 20
