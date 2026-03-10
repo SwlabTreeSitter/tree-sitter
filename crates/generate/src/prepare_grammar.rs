@@ -166,12 +166,19 @@ pub fn prepare_grammar(
                     Rule::Pattern(regex, _) => ("PATTERN", regex.clone()),
                     _ => ("COMPLEX", format!("{:?}", variable.rule)),
                 };
-                // JSON 문자열 이스케이프
-                let safe_content = content.replace('\\', "\\\\").replace('"', "\\\"");
+                // JSON 문자열 이스케이프 (제어문자 포함)
+                let escape = |s: &str| s
+                    .replace('\\', "\\\\")
+                    .replace('"',  "\\\"")
+                    .replace('\n', "\\n")
+                    .replace('\r', "\\r")
+                    .replace('\t', "\\t");
+                let safe_name    = escape(&variable.name);
+                let safe_content = escape(&content);
                 // 마지막 요소면 콤마 제거
                 let comma = if i == len - 1 { "" } else { "," };
                 writeln!(file, "  \"{}\": {{ \"type\": \"{}\", \"content\": \"{}\" }}{}",
-                    variable.name, type_str, safe_content, comma).unwrap();
+                    safe_name, type_str, safe_content, comma).unwrap();
             }
             writeln!(file, "}}").unwrap();
             println!("[Custom] Generated token_mapping.json -> {}", output_path.display());
