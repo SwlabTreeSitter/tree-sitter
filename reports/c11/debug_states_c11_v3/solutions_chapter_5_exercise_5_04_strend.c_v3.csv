@@ -15,7 +15,7 @@ Location,Ground_Truth,State_List,Rank
 "4,21",primitive_type,[649],1
 "4,26",* _declarator,"[739, 720, 1118, 1748, 1601]",1
 "4,27",identifier,"[788, 1443, 1393, 1748, 1601]",1
-"4,28",),"[1300, 1366, 1321, 1748, 1601]",1
+"4,28",),"[1300, 1366, 1321, 1748, 1601]",2
 "4,29",;,"[1288, 1260, 1511, 1458, 1300, 1356]",4
 "6,1",primitive_type,"[225, 43, 44, 1820]",2
 "6,5",identifier,"[739, 796, 1128]",1
@@ -23,7 +23,7 @@ Location,Ground_Truth,State_List,Rank
 "6,10",primitive_type,[624],1
 "6,14",),"[739, 720, 1118, 1598]",4
 "7,1",{ preproc_if_repeat1 },"[1290, 1260, 1511, 1458, 1300, 1356]",1
-"8,3",primitive_type,[23],1
+"8,3",primitive_type,[23],2
 "8,8",* _declarator,"[739, 801, 1139]",2
 "8,9",identifier,[949],1
 "8,11",= expression,"[1300, 1291, 1363, 1455, 1361]",2
@@ -47,10 +47,11 @@ Location,Ground_Truth,State_List,Rank
 "10,15","string_content """,[1531],1
 "10,28","""",[1547],1
 "10,29",;,"[627, 663, 684, 1032, 1592]",1
-"13,3",if parenthesized_expression statement else_clause,"[221, 31, 25]",8
+"12,2",preproc_if_repeat1,"[221, 31, 25]",13
+"13,3",if parenthesized_expression statement else_clause,"[221, 31, 25]",9
 "13,6",( expression ),[1755],1
 "13,7",identifier,[452],1
-"13,13",( expression argument_list_repeat1 ),"[715, 1033]",10
+"13,13",( expression argument_list_repeat1 ),"[715, 1033]",7
 "13,14",identifier,[451],1
 "13,15",", expression","[715, 1018]",1
 "13,17",identifier,[476],1
@@ -63,7 +64,7 @@ Location,Ground_Truth,State_List,Rank
 "14,59","""",[1547],1
 "14,60",),"[627, 663, 684, 1018]",2
 "14,61",;,"[693, 668, 837, 1056]",1
-"15,3",else statement,"[248, 244, 147, 31, 25]",1
+"15,3",else statement,"[248, 244, 147, 31, 25]",2
 "16,5",identifier,[373],3
 "16,9",( expression ),"[793, 1056]",4
 "16,10",""" string_content """,[451],2
@@ -71,10 +72,11 @@ Location,Ground_Truth,State_List,Rank
 "16,66","""",[1547],1
 "16,67",),"[627, 663, 684, 1018]",2
 "16,68",;,"[693, 668, 837, 1056]",1
-"19,3",if parenthesized_expression statement else_clause,"[248, 244, 234, 224, 31, 25]",8
+"18,2",statement,"[248, 244, 234, 224, 31, 25]",8
+"19,3",if parenthesized_expression statement else_clause,"[248, 244, 234, 224, 31, 25]",12
 "19,6",( expression ),[1755],1
 "19,7",identifier,[452],1
-"19,13",( expression argument_list_repeat1 ),"[715, 1033]",10
+"19,13",( expression argument_list_repeat1 ),"[715, 1033]",7
 "19,14",identifier,[451],1
 "19,15",", expression","[715, 1018]",1
 "19,17",identifier,[476],1
@@ -87,7 +89,7 @@ Location,Ground_Truth,State_List,Rank
 "20,59","""",[1547],1
 "20,60",),"[627, 663, 684, 1018]",2
 "20,61",;,"[693, 668, 837, 1056]",1
-"21,3",else statement,"[248, 244, 147, 31, 25]",1
+"21,3",else statement,"[248, 244, 147, 31, 25]",2
 "22,5",identifier,[373],3
 "22,9",( expression ),"[793, 1056]",4
 "22,10",""" string_content """,[451],2
@@ -95,11 +97,11 @@ Location,Ground_Truth,State_List,Rank
 "22,66","""",[1547],1
 "22,67",),"[627, 663, 684, 1018]",2
 "22,68",;,"[693, 668, 837, 1056]",1
-"24,3",return expression ;,"[248, 244, 234, 224, 31, 25]",5
+"24,3",return expression ;,"[248, 244, 234, 224, 31, 25]",6
 "24,10",number_literal,[475],2
 "24,11",;,"[684, 1070]",1
 "25,1",},"[199, 244, 31, 25]",1
-"26,1",function_definition,"[87, 339, 43, 44, 1820]",10
+"26,1",function_definition,"[87, 339, 43, 44, 1820]",6
 "28,1",primitive_type,"[87, 339, 43, 44, 1820]",2
 "28,5",identifier,"[739, 796, 1128]",1
 "28,11",( parameter_declaration parameter_list_repeat1 ),"[1363, 1458, 1356]",2
@@ -110,10 +112,10 @@ Location,Ground_Truth,State_List,Rank
 "28,21",primitive_type,[649],1
 "28,26",* _declarator,"[739, 720, 1118, 1748, 1601]",1
 "28,27",identifier,"[788, 1443, 1393, 1748, 1601]",1
-"28,28",),"[1300, 1366, 1321, 1748, 1601]",1
+"28,28",),"[1300, 1366, 1321, 1748, 1601]",2
 "29,1",{ preproc_if_repeat1 },"[1288, 1260, 1511, 1458, 1300, 1356]",1
-"30,3",preproc_if_repeat1 },[23],8
-"31,3",primitive_type,[23],1
+"30,3",preproc_if_repeat1 },[23],9
+"31,3",primitive_type,[23],2
 "31,10",identifier,"[739, 801, 1139]",1
 "31,19",= expression,"[1363, 1455, 1361]",2
 "31,21",identifier,[459],1
@@ -129,15 +131,18 @@ Location,Ground_Truth,State_List,Rank
 "32,28",identifier,[451],1
 "32,29",),"[715, 1018]",2
 "32,30",;,"[693, 668, 837, 1032, 1592]",2
-"35,3",identifier += expression,"[221, 31, 25]",16
+"34,2",preproc_if_repeat1,"[221, 31, 25]",13
+"35,3",identifier += expression,"[221, 31, 25]",20
 "35,5",+= expression,"[405, 801, 1139, 1056]",12
 "35,8",identifier,[559],1
 "35,16",;,"[715, 982, 684, 1056]",1
-"36,3",identifier += expression,"[248, 244, 31, 25]",16
+"36,3",identifier += expression,"[248, 244, 31, 25]",0
 "36,5",+= expression,"[405, 801, 1139, 1056]",12
 "36,8",identifier,[559],1
 "36,16",;,"[715, 982, 684, 1056]",1
-"40,3",while parenthesized_expression statement,"[248, 244, 31, 25]",10
+"38,2",preproc_if_repeat1,"[248, 244, 31, 25]",11
+"39,3",preproc_if_repeat1,"[248, 244, 31, 25]",11
+"40,3",while parenthesized_expression statement,"[248, 244, 31, 25]",13
 "40,9",( expression ),[1757],1
 "40,10",identifier,[452],1
 "40,19",&& expression,"[715, 1033]",3
@@ -145,16 +150,16 @@ Location,Ground_Truth,State_List,Rank
 "40,23",* expression,[378],3
 "40,24",identifier,[555],1
 "40,25",--,"[625, 692, 837, 1031]",0
-"40,28",== expression,"[667, 684, 692, 837, 1031]",7
+"40,28",== expression,"[667, 684, 692, 837, 1031]",9
 "40,31",* expression,[618],9
 "40,32",identifier,[555],1
 "40,33",--,"[625, 692, 837, 960, 684, 1031]",0
 "40,35",),"[667, 684, 692, 837, 960, 1031]",2
 "40,36",),"[664, 837, 976, 684, 1033]",1
-"41,5",-- expression,"[653, 366]",8
+"41,5",-- expression,"[653, 366]",17
 "41,7",identifier,[540],1
 "41,15",;,"[715, 701, 684, 1056]",1
-"43,3",if parenthesized_expression statement,"[248, 244, 198, 31, 25]",2
+"43,3",if parenthesized_expression statement,"[248, 244, 198, 31, 25]",3
 "43,6",( expression ),[1755],1
 "43,7",identifier,[452],1
 "43,15",),"[715, 1033]",1

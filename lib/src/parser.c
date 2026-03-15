@@ -3538,7 +3538,12 @@ void collect_recursive(
                           ts_subtree_symbol(tree) == ts_builtin_sym_error_repeat;
 
   TSStateId current_node_state = ts_subtree_parse_state(tree);
-  TSStateId running_state = current_node_state;
+  // Fragile 노드(TS_TREE_STATE_NONE = USHRT_MAX)는 parse_state를 신뢰할 수 없음.
+  // 이 경우 첫 번째 리프의 실제 parse_state를 fallback으로 사용한다.
+  // (state_from_parent는 부모도 fragile일 수 있어 부적절)
+  TSStateId running_state = (current_node_state < ctx->lang->state_count)
+    ? current_node_state
+    : ts_subtree_leaf_parse_state(tree);
 
   // 자식 순회
   for (uint32_t i = 0; i < count; i++) {

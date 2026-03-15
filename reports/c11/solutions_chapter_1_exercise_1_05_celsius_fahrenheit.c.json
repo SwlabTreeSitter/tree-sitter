@@ -143,6 +143,10 @@
     "state_id": 1056,
     "candidate": ";"
   },
+  "16,3": {
+    "state_id": 248,
+    "candidate": "identifier"
+  },
   "16,9": {
     "state_id": 1056,
     "candidate": "( expression )"
@@ -150,6 +154,18 @@
   "16,10": {
     "state_id": 451,
     "candidate": "\" string_literal_repeat1 \""
+  },
+  "16,11": {
+    "state_id": 1531,
+    "candidate": "string_content escape_sequence"
+  },
+  "16,18": {
+    "state_id": 1547,
+    "candidate": "escape_sequence"
+  },
+  "16,20": {
+    "state_id": 1547,
+    "candidate": "string_content"
   },
   "16,24": {
     "state_id": 1547,
@@ -166,6 +182,10 @@
   "16,28": {
     "state_id": 1056,
     "candidate": ";"
+  },
+  "17,3": {
+    "state_id": 248,
+    "candidate": "identifier"
   },
   "17,9": {
     "state_id": 1056,
@@ -311,6 +331,10 @@
     "state_id": 1056,
     "candidate": ";"
   },
+  "22,5": {
+    "state_id": 248,
+    "candidate": "identifier"
+  },
   "22,11": {
     "state_id": 1056,
     "candidate": "( expression argument_list_repeat1 )"
@@ -318,6 +342,22 @@
   "22,12": {
     "state_id": 451,
     "candidate": "\" string_literal_repeat1 \""
+  },
+  "22,13": {
+    "state_id": 1531,
+    "candidate": "string_content escape_sequence"
+  },
+  "22,18": {
+    "state_id": 1547,
+    "candidate": "escape_sequence"
+  },
+  "22,20": {
+    "state_id": 1554,
+    "candidate": "escape_sequence string_content"
+  },
+  "22,22": {
+    "state_id": 1554,
+    "candidate": "string_content"
   },
   "22,27": {
     "state_id": 1547,
