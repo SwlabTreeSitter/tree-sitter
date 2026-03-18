@@ -1,0 +1,335 @@
+============================================================
+  Language : smallbasic
+  Start    : 2026-03-18 15:10:09
+============================================================
+  [Step1 rebuild(smallbasic)]
+[*] Completed.
+    - Success: 6228
+    - Skipped: 35
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/smallbasic/LEARN_BENCH_data2
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/smallbasic/candidates.json
+
+  [Step2 collect_test(smallbasic)]
+[*] Completed.
+    - Success: 33
+    - Skipped: 0
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_BENCH_data2
+
+  [Step3 make_answers(smallbasic)]
+[*] All done. Processed 33/33 files.
+
+  [Step4 evaluate_struct(smallbasic)]
+[Global] Total Queries    : 19217
+[Global] Top-10 Count     : 18688
+[Global] Top-10 Acc       : 97.2%
+[Global] Top11~20 Count   : 496
+[Global] Beyond Top-20    : 33
+[Global] CPP Fail         : 0
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/smallbasic/sb_file_performance_v2.csv
+
+  [Step5 evaluate_coverage(smallbasic)]
+[SMALLBASIC] Total Queries : 19217
+[SMALLBASIC] Found         : 19217  (100.0%)
+[SMALLBASIC] Not Found     : 0  (0.0%)
+[SMALLBASIC] Fail          : 0  (0.0%)
+[Saved] /home/hyeonjin/PL/tree-sitter/reports/smallbasic/smallbasic_coverage.csv
+
+  Total Elapsed: 1114s
+  End   : 2026-03-18 15:28:43
+
+============================================================
+  Language : c11
+  Start    : 2026-03-18 15:28:43
+============================================================
+  [Step1 rebuild(c11)]
+    - Skipped:   0
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/c/candidates.json
+
+  [Step2 collect_test(c11)]
+[*] Completed.
+    - Success: 106
+    - Skipped: 0
+    - Total Found: 106
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/c11/TEST_BENCH_data
+
+  [Step3 make_answers(c11)]
+[*] All done. Processed 106/106 files.
+
+  [Step4 evaluate_struct(c11)]
+[Global] Total Queries    : 46951
+[Global] Top-10 Count     : 44329
+[Global] Top-10 Acc       : 94.4%
+[Global] Top11~20 Count   : 1859
+[Global] Beyond Top-20    : 763
+[Global] CPP Fail         : 0
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/c11/c11_file_performance.csv
+
+  [Step5 evaluate_coverage(c11)]
+[C] Total Queries : 46951
+[C] Found         : 46814  (99.7%)
+[C] Not Found     : 137  (0.3%)
+[C] Fail          : 0  (0.0%)
+[Saved] /home/hyeonjin/PL/tree-sitter/reports/c11/c_coverage.csv
+
+  Total Elapsed: 800s
+  End   : 2026-03-18 15:42:03
+
+============================================================
+  Language : haskell
+  Start    : 2026-03-18 15:42:03
+============================================================
+  [Step1 rebuild(haskell)]
+    - Skipped:   1
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/haskell/candidates.json
+
+  [Step2 collect_test(haskell)]
+[*] Completed.
+    - Success: 155
+    - Skipped: 0
+    - Total Found: 155
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/haskell/TEST_data
+
+  [Step3 make_answers(haskell)]
+[*] All done. Processed 155/155 files.
+
+  [Step4 evaluate_struct(haskell)]
+[Global] Total Queries    : 62219
+[Global] Top-10 Count     : 41144
+[Global] Top-10 Acc       : 66.1%
+[Global] Top11~20 Count   : 1613
+[Global] Beyond Top-20    : 19462
+[Global] CPP Fail         : 0
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/haskell/haskell_file_performance.csv
+
+  [Step5 evaluate_coverage(haskell)]
+[HASKELL] Total Queries : 62219
+[HASKELL] Found         : 44067  (70.8%)
+[HASKELL] Not Found     : 18152  (29.2%)
+[HASKELL] Fail          : 0  (0.0%)
+[Saved] /home/hyeonjin/PL/tree-sitter/reports/haskell/haskell_coverage.csv
+
+  Total Elapsed: 1467s
+  End   : 2026-03-18 16:06:30
+
+============================================================
+  Language : ruby
+  Start    : 2026-03-18 16:06:30
+============================================================
+  [Step1 rebuild(ruby)]
+    - Skipped:   2
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/ruby/candidates.json
+
+  [Step2 collect_test(ruby)]
+[*] Completed.
+    - Success: 546
+    - Skipped: 2
+    - Total Found: 548
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/ruby/TEST_data
+
+  [Step3 make_answers(ruby)]
+[*] All done. Processed 546/546 files.
+
+  [Step4 evaluate_struct(ruby)]
+[Global] Total Queries    : 49626
+[Global] Top-10 Count     : 41486
+[Global] Top-10 Acc       : 83.6%
+[Global] Top11~20 Count   : 2723
+[Global] Beyond Top-20    : 5417
+[Global] CPP Fail         : 0
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/ruby/ruby_file_performance.csv
+
+  [Step5 evaluate_coverage(ruby)]
+[RUBY] Total Queries : 49626
+[RUBY] Found         : 46140  (93.0%)
+[RUBY] Not Found     : 3486  (7.0%)
+[RUBY] Fail          : 0  (0.0%)
+[Saved] /home/hyeonjin/PL/tree-sitter/reports/ruby/ruby_coverage.csv
+
+  Total Elapsed: 1023s
+  End   : 2026-03-18 16:23:33
+
+============================================================
+  Language : php
+  Start    : 2026-03-18 16:23:33
+============================================================
+  [Step1 rebuild(php)]
+    - Skipped:   0
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/php/candidates.json
+
+  [Step2 collect_test(php)]
+[*] Completed.
+    - Success: 440
+    - Skipped: 0
+    - Total Found: 440
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/php/TEST_data
+
+  [Step3 make_answers(php)]
+[*] All done. Processed 440/440 files.
+
+  [Step4 evaluate_struct(php)]
+[Global] Total Queries    : 105846
+[Global] Top-10 Count     : 96635
+[Global] Top-10 Acc       : 91.3%
+[Global] Top11~20 Count   : 4864
+[Global] Beyond Top-20    : 4347
+[Global] CPP Fail         : 0
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/php/php_file_performance.csv
+
+  [Step5 evaluate_coverage(php)]
+[PHP] Total Queries : 105846
+[PHP] Found         : 103879  (98.1%)
+[PHP] Not Found     : 1967  (1.9%)
+[PHP] Fail          : 0  (0.0%)
+[Saved] /home/hyeonjin/PL/tree-sitter/reports/php/php_coverage.csv
+
+  Total Elapsed: 1869s
+  End   : 2026-03-18 16:54:42
+
+============================================================
+  Language : javascript
+  Start    : 2026-03-18 16:54:42
+============================================================
+  [Step1 rebuild(javascript)]
+    - Skipped:   3
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/javascript/candidates.json
+
+  [Step2 collect_test(javascript)]
+[*] Completed.
+    - Success: 897
+    - Skipped: 0
+    - Total Found: 897
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/javascript/TEST_data
+
+  [Step3 make_answers(javascript)]
+[*] All done. Processed 897/897 files.
+
+  [Step4 evaluate_struct(javascript)]
+[Global] Total Queries    : 201201
+[Global] Top-10 Count     : 157808
+[Global] Top-10 Acc       : 78.4%
+[Global] Top11~20 Count   : 10549
+[Global] Beyond Top-20    : 32844
+[Global] CPP Fail         : 0
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/javascript/javascript_file_performance.csv
+
+  [Step5 evaluate_coverage(javascript)]
+[JAVASCRIPT] Total Queries : 201201
+[JAVASCRIPT] Found         : 183277  (91.1%)
+[JAVASCRIPT] Not Found     : 17924  (8.9%)
+[JAVASCRIPT] Fail          : 0  (0.0%)
+[Saved] /home/hyeonjin/PL/tree-sitter/reports/javascript/javascript_coverage.csv
+
+  Total Elapsed: 2836s
+  End   : 2026-03-18 17:41:58
+
+============================================================
+  Language : cpp
+  Start    : 2026-03-18 17:41:58
+============================================================
+  [Step1 rebuild(cpp)]
+    - Skipped:   0
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/cpp/candidates.json
+
+  [Step2 collect_test(cpp)]
+[*] Completed.
+    - Success: 456
+    - Skipped: 0
+    - Total Found: 456
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/cpp/TEST_data
+
+  [Step3 make_answers(cpp)]
+[*] All done. Processed 456/456 files.
+
+  [Step4 evaluate_struct(cpp)]
+[Global] Total Queries    : 267878
+[Global] Top-10 Count     : 232943
+[Global] Top-10 Acc       : 87.0%
+[Global] Top11~20 Count   : 22065
+[Global] Beyond Top-20    : 12870
+[Global] CPP Fail         : 0
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/cpp/cpp_file_performance.csv
+
+  [Step5 evaluate_coverage(cpp)]
+[CPP] Total Queries : 267878
+[CPP] Found         : 259874  (97.0%)
+[CPP] Not Found     : 8004  (3.0%)
+[CPP] Fail          : 0  (0.0%)
+[Saved] /home/hyeonjin/PL/tree-sitter/reports/cpp/cpp_coverage.csv
+
+  Total Elapsed: 5308s
+  End   : 2026-03-18 19:10:26
+
+============================================================
+  Language : java
+  Start    : 2026-03-18 19:10:26
+============================================================
+  [Step1 rebuild(java)]
+    - Skipped:   1
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/java/candidates.json
+
+  [Step2 collect_test(java)]
+[*] Completed.
+    - Success: 1826
+    - Skipped: 0
+    - Total Found: 1826
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/java/TEST_data
+
+  [Step3 make_answers(java)]
+[*] All done. Processed 1826/1826 files.
+
+  [Step4 evaluate_struct(java)]
+[Global] Total Queries    : 769242
+[Global] Top-10 Count     : 713525
+[Global] Top-10 Acc       : 92.8%
+[Global] Top11~20 Count   : 38237
+[Global] Beyond Top-20    : 17480
+[Global] Java Fail        : 0
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/java/java_file_performance.csv
+
+  [Step5 evaluate_coverage(java)]
+[JAVA] Total Queries : 769242
+[JAVA] Found         : 762895  (99.2%)
+[JAVA] Not Found     : 6347  (0.8%)
+[JAVA] Fail          : 0  (0.0%)
+[Saved] /home/hyeonjin/PL/tree-sitter/reports/java/java_coverage.csv
+
+  Total Elapsed: 11801s
+  End   : 2026-03-18 22:27:07
+
+============================================================
+  Language : python
+  Start    : 2026-03-18 22:27:07
+============================================================
+  [Step1 rebuild(python)]
+    - Skipped:   139
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/python/candidates.json
+
+  [Step2 collect_test(python)]
+[*] Completed.
+    - Success: 1321
+    - Skipped: 221
+    - Total Found: 1542
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/python/TEST_data
+
+  [Step3 make_answers(python)]
+[*] All done. Processed 1321/1321 files.
+
+  [Step4 evaluate_struct(python)]
+[Global] Total Queries    : 425259
+[Global] Top-10 Count     : 318404
+[Global] Top-10 Acc       : 74.9%
+[Global] Top11~20 Count   : 19760
+[Global] Beyond Top-20    : 87095
+[Global] Python Fail      : 0
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/python/python_file_performance.csv
+
+  [Step5 evaluate_coverage(python)]
+[PYTHON] Total Queries : 425259
+[PYTHON] Found         : 365678  (86.0%)
+[PYTHON] Not Found     : 59581  (14.0%)
+[PYTHON] Fail          : 0  (0.0%)
+[Saved] /home/hyeonjin/PL/tree-sitter/reports/python/python_coverage.csv
+
+  Total Elapsed: 6524s
+  End   : 2026-03-19 00:15:51
+

@@ -2061,16 +2061,6 @@ static bool ts_parser__advance_for_conversion(
   uint32_t position = ts_stack_position(self->stack, version).bytes;
   Subtree last_external_token = ts_stack_last_external_token(self->stack, version);
 
-  // [Fix] 렉서 호출 전 선제 체크:
-  // 스택 위치가 이미 커서 위치에 도달했으면 즉시 컨버전 캡처.
-  // 예) `def foo(` 에서 커서가 `(` 직후일 때:
-  //   `(` 시프트 후 position == target_length 이 되므로,
-  //   렉서를 호출하기 전에 잡지 않으면 null 반환 → non-terminal extra reduce →
-  //   상태가 변경된 후 sym:end가 감지되어 올바른 상태가 이미 사라진다.
-  if (position >= target_length) {
-    return false;
-  }
-
   // 재사용 여부, lookahead 토큰, table_entry(파싱 테이블에서 꺼낸 액션 목록) 초기화
   bool did_reuse = true;
   Subtree lookahead = NULL_SUBTREE;
@@ -2109,34 +2099,62 @@ static bool ts_parser__advance_for_conversion(
       lookahead = ts_parser__lex(self, version, state);  // Lexer 실행
       if (self->has_scanner_error) return false;
 
-      // EOF(커서 도달)를 만났을 때의 시간 정지
-      // 외부 스캐너가 0-size 토큰(DEDENT 등)을 생성하면서 커서 위치까지 소비한 경우도 포함:
-      //   예) Python에서 truncated EOF를 DEDENT로 변환 → sym:end 대신 DEDENT 반환
-      //   이 경우 sym:end 검사만으로는 잡히지 않아 state:601 같은 커서 위치 상태가 오류복구로 폐기됨
-      // 단, size>0인 실제 토큰(예: `(`)은 여기서 멈추지 않고 일단 시프트해야 한다.
-      //   시프트 후 다음 호출의 pre-lex 체크(position >= target_length)에서 잡힌다.
-      if ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_end)
-          || ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_error) && self->lexer.current_position.bytes >= target_length)
-          || (self->lexer.current_position.bytes >= target_length && lookahead.ptr && ts_subtree_total_size(lookahead).bytes == 0)) {
-
-          // 파서의 상태를 훼손하지 않기 위해 더 이상의 처리를 중단
-          return false;
-      }
-
-      // 토큰이 발견되면
-      if (lookahead.ptr) {
+      if (position >= target_length) {
+        // [커서 위치 도달] 렉서 결과에 따라 엄격히 분기:
+        //
+        // ① NULL → non-terminal extra reduce가 발생해 상태가 바뀔 수 있으므로 중단.
+        //      예) `def foo(` 커서 직후: NULL 반환 → non-terminal extra reduce →
+        //         올바른 상태가 이미 사라진 뒤 sym:end 감지.
+        // ② sym:end / sym:error → EOF. 중단.
+        // ③ 크기 > 0인 실제 토큰 → 커서 너머의 토큰. 중단.
+        // ④ 크기 == 0, 해당 state에서 액션 없음 → 유효하지 않은 가상 토큰
+        //      예) Python DEDENT: 해당 state에서 REJECT → 에러 복구 → 올바른 상태 폐기.
+        //         중단해서 현재 상태(예: state:601)를 캡처.
+        // ⑤ 크기 == 0, 해당 state에서 SHIFT 가능 → 유효한 외부 토큰
+        //      예) Haskell _cmd_texp_start: SHIFT → state:8876 →
+        //         다음 호출에서 state:8876을 캡처, 시뮬레이션이 state:7779 도출.
+        if (!lookahead.ptr) return false;  // ①
+        TSSymbol sym = ts_subtree_symbol(lookahead);
+        if (sym == ts_builtin_sym_end) return false;   // ②
+        if (sym == ts_builtin_sym_error) return false; // ②
+        if (ts_subtree_total_size(lookahead).bytes > 0) return false;  // ③
+        // ④ vs ⑤: 0-size 토큰의 유효성 검사
+        TableEntry ze = {.action_count = 0};
+        ts_language_table_entry(self->language, state, sym, &ze);
+        if (ze.action_count == 0) return false;  // ④
+        // ⑤: 유효한 SHIFT → 캐시 저장 후 액션 루프로 진입
         ts_parser__set_cached_token(self, position, last_external_token, lookahead);
-        // 현재 상태(state)에서 이 토큰(lookahead)을 만났을 때의 모든 후보 액션을
-        // 파싱 테이블에서 찾아 table_entry에 저장
-        ts_language_table_entry(self->language, state, ts_subtree_symbol(lookahead), &table_entry);
-      }
+        ts_language_table_entry(self->language, state, sym, &table_entry);
+      } else {
+        // [커서 미도달] 기존 post-lex 체크 유지
+        // sym:end 또는 커서 이후에서 sym:error → 중단
+        if ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_end)
+            || ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_error)
+                && self->lexer.current_position.bytes >= target_length)) {
+          return false;
+        }
 
-      // When parsing a non-terminal extra, a null lookahead indicates the
-      // end of the rule. The reduction is stored in the EOF table entry.
-      // After the reduction, the lexer needs to be run again.
-      else {
-        // EOF 심볼로 액션을 조회
-        ts_language_table_entry(self->language, state, ts_builtin_sym_end, &table_entry);
+        // 커서 위치에서 0-size 가상 토큰: 유효하지 않으면 중단 (예: Python DEDENT)
+        if (self->lexer.current_position.bytes >= target_length
+            && lookahead.ptr
+            && ts_subtree_total_size(lookahead).bytes == 0) {
+          TableEntry zero_size_entry = {.action_count = 0};
+          ts_language_table_entry(self->language, state, ts_subtree_symbol(lookahead), &zero_size_entry);
+          if (zero_size_entry.action_count == 0) {
+            return false;
+          }
+        }
+
+        // 토큰이 발견되면
+        if (lookahead.ptr) {
+          ts_parser__set_cached_token(self, position, last_external_token, lookahead);
+          ts_language_table_entry(self->language, state, ts_subtree_symbol(lookahead), &table_entry);
+        }
+        // When parsing a non-terminal extra, a null lookahead indicates the
+        // end of the rule. The reduction is stored in the EOF table entry.
+        else {
+          ts_language_table_entry(self->language, state, ts_builtin_sym_end, &table_entry);
+        }
       }
     }
 
