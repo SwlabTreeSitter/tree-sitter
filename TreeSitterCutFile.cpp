@@ -310,12 +310,27 @@ int main(int argc, char* argv[]) {
                 // [모드 0] Updated Conversion
                 // ------------------------------------------------------
                 std::cout << "DEBUG: Running Updated Conversion..." << std::endl;
+
+                // conversion parse 로깅
+                FILE *conv_fp = fopen("debug_log_conv.txt", "w");
+                if (conv_fp) {
+                    TSLogger conv_logger;
+                    conv_logger.payload = conv_fp;
+                    conv_logger.log = LogToFileCallback;
+                    ts_parser_set_logger(parser, conv_logger);
+                }
+
                 TSStatePath path2 = ts_parser_parse_string_for_conversion(
                     parser,
                     NULL,
                     source_code.c_str(),
                     static_cast<uint32_t>(effective_length)
                 );
+
+                if (conv_fp) {
+                    ts_parser_set_logger(parser, {0});
+                    fclose(conv_fp);
+                }
 
                 // Python 스크립트용 출력
                 std::cout << "@@PREDICT:";

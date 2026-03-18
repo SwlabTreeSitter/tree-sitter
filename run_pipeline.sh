@@ -64,7 +64,7 @@ case "$LANG" in
         REBUILD_SCRIPT="$TS_DIR/rebuild_all.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_sb.py"
-        EVALUATE="$TS_DIR/evaluate_struct.py"
+        EVALUATE="$TS_DIR/evaluate_struct_smallbasic.py"
         ;;
     c11)
         REBUILD_SCRIPT="$TS_DIR/rebuild_all_c.sh"

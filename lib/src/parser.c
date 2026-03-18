@@ -2053,13 +2053,23 @@ static bool ts_parser__advance_for_conversion(
   uint32_t target_length
 ) {
   // 1. 스택에서 현재 문맥 읽기
-  // 현재 문맥: 
-  //    스택 top에서 현재 버전의 state (ID), 
-  //    position (바이트 위치), 
+  // 현재 문맥:
+  //    스택 top에서 현재 버전의 state (ID),
+  //    position (바이트 위치),
   //    외부 스캐너가 마지막으로 반환한 토큰 (external scanner 상태 복원용)
   TSStateId state = ts_stack_state(self->stack, version);
   uint32_t position = ts_stack_position(self->stack, version).bytes;
   Subtree last_external_token = ts_stack_last_external_token(self->stack, version);
+
+  // [Fix] 렉서 호출 전 선제 체크:
+  // 스택 위치가 이미 커서 위치에 도달했으면 즉시 컨버전 캡처.
+  // 예) `def foo(` 에서 커서가 `(` 직후일 때:
+  //   `(` 시프트 후 position == target_length 이 되므로,
+  //   렉서를 호출하기 전에 잡지 않으면 null 반환 → non-terminal extra reduce →
+  //   상태가 변경된 후 sym:end가 감지되어 올바른 상태가 이미 사라진다.
+  if (position >= target_length) {
+    return false;
+  }
 
   // 재사용 여부, lookahead 토큰, table_entry(파싱 테이블에서 꺼낸 액션 목록) 초기화
   bool did_reuse = true;
@@ -2100,12 +2110,17 @@ static bool ts_parser__advance_for_conversion(
       if (self->has_scanner_error) return false;
 
       // EOF(커서 도달)를 만났을 때의 시간 정지
-      // self->lexer.current_position.bytes >= target_length || 
+      // 외부 스캐너가 0-size 토큰(DEDENT 등)을 생성하면서 커서 위치까지 소비한 경우도 포함:
+      //   예) Python에서 truncated EOF를 DEDENT로 변환 → sym:end 대신 DEDENT 반환
+      //   이 경우 sym:end 검사만으로는 잡히지 않아 state:601 같은 커서 위치 상태가 오류복구로 폐기됨
+      // 단, size>0인 실제 토큰(예: `(`)은 여기서 멈추지 않고 일단 시프트해야 한다.
+      //   시프트 후 다음 호출의 pre-lex 체크(position >= target_length)에서 잡힌다.
       if ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_end)
-          || ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_error) && self->lexer.current_position.bytes >= target_length)) {
-          
+          || ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_error) && self->lexer.current_position.bytes >= target_length)
+          || (self->lexer.current_position.bytes >= target_length && lookahead.ptr && ts_subtree_total_size(lookahead).bytes == 0)) {
+
           // 파서의 상태를 훼손하지 않기 위해 더 이상의 처리를 중단
-          return false; 
+          return false;
       }
 
       // 토큰이 발견되면
