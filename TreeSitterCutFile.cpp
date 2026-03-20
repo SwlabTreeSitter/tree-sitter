@@ -35,23 +35,15 @@
 #endif
 
 extern "C" {
-    // 1. 컨버전 로직 실행
-    TSStatePath ts_parser_run_conversion(TSParser *self);
+    // 컨버전
     TSStatePath ts_parser_parse_string_for_conversion(TSParser *self, const TSTree *old_tree, const char *string, uint32_t length);
-
-    // 2. 컨버전 결과 출력 (파일 or 화면)
     void ts_parser_write_conversion_result(TSParser *self, TSStatePath *path, FILE *fp);
 
-    // 3. 컬렉션 로직 실행
-    // bool ts_parser_run_collection(TSParser *self, FILE *OutputFile);
+    // 컬렉션
     bool ts_parser_run_collection2(TSTree *tree, const char *source_code, uint32_t length, FILE *OutputFile);
-    
-    // 4. 로그 덤프
-    void ts_parser_write_logged_actions(TSParser *self, const char *filename);
 
-    // 5. 배치 컨버전 실행 (모든 위치의 State Path 출력)
-    // void ts_parser_run_batch_conversion(TSParser *self, FILE *out_stream);
-    void ts_parser_run_batch_conversion(TSParser *self, const char *source_code, FILE *out_stream);
+    // 로그 덤프
+    void ts_parser_write_logged_actions(TSParser *self, const char *filename);
 }
 
 // TSLanguage*를 반환하는 함수 포인터 타입을 정의 (동적 로딩용)
@@ -106,10 +98,6 @@ void LogToFileCallback(void *payload, TSLogType type, const char *buffer) {
     }
 }
 
-void RunCustomEvalLogic(TSParser* parser, const char* target_path) {
-
-}
-
 // [Main]
 int main(int argc, char* argv[]) {
     std::cout << "DEBUG: Program started." << std::endl;
@@ -121,42 +109,31 @@ int main(int argc, char* argv[]) {
 
     LibraryHandle library_handle = nullptr;
 
-    bool stop_position_provided = false;
-    uint32_t stop_row = 0; 
-    uint32_t stop_col = 0; 
+    uint32_t stop_row = 0;
+    uint32_t stop_col = 0;
 
-    // bool bIsCollectionMode = false;
-    // bool bIsBatchMode = false;
     int execution_mode = 0;
-    bool is_batch_mode = false;
 
     // ==========================================================
     // 1. 인자 파싱 및 검증
-    // 사용법 1 (기본): exe lang dll file
-    // 사용법 2 (옵션): exe lang dll file row col flag
+    // 사용법 1 (컬렉션): exe lang dll file 1
+    // 사용법 2 (컨버전): exe lang dll file row col 0
     // ==========================================================
     if (argc >= 4) {
         language_name = argv[1];
         library_path = argv[2];
         target_path = argv[3];
 
-        // 4번째 인자가 "--batch"인 경우 처리
-        if (argc == 5 && std::string(argv[4]) == "--batch") {
-            is_batch_mode = true;
-            execution_mode = 3; // 배치 모드 전용 내부 번호
-            std::cout << "DEBUG: Mode set to BATCH" << std::endl;
-        } 
-        // 기존 7개 인자 (Advanced 모드: row, col, mode)
-        else if (argc == 7) {
-            stop_position_provided = true;
+        if (argc == 7) {
             stop_row = std::stoul(argv[4]);
             stop_col = std::stoul(argv[5]);
             execution_mode = std::stoi(argv[6]);
-            
-            std::cout << "DEBUG: Mode set to " << execution_mode << std::endl;
+        }
+        else if (argc == 5) {
+            execution_mode = std::stoi(argv[4]);
         }
         else if (argc == 4) {
-            execution_mode = 0; // 기본값
+            execution_mode = 0;
         }
         else {
             goto usage_error;
@@ -164,9 +141,8 @@ int main(int argc, char* argv[]) {
     } else {
     usage_error:
         std::cerr << "Usage:" << std::endl;
-        std::cerr << "  1. Standard: " << argv[0] << " <lang> <dll> <file>" << std::endl;
-        std::cerr << "  2. Batch:    " << argv[0] << " <lang> <dll> <file> --batch" << std::endl;
-        std::cerr << "  3. Advanced: " << argv[0] << " <lang> <dll> <file> <row> <col> <mode>" << std::endl;
+        std::cerr << "  Collection: " << argv[0] << " <lang> <dll> <file> 1" << std::endl;
+        std::cerr << "  Conversion: " << argv[0] << " <lang> <dll> <file> <row> <col> 0" << std::endl;
         return 1;
     }
 
@@ -207,7 +183,7 @@ int main(int argc, char* argv[]) {
         // ==========================================================
         // 3. 실행 길이(Position) 결정
         // ==========================================================
-        if (!is_batch_mode && (execution_mode == 0 || execution_mode == 2)) {
+        if (execution_mode == 0) {
             std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
             size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
             effective_length = (std::min)(source_code.length(), stop_offset);
@@ -252,17 +228,6 @@ int main(int argc, char* argv[]) {
         // ==========================================================
         // 5. 모드별 후처리 로직 분기
         // ==========================================================
-            if (is_batch_mode) {
-                // ------------------------------------------------------
-                // [배치 모드] 모든 위치의 State를 한 번에 출력
-                // ------------------------------------------------------
-                std::cout << "@@BATCH_START@@" << std::endl;
-                // ts_parser_run_batch_conversion(parser, stdout);
-                ts_parser_run_batch_conversion(parser, source_code.c_str(), stdout);
-                std::cout << "@@BATCH_END@@" << std::endl;
-            }
-            else 
-        
             if (execution_mode == 1) {
                 // ------------------------------------------------------
                 // [모드 1] Collection
@@ -285,26 +250,6 @@ int main(int argc, char* argv[]) {
                     std::cerr << "ERROR: Could not open Test.data for writing." << std::endl;
                 }
             } 
-            else if (execution_mode == 2) {
-                // ------------------------------------------------------
-                // [모드 2] Original Conversion
-                // ------------------------------------------------------
-                std::cout << "DEBUG: Running Original Conversion..." << std::endl;
-                TSStatePath path = ts_parser_run_conversion(parser);
-
-                // Python 스크립트용 출력
-                std::cout << "@@PREDICT:";
-                for (int i = 0; i < path.count; i++) {
-                    std::cout << " " << path.states[i];
-                }
-                std::cout << std::endl;
-
-                FILE *test_data_fp = fopen("Test.data", "w");
-                if (test_data_fp) {
-                    ts_parser_write_conversion_result(parser, &path, test_data_fp);
-                    fclose(test_data_fp);
-                }
-            }
             else {
                 // ------------------------------------------------------
                 // [모드 0] Updated Conversion

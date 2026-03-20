@@ -2122,7 +2122,14 @@ static bool ts_parser__advance_for_conversion(
         TableEntry ze = {.action_count = 0};
         ts_language_table_entry(self->language, state, sym, &ze);
         if (ze.action_count == 0) return false;  // ④
-        // ⑤: 유효한 SHIFT → 캐시 저장 후 액션 루프로 진입
+        // ⑤: 유효한 SHIFT → 삽입 전/후 state 모두 캡처
+        //   - 복사본을 halted로 고정: 삽입 전 state에서 시뮬레이션
+        //   - 원본은 SHIFT 진행: 다음 호출에서 삽입 후 state 캡처
+        //   - phase_3_conversion이 전체 버전(halted 포함)을 순회하며 합집합
+        StackVersion pre_shift_copy = ts_stack_copy_version(self->stack, version);
+        if (pre_shift_copy != STACK_VERSION_NONE) {
+          ts_stack_halt(self->stack, pre_shift_copy);
+        }
         ts_parser__set_cached_token(self, position, last_external_token, lookahead);
         ts_language_table_entry(self->language, state, sym, &table_entry);
       } else {
@@ -2131,6 +2138,16 @@ static bool ts_parser__advance_for_conversion(
         if ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_end)
             || ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_error)
                 && self->lexer.current_position.bytes >= target_length)) {
+          return false;
+        }
+
+        // NULL + 렉서가 커서까지 전진: 커서 도달로 처리
+        //   - non-terminal extra reduce(정상): NULL이지만 current_position < target_length
+        //   - 커서 직전 토큰 불완전(예: Haskell `main ` 뒤 `::` 미도달):
+        //       공백을 스킵하면 current_position == target_length에 도달하지만
+        //       다음 문자(`::`)를 읽지 못해 NULL 반환
+        //       → non-terminal extra reduce가 발동되면 state:2263이 사라짐
+        if (!lookahead.ptr && self->lexer.current_position.bytes >= target_length) {
           return false;
         }
 
@@ -2143,6 +2160,20 @@ static bool ts_parser__advance_for_conversion(
           if (zero_size_entry.action_count == 0) {
             return false;
           }
+          // ⑤ (else-branch): 유효한 0-size SHIFT가 렉서를 커서 경계까지 전진시킨 경우
+          //   position < target_length 이지만 렉서가 target_length까지 읽어버림
+          //   → SHIFT를 진행시킨다. 0-size이므로 position은 그대로.
+          //   → 다음 advance에서 계속 파싱하다가 실제 position >= target_length
+          //      분기에 진입하여 올바르게 캡처됨 (예: Haskell _cmd_texp_start)
+          //   → return false 하지 않고 fall-through
+        }
+
+        // ③ (else-branch): 렉서가 target_length까지 전진하면서 크기>0 토큰 반환
+        //   → 해당 토큰을 소비하면 커서를 지나쳐버림 → 현재 state 보존 후 중단
+        if (self->lexer.current_position.bytes >= target_length
+            && lookahead.ptr
+            && ts_subtree_total_size(lookahead).bytes > 0) {
+          return false;
         }
 
         // 토큰이 발견되면
@@ -2556,67 +2587,6 @@ static void print_escaped_string(FILE *file, const char *input) {
   }
 }
 
-// [new] (Helper)
-static void get_visual_position_from_offset(const char *text, uint32_t target_offset, uint32_t *out_row, uint32_t *out_col) {
-    uint32_t current_offset = 0;
-    uint32_t current_row = 0;
-    uint32_t current_col = 0;
-    const uint32_t tab_width = 4;
-
-    if (!text) {
-        *out_row = 0; *out_col = 0; return;
-    }
-
-    // C++의 FindByteOffsetForPosition 루프와 100% 동일한 규칙 적용
-    while (text[current_offset] != '\0' && current_offset < target_offset) {
-        unsigned char current_char = (unsigned char)text[current_offset];
-
-        if (current_char == '\n') {
-            current_row++;
-            current_col = 0;
-            current_offset++;
-        } else if (current_char == '\r' && text[current_offset + 1] == '\n') {
-            current_row++;
-            current_col = 0;
-            current_offset += 2;
-        } else if (current_char == '\t') {
-            current_col = ((current_col / tab_width) + 1) * tab_width;
-            current_offset++;
-        } else {
-            current_col++;
-            current_offset++;
-            if (current_char >= 0xC0) {
-                while (text[current_offset] != '\0' && current_offset < target_offset &&
-                      ((unsigned char)text[current_offset] & 0xC0) == 0x80) {
-                    current_offset++;
-                }
-            }
-        }
-    }
-    *out_row = current_row;
-    *out_col = current_col;
-}
-
-// 트리시터 기본 좌표(TSPoint)를 절대 바이트 오프셋으로 변환
-static uint32_t get_absolute_offset_from_point(const char *text, TSPoint point) {
-    uint32_t current_offset = 0;
-    uint32_t current_row = 0;
-    if (!text) return point.column;
-
-    while (text[current_offset] != '\0' && current_row < point.row) {
-        if (text[current_offset] == '\n') {
-            current_row++;
-            current_offset++;
-        } else if (text[current_offset] == '\r' && text[current_offset + 1] == '\n') {
-            current_row++;
-            current_offset += 2;
-        } else {
-            current_offset++;
-        }
-    }
-    return current_offset + point.column;
-}
-
 // Parser - Public
 
 // [custom] TSParser 생성자
@@ -2950,236 +2920,6 @@ void ts_parser_write_logged_actions(
   fclose(ActionFile);
 }
 
-
-// [new] 커서 위치 직전의 Shift(로그 인덱스)를 찾는 함수
-static int32_t ts_conversion__find_cursor_shift_index(TSParser *self) {
-  // 커서 위치
-  uint32_t target_row = self->cursor_row;
-  uint32_t target_col = self->cursor_col;
-
-  // 배열의 끝에서부터 시작
-  for (int32_t I = (int32_t)self->logged_actions.size - 1; I >= 0; --I) {
-    TSLoggedAction *action = &self->logged_actions.contents[I];
-    
-    // 가상 토큰이 아닌 실제 Shift만 탐색
-    if (action->type == TSParseActionTypeShift && !action->is_virtual && !action->extra) {
-      uint32_t R = action->start_point.row;
-      uint32_t C = action->start_point.column;
-      
-      // [조건] 커서보다 과거인 위치인가?
-      // todo: 커서와 같은 위치 (C <= TargetCol) 포함 여부 판단 
-      // 뒤에서부터 왔으므로, 이 조건을 만족하는 '첫 번째'가 곧 '가장 늦은' 위치임.
-      bool IsPastOrCurrent = (R < target_row) || (R == target_row && C < target_col);
-      if (IsPastOrCurrent) {
-          return I; // 찾자마자 즉시 반환
-      }
-    }
-  }
-  return -1; // 못 찾음
-}
-
-// [new] 현재 커서 위치를 기준으로 파싱 스택 복원 함수
-static TSStatePath ts_conversion__reconstruct_stack(
-  TSParser *self,
-  const int32_t shift_index
-) {
-  // 1. 결과 초기화
-  TSStatePath ResultStack = {0};
-  if (self->logged_actions.size == 0 || self->logged_actions.contents == NULL) {
-    return ResultStack;
-  }
-  if (shift_index == -1) return ResultStack;
-
-  // 2. 시뮬레이션 스택 준비
-  TSStateId SimStack[2048];
-  uint32_t SimTop = 0;
-
-  // 3. 로그 순차 실행 (Linear Scan)
-  for (uint32_t i = 0; i <= (uint32_t)shift_index; ++i) {
-    if (i >= self->logged_actions.size) break;
-    TSLoggedAction *action = &self->logged_actions.contents[i];
-
-    // 시뮬레이터 스택이 비어있거나, 현재 추적 중인 상태와 로그의 상태가 어긋나면
-    // 로그의 current_state를 신뢰하여 스택에 추가
-    if (SimTop == 0 || SimStack[SimTop - 1] != action->current_state) {
-      if (SimTop < 2048) SimStack[SimTop++] = action->current_state;
-    }
-
-    // 스택 액션 수행
-    // Shift: 다음 상태 Push
-    if (action->type == TSParseActionTypeShift && !action->extra) {
-      if (SimTop < 2048) SimStack[SimTop++] = action->next_state; 
-    }
-
-    // Reduce: 자식 수만큼 Pop -> 결과 상태 Push
-    else if (action->type == TSParseActionTypeReduce) {
-      uint32_t PopCount = action->child_count;
-      if (SimTop >= PopCount) SimTop -= PopCount; 
-      else SimTop = 0; // 스택 언더플로우 방어
-            
-      if (SimTop < 2048) SimStack[SimTop++] = action->next_state; 
-    }
-    
-    // Recover: 상태 전이 발생
-    else if (action->type == TSParseActionTypeRecover) {
-      // recover는 단순 마커
-    }
-    else if (action->type == TSParseActionTypeAccept) {
-      // accept는 파싱 종료이므로 스택 변화 없음
-    }
-  }
-
-  // 4. 결과 반환 (스택 뒤집기)
-  for (uint32_t i = 0; i < SimTop; ++i) {
-    if (ResultStack.count < 64) {
-      ResultStack.states[ResultStack.count++] = SimStack[SimTop - 1 - i];
-    } else {
-      break;
-    }
-  }
-  return ResultStack;
-}
-
-// [new] reduce로 가능한 current states 재귀적으로 찾는 함수 
-static void ts_conversion__recursive_current_states (
-  TSParser *self,
-  const TSStatePath *stack,
-  TSStatePath *result
-) {
-  if (stack->count == 0) return;
-  TSStateId current_state = stack->states[0];
-  const TSLanguage *language = self->language;
-
-  // 1. 결과 집합에 현재 상태 추가 (이미 방문한 상태면 중단)
-  for (uint32_t i = 0; i < result->count; i++) {
-    if (result->states[i] == current_state) return;
-  }
-  if (result->count < 64) {
-    // printf("[DEBUG-RECURSIVE] Add State: %d \n", current_state);
-    result->states[result->count++] = current_state;
-  } else {
-    return;
-  }
-
-  // 2. PRD(Productions) 수집
-  // 현재 상태에서 Reduce를 유발하는 모든 규칙 찾기
-  typedef struct {
-    TSSymbol lookahead;
-    uint32_t child_count;
-    TSSymbol symbol;
-  } ReduceProduction;
-
-  ReduceProduction PRD[256];
-  uint32_t prd_count = 0;
-
-  // reduce 액션 찾기
-  // 모든 심볼에 대해 액션 조회
-
-  // 전체 터미널(실제 토큰) 개수 계산
-  // (기본 토큰 + 외부 토큰)
-  uint32_t total_terminal_count = language->token_count + language->external_token_count;
-
-  // Before: 모든 심볼 검사 (Non-Terminal 포함)
-  // for (TSSymbol sym = 0; sym < language->symbol_count; sym++)
-  for(TSSymbol sym = 0; sym < total_terminal_count; sym++) {
-    if (sym == ts_builtin_sym_end) continue;
-    uint32_t idx = ts_language_lookup(language, current_state, sym);
-    if (idx == 0) continue;
-
-    const TSParseActionEntry *entry = &language->parse_actions[idx];
-    const TSParseAction *actions = (const TSParseAction *)(entry + 1);
-
-    // 해당 심볼의 액션 중 하나라도 reduce면 확인
-    for (uint32_t i = 0; i < entry->entry.count; i++) {
-      if (actions[i].type == TSParseActionTypeReduce) {
-        // 중복 규칙 검사
-        bool exists = false;
-        for (uint32_t k = 0; k < prd_count; k++) {
-          if (PRD[k].symbol == actions[i].reduce.symbol &&
-            PRD[k].child_count == actions[i].reduce.child_count) {
-            exists = true;
-            break;
-          } 
-        }
-        // 새로운 규칙이면 추가
-        if (!exists && prd_count < 128) {
-          PRD[prd_count].lookahead = sym;
-          PRD[prd_count].child_count = actions[i].reduce.child_count;
-          PRD[prd_count].symbol = actions[i].reduce.symbol;
-          prd_count++;
-        }
-      }
-    }
-  }
-
-  // 3. 각 PRD에 대해 reduce 수행 및 재귀
-  for (uint32_t i = 0; i < prd_count; i++) {
-    ReduceProduction *prod = &PRD[i];
-    // 스택 언더플로우 검사
-    if (stack->count <= prod->child_count) {
-      continue;
-    }
-
-    // 3-1. 조상 상태(Ancestor) 찾기 (Pop)
-    TSStateId AncestorState = stack->states[prod->child_count];
-
-    // 3-2. 다음 상태(NextState) 찾기 (Goto)
-    uint32_t lookup_result = ts_language_lookup(language, AncestorState, prod->symbol);
-
-    if (lookup_result > 0) {
-      // 주석의 정의에 따라, 논터미널 조회 결과는 그 자체로 후속 상태(Successor State)
-      TSStateId next_state = (TSStateId)lookup_result;
-
-      const char *SymbolName = ts_language_symbol_name(self->language, prod->symbol);
-      if (!SymbolName) { SymbolName = "UNKNOWN_SYMBOL"; }
-      // printf("[DEBUG-RECURSIVE] by %d, ancestor: %d lhs: %s  goto: %d\n", prod->lookahead,AncestorState, SymbolName, next_state);
-
-      // 3-3. 새로운 스택(Stack1) 구성
-      TSStatePath next_stack;
-      next_stack.count = 0;
-      next_stack.states[next_stack.count++] = next_state; 
-        
-      for (uint32_t k = prod->child_count; k < stack->count; k++) {
-        if (next_stack.count < 64) {
-          next_stack.states[next_stack.count++] = stack->states[k];
-        }
-      }
-      // 3-4. 재귀 호출
-      ts_conversion__recursive_current_states(self, &next_stack, result);
-    }
-  }
-}
-
-// [new] 컨버전 구현체
-TSStatePath ts_parser_run_conversion(TSParser *self) {
-  // printf("\n[DEBUG] === ts_parser_run_conversion START ===\n");
-  TSStatePath result = {0};
-
-  // 1. 커서 위치 직전의 Shift(로그 인덱스)를 찾음
-  int32_t shift_index = ts_conversion__find_cursor_shift_index(self);
-  // printf("[DEBUG] Step 1: shift_index = %d\n", shift_index);
-
-  if (shift_index == -1) {
-      TSStatePath start_stack = {0};
-      start_stack.states[0] = 1; // Start State
-      start_stack.count = 1;
-      ts_conversion__recursive_current_states(self, &start_stack, &result);
-      return result;
-  }
-  
-  // 2. 커서 위치까지의 물리적 스택 복원
-  TSStatePath re_stack = ts_conversion__reconstruct_stack(self, shift_index);
-  // printf("[DEBUG] Step 2: re_stack.count = %d\n", re_stack.count);
-  if (re_stack.count == 0) return result;
-
-  // 3. current states 탐색 시작
-  // printf("[DEBUG] Step 3: recursive_current_states calling...\n");
-  ts_conversion__recursive_current_states(self, &re_stack, &result);
-  // printf("[DEBUG] === ts_parser_run_conversion END ===\n");
-
-  return result;
-}
-
 // [new] 컨버전 결과 출력 함수
 void ts_parser_write_conversion_result(
   TSParser *self,
@@ -3202,196 +2942,6 @@ void ts_parser_write_conversion_result(
   if (fp == stdout) fflush(stdout);
 }
 
-// [Batch] 모든 Shift 위치에 대해 State Path를 계산하고 출력하는 함수
-void ts_parser_run_batch_conversion(TSParser *self, const char *source_code, FILE *file) {
-  // 1. 유효성 검사
-  if (!self->logged_actions.contents || !file) return;
-
-  // 2. 에러(Recover) 체크
-  // 파싱 중에 에러 복구(Recover)가 발생한 파일은 학습/검증 데이터로 쓰기 부적합하므로 중단
-  for (uint32_t i = 0; i < self->logged_actions.size; ++i) {
-    if (self->logged_actions.contents[i].type == TSParseActionTypeRecover) {
-        return; 
-    }
-  }
-
-  // 3. 전체 로그 순회
-  for (uint32_t i = 0; i < self->logged_actions.size; ++i) {
-    TSLoggedAction *action = &self->logged_actions.contents[i];
-
-    // [조건] Shift 액션이면서, 주석/공백(Extra)이 아닌 경우
-    // action->extra가 false여야 실제 코드의 의미 있는 토큰 위치
-    if (action->type == TSParseActionTypeShift && !action->extra) {
-        
-        // (A) 해당 시점(i)까지의 스택 복원
-        TSStatePath re_stack = ts_conversion__reconstruct_stack(self, (int32_t)i-1);
-        
-        // 스택이 비어있는 경우 (특히 파일의 첫 번째 토큰 i=0 일 때)
-        // 현재 액션의 'current_state'(시작 상태)를 수동으로 넣어줌
-        if (re_stack.count == 0) {
-            // action->current_state는 해당 액션을 수행하기 직전의 상태를 담고 있음
-            re_stack.states[0] = action->current_state;
-            re_stack.count = 1;
-        }
-
-        // (B) 현재 스택을 기반으로 State Path 계산
-        TSStatePath result_path = {0}; 
-        ts_conversion__recursive_current_states(self, &re_stack, &result_path);
-
-        // (C) 결과 출력
-
-        // [변경] TSPoint -> 절대 오프셋 -> Visual 좌표 계산
-        uint32_t abs_offset = get_absolute_offset_from_point(source_code, action->start_point);
-        uint32_t vis_row = 0, vis_col = 0;
-        get_visual_position_from_offset(source_code, abs_offset, &vis_row, &vis_col);
-
-        // 파이썬 스크립트가 파싱하기 쉬운 포맷: "ROW,COL|STATE1 STATE2 STATE3..."
-        // Tree-sitter의 row/col은 0부터 시작하므로 +1을 해줌
-        fprintf(file, "%u,%u|", 
-                action->start_point.row + 1, 
-                action->start_point.column + 1);
-        
-        for (uint32_t k = 0; k < result_path.count; ++k) {
-            fprintf(file, "%u", result_path.states[k]);
-            
-            // 숫자 사이에 공백 추가 (마지막 숫자 뒤에는 공백 없음)
-            if (k < result_path.count - 1) fprintf(file, " ");
-        }
-        fprintf(file, "\n");
-    }
-  }
-}
-
-// [new] 컬렉션 구현체
-// [수정] 반환 타입을 bool로 변경 (성공: true, 복구 발생/실패: false)
-bool ts_parser_run_collection(
-  TSParser *self,
-  FILE *file
-) {
-  if (!self->logged_actions.contents || !file) return false;
-
-  // 0. [Pre-scan] Recover 액션이 하나라도 있는지 먼저 확인
-  // 에러가 있는 파일은 학습 데이터로 사용하지 않도록 즉시 중단
-  for (uint32_t i = 0; i < self->logged_actions.size; ++i) {
-    if (self->logged_actions.contents[i].type == TSParseActionTypeRecover) {
-        return false; // Recover 감지 -> Skip 신호 반환
-    }
-  }
-
-  // 시뮬레이션용 스택 엔트리 정의
-  typedef struct {
-    TSSymbol symbol;    // 심볼 ID
-    bool is_terminal;   // Terminal(Shift)인지 Non-terminal(Reduce 결과)인지
-  } SimEntry;
-
-  // 전체 로그 순회
-  // shift인 경우만 필터링하여 시뮬레이션
-  for (uint32_t i = 0; i < self->logged_actions.size; ++i) {
-    TSLoggedAction *start_action = &self->logged_actions.contents[i];
-
-    // Shift 액션(토큰 입력)에서만 후보 수집 시작
-    if (start_action->type != TSParseActionTypeShift || start_action->extra) {
-      continue;
-    }
-
-    // Shift 액션인 경우
-    TSStateId start_state = start_action->current_state;
-    Array(SimEntry) sim_stack = array_new();
-
-    bool found_candidate = false;
-    uint32_t end_log_index = i;
-
-    // 미래 시뮬레이션
-    for (uint32_t j = i; j < self->logged_actions.size; ++j) {
-      TSLoggedAction *future_action = &self->logged_actions.contents[j];
-
-      if (future_action->type == TSParseActionTypeShift && !future_action->extra) {
-        SimEntry entry = { .symbol = future_action->symbol, .is_terminal = true };
-        array_push(&sim_stack, entry);
-      }
-
-      else if (future_action->type == TSParseActionTypeReduce) {
-        uint32_t rhs_len = future_action->child_count;
-
-        // [핵심 종료 조건] |RHS| >= |symbols|
-        // 현재까지 모은 심볼들이 이번 Reduce에 의해 모두 부모 노드로 흡수되는 경우
-        if (rhs_len >= sim_stack.size) {
-          found_candidate = true;
-          end_log_index = j; // 여기까지가 하나의 후보(Candidate)
-          break;
-        }
-
-        // 이번 Reduce로 처리되지 않는 경우
-        // 스택 뒷부분(RHS)을 Pop하고, LHS(Non-terminal)를 Push
-        if (sim_stack.size >= rhs_len) {
-          sim_stack.size -= rhs_len; 
-        } else {
-          sim_stack.size = 0; 
-        }
-
-        SimEntry entry = { .symbol = future_action->symbol, .is_terminal = false };
-        array_push(&sim_stack, entry);
-      }
-
-      else if (future_action->type == TSParseActionTypeAccept) {
-        found_candidate = true;
-        end_log_index = j;
-        break;
-      }
-
-      else if (future_action->type == TSParseActionTypeRecover) {
-        found_candidate = false; // 에러가 섞인 후보는 학습하지 않음
-        break;
-      }
-    }
-
-    // 결과 출력 (파일 저장)
-    /*
-      188 = Expr 
-        1,8: =
-        1,10: 100
-    */
-    if (found_candidate && sim_stack.size > 0) {
-      // Line 1: 상태 및 구조 후보
-      /*
-        188 = Expr
-      */
-      fprintf(file, "%u", start_state);
-      for (uint32_t k = 0; k < sim_stack.size; ++k) {
-        SimEntry *e = array_get(&sim_stack, k);
-        const char *name = ts_language_symbol_name(self->language, e->symbol);
-        fprintf(file, " %s", name ? name : "UNKNOWN");
-      }
-      fprintf(file, "\n");
-
-      // Line 2: 실제 Lexeme 데이터
-      // Cursor(i) 부터 End(end_log_index) 직전까지의 실제 텍스트 출력
-      /*
-          1,8: =
-          1,10: 100
-      */
-      for (uint32_t k = i; k < end_log_index; ++k) {
-        TSLoggedAction *act = &self->logged_actions.contents[k];
-        if (act->type == TSParseActionTypeShift && !act->extra) {
-            // Lexeme 우선, 없으면 심볼 이름
-            const char *text = act->lexeme; 
-            if (!text) text = ts_language_symbol_name(self->language, act->symbol);
-
-            // 포맷: "Row,Col: Text"
-            // fprintf(file, "  %u,%u: ", act->start_point.row + 1, act->start_point.column + 1);
-            // fprintf(file, "%s\n", text); 
-            fprintf(file, "  %u,%u: ", act->start_point.row + 1, act->start_point.column + 1);
-            print_escaped_string(file, text);
-            fprintf(file, "\n");
-        }
-      }
-      fprintf(file, "\n"); // 후보 간 구분선
-    }
-    array_delete(&sim_stack);
-  }
-  return true;
-}
-
 typedef struct {
     FILE *file;
     const char *source;
@@ -3400,6 +2950,37 @@ typedef struct {
     uint32_t byte_offset;   // 현재 커서 위치 (Bytes)
     TSPoint point_offset;   // 현재 커서 위치 (Row, Col)
 } CollectionContext;
+
+// [Helper] 바이트 오프셋 → 시각적 행/열 좌표 변환 (collection2에서 사용)
+static void get_visual_position_from_offset(const char *text, uint32_t target_offset, uint32_t *out_row, uint32_t *out_col) {
+    uint32_t current_offset = 0;
+    uint32_t current_row = 0;
+    uint32_t current_col = 0;
+    const uint32_t tab_width = 4;
+
+    if (!text) { *out_row = 0; *out_col = 0; return; }
+
+    while (text[current_offset] != '\0' && current_offset < target_offset) {
+        unsigned char current_char = (unsigned char)text[current_offset];
+        if (current_char == '\n') {
+            current_row++; current_col = 0; current_offset++;
+        } else if (current_char == '\r' && text[current_offset + 1] == '\n') {
+            current_row++; current_col = 0; current_offset += 2;
+        } else if (current_char == '\t') {
+            current_col = ((current_col / tab_width) + 1) * tab_width; current_offset++;
+        } else {
+            current_col++; current_offset++;
+            if (current_char >= 0xC0) {
+                while (text[current_offset] != '\0' && current_offset < target_offset &&
+                      ((unsigned char)text[current_offset] & 0xC0) == 0x80) {
+                    current_offset++;
+                }
+            }
+        }
+    }
+    *out_row = current_row;
+    *out_col = current_col;
+}
 
 // [new]
 void dump_lexemes(CollectionContext *ctx, Subtree node) {
@@ -3430,118 +3011,6 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
         ? point_add(padding.extent, size.extent) 
         : (TSPoint){0, padding.extent.column + size.extent.column});
 }
-
-// // [new]
-// void collect_recursive(
-//   CollectionContext *ctx, 
-//   Subtree tree,
-//   TSStateId state_from_parent
-// ) {
-//   uint32_t count = ts_subtree_child_count(tree);
-
-//   // [Leaf 노드]
-//   if (count == 0) {
-//     // 커서 이동
-//     Length padding = ts_subtree_padding(tree);
-//     Length size = ts_subtree_size(tree);
-//     Length total = length_add(padding, size);
-//     ctx->byte_offset += total.bytes;
-//     ctx->point_offset = point_add(ctx->point_offset, total.extent);
-//     return;
-//   }
-
-//   // [Internal 노드]
-//   Subtree *children = ts_subtree_children(tree);
-//   if (!children) return;
-
-//   TSStateId current_node_state = ts_subtree_parse_state(tree);
-//   if (current_node_state == 0 || current_node_state == 65535) {
-//     current_node_state = state_from_parent;
-//   }
-
-//   TSStateId running_state = current_node_state;
-
-//   // 자식 순회
-//   for (uint32_t i = 0; i < count; i++) {
-//     Subtree child = children[i];
-//     TSSymbol child_sym = ts_subtree_symbol(child);
-//     uint32_t child_count = ts_subtree_child_count(child);
-//     bool is_leaf = (child_count == 0);
-//     bool is_valid_sym = (child_sym != ts_builtin_sym_end);
-//     bool is_extra = ts_subtree_extra(child);
-
-//     // 자식이 Leaf 노드이면 구조 후보 출력
-//     if (is_leaf && is_valid_sym) {
-
-//       // line 1: state + symbols
-//       fprintf(ctx->file, "%u", running_state);
-      
-//       for (uint32_t j = i; j < count; j++) {
-//         if (ts_subtree_extra(children[j])) continue;
-//         TSSymbol sym = ts_subtree_symbol(children[j]);
-//         const char *name = ts_language_symbol_name(ctx->lang, sym);
-//         fprintf(ctx->file, " %s", name ? name : "UNKNOWN");
-//       }
-//       fprintf(ctx->file, "\n");
-
-//       // line 2: lexemes
-//       CollectionContext temp_ctx = *ctx;
-//       for (uint32_t j = i; j < count; j++) {
-//         if (ts_subtree_extra(children[j])) continue;
-//         dump_lexemes(&temp_ctx, children[j]);
-//       }
-//       fprintf(ctx->file, "\n");
-//     }
-
-//     // 자식이 또 Internal 노드이면 재귀
-//     collect_recursive(ctx, child, running_state);
-
-//     if (!is_extra) {
-//       TSStateId next = ts_language_next_state(ctx->lang, running_state, child_sym);
-//       if (next != 0) {
-//         running_state = next;
-//       }
-//     }
-//   }
-// }
-
-// // [new] 컬렉션 ver.2
-// bool ts_parser_run_collection2 (
-//   TSTree *tree,
-//   const char *source_code,
-//   uint32_t length,
-//   FILE *file
-// ) {
-
-//   if (!tree) { fprintf(stderr, "[ERROR] Tree is NULL\n"); return false; }
-  
-//   if (!file) return false;
-
-//   Subtree root = tree->root;
-//   if (!root.ptr) return false;
-
-//   // 에러 체크
-//   if (ts_subtree_error_cost(root) > 0) {
-//     fprintf(stderr, "[Skip] Syntax errors detected in file.\n");
-//     fflush(stderr);
-//     return false; 
-//   }
-
-//   // 컨텍스트 설정
-//   CollectionContext ctx = {
-//       .file = file,
-//       .source = source_code,
-//       .source_len = length,
-//       .lang = ts_tree_language(tree),
-//       .byte_offset = 0,
-//       .point_offset = {0, 0}
-//   };
-
-//   collect_recursive(&ctx, root, 1);
-//   fprintf(stderr, "[DEBUG] Recursive finished.\n");
-//   fflush(stderr);
-//   return true;
-// }
 
 // [new]
 void collect_recursive(
@@ -3660,8 +3129,6 @@ bool ts_parser_run_collection2 (
   };
 
   collect_recursive(&ctx, root, 1);
-  fprintf(stderr, "[DEBUG] Recursive finished.\n");
-  fflush(stderr);
   return true;
 }
 
@@ -3817,7 +3284,7 @@ TSStatePath ts_parser_parse_for_conversion(
   phase_3_conversion:
     uint32_t final_version_count = ts_stack_version_count(self->stack);
     if (final_version_count == 0) {
-      return final_union; 
+      return final_union;
     }
     for (StackVersion v = 0; v < final_version_count; v++) {
       // stack.c에 구현된 함수 호출
