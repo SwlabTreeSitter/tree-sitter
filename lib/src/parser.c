@@ -140,6 +140,9 @@ struct TSParser {
   bool has_scanner_error;
   bool canceled_balancing;
   bool has_error;
+  // 외부 스캐너가 실패했을 때 도달한 최대 바이트 위치
+  // (ts_parser__advance_for_conversion에서 커서 경계 판단에 사용)
+  uint32_t ext_scan_fail_max_position;
 };
 
 typedef struct {
@@ -611,6 +614,9 @@ static Subtree ts_parser__lex(
         called_get_column = self->lexer.did_get_column;
         break;
       }
+
+      // 외부 스캐너가 실패했을 때 도달한 최대 위치를 저장 (리셋 전)
+      self->ext_scan_fail_max_position = self->lexer.current_position.bytes;
 
       ts_lexer_reset(&self->lexer, current_position);
       self->lexer.column_data = column_data;
@@ -2060,6 +2066,7 @@ static bool ts_parser__advance_for_conversion(
   TSStateId state = ts_stack_state(self->stack, version);
   uint32_t position = ts_stack_position(self->stack, version).bytes;
   Subtree last_external_token = ts_stack_last_external_token(self->stack, version);
+  fprintf(stderr, "[ADV] state=%u pos=%u target=%u\n", state, position, target_length);
 
   // 재사용 여부, lookahead 토큰, table_entry(파싱 테이블에서 꺼낸 액션 목록) 초기화
   bool did_reuse = true;
@@ -2096,8 +2103,20 @@ static bool ts_parser__advance_for_conversion(
     // Otherwise, re-run the lexer.
     if (needs_lex) {
       needs_lex = false;
+      self->ext_scan_fail_max_position = 0;  // 초기화
       lookahead = ts_parser__lex(self, version, state);  // Lexer 실행
       if (self->has_scanner_error) return false;
+
+      // 외부 스캐너가 커서 위치까지 읽었지만 실패 → 내부 렉서 결과 무시 → freeze
+      // 예) state:1830에서 `_string_content` 렉싱 시도 → 잘린 소스에서 """ 없음 →
+      //     외부 스캐너가 pos=210(커서)까지 읽고 실패 → 내부 렉서가 identifier 반환
+      //     → state:1830은 identifier를 처리할 수 없어 에러 복구로 가야 하는 상황
+      //     → conversion에서는 에러 복구 대신 state:1830을 freeze
+      if (lookahead.ptr
+          && !ts_subtree_has_external_tokens(lookahead)
+          && self->ext_scan_fail_max_position >= target_length) {
+        return false;
+      }
 
       if (position >= target_length) {
         // [커서 위치 도달] 렉서 결과에 따라 엄격히 분기:
@@ -2169,11 +2188,15 @@ static bool ts_parser__advance_for_conversion(
         }
 
         // ③ (else-branch): 렉서가 target_length까지 전진하면서 크기>0 토큰 반환
-        //   → 해당 토큰을 소비하면 커서를 지나쳐버림 → 현재 state 보존 후 중단
+        //   → 외부 스캐너(레이아웃/가상) 토큰이면 커서를 지나치므로 현재 state 보존 후 중단
+        //   → 내부 스캐너(실제 문법) 토큰이면 SHIFT 허용 (이후 ⑤에서 state 캡처)
+        //   예) Haskell sym=117(space, 외부): return false → state:2263 캡처
+        //       Haskell `(` (내부, size=2): 진행 → SHIFT → _cmd_texp_start ⑤ → state:7779
         if (self->lexer.current_position.bytes >= target_length
             && lookahead.ptr
             && ts_subtree_total_size(lookahead).bytes > 0) {
-          return false;
+          if (ts_subtree_has_external_tokens(lookahead)) return false;
+          // 내부 스캐너 토큰 → fall-through (SHIFT 진행)
         }
 
         // 토큰이 발견되면
@@ -2186,6 +2209,32 @@ static bool ts_parser__advance_for_conversion(
         else {
           ts_language_table_entry(self->language, state, ts_builtin_sym_end, &table_entry);
         }
+      }
+    }
+
+    // ③ 캐시 경로 경계 체크:
+    // 캐시에서 가져온 토큰(needs_lex=false 경로)은 위의 if (needs_lex) 블록을 건너뛰므로
+    // 커서 경계 체크가 적용되지 않는다. 여기서 동일한 조건을 적용한다.
+    //
+    // 경우 A: position이 이미 target에 도달(==) 또는 초과(>) → size>0 토큰이면 중단
+    //   (lexed path의 ③과 동일 조건)
+    //   예) Python state:1830(pos==target)에서 cached string_end(size:3)
+    //
+    // 경우 B: position < target이지만 외부 토큰이 경계를 가로지르는 경우 → 중단
+    //   (position < target이므로 lexed path에서는 else-branch ③이 담당했던 경우)
+    //   예) Haskell 외부 공백 토큰이 커서 직전에서 경계를 넘을 때
+    if (lookahead.ptr && ts_subtree_total_size(lookahead).bytes > 0) {
+      uint32_t sz = ts_subtree_total_size(lookahead).bytes;
+      bool ext = ts_subtree_has_external_tokens(lookahead);
+      fprintf(stderr, "[CACHE_CHK] state=%u pos=%u target=%u sym=%u sz=%u ext=%d\n",
+              state, position, target_length, ts_subtree_symbol(lookahead), sz, ext);
+      if (position >= target_length) {
+        fprintf(stderr, "[CACHE_CHK] -> return false (A)\n");
+        return false;  // 경우 A
+      }
+      if (position + sz >= target_length && ext) {
+        fprintf(stderr, "[CACHE_CHK] -> return false (B)\n");
+        return false;  // 경우 B
       }
     }
 
@@ -3166,6 +3215,9 @@ TSStatePath ts_parser_parse_for_conversion(
   ts_lexer_set_input(&self->lexer, input);
   array_clear(&self->included_range_differences);
   self->included_range_difference_index = 0;
+
+  // normal parse의 에러 복구 토큰이 캐시에 남아 conversion parse를 오염시키므로 클리어
+  ts_parser__set_cached_token(self, 0, NULL_SUBTREE, NULL_SUBTREE);
 
   self->operation_count = 0;
   if (self->timeout_duration) {

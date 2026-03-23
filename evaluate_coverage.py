@@ -111,20 +111,25 @@ LANG_CONFIGS = {
 }
 
 EXE_PATH = "/home/hyeonjin/PL/tree-sitter/TreeSitterCutFile.exe"
+MAX_CANDIDATE_LIST_SIZE = 20
 
 # =========================================================
 
-class CoverageReporter:
+class EvaluationReporter:
     def __init__(self, lang: str, cfg: dict):
         self.lang = lang
         self.cfg  = cfg
         self.db   = self._load_json(cfg["db"])
 
-        # 통계
+        # 커버리지 통계
         self.total_queries   = 0
-        self.found_count     = 0   # DB에 정답 구조 존재
-        self.not_found_count = 0   # DB에 정답 없음 (states는 있음)
-        self.fail_count      = 0   # TreeSitter 실행 실패 또는 @@PREDICT 없음
+        self.found_count     = 0
+        self.not_found_count = 0
+        self.fail_count      = 0
+
+        # 랭크 통계
+        self.rank_stats          = defaultdict(int)
+        self.beyond_top20_count  = 0
 
         self.file_reports = []
 
@@ -162,15 +167,32 @@ class CoverageReporter:
         except Exception:
             return []
 
-    def _lookup_db_full(self, states):
-        """크기 제한 없이 DB에서 모든 후보 조회. 정답 키 집합 반환용."""
+    def _lookup_db_ranked(self, states):
+        """Top-N 랭크 계산용: 점수 내림차순 정렬된 (key, score) 리스트 반환."""
         merged = defaultdict(int)
         for state in states:
             s_key = str(state)
             if s_key in self.db:
                 for item in self.db[s_key]:
                     merged[item["key"]] += item["value"]
-        return merged  # {key: score}
+        return sorted(merged.items(), key=lambda x: x[1], reverse=True)
+
+    def _lookup_db_full(self, states):
+        """커버리지용: 크기 제한 없이 DB에서 모든 후보 조회."""
+        merged = defaultdict(int)
+        for state in states:
+            s_key = str(state)
+            if s_key in self.db:
+                for item in self.db[s_key]:
+                    merged[item["key"]] += item["value"]
+        return merged
+
+    def _get_rank(self, candidates, ground_truth):
+        gt_clean = ground_truth.replace(" ", "")
+        for rank, (key, _) in enumerate(candidates, 1):
+            if key.replace(" ", "") == gt_clean:
+                return rank
+        return 0
 
     def _is_found(self, candidates_map: dict, ground_truth: str) -> bool:
         gt_clean = ground_truth.replace(" ", "")
@@ -216,7 +238,6 @@ class CoverageReporter:
     def evaluate_file(self, target_file):
         safe_name = self._safe_name(target_file)
         if self.cfg.get("strip_ext"):
-            # e.g. "01_HelloWorld.sb" -> "01_HelloWorld.json"
             base, _ = os.path.splitext(safe_name)
             json_path = os.path.join(self.cfg["answer"], base + ".json")
         else:
@@ -229,14 +250,19 @@ class CoverageReporter:
         if not answers:
             return
 
-        f_total = 0
-        f_found = 0
+        f_total     = 0
+        f_found     = 0
         f_not_found = 0
-        f_fail = 0
-        debug_logs = []
+        f_fail      = 0
+        f_top1      = 0
+        f_top3      = 0
+        f_top5      = 0
+        f_top10     = 0
+        f_top20     = 0
+        debug_logs  = []
 
         total_locs = len(answers)
-        processed = 0
+        processed  = 0
         print(f" -> {safe_name} ({total_locs} points)...")
 
         for loc_key, gt_data in answers.items():
@@ -257,17 +283,32 @@ class CoverageReporter:
 
             if not states:
                 result_label = "FAIL"
+                rank = 0
                 f_fail += 1
             else:
-                candidates_map = self._lookup_db_full(states)
-                if self._is_found(candidates_map, ground_truth):
+                # 커버리지: 제한 없이 전체 DB 조회
+                candidates_full = self._lookup_db_full(states)
+                if self._is_found(candidates_full, ground_truth):
                     result_label = "FOUND"
                     f_found += 1
                 else:
                     result_label = "NOT_FOUND"
                     f_not_found += 1
 
-            debug_logs.append([loc_key, ground_truth, str(states) if states else "FAIL", result_label])
+                # 랭크: Top-20 제한 조회
+                top_candidates = self._lookup_db_ranked(states)[:MAX_CANDIDATE_LIST_SIZE]
+                rank = self._get_rank(top_candidates, ground_truth)
+                if rank > 0:
+                    self.rank_stats[rank] += 1
+                    if rank == 1:       f_top1  += 1
+                    if rank <= 3:       f_top3  += 1
+                    if rank <= 5:       f_top5  += 1
+                    if rank <= 10:      f_top10 += 1
+                    if rank <= 20:      f_top20 += 1
+                elif result_label == "NOT_FOUND":
+                    self.beyond_top20_count += 1
+
+            debug_logs.append([loc_key, ground_truth, str(states) if states else "FAIL", result_label, rank])
             f_total += 1
             self.total_queries += 1
 
@@ -283,6 +324,11 @@ class CoverageReporter:
             "found":     f_found,
             "not_found": f_not_found,
             "fail":      f_fail,
+            "top1":      f_top1,
+            "top3":      f_top3,
+            "top5":      f_top5,
+            "top10":     f_top10,
+            "top20":     f_top20,
         })
 
         self._save_debug_log(safe_name, debug_logs)
@@ -293,12 +339,34 @@ class CoverageReporter:
         csv_path = os.path.join(debug_dir, f"{safe_name}.csv")
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(["Location", "Ground_Truth", "State_List", "Result"])
+            writer.writerow(["Location", "Ground_Truth", "State_List", "Coverage_Result", "Rank"])
             writer.writerows(log_data)
 
     def save_report(self):
-        csv_path = os.path.join(self.cfg["report"], f"{self.lang}_coverage.csv")
-        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        # 파일별 성능 리포트 (랭크 + 커버리지 통합)
+        perf_path = os.path.join(self.cfg["report"], f"{self.lang}_file_performance.csv")
+        with open(perf_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow([
+                "File Name", "Total",
+                "Top-1 Acc (%)", "Top-3 Acc (%)", "Top-5 Acc (%)", "Top-10 Acc (%)", "Top-20 Acc (%)",
+                "Found", "Found (%)", "Not Found", "Not Found (%)", "Fail", "Fail (%)"
+            ])
+            for r in self.file_reports:
+                total = r["total"]
+                def pct(n): return round(n / total * 100, 2) if total > 0 else 0.0
+                writer.writerow([
+                    r["name"], total,
+                    pct(r["top1"]), pct(r["top3"]), pct(r["top5"]), pct(r["top10"]), pct(r["top20"]),
+                    r["found"],     pct(r["found"]),
+                    r["not_found"], pct(r["not_found"]),
+                    r["fail"],      pct(r["fail"]),
+                ])
+        print(f"[Saved] File Report (CSV) -> {perf_path}")
+
+        # 커버리지 전용 리포트 (기존 형식 유지)
+        cov_path = os.path.join(self.cfg["report"], f"{self.lang}_coverage.csv")
+        with open(cov_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow([
                 "File Name", "Total",
@@ -315,12 +383,12 @@ class CoverageReporter:
                     r["not_found"], pct(r["not_found"]),
                     r["fail"],      pct(r["fail"]),
                 ])
-        print(f"[Saved] {csv_path}")
+        print(f"[Saved] Coverage Report (CSV) -> {cov_path}")
 
     def run(self):
         files = self._collect_files()
         print(f"[*] Language: {self.lang}")
-        print(f"[*] Found {len(files)} target files. Starting coverage analysis...")
+        print(f"[*] Found {len(files)} target files. Starting evaluation...")
 
         start = time.time()
         for idx, f in enumerate(files):
@@ -328,10 +396,20 @@ class CoverageReporter:
             self.evaluate_file(f)
 
         elapsed = time.time() - start
-        print(f"\n[*] Done in {elapsed:.2f} sec.\n")
+        print(f"\n[*] Analysis Complete in {elapsed:.2f} sec.\n")
 
         q = self.total_queries
         if q > 0:
+            global_top10 = sum(self.rank_stats[r] for r in range(1, 11))
+            global_top20 = sum(self.rank_stats[r] for r in range(1, 21))
+
+            print(f"[Global] Total Queries    : {q}")
+            print(f"[Global] Top-10 Count     : {global_top10}")
+            print(f"[Global] Top-10 Acc       : {global_top10 / q * 100:.1f}%")
+            print(f"[Global] Top11~20 Count   : {global_top20 - global_top10}")
+            print(f"[Global] Beyond Top-20    : {self.beyond_top20_count}")
+            print(f"[Global] CPP Fail         : {self.fail_count}")
+
             print(f"[{self.lang.upper()}] Total Queries : {q}")
             print(f"[{self.lang.upper()}] Found         : {self.found_count}  ({self.found_count/q*100:.1f}%)")
             print(f"[{self.lang.upper()}] Not Found     : {self.not_found_count}  ({self.not_found_count/q*100:.1f}%)")
@@ -352,5 +430,5 @@ if __name__ == "__main__":
         print(f"Available: {', '.join(LANG_CONFIGS.keys())}")
         sys.exit(1)
 
-    reporter = CoverageReporter(lang, LANG_CONFIGS[lang])
+    reporter = EvaluationReporter(lang, LANG_CONFIGS[lang])
     reporter.run()

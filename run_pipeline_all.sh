@@ -8,8 +8,14 @@
 # evaluate_coverage)의 출력을 단일 로그 파일에 언어별로 기록한다.
 #
 # 사용법:
-#   ./run_pipeline_all.sh [언어1 언어2 ...]   # 지정 언어만 실행
-#   ./run_pipeline_all.sh                     # 기본: 전체 언어 실행
+#   ./run_pipeline_all.sh [--skip-collect] [언어1 언어2 ...]
+#   ./run_pipeline_all.sh                      # 기본: 전체 언어 실행
+#   ./run_pipeline_all.sh --skip-collect       # 전체 언어, 컬렉션 스킵
+#   ./run_pipeline_all.sh haskell python       # 지정 언어만
+#   ./run_pipeline_all.sh --skip-collect haskell python
+#
+# 옵션:
+#   --skip-collect   각 언어의 Step 1(rebuild) + Step 2(collect TEST) 를 건너뜀
 #
 # 로그 파일: pipeline_all_YYYYMMDD_HHMMSS.log
 # =============================================================
@@ -19,9 +25,20 @@ TS_DIR="$(cd "$(dirname "$0")" && pwd)"
 # 기본 실행 언어 목록 (실행 순서)
 ALL_LANGUAGES=(smallbasic c11 haskell ruby php javascript cpp java python)
 
-# 인자가 주어지면 해당 언어만, 아니면 전체 실행
-if [ $# -gt 0 ]; then
-    LANGUAGES=("$@")
+# 인자 파싱: --skip-collect 플래그 분리
+SKIP_COLLECT_FLAG=""
+LANG_ARGS=()
+for arg in "$@"; do
+    if [ "$arg" = "--skip-collect" ]; then
+        SKIP_COLLECT_FLAG="--skip-collect"
+    else
+        LANG_ARGS+=("$arg")
+    fi
+done
+
+# 언어 목록 결정
+if [ ${#LANG_ARGS[@]} -gt 0 ]; then
+    LANGUAGES=("${LANG_ARGS[@]}")
 else
     LANGUAGES=("${ALL_LANGUAGES[@]}")
 fi
@@ -41,6 +58,7 @@ set -o pipefail
     echo "  run_pipeline_all.sh"
     echo "  Start   : $(date '+%Y-%m-%d %H:%M:%S')"
     echo "  Languages: ${LANGUAGES[*]}"
+    echo "  Options : ${SKIP_COLLECT_FLAG:-none}"
     echo "  Log file: $LOG_FILE"
     echo "############################################################"
     echo ""
@@ -62,7 +80,7 @@ for LANG in "${LANGUAGES[@]}"; do
     LANG_START=$(date +%s)
 
     # run_pipeline.sh 실행; stdout+stderr → 터미널(tee) + 로그 파일(append)
-    bash "$TS_DIR/run_pipeline.sh" "$LANG" 2>&1 | tee -a "$LOG_FILE"
+    bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG 2>&1 | tee -a "$LOG_FILE"
     EXIT_CODE=${PIPESTATUS[0]}
 
     LANG_ELAPSED=$(( $(date +%s) - LANG_START ))

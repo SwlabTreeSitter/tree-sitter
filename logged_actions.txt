@@ -5,6 +5,66 @@
 [REDUCE] State 9341 -> GOTO 9593, symbol: module, child 1 { 'name(Main)' }
 [SHIFT] State: 9593 -> 12402, symbol: ( (102)
 [SHIFT] State 12402 -> 8876, symbol: _cmd_texp_start (121, UNKNOWN)
-[RECOVER] State 0, symbol: end, Row: 1, Column:14
-[V-REDUCE] State 8876 -> GOTO 7779, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
-[REDUCE] State 1 -> GOTO 12559, symbol: haskell, child 0[ACCEPT] State 12559
+[REDUCE] State 8876 -> GOTO 7779, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 7779 -> 9761, symbol: variable (1, UNKNOWN)
+[REDUCE] State 9761 -> GOTO 10807, symbol: import_name, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State: 10807 -> 12717, symbol: ) (103)
+[SHIFT] State 12717 -> 9796, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 9796 -> GOTO 11531, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 11531 -> GOTO 11261, symbol: exports, child 3 { '_paren_open' 'import_name' '_paren_close' }
+[SHIFT] State: 11261 -> 10949, symbol: where (106)
+[SHIFT] State 10949 -> 10949, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 10949 -> GOTO 10478, symbol: header, child 4 { 'module' 'exports' 'where' '_token1(UNKNOWN)' }
+[SHIFT] State 10478 -> 2, symbol: _cmd_layout_start (110, UNKNOWN)
+[SHIFT] State 2 -> 2, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 2 -> 2263, symbol: variable (1, UNKNOWN)
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State: 2263 -> 1462, symbol: :: (96)
+[SHIFT] State: 915 -> 1484, symbol: :: (96)
+[SHIFT] State 1462 -> 5783, symbol: name (87, IO)
+[SHIFT] State 1484 -> 6115, symbol: name (87, IO)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { 'name(IO)' }
+[SHIFT] State: 764 -> 12613, symbol: ( (102)
+[REDUCE] State 6115 -> GOTO 874, symbol: type, child 1 { '(' }
+[SHIFT] State: 874 -> 12613, symbol: ( (102)
+[SHIFT] State 12613 -> 6645, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6645 -> GOTO 431, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 6645 -> GOTO 429, symbol: _paren_open, child 2 { 'type' '_paren_open' }
+[SHIFT] State: 431 -> 12734, symbol: ) (103)
+[SHIFT] State: 429 -> 12588, symbol: ) (103)
+[SHIFT] State 12734 -> 6348, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6348 -> GOTO 6215, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6215 -> GOTO 6405, symbol: unit, child 2 { ')' '_paren_close' }
+[REDUCE] State 6405 -> GOTO 784, symbol: type, child 1 { 'unit' }
+[REDUCE] State 784 -> GOTO 6412, symbol: apply, child 2 { '_paren_open' 'type' }
+[REDUCE] State 6412 -> GOTO 764, symbol: type, child 1 { 'apply' }
+[REDUCE] State 764 -> GOTO 8341, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8341 -> GOTO 10286, symbol: signature, child 3 { 'name(IO)' 'type' 'quantified_type' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'signature' }
+[REDUCE] State 10711 -> GOTO 9685, symbol: declaration, child 1 { 'decl' }
+[SHIFT] State 9685 -> 12, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 12588 -> 6960, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 12 -> 12, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 12 -> 2263, symbol: variable (1, UNKNOWN)
+[SHIFT] State: 2263 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 4553, symbol: variable (1, p)
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { 'variable(p)' }
+[SHIFT] State 180 -> 4224, symbol: string (77, "Hello World")
+[REDUCE] State 4224 -> GOTO 4553, symbol: literal, child 1 { 'string("Hello World")' }
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { '=' '_exp' }
+[REDUCE] State 9088 -> GOTO 10117, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 10117 -> GOTO 10286, symbol: bind, child 2 { 'variable(UNKNOWN)' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_token1(UNKNOWN)' 'declaration' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 14 -> GOTO 11086, symbol: declarations, child 3 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' '_token1(UNKNOWN)' }
+[SHIFT] State 11086 -> 12577, symbol: _cond_layout_end (117, UNKNOWN)
+[REDUCE] State 12577 -> GOTO 12478, symbol: _body, child 3 { '_cmd_texp_end(UNKNOWN)' 'declarations' '_cond_layout_end(UNKNOWN)' }
+[REDUCE] State 12478 -> GOTO 12559, symbol: haskell, child 2 { '_cond_layout_semicolon(UNKNOWN)' '_body' }
+[ACCEPT] State 12559

@@ -2,10 +2,14 @@
 
 # =============================================================
 # run_pipeline.sh
-# 언어명을 인자로 받아 rebuild_all → 구조 후보 평가까지 전체 파이프라인 실행
+# 언어명을 인자로 받아 rebuild_all → 랭크+커버리지 평가까지 전체 파이프라인 실행
 #
 # 사용법:
-#   ./run_pipeline.sh <언어>
+#   ./run_pipeline.sh <언어> [--skip-collect]
+#
+# 옵션:
+#   --skip-collect   Step 1(rebuild) + Step 2(collect TEST) 를 건너뛰고
+#                    Step 3(정답지) + Step 4(평가) 만 실행
 #
 # 지원 언어:
 #   smallbasic   sb
@@ -24,9 +28,20 @@ set -o pipefail
 
 TS_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# =================[ 언어 인자 검증 ]=================
+# =================[ 인자 파싱 ]=================
+SKIP_COLLECT=false
+
+_POSITIONAL=()
+for arg in "$@"; do
+    case "$arg" in
+        --skip-collect) SKIP_COLLECT=true ;;
+        *)              _POSITIONAL+=("$arg") ;;
+    esac
+done
+set -- "${_POSITIONAL[@]}"
+
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 <language>"
+    echo "Usage: $0 <language> [--skip-collect]"
     echo ""
     echo "  Supported languages:"
     echo "    smallbasic  (alias: sb)"
@@ -38,6 +53,9 @@ if [ $# -ne 1 ]; then
     echo "    cpp"
     echo "    java"
     echo "    python"
+    echo ""
+    echo "  Options:"
+    echo "    --skip-collect   Skip Step 1 (rebuild) and Step 2 (collect TEST)"
     exit 1
 fi
 
@@ -65,63 +83,54 @@ case "$LANG" in
         REBUILD_SCRIPT="$TS_DIR/rebuild_all.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_sb.py"
-        EVALUATE="$TS_DIR/evaluate_struct_smallbasic.py"
         COVERAGE_LANG="smallbasic"
         ;;
     c11)
         REBUILD_SCRIPT="$TS_DIR/rebuild_all_c.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_c.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_c.py"
-        EVALUATE="$TS_DIR/evaluate_struct_c.py"
         COVERAGE_LANG="c"
         ;;
     haskell)
         REBUILD_SCRIPT="$TS_DIR/rebuild_all_haskell.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_haskell.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_haskell.py"
-        EVALUATE="$TS_DIR/evaluate_struct_haskell.py"
         COVERAGE_LANG="haskell"
         ;;
     ruby)
         REBUILD_SCRIPT="$TS_DIR/rebuild_all_ruby.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_ruby.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_ruby.py"
-        EVALUATE="$TS_DIR/evaluate_struct_ruby.py"
         COVERAGE_LANG="ruby"
         ;;
     php)
         REBUILD_SCRIPT="$TS_DIR/rebuild_all_php.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_php.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_php.py"
-        EVALUATE="$TS_DIR/evaluate_struct_php.py"
         COVERAGE_LANG="php"
         ;;
     javascript)
         REBUILD_SCRIPT="$TS_DIR/rebuild_all_javascript.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_javascript.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_javascript.py"
-        EVALUATE="$TS_DIR/evaluate_struct_javascript.py"
         COVERAGE_LANG="javascript"
         ;;
     cpp)
         REBUILD_SCRIPT="$TS_DIR/rebuild_all_cpp.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_cpp.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_cpp.py"
-        EVALUATE="$TS_DIR/evaluate_struct_cpp.py"
         COVERAGE_LANG="cpp"
         ;;
     java)
         REBUILD_SCRIPT="$TS_DIR/rebuild_all_java.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_java.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_java.py"
-        EVALUATE="$TS_DIR/evaluate_struct_java.py"
         COVERAGE_LANG="java"
         ;;
     python)
         REBUILD_SCRIPT="$TS_DIR/rebuild_all_python.sh"
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_python.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_python.py"
-        EVALUATE="$TS_DIR/evaluate_struct_python.py"
         COVERAGE_LANG="python"
         ;;
 esac
@@ -157,7 +166,7 @@ _shlog() {
 }
 
 # =================[ 스크립트 존재 확인 ]=================
-for script in "$REBUILD_SCRIPT" "$COLLECT_TEST" "$MAKE_ANSWERS" "$EVALUATE" "$TS_DIR/evaluate_coverage.py"; do
+for script in "$REBUILD_SCRIPT" "$COLLECT_TEST" "$MAKE_ANSWERS" "$TS_DIR/evaluate_coverage.py"; do
     if [ ! -f "$script" ]; then
         echo "Error: Script not found: $script"
         exit 1
@@ -182,30 +191,40 @@ echo ""
 } >> "$SUMMARY_LOG"
 
 # --- Step 1: rebuild_all (빌드 + LEARN 컬렉션 + 집계) ---
-# 캡처 대상: to_data_batch_collect_learn_* 완료 요약, to_json_aggregate_* 완료 줄
-echo ">>> [Step 1/5] rebuild_all"
-echo "    Script : $REBUILD_SCRIPT"
-STEP_START=$(date +%s)
-_shlog "Step1 rebuild($LANG)" \
-    '^\[\*\] (Completed\.|Done! JSON|Results are in)|^[[:space:]]+-[[:space:]]+(Success|Skipped|Total Found)' \
-    "$REBUILD_SCRIPT"
-echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
-echo ""
+if [ "$SKIP_COLLECT" = true ]; then
+    echo ">>> [Step 1/4] rebuild_all  [SKIPPED]"
+    echo ""
+else
+    # 캡처 대상: to_data_batch_collect_learn_* 완료 요약, to_json_aggregate_* 완료 줄
+    echo ">>> [Step 1/4] rebuild_all"
+    echo "    Script : $REBUILD_SCRIPT"
+    STEP_START=$(date +%s)
+    _shlog "Step1 rebuild($LANG)" \
+        '^\[\*\] (Completed\.|Done! JSON|Results are in)|^[[:space:]]+-[[:space:]]+(Success|Skipped|Total Found)' \
+        "$REBUILD_SCRIPT"
+    echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
+    echo ""
+fi
 
 # --- Step 2: TEST 데이터 수집 ---
-# 캡처 대상: [*] Completed. / - Success/Skipped/Total Found / [*] Results are in
-echo ">>> [Step 2/5] Collect TEST data"
-echo "    Script : $COLLECT_TEST"
-STEP_START=$(date +%s)
-cd "$TS_DIR" && _pylog "Step2 collect_test($LANG)" \
-    '^\[\*\] (Completed\.|Results are in)|^[[:space:]]+-[[:space:]]+(Success|Skipped|Total Found)' \
-    "$COLLECT_TEST"
-echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
-echo ""
+if [ "$SKIP_COLLECT" = true ]; then
+    echo ">>> [Step 2/4] Collect TEST data  [SKIPPED]"
+    echo ""
+else
+    # 캡처 대상: [*] Completed. / - Success/Skipped/Total Found / [*] Results are in
+    echo ">>> [Step 2/4] Collect TEST data"
+    echo "    Script : $COLLECT_TEST"
+    STEP_START=$(date +%s)
+    cd "$TS_DIR" && _pylog "Step2 collect_test($LANG)" \
+        '^\[\*\] (Completed\.|Results are in)|^[[:space:]]+-[[:space:]]+(Success|Skipped|Total Found)' \
+        "$COLLECT_TEST"
+    echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
+    echo ""
+fi
 
 # --- Step 3: 정답지 생성 ---
 # 캡처 대상: [*] All done. Processed N/N files.
-echo ">>> [Step 3/5] Generate answer JSON"
+echo ">>> [Step 3/4] Generate answer JSON"
 echo "    Script : $MAKE_ANSWERS"
 STEP_START=$(date +%s)
 _pylog "Step3 make_answers($LANG)" \
@@ -214,30 +233,19 @@ _pylog "Step3 make_answers($LANG)" \
 echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
 echo ""
 
-# --- Step 4: 구조 후보 평가 ---
-# 캡처 대상: [Global] 통계 줄 / [Saved] File Report 줄
-echo ">>> [Step 4/5] Evaluate struct candidates"
-echo "    Script : $EVALUATE"
-STEP_START=$(date +%s)
-_pylog "Step4 evaluate_struct($LANG)" \
-    '^\[Global\]|\[Saved\] File Report' \
-    "$EVALUATE"
-echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
-echo ""
-
-# --- Step 5: 커버리지 평가 ---
-# 캡처 대상: [LANG_UPPER] Total Queries/Found/Not Found/Fail / [Saved] CSV 줄
-echo ">>> [Step 5/5] Evaluate coverage"
+# --- Step 4: 랭크 + 커버리지 평가 (통합) ---
+# 캡처 대상: [Global] 통계 줄 / [LANG_UPPER] 통계 줄 / [Saved] 줄
+echo ">>> [Step 4/4] Evaluate (rank + coverage)"
 echo "    Script : evaluate_coverage.py  (lang=$COVERAGE_LANG)"
 STEP_START=$(date +%s)
-cd "$TS_DIR" && _pylog "Step5 evaluate_coverage($LANG)" \
-    '^\[[A-Z][A-Z0-9]*\] (Total Queries|Found[[:space:]]|Not Found|Fail[[:space:]]*)|\[Saved\]' \
+cd "$TS_DIR" && _pylog "Step4 evaluate($LANG)" \
+    '^\[Global\]|\[[A-Z][A-Z0-9]*\] (Total Queries|Found[[:space:]]|Not Found|Fail[[:space:]]*)|\[Saved\]' \
     "$TS_DIR/evaluate_coverage.py" "$COVERAGE_LANG"
 echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
 echo ""
 
 echo "============================================================"
-echo "  DONE : $LANG pipeline completed"
+echo "  DONE : $LANG pipeline completed (4 steps)"
 echo "  Total Elapsed: $(( $(date +%s) - TOTAL_START ))s"
 echo "  End   : $(date '+%Y-%m-%d %H:%M:%S')"
 echo "============================================================"
