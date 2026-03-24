@@ -3339,6 +3339,24 @@ TSStatePath ts_parser_parse_for_conversion(
       goto phase_3_conversion;
     }
 
+    // condense 전에 halted 버전들의 상태를 final_union에 미리 저장
+    // ts_parser__condense_stack은 halted 버전을 무조건 제거(line 2468-2471)하므로
+    // advance_for_conversion에서 token_end==target 경우로 만든 halted copy가
+    // condense 후 소멸되기 전에 시뮬레이션 결과를 보존해야 한다.
+    // 예) "3,6": state:2263에서 _cond_layout_end(size:1, token_end=31=target) →
+    //     halted copy at 2263 → SHIFT → position 변화로 break → condense → 2263 소멸
+    {
+      uint32_t vc = ts_stack_version_count(self->stack);
+      for (StackVersion i = 0; i < vc; i++) {
+        if (ts_stack_is_halted(self->stack, i)) {
+          TSStatePath sim = ts_stack_simulate_conversion(self->stack, i, self->language);
+          for (uint32_t j = 0; j < sim.count; j++) {
+            add_state_to_union(&final_union, sim.states[j]);
+          }
+        }
+      }
+    }
+
     // 상태가 같은 버전을 병합
     // After advancing each version of the stack, re-sort the versions by their cost,
     // removing any versions that are no longer worth pursuing.
