@@ -80,8 +80,8 @@ esac
 # =================[ 언어별 스크립트 매핑 ]=================
 case "$LANG" in
     smallbasic)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test.py"
+        REBUILD_SCRIPT="$TS_DIR/rebuild_all_sb.sh"
+        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_sb.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_sb.py"
         COVERAGE_LANG="smallbasic"
         ;;
