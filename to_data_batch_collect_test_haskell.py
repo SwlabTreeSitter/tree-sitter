@@ -2,7 +2,12 @@
 # For haskell
 #   1) .hs   -> .data  <-- here
 #   2) .data -> .json
+#
+# 사용법:
+#   python to_data_batch_collect_test_haskell.py              # 전체 재수집 (OUTPUT_DIR 초기화)
+#   python to_data_batch_collect_test_haskell.py <project>    # 특정 프로젝트만 (기존 파일 유지)
 
+import sys
 import os
 import subprocess
 import shutil
@@ -34,28 +39,51 @@ IGNORE_DIRS = {".git", "build", "dist", "dist-newstyle", ".stack-work"}
 # =========================================================
 
 def main():
-    if os.path.exists(OUTPUT_DIR):
-        try:
-            shutil.rmtree(OUTPUT_DIR)
-            print(f"[Info] Removed existing directory: {OUTPUT_DIR}")
-        except Exception as e:
-            print(f"[Error] Failed to remove directory: {e}")
-            return
+    project = sys.argv[1] if len(sys.argv) > 1 else None
 
-    os.makedirs(OUTPUT_DIR)
-    print(f"[Info] Created output directory: {OUTPUT_DIR}")
+    if project:
+        # 특정 프로젝트만: OUTPUT_DIR은 유지하고 해당 프로젝트 .data 파일만 교체
+        scan_root = os.path.join(SOURCE_DIR, project)
+        if not os.path.isdir(scan_root):
+            print(f"[Error] Project directory not found: {scan_root}")
+            print(f"Available: {', '.join(sorted(os.listdir(SOURCE_DIR)))}")
+            return
+        os.makedirs(OUTPUT_DIR, exist_ok=True)
+        # 해당 프로젝트의 기존 .data 파일 삭제
+        prefix = project.replace(os.path.sep, "_") + "_"
+        for f in os.listdir(OUTPUT_DIR):
+            if f.startswith(prefix) and f.endswith(".data"):
+                os.remove(os.path.join(OUTPUT_DIR, f))
+                print(f"[Info] Removed old: {f}")
+        print(f"[*] Project mode: {project}")
+    else:
+        # 전체 재수집: OUTPUT_DIR 초기화
+        scan_root = SOURCE_DIR
+        if os.path.exists(OUTPUT_DIR):
+            try:
+                shutil.rmtree(OUTPUT_DIR)
+                print(f"[Info] Removed existing directory: {OUTPUT_DIR}")
+            except Exception as e:
+                print(f"[Error] Failed to remove directory: {e}")
+                return
+        os.makedirs(OUTPUT_DIR)
+        print(f"[Info] Created output directory: {OUTPUT_DIR}")
 
     SKIP_LOG_PATH = os.path.join(OUTPUT_DIR, "skipped_files.txt")
-    with open(SKIP_LOG_PATH, "w", encoding="utf-8") as f:
-        f.write("=== Skipped Files (Parse Error / Recovery Detected) ===\n")
+    mode = "a" if project else "w"
+    with open(SKIP_LOG_PATH, mode, encoding="utf-8") as f:
+        if not project:
+            f.write("=== Skipped Files (Parse Error / Recovery Detected) ===\n")
+        else:
+            f.write(f"\n=== [{project}] ===\n")
 
-    print(f"[*] Starting recursive scan in: {SOURCE_DIR}")
+    print(f"[*] Starting recursive scan in: {scan_root}")
 
     success_count = 0
     skipped_count = 0
     total_found = 0
 
-    for root, dirs, files in os.walk(SOURCE_DIR):
+    for root, dirs, files in os.walk(scan_root):
         dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
 
         for filename in files:

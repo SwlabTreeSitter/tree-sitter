@@ -27,98 +27,106 @@ DB_PATH = "/home/hyeonjin/PL/code-completion-extension/resources/smallbasic/cand
 
 # 평가 설정
 MAX_CANDIDATE_LIST_SIZE = 20
-MAX_RANK_CHECK = 20
 
 # =========================================================
 
 def is_tutorial_file(filename):
-    """01_HelloWorld.sb ~ 27_FlickrRepeat.sb 형식의 tutorial 파일만 선별"""
+    """숫자로 시작하는 tutorial 파일만 선별"""
     basename = os.path.basename(filename)
     return basename[0].isdigit()
 
 class FileReporter:
     def __init__(self):
-        self.db = self.load_json(DB_PATH)
+        self.db = self._load_json(DB_PATH)
 
-        # 통계 변수
-        self.rank_stats = defaultdict(int)
+        # 커버리지 통계
+        self.total_queries   = 0
+        self.found_count     = 0
+        self.not_found_count = 0
+        self.fail_count      = 0
+
+        # 랭크 통계
+        self.rank_stats         = defaultdict(int)
         self.beyond_top20_count = 0
-        self.cpp_fail_count = 0
-        self.global_queries = 0
-        self.global_files = 0
+
         self.file_reports = []
 
-        # 리포트 폴더 생성
-        if not os.path.exists(REPORT_DIR):
-            os.makedirs(REPORT_DIR)
+        os.makedirs(REPORT_DIR, exist_ok=True)
 
-    def load_json(self, path):
+    def _load_json(self, path):
         if not os.path.exists(path):
             return {}
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    def run_cpp_at_position(self, target_file, row, col):
+    def _run_at_position(self, target_file, row, col):
         cmd = [EXE_PATH, "smallbasic", LIB_PATH, target_file, str(row), str(col), "0"]
-
         try:
             result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                encoding='utf-8',
-                errors='replace'
+                cmd, capture_output=True, text=True,
+                encoding="utf-8", errors="replace"
             )
-
             if result.returncode != 0:
                 return []
-
             for line in result.stdout.splitlines():
                 match = re.search(r"@@PREDICT:\s*([\d\s]+)", line)
                 if match:
-                    raw_nums = match.group(1).strip()
-                    if not raw_nums:
+                    raw = match.group(1).strip()
+                    if not raw:
                         return []
                     states = []
-                    for num_str in raw_nums.split():
+                    for s in raw.split():
                         try:
-                            states.append(int(num_str))
+                            states.append(int(s))
                         except ValueError:
                             pass
                     return states
-
             return []
-
         except Exception as e:
             print(f"[Error] Failed to parse output at {row},{col} - {e}")
             return []
 
-    def lookupDB(self, states):
-        merged_map = defaultdict(int)
+    def _lookup_db_full(self, states):
+        """커버리지용: 크기 제한 없이 DB에서 모든 후보 조회."""
+        merged = defaultdict(int)
         for state in states:
             s_key = str(state)
             if s_key in self.db:
                 for item in self.db[s_key]:
-                    merged_map[item['key']] += item['value']
-        return sorted(merged_map.items(), key=lambda x: x[1], reverse=True)
+                    merged[item["key"]] += item["value"]
+        return merged
 
-    def get_rank(self, candidates, ground_truth):
+    def _lookup_db_ranked(self, states):
+        """Top-N 랭크 계산용: 점수 내림차순 정렬된 (key, score) 리스트 반환."""
+        merged = defaultdict(int)
+        for state in states:
+            s_key = str(state)
+            if s_key in self.db:
+                for item in self.db[s_key]:
+                    merged[item["key"]] += item["value"]
+        return sorted(merged.items(), key=lambda x: x[1], reverse=True)
+
+    def _get_rank(self, candidates, ground_truth):
         gt_clean = ground_truth.replace(" ", "")
-        for rank, (key, val) in enumerate(candidates, 1):
-            key_clean = key.replace(" ", "")
-            if key_clean == gt_clean:
+        for rank, (key, _) in enumerate(candidates, 1):
+            if key.replace(" ", "") == gt_clean:
                 return rank
         return 0
 
-    def save_debug_log(self, filename, log_data):
-        debug_dir = os.path.join(REPORT_DIR, "debug_states_tutorial")
-        if not os.path.exists(debug_dir):
-            os.makedirs(debug_dir)
+    def _is_found(self, candidates_map: dict, ground_truth: str) -> bool:
+        gt_clean = ground_truth.replace(" ", "")
+        for key in candidates_map:
+            if key.replace(" ", "") == gt_clean:
+                return True
+        return False
 
-        csv_path = os.path.join(debug_dir, f"{filename}_tutorial.csv")
+    def _save_debug_log(self, filename, log_data):
+        debug_dir = os.path.join(REPORT_DIR, "debug_coverage_tutorial")
+        os.makedirs(debug_dir, exist_ok=True)
+        csv_path = os.path.join(debug_dir, f"{filename}.csv")
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(["Location", "Ground_Truth", "State_List", "Rank"])
+            writer.writerow(["Location", "Ground_Truth", "State_List", "Coverage_Result", "Rank"])
             writer.writerows(log_data)
 
     def evaluate_file(self, sb_file):
@@ -130,128 +138,171 @@ class FileReporter:
             print(f" [Skip] No Ground Truth for {filename}")
             return
 
-        answers = self.load_json(json_path)
+        answers = self._load_json(json_path)
         if not answers:
             return
 
-        file_query_count = 0
-        file_top1_count = 0
-        file_top3_count = 0
-        file_top5_count = 0
-        file_top10_count = 0
-        file_top20_count = 0
+        f_total     = 0
+        f_found     = 0
+        f_not_found = 0
+        f_fail      = 0
+        f_top1      = 0
+        f_top3      = 0
+        f_top5      = 0
+        f_top10     = 0
+        f_top20     = 0
+        debug_logs  = []
 
-        debug_logs = []
-        total_locations = len(answers)
-        processed_locs = 0
-
-        print(f" -> Analyzing {filename} ({total_locations} points)...")
+        total_locs = len(answers)
+        processed  = 0
+        print(f" -> {filename} ({total_locs} points)...")
 
         for loc_key, gt_data in answers.items():
-            processed_locs += 1
-            if processed_locs % 10 == 0:
-                print(f"    Processing {processed_locs}/{total_locations}...", end="\r")
+            processed += 1
+            if processed % 10 == 0:
+                print(f"    {processed}/{total_locs}...", end="\r")
 
-            try:
-                r_str, c_str = loc_key.split(",")
-                row, col = int(r_str), int(c_str)
-            except:
+            nums = re.findall(r"\d+", loc_key)
+            if len(nums) < 2:
                 continue
+            row, col = int(nums[0]), int(nums[1])
 
             ground_truth = gt_data.get("candidate", "")
             if not ground_truth:
                 continue
 
-            predicted_states = self.run_cpp_at_position(sb_file, row, col)
+            states = self._run_at_position(sb_file, row, col)
 
-            if predicted_states:
-                state_str = str(predicted_states)
+            if not states:
+                result_label = "FAIL"
+                rank = 0
+                f_fail += 1
             else:
-                state_str = "FAIL"
+                # 커버리지: 제한 없이 전체 DB 조회
+                candidates_full = self._lookup_db_full(states)
+                if self._is_found(candidates_full, ground_truth):
+                    result_label = "FOUND"
+                    f_found += 1
+                else:
+                    result_label = "NOT_FOUND"
+                    f_not_found += 1
 
-            rank = 0
-            if predicted_states:
-                full_candidates = self.lookupDB(predicted_states)
-                top_candidates = full_candidates[:MAX_CANDIDATE_LIST_SIZE]
-                rank = self.get_rank(top_candidates, ground_truth)
+                # 랭크: Top-20 제한 조회
+                top_candidates = self._lookup_db_ranked(states)[:MAX_CANDIDATE_LIST_SIZE]
+                rank = self._get_rank(top_candidates, ground_truth)
+                if rank > 0:
+                    self.rank_stats[rank] += 1
+                    if rank == 1:  f_top1  += 1
+                    if rank <= 3:  f_top3  += 1
+                    if rank <= 5:  f_top5  += 1
+                    if rank <= 10: f_top10 += 1
+                    if rank <= 20: f_top20 += 1
+                elif result_label == "NOT_FOUND":
+                    self.beyond_top20_count += 1
 
-            debug_logs.append([loc_key, ground_truth, state_str, rank])
+            debug_logs.append([loc_key, ground_truth, str(states) if states else "FAIL", result_label, rank])
+            f_total += 1
+            self.total_queries += 1
 
-            self.global_queries += 1
-            file_query_count += 1
+        print(f"    Done. ({f_total} queries)")
 
-            if rank > 0:
-                self.rank_stats[rank] += 1
-                if rank == 1: file_top1_count += 1
-                if 1 <= rank <= 3: file_top3_count += 1
-                if 1 <= rank <= 5: file_top5_count += 1
-                if 1 <= rank <= 10: file_top10_count += 1
-                if 1 <= rank <= 20: file_top20_count += 1
-            elif not predicted_states:
-                self.cpp_fail_count += 1
-            else:
-                self.beyond_top20_count += 1
+        self.found_count     += f_found
+        self.not_found_count += f_not_found
+        self.fail_count      += f_fail
 
-        print(f"    Done. ({file_query_count} queries)")
-
-        self.global_files += 1
         self.file_reports.append({
-            "name": filename,
-            "total": file_query_count,
-            "top1": file_top1_count,
-            "top3": file_top3_count,
-            "top5": file_top5_count,
-            "top10": file_top10_count,
-            "top20": file_top20_count
+            "name":      filename,
+            "total":     f_total,
+            "found":     f_found,
+            "not_found": f_not_found,
+            "fail":      f_fail,
+            "top1":      f_top1,
+            "top3":      f_top3,
+            "top5":      f_top5,
+            "top10":     f_top10,
+            "top20":     f_top20,
         })
-        self.save_debug_log(filename, debug_logs)
+        self._save_debug_log(filename, debug_logs)
 
-    def save_file_performance_report(self):
-        csv_path = os.path.join(REPORT_DIR, "sb_file_performance_tutorial.csv")
-        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+    def save_report(self):
+        # 파일별 성능 리포트 (랭크 + 커버리지 통합)
+        perf_path = os.path.join(REPORT_DIR, "sb_file_performance_tutorial.csv")
+        with open(perf_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(["File Name", "Total Queries", "Top-1 Acc (%)", "Top-3 Acc (%)", "Top-5 Acc (%)", "Top-10 Acc (%)", "Top-20 Acc (%)"])
-            for report in self.file_reports:
-                total = report["total"]
-                acc1  = (report["top1"]  / total * 100) if total > 0 else 0.0
-                acc3  = (report["top3"]  / total * 100) if total > 0 else 0.0
-                acc5  = (report["top5"]  / total * 100) if total > 0 else 0.0
-                acc10 = (report["top10"] / total * 100) if total > 0 else 0.0
-                acc20 = (report["top20"] / total * 100) if total > 0 else 0.0
-                writer.writerow([report['name'], total,
-                                  round(acc1, 2), round(acc3, 2), round(acc5, 2),
-                                  round(acc10, 2), round(acc20, 2)])
-        print(f"[Saved] File Report (CSV) -> {csv_path}")
+            writer.writerow([
+                "File Name", "Total",
+                "Top-1 Acc (%)", "Top-3 Acc (%)", "Top-5 Acc (%)", "Top-10 Acc (%)", "Top-20 Acc (%)",
+                "Found", "Found (%)", "Not Found", "Not Found (%)", "Fail", "Fail (%)"
+            ])
+            for r in self.file_reports:
+                total = r["total"]
+                def pct(n): return round(n / total * 100, 2) if total > 0 else 0.0
+                writer.writerow([
+                    r["name"], total,
+                    pct(r["top1"]), pct(r["top3"]), pct(r["top5"]), pct(r["top10"]), pct(r["top20"]),
+                    r["found"],     pct(r["found"]),
+                    r["not_found"], pct(r["not_found"]),
+                    r["fail"],      pct(r["fail"]),
+                ])
+        print(f"[Saved] File Report (CSV) -> {perf_path}")
+
+        # 커버리지 전용 리포트
+        cov_path = os.path.join(REPORT_DIR, "sb_coverage_tutorial.csv")
+        with open(cov_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow([
+                "File Name", "Total",
+                "Found", "Found (%)",
+                "Not Found", "Not Found (%)",
+                "Fail", "Fail (%)"
+            ])
+            for r in self.file_reports:
+                total = r["total"]
+                def pct(n): return round(n / total * 100, 2) if total > 0 else 0.0
+                writer.writerow([
+                    r["name"], total,
+                    r["found"],     pct(r["found"]),
+                    r["not_found"], pct(r["not_found"]),
+                    r["fail"],      pct(r["fail"]),
+                ])
+        print(f"[Saved] Coverage Report (CSV) -> {cov_path}")
 
     def run(self):
         all_files = glob.glob(os.path.join(SOURCE_DIR, "*.sb"))
         tutorial_files = sorted(f for f in all_files if is_tutorial_file(f))
 
         print(f"[*] Found {len(all_files)} total .sb files.")
-        print(f"[*] Tutorial files (01~27): {len(tutorial_files)}")
+        print(f"[*] Tutorial files (digit-starting): {len(tutorial_files)}")
         for f in tutorial_files:
             print(f"    {os.path.basename(f)}")
         print()
 
         start = time.time()
-        for f in tutorial_files:
+        for idx, f in enumerate(tutorial_files):
+            print(f" [{idx+1}/{len(tutorial_files)}]", end=" ")
             self.evaluate_file(f)
 
         elapsed = time.time() - start
-        print(f"\n[*] Analysis Complete in {elapsed:.2f} sec.")
+        print(f"\n[*] Analysis Complete in {elapsed:.2f} sec.\n")
 
-        global_top10 = sum(self.rank_stats[r] for r in range(1, 11))
-        global_top20 = sum(self.rank_stats[r] for r in range(1, 21))
-        global_11_to_20 = global_top20 - global_top10
-        if self.global_queries > 0:
-            print(f"[Tutorial] Total Queries    : {self.global_queries}")
-            print(f"[Tutorial] Top-10 Count     : {global_top10}")
-            print(f"[Tutorial] Top-10 Acc       : {global_top10 / self.global_queries * 100:.1f}%")
-            print(f"[Tutorial] Top11~20 Count   : {global_11_to_20}")
-            print(f"[Tutorial] Beyond Top-20    : {self.beyond_top20_count}")
-            print(f"[Tutorial] CPP Fail         : {self.cpp_fail_count}")
+        q = self.total_queries
+        if q > 0:
+            global_top10 = sum(self.rank_stats[r] for r in range(1, 11))
+            global_top20 = sum(self.rank_stats[r] for r in range(1, 21))
 
-        self.save_file_performance_report()
+            print(f"[Global] Total Queries    : {q}")
+            print(f"[Global] Top-10 Count     : {global_top10}")
+            print(f"[Global] Top-10 Acc       : {global_top10 / q * 100:.1f}%")
+            print(f"[Global] Top11~20 Count   : {global_top20 - global_top10}")
+            print(f"[Global] Beyond Top-20    : {self.beyond_top20_count}")
+            print(f"[Global] CPP Fail         : {self.fail_count}")
+
+            print(f"[SMALLBASIC-TUTORIAL] Total Queries : {q}")
+            print(f"[SMALLBASIC-TUTORIAL] Found         : {self.found_count}  ({self.found_count/q*100:.1f}%)")
+            print(f"[SMALLBASIC-TUTORIAL] Not Found     : {self.not_found_count}  ({self.not_found_count/q*100:.1f}%)")
+            print(f"[SMALLBASIC-TUTORIAL] Fail          : {self.fail_count}  ({self.fail_count/q*100:.1f}%)")
+
+        self.save_report()
 
 
 if __name__ == "__main__":

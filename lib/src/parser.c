@@ -2216,6 +2216,12 @@ static bool ts_parser__advance_for_conversion(
             // ⑤: 삽입 전/후 상태 모두 탐색
             StackVersion copy = ts_stack_copy_version(self->stack, version);
             if (copy != STACK_VERSION_NONE) ts_stack_halt(self->stack, copy);
+            // 현재 state에서 이 token에 유효한 action이 없으면
+            // fall-through하면 ts_stack_pause → 에러 리커버리로 오염되므로 즉시 freeze
+            TableEntry validity_check = {.action_count = 0};
+            ts_language_table_entry(self->language, state,
+                                    ts_subtree_symbol(lookahead), &validity_check);
+            if (validity_check.action_count == 0) return false;
             // fall-through → SHIFT 진행
           }
           // token_end < target: read-ahead 무관, 계속 진행
@@ -2265,6 +2271,11 @@ static bool ts_parser__advance_for_conversion(
           // ⑤: 삽입 전/후 상태 모두 탐색
           StackVersion copy = ts_stack_copy_version(self->stack, version);
           if (copy != STACK_VERSION_NONE) ts_stack_halt(self->stack, copy);
+          // 현재 state에서 이 token에 유효한 action이 없으면 즉시 freeze (에러 리커버리 방지)
+          TableEntry validity_check2 = {.action_count = 0};
+          ts_language_table_entry(self->language, state,
+                                  ts_subtree_symbol(lookahead), &validity_check2);
+          if (validity_check2.action_count == 0) return false;
           // fall-through → SHIFT 진행
         }
         // token_end < target: 계속 진행

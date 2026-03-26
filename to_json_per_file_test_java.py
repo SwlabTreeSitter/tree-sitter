@@ -33,10 +33,11 @@ def process_one_data_file(file_path: str) -> dict:
             elif waiting_for_location and line.strip():
                 if ":" in line:
                     loc_part = line.split(":", 1)[0].strip()
-                    extracted_data[loc_part] = {
-                        "state_id": current_state,
-                        "candidate": raw_candidate
-                    }
+                    if loc_part not in extracted_data:
+                        extracted_data[loc_part] = {
+                            "state_id": current_state,
+                            "candidate": raw_candidate
+                        }
                     waiting_for_location = False
 
     return extracted_data

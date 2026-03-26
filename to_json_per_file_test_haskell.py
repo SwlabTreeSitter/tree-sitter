@@ -1,11 +1,12 @@
 # [Linux] 구조 후보 평가를 위한 TEST 컬렉션 정답지 구성 스크립트 (Haskell 전용)
 #   1) .hs -> .data
 #   2) .data -> .json  <-- here
+#
+# 사용법:
+#   python to_json_per_file_test_haskell.py              # 전체 변환 (OUTPUT_DIR 초기화)
+#   python to_json_per_file_test_haskell.py <project>    # 특정 프로젝트만 (기존 파일 유지)
 
-# 컬렉션 파일들(.data)을 읽어
-# 커서 위치별 state_id와 candidate 정보를 JSON으로 변환
-# 개별 .data 파일 -> 개별 .json 파일 (reports/haskell 폴더)
-
+import sys
 import os
 import glob
 import json
@@ -45,28 +46,46 @@ def process_one_data_file(file_path: str) -> dict:
             elif waiting_for_location and line.strip():
                 if ":" in line:
                     loc_part = line.split(":", 1)[0].strip()
-                    extracted_data[loc_part] = {
-                        "state_id": current_state,
-                        "candidate": raw_candidate
-                    }
+                    if loc_part not in extracted_data:
+                        extracted_data[loc_part] = {
+                            "state_id": current_state,
+                            "candidate": raw_candidate
+                        }
                     waiting_for_location = False
 
     return extracted_data
 
 def main():
-    if os.path.exists(OUTPUT_DIR):
-        try:
-            shutil.rmtree(OUTPUT_DIR)
-            print(f"[Info] Removed existing directory: {OUTPUT_DIR}")
-        except Exception as e:
-            print(f"[Error] Failed to remove directory: {e}")
-            return
-    os.makedirs(OUTPUT_DIR)
-    print(f"[Info] Created output directory: {OUTPUT_DIR}")
+    project = sys.argv[1] if len(sys.argv) > 1 else None
 
-    data_files = glob.glob(os.path.join(INPUT_DIR, "*.data"))
+    if project:
+        # 특정 프로젝트만: OUTPUT_DIR 유지, 해당 프로젝트 .json만 교체
+        os.makedirs(OUTPUT_DIR, exist_ok=True)
+        prefix = project.replace(os.path.sep, "_") + "_"
+        # 기존 해당 프로젝트 .json 삭제
+        for f in os.listdir(OUTPUT_DIR):
+            if f.startswith(prefix) and f.endswith(".json"):
+                os.remove(os.path.join(OUTPUT_DIR, f))
+                print(f"[Info] Removed old: {f}")
+        data_files = [
+            f for f in glob.glob(os.path.join(INPUT_DIR, "*.data"))
+            if os.path.basename(f).startswith(prefix)
+        ]
+        print(f"[*] Project mode: {project} ({len(data_files)} .data files)")
+    else:
+        # 전체 변환: OUTPUT_DIR 초기화
+        if os.path.exists(OUTPUT_DIR):
+            try:
+                shutil.rmtree(OUTPUT_DIR)
+                print(f"[Info] Removed existing directory: {OUTPUT_DIR}")
+            except Exception as e:
+                print(f"[Error] Failed to remove directory: {e}")
+                return
+        os.makedirs(OUTPUT_DIR)
+        print(f"[Info] Created output directory: {OUTPUT_DIR}")
+        data_files = glob.glob(os.path.join(INPUT_DIR, "*.data"))
+
     print(f"[*] Found {len(data_files)} files.")
-
     success_count = 0
     for data_file in data_files:
         filename = os.path.basename(data_file)
