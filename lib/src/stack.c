@@ -1095,13 +1095,198 @@ static void simulate_reduce_pop_dfs(
   }
 }
 
+// ========================================
+// 0-byte External SHIFT 체인 시뮬레이션 확장
+// ========================================
+// 소스 컷으로 인해 0-byte external token(예: TIGHT_DOT)이 정상 처리되지 못한 경우,
+// 문법 테이블만으로 "가상 스택"을 구성하여 reduce 시뮬레이션을 확장한다.
+//
+// 예시 (Haskell TIGHT_DOT):
+//   cursor state=8847
+//   → (virtual) External#28(TIGHT_DOT) Shift → 12494
+//   → (virtual) '.' Shift                    → 10081
+//   → reduce _tight_dot(len=2) : GOTO(8847, _tight_dot) = 10878
+//   → reduce _modid_prefix(len=2): GOTO(9625, _modid_prefix) = 10902  ✓
+
+// 안전장치: vstack 배열 오버플로우 방지
+// 실제 탐색 시작 깊이는 최대 2(ext-shift + any-shift),
+// reduce 후 epsilon GOTO push 여유 포함해도 3이면 충분하나 1 여유를 둠
+#define MAX_VDEPTH 4
+
+typedef struct {
+  TSStateId states[MAX_VDEPTH];  // 실제 스택 위에 가상으로 쌓인 state (bottom→top)
+  uint32_t  depth;
+} VStack;
+
+// 전방 선언
+static void simulate_reduce_with_vstack(
+  StackNode *real_node,
+  VStack vstack,
+  uint32_t pop_count,
+  TSSymbol symbol,
+  const TSLanguage *language,
+  TSStatePath *result,
+  VisitedSet *visited
+);
+
+// 가상 스택 컨텍스트에서 현재 상태를 결과에 추가하고 reduce 체인 시뮬레이션
+static void simulate_with_vstack(
+  TSStateId current_state,
+  StackNode *real_node,
+  VStack vstack,
+  const TSLanguage *language,
+  TSStatePath *result,
+  VisitedSet *visited
+) {
+  add_state(result, current_state);
+  if (mark_visited(visited, current_state, real_node)) return;
+
+  ReduceProduction prd[64];
+  uint32_t prd_count = collect_reduces(language, current_state, prd, 64);
+  for (uint32_t i = 0; i < prd_count; i++) {
+    simulate_reduce_with_vstack(
+      real_node, vstack,
+      prd[i].child_count, prd[i].symbol,
+      language, result, visited
+    );
+  }
+}
+
+// 가상 스택과 실제 스택을 혼합하여 pop_count개 팝 후 GOTO 수행
+static void simulate_reduce_with_vstack(
+  StackNode *real_node,
+  VStack vstack,
+  uint32_t pop_count,
+  TSSymbol symbol,
+  const TSLanguage *language,
+  TSStatePath *result,
+  VisitedSet *visited
+) {
+  if (!real_node) return;
+
+  if (pop_count == 0) {
+    // epsilon: 현재 가상 top(없으면 실제 top) 상태에서 GOTO
+    TSStateId top = (vstack.depth > 0) ? vstack.states[vstack.depth - 1] : real_node->state;
+    TSStateId next = ts_language_lookup(language, top, symbol);
+    if (next != 0) {
+      VStack nv = vstack;
+      if (nv.depth < MAX_VDEPTH) nv.states[nv.depth++] = next;
+      simulate_with_vstack(next, real_node, nv, language, result, visited);
+    }
+    return;
+  }
+
+  if (pop_count <= vstack.depth) {
+    // 가상 스택에서만 팝 — 실제 스택 불변
+    uint32_t remaining = vstack.depth - pop_count;
+    TSStateId goto_base = (remaining > 0) ? vstack.states[remaining - 1] : real_node->state;
+    TSStateId next = ts_language_lookup(language, goto_base, symbol);
+    if (next != 0) {
+      VStack nv;
+      nv.depth = remaining;
+      for (uint32_t k = 0; k < remaining; k++) nv.states[k] = vstack.states[k];
+      if (nv.depth < MAX_VDEPTH) nv.states[nv.depth++] = next;
+      simulate_with_vstack(next, real_node, nv, language, result, visited);
+    }
+    return;
+  }
+
+  // 가상 스택 소진 후 나머지는 실제 스택에서 팝
+  // simulate_reduce_pop_dfs가 is_virtual=true로 GOTO 처리하므로 위임
+  uint32_t real_pops = pop_count - vstack.depth;
+  simulate_reduce_pop_dfs(real_node, real_pops, symbol, language, result, visited);
+}
+
+// state에서 external SHIFT 체인(깊이 1~2)을 가상으로 따라가며 simulate
+static void simulate_ext_shift_chains(
+  TSStateId state,
+  StackNode *real_node,
+  const TSLanguage *language,
+  TSStatePath *result,
+  VisitedSet *visited,
+  uint64_t zero_byte_ext_mask   // 실제 파싱 중 size==0으로 관측된 external token 인덱스 bitmask
+) {
+  // depth-1: state에서 0-byte external token SHIFT → s1
+  // zero_byte_ext_mask: 파싱 중 실제로 size==0으로 반환된 external token만 포함
+  // mask가 0이면 fallback으로 visible==false 기준 사용 (파싱 데이터가 없는 경우 대비)
+  bool use_mask = (zero_byte_ext_mask != 0);
+
+  for (uint32_t ei = 0; ei < language->external_token_count; ei++) {
+    // 0-byte 여부 판별
+    if (use_mask) {
+      // 실제 파싱에서 관측된 0-byte 토큰만 허용
+      if (ei >= 64 || !(zero_byte_ext_mask & (1ULL << ei))) continue;
+    } else {
+      // fallback: visible=true는 확실히 byte-consuming
+      TSSymbol ext_sym = language->external_scanner.symbol_map[ei];
+      if (language->symbol_metadata[ext_sym].visible) continue;
+    }
+
+    TSSymbol ext = language->external_scanner.symbol_map[ei];
+
+    uint32_t idx = ts_language_lookup(language, state, ext);
+    if (idx == 0) continue;
+
+    const TSParseActionEntry *entry = &language->parse_actions[idx];
+    const TSParseAction *acts = (const TSParseAction *)(entry + 1);
+    TSStateId s1 = 0;
+    for (uint32_t a = 0; a < entry->entry.count; a++) {
+      if (acts[a].type == TSParseActionTypeShift && !acts[a].shift.extra) {
+        s1 = acts[a].shift.state;
+        break;
+      }
+    }
+    if (s1 == 0) continue;
+
+    // depth-1: vstack=[s1]
+    VStack v1 = { .depth = 1 };
+    v1.states[0] = s1;
+    simulate_with_vstack(s1, real_node, v1, language, result, visited);
+
+    // depth-2: s1에 non-extra REDUCE가 없는 경우에만 (=반드시 SHIFT해야 진행 가능)
+    // s1에서 가능한 terminal SHIFT → s2, vstack=[s1, s2]
+    bool s1_has_reduce = false;
+    for (TSSymbol sym = 0; sym < language->token_count; sym++) {
+      uint32_t chk = ts_language_lookup(language, s1, sym);
+      if (chk == 0) continue;
+      const TSParseActionEntry *ce = &language->parse_actions[chk];
+      const TSParseAction *ca = (const TSParseAction *)(ce + 1);
+      for (uint32_t k = 0; k < ce->entry.count; k++) {
+        if (ca[k].type == TSParseActionTypeReduce) { s1_has_reduce = true; break; }
+      }
+      if (s1_has_reduce) break;
+    }
+    if (s1_has_reduce) continue;
+
+    for (TSSymbol sym2 = 0; sym2 < language->token_count; sym2++) {
+      uint32_t idx2 = ts_language_lookup(language, s1, sym2);
+      if (idx2 == 0) continue;
+      const TSParseActionEntry *e2 = &language->parse_actions[idx2];
+      const TSParseAction *acts2 = (const TSParseAction *)(e2 + 1);
+      TSStateId s2 = 0;
+      for (uint32_t b = 0; b < e2->entry.count; b++) {
+        if (acts2[b].type == TSParseActionTypeShift && !acts2[b].shift.extra) {
+          s2 = acts2[b].shift.state;
+          break;
+        }
+      }
+      if (s2 == 0) continue;
+      VStack v2 = { .depth = 2 };
+      v2.states[0] = s1;
+      v2.states[1] = s2;
+      simulate_with_vstack(s2, real_node, v2, language, result, visited);
+    }
+  }
+}
+
 // ts_stack_simulate_conversion  (공개 진입점)
 // 하나의 스택 버전에 대해 시뮬레이션을 수행하고
 // 도달 가능한 모든 current_state를 반환
 TSStatePath ts_stack_simulate_conversion(
   Stack *self,
   StackVersion version,
-  const TSLanguage *language
+  const TSLanguage *language,
+  uint64_t zero_byte_ext_mask
 ) {
   TSStatePath current_states = {0};
   if (version >= self->heads.size) return current_states;
@@ -1117,6 +1302,17 @@ TSStatePath ts_stack_simulate_conversion(
     language,
     &current_states,
     &visited
+  );
+
+  // 0-byte external SHIFT 체인 확장 시뮬레이션 (별도 visited set 사용)
+  VisitedSet ext_visited = {0};
+  simulate_ext_shift_chains(
+    head->node->state,
+    head->node,
+    language,
+    &current_states,
+    &ext_visited,
+    zero_byte_ext_mask
   );
 
   return current_states;

@@ -1,218 +1,326 @@
 {
-  "1,1": {
-    "state_id": 1,
-    "candidate": "ID . ID = Expr"
-  },
-  "1,15": {
-    "state_id": 188,
-    "candidate": ". ID = Expr"
-  },
-  "1,16": {
-    "state_id": 259,
-    "candidate": "ID = Expr"
-  },
-  "1,32": {
-    "state_id": 214,
-    "candidate": "= Expr"
-  },
-  "1,34": {
-    "state_id": 75,
-    "candidate": "STR"
-  },
-  "2,1": {
-    "state_id": 97,
-    "candidate": "Stmt_token4 ID = Expr Stmt_token5 Expr CRStmtCRs Stmt_token6"
-  },
-  "2,5": {
-    "state_id": 234,
-    "candidate": "ID = Expr Stmt_token5 Expr CRStmtCRs Stmt_token6"
-  },
-  "2,7": {
-    "state_id": 232,
-    "candidate": "= Expr Stmt_token5 Expr CRStmtCRs Stmt_token6"
-  },
-  "2,9": {
-    "state_id": 60,
-    "candidate": "NUM"
-  },
-  "2,11": {
-    "state_id": 258,
-    "candidate": "Stmt_token5 Expr CRStmtCRs Stmt_token6"
-  },
-  "2,14": {
-    "state_id": 58,
-    "candidate": "NUM"
-  },
-  "2,21": {
-    "state_id": 140,
-    "candidate": "CR_token2"
-  },
-  "3,5": {
-    "state_id": 88,
-    "candidate": "ID . ID = Expr"
-  },
-  "3,19": {
-    "state_id": 184,
-    "candidate": ". ID = Expr"
-  },
-  "3,20": {
-    "state_id": 255,
-    "candidate": "ID = Expr"
-  },
-  "3,31": {
-    "state_id": 221,
-    "candidate": "= Expr"
-  },
-  "3,33": {
-    "state_id": 57,
-    "candidate": "ID . ID ( )"
-  },
-  "3,47": {
-    "state_id": 5,
-    "candidate": ". ID ( )"
-  },
-  "3,48": {
-    "state_id": 260,
-    "candidate": "ID ( )"
-  },
-  "3,62": {
-    "state_id": 24,
-    "candidate": "( )"
-  },
-  "3,63": {
-    "state_id": 26,
-    "candidate": ")"
-  },
-  "3,67": {
-    "state_id": 203,
-    "candidate": "CR_token2"
-  },
-  "4,5": {
-    "state_id": 96,
-    "candidate": "ID = Expr"
-  },
-  "4,7": {
-    "state_id": 184,
-    "candidate": "= Expr"
-  },
-  "4,9": {
-    "state_id": 70,
-    "candidate": "ID . ID ( Exprs )"
-  },
-  "4,13": {
-    "state_id": 5,
-    "candidate": ". ID ( Exprs )"
-  },
-  "4,14": {
-    "state_id": 260,
-    "candidate": "ID ( Exprs )"
-  },
-  "4,29": {
-    "state_id": 24,
-    "candidate": "( Exprs )"
-  },
-  "4,30": {
-    "state_id": 26,
-    "candidate": "NUM"
-  },
-  "4,33": {
-    "state_id": 249,
-    "candidate": ")"
-  },
-  "4,37": {
-    "state_id": 203,
-    "candidate": "CR_token2"
-  },
-  "5,5": {
-    "state_id": 96,
-    "candidate": "ID = Expr"
-  },
-  "5,7": {
-    "state_id": 184,
-    "candidate": "= Expr"
-  },
-  "5,9": {
-    "state_id": 70,
-    "candidate": "ID . ID ( Exprs )"
-  },
-  "5,13": {
-    "state_id": 5,
-    "candidate": ". ID ( Exprs )"
-  },
-  "5,14": {
-    "state_id": 260,
-    "candidate": "ID ( Exprs )"
-  },
-  "5,29": {
-    "state_id": 24,
-    "candidate": "( Exprs )"
-  },
-  "5,30": {
-    "state_id": 26,
-    "candidate": "NUM"
-  },
-  "5,33": {
-    "state_id": 249,
-    "candidate": ")"
-  },
-  "5,37": {
-    "state_id": 203,
-    "candidate": "CR_token2"
-  },
-  "6,5": {
-    "state_id": 96,
-    "candidate": "ID . ID ( Exprs )"
-  },
-  "6,19": {
-    "state_id": 184,
-    "candidate": ". ID ( Exprs )"
-  },
-  "6,20": {
-    "state_id": 255,
-    "candidate": "ID ( Exprs )"
-  },
-  "6,31": {
-    "state_id": 221,
-    "candidate": "( Exprs )"
-  },
-  "6,32": {
-    "state_id": 27,
-    "candidate": "ID"
-  },
-  "6,33": {
-    "state_id": 217,
-    "candidate": ", MoreThanOneExpr"
-  },
-  "6,35": {
-    "state_id": 54,
-    "candidate": "ID"
-  },
-  "6,36": {
-    "state_id": 217,
-    "candidate": ", MoreThanOneExpr"
-  },
-  "6,38": {
-    "state_id": 54,
-    "candidate": "NUM"
-  },
-  "6,40": {
-    "state_id": 217,
-    "candidate": ", MoreThanOneExpr"
-  },
-  "6,42": {
-    "state_id": 54,
-    "candidate": "NUM"
-  },
-  "6,44": {
-    "state_id": 238,
-    "candidate": ")"
-  },
-  "6,46": {
-    "state_id": 203,
-    "candidate": "CR_token2"
-  },
-  "7,1": {
-    "state_id": 189,
-    "candidate": "Stmt_token6"
-  }
+  "1,1": [
+    {
+      "state_id": 1,
+      "candidate": "ID . ID = Expr"
+    }
+  ],
+  "1,15": [
+    {
+      "state_id": 188,
+      "candidate": ". ID = Expr"
+    }
+  ],
+  "1,16": [
+    {
+      "state_id": 259,
+      "candidate": "ID = Expr"
+    }
+  ],
+  "1,32": [
+    {
+      "state_id": 214,
+      "candidate": "= Expr"
+    }
+  ],
+  "1,34": [
+    {
+      "state_id": 75,
+      "candidate": "STR"
+    }
+  ],
+  "2,1": [
+    {
+      "state_id": 97,
+      "candidate": "Stmt_token4 ID = Expr Stmt_token5 Expr CRStmtCRs Stmt_token6"
+    }
+  ],
+  "2,5": [
+    {
+      "state_id": 234,
+      "candidate": "ID = Expr Stmt_token5 Expr CRStmtCRs Stmt_token6"
+    }
+  ],
+  "2,7": [
+    {
+      "state_id": 232,
+      "candidate": "= Expr Stmt_token5 Expr CRStmtCRs Stmt_token6"
+    }
+  ],
+  "2,9": [
+    {
+      "state_id": 60,
+      "candidate": "NUM"
+    }
+  ],
+  "2,11": [
+    {
+      "state_id": 258,
+      "candidate": "Stmt_token5 Expr CRStmtCRs Stmt_token6"
+    }
+  ],
+  "2,14": [
+    {
+      "state_id": 58,
+      "candidate": "NUM"
+    }
+  ],
+  "2,21": [
+    {
+      "state_id": 140,
+      "candidate": "CR_token2"
+    }
+  ],
+  "3,5": [
+    {
+      "state_id": 88,
+      "candidate": "ID . ID = Expr"
+    }
+  ],
+  "3,19": [
+    {
+      "state_id": 184,
+      "candidate": ". ID = Expr"
+    }
+  ],
+  "3,20": [
+    {
+      "state_id": 255,
+      "candidate": "ID = Expr"
+    }
+  ],
+  "3,31": [
+    {
+      "state_id": 221,
+      "candidate": "= Expr"
+    }
+  ],
+  "3,33": [
+    {
+      "state_id": 57,
+      "candidate": "ID . ID ( )"
+    }
+  ],
+  "3,47": [
+    {
+      "state_id": 5,
+      "candidate": ". ID ( )"
+    }
+  ],
+  "3,48": [
+    {
+      "state_id": 260,
+      "candidate": "ID ( )"
+    }
+  ],
+  "3,62": [
+    {
+      "state_id": 24,
+      "candidate": "( )"
+    }
+  ],
+  "3,63": [
+    {
+      "state_id": 26,
+      "candidate": ")"
+    }
+  ],
+  "3,67": [
+    {
+      "state_id": 203,
+      "candidate": "CR_token2"
+    }
+  ],
+  "4,5": [
+    {
+      "state_id": 96,
+      "candidate": "ID = Expr"
+    }
+  ],
+  "4,7": [
+    {
+      "state_id": 184,
+      "candidate": "= Expr"
+    }
+  ],
+  "4,9": [
+    {
+      "state_id": 70,
+      "candidate": "ID . ID ( Exprs )"
+    }
+  ],
+  "4,13": [
+    {
+      "state_id": 5,
+      "candidate": ". ID ( Exprs )"
+    }
+  ],
+  "4,14": [
+    {
+      "state_id": 260,
+      "candidate": "ID ( Exprs )"
+    }
+  ],
+  "4,29": [
+    {
+      "state_id": 24,
+      "candidate": "( Exprs )"
+    }
+  ],
+  "4,30": [
+    {
+      "state_id": 26,
+      "candidate": "NUM"
+    }
+  ],
+  "4,33": [
+    {
+      "state_id": 249,
+      "candidate": ")"
+    }
+  ],
+  "4,37": [
+    {
+      "state_id": 203,
+      "candidate": "CR_token2"
+    }
+  ],
+  "5,5": [
+    {
+      "state_id": 96,
+      "candidate": "ID = Expr"
+    }
+  ],
+  "5,7": [
+    {
+      "state_id": 184,
+      "candidate": "= Expr"
+    }
+  ],
+  "5,9": [
+    {
+      "state_id": 70,
+      "candidate": "ID . ID ( Exprs )"
+    }
+  ],
+  "5,13": [
+    {
+      "state_id": 5,
+      "candidate": ". ID ( Exprs )"
+    }
+  ],
+  "5,14": [
+    {
+      "state_id": 260,
+      "candidate": "ID ( Exprs )"
+    }
+  ],
+  "5,29": [
+    {
+      "state_id": 24,
+      "candidate": "( Exprs )"
+    }
+  ],
+  "5,30": [
+    {
+      "state_id": 26,
+      "candidate": "NUM"
+    }
+  ],
+  "5,33": [
+    {
+      "state_id": 249,
+      "candidate": ")"
+    }
+  ],
+  "5,37": [
+    {
+      "state_id": 203,
+      "candidate": "CR_token2"
+    }
+  ],
+  "6,5": [
+    {
+      "state_id": 96,
+      "candidate": "ID . ID ( Exprs )"
+    }
+  ],
+  "6,19": [
+    {
+      "state_id": 184,
+      "candidate": ". ID ( Exprs )"
+    }
+  ],
+  "6,20": [
+    {
+      "state_id": 255,
+      "candidate": "ID ( Exprs )"
+    }
+  ],
+  "6,31": [
+    {
+      "state_id": 221,
+      "candidate": "( Exprs )"
+    }
+  ],
+  "6,32": [
+    {
+      "state_id": 27,
+      "candidate": "ID"
+    }
+  ],
+  "6,33": [
+    {
+      "state_id": 217,
+      "candidate": ", MoreThanOneExpr"
+    }
+  ],
+  "6,35": [
+    {
+      "state_id": 54,
+      "candidate": "ID"
+    }
+  ],
+  "6,36": [
+    {
+      "state_id": 217,
+      "candidate": ", MoreThanOneExpr"
+    }
+  ],
+  "6,38": [
+    {
+      "state_id": 54,
+      "candidate": "NUM"
+    }
+  ],
+  "6,40": [
+    {
+      "state_id": 217,
+      "candidate": ", MoreThanOneExpr"
+    }
+  ],
+  "6,42": [
+    {
+      "state_id": 54,
+      "candidate": "NUM"
+    }
+  ],
+  "6,44": [
+    {
+      "state_id": 238,
+      "candidate": ")"
+    }
+  ],
+  "6,46": [
+    {
+      "state_id": 203,
+      "candidate": "CR_token2"
+    }
+  ],
+  "7,1": [
+    {
+      "state_id": 189,
+      "candidate": "Stmt_token6"
+    }
+  ]
 }

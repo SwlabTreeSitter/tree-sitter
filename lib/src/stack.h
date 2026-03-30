@@ -129,7 +129,7 @@ bool ts_stack_print_dot_graph(Stack *self, const TSLanguage *language, FILE *f);
 // custom
 // 특정 스택 버전의 그래프 구조를 역추적하여, 
 // Reduce 시뮬레이션을 통해 도출된 모든 가능성 있는 후보 상태들을 배열로 반환
-TSStatePath ts_stack_simulate_conversion(Stack *self, StackVersion version, const TSLanguage *language);
+TSStatePath ts_stack_simulate_conversion(Stack *self, StackVersion version, const TSLanguage *language, uint64_t zero_byte_ext_mask);
 
 #ifdef __cplusplus
 }

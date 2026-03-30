@@ -5,11 +5,12 @@
 # 언어명을 인자로 받아 rebuild_all → 랭크+커버리지 평가까지 전체 파이프라인 실행
 #
 # 사용법:
-#   ./run_pipeline.sh <언어> [--skip-collect]
+#   ./run_pipeline.sh <언어> [--skip-collect] [--per-project]
 #
 # 옵션:
 #   --skip-collect   Step 1(rebuild) + Step 2(collect TEST) 를 건너뛰고
 #                    Step 3(정답지) + Step 4(평가) 만 실행
+#   --per-project    Step 4 평가 완료 후 프로젝트별 결과도 집계하여 출력
 #
 # 지원 언어:
 #   smallbasic   sb
@@ -30,11 +31,13 @@ TS_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # =================[ 인자 파싱 ]=================
 SKIP_COLLECT=false
+PER_PROJECT=false
 
 _POSITIONAL=()
 for arg in "$@"; do
     case "$arg" in
         --skip-collect) SKIP_COLLECT=true ;;
+        --per-project)  PER_PROJECT=true ;;
         *)              _POSITIONAL+=("$arg") ;;
     esac
 done
@@ -234,13 +237,16 @@ echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
 echo ""
 
 # --- Step 4: 랭크 + 커버리지 평가 (통합) ---
-# 캡처 대상: [Global] 통계 줄 / [LANG_UPPER] 통계 줄 / [Saved] 줄
+# 캡처 대상: [Global] 통계 줄 / [LANG_UPPER] 통계 줄 / [Per-Project] 통계 줄 / [Saved] 줄
 echo ">>> [Step 4/4] Evaluate (rank + coverage)"
 echo "    Script : evaluate_coverage.py  (lang=$COVERAGE_LANG)"
+[ "$PER_PROJECT" = true ] && echo "    Mode   : --per-project enabled"
 STEP_START=$(date +%s)
+EXTRA_ARGS=""
+[ "$PER_PROJECT" = true ] && EXTRA_ARGS="--per-project"
 cd "$TS_DIR" && _pylog "Step4 evaluate($LANG)" \
-    '^\[Global\]|\[[A-Z][A-Z0-9]*\] (Total Queries|Found[[:space:]]|Not Found|Fail[[:space:]]*)|\[Saved\]' \
-    "$TS_DIR/evaluate_coverage.py" "$COVERAGE_LANG"
+    '^\[Global\]|\[[A-Z][A-Z0-9_-]*\] (Total Queries|Top-10 Count|Top11~20|Beyond Top|CPP Fail|Found[[:space:]]|Not Found|Fail[[:space:]]*)|\[Saved\]' \
+    "$TS_DIR/evaluate_coverage.py" "$COVERAGE_LANG" $EXTRA_ARGS
 echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
 echo ""
 

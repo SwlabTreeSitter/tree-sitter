@@ -129,7 +129,6 @@ class EvaluationReporter:
 
         # 랭크 통계
         self.rank_stats          = defaultdict(int)
-        self.beyond_top20_count  = 0
 
         self.file_reports = []
 
@@ -275,8 +274,8 @@ class EvaluationReporter:
                 continue
             row, col = int(nums[0]), int(nums[1])
 
-            ground_truth = gt_data.get("candidate", "")
-            if not ground_truth:
+            # gt_data는 [{"state_id": int, "candidate": str}, ...] 리스트
+            if not gt_data:
                 continue
 
             states = self._run_at_position(target_file, row, col)
@@ -285,19 +284,29 @@ class EvaluationReporter:
                 result_label = "FAIL"
                 rank = 0
                 f_fail += 1
+                ground_truth = gt_data[0]["candidate"]
             else:
-                # 커버리지: 제한 없이 전체 DB 조회
+                # FOUND: gt_data의 후보 중 하나라도 DB에 있으면
                 candidates_full = self._lookup_db_full(states)
-                if self._is_found(candidates_full, ground_truth):
+                if any(self._is_found(candidates_full, e["candidate"]) for e in gt_data):
                     result_label = "FOUND"
                     f_found += 1
                 else:
                     result_label = "NOT_FOUND"
                     f_not_found += 1
 
-                # 랭크: Top-20 제한 조회
+                # 랭크: gt_data 후보들 중 가장 좋은(낮은) 순위
                 top_candidates = self._lookup_db_ranked(states)[:MAX_CANDIDATE_LIST_SIZE]
-                rank = self._get_rank(top_candidates, ground_truth)
+                best_rank = 0
+                best_entry = gt_data[0]
+                for e in gt_data:
+                    r = self._get_rank(top_candidates, e["candidate"])
+                    if r > 0 and (best_rank == 0 or r < best_rank):
+                        best_rank = r
+                        best_entry = e
+                rank = best_rank
+                ground_truth = best_entry["candidate"]
+
                 if rank > 0:
                     self.rank_stats[rank] += 1
                     if rank == 1:       f_top1  += 1
@@ -305,8 +314,6 @@ class EvaluationReporter:
                     if rank <= 5:       f_top5  += 1
                     if rank <= 10:      f_top10 += 1
                     if rank <= 20:      f_top20 += 1
-                elif result_label == "NOT_FOUND":
-                    self.beyond_top20_count += 1
 
             debug_logs.append([loc_key, ground_truth, str(states) if states else "FAIL", result_label, rank])
             f_total += 1
@@ -342,9 +349,11 @@ class EvaluationReporter:
             writer.writerow(["Location", "Ground_Truth", "State_List", "Coverage_Result", "Rank"])
             writer.writerows(log_data)
 
-    def save_report(self):
+    def save_report(self, suffix=""):
+        report_dir = self.cfg["report"]
+
         # 파일별 성능 리포트 (랭크 + 커버리지 통합)
-        perf_path = os.path.join(self.cfg["report"], f"{self.lang}_file_performance.csv")
+        perf_path = os.path.join(report_dir, f"{self.lang}_file_performance{suffix}.csv")
         with open(perf_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow([
@@ -365,7 +374,7 @@ class EvaluationReporter:
         print(f"[Saved] File Report (CSV) -> {perf_path}")
 
         # 커버리지 전용 리포트 (기존 형식 유지)
-        cov_path = os.path.join(self.cfg["report"], f"{self.lang}_coverage.csv")
+        cov_path = os.path.join(report_dir, f"{self.lang}_coverage{suffix}.csv")
         with open(cov_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow([
@@ -384,6 +393,112 @@ class EvaluationReporter:
                     r["fail"],      pct(r["fail"]),
                 ])
         print(f"[Saved] Coverage Report (CSV) -> {cov_path}")
+
+    def aggregate_per_project(self):
+        """이미 생성된 debug CSV를 프로젝트별로 집계하여 evaluate_struct_<lang>.py <project> 와
+        동일한 출력 형식으로 출력하고, 프로젝트별 CSV 리포트를 저장한다."""
+        debug_dir = os.path.join(self.cfg["report"], f"debug_coverage_{self.lang}")
+        src = self.cfg["src"]
+
+        if not os.path.isdir(debug_dir):
+            print(f"[Per-Project] Debug CSV directory not found: {debug_dir}")
+            return
+
+        # TEST 디렉터리 아래 1단계 서브디렉터리를 프로젝트 목록으로 사용
+        projects = []
+        if os.path.isdir(src):
+            for entry in sorted(os.listdir(src)):
+                if os.path.isdir(os.path.join(src, entry)):
+                    projects.append(entry)
+
+        if not projects:
+            print(f"[Per-Project] No project subdirectories found in {src}")
+            return
+
+        all_csv_names = set(os.listdir(debug_dir))
+
+        for project in projects:
+            prefix = project + "_"
+            csv_files = sorted(
+                os.path.join(debug_dir, f)
+                for f in all_csv_names
+                if f.startswith(prefix) and f.endswith(".csv")
+            )
+            if not csv_files:
+                continue
+
+            total = found = not_found = fail = beyond = 0
+            top1 = top3 = top5 = top10 = top20 = 0
+            file_reports = []
+
+            for csv_path in csv_files:
+                f_total = f_found = f_not_found = f_fail = 0
+                f_top1 = f_top3 = f_top5 = f_top10 = f_top20 = 0
+
+                with open(csv_path, "r", encoding="utf-8") as fh:
+                    reader = csv.DictReader(fh)
+                    for row in reader:
+                        result = row.get("Coverage_Result", "")
+                        try:
+                            rank = int(row.get("Rank", "0"))
+                        except ValueError:
+                            rank = 0
+
+                        f_total += 1
+                        if result == "FOUND":
+                            f_found += 1
+                        elif result == "NOT_FOUND":
+                            f_not_found += 1
+                            if rank == 0:
+                                beyond += 1
+                        elif result == "FAIL":
+                            f_fail += 1
+
+                        if 0 < rank <= 1:  f_top1  += 1
+                        if 0 < rank <= 3:  f_top3  += 1
+                        if 0 < rank <= 5:  f_top5  += 1
+                        if 0 < rank <= 10: f_top10 += 1
+                        if 0 < rank <= 20: f_top20 += 1
+
+                fname_base = os.path.basename(csv_path)[:-4]  # .csv 제거
+                file_reports.append({
+                    "name":      fname_base,
+                    "total":     f_total,
+                    "found":     f_found,
+                    "not_found": f_not_found,
+                    "fail":      f_fail,
+                    "top1":      f_top1,
+                    "top3":      f_top3,
+                    "top5":      f_top5,
+                    "top10":     f_top10,
+                    "top20":     f_top20,
+                })
+                total     += f_total;     found    += f_found
+                not_found += f_not_found; fail     += f_fail
+                top1  += f_top1;  top3  += f_top3
+                top5  += f_top5;  top10 += f_top10; top20 += f_top20
+
+            if total == 0:
+                continue
+
+            # evaluate_struct_<lang>.py <project> 와 동일한 출력 형식
+            lbl = project
+            print(f"[{lbl}] Total Queries : {total}")
+            print(f"[{lbl}] Top-10 Count  : {top10}")
+            print(f"[{lbl}] Top11~20      : {top20 - top10}")
+            print(f"[{lbl}] Beyond Top-20 : {beyond}")
+            print(f"[{lbl}] CPP Fail      : {fail}")
+            print()
+            print(f"[{lbl}] Found         : {found}  ({found/total*100:.1f}%)")
+            print(f"[{lbl}] Not Found     : {not_found}  ({not_found/total*100:.1f}%)")
+            print(f"[{lbl}] Fail          : {fail}  ({fail/total*100:.1f}%)")
+
+            # 프로젝트별 CSV 저장 (save_report 재사용)
+            saved_reports    = self.file_reports
+            self.file_reports = file_reports
+            self.save_report(suffix=f"_{project}")
+            self.file_reports = saved_reports
+            print()
 
     def run(self):
         files = self._collect_files()
@@ -407,7 +522,6 @@ class EvaluationReporter:
             print(f"[Global] Top-10 Count     : {global_top10}")
             print(f"[Global] Top-10 Acc       : {global_top10 / q * 100:.1f}%")
             print(f"[Global] Top11~20 Count   : {global_top20 - global_top10}")
-            print(f"[Global] Beyond Top-20    : {self.beyond_top20_count}")
             print(f"[Global] CPP Fail         : {self.fail_count}")
 
             print(f"[{self.lang.upper()}] Total Queries : {q}")
@@ -419,12 +533,20 @@ class EvaluationReporter:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print(f"Usage: python evaluate_coverage.py <language>")
+    # 사용법:
+    #   python evaluate_coverage.py <language>
+    #   python evaluate_coverage.py <language> --per-project
+    #     → 전체 평가 후 이미 생성된 debug CSV를 프로젝트별로 재집계하여 추가 출력
+    args = sys.argv[1:]
+    per_project = "--per-project" in args
+    pos_args = [a for a in args if not a.startswith("--")]
+
+    if not pos_args:
+        print(f"Usage: python evaluate_coverage.py <language> [--per-project]")
         print(f"Available: {', '.join(LANG_CONFIGS.keys())}")
         sys.exit(1)
 
-    lang = sys.argv[1].lower()
+    lang = pos_args[0].lower()
     if lang not in LANG_CONFIGS:
         print(f"[Error] Unknown language: '{lang}'")
         print(f"Available: {', '.join(LANG_CONFIGS.keys())}")
@@ -432,3 +554,9 @@ if __name__ == "__main__":
 
     reporter = EvaluationReporter(lang, LANG_CONFIGS[lang])
     reporter.run()
+
+    if per_project:
+        print("\n============================================================")
+        print("  [Per-Project] Aggregating from existing debug CSVs...")
+        print("============================================================\n")
+        reporter.aggregate_per_project()

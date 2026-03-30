@@ -8,14 +8,15 @@
 # evaluate_coverage)의 출력을 단일 로그 파일에 언어별로 기록한다.
 #
 # 사용법:
-#   ./run_pipeline_all.sh [--skip-collect] [언어1 언어2 ...]
-#   ./run_pipeline_all.sh                      # 기본: 전체 언어 실행
-#   ./run_pipeline_all.sh --skip-collect       # 전체 언어, 컬렉션 스킵
-#   ./run_pipeline_all.sh haskell python       # 지정 언어만
-#   ./run_pipeline_all.sh --skip-collect haskell python
+#   ./run_pipeline_all.sh [--skip-collect] [--per-project] [언어1 언어2 ...]
+#   ./run_pipeline_all.sh                             # 기본: 전체 언어 실행
+#   ./run_pipeline_all.sh --skip-collect              # 전체 언어, 컬렉션 스킵
+#   ./run_pipeline_all.sh --per-project haskell       # 하스켈만, 프로젝트별 집계 포함
+#   ./run_pipeline_all.sh --skip-collect --per-project haskell python
 #
 # 옵션:
 #   --skip-collect   각 언어의 Step 1(rebuild) + Step 2(collect TEST) 를 건너뜀
+#   --per-project    Step 4 완료 후 프로젝트별 결과도 집계하여 출력/저장
 #
 # 로그 파일: pipeline_all_YYYYMMDD_HHMMSS.log
 # =============================================================
@@ -25,15 +26,16 @@ TS_DIR="$(cd "$(dirname "$0")" && pwd)"
 # 기본 실행 언어 목록 (실행 순서)
 ALL_LANGUAGES=(smallbasic c11 haskell ruby php javascript cpp java python)
 
-# 인자 파싱: --skip-collect 플래그 분리
+# 인자 파싱: 플래그 분리
 SKIP_COLLECT_FLAG=""
+PER_PROJECT_FLAG=""
 LANG_ARGS=()
 for arg in "$@"; do
-    if [ "$arg" = "--skip-collect" ]; then
-        SKIP_COLLECT_FLAG="--skip-collect"
-    else
-        LANG_ARGS+=("$arg")
-    fi
+    case "$arg" in
+        --skip-collect) SKIP_COLLECT_FLAG="--skip-collect" ;;
+        --per-project)  PER_PROJECT_FLAG="--per-project" ;;
+        *)              LANG_ARGS+=("$arg") ;;
+    esac
 done
 
 # 언어 목록 결정
@@ -58,7 +60,8 @@ set -o pipefail
     echo "  run_pipeline_all.sh"
     echo "  Start   : $(date '+%Y-%m-%d %H:%M:%S')"
     echo "  Languages: ${LANGUAGES[*]}"
-    echo "  Options : ${SKIP_COLLECT_FLAG:-none}"
+    _OPT_STR="${SKIP_COLLECT_FLAG:+$SKIP_COLLECT_FLAG }${PER_PROJECT_FLAG}"
+    echo "  Options : ${_OPT_STR:-none}"
     echo "  Log file: $LOG_FILE"
     echo "############################################################"
     echo ""
@@ -80,7 +83,7 @@ for LANG in "${LANGUAGES[@]}"; do
     LANG_START=$(date +%s)
 
     # run_pipeline.sh 실행; stdout+stderr → 터미널(tee) + 로그 파일(append)
-    bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG 2>&1 | tee -a "$LOG_FILE"
+    bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG $PER_PROJECT_FLAG 2>&1 | tee -a "$LOG_FILE"
     EXIT_CODE=${PIPESTATUS[0]}
 
     LANG_ELAPSED=$(( $(date +%s) - LANG_START ))

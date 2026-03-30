@@ -143,6 +143,9 @@ struct TSParser {
   // 외부 스캐너가 실패했을 때 도달한 최대 바이트 위치
   // (ts_parser__advance_for_conversion에서 커서 경계 판단에 사용)
   uint32_t ext_scan_fail_max_position;
+  // 파싱 중 size==0으로 반환된 external token의 인덱스 bitmask
+  // (시뮬레이션에서 0-byte external token만 가상 SHIFT 탐색하기 위해 사용)
+  uint64_t zero_byte_ext_mask;
 };
 
 typedef struct {
@@ -681,6 +684,11 @@ static Subtree ts_parser__lex(
     uint32_t lookahead_bytes = lookahead_end_byte - self->lexer.token_end_position.bytes;
 
     if (found_external_token) {
+      // size==0이면 0-byte external token → bitmask에 기록 (시뮬레이션 필터링용)
+      uint32_t ext_idx = (uint32_t)self->lexer.data.result_symbol;
+      if (size.bytes == 0 && ext_idx < 64) {
+        self->zero_byte_ext_mask |= (1ULL << ext_idx);
+      }
       symbol = self->language->external_scanner.symbol_map[symbol];
     } else if (symbol == self->language->keyword_capture_token && symbol != 0) {
       uint32_t end_byte = self->lexer.token_end_position.bytes;
@@ -2195,7 +2203,17 @@ static bool ts_parser__advance_for_conversion(
           //   → SHIFT를 진행시킨다. 0-size이므로 position은 그대로.
           //   → 다음 advance에서 계속 파싱하다가 실제 position >= target_length
           //      분기에 진입하여 올바르게 캡처됨 (예: Haskell _cmd_texp_start)
-          //   → return false 하지 않고 fall-through
+          //   → 단, SHIFT 전 상태(현재 state)도 캡처해야 한다.
+          //     예) Python state:92에서 _indent SHIFT → state:752 →
+          //         다음 advance에서 실패 → state:752만 캡처됨, state:92 누락.
+          //     → 복사본을 halted로 고정하여 삽입 전 state를 시뮬레이션에 포함.
+          {
+            StackVersion pre_shift_copy = ts_stack_copy_version(self->stack, version);
+            if (pre_shift_copy != STACK_VERSION_NONE) {
+              ts_stack_halt(self->stack, pre_shift_copy);
+            }
+          }
+          // fall-through
         }
 
         // ③ (else-branch): 크기>0 외부 토큰이 커서 경계에 걸치는 경우
@@ -3360,7 +3378,7 @@ TSStatePath ts_parser_parse_for_conversion(
       uint32_t vc = ts_stack_version_count(self->stack);
       for (StackVersion i = 0; i < vc; i++) {
         if (ts_stack_is_halted(self->stack, i)) {
-          TSStatePath sim = ts_stack_simulate_conversion(self->stack, i, self->language);
+          TSStatePath sim = ts_stack_simulate_conversion(self->stack, i, self->language, self->zero_byte_ext_mask);
           for (uint32_t j = 0; j < sim.count; j++) {
             add_state_to_union(&final_union, sim.states[j]);
           }
@@ -3402,7 +3420,7 @@ TSStatePath ts_parser_parse_for_conversion(
     }
     for (StackVersion v = 0; v < final_version_count; v++) {
       // stack.c에 구현된 함수 호출
-      TSStatePath conversion_result = ts_stack_simulate_conversion(self->stack, v, self->language);
+      TSStatePath conversion_result = ts_stack_simulate_conversion(self->stack, v, self->language, self->zero_byte_ext_mask);
     
       // 결과 병합 (합집합)
       for (uint32_t j = 0; j < conversion_result.count; j++) {

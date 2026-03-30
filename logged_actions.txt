@@ -1,24 +1,1933 @@
 [SHIFT] State 1 -> 1, symbol: _token1 (107, UNKNOWN)
-[SHIFT] State 1 -> 1, symbol: pragma (131, {-# LANGUAGE StandaloneDeriving, DeriveGeneric, DeriveAnyClass #-})
 [SHIFT] State 1 -> 1, symbol: _token1 (107, UNKNOWN)
-[SHIFT] State 1 -> 2, symbol: _cmd_layout_start (110, UNKNOWN)
+[SHIFT] State: 1 -> 10687, symbol: module (45)
+[SHIFT] State 10687 -> 9341, symbol: name (87, Exercises)
+[SHIFT] State 9341 -> 9341, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 9341 -> GOTO 9593, symbol: module, child 1 { '_token1(UNKNOWN)' }
+[SHIFT] State: 9593 -> 12402, symbol: ( (102)
+[SHIFT] State 12402 -> 8876, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 8876 -> GOTO 7779, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 7779 -> 9761, symbol: variable (1, in)
+[REDUCE] State 9761 -> GOTO 10807, symbol: import_name, child 1 { 'variable(in)' }
+[SHIFT] State: 10807 -> 7850, symbol: , (4)
+[SHIFT] State 7850 -> 7850, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 7850 -> 7850, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 7850 -> 9761, symbol: variable (1, in)
+[REDUCE] State 9761 -> GOTO 12167, symbol: import_name, child 1 { 'variable(in)' }
+[REDUCE] State 12167 -> GOTO 10169, symbol: exports_repeat1, child 2 { '_token1(UNKNOWN)' 'import_name' }
+[SHIFT] State: 10169 -> 7812, symbol: , (4)
+[SHIFT] State 7812 -> 7812, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 7812 -> 9761, symbol: variable (1, UNKNOWN)
+[REDUCE] State 9761 -> GOTO 12167, symbol: import_name, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 12167 -> GOTO 10984, symbol: exports_repeat1, child 2 { '_token1(UNKNOWN)' 'import_name' }
+[REDUCE] State 10984 -> GOTO 10169, symbol: exports_repeat1, child 2 { ',' 'exports_repeat1' }
+[SHIFT] State: 10169 -> 7812, symbol: , (4)
+[SHIFT] State 7812 -> 7812, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 7812 -> 9761, symbol: variable (1, UNKNOWN)
+[REDUCE] State 9761 -> GOTO 12167, symbol: import_name, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 12167 -> GOTO 10984, symbol: exports_repeat1, child 2 { '_token1(UNKNOWN)' 'import_name' }
+[REDUCE] State 10984 -> GOTO 10169, symbol: exports_repeat1, child 2 { ',' 'exports_repeat1' }
+[SHIFT] State: 10169 -> 7812, symbol: , (4)
+[SHIFT] State 7812 -> 7812, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 7812 -> 9761, symbol: variable (1, UNKNOWN)
+[REDUCE] State 9761 -> GOTO 12167, symbol: import_name, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 12167 -> GOTO 10984, symbol: exports_repeat1, child 2 { '_token1(UNKNOWN)' 'import_name' }
+[REDUCE] State 10984 -> GOTO 10169, symbol: exports_repeat1, child 2 { ',' 'exports_repeat1' }
+[SHIFT] State: 10169 -> 7812, symbol: , (4)
+[SHIFT] State 7812 -> 7812, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 7812 -> 7812, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 7812 -> 9761, symbol: variable (1, t)
+[REDUCE] State 9761 -> GOTO 12167, symbol: import_name, child 1 { 'variable(t)' }
+[REDUCE] State 12167 -> GOTO 10984, symbol: exports_repeat1, child 2 { '_token1(UNKNOWN)' 'import_name' }
+[REDUCE] State 10984 -> GOTO 10169, symbol: exports_repeat1, child 2 { '_token1(UNKNOWN)' 'exports_repeat1' }
+[SHIFT] State: 10169 -> 7812, symbol: , (4)
+[SHIFT] State 7812 -> 7812, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State: 7812 -> 12717, symbol: ) (103)
+[SHIFT] State 12717 -> 9796, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 9796 -> 9796, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 9796 -> 9796, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 9796 -> GOTO 11492, symbol: _paren_close, child 2 { '_token1(UNKNOWN)' '_token1(UNKNOWN)' }
+[REDUCE] State 11492 -> GOTO 11261, symbol: exports, child 5 { ',' '_token1(UNKNOWN)' ')' '_cmd_texp_end(UNKNOWN)' '_paren_close' }
+[SHIFT] State: 11261 -> 10949, symbol: where (106)
+[SHIFT] State 10949 -> 10949, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 10949 -> GOTO 10478, symbol: header, child 4 { 'exports_repeat1' 'exports' 'where' '_token1(UNKNOWN)' }
+[SHIFT] State 10478 -> 2, symbol: _cmd_layout_start (110, UNKNOWN)
+[SHIFT] State 2 -> 2, symbol: _token1 (107, UNKNOWN)
 [SHIFT] State: 2 -> 9625, symbol: import (41)
-[SHIFT] State 9625 -> 8847, symbol: name (87, Criterion)
+[SHIFT] State 9625 -> 8847, symbol: name (87, Data)
 [SHIFT] State 8847 -> 12494, symbol: _cond_tight_dot (136, UNKNOWN)
 [SHIFT] State: 12494 -> 10081, symbol: . (13)
 [REDUCE] State 10081 -> GOTO 10878, symbol: _tight_dot, child 2 { '_cond_tight_dot(UNKNOWN)' '.' }
-[REDUCE] State 10878 -> GOTO 10902, symbol: _modid_prefix, child 2 { 'name(Criterion)' '_tight_dot' }
-[SHIFT] State 10902 -> 8809, symbol: name (87, Main)
-[SHIFT] State 8809 -> 8809, symbol: _token1 (107, UNKNOWN)
-[REDUCE] State 8809 -> GOTO 8978, symbol: module, child 2 { 'name(Main)' '_token1(UNKNOWN)' }
-[REDUCE] State 8978 -> GOTO 10664, symbol: import, child 2 { '_modid_prefix' 'module' }
+[REDUCE] State 10878 -> GOTO 10902, symbol: _modid_prefix, child 2 { 'name(Data)' '_tight_dot' }
+[SHIFT] State 10902 -> 8809, symbol: name (87, Char)
+[REDUCE] State 8809 -> GOTO 8978, symbol: module, child 2 { '_modid_prefix' 'name(Char)' }
+[SHIFT] State: 8978 -> 12402, symbol: ( (102)
+[SHIFT] State 12402 -> 8876, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 8876 -> GOTO 7881, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 7881 -> 9761, symbol: variable (1, t)
+[REDUCE] State 9761 -> GOTO 10702, symbol: import_name, child 1 { 'variable(t)' }
+[SHIFT] State: 10702 -> 12328, symbol: ) (103)
+[SHIFT] State 12328 -> 12186, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 12186 -> 12186, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 12186 -> GOTO 11399, symbol: _paren_close, child 2 { '_cmd_texp_end(UNKNOWN)' '_token1(UNKNOWN)' }
+[REDUCE] State 11399 -> GOTO 11807, symbol: import_list, child 3 { 'import_name' ')' '_paren_close' }
+[REDUCE] State 11807 -> GOTO 10664, symbol: import, child 3 { 'module' '_paren_open' 'import_list' }
 [SHIFT] State 10664 -> 4243, symbol: _cond_layout_semicolon (109, UNKNOWN)
 [SHIFT] State 4243 -> 4243, symbol: _token1 (107, UNKNOWN)
 [SHIFT] State: 4243 -> 9625, symbol: import (41)
-[SHIFT] State 9625 -> 8847, symbol: name (87, Control)
-[RECOVER] State 0, symbol: ., Row: 4, Column:15
-[V-REDUCE] State 8847 -> GOTO 8978, symbol: module, child 1 { 'name(Control)' }
-[V-REDUCE] State 8978 -> GOTO 12000, symbol: import, child 2 { 'import' 'module' }
-[V-REDUCE] State 12000 -> GOTO 10116, symbol: imports_repeat1, child 2 { '_token1(UNKNOWN)' 'import' }
-[RECOVER] State 0, symbol: end, Row: 4, Column:16
-[REDUCE] State 1 -> GOTO 12559, symbol: haskell, child 0[ACCEPT] State 12559
+[SHIFT] State 9625 -> 8847, symbol: name (87, Data)
+[SHIFT] State 8847 -> 12494, symbol: _cond_tight_dot (136, UNKNOWN)
+[SHIFT] State: 12494 -> 10081, symbol: . (13)
+[REDUCE] State 10081 -> GOTO 10878, symbol: _tight_dot, child 2 { '_cond_tight_dot(UNKNOWN)' '.' }
+[REDUCE] State 10878 -> GOTO 10902, symbol: _modid_prefix, child 2 { 'name(Data)' '_tight_dot' }
+[SHIFT] State 10902 -> 8809, symbol: name (87, List)
+[REDUCE] State 8809 -> GOTO 8978, symbol: module, child 2 { '_modid_prefix' 'name(List)' }
+[SHIFT] State: 8978 -> 12402, symbol: ( (102)
+[SHIFT] State 12402 -> 8876, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 8876 -> GOTO 7881, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 7881 -> 9761, symbol: variable (1, UNKNOWN)
+[REDUCE] State 9761 -> GOTO 10702, symbol: import_name, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State: 10702 -> 12328, symbol: ) (103)
+[SHIFT] State 12328 -> 12186, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 12186 -> 12186, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 12186 -> GOTO 11399, symbol: _paren_close, child 2 { '_cmd_texp_end(UNKNOWN)' '_token1(UNKNOWN)' }
+[REDUCE] State 11399 -> GOTO 11807, symbol: import_list, child 3 { 'import_name' ')' '_paren_close' }
+[REDUCE] State 11807 -> GOTO 12000, symbol: import, child 3 { 'module' '_paren_open' 'import_list' }
+[REDUCE] State 12000 -> GOTO 10116, symbol: imports_repeat1, child 2 { 'import' 'import' }
+[SHIFT] State 10116 -> 4259, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 4259 -> 4259, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State: 4259 -> 9625, symbol: import (41)
+[SHIFT] State 9625 -> 8847, symbol: name (87, Lib)
+[SHIFT] State 8847 -> 8847, symbol: comment (128, -- import everything from Lib)
+[SHIFT] State 8847 -> 8847, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 8847 -> 8847, symbol: comment (128, {-\nTry to write this `(!!)` function yourself using pattern matching and a\nrecursive approach. In the case that the index is too large or negative\nyou can use `undefined` to make your function throw an exception.\n-})
+[SHIFT] State 8847 -> 8847, symbol: comment (128, {-\nThis index function needs to find the element in a list at a certain index.\nIf this index is 0, the current head of the list is the wanted element. So,\nif the list is empty, we cannot we fail, but if it is non empty and the index\nis larger than zero the wanted element is somewhere in the tail of the list.\nThus, the function calls itself recursively on the tail while decrementing the\nwanted index (since we skipped on element in the original list).\n-})
+[REDUCE] State 8847 -> GOTO 8978, symbol: module, child 1 { 'comment({-\nThis index function needs to find the element in a list at a certain index.\nIf this index is 0, the current head of the list is the wanted element. So,\nif the list is empty, we cannot we fail, but if it is non empty and the index\nis larger than zero the wanted element is somewhere in the tail of the list.\nThus, the function calls itself recursively on the tail while decrementing the\nwanted index (since we skipped on element in the original list).\n-})' }
+[REDUCE] State 8978 -> GOTO 12000, symbol: import, child 2 { 'comment({-\nTry to write this `(!!)` function yourself using pattern matching and a\nrecursive approach. In the case that the index is too large or negative\nyou can use `undefined` to make your function throw an exception.\n-})' 'module' }
+[REDUCE] State 12000 -> GOTO 10115, symbol: imports_repeat1, child 2 { '_token1(UNKNOWN)' 'import' }
+[REDUCE] State 10115 -> GOTO 10116, symbol: imports_repeat1, child 2 { 'comment(-- import everything from Lib)' 'imports_repeat1' }
+[SHIFT] State 10116 -> 4259, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 4259 -> 4259, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 4259 -> GOTO 13, symbol: imports, child 3 { 'imports_repeat1' '_cond_layout_semicolon(UNKNOWN)' '_token1(UNKNOWN)' }
+[SHIFT] State 13 -> 2263, symbol: variable (1, in)
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'variable(in)' }
+[SHIFT] State: 2263 -> 1462, symbol: :: (96)
+[SHIFT] State: 915 -> 1484, symbol: :: (96)
+[SHIFT] State: 1462 -> 12455, symbol: [ (65)
+[SHIFT] State: 1484 -> 12455, symbol: [ (65)
+[SHIFT] State 12455 -> 7875, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7875 -> GOTO 1104, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 7875 -> GOTO 965, symbol: _bracket_open, child 2 { '[' '_bracket_open' }
+[SHIFT] State 1104 -> 3873, symbol: variable (1, UNKNOWN)
+[SHIFT] State 965 -> 3873, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3873 -> GOTO 524, symbol: type, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 524 -> GOTO 8137, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8137 -> GOTO 10287, symbol: _ktype, child 1 { 'quantified_type' }
+[REDUCE] State 8137 -> GOTO 10694, symbol: _ktype, child 1 { '_ktype' }
+[SHIFT] State: 10287 -> 12428, symbol: ] (104)
+[SHIFT] State: 10694 -> 12340, symbol: ] (104)
+[SHIFT] State 12428 -> 6572, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6572 -> GOTO 6427, symbol: _bracket_close, child 2 { ']' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6427 -> GOTO 6411, symbol: list, child 3 { '_ktype' ']' '_bracket_close' }
+[REDUCE] State 6411 -> GOTO 764, symbol: type, child 1 { 'list' }
+[REDUCE] State 764 -> GOTO 8341, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8341 -> 7879, symbol: -> (56)
+[SHIFT] State 12340 -> 6863, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6863 -> GOTO 6887, symbol: _bracket_close, child 2 { '->' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6887 -> GOTO 6854, symbol: list, child 3 { 'variable(UNKNOWN)' 'quantified_type' '_bracket_close' }
+[REDUCE] State 6854 -> GOTO 874, symbol: type, child 1 { 'list' }
+[REDUCE] State 874 -> GOTO 8377, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8377 -> 7879, symbol: -> (56)
+[REDUCE] State 7879 -> GOTO 7941, symbol: _arrow, child 1 { '->' }
+[REDUCE] State 7941 -> GOTO 1515, symbol: _fun_arrow, child 1 { '_arrow' }
+[REDUCE] State 7941 -> GOTO 1537, symbol: _fun_arrow, child 1 { '_fun_arrow' }
+[SHIFT] State 1515 -> 5783, symbol: name (87, Int)
+[SHIFT] State 1537 -> 6115, symbol: name (87, Int)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { 'name(Int)' }
+[REDUCE] State 764 -> GOTO 8173, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8173 -> 7879, symbol: -> (56)
+[REDUCE] State 6115 -> GOTO 874, symbol: type, child 1 { '->' }
+[REDUCE] State 874 -> GOTO 8363, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8363 -> 7879, symbol: -> (56)
+[REDUCE] State 7879 -> GOTO 7941, symbol: _arrow, child 1 { '->' }
+[REDUCE] State 7941 -> GOTO 1515, symbol: _fun_arrow, child 1 { '_arrow' }
+[REDUCE] State 7941 -> GOTO 1537, symbol: _fun_arrow, child 1 { '_fun_arrow' }
+[SHIFT] State 1515 -> 6405, symbol: variable (1, UNKNOWN)
+[SHIFT] State 1537 -> 6993, symbol: variable (1, UNKNOWN)
+[SHIFT] State 6405 -> 6405, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 6405 -> GOTO 764, symbol: type, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 764 -> GOTO 8173, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8173 -> GOTO 8718, symbol: function, child 3 { 'variable(UNKNOWN)' 'variable(UNKNOWN)' 'quantified_type' }
+[REDUCE] State 8718 -> GOTO 8173, symbol: quantified_type, child 1 { 'function' }
+[REDUCE] State 8173 -> GOTO 8718, symbol: function, child 3 { 'quantified_type' '_fun_arrow' 'quantified_type' }
+[REDUCE] State 8718 -> GOTO 8341, symbol: quantified_type, child 1 { 'function' }
+[REDUCE] State 8341 -> GOTO 10286, symbol: signature, child 3 { 'name(Int)' 'quantified_type' 'quantified_type' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'signature' }
+[REDUCE] State 10711 -> GOTO 9685, symbol: declaration, child 1 { 'decl' }
+[SHIFT] State 9685 -> 12, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 6993 -> 6993, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 12 -> 12, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 12 -> 2263, symbol: variable (1, in)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(in)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State: 2167 -> 12277, symbol: [ (65)
+[SHIFT] State: 350 -> 12332, symbol: [ (65)
+[SHIFT] State: 915 -> 12277, symbol: [ (65)
+[SHIFT] State 12277 -> 7543, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7543 -> GOTO 374, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 7543 -> GOTO 369, symbol: _bracket_open, child 2 { '[' '_bracket_open' }
+[SHIFT] State: 374 -> 12756, symbol: ] (104)
+[SHIFT] State 12332 -> 7878, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7878 -> GOTO 952, symbol: _bracket_open, child 2 { ']' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 952 -> 12484, symbol: ] (104)
+[SHIFT] State: 369 -> 12432, symbol: ] (104)
+[SHIFT] State 12756 -> 7444, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 7444 -> GOTO 7436, symbol: _bracket_close, child 2 { ']' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 7436 -> GOTO 7227, symbol: empty_list, child 2 { ']' '_bracket_close' }
+[REDUCE] State 7227 -> GOTO 1837, symbol: pattern, child 1 { 'empty_list' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[SHIFT] State: 2011 -> 7366, symbol: _ (7)
+[SHIFT] State 12484 -> 4410, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 4410 -> GOTO 4756, symbol: _bracket_close, child 2 { '_' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 4756 -> GOTO 5123, symbol: empty_list, child 2 { 'patterns_repeat1' '_bracket_close' }
+[REDUCE] State 5123 -> GOTO 325, symbol: expression, child 1 { 'empty_list' }
+[REDUCE] State 325 -> GOTO 5146, symbol: apply, child 2 { '_bracket_open' 'expression' }
+[REDUCE] State 5146 -> GOTO 350, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 350 -> 5116, symbol: variable (1, _)
+[SHIFT] State 12432 -> 6107, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6107 -> GOTO 6139, symbol: _bracket_close, child 2 { 'variable(_)' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6139 -> GOTO 6575, symbol: empty_list, child 2 { 'expression' '_bracket_close' }
+[REDUCE] State 6575 -> GOTO 1202, symbol: pattern, child 1 { 'empty_list' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { '_bracket_open' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[SHIFT] State: 915 -> 6588, symbol: _ (7)
+[REDUCE] State 7366 -> GOTO 7413, symbol: wildcard, child 1 { '_' }
+[REDUCE] State 7413 -> GOTO 1837, symbol: pattern, child 1 { 'wildcard' }
+[REDUCE] State 1837 -> GOTO 1971, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 1971 -> GOTO 2011, symbol: patterns_repeat1, child 2 { 'pattern' 'patterns_repeat1' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 1247, symbol: = (15)
+[REDUCE] State 6588 -> GOTO 6578, symbol: wildcard, child 1 { '=' }
+[REDUCE] State 6578 -> GOTO 1202, symbol: pattern, child 1 { 'wildcard' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'patterns' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 4553, symbol: variable (1, UNKNOWN)
+[SHIFT] State 4553 -> 4553, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { 'variable(UNKNOWN)' '_exp' }
+[REDUCE] State 9088 -> GOTO 10346, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { '_pat' '=' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '[' 'declaration' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_function_name' 'declaration' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, in)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(in)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State: 2167 -> 12235, symbol: ( (102)
+[SHIFT] State: 350 -> 12695, symbol: ( (102)
+[SHIFT] State: 915 -> 12235, symbol: ( (102)
+[SHIFT] State 12235 -> 5805, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 5805 -> GOTO 42, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 5805 -> GOTO 40, symbol: _paren_open, child 2 { '(' '_paren_open' }
+[SHIFT] State 42 -> 3176, symbol: variable (1, UNKNOWN)
+[SHIFT] State 12695 -> 6652, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6652 -> GOTO 399, symbol: _paren_open, child 2 { 'variable(UNKNOWN)' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 399 -> 4901, symbol: variable (1, UNKNOWN)
+[SHIFT] State 40 -> 3176, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3176 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 3176 -> GOTO 1274, symbol: pattern, child 1 { 'expression' }
+[SHIFT] State 1274 -> 8048, symbol: _consym (155, :)
+[REDUCE] State 4901 -> GOTO 229, symbol: expression, child 1 { '_consym(:)' }
+[SHIFT] State 229 -> 8104, symbol: _cond_no_section_op (148, UNKNOWN)
+[SHIFT] State 8104 -> 7652, symbol: _consym (155, :)
+[SHIFT] State 61 -> 7652, symbol: _consym (155, :)
+[REDUCE] State 7652 -> GOTO 1542, symbol: constructor_operator, child 1 { '_consym(:)' }
+[REDUCE] State 7652 -> GOTO 1457, symbol: constructor_operator, child 1 { 'constructor_operator' }
+[SHIFT] State 1542 -> 4901, symbol: variable (1, UNKNOWN)
+[REDUCE] State 8048 -> GOTO 2279, symbol: constructor_operator, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 2279 -> 5856, symbol: variable (1, UNKNOWN)
+[SHIFT] State 1457 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 255, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 255 -> GOTO 5019, symbol: infix, child 4 { 'constructor_operator' 'constructor_operator' 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 5019 -> GOTO 229, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 229 -> GOTO 11218, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11218 -> 12257, symbol: ) (103)
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { ')' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { '_consym(:)' '_exp' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 10897, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 5856 -> GOTO 1059, symbol: pattern, child 1 { '_exp' }
+[REDUCE] State 1059 -> GOTO 5795, symbol: infix, child 3 { 'expression' '_cond_no_section_op(UNKNOWN)' 'pattern' }
+[REDUCE] State 5795 -> GOTO 1274, symbol: pattern, child 1 { 'infix' }
+[REDUCE] State 1274 -> GOTO 10383, symbol: _pat, child 1 { 'pattern' }
+[REDUCE] State 1274 -> GOTO 10720, symbol: _pat, child 1 { '_pat' }
+[SHIFT] State: 10383 -> 12268, symbol: ) (103)
+[SHIFT] State: 10720 -> 12400, symbol: ) (103)
+[SHIFT] State 12257 -> 4397, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 4397 -> GOTO 4628, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 4628 -> GOTO 5118, symbol: parens, child 3 { '_pat' ')' '_paren_close' }
+[REDUCE] State 5118 -> GOTO 325, symbol: expression, child 1 { 'parens' }
+[REDUCE] State 325 -> GOTO 5146, symbol: apply, child 2 { 'pattern' 'expression' }
+[REDUCE] State 5146 -> GOTO 350, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 350 -> 5116, symbol: variable (1, UNKNOWN)
+[SHIFT] State 12268 -> 7480, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 7480 -> GOTO 7316, symbol: _paren_close, child 2 { 'variable(UNKNOWN)' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 7316 -> GOTO 7403, symbol: parens, child 3 { 'variable(UNKNOWN)' 'expression' '_paren_close' }
+[REDUCE] State 7403 -> GOTO 1837, symbol: pattern, child 1 { 'parens' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[SHIFT] State 2011 -> 6905, symbol: variable (1, UNKNOWN)
+[SHIFT] State 12400 -> 5991, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 5991 -> GOTO 6579, symbol: _paren_close, child 2 { 'variable(UNKNOWN)' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6579 -> GOTO 6596, symbol: parens, child 3 { '_paren_open' 'patterns_repeat1' '_paren_close' }
+[REDUCE] State 6596 -> GOTO 1202, symbol: pattern, child 1 { 'parens' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { '_paren_open' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[SHIFT] State 915 -> 6173, symbol: variable (1, UNKNOWN)
+[REDUCE] State 6905 -> GOTO 1837, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 1837 -> GOTO 1971, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 1971 -> GOTO 2011, symbol: patterns_repeat1, child 2 { 'pattern' 'patterns_repeat1' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 1247, symbol: = (15)
+[REDUCE] State 6173 -> GOTO 1202, symbol: pattern, child 1 { '=' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'patterns' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 1247, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1247 -> 1247, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State: 1247 -> 1165, symbol: if (31)
+[SHIFT] State 1165 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3017 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 61 -> 7720, symbol: _varsym (154, <)
+[REDUCE] State 7720 -> GOTO 1457, symbol: operator, child 1 { '_varsym(<)' }
+[SHIFT] State 1457 -> 2745, symbol: _integer_literal (78, 0)
+[SHIFT] State 2745 -> 2745, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 2745 -> 2745, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 2745 -> GOTO 2739, symbol: integer, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 2739 -> GOTO 3017, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { '_integer_literal(0)' '_token1(UNKNOWN)' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 11306, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11306 -> 1280, symbol: then (24)
+[SHIFT] State 1280 -> 3017, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3017 -> 3017, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3017 -> 3017, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 3017 -> GOTO 61, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 61 -> GOTO 11030, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11030 -> 1208, symbol: else (32)
+[SHIFT] State 1208 -> 1208, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1208 -> 1208, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State: 1208 -> 1165, symbol: if (31)
+[SHIFT] State 1165 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3017 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 61 -> 7720, symbol: _varsym (154, ==)
+[REDUCE] State 7720 -> GOTO 1457, symbol: operator, child 1 { '_varsym(==)' }
+[SHIFT] State 1457 -> 2745, symbol: _integer_literal (78, 0)
+[SHIFT] State 2745 -> 2745, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 2745 -> 2745, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 2745 -> GOTO 2739, symbol: integer, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 2739 -> GOTO 3017, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { '_integer_literal(0)' '_token1(UNKNOWN)' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 11306, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11306 -> 1280, symbol: then (24)
+[SHIFT] State 1280 -> 3017, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3017 -> 3017, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3017 -> 3017, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 3017 -> GOTO 61, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 61 -> GOTO 11030, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11030 -> 1208, symbol: else (32)
+[SHIFT] State 1208 -> 4553, symbol: variable (1, in)
+[REDUCE] State 4553 -> GOTO 194, symbol: expression, child 1 { 'variable(in)' }
+[SHIFT] State 194 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4452 -> GOTO 194, symbol: expression, child 1 { 'apply' }
+[SHIFT] State: 194 -> 12695, symbol: ( (102)
+[SHIFT] State 12695 -> 6652, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6652 -> GOTO 376, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 376 -> 4901, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 321, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 321 -> 8104, symbol: _cond_no_section_op (148, UNKNOWN)
+[SHIFT] State 8104 -> 11620, symbol: _cond_minus (149, UNKNOWN)
+[SHIFT] State: 11620 -> 7724, symbol: - (39)
+[REDUCE] State 7724 -> GOTO 1557, symbol: _operator_minus, child 1 { '-' }
+[SHIFT] State 1557 -> 4255, symbol: _integer_literal (78, 1)
+[REDUCE] State 4255 -> GOTO 4288, symbol: integer, child 1 { '_integer_literal(1)' }
+[REDUCE] State 4288 -> GOTO 4901, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 4901 -> GOTO 263, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 263 -> GOTO 5019, symbol: infix, child 5 { 'expression' '_cond_no_section_op(UNKNOWN)' '_cond_minus(UNKNOWN)' '_operator_minus' 'expression' }
+[REDUCE] State 5019 -> GOTO 321, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 321 -> GOTO 10945, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 10945 -> 12571, symbol: ) (103)
+[SHIFT] State 12571 -> 4229, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 4229 -> 4229, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 4229 -> 4229, symbol: comment (128, -- This alternative solution uses guards instead of the if-clause)
+[REDUCE] State 4229 -> GOTO 3949, symbol: _paren_close, child 2 { '_token1(UNKNOWN)' 'comment(-- This alternative solution uses guards instead of the if-clause)' }
+[REDUCE] State 3949 -> GOTO 4504, symbol: parens, child 3 { ')' '_cmd_texp_end(UNKNOWN)' '_paren_close' }
+[REDUCE] State 4504 -> GOTO 220, symbol: expression, child 1 { 'parens' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { '_exp' 'expression' }
+[REDUCE] State 4452 -> GOTO 194, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 194 -> GOTO 4491, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 4491 -> GOTO 4649, symbol: conditional, child 6 { '_token1(UNKNOWN)' '_exp' 'else' 'expression' '_paren_open' '_exp' }
+[REDUCE] State 4649 -> GOTO 194, symbol: expression, child 1 { 'conditional' }
+[REDUCE] State 194 -> GOTO 4491, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 4491 -> GOTO 4649, symbol: conditional, child 6 { 'expression' 'operator' '_exp' 'then' 'variable(UNKNOWN)' '_exp' }
+[REDUCE] State 4649 -> GOTO 180, symbol: expression, child 1 { 'conditional' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { 'if' '_exp' }
+[REDUCE] State 9088 -> GOTO 10346, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { '_token1(UNKNOWN)' '_token1(UNKNOWN)' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'else' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_exp' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_token1(UNKNOWN)' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'variable(UNKNOWN)' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, in)
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'variable(in)' }
+[SHIFT] State: 2263 -> 1462, symbol: :: (96)
+[SHIFT] State: 915 -> 1484, symbol: :: (96)
+[SHIFT] State: 1462 -> 12455, symbol: [ (65)
+[SHIFT] State: 1484 -> 12455, symbol: [ (65)
+[SHIFT] State 12455 -> 7875, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7875 -> GOTO 1104, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 7875 -> GOTO 965, symbol: _bracket_open, child 2 { '[' '_bracket_open' }
+[SHIFT] State 1104 -> 3873, symbol: variable (1, UNKNOWN)
+[SHIFT] State 965 -> 3873, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3873 -> GOTO 524, symbol: type, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 524 -> GOTO 8137, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8137 -> GOTO 10287, symbol: _ktype, child 1 { 'quantified_type' }
+[REDUCE] State 8137 -> GOTO 10694, symbol: _ktype, child 1 { '_ktype' }
+[SHIFT] State: 10287 -> 12428, symbol: ] (104)
+[SHIFT] State: 10694 -> 12340, symbol: ] (104)
+[SHIFT] State 12428 -> 6572, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6572 -> GOTO 6427, symbol: _bracket_close, child 2 { ']' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6427 -> GOTO 6411, symbol: list, child 3 { '_ktype' ']' '_bracket_close' }
+[REDUCE] State 6411 -> GOTO 764, symbol: type, child 1 { 'list' }
+[REDUCE] State 764 -> GOTO 8341, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8341 -> 7879, symbol: -> (56)
+[SHIFT] State 12340 -> 6863, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6863 -> GOTO 6887, symbol: _bracket_close, child 2 { '->' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6887 -> GOTO 6854, symbol: list, child 3 { 'variable(UNKNOWN)' 'quantified_type' '_bracket_close' }
+[REDUCE] State 6854 -> GOTO 874, symbol: type, child 1 { 'list' }
+[REDUCE] State 874 -> GOTO 8377, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8377 -> 7879, symbol: -> (56)
+[REDUCE] State 7879 -> GOTO 7941, symbol: _arrow, child 1 { '->' }
+[REDUCE] State 7941 -> GOTO 1515, symbol: _fun_arrow, child 1 { '_arrow' }
+[REDUCE] State 7941 -> GOTO 1537, symbol: _fun_arrow, child 1 { '_fun_arrow' }
+[SHIFT] State 1515 -> 5783, symbol: name (87, Int)
+[SHIFT] State 1537 -> 6115, symbol: name (87, Int)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { 'name(Int)' }
+[REDUCE] State 764 -> GOTO 8173, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8173 -> 7879, symbol: -> (56)
+[REDUCE] State 6115 -> GOTO 874, symbol: type, child 1 { '->' }
+[REDUCE] State 874 -> GOTO 8363, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8363 -> 7879, symbol: -> (56)
+[REDUCE] State 7879 -> GOTO 7941, symbol: _arrow, child 1 { '->' }
+[REDUCE] State 7941 -> GOTO 1515, symbol: _fun_arrow, child 1 { '_arrow' }
+[REDUCE] State 7941 -> GOTO 1537, symbol: _fun_arrow, child 1 { '_fun_arrow' }
+[SHIFT] State 1515 -> 6405, symbol: variable (1, UNKNOWN)
+[SHIFT] State 1537 -> 6993, symbol: variable (1, UNKNOWN)
+[SHIFT] State 6405 -> 6405, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 6405 -> GOTO 764, symbol: type, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 764 -> GOTO 8173, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8173 -> GOTO 8718, symbol: function, child 3 { 'variable(UNKNOWN)' 'variable(UNKNOWN)' 'quantified_type' }
+[REDUCE] State 8718 -> GOTO 8173, symbol: quantified_type, child 1 { 'function' }
+[REDUCE] State 8173 -> GOTO 8718, symbol: function, child 3 { 'quantified_type' '_fun_arrow' 'quantified_type' }
+[REDUCE] State 8718 -> GOTO 8341, symbol: quantified_type, child 1 { 'function' }
+[REDUCE] State 8341 -> GOTO 10286, symbol: signature, child 3 { 'name(Int)' 'quantified_type' 'quantified_type' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'signature' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_fun_arrow' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'quantified_type' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 6993 -> 6993, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, in)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(in)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State: 2167 -> 12277, symbol: [ (65)
+[SHIFT] State: 350 -> 12332, symbol: [ (65)
+[SHIFT] State: 915 -> 12277, symbol: [ (65)
+[SHIFT] State 12277 -> 7543, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7543 -> GOTO 374, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 7543 -> GOTO 369, symbol: _bracket_open, child 2 { '[' '_bracket_open' }
+[SHIFT] State: 374 -> 12756, symbol: ] (104)
+[SHIFT] State 12332 -> 7878, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7878 -> GOTO 952, symbol: _bracket_open, child 2 { ']' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 952 -> 12484, symbol: ] (104)
+[SHIFT] State: 369 -> 12432, symbol: ] (104)
+[SHIFT] State 12756 -> 7444, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 7444 -> GOTO 7436, symbol: _bracket_close, child 2 { ']' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 7436 -> GOTO 7227, symbol: empty_list, child 2 { ']' '_bracket_close' }
+[REDUCE] State 7227 -> GOTO 1837, symbol: pattern, child 1 { 'empty_list' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[SHIFT] State: 2011 -> 7366, symbol: _ (7)
+[SHIFT] State 12484 -> 4410, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 4410 -> GOTO 4756, symbol: _bracket_close, child 2 { '_' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 4756 -> GOTO 5123, symbol: empty_list, child 2 { 'patterns_repeat1' '_bracket_close' }
+[REDUCE] State 5123 -> GOTO 325, symbol: expression, child 1 { 'empty_list' }
+[REDUCE] State 325 -> GOTO 5146, symbol: apply, child 2 { '_bracket_open' 'expression' }
+[REDUCE] State 5146 -> GOTO 350, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 350 -> 5116, symbol: variable (1, _)
+[SHIFT] State 12432 -> 6107, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6107 -> GOTO 6139, symbol: _bracket_close, child 2 { 'variable(_)' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6139 -> GOTO 6575, symbol: empty_list, child 2 { 'expression' '_bracket_close' }
+[REDUCE] State 6575 -> GOTO 1202, symbol: pattern, child 1 { 'empty_list' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { '_bracket_open' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[SHIFT] State: 915 -> 6588, symbol: _ (7)
+[REDUCE] State 7366 -> GOTO 7413, symbol: wildcard, child 1 { '_' }
+[REDUCE] State 7413 -> GOTO 1837, symbol: pattern, child 1 { 'wildcard' }
+[REDUCE] State 1837 -> GOTO 1971, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 1971 -> GOTO 2011, symbol: patterns_repeat1, child 2 { 'pattern' 'patterns_repeat1' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 1247, symbol: = (15)
+[REDUCE] State 6588 -> GOTO 6578, symbol: wildcard, child 1 { '=' }
+[REDUCE] State 6578 -> GOTO 1202, symbol: pattern, child 1 { 'wildcard' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'patterns' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 4553, symbol: variable (1, UNKNOWN)
+[SHIFT] State 4553 -> 4553, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { 'variable(UNKNOWN)' '_exp' }
+[REDUCE] State 9088 -> GOTO 10346, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { '_pat' '=' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '[' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_function_name' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_token1(UNKNOWN)' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_token1(UNKNOWN)' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, in)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(in)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State: 2167 -> 12235, symbol: ( (102)
+[SHIFT] State: 350 -> 12695, symbol: ( (102)
+[SHIFT] State: 915 -> 12235, symbol: ( (102)
+[SHIFT] State 12235 -> 5805, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 5805 -> GOTO 42, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 5805 -> GOTO 40, symbol: _paren_open, child 2 { '(' '_paren_open' }
+[SHIFT] State 42 -> 3176, symbol: variable (1, UNKNOWN)
+[SHIFT] State 12695 -> 6652, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6652 -> GOTO 399, symbol: _paren_open, child 2 { 'variable(UNKNOWN)' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 399 -> 4901, symbol: variable (1, UNKNOWN)
+[SHIFT] State 40 -> 3176, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3176 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 3176 -> GOTO 1274, symbol: pattern, child 1 { 'expression' }
+[SHIFT] State 1274 -> 8048, symbol: _consym (155, :)
+[REDUCE] State 4901 -> GOTO 229, symbol: expression, child 1 { '_consym(:)' }
+[SHIFT] State 229 -> 8104, symbol: _cond_no_section_op (148, UNKNOWN)
+[SHIFT] State 8104 -> 7652, symbol: _consym (155, :)
+[SHIFT] State 61 -> 7652, symbol: _consym (155, :)
+[REDUCE] State 7652 -> GOTO 1542, symbol: constructor_operator, child 1 { '_consym(:)' }
+[REDUCE] State 7652 -> GOTO 1457, symbol: constructor_operator, child 1 { 'constructor_operator' }
+[SHIFT] State 1542 -> 4901, symbol: variable (1, UNKNOWN)
+[REDUCE] State 8048 -> GOTO 2279, symbol: constructor_operator, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 2279 -> 5856, symbol: variable (1, UNKNOWN)
+[SHIFT] State 1457 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 255, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 255 -> GOTO 5019, symbol: infix, child 4 { 'constructor_operator' 'constructor_operator' 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 5019 -> GOTO 229, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 229 -> GOTO 11218, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11218 -> 12257, symbol: ) (103)
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { ')' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { '_consym(:)' '_exp' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 10897, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 5856 -> GOTO 1059, symbol: pattern, child 1 { '_exp' }
+[REDUCE] State 1059 -> GOTO 5795, symbol: infix, child 3 { 'expression' '_cond_no_section_op(UNKNOWN)' 'pattern' }
+[REDUCE] State 5795 -> GOTO 1274, symbol: pattern, child 1 { 'infix' }
+[REDUCE] State 1274 -> GOTO 10383, symbol: _pat, child 1 { 'pattern' }
+[REDUCE] State 1274 -> GOTO 10720, symbol: _pat, child 1 { '_pat' }
+[SHIFT] State: 10383 -> 12268, symbol: ) (103)
+[SHIFT] State: 10720 -> 12400, symbol: ) (103)
+[SHIFT] State 12257 -> 4397, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 4397 -> GOTO 4628, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 4628 -> GOTO 5118, symbol: parens, child 3 { '_pat' ')' '_paren_close' }
+[REDUCE] State 5118 -> GOTO 325, symbol: expression, child 1 { 'parens' }
+[REDUCE] State 325 -> GOTO 5146, symbol: apply, child 2 { 'pattern' 'expression' }
+[REDUCE] State 5146 -> GOTO 350, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 350 -> 5116, symbol: variable (1, UNKNOWN)
+[SHIFT] State 12268 -> 7480, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 7480 -> GOTO 7316, symbol: _paren_close, child 2 { 'variable(UNKNOWN)' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 7316 -> GOTO 7403, symbol: parens, child 3 { 'variable(UNKNOWN)' 'expression' '_paren_close' }
+[REDUCE] State 7403 -> GOTO 1837, symbol: pattern, child 1 { 'parens' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[SHIFT] State 2011 -> 6905, symbol: variable (1, UNKNOWN)
+[SHIFT] State 12400 -> 5991, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 5991 -> GOTO 6579, symbol: _paren_close, child 2 { 'variable(UNKNOWN)' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6579 -> GOTO 6596, symbol: parens, child 3 { '_paren_open' 'patterns_repeat1' '_paren_close' }
+[REDUCE] State 6596 -> GOTO 1202, symbol: pattern, child 1 { 'parens' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { '_paren_open' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[SHIFT] State 915 -> 6173, symbol: variable (1, UNKNOWN)
+[SHIFT] State 5116 -> 5116, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 5116 -> GOTO 325, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 325 -> GOTO 5146, symbol: apply, child 2 { 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 5146 -> GOTO 350, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 350 -> GOTO 10711, symbol: top_splice, child 1 { 'expression' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'top_splice' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'pattern' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '(' 'declarations_repeat1' }
+[REDUCE] State 9583 -> GOTO 11039, symbol: declarations, child 2 { '_function_name' 'declarations_repeat1' }
+[SHIFT] State 11039 -> 12229, symbol: _cond_layout_end (117, UNKNOWN)
+[SHIFT] State 6905 -> 6905, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 6173 -> 6173, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 6905 -> 6905, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 6173 -> 6173, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 6905 -> GOTO 1837, symbol: pattern, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 1837 -> GOTO 1971, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 1971 -> GOTO 2011, symbol: patterns_repeat1, child 2 { '_token1(UNKNOWN)' 'patterns_repeat1' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 12753, symbol: | (28)
+[REDUCE] State 6173 -> GOTO 1202, symbol: pattern, child 1 { '|' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'patterns' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 12753, symbol: | (28)
+[SHIFT] State 12753 -> 331, symbol: _cmd_texp_start (121, UNKNOWN)
+[SHIFT] State 331 -> 3157, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3157 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 61 -> 7720, symbol: _varsym (154, <)
+[REDUCE] State 7720 -> GOTO 1457, symbol: operator, child 1 { '_varsym(<)' }
+[SHIFT] State 1457 -> 2745, symbol: _integer_literal (78, 0)
+[REDUCE] State 2745 -> GOTO 2739, symbol: integer, child 1 { '_integer_literal(0)' }
+[REDUCE] State 2739 -> GOTO 3017, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { 'expression' 'operator' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 11658, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 11658 -> GOTO 10951, symbol: guard, child 1 { '_exp' }
+[REDUCE] State 10951 -> GOTO 12404, symbol: guards, child 1 { 'guard' }
+[REDUCE] State 12404 -> GOTO 12427, symbol: _guards, child 3 { '|' '_cmd_texp_start(UNKNOWN)' 'guards' }
+[SHIFT] State: 12427 -> 12293, symbol: = (15)
+[SHIFT] State 12293 -> 1328, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 1328 -> 3942, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 118, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 118 -> GOTO 9101, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9101 -> GOTO 9107, symbol: match, child 4 { '_cmd_texp_end(UNKNOWN)' 'variable(UNKNOWN)' '_token1(UNKNOWN)' '_exp' }
+[REDUCE] State 9107 -> GOTO 8419, symbol: _bind_matches_repeat1, child 1 { 'match' }
+[SHIFT] State: 8419 -> 12753, symbol: | (28)
+[SHIFT] State 12753 -> 331, symbol: _cmd_texp_start (121, UNKNOWN)
+[SHIFT] State 331 -> 3157, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3157 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 61 -> 7720, symbol: _varsym (154, ==)
+[REDUCE] State 7720 -> GOTO 1457, symbol: operator, child 1 { '_varsym(==)' }
+[SHIFT] State 1457 -> 2745, symbol: _integer_literal (78, 0)
+[REDUCE] State 2745 -> GOTO 2739, symbol: integer, child 1 { '_integer_literal(0)' }
+[REDUCE] State 2739 -> GOTO 3017, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { 'expression' 'operator' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 11658, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 11658 -> GOTO 10951, symbol: guard, child 1 { '_exp' }
+[REDUCE] State 10951 -> GOTO 12404, symbol: guards, child 1 { 'guard' }
+[REDUCE] State 12404 -> GOTO 12427, symbol: _guards, child 3 { '|' '_cmd_texp_start(UNKNOWN)' 'guards' }
+[SHIFT] State: 12427 -> 12293, symbol: = (15)
+[SHIFT] State 12293 -> 1328, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 1328 -> 3942, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 118, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 118 -> GOTO 9101, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9101 -> GOTO 9107, symbol: match, child 4 { '_cmd_texp_end(UNKNOWN)' 'variable(UNKNOWN)' '_token1(UNKNOWN)' '_exp' }
+[REDUCE] State 9107 -> GOTO 8713, symbol: _bind_matches_repeat1, child 1 { 'match' }
+[REDUCE] State 8713 -> GOTO 8419, symbol: _bind_matches_repeat1, child 2 { '=' '_bind_matches_repeat1' }
+[SHIFT] State: 8419 -> 12753, symbol: | (28)
+[SHIFT] State 12753 -> 331, symbol: _cmd_texp_start (121, UNKNOWN)
+[SHIFT] State 331 -> 3157, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3157 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 61 -> GOTO 11658, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 11658 -> GOTO 10951, symbol: guard, child 1 { '_exp' }
+[REDUCE] State 10951 -> GOTO 12404, symbol: guards, child 1 { 'guard' }
+[REDUCE] State 12404 -> GOTO 12427, symbol: _guards, child 3 { '|' '_cmd_texp_start(UNKNOWN)' 'guards' }
+[SHIFT] State: 12427 -> 12293, symbol: = (15)
+[SHIFT] State 12293 -> 1328, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 1328 -> 3942, symbol: variable (1, in)
+[REDUCE] State 3942 -> GOTO 118, symbol: expression, child 1 { 'variable(in)' }
+[SHIFT] State 118 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[SHIFT] State: 118 -> 12695, symbol: ( (102)
+[SHIFT] State 12695 -> 6652, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6652 -> GOTO 386, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 386 -> 4901, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 323, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 323 -> 8104, symbol: _cond_no_section_op (148, UNKNOWN)
+[SHIFT] State 8104 -> 11620, symbol: _cond_minus (149, UNKNOWN)
+[SHIFT] State: 11620 -> 7724, symbol: - (39)
+[REDUCE] State 7724 -> GOTO 1557, symbol: _operator_minus, child 1 { '-' }
+[SHIFT] State 1557 -> 4255, symbol: _integer_literal (78, 1)
+[REDUCE] State 4255 -> GOTO 4288, symbol: integer, child 1 { '_integer_literal(1)' }
+[REDUCE] State 4288 -> GOTO 4901, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 4901 -> GOTO 263, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 263 -> GOTO 5019, symbol: infix, child 5 { 'expression' '_cond_no_section_op(UNKNOWN)' '_cond_minus(UNKNOWN)' '_operator_minus' 'expression' }
+[REDUCE] State 5019 -> GOTO 323, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 323 -> GOTO 10894, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 10894 -> 12579, symbol: ) (103)
+[SHIFT] State 12579 -> 3749, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 3749 -> 3749, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3749 -> 3749, symbol: comment (128, {-\nROT13 is nicely symmetrical, however we needed to omit the rotation of digits\nbecause that would have made it unsymmetrical, since sizes for the alphabets\nare different. However, the rotation by an offset of 5 makes the rotation for\ndigits symmetrical again! Your task is to combine ROT13 and ROT5 (for digits)\nto a combined ROT13.5 to have a symmetrical encoding for Latin letters and\ndigits!\n\nWrite a function `rot135` that performs this encoding!\n\nMake sure that two applications of this function cancel each other out:\n\n----\nghci> rot135 "Hello 1 2 3 ... 7 8 9"\n"Uryyb 6 7 8 ... 2 3 4"\nghci> rot135 (rot135 "Hello 1 2 3 ... 7 8 9")\n"Hello 1 2 3 ... 7 8 9"\n----\n-})
+[SHIFT] State 3749 -> 3749, symbol: comment (128, {-\nThis solution is achieved by recursively taking apart a string and putting\nit back together. Each character gets rotated differently based on what\nkind of character we encounter. For letters from the Latin alphabet we perform\nsimilar rotations as our `rotChar` function. Here, the rotation offset of 13\nis fixed. Additionally, if the character is a digit we rotate it in the\nalphabet of digits by an offset of 5. If we deal with some miscellaneous\ncharacter we simply keep it unchanged and continue the computation recursively.\n-})
+[REDUCE] State 3749 -> GOTO 3692, symbol: _paren_close, child 2 { 'comment({-\nROT13 is nicely symmetrical, however we needed to omit the rotation of digits\nbecause that would have made it unsymmetrical, since sizes for the alphabets\nare different. However, the rotation by an offset of 5 makes the rotation for\ndigits symmetrical again! Your task is to combine ROT13 and ROT5 (for digits)\nto a combined ROT13.5 to have a symmetrical encoding for Latin letters and\ndigits!\n\nWrite a function `rot135` that performs this encoding!\n\nMake sure that two applications of this function cancel each other out:\n\n----\nghci> rot135 "Hello 1 2 3 ... 7 8 9"\n"Uryyb 6 7 8 ... 2 3 4"\nghci> rot135 (rot135 "Hello 1 2 3 ... 7 8 9")\n"Hello 1 2 3 ... 7 8 9"\n----\n-})' 'comment({-\nThis solution is achieved by recursively taking apart a string and putting\nit back together. Each character gets rotated differently based on what\nkind of character we encounter. For letters from the Latin alphabet we perform\nsimilar rotations as our `rotChar` function. Here, the rotation offset of 13\nis fixed. Additionally, if the character is a digit we rotate it in the\nalphabet of digits by an offset of 5. If we deal with some miscellaneous\ncharacter we simply keep it unchanged and continue the computation recursively.\n-})' }
+[REDUCE] State 3692 -> GOTO 3951, symbol: parens, child 3 { '_cmd_texp_end(UNKNOWN)' '_token1(UNKNOWN)' '_paren_close' }
+[REDUCE] State 3951 -> GOTO 120, symbol: expression, child 1 { 'parens' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { ')' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 118 -> GOTO 9101, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9101 -> GOTO 9107, symbol: match, child 4 { 'expression' '_paren_open' '_exp' '_exp' }
+[REDUCE] State 9107 -> GOTO 8713, symbol: _bind_matches_repeat1, child 1 { 'match' }
+[REDUCE] State 8713 -> GOTO 8419, symbol: _bind_matches_repeat1, child 2 { '_cmd_texp_end(UNKNOWN)' '_bind_matches_repeat1' }
+[REDUCE] State 8419 -> GOTO 10346, symbol: _bind_matches, child 1 { '_bind_matches_repeat1' }
+[REDUCE] State 8419 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { '_guards' '=' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_bind_matches_repeat1' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_guards' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_bind_matches_repeat1' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '=' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, UNKNOWN)
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State: 2263 -> 1462, symbol: :: (96)
+[SHIFT] State: 915 -> 1484, symbol: :: (96)
+[SHIFT] State 1462 -> 5783, symbol: name (87, String)
+[SHIFT] State 1484 -> 6115, symbol: name (87, String)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { 'name(String)' }
+[REDUCE] State 764 -> GOTO 8341, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8341 -> 7879, symbol: -> (56)
+[REDUCE] State 6115 -> GOTO 874, symbol: type, child 1 { '->' }
+[REDUCE] State 874 -> GOTO 8377, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8377 -> 7879, symbol: -> (56)
+[REDUCE] State 7879 -> GOTO 7941, symbol: _arrow, child 1 { '->' }
+[REDUCE] State 7941 -> GOTO 1515, symbol: _fun_arrow, child 1 { '_arrow' }
+[REDUCE] State 7941 -> GOTO 1537, symbol: _fun_arrow, child 1 { '_fun_arrow' }
+[SHIFT] State 1515 -> 5783, symbol: name (87, String)
+[SHIFT] State 1537 -> 6115, symbol: name (87, String)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { 'name(String)' }
+[REDUCE] State 764 -> GOTO 8173, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8173 -> GOTO 8718, symbol: function, child 3 { '_fun_arrow' 'name(String)' 'quantified_type' }
+[REDUCE] State 8718 -> GOTO 8341, symbol: quantified_type, child 1 { 'function' }
+[REDUCE] State 8341 -> GOTO 10286, symbol: signature, child 3 { 'quantified_type' 'quantified_type' 'quantified_type' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'signature' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'name(String)' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '::' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, UNKNOWN)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State: 2167 -> 12277, symbol: [ (65)
+[SHIFT] State: 350 -> 12332, symbol: [ (65)
+[SHIFT] State: 915 -> 12277, symbol: [ (65)
+[SHIFT] State 12277 -> 7543, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7543 -> GOTO 374, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 7543 -> GOTO 369, symbol: _bracket_open, child 2 { '[' '_bracket_open' }
+[SHIFT] State: 374 -> 12756, symbol: ] (104)
+[SHIFT] State 12332 -> 7878, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7878 -> GOTO 952, symbol: _bracket_open, child 2 { ']' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 952 -> 12484, symbol: ] (104)
+[SHIFT] State: 369 -> 12432, symbol: ] (104)
+[SHIFT] State 12756 -> 7444, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 7444 -> GOTO 7436, symbol: _bracket_close, child 2 { ']' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 7436 -> GOTO 7227, symbol: empty_list, child 2 { ']' '_bracket_close' }
+[REDUCE] State 7227 -> GOTO 1837, symbol: pattern, child 1 { 'empty_list' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 1247, symbol: = (15)
+[SHIFT] State 12484 -> 4410, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 12432 -> 6107, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6107 -> GOTO 6139, symbol: _bracket_close, child 2 { '_cmd_texp_end(UNKNOWN)' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6139 -> GOTO 6575, symbol: empty_list, child 2 { '=' '_bracket_close' }
+[REDUCE] State 6575 -> GOTO 1202, symbol: pattern, child 1 { 'empty_list' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'patterns' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State: 1247 -> 12332, symbol: [ (65)
+[SHIFT] State 12332 -> 7878, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7878 -> GOTO 1108, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 1108 -> 12764, symbol: ] (104)
+[SHIFT] State 12764 -> 4234, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 4234 -> GOTO 4073, symbol: _bracket_close, child 2 { ']' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 4073 -> GOTO 4721, symbol: empty_list, child 2 { '_bracket_open' '_bracket_close' }
+[REDUCE] State 4721 -> GOTO 180, symbol: expression, child 1 { 'empty_list' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { '=' '_exp' }
+[REDUCE] State 9088 -> GOTO 10346, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { '_bracket_open' '_pat' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_bracket_open' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '[' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_function_name' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_token1(UNKNOWN)' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, UNKNOWN)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State: 2167 -> 12235, symbol: ( (102)
+[SHIFT] State: 350 -> 12695, symbol: ( (102)
+[SHIFT] State: 915 -> 12235, symbol: ( (102)
+[SHIFT] State 12235 -> 5805, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 5805 -> GOTO 42, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 5805 -> GOTO 40, symbol: _paren_open, child 2 { '(' '_paren_open' }
+[SHIFT] State 42 -> 3176, symbol: variable (1, UNKNOWN)
+[SHIFT] State 12695 -> 6652, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6652 -> GOTO 399, symbol: _paren_open, child 2 { 'variable(UNKNOWN)' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 399 -> 4901, symbol: variable (1, UNKNOWN)
+[SHIFT] State 40 -> 3176, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3176 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 3176 -> GOTO 1274, symbol: pattern, child 1 { 'expression' }
+[SHIFT] State 1274 -> 8048, symbol: _consym (155, :)
+[REDUCE] State 4901 -> GOTO 229, symbol: expression, child 1 { '_consym(:)' }
+[SHIFT] State 229 -> 8104, symbol: _cond_no_section_op (148, UNKNOWN)
+[SHIFT] State 8104 -> 7652, symbol: _consym (155, :)
+[SHIFT] State 61 -> 7652, symbol: _consym (155, :)
+[REDUCE] State 7652 -> GOTO 1542, symbol: constructor_operator, child 1 { '_consym(:)' }
+[REDUCE] State 7652 -> GOTO 1457, symbol: constructor_operator, child 1 { 'constructor_operator' }
+[SHIFT] State 1542 -> 4901, symbol: variable (1, UNKNOWN)
+[REDUCE] State 8048 -> GOTO 2279, symbol: constructor_operator, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 2279 -> 5856, symbol: variable (1, UNKNOWN)
+[SHIFT] State 1457 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 255, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 255 -> GOTO 5019, symbol: infix, child 4 { 'constructor_operator' 'constructor_operator' 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 5019 -> GOTO 229, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 229 -> GOTO 11218, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11218 -> 12257, symbol: ) (103)
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { ')' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { '_consym(:)' '_exp' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 10897, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 5856 -> GOTO 1059, symbol: pattern, child 1 { '_exp' }
+[REDUCE] State 1059 -> GOTO 5795, symbol: infix, child 3 { 'expression' '_cond_no_section_op(UNKNOWN)' 'pattern' }
+[REDUCE] State 5795 -> GOTO 1274, symbol: pattern, child 1 { 'infix' }
+[REDUCE] State 1274 -> GOTO 10383, symbol: _pat, child 1 { 'pattern' }
+[REDUCE] State 1274 -> GOTO 10720, symbol: _pat, child 1 { '_pat' }
+[SHIFT] State: 10383 -> 12268, symbol: ) (103)
+[SHIFT] State: 10720 -> 12400, symbol: ) (103)
+[SHIFT] State 12257 -> 4397, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 4397 -> 4397, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 4397 -> GOTO 4628, symbol: _paren_close, child 2 { '_cmd_texp_end(UNKNOWN)' '_token1(UNKNOWN)' }
+[REDUCE] State 4628 -> GOTO 5118, symbol: parens, child 3 { ')' ')' '_paren_close' }
+[REDUCE] State 5118 -> GOTO 325, symbol: expression, child 1 { 'parens' }
+[REDUCE] State 325 -> GOTO 5146, symbol: apply, child 2 { '_pat' 'expression' }
+[REDUCE] State 5146 -> GOTO 350, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 350 -> GOTO 10711, symbol: top_splice, child 1 { 'expression' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'top_splice' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'pattern' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'variable(UNKNOWN)' 'declarations_repeat1' }
+[REDUCE] State 9583 -> GOTO 11039, symbol: declarations, child 2 { '_paren_open' 'declarations_repeat1' }
+[SHIFT] State 11039 -> 12229, symbol: _cond_layout_end (117, UNKNOWN)
+[SHIFT] State 12268 -> 7480, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 12400 -> 5991, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 7480 -> 7480, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 7480 -> 7480, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 5991 -> 5991, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 5991 -> 5991, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 7480 -> GOTO 7316, symbol: _paren_close, child 2 { '_token1(UNKNOWN)' '_token1(UNKNOWN)' }
+[REDUCE] State 7316 -> GOTO 7403, symbol: parens, child 3 { '_token1(UNKNOWN)' '_token1(UNKNOWN)' '_paren_close' }
+[REDUCE] State 7403 -> GOTO 1837, symbol: pattern, child 1 { 'parens' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 12753, symbol: | (28)
+[REDUCE] State 5991 -> GOTO 6579, symbol: _paren_close, child 2 { 'patterns' '|' }
+[REDUCE] State 6579 -> GOTO 6596, symbol: parens, child 3 { '_cmd_texp_end(UNKNOWN)' '_cmd_texp_end(UNKNOWN)' '_paren_close' }
+[REDUCE] State 6596 -> GOTO 1202, symbol: pattern, child 1 { 'parens' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { '_cond_layout_end(UNKNOWN)' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 12753, symbol: | (28)
+[SHIFT] State 12753 -> 331, symbol: _cmd_texp_start (121, UNKNOWN)
+[SHIFT] State 331 -> 3157, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3157 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 3157 -> GOTO 1274, symbol: pattern, child 1 { 'expression' }
+[SHIFT] State 1274 -> 5856, symbol: variable (1, UNKNOWN)
+[SHIFT] State 61 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3017 -> GOTO 52, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 52 -> GOTO 2863, symbol: apply, child 2 { 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 2863 -> GOTO 61, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 61 -> GOTO 11658, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 11658 -> GOTO 10951, symbol: guard, child 1 { '_exp' }
+[REDUCE] State 10951 -> GOTO 12404, symbol: guards, child 1 { 'guard' }
+[REDUCE] State 12404 -> GOTO 12427, symbol: _guards, child 3 { '_cmd_texp_start(UNKNOWN)' 'pattern' 'guards' }
+[SHIFT] State: 12427 -> 12293, symbol: = (15)
+[REDUCE] State 5856 -> GOTO 999, symbol: pattern, child 1 { '=' }
+[REDUCE] State 999 -> GOTO 5764, symbol: apply, child 2 { '_guards' 'pattern' }
+[REDUCE] State 5764 -> GOTO 1274, symbol: pattern, child 1 { 'apply' }
+[SHIFT] State 12293 -> 1328, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 1328 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 118, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 118 -> 3792, symbol: _integer_literal (78, 13)
+[REDUCE] State 3792 -> GOTO 3779, symbol: integer, child 1 { '_integer_literal(13)' }
+[REDUCE] State 3779 -> GOTO 3942, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 118 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 118 -> 7652, symbol: _consym (155, :)
+[REDUCE] State 7652 -> GOTO 1424, symbol: constructor_operator, child 1 { '_consym(:)' }
+[SHIFT] State 1424 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 130, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 130 -> 3942, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { '_token1(UNKNOWN)' 'expression' }
+[REDUCE] State 4016 -> GOTO 130, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 130 -> GOTO 4032, symbol: infix, child 3 { 'expression' 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 4032 -> GOTO 118, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 118 -> GOTO 9101, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9101 -> GOTO 9107, symbol: match, child 4 { '_cmd_texp_end(UNKNOWN)' 'expression' 'constructor_operator' '_exp' }
+[REDUCE] State 9107 -> GOTO 8419, symbol: _bind_matches_repeat1, child 1 { 'match' }
+[SHIFT] State: 8419 -> 12753, symbol: | (28)
+[SHIFT] State 12753 -> 331, symbol: _cmd_texp_start (121, UNKNOWN)
+[SHIFT] State 331 -> 3157, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3157 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 3157 -> GOTO 1274, symbol: pattern, child 1 { 'expression' }
+[SHIFT] State 1274 -> 5856, symbol: variable (1, UNKNOWN)
+[SHIFT] State 61 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3017 -> GOTO 52, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 52 -> GOTO 2863, symbol: apply, child 2 { 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 2863 -> GOTO 61, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 61 -> GOTO 11658, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 11658 -> GOTO 10951, symbol: guard, child 1 { '_exp' }
+[REDUCE] State 10951 -> GOTO 12404, symbol: guards, child 1 { 'guard' }
+[REDUCE] State 12404 -> GOTO 12427, symbol: _guards, child 3 { '_cmd_texp_start(UNKNOWN)' 'pattern' 'guards' }
+[SHIFT] State: 12427 -> 12293, symbol: = (15)
+[REDUCE] State 5856 -> GOTO 999, symbol: pattern, child 1 { '=' }
+[REDUCE] State 999 -> GOTO 5764, symbol: apply, child 2 { '_guards' 'pattern' }
+[REDUCE] State 5764 -> GOTO 1274, symbol: pattern, child 1 { 'apply' }
+[SHIFT] State 12293 -> 1328, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 1328 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 118, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 118 -> 3792, symbol: _integer_literal (78, 13)
+[REDUCE] State 3792 -> GOTO 3779, symbol: integer, child 1 { '_integer_literal(13)' }
+[REDUCE] State 3779 -> GOTO 3942, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 118 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 118 -> 7652, symbol: _consym (155, :)
+[REDUCE] State 7652 -> GOTO 1424, symbol: constructor_operator, child 1 { '_consym(:)' }
+[SHIFT] State 1424 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 130, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 130 -> 3942, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { '_token1(UNKNOWN)' 'expression' }
+[REDUCE] State 4016 -> GOTO 130, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 130 -> GOTO 4032, symbol: infix, child 3 { 'expression' 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 4032 -> GOTO 118, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 118 -> GOTO 9101, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9101 -> GOTO 9107, symbol: match, child 4 { '_cmd_texp_end(UNKNOWN)' 'expression' 'constructor_operator' '_exp' }
+[REDUCE] State 9107 -> GOTO 8713, symbol: _bind_matches_repeat1, child 1 { 'match' }
+[REDUCE] State 8713 -> GOTO 8419, symbol: _bind_matches_repeat1, child 2 { 'pattern' '_bind_matches_repeat1' }
+[SHIFT] State: 8419 -> 12753, symbol: | (28)
+[SHIFT] State 12753 -> 331, symbol: _cmd_texp_start (121, UNKNOWN)
+[SHIFT] State 331 -> 3157, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3157 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 3157 -> GOTO 1274, symbol: pattern, child 1 { 'expression' }
+[SHIFT] State 1274 -> 5856, symbol: variable (1, UNKNOWN)
+[SHIFT] State 61 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3017 -> GOTO 52, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 52 -> GOTO 2863, symbol: apply, child 2 { 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 2863 -> GOTO 61, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 61 -> GOTO 11658, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 11658 -> GOTO 10951, symbol: guard, child 1 { '_exp' }
+[REDUCE] State 10951 -> GOTO 12404, symbol: guards, child 1 { 'guard' }
+[REDUCE] State 12404 -> GOTO 12427, symbol: _guards, child 3 { '_cmd_texp_start(UNKNOWN)' 'pattern' 'guards' }
+[SHIFT] State: 12427 -> 12293, symbol: = (15)
+[REDUCE] State 5856 -> GOTO 999, symbol: pattern, child 1 { '=' }
+[REDUCE] State 999 -> GOTO 5764, symbol: apply, child 2 { '_guards' 'pattern' }
+[REDUCE] State 5764 -> GOTO 1274, symbol: pattern, child 1 { 'apply' }
+[SHIFT] State 12293 -> 1328, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 1328 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 118, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 118 -> 3942, symbol: variable (1, d)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'variable(d)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 118 -> 3792, symbol: _integer_literal (78, 5)
+[REDUCE] State 3792 -> GOTO 3779, symbol: integer, child 1 { '_integer_literal(5)' }
+[REDUCE] State 3779 -> GOTO 3942, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 118 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 118 -> 7652, symbol: _consym (155, :)
+[REDUCE] State 7652 -> GOTO 1424, symbol: constructor_operator, child 1 { '_consym(:)' }
+[SHIFT] State 1424 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 130, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 130 -> 3942, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { '_token1(UNKNOWN)' 'expression' }
+[REDUCE] State 4016 -> GOTO 130, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 130 -> GOTO 4032, symbol: infix, child 3 { 'expression' 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 4032 -> GOTO 118, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 118 -> GOTO 9101, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9101 -> GOTO 9107, symbol: match, child 4 { '_cmd_texp_end(UNKNOWN)' 'expression' 'constructor_operator' '_exp' }
+[REDUCE] State 9107 -> GOTO 8713, symbol: _bind_matches_repeat1, child 1 { 'match' }
+[REDUCE] State 8713 -> GOTO 8419, symbol: _bind_matches_repeat1, child 2 { 'pattern' '_bind_matches_repeat1' }
+[SHIFT] State: 8419 -> 12753, symbol: | (28)
+[SHIFT] State 12753 -> 331, symbol: _cmd_texp_start (121, UNKNOWN)
+[SHIFT] State 331 -> 3157, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3157 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 61 -> GOTO 11658, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 11658 -> GOTO 10951, symbol: guard, child 1 { '_exp' }
+[REDUCE] State 10951 -> GOTO 12404, symbol: guards, child 1 { 'guard' }
+[REDUCE] State 12404 -> GOTO 12427, symbol: _guards, child 3 { '|' '_cmd_texp_start(UNKNOWN)' 'guards' }
+[SHIFT] State: 12427 -> 12293, symbol: = (15)
+[SHIFT] State 12293 -> 1328, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 1328 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 118, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 118 -> 7652, symbol: _consym (155, :)
+[REDUCE] State 7652 -> GOTO 1424, symbol: constructor_operator, child 1 { '_consym(:)' }
+[SHIFT] State 1424 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 130, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 130 -> 3942, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: comment (128, {-\nROT13 and the Caesars cipher is not a safe way to "encrypt" a message. This can\neasily shown by frequency analysis. In the English language some letters are\nsimply more common than other ones (e.g. "e" is much more common then other\nletters). Write a function that counts the occurrences of a character within a\nstring.\n\n----\ncount :: Char -> String -> Int`\n----\n\nThen use this function to perform a frequency analysis on a plain text and an\n"encrypted text". In order to do this, you apply the counting function to every\nletter in the alphabets we have defined earlier. Is there a way of writing a\n"best-guess" decryption scheme for the Caesars cipher?\n-})
+[SHIFT] State 3942 -> 3942, symbol: comment (128, {-\nThe first part of this exercise is writing the `count` function. Like the other\nexercises so far, its a recursive function using pattern matching on lists\n(can you already sense a pattern here?). In the case of the empty list, the\nresult is trivial. However, if the list contains some element we can check if\nthe head equals the character we search for. If yes, we continue counting\nrecursively but add a one to the recursive result (since we found the\ncharacter). Otherwise, we don't add anything. Observe how the case of the\nempty list serves as the condition for which this recursion stops.\n-})
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'comment({-\nThe first part of this exercise is writing the `count` function. Like the other\nexercises so far, its a recursive function using pattern matching on lists\n(can you already sense a pattern here?). In the case of the empty list, the\nresult is trivial. However, if the list contains some element we can check if\nthe head equals the character we search for. If yes, we continue counting\nrecursively but add a one to the recursive result (since we found the\ncharacter). Otherwise, we don't add anything. Observe how the case of the\nempty list serves as the condition for which this recursion stops.\n-})' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'comment({-\nROT13 and the Caesars cipher is not a safe way to "encrypt" a message. This can\neasily shown by frequency analysis. In the English language some letters are\nsimply more common than other ones (e.g. "e" is much more common then other\nletters). Write a function that counts the occurrences of a character within a\nstring.\n\n----\ncount :: Char -> String -> Int`\n----\n\nThen use this function to perform a frequency analysis on a plain text and an\n"encrypted text". In order to do this, you apply the counting function to every\nletter in the alphabets we have defined earlier. Is there a way of writing a\n"best-guess" decryption scheme for the Caesars cipher?\n-})' 'expression' }
+[REDUCE] State 4016 -> GOTO 130, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 130 -> GOTO 4032, symbol: infix, child 3 { 'variable(UNKNOWN)' '_token1(UNKNOWN)' 'expression' }
+[REDUCE] State 4032 -> GOTO 118, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 118 -> GOTO 9101, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9101 -> GOTO 9107, symbol: match, child 4 { 'expression' 'constructor_operator' 'expression' '_exp' }
+[REDUCE] State 9107 -> GOTO 8713, symbol: _bind_matches_repeat1, child 1 { 'match' }
+[REDUCE] State 8713 -> GOTO 8419, symbol: _bind_matches_repeat1, child 2 { '_cmd_texp_end(UNKNOWN)' '_bind_matches_repeat1' }
+[REDUCE] State 8419 -> GOTO 10346, symbol: _bind_matches, child 1 { '_bind_matches_repeat1' }
+[REDUCE] State 8419 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { '_guards' '=' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_bind_matches_repeat1' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '|' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_bind_matches_repeat1' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '|' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, UNKNOWN)
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State: 2263 -> 1462, symbol: :: (96)
+[SHIFT] State: 915 -> 1484, symbol: :: (96)
+[SHIFT] State 1462 -> 5783, symbol: name (87, Char)
+[SHIFT] State 1484 -> 6115, symbol: name (87, Char)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { 'name(Char)' }
+[REDUCE] State 764 -> GOTO 8341, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8341 -> 7879, symbol: -> (56)
+[REDUCE] State 6115 -> GOTO 874, symbol: type, child 1 { '->' }
+[REDUCE] State 874 -> GOTO 8377, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8377 -> 7879, symbol: -> (56)
+[REDUCE] State 7879 -> GOTO 7941, symbol: _arrow, child 1 { '->' }
+[REDUCE] State 7941 -> GOTO 1515, symbol: _fun_arrow, child 1 { '_arrow' }
+[REDUCE] State 7941 -> GOTO 1537, symbol: _fun_arrow, child 1 { '_fun_arrow' }
+[SHIFT] State 1515 -> 5783, symbol: name (87, String)
+[SHIFT] State 1537 -> 6115, symbol: name (87, String)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { 'name(String)' }
+[REDUCE] State 764 -> GOTO 8173, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8173 -> 7879, symbol: -> (56)
+[REDUCE] State 6115 -> GOTO 874, symbol: type, child 1 { '->' }
+[REDUCE] State 874 -> GOTO 8363, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8363 -> 7879, symbol: -> (56)
+[REDUCE] State 7879 -> GOTO 7941, symbol: _arrow, child 1 { '->' }
+[REDUCE] State 7941 -> GOTO 1515, symbol: _fun_arrow, child 1 { '_arrow' }
+[REDUCE] State 7941 -> GOTO 1537, symbol: _fun_arrow, child 1 { '_fun_arrow' }
+[SHIFT] State 1515 -> 5783, symbol: name (87, Int)
+[SHIFT] State 1537 -> 6115, symbol: name (87, Int)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { 'name(Int)' }
+[REDUCE] State 764 -> GOTO 8173, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8173 -> GOTO 8718, symbol: function, child 3 { '_fun_arrow' 'name(Int)' 'quantified_type' }
+[REDUCE] State 8718 -> GOTO 8173, symbol: quantified_type, child 1 { 'function' }
+[REDUCE] State 8173 -> GOTO 8718, symbol: function, child 3 { 'quantified_type' 'quantified_type' 'quantified_type' }
+[REDUCE] State 8718 -> GOTO 8341, symbol: quantified_type, child 1 { 'function' }
+[REDUCE] State 8341 -> GOTO 10286, symbol: signature, child 3 { '_fun_arrow' 'name(String)' 'quantified_type' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'signature' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'quantified_type' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'quantified_type' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, UNKNOWN)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State 2167 -> 6905, symbol: variable (1, e)
+[SHIFT] State 350 -> 5116, symbol: variable (1, e)
+[SHIFT] State 915 -> 6173, symbol: variable (1, e)
+[REDUCE] State 6905 -> GOTO 1837, symbol: pattern, child 1 { 'variable(e)' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[SHIFT] State: 2011 -> 12277, symbol: [ (65)
+[REDUCE] State 5116 -> GOTO 325, symbol: expression, child 1 { '[' }
+[REDUCE] State 325 -> GOTO 5146, symbol: apply, child 2 { 'patterns_repeat1' 'expression' }
+[REDUCE] State 5146 -> GOTO 350, symbol: expression, child 1 { 'apply' }
+[SHIFT] State: 350 -> 12332, symbol: [ (65)
+[REDUCE] State 6173 -> GOTO 1202, symbol: pattern, child 1 { '[' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'expression' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[SHIFT] State: 915 -> 12277, symbol: [ (65)
+[SHIFT] State 12332 -> 7878, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7878 -> GOTO 952, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 952 -> 12484, symbol: ] (104)
+[SHIFT] State 12277 -> 7543, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7543 -> GOTO 374, symbol: _bracket_open, child 2 { ']' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 7543 -> GOTO 369, symbol: _bracket_open, child 2 { '_bracket_open' '_bracket_open' }
+[SHIFT] State: 374 -> 12756, symbol: ] (104)
+[SHIFT] State: 369 -> 12432, symbol: ] (104)
+[SHIFT] State 12484 -> 4410, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 12756 -> 7444, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 12432 -> 6107, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 7444 -> GOTO 7436, symbol: _bracket_close, child 2 { '_cmd_texp_end(UNKNOWN)' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 7436 -> GOTO 7227, symbol: empty_list, child 2 { '_cmd_texp_end(UNKNOWN)' '_bracket_close' }
+[REDUCE] State 7227 -> GOTO 1837, symbol: pattern, child 1 { 'empty_list' }
+[REDUCE] State 1837 -> GOTO 1971, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 1971 -> GOTO 2011, symbol: patterns_repeat1, child 2 { ']' 'patterns_repeat1' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 1247, symbol: = (15)
+[REDUCE] State 6107 -> GOTO 6139, symbol: _bracket_close, child 2 { 'patterns' '=' }
+[REDUCE] State 6139 -> GOTO 6575, symbol: empty_list, child 2 { ']' '_bracket_close' }
+[REDUCE] State 6575 -> GOTO 1202, symbol: pattern, child 1 { 'empty_list' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { '_bracket_open' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 3973, symbol: _integer_literal (78, 0)
+[REDUCE] State 3973 -> GOTO 4224, symbol: integer, child 1 { '_integer_literal(0)' }
+[REDUCE] State 4224 -> GOTO 4553, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { '=' '_exp' }
+[REDUCE] State 9088 -> GOTO 10346, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { 'pattern' '_pat' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'variable(e)' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'variable(e)' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_function_name' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_token1(UNKNOWN)' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, UNKNOWN)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State 2167 -> 6905, symbol: variable (1, e)
+[SHIFT] State 350 -> 5116, symbol: variable (1, e)
+[SHIFT] State 915 -> 6173, symbol: variable (1, e)
+[REDUCE] State 6905 -> GOTO 1837, symbol: pattern, child 1 { 'variable(e)' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[SHIFT] State: 2011 -> 12235, symbol: ( (102)
+[REDUCE] State 5116 -> GOTO 325, symbol: expression, child 1 { '(' }
+[REDUCE] State 325 -> GOTO 5146, symbol: apply, child 2 { 'patterns_repeat1' 'expression' }
+[REDUCE] State 5146 -> GOTO 350, symbol: expression, child 1 { 'apply' }
+[SHIFT] State: 350 -> 12695, symbol: ( (102)
+[REDUCE] State 6173 -> GOTO 1202, symbol: pattern, child 1 { '(' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'expression' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[SHIFT] State: 915 -> 12235, symbol: ( (102)
+[SHIFT] State 12695 -> 6652, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6652 -> GOTO 399, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 399 -> 4901, symbol: variable (1, UNKNOWN)
+[SHIFT] State 12235 -> 5805, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 5805 -> GOTO 42, symbol: _paren_open, child 2 { 'variable(UNKNOWN)' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 5805 -> GOTO 40, symbol: _paren_open, child 2 { '_paren_open' '_paren_open' }
+[SHIFT] State 42 -> 3176, symbol: variable (1, UNKNOWN)
+[SHIFT] State 40 -> 3176, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 229, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 229 -> 8104, symbol: _cond_no_section_op (148, UNKNOWN)
+[SHIFT] State 8104 -> 7652, symbol: _consym (155, :)
+[REDUCE] State 3176 -> GOTO 61, symbol: expression, child 1 { '_consym(:)' }
+[REDUCE] State 3176 -> GOTO 1274, symbol: pattern, child 1 { 'expression' }
+[SHIFT] State 1274 -> 8048, symbol: _consym (155, :)
+[SHIFT] State 61 -> 7652, symbol: _consym (155, :)
+[REDUCE] State 7652 -> GOTO 1542, symbol: constructor_operator, child 1 { '_consym(:)' }
+[REDUCE] State 7652 -> GOTO 1457, symbol: constructor_operator, child 1 { 'constructor_operator' }
+[SHIFT] State 1542 -> 4901, symbol: variable (1, UNKNOWN)
+[REDUCE] State 8048 -> GOTO 2279, symbol: constructor_operator, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 2279 -> 5856, symbol: variable (1, UNKNOWN)
+[SHIFT] State 1457 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 255, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 255 -> GOTO 5019, symbol: infix, child 4 { 'constructor_operator' 'constructor_operator' 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 5019 -> GOTO 229, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 229 -> GOTO 11218, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11218 -> 12257, symbol: ) (103)
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { ')' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { '_consym(:)' '_exp' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 10897, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 5856 -> GOTO 1059, symbol: pattern, child 1 { '_exp' }
+[REDUCE] State 1059 -> GOTO 5795, symbol: infix, child 3 { '_cond_no_section_op(UNKNOWN)' 'pattern' 'pattern' }
+[REDUCE] State 5795 -> GOTO 1274, symbol: pattern, child 1 { 'infix' }
+[REDUCE] State 1274 -> GOTO 10383, symbol: _pat, child 1 { 'pattern' }
+[REDUCE] State 1274 -> GOTO 10720, symbol: _pat, child 1 { '_pat' }
+[SHIFT] State: 10383 -> 12268, symbol: ) (103)
+[SHIFT] State: 10720 -> 12400, symbol: ) (103)
+[SHIFT] State 12257 -> 4397, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 4397 -> 4397, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 4397 -> GOTO 4628, symbol: _paren_close, child 2 { '_cmd_texp_end(UNKNOWN)' '_token1(UNKNOWN)' }
+[REDUCE] State 4628 -> GOTO 5118, symbol: parens, child 3 { ')' ')' '_paren_close' }
+[REDUCE] State 5118 -> GOTO 325, symbol: expression, child 1 { 'parens' }
+[REDUCE] State 325 -> GOTO 5146, symbol: apply, child 2 { '_pat' 'expression' }
+[REDUCE] State 5146 -> GOTO 350, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 350 -> GOTO 10711, symbol: top_splice, child 1 { 'expression' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'top_splice' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'expression' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'variable(UNKNOWN)' 'declarations_repeat1' }
+[REDUCE] State 9583 -> GOTO 11039, symbol: declarations, child 2 { '_paren_open' 'declarations_repeat1' }
+[SHIFT] State 11039 -> 12229, symbol: _cond_layout_end (117, UNKNOWN)
+[SHIFT] State 12268 -> 7480, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 12400 -> 5991, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 7480 -> 7480, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 7480 -> 7480, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 5991 -> 5991, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 5991 -> 5991, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 7480 -> GOTO 7316, symbol: _paren_close, child 2 { '_token1(UNKNOWN)' '_token1(UNKNOWN)' }
+[REDUCE] State 7316 -> GOTO 7403, symbol: parens, child 3 { '_token1(UNKNOWN)' '_token1(UNKNOWN)' '_paren_close' }
+[REDUCE] State 7403 -> GOTO 1837, symbol: pattern, child 1 { 'parens' }
+[REDUCE] State 1837 -> GOTO 1971, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 1971 -> GOTO 2011, symbol: patterns_repeat1, child 2 { '_cmd_texp_end(UNKNOWN)' 'patterns_repeat1' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 12753, symbol: | (28)
+[REDUCE] State 5991 -> GOTO 6579, symbol: _paren_close, child 2 { 'patterns' '|' }
+[REDUCE] State 6579 -> GOTO 6596, symbol: parens, child 3 { '_cond_layout_end(UNKNOWN)' '_cmd_texp_end(UNKNOWN)' '_paren_close' }
+[REDUCE] State 6596 -> GOTO 1202, symbol: pattern, child 1 { 'parens' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'declarations' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 12753, symbol: | (28)
+[SHIFT] State 12753 -> 331, symbol: _cmd_texp_start (121, UNKNOWN)
+[SHIFT] State 331 -> 3157, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3157 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 61 -> 7720, symbol: _varsym (154, ==)
+[REDUCE] State 7720 -> GOTO 1457, symbol: operator, child 1 { '_varsym(==)' }
+[SHIFT] State 1457 -> 3017, symbol: variable (1, e)
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { 'variable(e)' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { 'expression' 'operator' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 11658, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 11658 -> GOTO 10951, symbol: guard, child 1 { '_exp' }
+[REDUCE] State 10951 -> GOTO 12404, symbol: guards, child 1 { 'guard' }
+[REDUCE] State 12404 -> GOTO 12427, symbol: _guards, child 3 { '|' '_cmd_texp_start(UNKNOWN)' 'guards' }
+[SHIFT] State: 12427 -> 12293, symbol: = (15)
+[SHIFT] State 12293 -> 1328, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 1328 -> 3792, symbol: _integer_literal (78, 1)
+[REDUCE] State 3792 -> GOTO 3779, symbol: integer, child 1 { '_integer_literal(1)' }
+[REDUCE] State 3779 -> GOTO 3942, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 3942 -> GOTO 118, symbol: expression, child 1 { 'literal' }
+[SHIFT] State 118 -> 7720, symbol: _varsym (154, +)
+[REDUCE] State 7720 -> GOTO 1424, symbol: operator, child 1 { '_varsym(+)' }
+[SHIFT] State 1424 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 130, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 130 -> 3942, symbol: variable (1, e)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'variable(e)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 130, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 130 -> 3942, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { '_token1(UNKNOWN)' 'expression' }
+[REDUCE] State 4016 -> GOTO 130, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 130 -> GOTO 4032, symbol: infix, child 3 { 'expression' 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 4032 -> GOTO 118, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 118 -> GOTO 9101, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9101 -> GOTO 9107, symbol: match, child 4 { '_cmd_texp_end(UNKNOWN)' 'expression' 'operator' '_exp' }
+[REDUCE] State 9107 -> GOTO 8419, symbol: _bind_matches_repeat1, child 1 { 'match' }
+[SHIFT] State: 8419 -> 12753, symbol: | (28)
+[SHIFT] State 12753 -> 331, symbol: _cmd_texp_start (121, UNKNOWN)
+[SHIFT] State 331 -> 3157, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3157 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 61 -> GOTO 11658, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 11658 -> GOTO 10951, symbol: guard, child 1 { '_exp' }
+[REDUCE] State 10951 -> GOTO 12404, symbol: guards, child 1 { 'guard' }
+[REDUCE] State 12404 -> GOTO 12427, symbol: _guards, child 3 { '|' '_cmd_texp_start(UNKNOWN)' 'guards' }
+[SHIFT] State: 12427 -> 12293, symbol: = (15)
+[SHIFT] State 12293 -> 1328, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 1328 -> 3942, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3942 -> GOTO 118, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 118 -> 3942, symbol: variable (1, e)
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'variable(e)' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 118 -> 3942, symbol: variable (1, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 3942 -> 3942, symbol: comment (128, {-\nThe second part of this exercise covers some syntax which is explained in\nchapter 3, so only the rough idea will be sketched out here. The code contains\nsome comments but don't worry if you don't understand them yet!\n\nWhile we could count each occurrence of each letter by ourselves we construct\na function that creates a list of tuples of each char and how often it occurs.\n\n----\nghci> frequencyStats loremIpsum\n[('e',56),('t',50),('a',46),('o',42),('s',38),('m',32),('r',32),('i',30),\n('u',30),('d',26),('l',22),('n',20),('c',12),('p',10),('g',8),('b',6),('v',6),\n('k',4),('y',4),('j',2),('q',2),('f',0),('h',0),('w',0),('x',0),('z',0)]\nghci> frequencyStats (rot13 loremIpsum)\n[('r',56),('g',50),('n',46),('b',42),('f',38),('e',32),('z',32),('h',30),\n('v',30),('q',26),('y',22),('a',20),('p',12),('c',10),('t',8),('i',6),('o',6),\n('l',4),('x',4),('d',2),('w',2),('j',0),('k',0),('m',0),('s',0),('u',0)]\n----\n\nWhat we can obverse is that the frequency at which letters appear in a string\nis unaltered by Caesars cipher! So if we simply look for the most common letter\nin the encrypted message and calculate its distance to the letter 'e' we have a\ngood guess for the encryption!\n\n----\nghci> tryToDecrypt (rot13 loremIpsum)\n"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy\neirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam\nvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita\nkasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem\nipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod\ntempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At\nvero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd\ngubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."\n-})
+[REDUCE] State 3942 -> GOTO 120, symbol: expression, child 1 { 'comment({-\nThe second part of this exercise covers some syntax which is explained in\nchapter 3, so only the rough idea will be sketched out here. The code contains\nsome comments but don't worry if you don't understand them yet!\n\nWhile we could count each occurrence of each letter by ourselves we construct\na function that creates a list of tuples of each char and how often it occurs.\n\n----\nghci> frequencyStats loremIpsum\n[('e',56),('t',50),('a',46),('o',42),('s',38),('m',32),('r',32),('i',30),\n('u',30),('d',26),('l',22),('n',20),('c',12),('p',10),('g',8),('b',6),('v',6),\n('k',4),('y',4),('j',2),('q',2),('f',0),('h',0),('w',0),('x',0),('z',0)]\nghci> frequencyStats (rot13 loremIpsum)\n[('r',56),('g',50),('n',46),('b',42),('f',38),('e',32),('z',32),('h',30),\n('v',30),('q',26),('y',22),('a',20),('p',12),('c',10),('t',8),('i',6),('o',6),\n('l',4),('x',4),('d',2),('w',2),('j',0),('k',0),('m',0),('s',0),('u',0)]\n----\n\nWhat we can obverse is that the frequency at which letters appear in a string\nis unaltered by Caesars cipher! So if we simply look for the most common letter\nin the encrypted message and calculate its distance to the letter 'e' we have a\ngood guess for the encryption!\n\n----\nghci> tryToDecrypt (rot13 loremIpsum)\n"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy\neirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam\nvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita\nkasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem\nipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod\ntempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At\nvero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd\ngubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."\n-})' }
+[REDUCE] State 120 -> GOTO 4016, symbol: apply, child 2 { '_token1(UNKNOWN)' 'expression' }
+[REDUCE] State 4016 -> GOTO 118, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 118 -> GOTO 9101, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9101 -> GOTO 9107, symbol: match, child 4 { '_cmd_texp_end(UNKNOWN)' 'expression' 'variable(UNKNOWN)' '_exp' }
+[REDUCE] State 9107 -> GOTO 8713, symbol: _bind_matches_repeat1, child 1 { 'match' }
+[REDUCE] State 8713 -> GOTO 8419, symbol: _bind_matches_repeat1, child 2 { '=' '_bind_matches_repeat1' }
+[REDUCE] State 8419 -> GOTO 10346, symbol: _bind_matches, child 1 { '_bind_matches_repeat1' }
+[REDUCE] State 8419 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { '_bind_matches_repeat1' '_guards' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '=' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_guards' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_pat' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'pattern' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, UNKNOWN)
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State: 2263 -> 1462, symbol: :: (96)
+[SHIFT] State: 915 -> 1484, symbol: :: (96)
+[SHIFT] State: 1462 -> 12455, symbol: [ (65)
+[SHIFT] State: 1484 -> 12455, symbol: [ (65)
+[SHIFT] State 12455 -> 7875, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7875 -> GOTO 1104, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 7875 -> GOTO 965, symbol: _bracket_open, child 2 { '[' '_bracket_open' }
+[SHIFT] State 1104 -> 3146, symbol: name (87, Char)
+[SHIFT] State 965 -> 3146, symbol: name (87, Char)
+[REDUCE] State 3146 -> GOTO 524, symbol: type, child 1 { 'name(Char)' }
+[REDUCE] State 524 -> GOTO 8137, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8137 -> GOTO 10287, symbol: _ktype, child 1 { 'quantified_type' }
+[REDUCE] State 8137 -> GOTO 10694, symbol: _ktype, child 1 { '_ktype' }
+[SHIFT] State: 10287 -> 12428, symbol: ] (104)
+[SHIFT] State: 10694 -> 12340, symbol: ] (104)
+[SHIFT] State 12428 -> 6572, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6572 -> GOTO 6427, symbol: _bracket_close, child 2 { ']' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6427 -> GOTO 6411, symbol: list, child 3 { '_ktype' ']' '_bracket_close' }
+[REDUCE] State 6411 -> GOTO 764, symbol: type, child 1 { 'list' }
+[REDUCE] State 764 -> GOTO 8341, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8341 -> 7879, symbol: -> (56)
+[SHIFT] State 12340 -> 6863, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6863 -> GOTO 6887, symbol: _bracket_close, child 2 { '->' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6887 -> GOTO 6854, symbol: list, child 3 { 'name(Char)' 'quantified_type' '_bracket_close' }
+[REDUCE] State 6854 -> GOTO 874, symbol: type, child 1 { 'list' }
+[REDUCE] State 874 -> GOTO 8377, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8377 -> 7879, symbol: -> (56)
+[REDUCE] State 7879 -> GOTO 7941, symbol: _arrow, child 1 { '->' }
+[REDUCE] State 7941 -> GOTO 1515, symbol: _fun_arrow, child 1 { '_arrow' }
+[REDUCE] State 7941 -> GOTO 1537, symbol: _fun_arrow, child 1 { '_fun_arrow' }
+[SHIFT] State: 1515 -> 12455, symbol: [ (65)
+[SHIFT] State: 1537 -> 12455, symbol: [ (65)
+[SHIFT] State 12455 -> 7875, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7875 -> GOTO 1104, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[REDUCE] State 7875 -> GOTO 965, symbol: _bracket_open, child 2 { '[' '_bracket_open' }
+[SHIFT] State: 1104 -> 12613, symbol: ( (102)
+[SHIFT] State: 965 -> 12613, symbol: ( (102)
+[SHIFT] State 12613 -> 6645, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6645 -> GOTO 433, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 433 -> 3164, symbol: name (87, Char)
+[REDUCE] State 3164 -> GOTO 524, symbol: type, child 1 { 'name(Char)' }
+[REDUCE] State 524 -> GOTO 8137, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8137 -> GOTO 10734, symbol: _ktype, child 1 { 'quantified_type' }
+[SHIFT] State: 10734 -> 1281, symbol: , (4)
+[SHIFT] State 1281 -> 3146, symbol: name (87, Int)
+[REDUCE] State 3146 -> GOTO 524, symbol: type, child 1 { 'name(Int)' }
+[REDUCE] State 524 -> GOTO 8137, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8137 -> GOTO 10666, symbol: _ktype, child 1 { 'quantified_type' }
+[REDUCE] State 10666 -> GOTO 11096, symbol: _type_tuple_elems_repeat1, child 2 { ',' '_ktype' }
+[REDUCE] State 11096 -> GOTO 12055, symbol: _type_tuple_elems, child 2 { '_ktype' '_type_tuple_elems_repeat1' }
+[SHIFT] State: 12055 -> 12740, symbol: ) (103)
+[SHIFT] State 12740 -> 3811, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 3811 -> GOTO 3864, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 3864 -> GOTO 3895, symbol: tuple, child 3 { '_paren_open' '_type_tuple_elems' '_paren_close' }
+[REDUCE] State 3895 -> GOTO 524, symbol: type, child 1 { 'tuple' }
+[REDUCE] State 524 -> GOTO 8137, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8137 -> GOTO 10287, symbol: _ktype, child 1 { 'quantified_type' }
+[REDUCE] State 8137 -> GOTO 10694, symbol: _ktype, child 1 { '_ktype' }
+[SHIFT] State: 10287 -> 12428, symbol: ] (104)
+[SHIFT] State: 10694 -> 12340, symbol: ] (104)
+[SHIFT] State 12428 -> 6572, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6572 -> GOTO 6427, symbol: _bracket_close, child 2 { ']' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6427 -> GOTO 6411, symbol: list, child 3 { '_ktype' ']' '_bracket_close' }
+[REDUCE] State 6411 -> GOTO 764, symbol: type, child 1 { 'list' }
+[REDUCE] State 764 -> GOTO 8173, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8173 -> GOTO 8718, symbol: function, child 3 { '_bracket_open' '(' 'quantified_type' }
+[REDUCE] State 8718 -> GOTO 8341, symbol: quantified_type, child 1 { 'function' }
+[REDUCE] State 8341 -> GOTO 10286, symbol: signature, child 3 { 'quantified_type' '_fun_arrow' 'quantified_type' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'signature' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_bracket_open' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '::' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 12340 -> 6863, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, UNKNOWN)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State 2167 -> 6905, symbol: variable (1, UNKNOWN)
+[SHIFT] State 350 -> 5116, symbol: variable (1, UNKNOWN)
+[SHIFT] State 915 -> 6173, symbol: variable (1, UNKNOWN)
+[REDUCE] State 6905 -> GOTO 1837, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 1247, symbol: = (15)
+[REDUCE] State 6173 -> GOTO 1202, symbol: pattern, child 1 { '=' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'patterns' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 1247, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State: 1247 -> 9835, symbol: let (3)
+[SHIFT] State 9835 -> 1838, symbol: _cmd_layout_start_let (114, UNKNOWN)
+[SHIFT] State 1838 -> 4271, symbol: variable (1, in)
+[SHIFT] State: 4271 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 180 -> 4553, symbol: variable (1, t)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { 'variable(t)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 180 -> 4553, symbol: variable (1, UNKNOWN)
+[SHIFT] State 4553 -> 4553, symbol: comment (128, -- Transform the input to lowercase)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { 'comment(-- Transform the input to lowercase)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { 'expression' '_exp' }
+[REDUCE] State 9088 -> GOTO 10117, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 10117 -> GOTO 10286, symbol: bind, child 2 { '=' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 9450, symbol: decl, child 1 { 'bind' }
+[SHIFT] State 9450 -> 1862, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 1862 -> 1862, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1862 -> 4271, symbol: variable (1, UNKNOWN)
+[SHIFT] State: 4271 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 1247, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1247 -> 1247, symbol: comment (128, -- Map each character with how often it appears in the input)
+[SHIFT] State 1247 -> 1247, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1247 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State: 180 -> 12695, symbol: ( (102)
+[SHIFT] State 12695 -> 6652, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6652 -> GOTO 376, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 376 -> 2071, symbol: \ (29)
+[SHIFT] State 2071 -> 5856, symbol: variable (1, e)
+[REDUCE] State 5856 -> GOTO 1857, symbol: pattern, child 1 { 'variable(e)' }
+[REDUCE] State 1857 -> GOTO 2051, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 2051 -> GOTO 11009, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 11009 -> 7952, symbol: -> (56)
+[REDUCE] State 7952 -> GOTO 1293, symbol: _arrow, child 1 { '->' }
+[SHIFT] State: 1293 -> 12695, symbol: ( (102)
+[SHIFT] State 12695 -> 6652, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6652 -> GOTO 416, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 416 -> 4901, symbol: variable (1, e)
+[REDUCE] State 4901 -> GOTO 241, symbol: expression, child 1 { 'variable(e)' }
+[REDUCE] State 241 -> GOTO 11068, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11068 -> 945, symbol: , (4)
+[SHIFT] State 945 -> 3017, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3017 -> GOTO 61, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 61 -> 3017, symbol: variable (1, e)
+[REDUCE] State 3017 -> GOTO 52, symbol: expression, child 1 { 'variable(e)' }
+[REDUCE] State 52 -> GOTO 2863, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 2863 -> GOTO 61, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 61 -> 3017, symbol: variable (1, in)
+[REDUCE] State 3017 -> GOTO 52, symbol: expression, child 1 { 'variable(in)' }
+[REDUCE] State 52 -> GOTO 2863, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 2863 -> GOTO 61, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 61 -> GOTO 10916, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 10916 -> GOTO 11462, symbol: _exp_tuple_elems, child 3 { '_exp' ',' '_exp' }
+[SHIFT] State: 11462 -> 12453, symbol: ) (103)
+[SHIFT] State 12453 -> 4290, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 4290 -> GOTO 5014, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 5014 -> GOTO 4914, symbol: tuple, child 3 { '_paren_open' '_exp_tuple_elems' '_paren_close' }
+[REDUCE] State 4914 -> GOTO 218, symbol: expression, child 1 { 'tuple' }
+[REDUCE] State 218 -> GOTO 4864, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 4864 -> GOTO 4937, symbol: lambda, child 4 { '\' 'patterns' '_arrow' '_exp' }
+[REDUCE] State 4937 -> GOTO 321, symbol: expression, child 1 { 'lambda' }
+[REDUCE] State 321 -> GOTO 10945, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 10945 -> 12571, symbol: ) (103)
+[SHIFT] State 12571 -> 4229, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 4229 -> GOTO 3949, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 3949 -> GOTO 4504, symbol: parens, child 3 { '_paren_open' '_exp' '_paren_close' }
+[REDUCE] State 4504 -> GOTO 220, symbol: expression, child 1 { 'parens' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 180 -> 4553, symbol: variable (1, UNKNOWN)
+[SHIFT] State 4553 -> 4553, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { 'expression' '_exp' }
+[REDUCE] State 9088 -> GOTO 10117, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 10117 -> GOTO 10286, symbol: bind, child 2 { '_token1(UNKNOWN)' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10269, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10269 -> GOTO 9419, symbol: _let_binds_repeat2, child 2 { 'comment(-- Map each character with how often it appears in the input)' 'decl' }
+[SHIFT] State 9419 -> 9678, symbol: _cond_layout_end (117, UNKNOWN)
+[SHIFT] State 9678 -> 9678, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 9678 -> GOTO 11934, symbol: local_binds, child 4 { '_token1(UNKNOWN)' '_let_binds_repeat2' '_cond_layout_end(UNKNOWN)' '_token1(UNKNOWN)' }
+[SHIFT] State: 11934 -> 1183, symbol: in (30)
+[SHIFT] State 1183 -> 1183, symbol: comment (128, -- Here we now sort the tuples of characters and how often they occur)
+[SHIFT] State 1183 -> 1183, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1183 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 194, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State: 194 -> 12695, symbol: ( (102)
+[SHIFT] State 12695 -> 6652, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 6652 -> GOTO 376, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 376 -> 2071, symbol: \ (29)
+[SHIFT] State: 2071 -> 12235, symbol: ( (102)
+[SHIFT] State 12235 -> 5805, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 5805 -> GOTO 38, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 38 -> 5811, symbol: _ (7)
+[REDUCE] State 5811 -> GOTO 5745, symbol: wildcard, child 1 { '_' }
+[REDUCE] State 5745 -> GOTO 1274, symbol: pattern, child 1 { 'wildcard' }
+[REDUCE] State 1274 -> GOTO 10254, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 10254 -> 382, symbol: , (4)
+[SHIFT] State 382 -> 3176, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3176 -> GOTO 1274, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 1274 -> GOTO 10215, symbol: _pat, child 1 { 'pattern' }
+[REDUCE] State 10215 -> GOTO 10974, symbol: _pat_tuple_elems_repeat1, child 2 { ',' '_pat' }
+[REDUCE] State 10974 -> GOTO 11431, symbol: _pat_tuple_elems, child 2 { '_pat' '_pat_tuple_elems_repeat1' }
+[SHIFT] State: 11431 -> 12401, symbol: ) (103)
+[SHIFT] State 12401 -> 5713, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 5713 -> GOTO 5800, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 5800 -> GOTO 5723, symbol: tuple, child 3 { '_paren_open' '_pat_tuple_elems' '_paren_close' }
+[REDUCE] State 5723 -> GOTO 1857, symbol: pattern, child 1 { 'tuple' }
+[REDUCE] State 1857 -> GOTO 2051, symbol: patterns_repeat1, child 1 { 'pattern' }
+[SHIFT] State: 2051 -> 12235, symbol: ( (102)
+[SHIFT] State 12235 -> 5805, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 5805 -> GOTO 38, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 38 -> 5811, symbol: _ (7)
+[REDUCE] State 5811 -> GOTO 5745, symbol: wildcard, child 1 { '_' }
+[REDUCE] State 5745 -> GOTO 1274, symbol: pattern, child 1 { 'wildcard' }
+[REDUCE] State 1274 -> GOTO 10254, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 10254 -> 382, symbol: , (4)
+[SHIFT] State 382 -> 3176, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3176 -> GOTO 1274, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 1274 -> GOTO 10215, symbol: _pat, child 1 { 'pattern' }
+[REDUCE] State 10215 -> GOTO 10974, symbol: _pat_tuple_elems_repeat1, child 2 { ',' '_pat' }
+[REDUCE] State 10974 -> GOTO 11431, symbol: _pat_tuple_elems, child 2 { '_pat' '_pat_tuple_elems_repeat1' }
+[SHIFT] State: 11431 -> 12401, symbol: ) (103)
+[SHIFT] State 12401 -> 5713, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 5713 -> GOTO 5800, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 5800 -> GOTO 5723, symbol: tuple, child 3 { '_paren_open' '_pat_tuple_elems' '_paren_close' }
+[REDUCE] State 5723 -> GOTO 1857, symbol: pattern, child 1 { 'tuple' }
+[REDUCE] State 1857 -> GOTO 2082, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 2082 -> GOTO 2051, symbol: patterns_repeat1, child 2 { 'patterns_repeat1' 'patterns_repeat1' }
+[REDUCE] State 2051 -> GOTO 11009, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 11009 -> 7952, symbol: -> (56)
+[REDUCE] State 7952 -> GOTO 1293, symbol: _arrow, child 1 { '->' }
+[SHIFT] State 1293 -> 4901, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 218, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 218 -> 4901, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 252, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 252 -> GOTO 5011, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 5011 -> GOTO 218, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 218 -> 4901, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4901 -> GOTO 252, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 252 -> GOTO 5011, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 5011 -> GOTO 218, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 218 -> GOTO 4864, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 4864 -> GOTO 4937, symbol: lambda, child 4 { '\' 'patterns' '_arrow' '_exp' }
+[REDUCE] State 4937 -> GOTO 321, symbol: expression, child 1 { 'lambda' }
+[REDUCE] State 321 -> GOTO 10945, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 10945 -> 12571, symbol: ) (103)
+[SHIFT] State 12571 -> 4229, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 4229 -> GOTO 3949, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 3949 -> GOTO 4504, symbol: parens, child 3 { '_paren_open' '_exp' '_paren_close' }
+[REDUCE] State 4504 -> GOTO 220, symbol: expression, child 1 { 'parens' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4452 -> GOTO 194, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 194 -> 4553, symbol: variable (1, UNKNOWN)
+[SHIFT] State 4553 -> 4553, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'variable(UNKNOWN)' 'expression' }
+[REDUCE] State 4452 -> GOTO 194, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 194 -> GOTO 4402, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 4402 -> GOTO 4641, symbol: let_in, child 4 { 'comment(-- Here we now sort the tuples of characters and how often they occur)' '_token1(UNKNOWN)' 'expression' '_exp' }
+[REDUCE] State 4641 -> GOTO 180, symbol: expression, child 1 { 'let_in' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { 'in' '_exp' }
+[REDUCE] State 9088 -> GOTO 10346, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { '=' 'local_binds' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'variable(UNKNOWN)' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_token1(UNKNOWN)' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_cond_layout_semicolon(UNKNOWN)' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'decl' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, t)
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'variable(t)' }
+[SHIFT] State: 2263 -> 1462, symbol: :: (96)
+[SHIFT] State: 915 -> 1484, symbol: :: (96)
+[SHIFT] State 1462 -> 5783, symbol: name (87, String)
+[SHIFT] State 1484 -> 6115, symbol: name (87, String)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { 'name(String)' }
+[REDUCE] State 764 -> GOTO 8341, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8341 -> 7879, symbol: -> (56)
+[REDUCE] State 6115 -> GOTO 874, symbol: type, child 1 { '->' }
+[REDUCE] State 874 -> GOTO 8377, symbol: quantified_type, child 1 { 'type' }
+[SHIFT] State: 8377 -> 7879, symbol: -> (56)
+[REDUCE] State 7879 -> GOTO 7941, symbol: _arrow, child 1 { '->' }
+[REDUCE] State 7941 -> GOTO 1515, symbol: _fun_arrow, child 1 { '_arrow' }
+[REDUCE] State 7941 -> GOTO 1537, symbol: _fun_arrow, child 1 { '_fun_arrow' }
+[SHIFT] State 1515 -> 5783, symbol: name (87, String)
+[SHIFT] State 1537 -> 6115, symbol: name (87, String)
+[SHIFT] State 5783 -> 5783, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 5783 -> GOTO 764, symbol: type, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 764 -> GOTO 8173, symbol: quantified_type, child 1 { 'type' }
+[REDUCE] State 8173 -> GOTO 8718, symbol: function, child 3 { 'name(String)' 'name(String)' 'quantified_type' }
+[REDUCE] State 8718 -> GOTO 8341, symbol: quantified_type, child 1 { 'function' }
+[REDUCE] State 8341 -> GOTO 10286, symbol: signature, child 3 { 'quantified_type' '_fun_arrow' 'quantified_type' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'signature' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'quantified_type' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'name(String)' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 6115 -> 6115, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, t)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(t)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State 2167 -> 7275, symbol: string (77, "")
+[SHIFT] State 350 -> 4738, symbol: string (77, "")
+[SHIFT] State 915 -> 6108, symbol: string (77, "")
+[REDUCE] State 7275 -> GOTO 7413, symbol: literal, child 1 { 'string("")' }
+[REDUCE] State 7413 -> GOTO 1837, symbol: pattern, child 1 { 'literal' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 1247, symbol: = (15)
+[REDUCE] State 6108 -> GOTO 6578, symbol: literal, child 1 { '=' }
+[REDUCE] State 6578 -> GOTO 1202, symbol: pattern, child 1 { 'literal' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'patterns' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 4224, symbol: string (77, "")
+[SHIFT] State 4224 -> 4224, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 4224 -> GOTO 4553, symbol: literal, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { 'string("")' '_exp' }
+[REDUCE] State 9088 -> GOTO 10346, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { '_pat' '=' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'string("")' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { 'string("")' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_function_name' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_token1(UNKNOWN)' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 14 -> 2263, symbol: variable (1, t)
+[REDUCE] State 2263 -> GOTO 350, symbol: expression, child 1 { 'variable(t)' }
+[REDUCE] State 2263 -> GOTO 915, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 2263 -> GOTO 2167, symbol: _function_name, child 1 { 'pattern' }
+[SHIFT] State 2167 -> 6905, symbol: variable (1, UNKNOWN)
+[SHIFT] State 350 -> 5116, symbol: variable (1, UNKNOWN)
+[SHIFT] State 915 -> 6173, symbol: variable (1, UNKNOWN)
+[REDUCE] State 6905 -> GOTO 1837, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 1837 -> GOTO 2011, symbol: patterns_repeat1, child 1 { 'pattern' }
+[REDUCE] State 2011 -> GOTO 8888, symbol: patterns, child 1 { 'patterns_repeat1' }
+[SHIFT] State: 8888 -> 1247, symbol: = (15)
+[REDUCE] State 6173 -> GOTO 1202, symbol: pattern, child 1 { '=' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'patterns' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 1247, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State: 1247 -> 9835, symbol: let (3)
+[SHIFT] State 9835 -> 9835, symbol: comment (128, -- The head of the resulting list from frequencyStats contains the most)
+[SHIFT] State 9835 -> 9835, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 9835 -> 9835, symbol: comment (128, -- frequenct letter, everything else is ignored. We perform a pattern)
+[SHIFT] State 9835 -> 9835, symbol: comment (128, -- match of which we are certain it will work!)
+[SHIFT] State 9835 -> 1838, symbol: _cmd_layout_start_let (114, UNKNOWN)
+[SHIFT] State 1838 -> 1838, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State: 1838 -> 12235, symbol: ( (102)
+[SHIFT] State 12235 -> 5805, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 5805 -> GOTO 37, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 37 -> 12235, symbol: ( (102)
+[SHIFT] State 12235 -> 5805, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 5805 -> GOTO 28, symbol: _paren_open, child 2 { '(' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 28 -> 3323, symbol: variable (1, UNKNOWN)
+[REDUCE] State 3323 -> GOTO 240, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 3323 -> GOTO 938, symbol: pattern, child 1 { 'expression' }
+[REDUCE] State 938 -> GOTO 10708, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 10708 -> 382, symbol: , (4)
+[REDUCE] State 240 -> GOTO 9557, symbol: _exp, child 1 { ',' }
+[SHIFT] State: 9557 -> 945, symbol: , (4)
+[SHIFT] State 945 -> 3017, symbol: variable (1, _)
+[SHIFT] State: 382 -> 5811, symbol: _ (7)
+[REDUCE] State 3017 -> GOTO 61, symbol: expression, child 1 { '_' }
+[REDUCE] State 61 -> GOTO 10916, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 10916 -> GOTO 11426, symbol: _exp_tuple_elems, child 3 { ',' 'variable(_)' '_exp' }
+[SHIFT] State: 11426 -> 12506, symbol: ) (103)
+[REDUCE] State 5811 -> GOTO 5745, symbol: wildcard, child 1 { ')' }
+[REDUCE] State 5745 -> GOTO 1274, symbol: pattern, child 1 { 'wildcard' }
+[REDUCE] State 1274 -> GOTO 10215, symbol: _pat, child 1 { 'pattern' }
+[REDUCE] State 10215 -> GOTO 10974, symbol: _pat_tuple_elems_repeat1, child 2 { '_exp_tuple_elems' '_pat' }
+[REDUCE] State 10974 -> GOTO 12025, symbol: _pat_tuple_elems, child 2 { '_exp' '_pat_tuple_elems_repeat1' }
+[SHIFT] State: 12025 -> 12782, symbol: ) (103)
+[SHIFT] State 12506 -> 2742, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 2742 -> GOTO 3006, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 3006 -> GOTO 3025, symbol: tuple, child 3 { '_pat' '_pat_tuple_elems' '_paren_close' }
+[REDUCE] State 3025 -> GOTO 61, symbol: expression, child 1 { 'tuple' }
+[SHIFT] State 61 -> 7652, symbol: _consym (155, :)
+[SHIFT] State 12782 -> 6446, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 6446 -> GOTO 6835, symbol: _paren_close, child 2 { '_consym(:)' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6835 -> GOTO 6783, symbol: tuple, child 3 { '_paren_open' 'expression' '_paren_close' }
+[REDUCE] State 6783 -> GOTO 938, symbol: pattern, child 1 { 'tuple' }
+[SHIFT] State 938 -> 8048, symbol: _consym (155, :)
+[REDUCE] State 7652 -> GOTO 1457, symbol: constructor_operator, child 1 { '_consym(:)' }
+[SHIFT] State 1457 -> 3017, symbol: variable (1, _)
+[REDUCE] State 8048 -> GOTO 2261, symbol: constructor_operator, child 1 { 'variable(_)' }
+[SHIFT] State: 2261 -> 6780, symbol: _ (7)
+[REDUCE] State 3017 -> GOTO 53, symbol: expression, child 1 { '_' }
+[REDUCE] State 53 -> GOTO 2990, symbol: infix, child 3 { 'constructor_operator' 'constructor_operator' 'expression' }
+[REDUCE] State 2990 -> GOTO 61, symbol: expression, child 1 { 'infix' }
+[REDUCE] State 61 -> GOTO 10897, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 6780 -> GOTO 6789, symbol: wildcard, child 1 { '_exp' }
+[REDUCE] State 6789 -> GOTO 1367, symbol: pattern, child 1 { 'wildcard' }
+[REDUCE] State 1367 -> GOTO 6794, symbol: infix, child 3 { '_paren_open' 'pattern' 'pattern' }
+[REDUCE] State 6794 -> GOTO 938, symbol: pattern, child 1 { 'infix' }
+[REDUCE] State 938 -> GOTO 10720, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 10720 -> 12400, symbol: ) (103)
+[SHIFT] State 12400 -> 5991, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 5991 -> GOTO 6579, symbol: _paren_close, child 2 { ')' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 6579 -> GOTO 6596, symbol: parens, child 3 { '_token1(UNKNOWN)' '_pat' '_paren_close' }
+[REDUCE] State 6596 -> GOTO 915, symbol: pattern, child 1 { 'parens' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 180 -> 4553, symbol: variable (1, UNKNOWN)
+[SHIFT] State 4553 -> 4553, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 4553 -> 4553, symbol: comment (128, -- An associative list (see chapter 3) containing letters and their)
+[SHIFT] State 4553 -> 4553, symbol: comment (128, -- distance to the letter 'e'. Check for yourself that this is correct!)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { 'comment(-- distance to the letter 'e'. Check for yourself that this is correct!)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'comment(-- An associative list (see chapter 3) containing letters and their)' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { '_token1(UNKNOWN)' '_exp' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'variable(UNKNOWN)' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 9450, symbol: decl, child 1 { 'bind' }
+[SHIFT] State 9450 -> 1862, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 1862 -> 1862, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1862 -> 4271, symbol: variable (1, d)
+[SHIFT] State: 4271 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State: 180 -> 12332, symbol: [ (65)
+[SHIFT] State 12332 -> 7878, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7878 -> GOTO 1108, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State 1108 -> 4134, symbol: char (76, 'a')
+[REDUCE] State 4134 -> GOTO 4658, symbol: literal, child 1 { 'char('a')' }
+[REDUCE] State 4658 -> GOTO 187, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 187 -> GOTO 9039, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State 9039 -> 12358, symbol: _cond_dotdot (138, UNKNOWN)
+[SHIFT] State: 12358 -> 7864, symbol: .. (17)
+[REDUCE] State 7864 -> GOTO 1114, symbol: _dotdot, child 2 { '_cond_dotdot(UNKNOWN)' '..' }
+[SHIFT] State 1114 -> 2739, symbol: char (76, 'z')
+[REDUCE] State 2739 -> GOTO 3017, symbol: literal, child 1 { 'char('z')' }
+[REDUCE] State 3017 -> GOTO 61, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 61 -> GOTO 11532, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 11532 -> 12764, symbol: ] (104)
+[SHIFT] State 12764 -> 4234, symbol: _cmd_texp_end (122, UNKNOWN)
+[REDUCE] State 4234 -> GOTO 4393, symbol: _bracket_close, child 2 { ']' '_cmd_texp_end(UNKNOWN)' }
+[REDUCE] State 4393 -> GOTO 4604, symbol: arithmetic_sequence, child 5 { '_bracket_open' '_exp' '_dotdot' '_exp' '_bracket_close' }
+[REDUCE] State 4604 -> GOTO 220, symbol: expression, child 1 { 'arithmetic_sequence' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[SHIFT] State: 180 -> 12332, symbol: [ (65)
+[SHIFT] State 12332 -> 7878, symbol: _cmd_texp_start (121, UNKNOWN)
+[REDUCE] State 7878 -> GOTO 1108, symbol: _bracket_open, child 2 { '[' '_cmd_texp_start(UNKNOWN)' }
+[SHIFT] State: 1108 -> 1479, symbol: - (39)
+[SHIFT] State 1479 -> 4198, symbol: _integer_literal (78, 4)
+[REDUCE] State 4198 -> GOTO 4134, symbol: integer, child 1 { '_integer_literal(4)' }
+[REDUCE] State 4134 -> GOTO 4658, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 4658 -> GOTO 230, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 230 -> GOTO 4716, symbol: negation, child 2 { '-' 'expression' }
+[REDUCE] State 4716 -> GOTO 187, symbol: expression, child 1 { 'negation' }
+[REDUCE] State 187 -> GOTO 9039, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State: 9039 -> 1113, symbol: , (4)
+[SHIFT] State: 1113 -> 1479, symbol: - (39)
+[SHIFT] State 1479 -> 4198, symbol: _integer_literal (78, 3)
+[REDUCE] State 4198 -> GOTO 4134, symbol: integer, child 1 { '_integer_literal(3)' }
+[REDUCE] State 4134 -> GOTO 4658, symbol: literal, child 1 { 'integer' }
+[REDUCE] State 4658 -> GOTO 230, symbol: expression, child 1 { 'literal' }
+[REDUCE] State 230 -> GOTO 4716, symbol: negation, child 2 { '-' 'expression' }
+[REDUCE] State 4716 -> GOTO 187, symbol: expression, child 1 { 'negation' }
+[REDUCE] State 187 -> GOTO 10706, symbol: _exp, child 1 { 'expression' }
+[SHIFT] State 10706 -> 12358, symbol: _cond_dotdot (138, UNKNOWN)
+[SHIFT] State: 12358 -> 7864, symbol: .. (17)
+[REDUCE] State 7864 -> GOTO 1123, symbol: _dotdot, child 2 { '_cond_dotdot(UNKNOWN)' '..' }
+[SHIFT] State: 1123 -> 12764, symbol: ] (104)
+[SHIFT] State 12764 -> 4234, symbol: _cmd_texp_end (122, UNKNOWN)
+[SHIFT] State 4234 -> 4234, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 4234 -> 4234, symbol: comment (128, -- We look up the distance of the most common letter to 'e' by performing)
+[SHIFT] State 4234 -> 4234, symbol: comment (128, -- a lookup on the associative list containing the distances. We receive)
+[SHIFT] State 4234 -> 4234, symbol: comment (128, -- a Maybe of the wanted element and pattern match it accordingly.)
+[SHIFT] State 4234 -> 4234, symbol: comment (128, -- (Please see chapter 3 for this!))
+[REDUCE] State 4234 -> GOTO 4674, symbol: _bracket_close, child 2 { 'comment(-- a Maybe of the wanted element and pattern match it accordingly.)' 'comment(-- (Please see chapter 3 for this!))' }
+[REDUCE] State 4674 -> GOTO 4604, symbol: arithmetic_sequence, child 6 { ']' '_cmd_texp_end(UNKNOWN)' '_token1(UNKNOWN)' 'comment(-- We look up the distance of the most common letter to 'e' by performing)' 'comment(-- a lookup on the associative list containing the distances. We receive)' '_bracket_close' }
+[REDUCE] State 4604 -> GOTO 220, symbol: expression, child 1 { 'arithmetic_sequence' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { '_dotdot' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { '_exp' '_exp' }
+[REDUCE] State 9088 -> GOTO 10117, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 10117 -> GOTO 10286, symbol: bind, child 2 { ',' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10269, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10269 -> GOTO 9419, symbol: _let_binds_repeat2, child 2 { '_exp' 'decl' }
+[SHIFT] State 9419 -> 1864, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 1864 -> 1864, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1864 -> 5843, symbol: name (87, Just)
+[REDUCE] State 5843 -> GOTO 915, symbol: pattern, child 1 { 'name(Just)' }
+[SHIFT] State 915 -> 6173, symbol: variable (1, UNKNOWN)
+[REDUCE] State 6173 -> GOTO 1202, symbol: pattern, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 1202 -> GOTO 6672, symbol: apply, child 2 { 'pattern' 'pattern' }
+[REDUCE] State 6672 -> GOTO 915, symbol: pattern, child 1 { 'apply' }
+[REDUCE] State 915 -> GOTO 8950, symbol: _pat, child 1 { 'pattern' }
+[SHIFT] State: 8950 -> 1247, symbol: = (15)
+[SHIFT] State 1247 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 180, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 180 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 180 -> 4553, symbol: variable (1, d)
+[SHIFT] State 4553 -> 4553, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { '_token1(UNKNOWN)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'variable(d)' 'expression' }
+[REDUCE] State 4452 -> GOTO 180, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { 'expression' '_exp' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { '=' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10269, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10269 -> GOTO 9680, symbol: _let_binds_repeat2, child 2 { '_pat' 'decl' }
+[REDUCE] State 9680 -> GOTO 9419, symbol: _let_binds_repeat2, child 2 { '_token1(UNKNOWN)' '_let_binds_repeat2' }
+[SHIFT] State 9419 -> 9678, symbol: _cond_layout_end (117, UNKNOWN)
+[SHIFT] State 9678 -> 9678, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 9678 -> GOTO 11934, symbol: local_binds, child 4 { '_cond_layout_semicolon(UNKNOWN)' '_let_binds_repeat2' '_cond_layout_end(UNKNOWN)' '_token1(UNKNOWN)' }
+[SHIFT] State: 11934 -> 1183, symbol: in (30)
+[SHIFT] State 1183 -> 1183, symbol: comment (128, -- Now we can finally try to decrypt our message by performing the cipher)
+[SHIFT] State 1183 -> 1183, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1183 -> 1183, symbol: comment (128, -- with the guessed distance)
+[SHIFT] State 1183 -> 1183, symbol: _token1 (107, UNKNOWN)
+[SHIFT] State 1183 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 194, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[SHIFT] State 194 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4452 -> GOTO 194, symbol: expression, child 1 { 'apply' }
+[SHIFT] State 194 -> 4553, symbol: variable (1, UNKNOWN)
+[REDUCE] State 4553 -> GOTO 220, symbol: expression, child 1 { 'variable(UNKNOWN)' }
+[REDUCE] State 220 -> GOTO 4452, symbol: apply, child 2 { 'expression' 'expression' }
+[REDUCE] State 4452 -> GOTO 194, symbol: expression, child 1 { 'apply' }
+[REDUCE] State 194 -> GOTO 4402, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 4402 -> GOTO 4641, symbol: let_in, child 4 { '_token1(UNKNOWN)' 'comment(-- with the guessed distance)' '_token1(UNKNOWN)' '_exp' }
+[REDUCE] State 4641 -> GOTO 180, symbol: expression, child 1 { 'let_in' }
+[REDUCE] State 180 -> GOTO 9590, symbol: _exp, child 1 { 'expression' }
+[REDUCE] State 9590 -> GOTO 9088, symbol: match, child 2 { 'comment(-- Now we can finally try to decrypt our message by performing the cipher)' '_exp' }
+[REDUCE] State 9088 -> GOTO 10346, symbol: _bind_matches, child 1 { 'match' }
+[REDUCE] State 9088 -> GOTO 10520, symbol: _bind_matches, child 1 { '_bind_matches' }
+[REDUCE] State 10346 -> GOTO 10286, symbol: function, child 3 { 'local_binds' 'in' '_bind_matches' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'function' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { '_let_binds_repeat2' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '_bracket_open' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[REDUCE] State 10520 -> GOTO 10286, symbol: bind, child 2 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' }
+[REDUCE] State 10286 -> GOTO 10711, symbol: decl, child 1 { 'bind' }
+[REDUCE] State 10711 -> GOTO 10124, symbol: declaration, child 1 { 'decl' }
+[REDUCE] State 10124 -> GOTO 9609, symbol: declarations_repeat1, child 2 { 'expression' 'declaration' }
+[REDUCE] State 9609 -> GOTO 9583, symbol: declarations_repeat1, child 2 { '=' 'declarations_repeat1' }
+[SHIFT] State 9583 -> 14, symbol: _cond_layout_semicolon (109, UNKNOWN)
+[SHIFT] State 14 -> 14, symbol: _token1 (107, UNKNOWN)
+[REDUCE] State 14 -> GOTO 11039, symbol: declarations, child 3 { 'declarations_repeat1' '_cond_layout_semicolon(UNKNOWN)' '_token1(UNKNOWN)' }
+[SHIFT] State 11039 -> 12229, symbol: _cond_layout_end (117, UNKNOWN)
+[REDUCE] State 12229 -> GOTO 12478, symbol: _body, child 4 { '_token1(UNKNOWN)' 'variable(d)' 'declarations' '_cond_layout_end(UNKNOWN)' }
+[REDUCE] State 12478 -> GOTO 12559, symbol: haskell, child 2 { '_cond_layout_semicolon(UNKNOWN)' '_body' }
+[ACCEPT] State 12559

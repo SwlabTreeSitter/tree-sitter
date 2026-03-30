@@ -20,7 +20,7 @@ def process_one_data_file(file_path: str) -> dict:
     """
     .data 파일을 읽어 Dictionary 반환
     key: location ("Row,Col")
-    value: { "state_id": int, "candidate": str }
+    value: [{ "state_id": int, "candidate": str }, ...]  (모든 항목 포함)
     """
     extracted_data = {}
 
@@ -46,10 +46,11 @@ def process_one_data_file(file_path: str) -> dict:
                 if ":" in line:
                     loc_part = line.split(":", 1)[0].strip()
                     if loc_part not in extracted_data:
-                        extracted_data[loc_part] = {
-                            "state_id": current_state,
-                            "candidate": raw_candidate
-                        }
+                        extracted_data[loc_part] = []
+                    extracted_data[loc_part].append({
+                        "state_id": current_state,
+                        "candidate": raw_candidate
+                    })
                     waiting_for_location = False
 
     return extracted_data
