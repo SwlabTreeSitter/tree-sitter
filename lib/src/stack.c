@@ -1208,23 +1208,19 @@ static void simulate_ext_shift_chains(
 ) {
   // depth-1: state에서 0-byte external token SHIFT → s1
   // zero_byte_ext_mask: 파싱 중 실제로 size==0으로 반환된 external token만 포함
-  // mask가 0이면 fallback으로 visible==false 기준 사용 (파싱 데이터가 없는 경우 대비)
-  bool use_mask = (zero_byte_ext_mask != 0);
+  // 판별 기준: mask에 기록된 토큰 OR visible==false 토큰 (합집합)
+  // - mask 기록분: 실제 파싱에서 0-byte로 관측된 토큰 (신뢰도 높음)
+  // - visible==false: 파일 절단으로 인해 mask에서 누락된 조건 토큰 보완
+  //   (예: _cond_tight_dot — EOF로 인해 생성되지 못한 경우)
 
   for (uint32_t ei = 0; ei < language->external_token_count; ei++) {
-    // 0-byte 여부 판별
-    if (use_mask) {
-      // 실제 파싱에서 관측된 0-byte 토큰만 허용
-      if (ei >= 64 || !(zero_byte_ext_mask & (1ULL << ei))) continue;
-    } else {
-      // fallback: visible=true는 확실히 byte-consuming
-      TSSymbol ext_sym = language->external_scanner.symbol_map[ei];
-      if (language->symbol_metadata[ext_sym].visible) continue;
-    }
+    // 0-byte 여부 판별: mask OR visible==false
+    TSSymbol ext_sym = language->external_scanner.symbol_map[ei];
+    bool in_mask   = (ei < 64) && (zero_byte_ext_mask & (1ULL << ei));
+    bool is_hidden = !language->symbol_metadata[ext_sym].visible;
+    if (!in_mask && !is_hidden) continue;
 
-    TSSymbol ext = language->external_scanner.symbol_map[ei];
-
-    uint32_t idx = ts_language_lookup(language, state, ext);
+    uint32_t idx = ts_language_lookup(language, state, ext_sym);
     if (idx == 0) continue;
 
     const TSParseActionEntry *entry = &language->parse_actions[idx];

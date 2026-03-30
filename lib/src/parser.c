@@ -2114,6 +2114,14 @@ static bool ts_parser__advance_for_conversion(
       self->ext_scan_fail_max_position = 0;  // 초기화
       lookahead = ts_parser__lex(self, version, state);  // Lexer 실행
       if (self->has_scanner_error) return false;
+      // [LEXDBG] 렉싱 결과와 ext_scan_fail_max_position 추적 (무조건)
+      fprintf(stderr, "[LEXDBG] state=%u pos=%u target=%u ext_fail=%u lk=%s has_ext=%d sym=%u sz=%u\n",
+              state, position, target_length,
+              self->ext_scan_fail_max_position,
+              lookahead.ptr ? "yes" : "null",
+              lookahead.ptr ? (int)ts_subtree_has_external_tokens(lookahead) : -1,
+              lookahead.ptr ? (unsigned)ts_subtree_symbol(lookahead) : 0u,
+              lookahead.ptr ? ts_subtree_total_size(lookahead).bytes : 0u);
 
       // 외부 스캐너가 커서 위치까지 읽었지만 실패 → 내부 렉서 결과 무시 → freeze
       // 예) state:1830에서 `_string_content` 렉싱 시도 → 잘린 소스에서 """ 없음 →
@@ -2128,6 +2136,24 @@ static bool ts_parser__advance_for_conversion(
       if (lookahead.ptr
           && !ts_subtree_has_external_tokens(lookahead)
           && self->ext_scan_fail_max_position >= target_length) {
+        // [DIAG] 조건 발동: state, position, 그리고 이 state에서 SHIFT 가능한 invisible 외부 토큰 열거
+        fprintf(stderr, "[EXTFAIL] state=%u pos=%u target=%u lk_sym=%u\n",
+                state, position, target_length, ts_subtree_symbol(lookahead));
+        for (uint32_t ei = 0; ei < self->language->external_token_count; ei++) {
+          TSSymbol ext_sym = self->language->external_scanner.symbol_map[ei];
+          bool is_hidden = !self->language->symbol_metadata[ext_sym].visible;
+          uint32_t idx = ts_language_lookup(self->language, state, ext_sym);
+          if (idx == 0) continue;
+          const TSParseActionEntry *e = &self->language->parse_actions[idx];
+          const TSParseAction *acts = (const TSParseAction *)(e + 1);
+          for (uint32_t a = 0; a < e->entry.count; a++) {
+            if (acts[a].type == TSParseActionTypeShift && !acts[a].shift.extra) {
+              fprintf(stderr, "  shiftable ei=%u ext_sym=%u hidden=%d next_state=%u\n",
+                      ei, ext_sym, is_hidden, acts[a].shift.state);
+              break;
+            }
+          }
+        }
         TableEntry validity = {.action_count = 0};
         ts_language_table_entry(self->language, state,
                                 ts_subtree_symbol(lookahead), &validity);
