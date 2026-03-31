@@ -160,8 +160,7 @@ class FileReporter:
                 continue
             row, col = int(nums[0]), int(nums[1])
 
-            ground_truth = gt_data.get("candidate", "")
-            if not ground_truth:
+            if not gt_data:
                 continue
 
             states = self._run_at_position(target_file, row, col)
@@ -170,19 +169,29 @@ class FileReporter:
                 result_label = "FAIL"
                 rank = 0
                 f_fail += 1
+                ground_truth = gt_data[0]["candidate"]
             else:
                 # 커버리지: 제한 없이 전체 DB 조회
                 candidates_full = self._lookup_db_full(states)
-                if self._is_found(candidates_full, ground_truth):
+                if any(self._is_found(candidates_full, e["candidate"]) for e in gt_data):
                     result_label = "FOUND"
                     f_found += 1
                 else:
                     result_label = "NOT_FOUND"
                     f_not_found += 1
 
-                # 랭크: Top-20 제한 조회
+                # 랭크: gt_data 후보들 중 가장 좋은(낮은) 순위
                 top_candidates = self._lookup_db_ranked(states)[:MAX_CANDIDATE_LIST_SIZE]
-                rank = self._get_rank(top_candidates, ground_truth)
+                best_rank = 0
+                best_entry = gt_data[0]
+                for e in gt_data:
+                    r = self._get_rank(top_candidates, e["candidate"])
+                    if r > 0 and (best_rank == 0 or r < best_rank):
+                        best_rank = r
+                        best_entry = e
+                rank = best_rank
+                ground_truth = best_entry["candidate"]
+
                 if rank > 0:
                     self.rank_stats[rank] += 1
                     if rank == 1:  f_top1  += 1
@@ -190,8 +199,6 @@ class FileReporter:
                     if rank <= 5:  f_top5  += 1
                     if rank <= 10: f_top10 += 1
                     if rank <= 20: f_top20 += 1
-                elif result_label == "NOT_FOUND":
-                    self.beyond_top20_count += 1
 
             debug_logs.append([loc_key, ground_truth, str(states) if states else "FAIL", result_label, rank])
             f_total += 1

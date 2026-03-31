@@ -194,8 +194,8 @@ class FileReporter:
                 continue
 
             # 2. 정답 데이터 확인
-            ground_truth = gt_data.get("candidate", "")
-            if not ground_truth: continue
+            if not gt_data:
+                continue
 
             # 3. [핵심] C++ 실행 (단일 위치)
             predicted_states = self.run_cpp_at_position(sb_file, row, col)
@@ -208,19 +208,21 @@ class FileReporter:
 
             # 순위 계산
             rank = 0
+            ground_truth = gt_data[0]["candidate"]
             if predicted_states:
-                full_candidates = self.lookupDB(predicted_states)
-                top_candidates = full_candidates[:MAX_CANDIDATE_LIST_SIZE]
-                rank = self.get_rank(top_candidates, ground_truth)
+                top_candidates = self.lookupDB(predicted_states)[:MAX_CANDIDATE_LIST_SIZE]
+                best_rank = 0
+                best_entry = gt_data[0]
+                for e in gt_data:
+                    r = self.get_rank(top_candidates, e["candidate"])
+                    if r > 0 and (best_rank == 0 or r < best_rank):
+                        best_rank = r
+                        best_entry = e
+                rank = best_rank
+                ground_truth = best_entry["candidate"]
 
             # 로그 저장
             debug_logs.append([loc_key, ground_truth, state_str, rank])
-
-            # # 4. DB 조회 및 순위 계산
-            # full_candidates = self.lookupDB(predicted_states)
-            # top_candidates = full_candidates[:MAX_CANDIDATE_LIST_SIZE]
-            
-            # rank = self.get_rank(top_candidates, ground_truth)
 
             # 5. 통계 집계
             self.global_queries += 1

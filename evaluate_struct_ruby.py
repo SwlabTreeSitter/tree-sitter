@@ -171,8 +171,8 @@ class FileReporter:
             else:
                 continue
 
-            ground_truth = gt_data.get("candidate", "")
-            if not ground_truth: continue
+            if not gt_data:
+                continue
 
             predicted_states = self.run_cpp_at_position(target_file, row, col)
 
@@ -182,10 +182,18 @@ class FileReporter:
                 state_str = "FAIL"
 
             rank = 0
+            ground_truth = gt_data[0]["candidate"]
             if predicted_states:
-                full_candidates = self.lookupDB(predicted_states)
-                top_candidates = full_candidates[:MAX_CANDIDATE_LIST_SIZE]
-                rank = self.get_rank(top_candidates, ground_truth)
+                top_candidates = self.lookupDB(predicted_states)[:MAX_CANDIDATE_LIST_SIZE]
+                best_rank = 0
+                best_entry = gt_data[0]
+                for e in gt_data:
+                    r = self.get_rank(top_candidates, e["candidate"])
+                    if r > 0 and (best_rank == 0 or r < best_rank):
+                        best_rank = r
+                        best_entry = e
+                rank = best_rank
+                ground_truth = best_entry["candidate"]
 
             debug_logs.append([loc_key, ground_truth, state_str, rank])
 

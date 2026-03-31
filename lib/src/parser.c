@@ -2170,23 +2170,21 @@ static bool ts_parser__advance_for_conversion(
         //      예) `def foo(` 커서 직후: NULL 반환 → non-terminal extra reduce →
         //         올바른 상태가 이미 사라진 뒤 sym:end 감지.
         // ② sym:end / sym:error → EOF. 중단.
-        // ③ 크기 > 0인 실제 토큰 → 커서 너머의 토큰. 중단.
-        // ④ 크기 == 0, 해당 state에서 액션 없음 → 유효하지 않은 가상 토큰
+        // ③ 크기 == 0, 해당 state에서 액션 없음 → 유효하지 않은 가상 토큰
         //      예) Python DEDENT: 해당 state에서 REJECT → 에러 복구 → 올바른 상태 폐기.
         //         중단해서 현재 상태(예: state:601)를 캡처.
-        // ⑤ 크기 == 0, 해당 state에서 SHIFT 가능 → 유효한 외부 토큰
+        // ④ 크기 == 0, 해당 state에서 SHIFT 가능 → 유효한 외부 토큰
         //      예) Haskell _cmd_texp_start: SHIFT → state:8876 →
         //         다음 호출에서 state:8876을 캡처, 시뮬레이션이 state:7779 도출.
         if (!lookahead.ptr) return false;  // ①
         TSSymbol sym = ts_subtree_symbol(lookahead);
         if (sym == ts_builtin_sym_end) return false;   // ②
         if (sym == ts_builtin_sym_error) return false; // ②
-        if (ts_subtree_total_size(lookahead).bytes > 0) return false;  // ③
-        // ④ vs ⑤: 0-size 토큰의 유효성 검사
+        // ③ vs ④: 0-size 토큰의 유효성 검사
         TableEntry ze = {.action_count = 0};
         ts_language_table_entry(self->language, state, sym, &ze);
-        if (ze.action_count == 0) return false;  // ④
-        // ⑤: 유효한 SHIFT → 삽입 전/후 state 모두 캡처
+        if (ze.action_count == 0) return false;  // ③
+        // ④: 유효한 SHIFT → 삽입 전/후 state 모두 캡처
         //   - 복사본을 halted로 고정: 삽입 전 state에서 시뮬레이션
         //   - 원본은 SHIFT 진행: 다음 호출에서 삽입 후 state 캡처
         //   - phase_3_conversion이 전체 버전(halted 포함)을 순회하며 합집합
@@ -2242,21 +2240,17 @@ static bool ts_parser__advance_for_conversion(
           // fall-through
         }
 
-        // ③ (else-branch): 크기>0 외부 토큰이 커서 경계에 걸치는 경우
-        //   → token_end > target: 커서를 실제로 초과 → 현재 state 보존 후 중단
+        // ③ (else-branch): 크기>0 외부 토큰이 커서 경계에 딱 닿는 경우
         //   → token_end == target: ⑤ 방식으로 전/후 상태 모두 탐색 (halted copy + fall-through)
-        //   → token_end < target: read-ahead가 target을 넘었을 뿐, 토큰 자체는 경계 안 → 진행
+        //   → token_end < target: 경계 안 → 진행
         //   내부 스캐너 토큰은 항상 fall-through (SHIFT 허용, 이후 ⑤에서 state 캡처)
-        //   예) Haskell sym=117(space, 외부, token_end>target): return false → state:2263 캡처
-        //       Haskell _cmd_layout_start (외부, token_end==target): halted copy + SHIFT → state:2 캡처
+        //   예) Haskell _cmd_layout_start (외부, token_end==target): halted copy + SHIFT → state:2 캡처
         //       Haskell `(` (내부, size=2): 진행 → SHIFT → _cmd_texp_start ⑤ → state:7779
         if (lookahead.ptr
             && ts_subtree_total_size(lookahead).bytes > 0
             && ts_subtree_has_external_tokens(lookahead)) {
           uint32_t token_end = position + ts_subtree_total_size(lookahead).bytes;
-          if (token_end > target_length) {
-            return false;  // 실제 경계 초과
-          } else if (token_end == target_length) {
+          if (token_end == target_length) {
             // ⑤: 삽입 전/후 상태 모두 탐색
             StackVersion copy = ts_stack_copy_version(self->stack, version);
             if (copy != STACK_VERSION_NONE) ts_stack_halt(self->stack, copy);
@@ -2268,7 +2262,7 @@ static bool ts_parser__advance_for_conversion(
             if (validity_check.action_count == 0) return false;
             // fall-through → SHIFT 진행
           }
-          // token_end < target: read-ahead 무관, 계속 진행
+          // token_end < target: 경계 안, 계속 진행
         }
 
         // 토큰이 발견되면
@@ -2284,18 +2278,15 @@ static bool ts_parser__advance_for_conversion(
       }
     }
 
-    // ③ 캐시 경로 경계 체크:
+    // 캐시 경로 경계 체크:
     // 캐시에서 가져온 토큰(needs_lex=false 경로)은 위의 if (needs_lex) 블록을 건너뛰므로
     // 커서 경계 체크가 적용되지 않는다. 여기서 동일한 조건을 적용한다.
     //
-    // 경우 A: position이 이미 target에 도달(==) 또는 초과(>) → size>0 토큰이면 중단
-    //   (lexed path의 ③과 동일 조건)
+    // 경우 A: position >= target → size>0 토큰이면 중단
     //   예) Python state:1830(pos==target)에서 cached string_end(size:3)
     //
-    // 경우 B: position < target이지만 외부 토큰이 경계를 가로지르는 경우
-    //   → token_end > target: 실제 경계 초과 → 중단
-    //   → token_end == target: ⑤ 방식으로 전/후 상태 모두 탐색 (halted copy + fall-through)
-    //   (position < target이므로 lexed path에서는 else-branch ③이 담당했던 경우)
+    // 경우 B: position < target이고 외부 토큰이 경계에 딱 닿는 경우(token_end==target)
+    //   → ⑤ 방식으로 전/후 상태 모두 탐색 (halted copy + fall-through)
     if (lookahead.ptr && ts_subtree_total_size(lookahead).bytes > 0) {
       uint32_t sz = ts_subtree_total_size(lookahead).bytes;
       bool ext = ts_subtree_has_external_tokens(lookahead);
@@ -2307,10 +2298,7 @@ static bool ts_parser__advance_for_conversion(
       }
       if (ext) {
         uint32_t token_end = position + sz;
-        if (token_end > target_length) {
-          fprintf(stderr, "[CACHE_CHK] -> return false (B: token_end>target)\n");
-          return false;  // 경우 B: 실제 경계 초과
-        } else if (token_end == target_length) {
+        if (token_end == target_length) {
           fprintf(stderr, "[CACHE_CHK] -> halted copy (B: token_end==target)\n");
           // ⑤: 삽입 전/후 상태 모두 탐색
           StackVersion copy = ts_stack_copy_version(self->stack, version);
@@ -2322,7 +2310,7 @@ static bool ts_parser__advance_for_conversion(
           if (validity_check2.action_count == 0) return false;
           // fall-through → SHIFT 진행
         }
-        // token_end < target: 계속 진행
+        // token_end < target: 경계 안, 계속 진행
       }
     }
 
