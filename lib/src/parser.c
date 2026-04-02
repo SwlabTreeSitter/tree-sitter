@@ -3191,6 +3191,21 @@ void collect_recursive(
     bool is_valid_sym = (child_sym != ts_builtin_sym_end);
     bool is_extra = ts_subtree_extra(child);
 
+    // [pre-resync] 리프 자식을 기록하기 전에 running_state가 stuck 상태인지 확인한다.
+    // running_state가 reduce-only 상태여서 next_state=0이 되는 경우,
+    // 리프 자신의 parse_state(실제 렉싱/SHIFT 시점 상태)로 재동기화한다.
+    if (is_leaf && !is_extra && running_state > 0 && running_state < ctx->lang->state_count) {
+      if (ts_language_next_state(ctx->lang, running_state, child_sym) == 0) {
+        TSStateId leaf_state = ts_subtree_leaf_parse_state(child);
+        if (leaf_state != running_state && leaf_state < ctx->lang->state_count) {
+          TSStateId leaf_next = ts_language_next_state(ctx->lang, leaf_state, child_sym);
+          if (leaf_next != 0) {
+            running_state = leaf_state;  // 기록 전에 재동기화
+          }
+        }
+      }
+    }
+
     // 자식이 Leaf 노드이면 구조 후보 출력
     if (is_leaf && is_valid_sym && !current_is_error &&
       running_state > 0 && running_state < ctx->lang->state_count) {
@@ -3233,6 +3248,17 @@ void collect_recursive(
       TSStateId next = ts_language_next_state(ctx->lang, running_state, child_sym);
       if (next != 0) {
         running_state = next;
+      } else if (is_leaf) {
+        // running_state가 stuck(e.g. reduce state)일 수 있음.
+        // 리프 자신의 parse_state가 실제 렉싱/SHIFT 상태를 반영하므로,
+        // 그 상태에서 child_sym을 SHIFT할 수 있으면 재동기화한다.
+        TSStateId leaf_state = ts_subtree_leaf_parse_state(child);
+        if (leaf_state != running_state && leaf_state < ctx->lang->state_count) {
+          TSStateId leaf_next = ts_language_next_state(ctx->lang, leaf_state, child_sym);
+          if (leaf_next != 0) {
+            running_state = leaf_next;
+          }
+        }
       }
     }
   }

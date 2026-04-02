@@ -15,7 +15,7 @@ import os
 import csv
 import ast
 import json
-from collections import Counter
+from collections import Counter, defaultdict
 
 LANG_CONFIGS = {
     "c": {
@@ -76,6 +76,7 @@ def first_matched_candidate_state(states, gt_entries):
 def analyze_lang(cfg):
     shortage = Counter()
     conv_err = Counter()
+    conv_err_files = defaultdict(set)  # candidate -> 발견된 파일명 집합
 
     for fname in sorted(os.listdir(cfg["debug_dir"])):
         if not fname.endswith(".csv"):
@@ -90,6 +91,9 @@ def analyze_lang(cfg):
                 jdata = json.load(f)
             for loc_key, entries in jdata.items():
                 gt_map[loc_key] = entries
+
+        # 파일명에서 .csv 확장자 제거하여 소스 파일명으로 사용
+        src_name = fname[:-4]  # strip ".csv"
 
         with open(csv_path, encoding="utf-8") as f:
             reader = csv.DictReader(f)
@@ -110,8 +114,9 @@ def analyze_lang(cfg):
                     shortage[matched] += 1
                 else:
                     conv_err[csv_gt] += 1
+                    conv_err_files[csv_gt].add(src_name)
 
-    return shortage, conv_err
+    return shortage, conv_err, conv_err_files
 
 
 def write_reports(results):
@@ -124,7 +129,7 @@ def write_reports(results):
             "Conv_Error", "Conv_Error_%",
         ])
         for lang in LANG_ORDER:
-            s, c = results[lang]
+            s, c, _ = results[lang]
             ts, tc = sum(s.values()), sum(c.values())
             total = ts + tc
             if total == 0:
@@ -139,13 +144,14 @@ def write_reports(results):
     # 상세 CSV
     with open(OUTPUT_DETAIL, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["Language", "Category", "Ground_Truth", "Count"])
+        writer.writerow(["Language", "Category", "Ground_Truth", "Count", "Files"])
         for lang in LANG_ORDER:
-            shortage, conv_err = results[lang]
+            shortage, conv_err, conv_err_files = results[lang]
             for gt, cnt in shortage.most_common():
-                writer.writerow([lang, "Data_Shortage", gt, cnt])
+                writer.writerow([lang, "Data_Shortage", gt, cnt, ""])
             for gt, cnt in conv_err.most_common():
-                writer.writerow([lang, "Conv_Error", gt, cnt])
+                files_str = "; ".join(sorted(conv_err_files.get(gt, [])))
+                writer.writerow([lang, "Conv_Error", gt, cnt, files_str])
 
 
 def main():
@@ -153,8 +159,8 @@ def main():
     for lang in LANG_ORDER:
         print(f"[{lang}]")
         cfg = LANG_CONFIGS[lang]
-        shortage, conv_err = analyze_lang(cfg)
-        results[lang] = (shortage, conv_err)
+        shortage, conv_err, conv_err_files = analyze_lang(cfg)
+        results[lang] = (shortage, conv_err, conv_err_files)
         ts, tc = sum(shortage.values()), sum(conv_err.values())
         print(f"  shortage={ts}, conv_err={tc}, total={ts+tc}")
 
