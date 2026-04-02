@@ -35,8 +35,10 @@
 #endif
 
 extern "C" {
-    // 컨버전
+    // 컨버전 (실제 코드 완성용: 소스를 커서 위치에서 잘라서 전달)
     TSStatePath ts_parser_parse_string_for_conversion(TSParser *self, const TSTree *old_tree, const char *string, uint32_t length);
+    // 컨버전 평가용: 전체 소스를 전달하되 커서 위치만 별도로 지정
+    TSStatePath ts_parser_parse_string_for_conversion_with_lookahead(TSParser *self, const TSTree *old_tree, const char *string, uint32_t full_length, uint32_t cursor_byte);
     void ts_parser_write_conversion_result(TSParser *self, TSStatePath *path, FILE *fp);
 
     // 컬렉션
@@ -141,8 +143,9 @@ int main(int argc, char* argv[]) {
     } else {
     usage_error:
         std::cerr << "Usage:" << std::endl;
-        std::cerr << "  Collection: " << argv[0] << " <lang> <dll> <file> 1" << std::endl;
-        std::cerr << "  Conversion: " << argv[0] << " <lang> <dll> <file> <row> <col> 0" << std::endl;
+        std::cerr << "  Collection:          " << argv[0] << " <lang> <dll> <file> 1" << std::endl;
+        std::cerr << "  Conversion:          " << argv[0] << " <lang> <dll> <file> <row> <col> 0" << std::endl;
+        std::cerr << "  Conversion (eval):   " << argv[0] << " <lang> <dll> <file> <row> <col> 2" << std::endl;
         return 1;
     }
 
@@ -183,7 +186,7 @@ int main(int argc, char* argv[]) {
         // ==========================================================
         // 3. 실행 길이(Position) 결정
         // ==========================================================
-        if (execution_mode == 0) {
+        if (execution_mode == 0 || execution_mode == 2) {
             std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
             size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
             effective_length = (std::min)(source_code.length(), stop_offset);
@@ -250,11 +253,15 @@ int main(int argc, char* argv[]) {
                     std::cerr << "ERROR: Could not open Test.data for writing." << std::endl;
                 }
             } 
-            else {
+            else if (execution_mode == 0 || execution_mode == 2) {
                 // ------------------------------------------------------
-                // [모드 0] Updated Conversion
+                // [모드 0] Conversion (실제 코드 완성: 잘린 소스)
+                // [모드 2] Conversion Eval (평가용: 전체 소스 + 커서 위치)
                 // ------------------------------------------------------
-                std::cout << "DEBUG: Running Updated Conversion..." << std::endl;
+                const char *mode_label = (execution_mode == 2)
+                    ? "Updated Conversion (eval/lookahead)"
+                    : "Updated Conversion";
+                std::cout << "DEBUG: Running " << mode_label << "..." << std::endl;
 
                 // conversion parse 로깅
                 FILE *conv_fp = fopen("debug_log_conv.txt", "w");
@@ -265,12 +272,27 @@ int main(int argc, char* argv[]) {
                     ts_parser_set_logger(parser, conv_logger);
                 }
 
-                TSStatePath path2 = ts_parser_parse_string_for_conversion(
-                    parser,
-                    NULL,
-                    source_code.c_str(),
-                    static_cast<uint32_t>(effective_length)
-                );
+                TSStatePath path2;
+                if (execution_mode == 2) {
+                    // 전체 소스를 전달하고 커서 위치만 별도로 지정
+                    // 렉서/외부 스캐너가 커서 이후를 lookahead로 활용 가능
+                    uint32_t full_length = static_cast<uint32_t>(source_code.length());
+                    uint32_t cursor_byte = static_cast<uint32_t>(effective_length);
+                    path2 = ts_parser_parse_string_for_conversion_with_lookahead(
+                        parser,
+                        NULL,
+                        source_code.c_str(),
+                        full_length,
+                        cursor_byte
+                    );
+                } else {
+                    path2 = ts_parser_parse_string_for_conversion(
+                        parser,
+                        NULL,
+                        source_code.c_str(),
+                        static_cast<uint32_t>(effective_length)
+                    );
+                }
 
                 if (conv_fp) {
                     ts_parser_set_logger(parser, {0});

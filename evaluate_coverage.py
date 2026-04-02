@@ -116,9 +116,10 @@ MAX_CANDIDATE_LIST_SIZE = 20
 # =========================================================
 
 class EvaluationReporter:
-    def __init__(self, lang: str, cfg: dict):
+    def __init__(self, lang: str, cfg: dict, eval_mode: int = 0):
         self.lang = lang
         self.cfg  = cfg
+        self.eval_mode = eval_mode  # 0: 기존(잘린 소스), 2: 평가용(전체 소스+커서)
         self.db   = self._load_json(cfg["db"])
 
         # 커버리지 통계
@@ -141,7 +142,7 @@ class EvaluationReporter:
             return json.load(f)
 
     def _run_at_position(self, target_file, row, col):
-        cmd = [EXE_PATH, self.lang, self.cfg["lib"], target_file, str(row), str(col), "0"]
+        cmd = [EXE_PATH, self.lang, self.cfg["lib"], target_file, str(row), str(col), str(self.eval_mode)]
         try:
             result = subprocess.run(
                 cmd, capture_output=True, text=True,
@@ -536,13 +537,22 @@ if __name__ == "__main__":
     # 사용법:
     #   python evaluate_coverage.py <language>
     #   python evaluate_coverage.py <language> --per-project
-    #     → 전체 평가 후 이미 생성된 debug CSV를 프로젝트별로 재집계하여 추가 출력
+    #   python evaluate_coverage.py <language> --eval-mode 2
+    #     --eval-mode 0 (기본): 잘린 소스로 컨버전 (실제 코드 완성과 동일)
+    #     --eval-mode 2: 전체 소스 + 커서 위치로 컨버전 (평가 전용 lookahead 허용)
     args = sys.argv[1:]
     per_project = "--per-project" in args
+
+    eval_mode = 0
+    if "--eval-mode" in args:
+        idx = args.index("--eval-mode")
+        if idx + 1 < len(args):
+            eval_mode = int(args[idx + 1])
+
     pos_args = [a for a in args if not a.startswith("--")]
 
     if not pos_args:
-        print(f"Usage: python evaluate_coverage.py <language> [--per-project]")
+        print(f"Usage: python evaluate_coverage.py <language> [--per-project] [--eval-mode <0|2>]")
         print(f"Available: {', '.join(LANG_CONFIGS.keys())}")
         sys.exit(1)
 
@@ -552,7 +562,7 @@ if __name__ == "__main__":
         print(f"Available: {', '.join(LANG_CONFIGS.keys())}")
         sys.exit(1)
 
-    reporter = EvaluationReporter(lang, LANG_CONFIGS[lang])
+    reporter = EvaluationReporter(lang, LANG_CONFIGS[lang], eval_mode=eval_mode)
     reporter.run()
 
     if per_project:

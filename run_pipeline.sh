@@ -32,12 +32,20 @@ TS_DIR="$(cd "$(dirname "$0")" && pwd)"
 # =================[ 인자 파싱 ]=================
 SKIP_COLLECT=false
 PER_PROJECT=false
+EVAL_MODE=0
 
 _POSITIONAL=()
+_SKIP_NEXT=false
 for arg in "$@"; do
+    if [ "$_SKIP_NEXT" = true ]; then
+        EVAL_MODE="$arg"
+        _SKIP_NEXT=false
+        continue
+    fi
     case "$arg" in
         --skip-collect) SKIP_COLLECT=true ;;
         --per-project)  PER_PROJECT=true ;;
+        --eval-mode)    _SKIP_NEXT=true ;;
         *)              _POSITIONAL+=("$arg") ;;
     esac
 done
@@ -243,7 +251,8 @@ echo "    Script : evaluate_coverage.py  (lang=$COVERAGE_LANG)"
 [ "$PER_PROJECT" = true ] && echo "    Mode   : --per-project enabled"
 STEP_START=$(date +%s)
 EXTRA_ARGS=""
-[ "$PER_PROJECT" = true ] && EXTRA_ARGS="--per-project"
+[ "$PER_PROJECT" = true ] && EXTRA_ARGS="$EXTRA_ARGS --per-project"
+[ "$EVAL_MODE" != "0" ] && EXTRA_ARGS="$EXTRA_ARGS --eval-mode $EVAL_MODE"
 cd "$TS_DIR" && _pylog "Step4 evaluate($LANG)" \
     '^\[Global\]|\[[A-Z][A-Z0-9_-]*\] (Total Queries|Top-10 Count|Top11~20|Beyond Top|CPP Fail|Found[[:space:]]|Not Found|Fail[[:space:]]*)|\[Saved\]' \
     "$TS_DIR/evaluate_coverage.py" "$COVERAGE_LANG" $EXTRA_ARGS

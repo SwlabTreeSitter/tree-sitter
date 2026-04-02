@@ -2240,17 +2240,23 @@ static bool ts_parser__advance_for_conversion(
           // fall-through
         }
 
-        // ③ (else-branch): 크기>0 외부 토큰이 커서 경계에 딱 닿는 경우
+        // ③ (else-branch): 크기>0 외부 토큰이 커서 경계에 걸치는 경우
         //   → token_end == target: ⑤ 방식으로 전/후 상태 모두 탐색 (halted copy + fall-through)
+        //   → token_end > target: 커서를 넘어서는 토큰 → freeze (mode 2 full-source 전용 경로)
+        //       mode 0(잘린 소스)에서는 token_end > target이 물리적으로 불가능하므로 기존 동작 무변
         //   → token_end < target: 경계 안 → 진행
         //   내부 스캐너 토큰은 항상 fall-through (SHIFT 허용, 이후 ⑤에서 state 캡처)
+        //   단, 내부 토큰도 token_end > target이면 freeze (mode 2 보정)
         //   예) Haskell _cmd_layout_start (외부, token_end==target): halted copy + SHIFT → state:2 캡처
         //       Haskell `(` (내부, size=2): 진행 → SHIFT → _cmd_texp_start ⑤ → state:7779
-        if (lookahead.ptr
-            && ts_subtree_total_size(lookahead).bytes > 0
-            && ts_subtree_has_external_tokens(lookahead)) {
+        if (lookahead.ptr && ts_subtree_total_size(lookahead).bytes > 0) {
           uint32_t token_end = position + ts_subtree_total_size(lookahead).bytes;
-          if (token_end == target_length) {
+          if (token_end > target_length) {
+            // 토큰이 커서를 넘어감 → 현재 state에서 freeze
+            // (mode 0에서는 이 분기에 진입 불가 → 기존 동작 보존)
+            return false;
+          }
+          if (ts_subtree_has_external_tokens(lookahead) && token_end == target_length) {
             // ⑤: 삽입 전/후 상태 모두 탐색
             StackVersion copy = ts_stack_copy_version(self->stack, version);
             if (copy != STACK_VERSION_NONE) ts_stack_halt(self->stack, copy);
@@ -2296,8 +2302,12 @@ static bool ts_parser__advance_for_conversion(
         fprintf(stderr, "[CACHE_CHK] -> return false (A)\n");
         return false;  // 경우 A
       }
+      uint32_t token_end = position + sz;
+      if (token_end > target_length) {
+        fprintf(stderr, "[CACHE_CHK] -> return false (token_end>target)\n");
+        return false;  // 커서를 넘는 토큰 → freeze
+      }
       if (ext) {
-        uint32_t token_end = position + sz;
         if (token_end == target_length) {
           fprintf(stderr, "[CACHE_CHK] -> halted copy (B: token_end==target)\n");
           // ⑤: 삽입 전/후 상태 모두 탐색
@@ -3262,7 +3272,7 @@ static void add_state_to_union(TSStatePath *union_path, TSStateId state) {
   for (uint32_t i = 0; i < union_path->count; i++) {
     if (union_path->states[i] == state) return; // 이미 존재하면 무시
   }
-  if (union_path->count < 256) { // TSStatePath 최대 크기에 맞춰 안전하게 추가
+  if (union_path->count < MAX_PATH_SIZE) { // TSStatePath 최대 크기에 맞춰 안전하게 추가
     union_path->states[union_path->count++] = state;
   }
 }
@@ -3692,6 +3702,31 @@ TSStatePath ts_parser_parse_string_for_conversion(
 
   // 2. 커스텀 파싱 함수 호출
   return ts_parser_parse_for_conversion(self, old_tree, input, length);
+}
+
+// 평가 전용: 전체 소스를 전달하되 커서 위치만 별도로 지정.
+// 렉서/외부 스캐너가 cursor_byte 이후를 lookahead로 활용할 수 있어
+// 잘린 소스로 인한 강제 EOF를 피할 수 있다.
+// freeze 기준(target_length)은 cursor_byte로 유지되므로
+// 커서 위치에서의 상태 캡처 로직은 기존과 동일하게 동작한다.
+TSStatePath ts_parser_parse_string_for_conversion_with_lookahead(
+  TSParser *self,
+  const TSTree *old_tree,
+  const char *string,
+  uint32_t full_length,
+  uint32_t cursor_byte
+) {
+  // 입력 범위는 전체 소스 (렉서가 cursor_byte 이후도 읽을 수 있음)
+  TSStringInput input_data = {string, full_length};
+  TSInput input = {
+    &input_data,
+    ts_string_input_read,
+    TSInputEncodingUTF8,
+    NULL,
+  };
+
+  // freeze 기준은 cursor_byte (target_length로 전달)
+  return ts_parser_parse_for_conversion(self, old_tree, input, cursor_byte);
 }
 
 void ts_parser_set_wasm_store(TSParser *self, TSWasmStore *store) {

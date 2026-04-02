@@ -3,60 +3,50 @@ generate_not_found_breakdown.py
 
 언어별 debug_coverage_<lang>/*.csv 와 reports/<lang>/*.json 을 읽어
 NOT_FOUND 케이스를 Data Shortage / Conversion Error 로 분류한 뒤
-reports/not_found_breakdown.md 로 출력한다.
+reports/not_found_summary.csv / not_found_detail.csv 로 출력한다.
 
-분류 기준:
-  - LR Items (LR_Items_Dump.txt) 에서 state_id -> 가능한 suffix 집합을 빌드
-  - NOT_FOUND 커서 위치의 정답 후보 전체(JSON)를 state_list 의 LR items 와 매칭
-  - 하나라도 매칭 → Data Shortage (상태는 맞지만 DB에 학습 데이터 없음)
-  - 전혀 매칭 안됨 → Conversion Error (컨버전이 잘못된 상태를 반환함)
+분류 기준 (state_id 직접 비교):
+  - JSON 의 state_id 집합과 컨버전 State_List 의 교집합으로 판단
+  - 교집합 ≠ ∅ → Data Shortage (컨버전이 올바른 상태를 반환했지만 DB에 학습 데이터 없음)
+  - 교집합 = ∅  → Conversion Error (컨버전이 잘못된 상태를 반환함)
 """
 
 import os
-import re
 import csv
 import ast
 import json
-from collections import defaultdict, Counter
+from collections import Counter
 
 LANG_CONFIGS = {
     "c": {
-        "lr_items": "/home/hyeonjin/PL/tree-sitter-c/LR_Items_Dump.txt",
         "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/c11/debug_coverage_c",
         "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/c11",
     },
     "haskell": {
-        "lr_items": "/home/hyeonjin/PL/tree-sitter-haskell/LR_Items_Dump.txt",
         "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/haskell/debug_coverage_haskell",
         "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/haskell",
     },
     "ruby": {
-        "lr_items": "/home/hyeonjin/PL/tree-sitter-ruby/LR_Items_Dump.txt",
         "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/ruby/debug_coverage_ruby",
         "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/ruby",
     },
     "php": {
-        "lr_items": "/home/hyeonjin/PL/tree-sitter-php/php/LR_Items_Dump.txt",
         "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/php/debug_coverage_php",
         "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/php",
     },
     "javascript": {
-        "lr_items": "/home/hyeonjin/PL/tree-sitter-javascript/LR_Items_Dump.txt",
         "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/javascript/debug_coverage_javascript",
         "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/javascript",
     },
     "cpp": {
-        "lr_items": "/home/hyeonjin/PL/tree-sitter-cpp/LR_Items_Dump.txt",
         "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/cpp/debug_coverage_cpp",
         "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/cpp",
     },
     "java": {
-        "lr_items": "/home/hyeonjin/PL/tree-sitter-java/LR_Items_Dump.txt",
         "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/java/debug_coverage_java",
         "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/java",
     },
     "python": {
-        "lr_items": "/home/hyeonjin/PL/tree-sitter-python/LR_Items_Dump.txt",
         "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/python/debug_coverage_python",
         "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/python",
     },
@@ -67,45 +57,23 @@ OUTPUT_DETAIL  = "/home/hyeonjin/PL/tree-sitter/reports/not_found_detail.csv"
 LANG_ORDER     = ["c", "haskell", "ruby", "php", "javascript", "cpp", "java", "python"]
 
 
-def build_lr_index(lr_path):
-    """state_id -> set of suffixes after • (lookahead 제외)."""
-    state_suffixes = defaultdict(set)
-    current_state = None
-    with open(lr_path, encoding="utf-8") as f:
-        for line in f:
-            m = re.match(r'^State (\d+):', line)
-            if m:
-                current_state = int(m.group(1))
-            elif current_state is not None and '•' in line:
-                after = line.split('•', 1)[1].split('[Lookahead')[0].strip()
-                if after:
-                    state_suffixes[current_state].add(after)
-    return state_suffixes
+def is_data_shortage_by_state(states, gt_entries):
+    """State_List 와 JSON state_id 집합의 교집합 여부로 판단."""
+    gt_state_ids = {e["state_id"] for e in gt_entries}
+    return bool(set(states) & gt_state_ids)
 
 
-def is_in_lr(state_suffixes, states, candidates):
-    """candidates 중 하나라도 states 의 LR items 에 존재하면 True."""
-    for sid in states:
-        suffixes = state_suffixes.get(sid, set())
-        for gt in candidates:
-            if gt in suffixes:
-                return True
-    return False
-
-
-def first_matched_candidate(state_suffixes, states, candidates):
-    """매칭된 첫 번째 candidate 반환 (데이터 부족 레이블용)."""
-    for gt in candidates:
-        for sid in states:
-            if gt in state_suffixes.get(sid, set()):
-                return gt
-    return candidates[0]
+def first_matched_candidate_state(states, gt_entries):
+    """[현재 방식] State_List 와 교집합인 state_id 의 candidate 반환."""
+    gt_state_ids = {e["state_id"] for e in gt_entries}
+    matched_ids = set(states) & gt_state_ids
+    for e in gt_entries:
+        if e["state_id"] in matched_ids:
+            return e["candidate"]
+    return gt_entries[0]["candidate"]
 
 
 def analyze_lang(cfg):
-    print(f"  Building LR index: {cfg['lr_items']}")
-    state_suffixes = build_lr_index(cfg["lr_items"])
-
     shortage = Counter()
     conv_err = Counter()
 
@@ -115,29 +83,30 @@ def analyze_lang(cfg):
         csv_path  = os.path.join(cfg["debug_dir"], fname)
         json_path = os.path.join(cfg["json_dir"], fname.replace(".csv", ".json"))
 
-        gt_map = {}
+        # JSON: loc -> entries (state_id + candidate 목록)
+        gt_map = {}  # loc -> [{"state_id": ..., "candidate": ...}]
         if os.path.exists(json_path):
             with open(json_path, encoding="utf-8") as f:
                 jdata = json.load(f)
             for loc_key, entries in jdata.items():
-                gt_map[loc_key] = [e["candidate"] for e in entries]
+                gt_map[loc_key] = entries
 
         with open(csv_path, encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for row in reader:
                 if row["Coverage_Result"] != "NOT_FOUND":
                     continue
-                loc     = row["Location"].strip('"')
-                csv_gt  = row["Ground_Truth"].strip()
+                loc    = row["Location"].strip('"')
+                csv_gt = row["Ground_Truth"].strip()
                 try:
                     states = ast.literal_eval(row["State_List"])
                 except Exception:
                     continue
 
-                candidates = gt_map.get(loc, [csv_gt])
+                gt_entries = gt_map.get(loc)
 
-                if is_in_lr(state_suffixes, states, candidates):
-                    matched = first_matched_candidate(state_suffixes, states, candidates)
+                if gt_entries and is_data_shortage_by_state(states, gt_entries):
+                    matched = first_matched_candidate_state(states, gt_entries)
                     shortage[matched] += 1
                 else:
                     conv_err[csv_gt] += 1
