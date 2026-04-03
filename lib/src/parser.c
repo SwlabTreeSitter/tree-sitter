@@ -3100,7 +3100,13 @@ static void get_visual_position_from_offset(const char *text, uint32_t target_of
         if (current_char == '\n') {
             current_row++; current_col = 0; current_offset++;
         } else if (current_char == '\r' && text[current_offset + 1] == '\n') {
-            current_row++; current_col = 0; current_offset += 2;
+            if (current_offset + 1 == target_offset) {
+                // target이 \r\n 쌍의 \n을 가리키는 경우:
+                // \r을 현재 행의 일반 문자로 처리하여 왕복 정확성을 보장한다.
+                current_col++; current_offset++;
+            } else {
+                current_row++; current_col = 0; current_offset += 2;
+            }
         } else if (current_char == '\t') {
             current_col = ((current_col / tab_width) + 1) * tab_width; current_offset++;
         } else {

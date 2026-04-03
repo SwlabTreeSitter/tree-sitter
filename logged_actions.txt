@@ -1,14 +1,14 @@
-[SHIFT] State 1 -> 1, symbol: comment (179, /**\r\n * @file\r\n * @brief [Eight Queens](https://en.wikipedia.org/wiki/Eight_queens_puzzle)\r\n * puzzle, printing all solutions\r\n *\r\n * @author [Himani Negi](https://github.com/Himani2000)\r\n * @author [David Leal](https://github.com/Panquesito7)\r\n *\r\n */)
+[SHIFT] State 1 -> 1, symbol: comment (179, /**\n * @file \n * @brief  Implementation of [Hopcroft–Karp](https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm) algorithm.\n * @details \n * The Hopcroft–Karp algorithm is an algorithm that takes as input a bipartite graph \n * and produces as output a maximum cardinality matching, it runs in O(E√V) time in worst case.\n * \n * ### Bipartite graph\n * A bipartite graph (or bigraph) is a graph whose vertices can be divided into two disjoint \n * and independent sets U and V such that every edge connects a vertex in U to one in V. \n * Vertex sets U and V are usually called the parts of the graph. \n * Equivalently, a bipartite graph is a graph that does not contain any odd-length cycles.\n * \n * ### Matching and Not-Matching edges\n * Given a matching M, edges that are part of matching are called Matching edges and edges that are not part \n * of M (or connect free nodes) are called Not-Matching edges.\n * \n * ### Maximum cardinality matching\n * Given a bipartite graphs G = ( V = ( X , Y ) , E ) whose partition has the parts X and Y, \n * with E denoting the edges of the graph, the goal is to find a matching with as many edges as possible. \n * Equivalently, a matching that covers as many vertices as possible.\n * \n * ### Augmenting paths\n * Given a matching M, an augmenting path is an alternating path that starts from and ends on free vertices. \n * All single edge paths that start and end with free vertices are augmenting paths.\n * \n * \n * ### Concept\n * A matching M is not maximum if there exists an augmenting path. It is also true other way,\n * i.e, a matching is maximum if no augmenting path exists.\n * \n * \n * ### Algorithm\n * 1) Initialize the Maximal Matching M as empty.\n * 2) While there exists an Augmenting Path P\n *   Remove matching edges of P from M and add not-matching edges of P to M\n *   (This increases size of M by 1 as P starts and ends with a free vertex\n *   i.e. a node that is not part of matching.)\n * 3) Return M. \n * \n * \n *\n * @author [Krishna Pal Deora](https://github.com/Krishnapal4050)\n * \n */)
 [SHIFT] State: 1 -> 8864, symbol: #include (2)
-[SHIFT] State 8864 -> 11404, symbol: system_lib_string (174, <array>)
-[SHIFT] State 11404 -> 11404, symbol: comment (179, /// for std::array)
-[SHIFT] State 11404 -> 595, symbol: preproc_include_token2 (3, \n)
-[REDUCE] State 595 -> GOTO 34, symbol: preproc_include, child 3 { 'system_lib_string(<array>)' 'comment(/// for std::array)' 'preproc_include_token2(\n)' }
-[SHIFT] State: 34 -> 8864, symbol: #include (2)
 [SHIFT] State 8864 -> 11404, symbol: system_lib_string (174, <iostream>)
-[SHIFT] State 11404 -> 11404, symbol: comment (179, /// for IO operations)
 [SHIFT] State 11404 -> 595, symbol: preproc_include_token2 (3, \n)
-[REDUCE] State 595 -> GOTO 35, symbol: preproc_include, child 3 { 'system_lib_string(<iostream>)' 'comment(/// for IO operations)' 'preproc_include_token2(\n)' }
-[REDUCE] State 35 -> GOTO 34, symbol: translation_unit_repeat1, child 2 { '#include' 'preproc_include' }
+[REDUCE] State 595 -> GOTO 34, symbol: preproc_include, child 3 { '#include' 'system_lib_string(<iostream>)' 'preproc_include_token2(\n)' }
+[SHIFT] State: 34 -> 8864, symbol: #include (2)
+[SHIFT] State 8864 -> 11404, symbol: system_lib_string (174, <cstdlib>)
+[RECOVER] State 0, symbol: end, Row: 50, Column:1
+[V-SHIFT] State 11404 -> 595, symbol: preproc_include_token2 (3, virtual)
+[V-REDUCE] State 595 -> GOTO 35, symbol: preproc_include, child 3 { '#include' 'system_lib_string(<cstdlib>)' 'preproc_include_token2(virtual)' }
+[V-REDUCE] State 35 -> GOTO 34, symbol: translation_unit_repeat1, child 2 { 'preproc_include' 'preproc_include' }
 [REDUCE] State 34 -> GOTO 10785, symbol: translation_unit, child 1 { 'translation_unit_repeat1' }
 [ACCEPT] State 10785
+[REDUCE] State 1 -> GOTO 10785, symbol: translation_unit, child 0[ACCEPT] State 10785
