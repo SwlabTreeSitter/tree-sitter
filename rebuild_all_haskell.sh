@@ -53,24 +53,28 @@ fi
 echo ""
 echo "=== [4] Rebuild TreeSitterCutFile (g++) ==="
 cd "$TS_DIR"
-rm -f *.o "$EXE_NAME"
+BUILD_TMP="build_$$"
+rm -f "${BUILD_TMP}_lib.o" "${BUILD_TMP}_main.o" "${BUILD_TMP}_exe"
 
 echo " -> Compiling lib.c..."
 gcc -c lib/src/lib.c \
     -Ilib/include -Ilib/src \
-    -std=c99 -D_GNU_SOURCE -O2 -fPIC -o lib.o
+    -std=c99 -D_GNU_SOURCE -O2 -fPIC -o "${BUILD_TMP}_lib.o"
 
 echo " -> Compiling TreeSitterCutFile.cpp..."
 g++ -c TreeSitterCutFile.cpp \
     -Ilib/include \
-    -std=c++17 -O2 -fPIC -o main.o
+    -std=c++17 -O2 -fPIC -o "${BUILD_TMP}_main.o"
 
 echo " -> Linking..."
-g++ -o "$EXE_NAME" main.o lib.o -ldl
+g++ -o "${BUILD_TMP}_exe" "${BUILD_TMP}_main.o" "${BUILD_TMP}_lib.o" -ldl
 
-if [ -f "$EXE_NAME" ]; then
+if [ -f "${BUILD_TMP}_exe" ]; then
+    mv -f "${BUILD_TMP}_exe" "$EXE_NAME"
     echo " -> Build success: $EXE_NAME"
+    rm -f "${BUILD_TMP}_lib.o" "${BUILD_TMP}_main.o"
 else
+    rm -f "${BUILD_TMP}_lib.o" "${BUILD_TMP}_main.o" "${BUILD_TMP}_exe"
     echo " -> Build failed"
     exit 1
 fi
@@ -96,6 +100,9 @@ if [ -d "$EXT_DIR" ]; then
         echo " -> Running npm install..."
         npm install
     fi
+
+    echo " -> Generating build config (binding.gyp, addon.cc)..."
+    python3 generate_build_config.py
 
     echo " -> Running node-gyp rebuild..."
     npx node-gyp rebuild

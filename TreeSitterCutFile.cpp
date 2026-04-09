@@ -42,7 +42,10 @@ extern "C" {
     void ts_parser_write_conversion_result(TSParser *self, TSStatePath *path, FILE *fp);
 
     // 컬렉션
-    bool ts_parser_run_collection2(TSTree *tree, const char *source_code, uint32_t length, FILE *OutputFile);
+    bool ts_parser_run_collection2(TSParser *self, TSTree *tree, const char *source_code, uint32_t length, FILE *OutputFile);
+
+    // 컬렉션 모드 설정
+    void ts_parser_set_collection_mode(TSParser *self, bool enabled);
 
     // 로그 덤프
     void ts_parser_write_logged_actions(TSParser *self, const char *filename);
@@ -122,18 +125,27 @@ int main(int argc, char* argv[]) {
     uint32_t stop_col = 0;
 
     int execution_mode = 0;
+    bool byte_mode = false;      // --byte 모드: 바이트 오프셋 직접 지정
+    size_t byte_offset = 0;
 
     // ==========================================================
     // 1. 인자 파싱 및 검증
-    // 사용법 1 (컬렉션): exe lang dll file 1
-    // 사용법 2 (컨버전): exe lang dll file row col 0
+    // 사용법 1 (컬렉션):        exe lang dll file 1
+    // 사용법 2 (컨버전 좌표):    exe lang dll file row col 0|2
+    // 사용법 3 (컨버전 바이트):  exe lang dll file --byte offset 0|2
     // ==========================================================
     if (argc >= 4) {
         language_name = argv[1];
         library_path = argv[2];
         target_path = argv[3];
 
-        if (argc == 7) {
+        if (argc == 7 && std::string(argv[4]) == "--byte") {
+            // 바이트 오프셋 직접 지정 모드
+            byte_mode = true;
+            byte_offset = std::stoul(argv[5]);
+            execution_mode = std::stoi(argv[6]);
+        }
+        else if (argc == 7) {
             stop_row = std::stoul(argv[4]);
             stop_col = std::stoul(argv[5]);
             execution_mode = std::stoi(argv[6]);
@@ -151,8 +163,8 @@ int main(int argc, char* argv[]) {
     usage_error:
         std::cerr << "Usage:" << std::endl;
         std::cerr << "  Collection:          " << argv[0] << " <lang> <dll> <file> 1" << std::endl;
-        std::cerr << "  Conversion:          " << argv[0] << " <lang> <dll> <file> <row> <col> 0" << std::endl;
-        std::cerr << "  Conversion (eval):   " << argv[0] << " <lang> <dll> <file> <row> <col> 2" << std::endl;
+        std::cerr << "  Conversion:          " << argv[0] << " <lang> <dll> <file> <row> <col> 0|2" << std::endl;
+        std::cerr << "  Conversion (byte):   " << argv[0] << " <lang> <dll> <file> --byte <offset> 0|2" << std::endl;
         return 1;
     }
 
@@ -194,9 +206,29 @@ int main(int argc, char* argv[]) {
         // 3. 실행 길이(Position) 결정
         // ==========================================================
         if (execution_mode == 0 || execution_mode == 2) {
-            std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
-            size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
-            effective_length = (std::min)(source_code.length(), stop_offset);
+            if (byte_mode) {
+                // --byte 모드: 바이트 오프셋 직접 사용 (FindByteOffsetForPosition 불필요)
+                effective_length = (std::min)(source_code.length(), byte_offset);
+                std::cout << "--- Stop at byte offset " << effective_length << " ---" << std::endl;
+            } else {
+                // 기존 모드: (행, 열) → 바이트 변환
+                std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
+                size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
+                effective_length = (std::min)(source_code.length(), stop_offset);
+            }
+            // 줄바꿈 보정 (layout 의존 언어만):
+            // haskell 등에서는 \n이 layout 구분자이므로 포함해야 파싱이 올바르다.
+            // C/C++에서는 \n이 preproc_include_token2 토큰 자체이므로 넘기면 안 된다.
+            // 바이트 직접 전달 방식에서는 C/C++는 보정 불필요 (왕복 오류 없음).
+            if (language_name == "haskell" && effective_length < source_code.length()) {
+                if (source_code[effective_length] == '\r' &&
+                    effective_length + 1 < source_code.length() &&
+                    source_code[effective_length + 1] == '\n') {
+                    effective_length += 2;  // \r\n
+                } else if (source_code[effective_length] == '\n') {
+                    effective_length += 1;  // \n
+                }
+            }
             std::cout << "DEBUG: Effective parsing length set to " << effective_length << " bytes." << std::endl;
         } else {
             // 컬렉션 모드(1)는 파일 전체를 파싱합니다.
@@ -216,6 +248,11 @@ int main(int argc, char* argv[]) {
             ts_parser_set_logger(parser, logger);
         }
 
+        // 컬렉션 모드일 때: SHIFT 시 리프에 reduce 후 GOTO 상태(S2)를 저장
+        if (execution_mode == 1) {
+            ts_parser_set_collection_mode(parser, true);
+        }
+
         // 파싱 실행
         std::cout << "DEBUG: Parsing start ..." << std::endl;
         TSTree *tree = ts_parser_parse_string(
@@ -225,6 +262,11 @@ int main(int argc, char* argv[]) {
             static_cast<uint32_t>(effective_length)
         );
         std::cout << "DEBUG: Parsing finished." << std::endl;
+
+        // 컬렉션 모드 해제
+        if (execution_mode == 1) {
+            ts_parser_set_collection_mode(parser, false);
+        }
 
         // 로깅 종료
         if (debug_fp) {
@@ -246,7 +288,7 @@ int main(int argc, char* argv[]) {
 
                 FILE *collection_fp = fopen("Test.data", "w");
                 if (collection_fp) {
-                    bool is_success = ts_parser_run_collection2(tree, source_code.c_str(), static_cast<uint32_t>(effective_length), collection_fp);
+                    bool is_success = ts_parser_run_collection2(parser, tree, source_code.c_str(), static_cast<uint32_t>(effective_length), collection_fp);
                     fclose(collection_fp);
 
                     if (!is_success) {

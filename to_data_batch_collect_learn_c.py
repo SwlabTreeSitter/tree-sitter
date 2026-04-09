@@ -6,6 +6,7 @@
 import os
 import subprocess
 import shutil
+import tempfile
 
 # =================[ 설정 영역 ]=================
 
@@ -54,6 +55,9 @@ def main():
     os.makedirs(OUTPUT_DIR)
     print(f"[Info] Created output directory: {OUTPUT_DIR}")
 
+    work_dir = tempfile.mkdtemp(prefix="collect_")
+    print(f"[Info] Work dir: {work_dir}")
+
     # 스킵된 파일 목록 저장용 로그 파일 초기화
     SKIP_LOG_PATH = os.path.join(OUTPUT_DIR, "skipped_files.txt")
     with open(SKIP_LOG_PATH, "w", encoding="utf-8") as f:
@@ -85,7 +89,7 @@ def main():
             # [파일명 생성] ansi_c/cJSON/cJSON.c -> ansi_c_cJSON_cJSON.c.data
             safe_name = rel_path.replace(os.path.sep, "_").replace("..", "") + ".data"
             final_output_path = os.path.join(OUTPUT_DIR, safe_name)
-            generated_file = "Test.data"
+            generated_file = os.path.join(work_dir, "Test.data")
 
             # [안전장치] 이전 루프의 잔여 파일 삭제
             if os.path.exists(generated_file):
@@ -101,10 +105,11 @@ def main():
 
             try:
                 result = subprocess.run(
-                    cmd, 
-                    check=False, 
-                    capture_output=True, 
-                    text=True
+                    cmd,
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                    cwd=work_dir
                 )
                 
                 # 1. stderr에서 [Skip] 메시지 감지
@@ -151,6 +156,8 @@ def main():
                 # 로그 기록
                 with open(SKIP_LOG_PATH, "a", encoding="utf-8") as log_f:
                     log_f.write(f"{rel_path}\n")
+
+    shutil.rmtree(work_dir, ignore_errors=True)
 
     print("\n" + "="*30)
     print(f"[*] SCAN COMPLETED")

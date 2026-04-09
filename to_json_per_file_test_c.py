@@ -52,7 +52,7 @@ def process_one_data_file(file_path: str) -> dict:
             # 예: "  1,1: int"
             elif waiting_for_location and line.strip():
                 if ":" in line:
-                    loc_part = line.split(":", 1)[0].strip()
+                    loc_part = line.split(":", 1)[0].strip().lstrip("@")
                     if loc_part not in extracted_data:
                         extracted_data[loc_part] = []
                     extracted_data[loc_part].append({

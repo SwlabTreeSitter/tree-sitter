@@ -31,7 +31,7 @@ ALL_LANGUAGES=(smallbasic c11 haskell ruby php javascript cpp java python)
 # 인자 파싱: 플래그 분리
 SKIP_COLLECT_FLAG=""
 PER_PROJECT_FLAG=""
-EVAL_MODE_FLAG=""
+EVAL_MODE_FLAG="--eval-mode 2"
 LANG_ARGS=()
 _SKIP_NEXT=false
 for arg in "$@"; do

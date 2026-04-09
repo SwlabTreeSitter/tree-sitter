@@ -58,9 +58,9 @@ class FileReporter:
     # [핵심] 단일 위치 실행 함수 (Iterative Execution)
     # C++ 프로그램을 특정 Row, Col 좌표로 실행하여 예측값(State List)을 받아옴
     # -------------------------------------------------------------------------
-    def run_cpp_at_position(self, target_file, row, col):
+    def run_cpp_at_position(self, target_file, byte_offset):
         # 명령어: EXE lang lib file row col 0(ConversionMode)
-        cmd = [EXE_PATH, "smallbasic", LIB_PATH, target_file, str(row), str(col), "0"]
+        cmd = [EXE_PATH, "smallbasic", LIB_PATH, target_file, "--byte", str(byte_offset), "2"]
         
         try:
             # 프로세스 실행 (매번 실행하므로 오버헤드 있음)
@@ -186,11 +186,10 @@ class FileReporter:
             if processed_locs % 10 == 0:
                 print(f"    Processing {processed_locs}/{total_locations}...", end="\r")
 
-            # 1. 좌표 파싱 ("2,15" -> row=2, col=15)
+            # 1. 바이트 오프셋 파싱
             try:
-                r_str, c_str = loc_key.split(",")
-                row, col = int(r_str), int(c_str)
-            except:
+                byte_offset = int(loc_key)
+            except ValueError:
                 continue
 
             # 2. 정답 데이터 확인
@@ -198,7 +197,7 @@ class FileReporter:
                 continue
 
             # 3. [핵심] C++ 실행 (단일 위치)
-            predicted_states = self.run_cpp_at_position(sb_file, row, col)
+            predicted_states = self.run_cpp_at_position(sb_file, byte_offset)
 
             # State List 포맷팅
             if predicted_states:

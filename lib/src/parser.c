@@ -106,6 +106,15 @@ typedef Array(TSLoggedAction) TSLoggedActionArray;
 
 typedef Array(TSSymbol) TSSymbolArray;
 
+// [collection_mode] reduce 후 shift된 리프의 shift 시점 상태(S2) 저장용
+// parse_state(S1)와 다를 때만 저장하며, collect_recursive에서 byte_offset으로 조회
+typedef struct {
+  uint32_t byte_offset;   // 리프의 시작 바이트 위치
+  TSStateId shift_state;  // shift 직전의 파서 상태 (S2)
+} ShiftStateEntry;
+
+typedef Array(ShiftStateEntry) ShiftStateArray;
+
 struct TSParser {
   Lexer lexer;
   Stack *stack;
@@ -118,6 +127,8 @@ struct TSParser {
   uint32_t cursor_row;   // 커서 위치
   uint32_t cursor_col;
   bool bIsCollectionOrParseStateID; // 컨버전, 컬렉션 모드 설정 변수
+  bool collection_mode;             // 컬렉션 모드 플래그
+  ShiftStateArray shift_state_map;  // [collection_mode] (byte_offset → S2) 매핑
 
   Subtree finished_tree;  // 최종 선택된 트리
   SubtreeArray trailing_extras;
@@ -958,6 +969,20 @@ static void ts_parser__shift(
     MutableSubtree result = ts_subtree_make_mut(&self->tree_pool, lookahead);
     ts_subtree_set_extra(&result, extra);
     subtree_to_push = ts_subtree_from_mut(result);
+  }
+
+  // [collection_mode] S1(lex 시점) ≠ S2(shift 시점)인 리프를 별도 배열에 기록한다.
+  // parse_state는 S1 그대로 유지 → first_leaf.parse_state 전파 오염 방지.
+  // collect_recursive에서 pre-resync 실패 시 이 배열에서 S2를 조회한다.
+  if (self->collection_mode && is_leaf && !extra) {
+    TSStateId shift_from = ts_stack_state(self->stack, version); // S2: shift 직전 상태
+    TSStateId leaf_ps = ts_subtree_parse_state(subtree_to_push);
+    if (shift_from != leaf_ps) {
+      uint32_t start_byte = ts_stack_position(self->stack, version).bytes
+                            + ts_subtree_padding(subtree_to_push).bytes;
+      ShiftStateEntry entry = { .byte_offset = start_byte, .shift_state = shift_from };
+      array_push(&self->shift_state_map, entry);
+    }
   }
 
   ts_stack_push(self->stack, version, subtree_to_push, !is_leaf, state);
@@ -2740,7 +2765,9 @@ TSParser *ts_parser_new(void) {
   array_reserve(&self->logged_actions, 2048);
 
   // 동작 모드 설정 (default: 컨버전)
-  self->bIsCollectionOrParseStateID = false; 
+  self->bIsCollectionOrParseStateID = false;
+  self->collection_mode = false;
+  array_init(&self->shift_state_map);
   // -----------------------------------------------------
 
   self->tree_pool = ts_subtree_pool_new(32);
@@ -2777,6 +2804,9 @@ void ts_parser_delete(TSParser *self) {
   if (self->logged_actions.contents) {
     array_delete(&self->logged_actions);
   }
+  if (self->shift_state_map.contents) {
+    array_delete(&self->shift_state_map);
+  }
   // -----------------------------------------------------
   if (self->included_range_differences.contents) {
     array_delete(&self->included_range_differences);
@@ -2798,6 +2828,13 @@ void ts_parser_delete(TSParser *self) {
 
 const TSLanguage *ts_parser_language(const TSParser *self) {
   return self->language;
+}
+
+void ts_parser_set_collection_mode(TSParser *self, bool enabled) {
+  self->collection_mode = enabled;
+  if (enabled) {
+    array_clear(&self->shift_state_map);
+  }
 }
 
 bool ts_parser_set_language(TSParser *self, const TSLanguage *language) {
@@ -3084,7 +3121,27 @@ typedef struct {
     const TSLanguage *lang;
     uint32_t byte_offset;   // 현재 커서 위치 (Bytes)
     TSPoint point_offset;   // 현재 커서 위치 (Row, Col)
+    const ShiftStateArray *shift_state_map;  // [collection_mode] (byte_offset → S2) 매핑
 } CollectionContext;
+
+// [Helper] shift_state_map에서 byte_offset으로 S2를 조회 (이진 탐색)
+// 배열은 파싱 순서대로 추가되므로 byte_offset이 정렬되어 있음
+static TSStateId lookup_shift_state(const ShiftStateArray *map, uint32_t byte_offset) {
+  if (!map || map->size == 0) return 0;
+  uint32_t lo = 0, hi = map->size;
+  while (lo < hi) {
+    uint32_t mid = (lo + hi) / 2;
+    if (map->contents[mid].byte_offset < byte_offset) {
+      lo = mid + 1;
+    } else {
+      hi = mid;
+    }
+  }
+  if (lo < map->size && map->contents[lo].byte_offset == byte_offset) {
+    return map->contents[lo].shift_state;
+  }
+  return 0;  // 매칭 없음 (S1 == S2였던 경우)
+}
 
 // [Helper] 바이트 오프셋 → 시각적 행/열 좌표 변환 (collection2에서 사용)
 static void get_visual_position_from_offset(const char *text, uint32_t target_offset, uint32_t *out_row, uint32_t *out_col) {
@@ -3134,16 +3191,9 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
   uint32_t start_byte = ctx->byte_offset + padding.bytes;
   uint32_t length_byte = size.bytes;
 
-  // 3. 출력 형식: "  행,열: "
+  // 3. 출력: 바이트 오프셋을 메인 키로 기록
   if (length_byte > 0 && start_byte < ctx->source_len) {
-    uint32_t vis_row = 0;
-    uint32_t vis_col = 0;
-
-    // [핵심 수정] 절대 바이트 오프셋을 역함수에 넣어 에디터 기준(Visual) 좌표로 변환
-    get_visual_position_from_offset(ctx->source, start_byte, &vis_row, &vis_col);
-
-    // 행과 열은 보통 1부터 시작하므로 각각 +1
-    fprintf(ctx->file, "  %u,%u: \n", vis_row + 1, vis_col + 1);
+    fprintf(ctx->file, "  @%u: \n", start_byte);
   }
 
   // 4. 다음 형제를 위해 임시 컨텍스트의 커서를 이동시킴
@@ -3155,7 +3205,7 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
 
 // [new]
 void collect_recursive(
-  CollectionContext *ctx, 
+  CollectionContext *ctx,
   Subtree tree,
   TSStateId state_from_parent
 ) {
@@ -3181,12 +3231,36 @@ void collect_recursive(
                           ts_subtree_symbol(tree) == ts_builtin_sym_error_repeat;
 
   TSStateId current_node_state = ts_subtree_parse_state(tree);
-  // Fragile 노드(TS_TREE_STATE_NONE = USHRT_MAX)는 parse_state를 신뢰할 수 없음.
-  // 이 경우 첫 번째 리프의 실제 parse_state를 fallback으로 사용한다.
-  // (state_from_parent는 부모도 fragile일 수 있어 부적절)
-  TSStateId running_state = (current_node_state < ctx->lang->state_count)
-    ? current_node_state
-    : ts_subtree_leaf_parse_state(tree);
+  TSStateId running_state;
+  if (current_node_state < ctx->lang->state_count) {
+    // 1순위: 노드 자체의 parse_state (non-fragile)
+    running_state = current_node_state;
+  } else {
+    // Fragile 노드 → 첫 리프의 S1로 시도, 실패 시 shift_state_map에서 S2 조회
+    running_state = ts_subtree_leaf_parse_state(tree);
+    if (ctx->shift_state_map && running_state < ctx->lang->state_count) {
+      // running_state(S1)로 첫 비-extra 자식에 대해 next_state 테스트
+      Subtree *children = ts_subtree_children(tree);
+      for (uint32_t k = 0; k < count; k++) {
+        if (ts_subtree_extra(children[k])) continue;
+        TSSymbol first_sym = ts_subtree_symbol(children[k]);
+        if (ts_language_next_state(ctx->lang, running_state, first_sym) == 0) {
+          // S1이 stuck → S2 조회
+          uint32_t first_byte = ctx->byte_offset;
+          // 첫 비-extra 자식까지의 padding을 더함
+          for (uint32_t p = 0; p <= k; p++) {
+            if (p < k) first_byte += ts_subtree_total_bytes(children[p]);
+            else first_byte += ts_subtree_padding(children[p]).bytes;
+          }
+          TSStateId s2 = lookup_shift_state(ctx->shift_state_map, first_byte);
+          if (s2 > 0 && s2 < ctx->lang->state_count) {
+            running_state = s2;
+          }
+        }
+        break;
+      }
+    }
+  }
 
   // 자식 순회
   for (uint32_t i = 0; i < count; i++) {
@@ -3198,15 +3272,29 @@ void collect_recursive(
     bool is_extra = ts_subtree_extra(child);
 
     // [pre-resync] 리프 자식을 기록하기 전에 running_state가 stuck 상태인지 확인한다.
-    // running_state가 reduce-only 상태여서 next_state=0이 되는 경우,
-    // 리프 자신의 parse_state(실제 렉싱/SHIFT 시점 상태)로 재동기화한다.
+    // 1) 리프의 parse_state(S1)로 시도
+    // 2) 실패 시 shift_state_map에서 S2를 조회하여 재시도
     if (is_leaf && !is_extra && running_state > 0 && running_state < ctx->lang->state_count) {
       if (ts_language_next_state(ctx->lang, running_state, child_sym) == 0) {
+        // 1차: S1(lex 시점 상태)로 resync 시도
         TSStateId leaf_state = ts_subtree_leaf_parse_state(child);
+        bool resynced = false;
         if (leaf_state != running_state && leaf_state < ctx->lang->state_count) {
           TSStateId leaf_next = ts_language_next_state(ctx->lang, leaf_state, child_sym);
           if (leaf_next != 0) {
-            running_state = leaf_state;  // 기록 전에 재동기화
+            running_state = leaf_state;
+            resynced = true;
+          }
+        }
+        // 2차: S1으로 실패 시, shift_state_map에서 S2 조회
+        if (!resynced && ctx->shift_state_map) {
+          uint32_t child_start = ctx->byte_offset + ts_subtree_padding(child).bytes;
+          TSStateId s2 = lookup_shift_state(ctx->shift_state_map, child_start);
+          if (s2 > 0 && s2 != running_state && s2 < ctx->lang->state_count) {
+            TSStateId s2_next = ts_language_next_state(ctx->lang, s2, child_sym);
+            if (s2_next != 0) {
+              running_state = s2;
+            }
           }
         }
       }
@@ -3228,7 +3316,7 @@ void collect_recursive(
       if (!contaminated) {
         // line 1: state + symbols
         fprintf(ctx->file, "%u", running_state);
-        
+
         for (uint32_t j = i; j < count; j++) {
           if (ts_subtree_extra(children[j])) continue;
           TSSymbol sym = ts_subtree_symbol(children[j]);
@@ -3255,14 +3343,25 @@ void collect_recursive(
       if (next != 0) {
         running_state = next;
       } else if (is_leaf) {
-        // running_state가 stuck(e.g. reduce state)일 수 있음.
-        // 리프 자신의 parse_state가 실제 렉싱/SHIFT 상태를 반영하므로,
-        // 그 상태에서 child_sym을 SHIFT할 수 있으면 재동기화한다.
+        // running_state가 stuck → S1で resync 시도, 실패 시 S2로 재시도
         TSStateId leaf_state = ts_subtree_leaf_parse_state(child);
+        bool resynced = false;
         if (leaf_state != running_state && leaf_state < ctx->lang->state_count) {
           TSStateId leaf_next = ts_language_next_state(ctx->lang, leaf_state, child_sym);
           if (leaf_next != 0) {
             running_state = leaf_next;
+            resynced = true;
+          }
+        }
+        if (!resynced && ctx->shift_state_map) {
+          uint32_t child_start = ctx->byte_offset
+                                 - ts_subtree_total_size(child).bytes;  // 이미 커서가 진행됨
+          TSStateId s2 = lookup_shift_state(ctx->shift_state_map, child_start);
+          if (s2 > 0 && s2 != running_state && s2 < ctx->lang->state_count) {
+            TSStateId s2_next = ts_language_next_state(ctx->lang, s2, child_sym);
+            if (s2_next != 0) {
+              running_state = s2_next;
+            }
           }
         }
       }
@@ -3272,6 +3371,7 @@ void collect_recursive(
 
 // [new] 컬렉션 ver.2
 bool ts_parser_run_collection2 (
+  TSParser *self,
   TSTree *tree,
   const char *source_code,
   uint32_t length,
@@ -3279,7 +3379,7 @@ bool ts_parser_run_collection2 (
 ) {
 
   if (!tree) { fprintf(stderr, "[ERROR] Tree is NULL\n"); return false; }
-  
+
   if (!file) return false;
 
   Subtree root = tree->root;
@@ -3292,7 +3392,8 @@ bool ts_parser_run_collection2 (
       .source_len = length,
       .lang = ts_tree_language(tree),
       .byte_offset = 0,
-      .point_offset = {0, 0}
+      .point_offset = {0, 0},
+      .shift_state_map = (self && self->shift_state_map.size > 0) ? &self->shift_state_map : NULL
   };
 
   collect_recursive(&ctx, root, 1);

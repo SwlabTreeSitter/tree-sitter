@@ -34,7 +34,7 @@ extern "C" {
  */
 #define TREE_SITTER_MIN_COMPATIBLE_LANGUAGE_VERSION 13
 
-#define MAX_PATH_SIZE 64
+#define MAX_PATH_SIZE 128
 /*******************/
 /* Section - Types */
 /*******************/
@@ -238,6 +238,15 @@ const TSLanguage *ts_parser_language(const TSParser *self);
  * [`TREE_SITTER_MIN_COMPATIBLE_LANGUAGE_VERSION`] constants.
  */
 bool ts_parser_set_language(TSParser *self, const TSLanguage *language);
+
+/**
+ * Set collection mode. When enabled, SHIFT operations store the
+ * post-reduce GOTO state in leaf parse_state instead of the lex-time state.
+ * This makes leaf_parse_state usable for collection's running_state recovery.
+ * Only enable this for collection-purpose parsing; the resulting tree
+ * should not be used for incremental parsing.
+ */
+void ts_parser_set_collection_mode(TSParser *self, bool enabled);
 
 /**
  * Set the ranges of text that the parser should include when parsing.

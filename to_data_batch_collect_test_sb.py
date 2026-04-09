@@ -7,6 +7,7 @@ import os
 import subprocess
 import shutil
 import glob
+import tempfile
 
 # =================[ 리눅스 경로 설정 ]=================
 
@@ -43,6 +44,9 @@ def main():
     os.makedirs(OUTPUT_DIR)
     print(f"[Info] Created output directory: {OUTPUT_DIR}")
 
+    work_dir = tempfile.mkdtemp(prefix="collect_")
+    print(f"[Info] Work dir: {work_dir}")
+
     # [추가] 스킵된 파일 목록 저장용 로그 파일 초기화
     SKIP_LOG_PATH = os.path.join(OUTPUT_DIR, "skipped_files.txt")
     with open(SKIP_LOG_PATH, "w", encoding="utf-8") as f:
@@ -66,7 +70,7 @@ def main():
         # 확장자 변경 (.sb -> .data)
         output_filename = filename.replace(".sb", ".data")
         final_output_path = os.path.join(OUTPUT_DIR, output_filename)
-        generated_file = "Test.data"
+        generated_file = os.path.join(work_dir, "Test.data")
 
         # [안전장치] 이전 루프의 잔여 파일 삭제
         if os.path.exists(generated_file):
@@ -95,7 +99,8 @@ def main():
                 cmd,
                 check=False,
                 capture_output=True, # stdout/stderr 캡처
-                text=True            # 텍스트 모드
+                text=True,           # 텍스트 모드
+                cwd=work_dir
             )
 
             # 1. stderr에서 [Skip] 메시지 감지
@@ -140,6 +145,8 @@ def main():
             # 로그 기록
             with open(SKIP_LOG_PATH, "a", encoding="utf-8") as log_f:
                 log_f.write(f"{filename} | {skip_reason}\n")
+
+    shutil.rmtree(work_dir, ignore_errors=True)
 
     print(f"[*] Completed.")
     print(f"    - Success: {success_count}")

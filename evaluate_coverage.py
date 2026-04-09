@@ -5,6 +5,8 @@ import subprocess
 import time
 import csv
 import re
+import tempfile
+import shutil
 from collections import defaultdict
 
 # =================[ 언어별 설정 ]=================
@@ -75,6 +77,17 @@ LANG_CONFIGS = {
         "exercism":  ("python-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("example.py", "exemplar.py")),
         "skip_dirs": {".git", "build", "__pycache__"},
     },
+    "typescript": {
+        "lib":       "/home/hyeonjin/PL/tree-sitter-typescript/typescript/parser.so",
+        "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/typescript/TEST",
+        "answer":    "/home/hyeonjin/PL/tree-sitter/reports/typescript",
+        "report":    "/home/hyeonjin/PL/tree-sitter/reports/typescript",
+        "db":        "/home/hyeonjin/PL/code-completion-extension/resources/typescript/candidates.json",
+        "ext":       ".ts",
+        "walk":      True,
+        "exercism":  ("exercism-typescript-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("proof.ci.ts", "exemplar.ts")),
+        "skip_dirs": {".git", "node_modules", "dist", "build"},
+    },
     "php": {
         "lib":       "/home/hyeonjin/PL/tree-sitter-php/php/parser.so",
         "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/php/TEST",
@@ -133,6 +146,8 @@ class EvaluationReporter:
 
         self.file_reports = []
 
+        self.work_dir = tempfile.mkdtemp(prefix=f"eval_{lang}_")
+
         os.makedirs(cfg["report"], exist_ok=True)
 
     def _load_json(self, path):
@@ -141,12 +156,13 @@ class EvaluationReporter:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    def _run_at_position(self, target_file, row, col):
-        cmd = [EXE_PATH, self.lang, self.cfg["lib"], target_file, str(row), str(col), str(self.eval_mode)]
+    def _run_at_position(self, target_file, byte_offset):
+        cmd = [EXE_PATH, self.lang, self.cfg["lib"], target_file, "--byte", str(byte_offset), str(self.eval_mode)]
         try:
             result = subprocess.run(
                 cmd, capture_output=True, text=True,
-                encoding="utf-8", errors="replace"
+                encoding="utf-8", errors="replace",
+                cwd=self.work_dir
             )
             if result.returncode != 0:
                 return []
@@ -270,16 +286,16 @@ class EvaluationReporter:
             if processed % 10 == 0:
                 print(f"    {processed}/{total_locs}...", end="\r")
 
-            nums = re.findall(r"\d+", loc_key)
-            if len(nums) < 2:
+            try:
+                byte_offset = int(loc_key)
+            except ValueError:
                 continue
-            row, col = int(nums[0]), int(nums[1])
 
-            # gt_data는 [{"state_id": int, "candidate": str}, ...] 리스트
+            # gt_data는 [{"state_id": int, "candidate": str}, ...] ���스트
             if not gt_data:
                 continue
 
-            states = self._run_at_position(target_file, row, col)
+            states = self._run_at_position(target_file, byte_offset)
 
             if not states:
                 result_label = "FAIL"
@@ -531,6 +547,8 @@ class EvaluationReporter:
             print(f"[{self.lang.upper()}] Fail          : {self.fail_count}  ({self.fail_count/q*100:.1f}%)")
 
         self.save_report()
+
+        shutil.rmtree(self.work_dir, ignore_errors=True)
 
 
 if __name__ == "__main__":

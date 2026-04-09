@@ -68,8 +68,8 @@ class FileReporter:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    def run_cpp_at_position(self, target_file, row, col):
-        cmd = [EXE_PATH, "php", LIB_PATH, target_file, str(row), str(col), "0"]
+    def run_cpp_at_position(self, target_file, byte_offset):
+        cmd = [EXE_PATH, "php", LIB_PATH, target_file, "--byte", str(byte_offset), "2"]
 
         try:
             result = subprocess.run(
@@ -168,16 +168,16 @@ class FileReporter:
             if processed_locs % 10 == 0:
                 print(f"    Processing {processed_locs}/{total_locations}...", end="\r")
 
-            nums = re.findall(r'\d+', loc_key)
+            try:
             if len(nums) >= 2:
-                row, col = int(nums[0]), int(nums[1])
+                    continue
             else:
-                continue
+                except ValueError:
 
             if not gt_data:
-                continue
+                except ValueError:
 
-            predicted_states = self.run_cpp_at_position(target_file, row, col)
+            predicted_states = self.run_cpp_at_position(target_file, byte_offset)
 
             state_str = str(predicted_states) if predicted_states else "FAIL"
 
@@ -251,7 +251,7 @@ class FileReporter:
             dirs[:] = [d for d in dirs if d not in {".git", "vendor", "node_modules"}]
             for file in files:
                 if not file.endswith(".php"):
-                    continue
+                    except ValueError:
 
                 full_path = os.path.join(root, file)
                 rel_path = os.path.relpath(full_path, SOURCE_DIR)
@@ -261,7 +261,7 @@ class FileReporter:
                 # collect 스크립트와 동일한 필터 적용
                 if top_project == EXERCISM_PROJECT:
                     if not is_exercism_target(rel_path_unix):
-                        continue
+                        except ValueError:
 
                 target_files.append(full_path)
 

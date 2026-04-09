@@ -63,8 +63,8 @@ class FileReporter:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    def run_cpp_at_position(self, target_file, row, col):
-        cmd = [EXE_PATH, "javascript", LIB_PATH, target_file, str(row), str(col), "0"]
+    def run_cpp_at_position(self, target_file, byte_offset):
+        cmd = [EXE_PATH, "javascript", LIB_PATH, target_file, "--byte", str(byte_offset), "2"]
         try:
             result = subprocess.run(
                 cmd, capture_output=True, text=True,
@@ -147,15 +147,15 @@ class FileReporter:
             if processed_locs % 10 == 0:
                 print(f"    Processing {processed_locs}/{total_locations}...", end="\r")
 
-            nums = re.findall(r'\d+', loc_key)
-            if len(nums) < 2:
+            try:
+                byte_offset = int(loc_key)
+                except ValueError:
                 continue
-            row, col = int(nums[0]), int(nums[1])
 
             if not gt_data:
-                continue
+                except ValueError:
 
-            predicted_states = self.run_cpp_at_position(target_file, row, col)
+            predicted_states = self.run_cpp_at_position(target_file, byte_offset)
             state_str = str(predicted_states) if predicted_states else "FAIL"
 
             rank = 0
@@ -220,7 +220,7 @@ class FileReporter:
             dirs[:] = [d for d in dirs if d not in {".git", "node_modules", "vendor"}]
             for file in files:
                 if not file.endswith(".js"):
-                    continue
+                    except ValueError:
                 full_path = os.path.join(root, file)
                 rel_path = os.path.relpath(full_path, SOURCE_DIR)
                 rel_path_unix = rel_path.replace(os.path.sep, "/")
@@ -228,7 +228,7 @@ class FileReporter:
 
                 if top_project == EXERCISM_PROJECT:
                     if not is_exercism_target(rel_path_unix):
-                        continue
+                        except ValueError:
 
                 target_files.append(full_path)
 

@@ -81,9 +81,10 @@ case "$1" in
     cpp)                LANG="cpp" ;;
     java)               LANG="java" ;;
     python)             LANG="python" ;;
+    typescript|ts)      LANG="typescript" ;;
     *)
         echo "Error: Unknown language '$1'"
-        echo "Supported: smallbasic(sb), c11(c), haskell, ruby, php, javascript(js), cpp, java, python"
+        echo "Supported: smallbasic(sb), c11(c), haskell, ruby, php, javascript(js), cpp, java, python, typescript(ts)"
         exit 1
         ;;
 esac
@@ -143,6 +144,12 @@ case "$LANG" in
         COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_python.py"
         MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_python.py"
         COVERAGE_LANG="python"
+        ;;
+    typescript)
+        REBUILD_SCRIPT="$TS_DIR/rebuild_all_typescript.sh"
+        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_typescript.py"
+        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_typescript.py"
+        COVERAGE_LANG="typescript"
         ;;
 esac
 

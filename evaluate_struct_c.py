@@ -62,9 +62,9 @@ class FileReporter:
     # [핵심] 단일 위치 실행 함수 (Iterative Execution)
     # C++ 프로그램을 특정 Row, Col 좌표로 실행하여 예측값(State List)을 받아옴
     # -------------------------------------------------------------------------
-    def run_cpp_at_position(self, target_file, row, col):
+    def run_cpp_at_position(self, target_file, byte_offset):
         # 명령어: EXE "c" lib file row col 0(ConversionMode)
-        cmd = [EXE_PATH, "c", LIB_PATH, target_file, str(row), str(col), "0"]
+        cmd = [EXE_PATH, "c", LIB_PATH, target_file, "--byte", str(byte_offset), "2"]
         
         try:
             result = subprocess.run(
@@ -174,18 +174,18 @@ class FileReporter:
 
             # 1. 좌표 파싱 (안전하게 숫자만 추출)
             # 예: "15,2" 또는 "15:2" 포맷 모두 대응 가능하도록 정규식 사용
-            nums = re.findall(r'\d+', loc_key)
+            try:
             if len(nums) >= 2:
-                row, col = int(nums[0]), int(nums[1])
+                    continue
             else:
-                continue
+                except ValueError:
 
             # 2. 정답 데이터 확인
             if not gt_data:
-                continue
+                except ValueError:
 
             # 3. C++ 실행 (단일 위치)
-            predicted_states = self.run_cpp_at_position(target_file, row, col)
+            predicted_states = self.run_cpp_at_position(target_file, byte_offset)
 
             if predicted_states:
                 state_str = str(predicted_states)

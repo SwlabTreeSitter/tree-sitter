@@ -48,8 +48,8 @@ class FileReporter:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    def _run_at_position(self, target_file, row, col):
-        cmd = [EXE_PATH, "haskell", LIB_PATH, target_file, str(row), str(col), "0"]
+    def _run_at_position(self, target_file, byte_offset):
+        cmd = [EXE_PATH, "haskell", LIB_PATH, target_file, "--byte", str(byte_offset), "2"]
         try:
             result = subprocess.run(
                 cmd, capture_output=True, text=True,
@@ -155,15 +155,15 @@ class FileReporter:
             if processed % 10 == 0:
                 print(f"    {processed}/{total_locs}...", end="\r")
 
-            nums = re.findall(r"\d+", loc_key)
-            if len(nums) < 2:
+            try:
+                byte_offset = int(loc_key)
+                except ValueError:
                 continue
-            row, col = int(nums[0]), int(nums[1])
 
             if not gt_data:
-                continue
+                except ValueError:
 
-            states = self._run_at_position(target_file, row, col)
+            states = self._run_at_position(target_file, byte_offset)
 
             if not states:
                 result_label = "FAIL"

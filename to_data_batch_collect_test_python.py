@@ -14,6 +14,7 @@
 import os
 import subprocess
 import shutil
+import tempfile
 
 # =================[ 경로 설정 ]=================
 
@@ -60,6 +61,9 @@ def main():
     os.makedirs(OUTPUT_DIR)
     print(f"[Info] Created output directory: {OUTPUT_DIR}")
 
+    work_dir = tempfile.mkdtemp(prefix="collect_")
+    print(f"[Info] Work dir: {work_dir}")
+
     SKIP_LOG_PATH = os.path.join(OUTPUT_DIR, "skipped_files.txt")
     with open(SKIP_LOG_PATH, "w", encoding="utf-8") as f:
         f.write("=== Skipped Files (Parse Error / Recovery Detected) ===\n")
@@ -93,7 +97,7 @@ def main():
             safe_name = rel_path.replace(os.path.sep, "_").replace("..", "") + ".data"
             final_output_path = os.path.join(OUTPUT_DIR, safe_name)
 
-            generated_file = "Test.data"
+            generated_file = os.path.join(work_dir, "Test.data")
             if os.path.exists(generated_file):
                 os.remove(generated_file)
 
@@ -109,7 +113,8 @@ def main():
                     cmd,
                     check=False,
                     capture_output=True,
-                    text=True
+                    text=True,
+                    cwd=work_dir
                 )
 
                 if "[Skip]" in result.stderr:
@@ -141,6 +146,8 @@ def main():
                     print(f"  -> Failed: {skip_reason}")
                 with open(SKIP_LOG_PATH, "a", encoding="utf-8") as log_f:
                     log_f.write(f"{rel_path} | {skip_reason}\n")
+
+    shutil.rmtree(work_dir, ignore_errors=True)
 
     print(f"[*] Completed.")
     print(f"    - Success: {success_count}")
