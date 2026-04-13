@@ -26,7 +26,7 @@
 TS_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # 기본 실행 언어 목록 (실행 순서)
-ALL_LANGUAGES=(smallbasic c11 haskell ruby php javascript cpp java python)
+ALL_LANGUAGES=(smallbasic c haskell ruby php javascript cpp java python)
 
 # 인자 파싱: 플래그 분리
 SKIP_COLLECT_FLAG=""

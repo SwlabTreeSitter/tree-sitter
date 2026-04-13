@@ -16,7 +16,7 @@ OUTFILE="/home/hyeonjin/PL/tree-sitter/loc_report.csv"
 
 # 언어 설정: "표시명|서브디렉토리|LEARN폴더|TEST폴더|확장자(공백구분)|cloc추가옵션|프로젝트서브디렉토리여부"
 CONFIGS=(
-  "c|c11|LEARN_BENCH|TEST_BENCH|c||yes"
+  "c|c|LEARN|TEST|c||yes"
   "cpp|cpp|LEARN|TEST|cpp cc cxx||yes"
   "haskell|haskell|LEARN|TEST|hs||yes"
   "java|java|LEARN|TEST|java||yes"
@@ -24,7 +24,7 @@ CONFIGS=(
   "php|php|LEARN|TEST|php||yes"
   "python|python|LEARN|TEST|py||yes"
   "ruby|ruby|LEARN|TEST|rb||yes"
-  "smallbasic|smallbasic|LEARN_BENCH|TEST_BENCH|sb|--force-lang=Visual Basic,sb|no"
+  "smallbasic|smallbasic|LEARN|TEST|sb|--force-lang=Visual Basic,sb|no"
 )
 
 count_and_emit() {
@@ -92,7 +92,7 @@ for config in "${CONFIGS[@]}"; do
   IFS='|' read -r lang subdir learn_dir test_dir exts cloc_extra has_projects <<< "$config"
 
   for set_name in "$learn_dir" "$test_dir"; do
-    # LEARN_BENCH → LEARN, TEST_BENCH → TEST
+    # LEARN → LEARN, TEST → TEST
     local_display="${set_name%%_BENCH}"
 
     dir="$BASE/$subdir/$set_name"

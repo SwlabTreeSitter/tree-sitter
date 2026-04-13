@@ -25,7 +25,7 @@ REPORTS_ROOT = "/home/hyeonjin/PL/tree-sitter/reports"
 # (리포트 디렉터리명, debug_coverage_<key> 키, strip_ext 여부)
 LANG_CONFIGS = {
     "smallbasic": ("smallbasic", "smallbasic", True),
-    "c11":        ("c11",        "c",           False),
+    "c":        ("c",        "c",           False),
     "haskell":    ("haskell",    "haskell",     False),
     "ruby":       ("ruby",       "ruby",        False),
     "php":        ("php",        "php",         False),

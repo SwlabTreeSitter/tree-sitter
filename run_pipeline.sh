@@ -14,7 +14,7 @@
 #
 # 지원 언어:
 #   smallbasic   sb
-#   c11          c
+#   c
 #   haskell
 #   ruby
 #   php
@@ -56,7 +56,7 @@ if [ $# -ne 1 ]; then
     echo ""
     echo "  Supported languages:"
     echo "    smallbasic  (alias: sb)"
-    echo "    c11         (alias: c)"
+    echo "    c"
     echo "    haskell"
     echo "    ruby"
     echo "    php"
@@ -73,7 +73,7 @@ fi
 # 별칭 정규화
 case "$1" in
     smallbasic|sb)      LANG="smallbasic" ;;
-    c11|c)              LANG="c11" ;;
+    c)                  LANG="c" ;;
     haskell)            LANG="haskell" ;;
     ruby)               LANG="ruby" ;;
     php)                LANG="php" ;;
@@ -84,74 +84,16 @@ case "$1" in
     typescript|ts)      LANG="typescript" ;;
     *)
         echo "Error: Unknown language '$1'"
-        echo "Supported: smallbasic(sb), c11(c), haskell, ruby, php, javascript(js), cpp, java, python, typescript(ts)"
+        echo "Supported: smallbasic(sb), c, haskell, ruby, php, javascript(js), cpp, java, python, typescript(ts)"
         exit 1
         ;;
 esac
 
-# =================[ 언어별 스크립트 매핑 ]=================
-case "$LANG" in
-    smallbasic)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_sb.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_sb.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_sb.py"
-        COVERAGE_LANG="smallbasic"
-        ;;
-    c11)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_c.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_c.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_c.py"
-        COVERAGE_LANG="c"
-        ;;
-    haskell)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_haskell.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_haskell.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_haskell.py"
-        COVERAGE_LANG="haskell"
-        ;;
-    ruby)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_ruby.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_ruby.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_ruby.py"
-        COVERAGE_LANG="ruby"
-        ;;
-    php)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_php.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_php.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_php.py"
-        COVERAGE_LANG="php"
-        ;;
-    javascript)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_javascript.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_javascript.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_javascript.py"
-        COVERAGE_LANG="javascript"
-        ;;
-    cpp)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_cpp.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_cpp.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_cpp.py"
-        COVERAGE_LANG="cpp"
-        ;;
-    java)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_java.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_java.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_java.py"
-        COVERAGE_LANG="java"
-        ;;
-    python)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_python.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_python.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_python.py"
-        COVERAGE_LANG="python"
-        ;;
-    typescript)
-        REBUILD_SCRIPT="$TS_DIR/rebuild_all_typescript.sh"
-        COLLECT_TEST="$TS_DIR/to_data_batch_collect_test_typescript.py"
-        MAKE_ANSWERS="$TS_DIR/to_json_per_file_test_typescript.py"
-        COVERAGE_LANG="typescript"
-        ;;
-esac
+# =================[ 스크립트 매핑 ]=================
+REBUILD_SCRIPT="$TS_DIR/rebuild_all.sh"
+COLLECT_TEST="$TS_DIR/to_data_batch_collect_test.py"
+MAKE_ANSWERS="$TS_DIR/to_json_per_file_test.py"
+COVERAGE_LANG="$LANG"
 
 # =================[ 요약 로그 설정 ]=================
 # 터미널 출력은 그대로 유지하고, 각 단계의 최종 결과 줄만 이 파일에 기록한다.
@@ -215,11 +157,11 @@ if [ "$SKIP_COLLECT" = true ]; then
 else
     # 캡처 대상: to_data_batch_collect_learn_* 완료 요약, to_json_aggregate_* 완료 줄
     echo ">>> [Step 1/4] rebuild_all"
-    echo "    Script : $REBUILD_SCRIPT"
+    echo "    Script : $REBUILD_SCRIPT $LANG"
     STEP_START=$(date +%s)
     _shlog "Step1 rebuild($LANG)" \
         '^\[\*\] (Completed\.|Done! JSON|Results are in)|^[[:space:]]+-[[:space:]]+(Success|Skipped|Total Found)' \
-        "$REBUILD_SCRIPT"
+        "$REBUILD_SCRIPT" "$LANG"
     echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
     echo ""
 fi
@@ -231,11 +173,11 @@ if [ "$SKIP_COLLECT" = true ]; then
 else
     # 캡처 대상: [*] Completed. / - Success/Skipped/Total Found / [*] Results are in
     echo ">>> [Step 2/4] Collect TEST data"
-    echo "    Script : $COLLECT_TEST"
+    echo "    Script : $COLLECT_TEST $LANG"
     STEP_START=$(date +%s)
     cd "$TS_DIR" && _pylog "Step2 collect_test($LANG)" \
         '^\[\*\] (Completed\.|Results are in)|^[[:space:]]+-[[:space:]]+(Success|Skipped|Total Found)' \
-        "$COLLECT_TEST"
+        "$COLLECT_TEST" "$LANG"
     echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
     echo ""
 fi
@@ -243,11 +185,11 @@ fi
 # --- Step 3: 정답지 생성 ---
 # 캡처 대상: [*] All done. Processed N/N files.
 echo ">>> [Step 3/4] Generate answer JSON"
-echo "    Script : $MAKE_ANSWERS"
+echo "    Script : $MAKE_ANSWERS $LANG"
 STEP_START=$(date +%s)
 _pylog "Step3 make_answers($LANG)" \
     '^\[\*\] All done\.' \
-    "$MAKE_ANSWERS"
+    "$MAKE_ANSWERS" "$LANG"
 echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
 echo ""
 

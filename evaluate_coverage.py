@@ -14,20 +14,19 @@ from collections import defaultdict
 LANG_CONFIGS = {
     "smallbasic": {
         "lib":       "/home/hyeonjin/PL/tree-sitter-smallbasic/smallbasic.so",
-        "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST_BENCH",
+        "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST",
         "answer":    "/home/hyeonjin/PL/tree-sitter/reports/smallbasic",
         "report":    "/home/hyeonjin/PL/tree-sitter/reports/smallbasic",
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/smallbasic/candidates.json",
         "ext":       ".sb",
         "walk":      False,  # glob (flat)
         "exercism":  None,
-        "strip_ext": True,   # JSON명: foo.sb -> foo.json (확장자 제거 후 .json)
     },
     "c": {
         "lib":       "/home/hyeonjin/PL/tree-sitter-c/c.so",
-        "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/c11/TEST_BENCH/ansi_c",
-        "answer":    "/home/hyeonjin/PL/tree-sitter/reports/c11",
-        "report":    "/home/hyeonjin/PL/tree-sitter/reports/c11",
+        "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/c/TEST",
+        "answer":    "/home/hyeonjin/PL/tree-sitter/reports/c",
+        "report":    "/home/hyeonjin/PL/tree-sitter/reports/c",
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/c/candidates.json",
         "ext":       ".c",
         "walk":      True,
@@ -124,15 +123,15 @@ LANG_CONFIGS = {
 }
 
 EXE_PATH = "/home/hyeonjin/PL/tree-sitter/TreeSitterCutFile.exe"
-MAX_CANDIDATE_LIST_SIZE = 20
+MAX_CANDIDATE_LIST_SIZE = 1100
 
 # =========================================================
 
 class EvaluationReporter:
-    def __init__(self, lang: str, cfg: dict, eval_mode: int = 0):
+    def __init__(self, lang: str, cfg: dict):
         self.lang = lang
         self.cfg  = cfg
-        self.eval_mode = eval_mode  # 0: 기존(잘린 소스), 2: 평가용(전체 소스+커서)
+        self.eval_mode = 2  # 평가용: 전체 소스 + 커서 위치 (lookahead 모드)
         self.db   = self._load_json(cfg["db"])
 
         # 커버리지 통계
@@ -193,29 +192,12 @@ class EvaluationReporter:
                     merged[item["key"]] += item["value"]
         return sorted(merged.items(), key=lambda x: x[1], reverse=True)
 
-    def _lookup_db_full(self, states):
-        """커버리지용: 크기 제한 없이 DB에서 모든 후보 조회."""
-        merged = defaultdict(int)
-        for state in states:
-            s_key = str(state)
-            if s_key in self.db:
-                for item in self.db[s_key]:
-                    merged[item["key"]] += item["value"]
-        return merged
-
     def _get_rank(self, candidates, ground_truth):
         gt_clean = ground_truth.replace(" ", "")
         for rank, (key, _) in enumerate(candidates, 1):
             if key.replace(" ", "") == gt_clean:
                 return rank
         return 0
-
-    def _is_found(self, candidates_map: dict, ground_truth: str) -> bool:
-        gt_clean = ground_truth.replace(" ", "")
-        for key in candidates_map:
-            if key.replace(" ", "") == gt_clean:
-                return True
-        return False
 
     def _collect_files(self):
         cfg = self.cfg
@@ -253,11 +235,7 @@ class EvaluationReporter:
 
     def evaluate_file(self, target_file):
         safe_name = self._safe_name(target_file)
-        if self.cfg.get("strip_ext"):
-            base, _ = os.path.splitext(safe_name)
-            json_path = os.path.join(self.cfg["answer"], base + ".json")
-        else:
-            json_path = os.path.join(self.cfg["answer"], safe_name + ".json")
+        json_path = os.path.join(self.cfg["answer"], safe_name + ".json")
 
         if not os.path.exists(json_path):
             return
@@ -303,21 +281,12 @@ class EvaluationReporter:
                 f_fail += 1
                 ground_truth = gt_data[0]["candidate"]
             else:
-                # FOUND: gt_data의 후보 중 하나라도 DB에 있으면
-                candidates_full = self._lookup_db_full(states)
-                if any(self._is_found(candidates_full, e["candidate"]) for e in gt_data):
-                    result_label = "FOUND"
-                    f_found += 1
-                else:
-                    result_label = "NOT_FOUND"
-                    f_not_found += 1
-
-                # 랭크: gt_data 후보들 중 가장 좋은(낮은) 순위
-                top_candidates = self._lookup_db_ranked(states)[:MAX_CANDIDATE_LIST_SIZE]
+                # 병합 + 랭크 계산 (1회만 수행)
+                all_candidates = self._lookup_db_ranked(states)
                 best_rank = 0
                 best_entry = gt_data[0]
                 for e in gt_data:
-                    r = self._get_rank(top_candidates, e["candidate"])
+                    r = self._get_rank(all_candidates, e["candidate"])
                     if r > 0 and (best_rank == 0 or r < best_rank):
                         best_rank = r
                         best_entry = e
@@ -325,12 +294,17 @@ class EvaluationReporter:
                 ground_truth = best_entry["candidate"]
 
                 if rank > 0:
+                    result_label = "FOUND"
+                    f_found += 1
                     self.rank_stats[rank] += 1
                     if rank == 1:       f_top1  += 1
                     if rank <= 3:       f_top3  += 1
                     if rank <= 5:       f_top5  += 1
                     if rank <= 10:      f_top10 += 1
                     if rank <= 20:      f_top20 += 1
+                else:
+                    result_label = "NOT_FOUND"
+                    f_not_found += 1
 
             debug_logs.append([loc_key, ground_truth, str(states) if states else "FAIL", result_label, rank])
             f_total += 1
@@ -555,22 +529,13 @@ if __name__ == "__main__":
     # 사용법:
     #   python evaluate_coverage.py <language>
     #   python evaluate_coverage.py <language> --per-project
-    #   python evaluate_coverage.py <language> --eval-mode 2
-    #     --eval-mode 0 (기본): 잘린 소스로 컨버전 (실제 코드 완성과 동일)
-    #     --eval-mode 2: 전체 소스 + 커서 위치로 컨버전 (평가 전용 lookahead 허용)
     args = sys.argv[1:]
     per_project = "--per-project" in args
-
-    eval_mode = 0
-    if "--eval-mode" in args:
-        idx = args.index("--eval-mode")
-        if idx + 1 < len(args):
-            eval_mode = int(args[idx + 1])
 
     pos_args = [a for a in args if not a.startswith("--")]
 
     if not pos_args:
-        print(f"Usage: python evaluate_coverage.py <language> [--per-project] [--eval-mode <0|2>]")
+        print(f"Usage: python evaluate_coverage.py <language> [--per-project]")
         print(f"Available: {', '.join(LANG_CONFIGS.keys())}")
         sys.exit(1)
 
@@ -580,7 +545,7 @@ if __name__ == "__main__":
         print(f"Available: {', '.join(LANG_CONFIGS.keys())}")
         sys.exit(1)
 
-    reporter = EvaluationReporter(lang, LANG_CONFIGS[lang], eval_mode=eval_mode)
+    reporter = EvaluationReporter(lang, LANG_CONFIGS[lang])
     reporter.run()
 
     if per_project:

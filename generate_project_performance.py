@@ -12,9 +12,15 @@ import csv
 from collections import defaultdict
 
 LANG_CONFIGS = {
+    "smallbasic": {
+        "src":    "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST",
+        "report": "/home/hyeonjin/PL/tree-sitter/reports/smallbasic",
+        "debug_dir_name": "debug_coverage_smallbasic",
+        "flat":   True,
+    },
     "c": {
-        "src":    "/home/hyeonjin/PL/codecompletion_benchmarks/c11/TEST_BENCH/ansi_c",
-        "report": "/home/hyeonjin/PL/tree-sitter/reports/c11",
+        "src":    "/home/hyeonjin/PL/codecompletion_benchmarks/c/TEST",
+        "report": "/home/hyeonjin/PL/tree-sitter/reports/c",
         "debug_dir_name": "debug_coverage_c",
     },
     "haskell": {
@@ -67,6 +73,37 @@ def get_projects(src_dir):
     )
 
 
+def aggregate_all(debug_dir):
+    """debug_dir 내 모든 CSV 를 하나로 집계해 dict 반환 (flat 구조용)."""
+    counts = defaultdict(int)
+    for fname in sorted(os.listdir(debug_dir)):
+        if not fname.endswith(".csv"):
+            continue
+        with open(os.path.join(debug_dir, fname), encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                result = row.get("Coverage_Result", "")
+                try:
+                    rank = int(row.get("Rank", "0"))
+                except ValueError:
+                    rank = 0
+
+                counts["total"] += 1
+                if result == "FOUND":
+                    counts["found"] += 1
+                elif result == "NOT_FOUND":
+                    counts["not_found"] += 1
+                elif result == "FAIL":
+                    counts["fail"] += 1
+
+                if 0 < rank <= 1:  counts["top1"]  += 1
+                if 0 < rank <= 3:  counts["top3"]  += 1
+                if 0 < rank <= 5:  counts["top5"]  += 1
+                if 0 < rank <= 10: counts["top10"] += 1
+                if 0 < rank <= 20: counts["top20"] += 1
+    return counts
+
+
 def aggregate_project(debug_dir, project):
     """프로젝트 prefix 로 시작하는 debug CSV 를 집계해 dict 반환."""
     prefix = project + "_"
@@ -112,6 +149,31 @@ def main():
         debug_dir = os.path.join(cfg["report"], cfg["debug_dir_name"])
         if not os.path.isdir(debug_dir):
             print(f"[{lang}] debug_dir not found: {debug_dir}")
+            continue
+
+        if cfg.get("flat"):
+            c = aggregate_all(debug_dir)
+            if c["total"] == 0:
+                print(f"[{lang}] no data in {debug_dir}")
+                continue
+            t = c["total"]
+            rows.append({
+                "Language":       lang,
+                "Project":        "(all)",
+                "Total":          t,
+                "Top-1 Acc (%)":  pct(c["top1"],  t),
+                "Top-3 Acc (%)":  pct(c["top3"],  t),
+                "Top-5 Acc (%)":  pct(c["top5"],  t),
+                "Top-10 Acc (%)": pct(c["top10"], t),
+                "Top-20 Acc (%)": pct(c["top20"], t),
+                "Found":          c["found"],
+                "Found (%)":      pct(c["found"],     t),
+                "Not Found":      c["not_found"],
+                "Not Found (%)":  pct(c["not_found"], t),
+                "Fail":           c["fail"],
+                "Fail (%)":       pct(c["fail"],      t),
+            })
+            print(f"  [{lang}] (all): total={t}")
             continue
 
         projects = get_projects(cfg["src"])

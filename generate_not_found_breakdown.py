@@ -18,9 +18,13 @@ import json
 from collections import Counter, defaultdict
 
 LANG_CONFIGS = {
+    "smallbasic": {
+        "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/smallbasic/debug_coverage_smallbasic",
+        "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/smallbasic",
+    },
     "c": {
-        "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/c11/debug_coverage_c",
-        "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/c11",
+        "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/c/debug_coverage_c",
+        "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/c",
     },
     "haskell": {
         "debug_dir": "/home/hyeonjin/PL/tree-sitter/reports/haskell/debug_coverage_haskell",
@@ -54,7 +58,7 @@ LANG_CONFIGS = {
 
 OUTPUT_SUMMARY = "/home/hyeonjin/PL/tree-sitter/reports/not_found_summary.csv"
 OUTPUT_DETAIL  = "/home/hyeonjin/PL/tree-sitter/reports/not_found_detail.csv"
-LANG_ORDER     = ["c", "haskell", "ruby", "php", "javascript", "cpp", "java", "python"]
+LANG_ORDER     = ["smallbasic", "c", "haskell", "ruby", "php", "javascript", "cpp", "java", "python"]
 
 
 def is_data_shortage_by_state(states, gt_entries):

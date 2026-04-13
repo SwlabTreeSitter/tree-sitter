@@ -32,7 +32,7 @@ LANG_CONFIGS = {
     "smallbasic": {
         "lang_arg":  "smallbasic",
         "lib":       "/home/hyeonjin/PL/tree-sitter-smallbasic/smallbasic.so",
-        "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST_BENCH",
+        "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/smallbasic/TEST",
         "data_dir":  "/home/hyeonjin/PL/benchmarks_collection/smallbasic/TEST_data",
         "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/smallbasic",
         "report_dir":"/home/hyeonjin/PL/tree-sitter/reports/smallbasic",
@@ -43,10 +43,10 @@ LANG_CONFIGS = {
     "c": {
         "lang_arg":  "c",
         "lib":       "/home/hyeonjin/PL/tree-sitter-c/c.so",
-        "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/c11/TEST_BENCH/ansi_c",
-        "data_dir":  "/home/hyeonjin/PL/benchmarks_collection/c11/TEST_data",
-        "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/c11",
-        "report_dir":"/home/hyeonjin/PL/tree-sitter/reports/c11",
+        "src":       "/home/hyeonjin/PL/codecompletion_benchmarks/c/TEST/ansi_c",
+        "data_dir":  "/home/hyeonjin/PL/benchmarks_collection/c/TEST_data",
+        "json_dir":  "/home/hyeonjin/PL/tree-sitter/reports/c",
+        "report_dir":"/home/hyeonjin/PL/tree-sitter/reports/c",
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/c/candidates.json",
         "ext":       ".c",
         "skip_dirs": {".git"},
