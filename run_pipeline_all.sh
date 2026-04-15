@@ -8,17 +8,19 @@
 # evaluate_coverage)의 출력을 단일 로그 파일에 언어별로 기록한다.
 #
 # 사용법:
-#   ./run_pipeline_all.sh [--skip-collect] [--per-project] [--eval-mode <0|2>] [언어1 언어2 ...]
+#   ./run_pipeline_all.sh [옵션] [언어1 언어2 ...]
 #   ./run_pipeline_all.sh                                   # 기본: 전체 언어 실행
-#   ./run_pipeline_all.sh --skip-collect                    # 전체 언어, 컬렉션 스킵
+#   ./run_pipeline_all.sh --skip-collect                    # 전체 컬렉션 스킵 (정답지+평가만)
+#   ./run_pipeline_all.sh --skip-learn-collect              # LEARN 컬렉션 스킵 (TEST 재수집+평가)
+#   ./run_pipeline_all.sh --skip-test-collect               # TEST 컬렉션 스킵 (LEARN 재수집+평가)
 #   ./run_pipeline_all.sh --per-project haskell             # 하스켈만, 프로젝트별 집계 포함
-#   ./run_pipeline_all.sh --skip-collect --per-project haskell python
-#   ./run_pipeline_all.sh --skip-collect --eval-mode 2      # 평가 전용 lookahead 모드
+#   ./run_pipeline_all.sh --skip-learn-collect ruby python  # LEARN 스킵, ruby+python만
 #
 # 옵션:
-#   --skip-collect      각 언어의 Step 1(rebuild) + Step 2(collect TEST) 를 건너뜀
-#   --per-project       Step 4 완료 후 프로젝트별 결과도 집계하여 출력/저장
-#   --eval-mode <0|2>   평가 모드 (0: 기본/잘린소스, 2: 전체소스+커서 lookahead)
+#   --skip-collect         Step 1(LEARN) + Step 2(TEST) 컬렉션 모두 건너뜀
+#   --skip-learn-collect   Step 1(LEARN 컬렉션) 만 건너뜀
+#   --skip-test-collect    Step 2(TEST 컬렉션) 만 건너뜀
+#   --per-project          Step 4 완료 후 프로젝트별 결과도 집계하여 출력/저장
 #
 # 로그 파일: pipeline_all_YYYYMMDD_HHMMSS.log
 # =============================================================
@@ -30,21 +32,17 @@ ALL_LANGUAGES=(smallbasic c haskell ruby php javascript cpp java python)
 
 # 인자 파싱: 플래그 분리
 SKIP_COLLECT_FLAG=""
+SKIP_LEARN_COLLECT_FLAG=""
+SKIP_TEST_COLLECT_FLAG=""
 PER_PROJECT_FLAG=""
-EVAL_MODE_FLAG="--eval-mode 2"
 LANG_ARGS=()
-_SKIP_NEXT=false
 for arg in "$@"; do
-    if [ "$_SKIP_NEXT" = true ]; then
-        EVAL_MODE_FLAG="--eval-mode $arg"
-        _SKIP_NEXT=false
-        continue
-    fi
     case "$arg" in
-        --skip-collect) SKIP_COLLECT_FLAG="--skip-collect" ;;
-        --per-project)  PER_PROJECT_FLAG="--per-project" ;;
-        --eval-mode)    _SKIP_NEXT=true ;;
-        *)              LANG_ARGS+=("$arg") ;;
+        --skip-collect)       SKIP_COLLECT_FLAG="--skip-collect" ;;
+        --skip-learn-collect) SKIP_LEARN_COLLECT_FLAG="--skip-learn-collect" ;;
+        --skip-test-collect)  SKIP_TEST_COLLECT_FLAG="--skip-test-collect" ;;
+        --per-project)        PER_PROJECT_FLAG="--per-project" ;;
+        *)                    LANG_ARGS+=("$arg") ;;
     esac
 done
 
@@ -70,7 +68,7 @@ set -o pipefail
     echo "  run_pipeline_all.sh"
     echo "  Start   : $(date '+%Y-%m-%d %H:%M:%S')"
     echo "  Languages: ${LANGUAGES[*]}"
-    _OPT_STR="${SKIP_COLLECT_FLAG:+$SKIP_COLLECT_FLAG }${PER_PROJECT_FLAG}"
+    _OPT_STR="${SKIP_COLLECT_FLAG:+$SKIP_COLLECT_FLAG }${SKIP_LEARN_COLLECT_FLAG:+$SKIP_LEARN_COLLECT_FLAG }${SKIP_TEST_COLLECT_FLAG:+$SKIP_TEST_COLLECT_FLAG }${PER_PROJECT_FLAG}"
     echo "  Options : ${_OPT_STR:-none}"
     echo "  Log file: $LOG_FILE"
     echo "############################################################"
@@ -93,7 +91,7 @@ for LANG in "${LANGUAGES[@]}"; do
     LANG_START=$(date +%s)
 
     # run_pipeline.sh 실행; stdout+stderr → 터미널(tee) + 로그 파일(append)
-    bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG $PER_PROJECT_FLAG $EVAL_MODE_FLAG 2>&1 | tee -a "$LOG_FILE"
+    bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG $SKIP_LEARN_COLLECT_FLAG $SKIP_TEST_COLLECT_FLAG $PER_PROJECT_FLAG 2>&1 | tee -a "$LOG_FILE"
     EXIT_CODE=${PIPESTATUS[0]}
 
     LANG_ELAPSED=$(( $(date +%s) - LANG_START ))

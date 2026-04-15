@@ -1,49 +1,26 @@
 {
   "_common": {
-    "ignore_dirs": [
-      ".git", "build", "test", "tests", "doc", "docs",
-      "benchmark", "benchmarks"
-    ]
+    "ignore_dirs": [".git"]
   },
   "c": {
     "extensions": [".c"],
-    "extra_ignore_dirs": [
-      "tst", "fuzzing", "Examples", "sample", "scripts",
-      "build-aux", "m4", "po", "autom4te.cache", "terminfo",
-      "utf8encodings", "etc", "mk", "unity"
-    ]
+    "extra_ignore_dirs": ["build"]
   },
   "cpp": {
     "extensions": [".cpp", ".cc", ".cxx"],
-    "extra_ignore_dirs": [
-      "Test", "Tests", "cmake-build-debug", "cmake-build-release",
-      "third_party", "third-party", "thirdparty", "vendor",
-      "extern", "external", "externals"
-    ]
+    "extra_ignore_dirs": ["build", "vendor"]
   },
   "haskell": {
     "extensions": [".hs"],
-    "extra_ignore_dirs": [
-      "spec", "dist", "dist-newstyle", ".stack-work",
-      "examples", "example", "bench",
-      ".cabal-sandbox", "cabal.sandbox.config", "autogen",
-      "scripts", "data"
-    ]
+    "extra_ignore_dirs": ["build", "dist", "dist-newstyle", ".stack-work"]
   },
   "java": {
     "extensions": [".java"],
-    "extra_ignore_dirs": [
-      "Test", "Tests", "target",
-      "generated-sources", "generated-test-sources"
-    ]
+    "extra_ignore_dirs": ["build", "target"]
   },
   "javascript": {
     "extensions": [".js"],
-    "extra_ignore_dirs": [
-      "__tests__", "spec", "specs", "dist",
-      "node_modules", "vendor", "fixtures", "mocks", "__mocks__",
-      "coverage"
-    ],
+    "extra_ignore_dirs": ["node_modules", "vendor"],
     "exclude_projects": [
       "lodash-main", "axios-1.x", "eslint-main", "webpack-main"
     ]
@@ -51,27 +28,18 @@
   "php": {
     "extensions": [".php"],
     "grammar_subdir": "php",
-    "extra_ignore_dirs": [
-      "Test", "Tests", "spec", "documentation",
-      "vendor", "fixtures", "stub", "stubs", "node_modules"
-    ],
+    "extra_ignore_dirs": ["vendor", "node_modules"],
     "exclude_projects": [
       "symfony-8.1", "server-master", "drupal-main", "psalm-6.x"
     ]
   },
   "python": {
     "extensions": [".py"],
-    "extra_ignore_dirs": [
-      "__pycache__", ".venv", "venv", "env",
-      "dist", "dist-info", "site-packages"
-    ]
+    "extra_ignore_dirs": ["build", "__pycache__"]
   },
   "ruby": {
     "extensions": [".rb"],
-    "extra_ignore_dirs": [
-      "documentation", "bench", "example", "examples", "features",
-      "vendor", "node_modules", ".bundle", "script", "scripts"
-    ]
+    "extra_ignore_dirs": ["vendor", "node_modules"]
   },
   "smallbasic": {
     "extensions": [".sb"]

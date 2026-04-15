@@ -5,12 +5,13 @@
 # 언어명을 인자로 받아 rebuild_all → 랭크+커버리지 평가까지 전체 파이프라인 실행
 #
 # 사용법:
-#   ./run_pipeline.sh <언어> [--skip-collect] [--per-project]
+#   ./run_pipeline.sh <언어> [옵션]
 #
 # 옵션:
-#   --skip-collect   Step 1(rebuild) + Step 2(collect TEST) 를 건너뛰고
-#                    Step 3(정답지) + Step 4(평가) 만 실행
-#   --per-project    Step 4 평가 완료 후 프로젝트별 결과도 집계하여 출력
+#   --skip-learn-collect   Step 1(LEARN 컬렉션) 만 건너뜀
+#   --skip-test-collect    Step 2(TEST 컬렉션) 만 건너뜀
+#   --skip-collect         Step 1 + Step 2 모두 건너뜀 (위 두 옵션의 조합)
+#   --per-project          Step 4 평가 완료 후 프로젝트별 결과도 집계하여 출력
 #
 # 지원 언어:
 #   smallbasic   sb
@@ -30,23 +31,18 @@ set -o pipefail
 TS_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # =================[ 인자 파싱 ]=================
-SKIP_COLLECT=false
+SKIP_LEARN_COLLECT=false
+SKIP_TEST_COLLECT=false
 PER_PROJECT=false
-EVAL_MODE=0
 
 _POSITIONAL=()
-_SKIP_NEXT=false
 for arg in "$@"; do
-    if [ "$_SKIP_NEXT" = true ]; then
-        EVAL_MODE="$arg"
-        _SKIP_NEXT=false
-        continue
-    fi
     case "$arg" in
-        --skip-collect) SKIP_COLLECT=true ;;
-        --per-project)  PER_PROJECT=true ;;
-        --eval-mode)    _SKIP_NEXT=true ;;
-        *)              _POSITIONAL+=("$arg") ;;
+        --skip-collect)       SKIP_LEARN_COLLECT=true; SKIP_TEST_COLLECT=true ;;
+        --skip-learn-collect) SKIP_LEARN_COLLECT=true ;;
+        --skip-test-collect)  SKIP_TEST_COLLECT=true ;;
+        --per-project)        PER_PROJECT=true ;;
+        *)                    _POSITIONAL+=("$arg") ;;
     esac
 done
 set -- "${_POSITIONAL[@]}"
@@ -66,7 +62,9 @@ if [ $# -ne 1 ]; then
     echo "    python"
     echo ""
     echo "  Options:"
-    echo "    --skip-collect   Skip Step 1 (rebuild) and Step 2 (collect TEST)"
+    echo "    --skip-collect         Skip Step 1 (LEARN) and Step 2 (TEST) collection"
+    echo "    --skip-learn-collect   Skip Step 1 (LEARN collection) only"
+    echo "    --skip-test-collect    Skip Step 2 (TEST collection) only"
     exit 1
 fi
 
@@ -150,29 +148,29 @@ echo ""
     printf "============================================================\n"
 } >> "$SUMMARY_LOG"
 
-# --- Step 1: rebuild_all (빌드 + LEARN 컬렉션 + 집계) ---
-if [ "$SKIP_COLLECT" = true ]; then
-    echo ">>> [Step 1/4] rebuild_all  [SKIPPED]"
+# --- Step 1: LEARN 컬렉션 (빌드 + LEARN 데이터 수집 + DB 집계) ---
+if [ "$SKIP_LEARN_COLLECT" = true ]; then
+    echo ">>> [Step 1/4] LEARN collection  [SKIPPED]"
     echo ""
 else
     # 캡처 대상: to_data_batch_collect_learn_* 완료 요약, to_json_aggregate_* 완료 줄
-    echo ">>> [Step 1/4] rebuild_all"
+    echo ">>> [Step 1/4] LEARN collection"
     echo "    Script : $REBUILD_SCRIPT $LANG"
     STEP_START=$(date +%s)
-    _shlog "Step1 rebuild($LANG)" \
+    _shlog "Step1 learn_collect($LANG)" \
         '^\[\*\] (Completed\.|Done! JSON|Results are in)|^[[:space:]]+-[[:space:]]+(Success|Skipped|Total Found)' \
         "$REBUILD_SCRIPT" "$LANG"
     echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
     echo ""
 fi
 
-# --- Step 2: TEST 데이터 수집 ---
-if [ "$SKIP_COLLECT" = true ]; then
-    echo ">>> [Step 2/4] Collect TEST data  [SKIPPED]"
+# --- Step 2: TEST 컬렉션 (TEST 데이터 수집) ---
+if [ "$SKIP_TEST_COLLECT" = true ]; then
+    echo ">>> [Step 2/4] TEST collection  [SKIPPED]"
     echo ""
 else
     # 캡처 대상: [*] Completed. / - Success/Skipped/Total Found / [*] Results are in
-    echo ">>> [Step 2/4] Collect TEST data"
+    echo ">>> [Step 2/4] TEST collection"
     echo "    Script : $COLLECT_TEST $LANG"
     STEP_START=$(date +%s)
     cd "$TS_DIR" && _pylog "Step2 collect_test($LANG)" \
@@ -201,7 +199,6 @@ echo "    Script : evaluate_coverage.py  (lang=$COVERAGE_LANG)"
 STEP_START=$(date +%s)
 EXTRA_ARGS=""
 [ "$PER_PROJECT" = true ] && EXTRA_ARGS="$EXTRA_ARGS --per-project"
-[ "$EVAL_MODE" != "0" ] && EXTRA_ARGS="$EXTRA_ARGS --eval-mode $EVAL_MODE"
 cd "$TS_DIR" && _pylog "Step4 evaluate($LANG)" \
     '^\[Global\]|\[[A-Z][A-Z0-9_-]*\] (Total Queries|Top-10 Count|Top11~20|Beyond Top|CPP Fail|Found[[:space:]]|Not Found|Fail[[:space:]]*)|\[Saved\]' \
     "$TS_DIR/evaluate_coverage.py" "$COVERAGE_LANG" $EXTRA_ARGS

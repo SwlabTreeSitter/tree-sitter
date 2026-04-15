@@ -3192,6 +3192,8 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
   uint32_t length_byte = size.bytes;
 
   // 3. 출력: 바이트 오프셋을 메인 키로 기록
+  // zero-width 토큰(외부 스캐너의 _line_break, _newline, _dedent 등)은
+  // 컨버전이 해당 위치에서 멈출 수 없어 평가 포인트로 부적합하므로 제외
   if (length_byte > 0 && start_byte < ctx->source_len) {
     fprintf(ctx->file, "  @%u: \n", start_byte);
   }

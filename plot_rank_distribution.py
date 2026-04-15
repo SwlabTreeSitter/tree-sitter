@@ -115,13 +115,16 @@ def plot_combined(all_ranks):
             running += ranks.get(r, 0)
             cumulative.append(running / total * 100)
 
-        ax.plot(x, cumulative, color=colors[i % len(colors)], linewidth=1.8, label=f"{lang} (n={total:,})")
+        ax.plot(x, cumulative, color=colors[i % len(colors)], linewidth=1.8, label=f"{lang} (n={total:,}, max={max_rank})")
+        # max rank 위치에 마커 표시
+        ax.plot(max_rank, cumulative[-1], marker='|', markersize=10, color=colors[i % len(colors)])
 
     ax.set_xlabel("Rank", fontsize=12)
     ax.set_ylabel("Cumulative %", fontsize=12)
     ax.set_title("Rank Cumulative Distribution — All Languages", fontsize=14)
     ax.set_ylim(0, 105)
-    ax.set_xlim(0, 200)
+    max_rank = max(max(ranks.keys()) for ranks in all_ranks.values() if ranks)
+    ax.set_xlim(0, max_rank + 10)
     ax.axhline(y=90, color="gray", linestyle=":", alpha=0.5)
     ax.axhline(y=95, color="gray", linestyle=":", alpha=0.5)
     ax.axhline(y=99, color="gray", linestyle=":", alpha=0.5)
@@ -199,7 +202,7 @@ def plot_stacked_overview(all_results):
     # 총 쿼리 수 표시
     for j, lang in enumerate(langs):
         total = sum(all_results[lang].values())
-        ax.text(101, j, f" n={total:,}", va="center", fontsize=8)
+        pass  # 쿼리수 표시 제거
 
     ax.set_xlabel("Percentage (%)", fontsize=11)
     ax.set_xlim(0, 100)

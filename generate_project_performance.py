@@ -4,12 +4,35 @@ generate_project_performance.py
 debug_coverage_<lang>/*.csv 를 읽어 프로젝트 폴더 단위로 집계한 뒤
 모든 언어 결과를 하나의 CSV 로 출력한다.
 
+loc_report.csv (count_loc.sh 출력) 에서 TEST 프로젝트의 LOC 를 병합한다.
+
 출력: reports/all_project_performance.csv
 """
 
 import os
 import csv
 from collections import defaultdict
+
+LOC_REPORT_PATH = "/home/hyeonjin/PL/tree-sitter/loc_report.csv"
+
+
+def load_loc_report():
+    """loc_report.csv 에서 TEST 세트의 LOC 정보를 (lang, project) -> dict 로 반환."""
+    loc_map = {}
+    if not os.path.exists(LOC_REPORT_PATH):
+        print(f"[warn] LOC report not found: {LOC_REPORT_PATH}")
+        return loc_map
+    with open(LOC_REPORT_PATH, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row["Set"] != "TEST":
+                continue
+            key = (row["Language"], row["Project"])
+            loc_map[key] = {
+                "Total_Lines_wc":      int(row["Total_Lines_wc"]),
+                "Code_Lines_cloc":     int(row["Code_Lines_cloc"]),
+            }
+    return loc_map
 
 LANG_CONFIGS = {
     "smallbasic": {
@@ -142,7 +165,30 @@ def pct(n, total):
     return round(n / total * 100, 2) if total > 0 else 0.0
 
 
+def make_row(lang, project, c, loc_map):
+    t = c["total"]
+    loc = loc_map.get((lang, project), {})
+    return {
+        "Language":            lang,
+        "Project":             project,
+        "Total_Lines_wc":      loc.get("Total_Lines_wc", ""),
+        "Code_Lines_cloc":     loc.get("Code_Lines_cloc", ""),
+        "Top-1 Acc (%)":       pct(c["top1"],  t),
+        "Top-3 Acc (%)":       pct(c["top3"],  t),
+        "Top-5 Acc (%)":       pct(c["top5"],  t),
+        "Top-10 Acc (%)":      pct(c["top10"], t),
+        "Top-20 Acc (%)":      pct(c["top20"], t),
+        "Found":               c["found"],
+        "Found (%)":           pct(c["found"],     t),
+        "Not Found":           c["not_found"],
+        "Not Found (%)":       pct(c["not_found"], t),
+        "Fail":                c["fail"],
+        "Fail (%)":            pct(c["fail"],      t),
+    }
+
+
 def main():
+    loc_map = load_loc_report()
     rows = []
 
     for lang, cfg in LANG_CONFIGS.items():
@@ -156,24 +202,8 @@ def main():
             if c["total"] == 0:
                 print(f"[{lang}] no data in {debug_dir}")
                 continue
-            t = c["total"]
-            rows.append({
-                "Language":       lang,
-                "Project":        "(all)",
-                "Total":          t,
-                "Top-1 Acc (%)":  pct(c["top1"],  t),
-                "Top-3 Acc (%)":  pct(c["top3"],  t),
-                "Top-5 Acc (%)":  pct(c["top5"],  t),
-                "Top-10 Acc (%)": pct(c["top10"], t),
-                "Top-20 Acc (%)": pct(c["top20"], t),
-                "Found":          c["found"],
-                "Found (%)":      pct(c["found"],     t),
-                "Not Found":      c["not_found"],
-                "Not Found (%)":  pct(c["not_found"], t),
-                "Fail":           c["fail"],
-                "Fail (%)":       pct(c["fail"],      t),
-            })
-            print(f"  [{lang}] (all): total={t}")
+            rows.append(make_row(lang, "all", c, loc_map))
+            print(f"  [{lang}] (all): total={c['total']}")
             continue
 
         projects = get_projects(cfg["src"])
@@ -185,27 +215,12 @@ def main():
             c = aggregate_project(debug_dir, project)
             if c["total"] == 0:
                 continue
-            t = c["total"]
-            rows.append({
-                "Language":       lang,
-                "Project":        project,
-                "Total":          t,
-                "Top-1 Acc (%)":  pct(c["top1"],  t),
-                "Top-3 Acc (%)":  pct(c["top3"],  t),
-                "Top-5 Acc (%)":  pct(c["top5"],  t),
-                "Top-10 Acc (%)": pct(c["top10"], t),
-                "Top-20 Acc (%)": pct(c["top20"], t),
-                "Found":          c["found"],
-                "Found (%)":      pct(c["found"],     t),
-                "Not Found":      c["not_found"],
-                "Not Found (%)":  pct(c["not_found"], t),
-                "Fail":           c["fail"],
-                "Fail (%)":       pct(c["fail"],      t),
-            })
-            print(f"  [{lang}] {project}: total={t}")
+            rows.append(make_row(lang, project, c, loc_map))
+            print(f"  [{lang}] {project}: total={c['total']}")
 
     fieldnames = [
-        "Language", "Project", "Total",
+        "Language", "Project",
+        "Total_Lines_wc", "Code_Lines_cloc",
         "Top-1 Acc (%)", "Top-3 Acc (%)", "Top-5 Acc (%)",
         "Top-10 Acc (%)", "Top-20 Acc (%)",
         "Found", "Found (%)", "Not Found", "Not Found (%)", "Fail", "Fail (%)",
