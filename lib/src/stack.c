@@ -984,8 +984,8 @@ static uint32_t collect_reduces(
 ) {
   uint32_t count = 0;
 
-  // terminal 심볼 범위만 조회
-  uint32_t terminal_count = language->token_count + language->external_token_count;
+  // terminal 심볼 범위만 조회 (token_count는 external token을 이미 포함)
+  uint32_t terminal_count = language->token_count;
 
   for (TSSymbol sym = 0; sym < terminal_count && count < out_cap; sym++) {
     uint32_t idx = ts_language_lookup(language, state, sym);
@@ -1249,11 +1249,10 @@ static void simulate_ext_shift_chains(
   //   (예: _cond_tight_dot — EOF로 인해 생성되지 못한 경우)
 
   for (uint32_t ei = 0; ei < language->external_token_count; ei++) {
-    // 0-byte 여부 판별: mask OR visible==false
+    // 0-byte 여부 판별: mask만 사용 (is_hidden 보완 비활성화)
     TSSymbol ext_sym = language->external_scanner.symbol_map[ei];
     bool in_mask   = (ei < 64) && (zero_byte_ext_mask & (1ULL << ei));
-    bool is_hidden = !language->symbol_metadata[ext_sym].visible;
-    if (!in_mask && !is_hidden) continue;
+    if (!in_mask) continue;
 
     uint32_t idx = ts_language_lookup(language, state, ext_sym);
     if (idx == 0) continue;
@@ -1269,8 +1268,7 @@ static void simulate_ext_shift_chains(
     }
     if (s1 == 0) continue;
 
-    fprintf(stderr, "[SIM_EXT] ext_shift: state=%u, ext_sym=%u(ei=%u, hidden=%d) -> s1=%u\n",
-            state, ext_sym, ei, is_hidden, s1);
+
 
     // depth-1: vstack=[s1]
     VStack v1 = { .depth = 1 };

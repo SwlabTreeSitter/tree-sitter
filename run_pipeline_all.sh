@@ -2,10 +2,8 @@
 
 # =============================================================
 # run_pipeline_all.sh
-# 모든 언어에 대해 순차적으로 run_pipeline.sh를 실행한다.
-# 각 Python 스크립트(to_data_batch_collect_learn_*, _test_*,
-# to_json_aggregate_*, to_json_per_file_test_*, evaluate_struct_*,
-# evaluate_coverage)의 출력을 단일 로그 파일에 언어별로 기록한다.
+# 모든 언어에 대해 병렬로 run_pipeline.sh를 실행한다.
+# 각 언어의 summary는 pipeline_summary_<lang>.log에 기록된다.
 #
 # 사용법:
 #   ./run_pipeline_all.sh [옵션] [언어1 언어2 ...]
@@ -21,8 +19,6 @@
 #   --skip-learn-collect   Step 1(LEARN 컬렉션) 만 건너뜀
 #   --skip-test-collect    Step 2(TEST 컬렉션) 만 건너뜀
 #   --per-project          Step 4 완료 후 프로젝트별 결과도 집계하여 출력/저장
-#
-# 로그 파일: pipeline_all_YYYYMMDD_HHMMSS.log
 # =============================================================
 
 TS_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -35,6 +31,7 @@ SKIP_COLLECT_FLAG=""
 SKIP_LEARN_COLLECT_FLAG=""
 SKIP_TEST_COLLECT_FLAG=""
 PER_PROJECT_FLAG=""
+BUILD_ONLY=false
 LANG_ARGS=()
 for arg in "$@"; do
     case "$arg" in
@@ -42,6 +39,7 @@ for arg in "$@"; do
         --skip-learn-collect) SKIP_LEARN_COLLECT_FLAG="--skip-learn-collect" ;;
         --skip-test-collect)  SKIP_TEST_COLLECT_FLAG="--skip-test-collect" ;;
         --per-project)        PER_PROJECT_FLAG="--per-project" ;;
+        --build-only)         BUILD_ONLY=true ;;
         *)                    LANG_ARGS+=("$arg") ;;
     esac
 done
@@ -53,85 +51,99 @@ else
     LANGUAGES=("${ALL_LANGUAGES[@]}")
 fi
 
-# 로그 파일 경로 (타임스탬프 포함)
-LOG_FILE="$TS_DIR/pipeline_all_$(date '+%Y%m%d_%H%M%S').log"
-
 # 파이프라인 실패 시 개별 언어를 건너뛰고 계속 진행
 set +e
 
-# pipefail: tee 앞 명령의 종료 코드를 올바르게 받기 위해 활성화
-set -o pipefail
-
 # =================[ 로그 헤더 ]=================
-{
-    echo "############################################################"
-    echo "  run_pipeline_all.sh"
-    echo "  Start   : $(date '+%Y-%m-%d %H:%M:%S')"
-    echo "  Languages: ${LANGUAGES[*]}"
-    _OPT_STR="${SKIP_COLLECT_FLAG:+$SKIP_COLLECT_FLAG }${SKIP_LEARN_COLLECT_FLAG:+$SKIP_LEARN_COLLECT_FLAG }${SKIP_TEST_COLLECT_FLAG:+$SKIP_TEST_COLLECT_FLAG }${PER_PROJECT_FLAG}"
-    echo "  Options : ${_OPT_STR:-none}"
-    echo "  Log file: $LOG_FILE"
-    echo "############################################################"
-    echo ""
-} | tee "$LOG_FILE"
+echo "############################################################"
+echo "  run_pipeline_all.sh"
+echo "  Start   : $(date '+%Y-%m-%d %H:%M:%S')"
+echo "  Languages: ${LANGUAGES[*]}"
+_OPT_STR="${SKIP_COLLECT_FLAG:+$SKIP_COLLECT_FLAG }${SKIP_LEARN_COLLECT_FLAG:+$SKIP_LEARN_COLLECT_FLAG }${SKIP_TEST_COLLECT_FLAG:+$SKIP_TEST_COLLECT_FLAG }${PER_PROJECT_FLAG}"
+echo "  Options : ${_OPT_STR:-none}"
+echo "############################################################"
+echo ""
 
 TOTAL_START=$(date +%s)
 FAILED=()
 SUCCEEDED=()
 
-# =================[ 언어별 실행 ]=================
+# =================[ 빌드 (병렬 실행 전 1회) ]=================
+echo "  [ALL] Building TreeSitterCutFile.exe + VSCode addon..."
+bash "$TS_DIR/rebuild_ts_and_exe.sh" 2>&1
+if [ -d "$TS_DIR/../code-completion-extension" ]; then
+    cd "$TS_DIR/../code-completion-extension"
+    if [ -f package-lock.json ]; then npm ci --silent 2>&1; else npm install --silent 2>&1; fi
+    python3 generate_build_config.py 2>&1
+    npx node-gyp rebuild 2>&1
+    echo "  [ALL] VSCode addon rebuild done."
+    cd "$TS_DIR"
+fi
+echo ""
+
+if [ "$BUILD_ONLY" = true ]; then
+    echo "  [ALL] --build-only: build finished, skipping evaluation."
+    exit 0
+fi
+
+# =================[ 언어별 실행 (병렬) ]=================
+PIDS=()
+
 for LANG in "${LANGUAGES[@]}"; do
-    {
-        echo "============================================================"
-        echo "  [ALL] >>> Language: $LANG"
-        echo "  [ALL]     Start   : $(date '+%Y-%m-%d %H:%M:%S')"
-        echo "============================================================"
-    } | tee -a "$LOG_FILE"
+    LANG_LOG="$TS_DIR/pipeline_summary_${LANG}.log"
+    > "$LANG_LOG"  # 초기화
 
-    LANG_START=$(date +%s)
+    (
+        LANG_START=$(date +%s)
 
-    # run_pipeline.sh 실행; stdout+stderr → 터미널(tee) + 로그 파일(append)
-    bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG $SKIP_LEARN_COLLECT_FLAG $SKIP_TEST_COLLECT_FLAG $PER_PROJECT_FLAG 2>&1 | tee -a "$LOG_FILE"
-    EXIT_CODE=${PIPESTATUS[0]}
+        # run_pipeline.sh의 SUMMARY_LOG를 언어별 파일로 지정
+        export PIPELINE_SUMMARY_LOG="$LANG_LOG"
 
-    LANG_ELAPSED=$(( $(date +%s) - LANG_START ))
+        bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG $SKIP_LEARN_COLLECT_FLAG $SKIP_TEST_COLLECT_FLAG $PER_PROJECT_FLAG > /dev/null 2>&1
+        EXIT_CODE=$?
 
-    if [ "$EXIT_CODE" -eq 0 ]; then
+        LANG_ELAPSED=$(( $(date +%s) - LANG_START ))
+
+        exit $EXIT_CODE
+    ) &
+    PIDS+=($!)
+    echo "  [ALL] Started $LANG (PID=$!)"
+done
+
+# 모든 프로세스 완료 대기
+echo ""
+echo "  [ALL] Waiting for ${#PIDS[@]} languages to finish..."
+
+for i in "${!PIDS[@]}"; do
+    LANG="${LANGUAGES[$i]}"
+    PID="${PIDS[$i]}"
+    if wait "$PID"; then
         SUCCEEDED+=("$LANG")
-        {
-            echo ""
-            echo "  [ALL] <<< DONE   : $LANG  (${LANG_ELAPSED}s)"
-        } | tee -a "$LOG_FILE"
+        echo "  [ALL] $LANG finished (success)"
     else
         FAILED+=("$LANG")
-        {
-            echo ""
-            echo "  [ALL] <<< FAILED : $LANG  (exit=$EXIT_CODE, ${LANG_ELAPSED}s)"
-        } | tee -a "$LOG_FILE"
+        echo "  [ALL] $LANG finished (FAILED)"
     fi
-
-    echo "" | tee -a "$LOG_FILE"
 done
 
 # =================[ 요약 ]=================
 TOTAL_ELAPSED=$(( $(date +%s) - TOTAL_START ))
-{
-    echo "############################################################"
-    echo "  [ALL] Pipeline finished"
-    echo "  [ALL] End    : $(date '+%Y-%m-%d %H:%M:%S')"
-    echo "  [ALL] Elapsed: ${TOTAL_ELAPSED}s"
-    echo ""
-    if [ ${#SUCCEEDED[@]} -gt 0 ]; then
-        echo "  [ALL] Succeeded (${#SUCCEEDED[@]}): ${SUCCEEDED[*]}"
-    fi
-    if [ ${#FAILED[@]} -gt 0 ]; then
-        echo "  [ALL] Failed    (${#FAILED[@]}): ${FAILED[*]}"
-    else
-        echo "  [ALL] All languages completed successfully."
-    fi
-    echo "  [ALL] Log file : $LOG_FILE"
-    echo "############################################################"
-} | tee -a "$LOG_FILE"
+echo ""
+echo "############################################################"
+echo "  [ALL] Pipeline finished"
+echo "  [ALL] End    : $(date '+%Y-%m-%d %H:%M:%S')"
+echo "  [ALL] Elapsed: ${TOTAL_ELAPSED}s"
+echo ""
+if [ ${#SUCCEEDED[@]} -gt 0 ]; then
+    echo "  [ALL] Succeeded (${#SUCCEEDED[@]}): ${SUCCEEDED[*]}"
+fi
+if [ ${#FAILED[@]} -gt 0 ]; then
+    echo "  [ALL] Failed    (${#FAILED[@]}): ${FAILED[*]}"
+else
+    echo "  [ALL] All languages completed successfully."
+fi
+echo "  [ALL] Summary logs: pipeline_summary_<lang>.log"
+echo "############################################################"
 
 # 실패한 언어가 있으면 non-zero 반환
 [ ${#FAILED[@]} -eq 0 ]

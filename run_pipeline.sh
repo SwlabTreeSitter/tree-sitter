@@ -95,7 +95,8 @@ COVERAGE_LANG="$LANG"
 
 # =================[ 요약 로그 설정 ]=================
 # 터미널 출력은 그대로 유지하고, 각 단계의 최종 결과 줄만 이 파일에 기록한다.
-SUMMARY_LOG="$TS_DIR/pipeline_summary.log"
+# 환경변수 PIPELINE_SUMMARY_LOG가 설정되면 사용, 아니면 기본값
+SUMMARY_LOG="${PIPELINE_SUMMARY_LOG:-$TS_DIR/pipeline_summary.log}"
 
 # 헬퍼: python3 실행 → 터미널 출력 유지 + 패턴 일치 줄만 SUMMARY_LOG에 추가
 _pylog() {
