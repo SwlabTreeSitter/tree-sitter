@@ -3208,8 +3208,7 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
 // [new]
 void collect_recursive(
   CollectionContext *ctx,
-  Subtree tree,
-  TSStateId state_from_parent
+  Subtree tree
 ) {
   uint32_t count = ts_subtree_child_count(tree);
 
@@ -3232,24 +3231,35 @@ void collect_recursive(
   bool current_is_error = ts_subtree_is_error(tree) ||
                           ts_subtree_symbol(tree) == ts_builtin_sym_error_repeat;
 
+  // 후보 state 얻기
+  // - ts_subtree_parse_state(tree): subtree에 저장된 parse_state 값 반환
+  // - 이 값이 유효한 state ID일 수도, 센티널/플래그 값일 수도 있음
   TSStateId current_node_state = ts_subtree_parse_state(tree);
   TSStateId running_state;
+
+  // 1단계 - non-fragile (노드가 deterministic하게 파싱)
   if (current_node_state < ctx->lang->state_count) {
-    // 1순위: 노드 자체의 parse_state (non-fragile)
     running_state = current_node_state;
   } else {
-    // Fragile 노드 → 첫 리프의 S1로 시도, 실패 시 shift_state_map에서 S2 조회
+    // 2단계 - fragile, 첫 리프의 S1 사용
+    // GLR 병합이나 에러 복구 등으로 단일 진입 state를 특정할 수 없는 subtree
+
+    // - ts_subtree_leaf_parse_state(tree): 이 subtree의 첫 번째 리프(leftmost leaf)의 parse_state(S1)을 가져옴 
+    // - S1: 그 리프가 lex될 때의 state
     running_state = ts_subtree_leaf_parse_state(tree);
+
+    // 3단계 - S1 검증, REDUCE 개입/GLR 분기로 어긋날 수 있음
     if (ctx->shift_state_map && running_state < ctx->lang->state_count) {
-      // running_state(S1)로 첫 비-extra 자식에 대해 next_state 테스트
       Subtree *children = ts_subtree_children(tree);
       for (uint32_t k = 0; k < count; k++) {
         if (ts_subtree_extra(children[k])) continue;
+        
+        // - ts_language_next_state(lang, state, sym): parse table 조회. 0이면 해당 전이가 없음 = stuck
+        // - 정상: S1 유지
+        // - stuck: S2 맵에서 조회, 있으면 S2로 교체 
         TSSymbol first_sym = ts_subtree_symbol(children[k]);
         if (ts_language_next_state(ctx->lang, running_state, first_sym) == 0) {
-          // S1이 stuck → S2 조회
           uint32_t first_byte = ctx->byte_offset;
-          // 첫 비-extra 자식까지의 padding을 더함
           for (uint32_t p = 0; p <= k; p++) {
             if (p < k) first_byte += ts_subtree_total_bytes(children[p]);
             else first_byte += ts_subtree_padding(children[p]).bytes;
@@ -3264,7 +3274,7 @@ void collect_recursive(
     }
   }
 
-  // 자식 순회
+  // [자식 순회 루프]
   for (uint32_t i = 0; i < count; i++) {
     Subtree child = children[i];
     TSSymbol child_sym = ts_subtree_symbol(child);
@@ -3303,8 +3313,11 @@ void collect_recursive(
     }
 
     // 자식이 Leaf 노드이면 구조 후보 출력
+    // next_state 검증 추가: pre-resync로도 복구 실패한 stuck 상태에서 잘못된 record 출력 방지
+    // (running_state가 유효 범위 내여도 child_sym에 대한 전이가 없으면 LR상 불가능한 조합)
     if (is_leaf && is_valid_sym && !current_is_error &&
-      running_state > 0 && running_state < ctx->lang->state_count) {
+      running_state > 0 && running_state < ctx->lang->state_count &&
+      ts_language_next_state(ctx->lang, running_state, child_sym) != 0) {
 
       bool contaminated = false;
         for (uint32_t j = i; j < count; j++) {
@@ -3338,14 +3351,14 @@ void collect_recursive(
     }
 
     // 자식이 또 Internal 노드이면 재귀
-    collect_recursive(ctx, child, running_state);
+    collect_recursive(ctx, child);
 
     if (!is_extra && running_state > 0 && running_state < ctx->lang->state_count) {
       TSStateId next = ts_language_next_state(ctx->lang, running_state, child_sym);
       if (next != 0) {
         running_state = next;
       } else if (is_leaf) {
-        // running_state가 stuck → S1で resync 시도, 실패 시 S2로 재시도
+        // running_state가 stuck → S1 resync 시도, 실패 시 S2로 재시도
         TSStateId leaf_state = ts_subtree_leaf_parse_state(child);
         bool resynced = false;
         if (leaf_state != running_state && leaf_state < ctx->lang->state_count) {
@@ -3398,7 +3411,7 @@ bool ts_parser_run_collection2 (
       .shift_state_map = (self && self->shift_state_map.size > 0) ? &self->shift_state_map : NULL
   };
 
-  collect_recursive(&ctx, root, 1);
+  collect_recursive(&ctx, root);
   return true;
 }
 
