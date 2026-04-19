@@ -1275,39 +1275,7 @@ static void simulate_ext_shift_chains(
     v1.states[0] = s1;
     simulate_with_vstack(s1, real_node, v1, language, result, visited);
 
-    // depth-2: s1에 non-extra REDUCE가 없는 경우에만 (=반드시 SHIFT해야 진행 가능)
-    // s1에서 가능한 terminal SHIFT → s2, vstack=[s1, s2]
-    bool s1_has_reduce = false;
-    for (TSSymbol sym = 0; sym < language->token_count; sym++) {
-      uint32_t chk = ts_language_lookup(language, s1, sym);
-      if (chk == 0) continue;
-      const TSParseActionEntry *ce = &language->parse_actions[chk];
-      const TSParseAction *ca = (const TSParseAction *)(ce + 1);
-      for (uint32_t k = 0; k < ce->entry.count; k++) {
-        if (ca[k].type == TSParseActionTypeReduce) { s1_has_reduce = true; break; }
-      }
-      if (s1_has_reduce) break;
-    }
-    if (s1_has_reduce) continue;
-
-    for (TSSymbol sym2 = 0; sym2 < language->token_count; sym2++) {
-      uint32_t idx2 = ts_language_lookup(language, s1, sym2);
-      if (idx2 == 0) continue;
-      const TSParseActionEntry *e2 = &language->parse_actions[idx2];
-      const TSParseAction *acts2 = (const TSParseAction *)(e2 + 1);
-      TSStateId s2 = 0;
-      for (uint32_t b = 0; b < e2->entry.count; b++) {
-        if (acts2[b].type == TSParseActionTypeShift && !acts2[b].shift.extra) {
-          s2 = acts2[b].shift.state;
-          break;
-        }
-      }
-      if (s2 == 0) continue;
-      VStack v2 = { .depth = 2 };
-      v2.states[0] = s1;
-      v2.states[1] = s2;
-      simulate_with_vstack(s2, real_node, v2, language, result, visited);
-    }
+    // depth-2: 제거 (실험)
   }
 }
 
