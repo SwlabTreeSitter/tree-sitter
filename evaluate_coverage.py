@@ -38,7 +38,7 @@ LANG_CONFIGS = {
         "answer":    "/home/hyeonjin/PL/tree-sitter/reports/cpp",
         "report":    "/home/hyeonjin/PL/tree-sitter/reports/cpp",
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/cpp/candidates.json",
-        "ext":       ".cpp",
+        "ext":       [".cpp", ".cc", ".cxx"],
         "walk":      True,
         "exercism":  ("cpp-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("example.cpp", "exemplar.cpp")),
         "skip_dirs": {".git", "build", "vendor"},
@@ -203,18 +203,23 @@ class EvaluationReporter:
         cfg = self.cfg
         src = cfg["src"]
         ext = cfg["ext"]
+        # 단일 문자열 OR 리스트 모두 지원 (cpp: .cpp + .cc + .cxx)
+        exts = (ext,) if isinstance(ext, str) else tuple(ext)
         exercism = cfg.get("exercism")
         skip_dirs = cfg.get("skip_dirs", set())
 
         if not cfg["walk"]:
             import glob as _glob
-            return sorted(_glob.glob(os.path.join(src, f"*{ext}")))
+            files = []
+            for e in exts:
+                files += _glob.glob(os.path.join(src, f"*{e}"))
+            return sorted(files)
 
         target_files = []
         for root, dirs, files in os.walk(src):
             dirs[:] = [d for d in dirs if d not in skip_dirs]
             for filename in files:
-                if not filename.endswith(ext):
+                if not filename.endswith(exts):
                     continue
                 full_path = os.path.join(root, filename)
                 if exercism:

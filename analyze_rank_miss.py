@@ -39,6 +39,8 @@ LANG_CONFIGS = {
     "cpp":        "/home/hyeonjin/PL/code-completion-extension/resources/cpp/candidates.json",
     "java":       "/home/hyeonjin/PL/code-completion-extension/resources/java/candidates.json",
     "python":     "/home/hyeonjin/PL/code-completion-extension/resources/python/candidates.json",
+    "c":          "/home/hyeonjin/PL/code-completion-extension/resources/c/candidates.json",
+    "smallbasic": "/home/hyeonjin/PL/code-completion-extension/resources/smallbasic/candidates.json",
 }
 
 DEFAULT_THRESHOLD = 10

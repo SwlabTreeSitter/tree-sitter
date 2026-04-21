@@ -2084,6 +2084,29 @@ static bool ts_parser__advance(
   }
 }
 
+// [custom] conversion helpers
+
+// pre-shift state 보존: 현재 version을 복제하고 halted로 표시
+// 호출 후 원본은 계속 SHIFT 진행 가능
+static void conv__halt_pre_shift_copy(TSParser *self, StackVersion version) {
+  StackVersion copy = ts_stack_copy_version(self->stack, version);
+  if (copy != STACK_VERSION_NONE) {
+    ts_stack_halt(self->stack, copy);
+  }
+}
+
+// state에서 symbol에 대한 parse action이 존재하는지
+static bool conv__has_action_for_symbol(
+  const TSLanguage *lang,
+  TSStateId state,
+  TSSymbol sym
+) {
+  TableEntry entry = {.action_count = 0};
+  ts_language_table_entry(lang, state, sym, &entry);
+  return entry.action_count > 0;
+}
+
+
 // [custom]
 static bool ts_parser__advance_for_conversion(
   TSParser *self,
@@ -2139,6 +2162,7 @@ static bool ts_parser__advance_for_conversion(
       self->ext_scan_fail_max_position = 0;  // 초기화
       lookahead = ts_parser__lex(self, version, state);  // Lexer 실행
       if (self->has_scanner_error) return false;
+
       // [LEXDBG] 렉싱 결과와 ext_scan_fail_max_position 추적 (무조건)
       fprintf(stderr, "[LEXDBG] state=%u pos=%u target=%u ext_fail=%u lk=%s has_ext=%d sym=%u sz=%u\n",
               state, position, target_length,
@@ -2148,22 +2172,43 @@ static bool ts_parser__advance_for_conversion(
               lookahead.ptr ? (unsigned)ts_subtree_symbol(lookahead) : 0u,
               lookahead.ptr ? ts_subtree_total_size(lookahead).bytes : 0u);
 
-      // 외부 스캐너가 커서 위치까지 읽었지만 실패 → 내부 렉서 결과 무시 → freeze
-      // 예) state:1830에서 `_string_content` 렉싱 시도 → 잘린 소스에서 """ 없음 →
-      //     외부 스캐너가 pos=210(커서)까지 읽고 실패 → 내부 렉서가 identifier 반환
-      //     → state:1830은 identifier를 처리할 수 없어 에러 복구로 가야 하는 상황
-      //     → conversion에서는 에러 복구 대신 state:1830을 freeze
+      // =====================================
+      //  lookahead 토큰 확보 후 커서 경계 검사
+      // =====================================
+
+      // [외부 스캐너 read-ahead 실패 감지]
       //
-      // 단, 외부 스캐너가 context 판단을 위해 target 너머를 read-ahead한 후 실패하더라도
-      // 내부 렉서 토큰이 현재 state에서 유효하면 계속 진행해야 한다.
-      // 예) Haskell state:36이 `IO ()\n` 전체를 읽고 실패했지만
-      //     내부 렉서의 name(IO)는 state:1462에서 유효한 SHIFT → 계속
+      // 발동 조건: 외부 스캐너가 target 너머까지 read-ahead하다 실패했고,
+      //            내부 lexer가 대체 토큰을 반환한 상황
+      //   - lookahead 존재
+      //   - 그 토큰이 내부 lexer 산출 (외부 토큰 아님)
+      //   - ext_scan_fail_max_position >= target_length
+      //
+      // 이 조합은 두 가지로 해석 가능 — 내부 토큰의 현재 state 유효성으로 구분:
+      //
+      // (A) 내부 토큰이 현재 state에서 유효하지 않음
+      //     → cut source 때문에 기대하던 외부 토큰이 형성 못 한 상황
+      //     → 정상 파싱이라면 에러 복구 발동 → 원본 state 소실
+      //     → conversion은 freeze로 원본 state 보존
+      //     예) Python state:1830 (triple-quote string 내부) + `"""abc▌` cut source
+      //         닫는 """ 못 찾아 외부 스캐너 실패 → 내부 lexer가 identifier "abc" 반환
+      //         state:1830은 identifier 처리 불가 → freeze
+      //
+      // (B) 내부 토큰이 현재 state에서 유효함
+      //     → 외부 스캐너의 read-ahead는 단지 context 판단용이었고, 내부 토큰이 진짜 유효
+      //     → 그대로 계속 진행
+      //
+      // [EXTFAIL], shiftable 출력은 진단 로그 — 파싱 결정에 영향 없음.
+      //   어느 외부 토큰이 원래 기대됐는지 개발자가 파악하는 용도.
+
       if (lookahead.ptr
           && !ts_subtree_has_external_tokens(lookahead)
           && self->ext_scan_fail_max_position >= target_length) {
+
         // [DIAG] 조건 발동: state, position, 그리고 이 state에서 SHIFT 가능한 invisible 외부 토큰 열거
         fprintf(stderr, "[EXTFAIL] state=%u pos=%u target=%u lk_sym=%u\n",
                 state, position, target_length, ts_subtree_symbol(lookahead));
+
         for (uint32_t ei = 0; ei < self->language->external_token_count; ei++) {
           TSSymbol ext_sym = self->language->external_scanner.symbol_map[ei];
           bool is_hidden = !self->language->symbol_metadata[ext_sym].visible;
@@ -2179,121 +2224,127 @@ static bool ts_parser__advance_for_conversion(
             }
           }
         }
-        TableEntry validity = {.action_count = 0};
-        ts_language_table_entry(self->language, state,
-                                ts_subtree_symbol(lookahead), &validity);
-        if (validity.action_count == 0) {
+        if (!conv__has_action_for_symbol(self->language, state,
+                                          ts_subtree_symbol(lookahead))) {
           return false;  // 내부 토큰도 유효하지 않음 → 진짜 cut source
         }
         // 유효하면 계속 (외부 스캐너의 context read-ahead였음)
       }
 
       if (position >= target_length) {
+
         // [커서 위치 도달] 렉서 결과에 따라 엄격히 분기:
         //
         // ① NULL → non-terminal extra reduce가 발생해 상태가 바뀔 수 있으므로 중단.
         //      예) `def foo(` 커서 직후: NULL 반환 → non-terminal extra reduce →
         //         올바른 상태가 이미 사라진 뒤 sym:end 감지.
         // ② sym:end / sym:error → EOF. 중단.
-        // ③ 크기 == 0, 해당 state에서 액션 없음 → 유효하지 않은 가상 토큰
+        // ③ 크기 == 0, 해당 state에서 액션 없음 → 유효하지 않은 가상 토큰 (주로 잘린 소스에 의함)
         //      예) Python DEDENT: 해당 state에서 REJECT → 에러 복구 → 올바른 상태 폐기.
         //         중단해서 현재 상태(예: state:601)를 캡처.
         // ④ 크기 == 0, 해당 state에서 SHIFT 가능 → 유효한 외부 토큰
         //      예) Haskell _cmd_texp_start: SHIFT → state:8876 →
         //         다음 호출에서 state:8876을 캡처, 시뮬레이션이 state:7779 도출.
+
         if (!lookahead.ptr) return false;  // ①
+
         TSSymbol sym = ts_subtree_symbol(lookahead);
         if (sym == ts_builtin_sym_end) return false;   // ②
         if (sym == ts_builtin_sym_error) return false; // ②
+
         // ③ vs ④: 0-size 토큰의 유효성 검사
-        TableEntry ze = {.action_count = 0};
-        ts_language_table_entry(self->language, state, sym, &ze);
-        if (ze.action_count == 0) return false;  // ③
+        if (!conv__has_action_for_symbol(self->language, state, sym)) {
+          return false;  // ③
+        }
+
         // ④: 유효한 SHIFT → 삽입 전/후 state 모두 캡처
         //   - 복사본을 halted로 고정: 삽입 전 state에서 시뮬레이션
         //   - 원본은 SHIFT 진행: 다음 호출에서 삽입 후 state 캡처
         //   - phase_3_conversion이 전체 버전(halted 포함)을 순회하며 합집합
-        StackVersion pre_shift_copy = ts_stack_copy_version(self->stack, version);
-        if (pre_shift_copy != STACK_VERSION_NONE) {
-          ts_stack_halt(self->stack, pre_shift_copy);
-        }
+        conv__halt_pre_shift_copy(self, version);
         ts_parser__set_cached_token(self, position, last_external_token, lookahead);
         ts_language_table_entry(self->language, state, sym, &table_entry);
+
       } else {
-        // [커서 미도달] 기존 post-lex 체크 유지
-        // sym:end 또는 커서 이후에서 sym:error → 중단
+        // [pos < target: 파서가 커서에 아직 도달 전]
+        //
+        // 파서 pos는 커서 전이지만 lexer가 커서 근처/너머까지 엿봤을 수 있음.
+        // 그 엿봄 결과를 어떻게 다룰지 4가지 케이스로 분기.
+        // 공통 원칙: conversion의 현재 state를 에러 복구·커서 너머 진행으로부터 보호.
+        //
+        // ① sym == end / (sym == error + lexer가 target 너머)   → freeze
+        //    EOF 또는 커서 너머 lex 실패. 더 진행 무의미.
+        //
+        // ② NULL + lexer가 target 도달                          → freeze
+        //    NULL은 non-terminal extra reduce 신호. lexer가 이미 커서까지 갔으므로
+        //    그 reduce가 발동하면 현재 state 소실. 미리 freeze로 보존.
+        //    예) Haskell `main ▌`: 공백 skip으로 lexer pos==target, `::` 미도달 → NULL
+        //        → extra reduce 발동하면 state:2263 사라짐 → freeze로 보존
+        //
+        // ③ 0-size 토큰 + lexer가 target 도달
+        //    - state에서 action 없음                             → freeze
+        //      Scanner 가상 토큰이 parse table에선 거부. pos >= target ③와 동일 논리.
+        //      예) Python DEDENT: state에서 reject → freeze로 원본 state 보존
+        //    - state에서 action 있음                             → halted copy + fall-through
+        //      유효한 0-byte external SHIFT. pre/post-shift state 모두 보존 필요.
+        //      예) Python state:92 _indent SHIFT → state:752
+        //          복제본이 state:92 보존, 원본은 SHIFT 후 state:752로 진행
+        //
+        // ④ size>0 토큰 + 경계 비교
+        //    - token_end > target                                → freeze
+        //      토큰이 커서 너머 (mode 2 full-source 가드).
+        //      mode 0(잘린 소스)에선 물리적으로 불가능.
+        //    - token_end == target (external)                    → halted copy + fall-through
+        //      외부 토큰이 경계에 딱 닿음
+        //      사용자가 그 토큰을 끝낸 것인지, 끝내려는 참인지 모호해
+        //      pre/post-shift state 모두 보존
+        //      예) Haskell `_cmd_layout_start`(외부): halted copy + SHIFT → state:2 캡처
+        //    - token_end < target                                → 정상 진행
+        //      경계 안쪽, 평범하게 SHIFT 계속
+        //      예) Haskell `(` (내부, size=2): SHIFT → 이후 ③에서 state 캡처
+
+        // ①: EOF / cursor-past error
         if ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_end)
             || ((lookahead.ptr && ts_subtree_symbol(lookahead) == ts_builtin_sym_error)
                 && self->lexer.current_position.bytes >= target_length)) {
           return false;
         }
 
-        // NULL + 렉서가 커서까지 전진: 커서 도달로 처리
-        //   - non-terminal extra reduce(정상): NULL이지만 current_position < target_length
-        //   - 커서 직전 토큰 불완전(예: Haskell `main ` 뒤 `::` 미도달):
-        //       공백을 스킵하면 current_position == target_length에 도달하지만
-        //       다음 문자(`::`)를 읽지 못해 NULL 반환
-        //       → non-terminal extra reduce가 발동되면 state:2263이 사라짐
+        // ②: NULL + lexer가 target 도달
         if (!lookahead.ptr && self->lexer.current_position.bytes >= target_length) {
           return false;
         }
 
-        // 커서 위치에서 0-size 가상 토큰: 유효하지 않으면 중단 (예: Python DEDENT)
+        // ③: 0-size 토큰 + lexer가 target 도달
         if (self->lexer.current_position.bytes >= target_length
             && lookahead.ptr
             && ts_subtree_total_size(lookahead).bytes == 0) {
-          TableEntry zero_size_entry = {.action_count = 0};
-          ts_language_table_entry(self->language, state, ts_subtree_symbol(lookahead), &zero_size_entry);
-          if (zero_size_entry.action_count == 0) {
+          // invalid → freeze
+          if (!conv__has_action_for_symbol(self->language, state,
+                                            ts_subtree_symbol(lookahead))) {
             return false;
           }
-          // ⑤ (else-branch): 유효한 0-size SHIFT가 렉서를 커서 경계까지 전진시킨 경우
-          //   position < target_length 이지만 렉서가 target_length까지 읽어버림
-          //   → SHIFT를 진행시킨다. 0-size이므로 position은 그대로.
-          //   → 다음 advance에서 계속 파싱하다가 실제 position >= target_length
-          //      분기에 진입하여 올바르게 캡처됨 (예: Haskell _cmd_texp_start)
-          //   → 단, SHIFT 전 상태(현재 state)도 캡처해야 한다.
-          //     예) Python state:92에서 _indent SHIFT → state:752 →
-          //         다음 advance에서 실패 → state:752만 캡처됨, state:92 누락.
-          //     → 복사본을 halted로 고정하여 삽입 전 state를 시뮬레이션에 포함.
-          {
-            StackVersion pre_shift_copy = ts_stack_copy_version(self->stack, version);
-            if (pre_shift_copy != STACK_VERSION_NONE) {
-              ts_stack_halt(self->stack, pre_shift_copy);
-            }
-          }
-          // fall-through
+          // valid → halted copy + fall-through으로 SHIFT 진행
+          conv__halt_pre_shift_copy(self, version);
         }
 
-        // ③ (else-branch): 크기>0 외부 토큰이 커서 경계에 걸치는 경우
-        //   → token_end == target: ⑤ 방식으로 전/후 상태 모두 탐색 (halted copy + fall-through)
-        //   → token_end > target: 커서를 넘어서는 토큰 → freeze (mode 2 full-source 전용 경로)
-        //       mode 0(잘린 소스)에서는 token_end > target이 물리적으로 불가능하므로 기존 동작 무변
-        //   → token_end < target: 경계 안 → 진행
-        //   내부 스캐너 토큰은 항상 fall-through (SHIFT 허용, 이후 ⑤에서 state 캡처)
-        //   단, 내부 토큰도 token_end > target이면 freeze (mode 2 보정)
-        //   예) Haskell _cmd_layout_start (외부, token_end==target): halted copy + SHIFT → state:2 캡처
-        //       Haskell `(` (내부, size=2): 진행 → SHIFT → _cmd_texp_start ⑤ → state:7779
+        // ④: size>0 토큰 + 경계 비교
         if (lookahead.ptr && ts_subtree_total_size(lookahead).bytes > 0) {
           uint32_t token_end = position + ts_subtree_total_size(lookahead).bytes;
+          // token_end > target → freeze
           if (token_end > target_length) {
-            // 토큰이 커서를 넘어감 → 현재 state에서 freeze
-            // (mode 0에서는 이 분기에 진입 불가 → 기존 동작 보존)
             return false;
           }
+          // token_end == target (external) → halted copy + fall-through
           if (ts_subtree_has_external_tokens(lookahead) && token_end == target_length) {
-            // ⑤: 삽입 전/후 상태 모두 탐색
-            StackVersion copy = ts_stack_copy_version(self->stack, version);
-            if (copy != STACK_VERSION_NONE) ts_stack_halt(self->stack, copy);
-            // 현재 state에서 이 token에 유효한 action이 없으면
-            // fall-through하면 ts_stack_pause → 에러 리커버리로 오염되므로 즉시 freeze
-            TableEntry validity_check = {.action_count = 0};
-            ts_language_table_entry(self->language, state,
-                                    ts_subtree_symbol(lookahead), &validity_check);
-            if (validity_check.action_count == 0) return false;
-            // fall-through → SHIFT 진행
+            conv__halt_pre_shift_copy(self, version);
+            // fall-through 시 에러 복구로 오염될 수 있으므로 action 없으면 즉시 freeze
+            if (!conv__has_action_for_symbol(self->language, state,
+                                              ts_subtree_symbol(lookahead))) {
+              return false;
+            }
           }
-          // token_end < target: 경계 안, 계속 진행
+          // token_end < target → 정상 진행
         }
 
         // 토큰이 발견되면
@@ -2309,43 +2360,54 @@ static bool ts_parser__advance_for_conversion(
       }
     }
 
-    // 캐시 경로 경계 체크:
-    // 캐시에서 가져온 토큰(needs_lex=false 경로)은 위의 if (needs_lex) 블록을 건너뛰므로
-    // 커서 경계 체크가 적용되지 않는다. 여기서 동일한 조건을 적용한다.
+    // [size > 0 토큰의 커서 경계 검사 — lex/cache 경로 공통]
     //
-    // 경우 A: position >= target → size>0 토큰이면 중단
-    //   예) Python state:1830(pos==target)에서 cached string_end(size:3)
+    // cache-hit 경로(needs_lex=false)는 lex 블록의 경계 검사를 아예 건너뛴다.
+    // 이 블록이 size>0 토큰의 경계 검사를 수행.
+    // 공통 원칙: 커서 너머 SHIFT 금지 + 경계에 딱 닿는 외부 토큰은 pre/post-shift 보존.
     //
-    // 경우 B: position < target이고 외부 토큰이 경계에 딱 닿는 경우(token_end==target)
-    //   → ⑤ 방식으로 전/후 상태 모두 탐색 (halted copy + fall-through)
+    // ① pos >= target                                      → freeze
+    //    파서가 이미 커서에 도달했는데 크기 있는 토큰이 옴. SHIFT 시 커서 너머 진행.
+    //    예) Python state:1830(triple-quote 내부, pos==target) + cached string_end(size=3)
+    //        이전 version이 lex해 캐시에 올린 토큰 그대로 쓰면 3바이트 초과 → freeze
+    //
+    // ② pos < target + token_end > target                  → freeze
+    //    토큰이 커서를 넘어감. pos < target 분기 ④와 동일 논리.
+    //
+    // ③ pos < target + token_end == target (external)      → halted copy + fall-through
+    //    외부 토큰이 커서에 정확히 닿음 — "끝낸 것"/"끝내려는 참" 두 해석 모두 보존.
+    //    action 없으면 fall-through이 에러 복구로 오염시키므로 즉시 freeze.
+    //
+    // ④ pos < target + token_end < target                  → 정상 진행
+    //    경계 안쪽, 평범하게 SHIFT 계속.
     if (lookahead.ptr && ts_subtree_total_size(lookahead).bytes > 0) {
       uint32_t sz = ts_subtree_total_size(lookahead).bytes;
       bool ext = ts_subtree_has_external_tokens(lookahead);
       fprintf(stderr, "[CACHE_CHK] state=%u pos=%u target=%u sym=%u sz=%u ext=%d\n",
               state, position, target_length, ts_subtree_symbol(lookahead), sz, ext);
+      // ①: pos >= target → freeze
       if (position >= target_length) {
-        fprintf(stderr, "[CACHE_CHK] -> return false (A)\n");
-        return false;  // 경우 A
+        fprintf(stderr, "[CACHE_CHK] -> freeze (①)\n");
+        return false;
       }
       uint32_t token_end = position + sz;
+      // ②: token_end > target → freeze
       if (token_end > target_length) {
-        fprintf(stderr, "[CACHE_CHK] -> return false (token_end>target)\n");
-        return false;  // 커서를 넘는 토큰 → freeze
+        fprintf(stderr, "[CACHE_CHK] -> freeze (②: token_end > target)\n");
+        return false;
       }
+      // ③: token_end == target (external) → halted copy + fall-through
       if (ext) {
         if (token_end == target_length) {
-          fprintf(stderr, "[CACHE_CHK] -> halted copy (B: token_end==target)\n");
-          // ⑤: 삽입 전/후 상태 모두 탐색
-          StackVersion copy = ts_stack_copy_version(self->stack, version);
-          if (copy != STACK_VERSION_NONE) ts_stack_halt(self->stack, copy);
-          // 현재 state에서 이 token에 유효한 action이 없으면 즉시 freeze (에러 리커버리 방지)
-          TableEntry validity_check2 = {.action_count = 0};
-          ts_language_table_entry(self->language, state,
-                                  ts_subtree_symbol(lookahead), &validity_check2);
-          if (validity_check2.action_count == 0) return false;
-          // fall-through → SHIFT 진행
+          fprintf(stderr, "[CACHE_CHK] -> halted copy (③: token_end == target)\n");
+          conv__halt_pre_shift_copy(self, version);
+          // action 없으면 fall-through 시 에러 복구로 오염되므로 즉시 freeze
+          if (!conv__has_action_for_symbol(self->language, state,
+                                            ts_subtree_symbol(lookahead))) {
+            return false;
+          }
         }
-        // token_end < target: 경계 안, 계속 진행
+        // ④: token_end < target → 정상 진행
       }
     }
 
@@ -3535,7 +3597,7 @@ TSStatePath ts_parser_parse_for_conversion(
       }
     }
 
-    // 누군가 커서에 도달했다면, 즉시 컨버전
+    // 커서에 도달하면, do-while 탈출하고 컨버전 단계로 이동
     if (reached_cursor_target) {
       goto phase_3_conversion;
     }

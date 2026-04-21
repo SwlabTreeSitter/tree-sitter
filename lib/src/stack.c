@@ -7,6 +7,18 @@
 #include <assert.h>
 #include <inttypes.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+// [SIM_DEBUG] conversion 시뮬레이션 추적용. 환경변수로 ON/OFF.
+static int sim_debug_enabled(void) {
+  static int cached = -1;
+  if (cached == -1) {
+    const char *e = getenv("SIM_DEBUG");
+    cached = (e && *e && *e != '0') ? 1 : 0;
+  }
+  return cached;
+}
+#define SIMLOG(...) do { if (sim_debug_enabled()) fprintf(stderr, __VA_ARGS__); } while (0)
 
 #define MAX_LINK_COUNT 8
 #define MAX_NODE_POOL_SIZE 50
@@ -935,13 +947,18 @@ typedef struct {
 } ReduceProduction;
 
 // (Helper) 중복 없이 상태 추가
-static void add_state(TSStatePath *union_path, TSStateId state) {
+static void add_state_tagged(TSStatePath *union_path, TSStateId state, const char *tag) {
   for (uint32_t i = 0; i < union_path->count; i++) {
-    if (union_path->states[i] == state) return; 
+    if (union_path->states[i] == state) return;
   }
   if (union_path->count < 256) {
     union_path->states[union_path->count++] = state;
+    SIMLOG("[SIM ADD] state=%u  via %s  (idx=%u)\n", state, tag ? tag : "?", union_path->count - 1);
   }
+}
+
+static void add_state(TSStatePath *union_path, TSStateId state) {
+  add_state_tagged(union_path, state, "add_state");
 }
 
 // 전방 선언
@@ -1011,18 +1028,12 @@ static uint32_t collect_reduces(
       if (!dup) {
         out[count].symbol = sym_r;
         out[count].child_count = count_r;
-        fprintf(stderr, "[COLLECT_RED] state=%u lookahead_sym=%u -> REDUCE sym=%u pop=%u\n",
-                state, sym, sym_r, count_r);
         count++;
       }
     }
   }
   return count;
 }
-
-// [DEBUG] 재귀 깊이 추적용 전역 변수
-static int _sim_depth = 0;
-static void _sim_indent(void) { for (int i = 0; i < _sim_depth; i++) fprintf(stderr, "  "); }
 
 // current_state에 도달했음을 기록하고,
 // 그 상태에서 가능한 모든 reduce를 시뮬레이션
@@ -1035,16 +1046,12 @@ static void simulate_current_states_dfs(
   VisitedSet *visited
 ) {
   // 1. 도달한 상태는 무조건 결과 집합에 추가
-  add_state(result, current_state);
-
-  _sim_indent();
-  fprintf(stderr, "[SIM] ADD state=%u (virtual=%d, node=%u)\n",
-          current_state, is_virtual, real_node ? real_node->state : 0);
+  SIMLOG("[SIM DFS] enter state=%u real_top=%u virt=%d\n",
+         current_state, real_node ? real_node->state : 0, is_virtual ? 1 : 0);
+  add_state_tagged(result, current_state, "DFS_enter");
 
   // 2. (state, base_node) 쌍으로 동일 컨텍스트에서 재실행 방지
   if (mark_visited(visited, current_state, real_node)) {
-    _sim_indent();
-    fprintf(stderr, "[SIM] state=%u ALREADY VISITED — stop\n", current_state);
     return;
   }
 
@@ -1052,40 +1059,23 @@ static void simulate_current_states_dfs(
   ReduceProduction prd[256];
   uint32_t prd_count = collect_reduces(language, current_state, prd, 256);
 
-  if (prd_count == 0) {
-    _sim_indent();
-    fprintf(stderr, "[SIM] state=%u no REDUCE found — stop\n", current_state);
-  }
-
   // 4. 각 reduce 시뮬레이션
   for (uint32_t i = 0; i < prd_count; i++) {
     uint32_t pop_count = prd[i].child_count;
-    uint32_t actual_pop = (is_virtual && pop_count > 0) ? pop_count - 1 : pop_count;
-
-    _sim_indent();
-    fprintf(stderr, "[SIM] state=%u REDUCE(sym=%u, pop=%u) actual_pop=%u (virtual=%d)\n",
-            current_state, prd[i].symbol, pop_count, actual_pop, is_virtual);
 
     if (pop_count == 0) {
       TSStateId next_state = ts_language_lookup(language, current_state, prd[i].symbol);
       if (next_state != 0) {
-        _sim_indent();
-        fprintf(stderr, "[SIM] state=%u eps-GOTO(sym=%u) -> state=%u\n",
-                current_state, prd[i].symbol, next_state);
-        _sim_depth++;
         simulate_current_states_dfs(next_state, real_node, true, language, result, visited);
-        _sim_depth--;
       }
       continue;
     }
 
-    _sim_depth++;
     if (is_virtual) {
       simulate_reduce_pop_dfs(real_node, pop_count - 1, prd[i].symbol, language, result, visited);
     } else {
       simulate_reduce_pop_dfs(real_node, pop_count, prd[i].symbol, language, result, visited);
     }
-    _sim_depth--;
   }
 }
 
@@ -1103,9 +1093,7 @@ static void simulate_reduce_pop_dfs(
   // pop 완료
   if (pop_count == 0) {
     TSStateId next_state = ts_language_lookup(language, node->state, reduce_symbol);
-    _sim_indent();
-    fprintf(stderr, "[SIM] POP done -> node_state=%u, GOTO(sym=%u) -> state=%u\n",
-            node->state, reduce_symbol, next_state);
+    SIMLOG("[SIM RED] goto from=%u sym=%u -> next=%u\n", node->state, reduce_symbol, next_state);
     if (next_state != 0) {
       simulate_current_states_dfs(next_state, node, true, language, result, visited);
     }
@@ -1113,17 +1101,11 @@ static void simulate_reduce_pop_dfs(
   }
 
   // link_count > 1이면 merge 흔적 → 각 링크에 대해 독립 재귀
-  _sim_indent();
-  fprintf(stderr, "[SIM] POP node=%u (state=%u) pop_remaining=%u links=%d\n",
-          (unsigned)(uintptr_t)node, node->state, pop_count, node->link_count);
   for (int i = 0; i < node->link_count; i++) {
     StackLink link = node->links[i];
     bool is_extra = link.subtree.ptr != NULL && ts_subtree_extra(link.subtree);
 
     uint32_t next_pop = is_extra ? pop_count : pop_count - 1;
-    _sim_indent();
-    fprintf(stderr, "[SIM] POP link[%d] -> node_state=%u (extra=%d, next_pop=%u, sym=%u)\n",
-            i, link.node ? link.node->state : 0, is_extra, next_pop, reduce_symbol);
     simulate_reduce_pop_dfs(link.node, next_pop, reduce_symbol, language, result, visited);
   }
 }
@@ -1171,9 +1153,9 @@ static void simulate_with_vstack(
   TSStatePath *result,
   VisitedSet *visited
 ) {
-  add_state(result, current_state);
-  fprintf(stderr, "[SIM_EXT] add state=%u (vstack depth=%u, real_node_state=%u)\n",
-          current_state, vstack.depth, real_node ? real_node->state : 0);
+  SIMLOG("[SIM VST] state=%u vdepth=%u real_top=%u\n",
+         current_state, vstack.depth, real_node ? real_node->state : 0);
+  add_state_tagged(result, current_state, "VSTACK");
   if (mark_visited(visited, current_state, real_node)) return;
 
   ReduceProduction prd[64];
@@ -1268,7 +1250,8 @@ static void simulate_ext_shift_chains(
     }
     if (s1 == 0) continue;
 
-
+    SIMLOG("[SIM EXT] depth1: ext_sym=%u (ei=%u) shift-from state=%u -> s1=%u\n",
+           ext_sym, ei, state, s1);
 
     // depth-1: vstack=[s1]
     VStack v1 = { .depth = 1 };
@@ -1293,6 +1276,10 @@ TSStatePath ts_stack_simulate_conversion(
   StackHead *head = array_get(&self->heads, version);
   if (!head || !head->node) return current_states;
 
+  SIMLOG("[SIM ENTRY] version=%u top_state=%u pos=%u zero_mask=%llx\n",
+         version, head->node->state, head->node->position.bytes,
+         (unsigned long long)zero_byte_ext_mask);
+
   VisitedSet visited = {0};
 
   simulate_current_states_dfs(
@@ -1304,6 +1291,8 @@ TSStatePath ts_stack_simulate_conversion(
     &visited
   );
 
+  SIMLOG("[SIM ENTRY] after DFS count=%u, starting ext_shift_chains\n", current_states.count);
+
   // 0-byte external SHIFT 체인 확장 시뮬레이션 (별도 visited set 사용)
   VisitedSet ext_visited = {0};
   simulate_ext_shift_chains(
@@ -1314,6 +1303,8 @@ TSStatePath ts_stack_simulate_conversion(
     &ext_visited,
     zero_byte_ext_mask
   );
+
+  SIMLOG("[SIM ENTRY] final count=%u\n", current_states.count);
 
   return current_states;
 }

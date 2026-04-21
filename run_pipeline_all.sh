@@ -91,7 +91,7 @@ PIDS=()
 
 for LANG in "${LANGUAGES[@]}"; do
     LANG_LOG="$TS_DIR/pipeline_summary_${LANG}.log"
-    > "$LANG_LOG"  # 초기화
+    # 이어쓰기 (append)
 
     (
         LANG_START=$(date +%s)

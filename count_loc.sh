@@ -93,7 +93,7 @@ count_and_emit() {
 
   local cloc_files=0 cloc_code=0 cloc_comment=0 cloc_blank=0
   local cloc_output
-  local cloc_cmd=(/usr/bin/cloc --csv --quiet --include-ext="$ext_list")
+  local cloc_cmd=(/usr/bin/cloc --csv --quiet --skip-uniqueness --include-ext="$ext_list")
   [ -n "$cloc_exclude" ] && cloc_cmd+=("$cloc_exclude")
   [ -n "$cloc_extra" ] && cloc_cmd+=("$cloc_extra")
   cloc_cmd+=("$dir")
