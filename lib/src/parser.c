@@ -2199,7 +2199,7 @@ static bool ts_parser__advance_for_conversion(
       //     → 그대로 계속 진행
       //
       // [EXTFAIL], shiftable 출력은 진단 로그 — 파싱 결정에 영향 없음.
-      //   어느 외부 토큰이 원래 기대됐는지 개발자가 파악하는 용도.
+      //   어느 외부 토큰이 원래 기대됐는지 파악하는 용도.
 
       if (lookahead.ptr
           && !ts_subtree_has_external_tokens(lookahead)
@@ -3253,11 +3253,15 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
   uint32_t start_byte = ctx->byte_offset + padding.bytes;
   uint32_t length_byte = size.bytes;
 
-  // 3. 출력: 바이트 오프셋을 메인 키로 기록
+  // 3. 출력: 바이트 오프셋 + 해당 구간의 원본 lexeme 텍스트
   // zero-width 토큰(외부 스캐너의 _line_break, _newline, _dedent 등)은
   // 컨버전이 해당 위치에서 멈출 수 없어 평가 포인트로 부적합하므로 제외
   if (length_byte > 0 && start_byte < ctx->source_len) {
-    fprintf(ctx->file, "  @%u: \n", start_byte);
+    uint32_t safe_len = length_byte;
+    if (start_byte + safe_len > ctx->source_len) {
+      safe_len = ctx->source_len - start_byte;
+    }
+    fprintf(ctx->file, "  @%u: %.*s\n", start_byte, (int)safe_len, ctx->source + start_byte);
   }
 
   // 4. 다음 형제를 위해 임시 컨텍스트의 커서를 이동시킴
@@ -3609,10 +3613,25 @@ TSStatePath ts_parser_parse_for_conversion(
     // 예) "3,6": state:2263에서 _cond_layout_end(size:1, token_end=31=target) →
     //     halted copy at 2263 → SHIFT → position 변화로 break → condense → 2263 소멸
     {
+      // SIM_SUMMARY=1 이면 스택 버전별 시작 state와 시뮬레이션 도달 state 요약을 stderr에 출력
+      static int sim_summary_cached = -1;
+      if (sim_summary_cached == -1) {
+        const char *e = getenv("SIM_SUMMARY");
+        sim_summary_cached = (e && *e && *e != '0') ? 1 : 0;
+      }
       uint32_t vc = ts_stack_version_count(self->stack);
       for (StackVersion i = 0; i < vc; i++) {
         if (ts_stack_is_halted(self->stack, i)) {
+          TSStateId start_state = ts_stack_state(self->stack, i);
           TSStatePath sim = ts_stack_simulate_conversion(self->stack, i, self->language, self->zero_byte_ext_mask);
+          if (sim_summary_cached) {
+            fprintf(stderr, "[SIM_SUMMARY] v%u start_state=%u  reached_states=[", i, start_state);
+            for (uint32_t j = 0; j < sim.count; j++) {
+              if (j == 0 && sim.states[j] == start_state) continue;
+              fprintf(stderr, "%s%u", (j <= 1 ? "" : ","), sim.states[j]);
+            }
+            fprintf(stderr, "]  total_count=%u\n", sim.count);
+          }
           for (uint32_t j = 0; j < sim.count; j++) {
             add_state_to_union(&final_union, sim.states[j]);
           }
@@ -3652,13 +3671,28 @@ TSStatePath ts_parser_parse_for_conversion(
     if (final_version_count == 0) {
       return final_union;
     }
-    for (StackVersion v = 0; v < final_version_count; v++) {
-      // stack.c에 구현된 함수 호출
-      TSStatePath conversion_result = ts_stack_simulate_conversion(self->stack, v, self->language, self->zero_byte_ext_mask);
-    
-      // 결과 병합 (합집합)
-      for (uint32_t j = 0; j < conversion_result.count; j++) {
-        add_state_to_union(&final_union, conversion_result.states[j]);
+    {
+      static int sim_summary_cached_p3 = -1;
+      if (sim_summary_cached_p3 == -1) {
+        const char *e = getenv("SIM_SUMMARY");
+        sim_summary_cached_p3 = (e && *e && *e != '0') ? 1 : 0;
+      }
+      for (StackVersion v = 0; v < final_version_count; v++) {
+        TSStateId start_state = ts_stack_state(self->stack, v);
+        TSStatePath conversion_result = ts_stack_simulate_conversion(self->stack, v, self->language, self->zero_byte_ext_mask);
+        if (sim_summary_cached_p3) {
+          fprintf(stderr, "[SIM_SUMMARY:phase3] v%u start_state=%u  reached_states=[", v, start_state);
+          int first = 1;
+          for (uint32_t j = 0; j < conversion_result.count; j++) {
+            if (j == 0 && conversion_result.states[j] == start_state) continue;
+            fprintf(stderr, "%s%u", first ? "" : ",", conversion_result.states[j]);
+            first = 0;
+          }
+          fprintf(stderr, "]  total_count=%u\n", conversion_result.count);
+        }
+        for (uint32_t j = 0; j < conversion_result.count; j++) {
+          add_state_to_union(&final_union, conversion_result.states[j]);
+        }
       }
     }
     LOG("done");

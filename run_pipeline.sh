@@ -34,6 +34,7 @@ TS_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKIP_LEARN_COLLECT=false
 SKIP_TEST_COLLECT=false
 PER_PROJECT=false
+LEARN_ONLY=false
 
 _POSITIONAL=()
 for arg in "$@"; do
@@ -42,6 +43,7 @@ for arg in "$@"; do
         --skip-learn-collect) SKIP_LEARN_COLLECT=true ;;
         --skip-test-collect)  SKIP_TEST_COLLECT=true ;;
         --per-project)        PER_PROJECT=true ;;
+        --learn-only)         LEARN_ONLY=true ;;
         *)                    _POSITIONAL+=("$arg") ;;
     esac
 done
@@ -65,6 +67,7 @@ if [ $# -ne 1 ]; then
     echo "    --skip-collect         Skip Step 1 (LEARN) and Step 2 (TEST) collection"
     echo "    --skip-learn-collect   Skip Step 1 (LEARN collection) only"
     echo "    --skip-test-collect    Skip Step 2 (TEST collection) only"
+    echo "    --learn-only           Run only Step 1 (LEARN collection) and exit"
     exit 1
 fi
 
@@ -163,6 +166,21 @@ else
         "$REBUILD_SCRIPT" "$LANG"
     echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
     echo ""
+fi
+
+# --learn-only: Step 1만 수행 후 종료
+if [ "$LEARN_ONLY" = true ]; then
+    echo "============================================================"
+    echo "  DONE : $LANG pipeline completed (--learn-only: Step 1 only)"
+    echo "  Total Elapsed: $(( $(date +%s) - TOTAL_START ))s"
+    echo "  End   : $(date '+%Y-%m-%d %H:%M:%S')"
+    echo "============================================================"
+    {
+        printf "  Total Elapsed: %ss (learn-only)\n" "$(( $(date +%s) - TOTAL_START ))"
+        printf "  End   : %s\n" "$(date '+%Y-%m-%d %H:%M:%S')"
+        printf "\n"
+    } >> "$SUMMARY_LOG"
+    exit 0
 fi
 
 # --- Step 2: TEST 컬렉션 (TEST 데이터 수집) ---

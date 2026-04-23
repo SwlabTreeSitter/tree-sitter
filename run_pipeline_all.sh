@@ -18,7 +18,9 @@
 #   --skip-collect         Step 1(LEARN) + Step 2(TEST) 컬렉션 모두 건너뜀
 #   --skip-learn-collect   Step 1(LEARN 컬렉션) 만 건너뜀
 #   --skip-test-collect    Step 2(TEST 컬렉션) 만 건너뜀
+#   --learn-only           Step 1(LEARN 컬렉션)만 실행하고 종료
 #   --per-project          Step 4 완료 후 프로젝트별 결과도 집계하여 출력/저장
+#   --build-only           빌드만 수행 후 종료 (Step 1~4 전부 건너뜀)
 # =============================================================
 
 TS_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -31,6 +33,7 @@ SKIP_COLLECT_FLAG=""
 SKIP_LEARN_COLLECT_FLAG=""
 SKIP_TEST_COLLECT_FLAG=""
 PER_PROJECT_FLAG=""
+LEARN_ONLY_FLAG=""
 BUILD_ONLY=false
 LANG_ARGS=()
 for arg in "$@"; do
@@ -39,6 +42,7 @@ for arg in "$@"; do
         --skip-learn-collect) SKIP_LEARN_COLLECT_FLAG="--skip-learn-collect" ;;
         --skip-test-collect)  SKIP_TEST_COLLECT_FLAG="--skip-test-collect" ;;
         --per-project)        PER_PROJECT_FLAG="--per-project" ;;
+        --learn-only)         LEARN_ONLY_FLAG="--learn-only" ;;
         --build-only)         BUILD_ONLY=true ;;
         *)                    LANG_ARGS+=("$arg") ;;
     esac
@@ -59,7 +63,7 @@ echo "############################################################"
 echo "  run_pipeline_all.sh"
 echo "  Start   : $(date '+%Y-%m-%d %H:%M:%S')"
 echo "  Languages: ${LANGUAGES[*]}"
-_OPT_STR="${SKIP_COLLECT_FLAG:+$SKIP_COLLECT_FLAG }${SKIP_LEARN_COLLECT_FLAG:+$SKIP_LEARN_COLLECT_FLAG }${SKIP_TEST_COLLECT_FLAG:+$SKIP_TEST_COLLECT_FLAG }${PER_PROJECT_FLAG}"
+_OPT_STR="${SKIP_COLLECT_FLAG:+$SKIP_COLLECT_FLAG }${SKIP_LEARN_COLLECT_FLAG:+$SKIP_LEARN_COLLECT_FLAG }${SKIP_TEST_COLLECT_FLAG:+$SKIP_TEST_COLLECT_FLAG }${LEARN_ONLY_FLAG:+$LEARN_ONLY_FLAG }${PER_PROJECT_FLAG}"
 echo "  Options : ${_OPT_STR:-none}"
 echo "############################################################"
 echo ""
@@ -99,7 +103,7 @@ for LANG in "${LANGUAGES[@]}"; do
         # run_pipeline.sh의 SUMMARY_LOG를 언어별 파일로 지정
         export PIPELINE_SUMMARY_LOG="$LANG_LOG"
 
-        bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG $SKIP_LEARN_COLLECT_FLAG $SKIP_TEST_COLLECT_FLAG $PER_PROJECT_FLAG > /dev/null 2>&1
+        bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG $SKIP_LEARN_COLLECT_FLAG $SKIP_TEST_COLLECT_FLAG $LEARN_ONLY_FLAG $PER_PROJECT_FLAG > /dev/null 2>&1
         EXIT_CODE=$?
 
         LANG_ELAPSED=$(( $(date +%s) - LANG_START ))

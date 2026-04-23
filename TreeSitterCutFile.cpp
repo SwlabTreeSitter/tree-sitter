@@ -286,22 +286,30 @@ int main(int argc, char* argv[]) {
                 // ------------------------------------------------------
                 std::cout << "DEBUG: Running Collection..." << std::endl;
 
-                FILE *collection_fp = fopen("Test.data", "w");
-                if (collection_fp) {
-                    bool is_success = ts_parser_run_collection2(parser, tree, source_code.c_str(), static_cast<uint32_t>(effective_length), collection_fp);
-                    fclose(collection_fp);
-
-                    if (!is_success) {
-                        std::cerr << "[SKIP] Recovery detected in file: " << target_path << std::endl;
-                        std::cout << "WARNING: Collection skipped due to parse errors." << std::endl;
-                        remove("Test.data"); // 오염된 데이터 파일 삭제
-                    } else {
-                        std::cout << "DEBUG: Collection completed successfully." << std::endl;
-                    }
+                // smallbasic: 최종 파스트리에 ERROR 노드가 하나라도 있으면 파일 전체를 skip
+                // (Python 측 LitDev 필터 통과 후 남은 파일에 대해서만 적용됨)
+                // smallbasic: 최종 파스트리에 ERROR 노드가 하나라도 있으면 파일 전체를 skip
+                if (language_name == "smallbasic" && tree && ts_node_has_error(ts_tree_root_node(tree))) {
+                    std::cerr << "[SKIP] Parse error in smallbasic file: " << target_path << std::endl;
+                    std::cout << "WARNING: Collection skipped (smallbasic whole-file skip policy)." << std::endl;
                 } else {
-                    std::cerr << "ERROR: Could not open Test.data for writing." << std::endl;
+                    FILE *collection_fp = fopen("Test.data", "w");
+                    if (collection_fp) {
+                        bool is_success = ts_parser_run_collection2(parser, tree, source_code.c_str(), static_cast<uint32_t>(effective_length), collection_fp);
+                        fclose(collection_fp);
+
+                        if (!is_success) {
+                            std::cerr << "[SKIP] Recovery detected in file: " << target_path << std::endl;
+                            std::cout << "WARNING: Collection skipped due to parse errors." << std::endl;
+                            remove("Test.data"); // 오염된 데이터 파일 삭제
+                        } else {
+                            std::cout << "DEBUG: Collection completed successfully." << std::endl;
+                        }
+                    } else {
+                        std::cerr << "ERROR: Could not open Test.data for writing." << std::endl;
+                    }
                 }
-            } 
+            }
             else if (execution_mode == 0 || execution_mode == 2) {
                 // ------------------------------------------------------
                 // [모드 0] Conversion (실제 코드 완성: 잘린 소스)

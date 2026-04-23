@@ -146,7 +146,7 @@ def main():
                     cmd, check=False, capture_output=True, text=True, cwd=work_dir
                 )
 
-                if "[Skip]" in result.stderr:
+                if "[Skip]" in result.stderr or "[SKIP]" in result.stderr:
                     is_skipped = True
                     skip_reason = "Syntax Error / High Cost"
                     print(f"  -> Detected SKIP signal: {result.stderr.strip()}")
