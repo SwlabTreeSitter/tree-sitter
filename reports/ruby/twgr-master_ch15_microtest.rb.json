@@ -1,0 +1,954 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "require_relative"
+    }
+  ],
+  "17": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "'callertools'"
+    }
+  ],
+  "18": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "callertools"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "'"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 346,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class MicroTest\n  def self.inherited(c)\n    c.class_eval do\n      def self.method_added(m)\n        if m =~ /^test/\n          obj = self.new\n          if obj.methods.include?(:setup)\n            obj.setup\n          end\n          obj.send(m)\n        end\n      end\n    end\n  end\n  def assert(assertion)\n    if assertion\n      puts \"Assertion passed\"\n      true\n    else\n      puts \"Assertion failed:\"\n      stack = CallerTools::Stack.new\n      failure = stack.find { |call| call.meth !~ /assert/ }\n      puts failure\n      false\n    end\n  end\n  def assert_equal(expected, actual)\n    result = assert(expected == actual)\n    puts \"(#{actual} is not #{expected})\" unless result\n    result\n  end\nend"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "MicroTest\n  def self.inherited(c)\n    c.class_eval do\n      def self.method_added(m)\n        if m =~ /^test/\n          obj = self.new\n          if obj.methods.include?(:setup)\n            obj.setup\n          end\n          obj.send(m)\n        end\n      end\n    end\n  end\n  def assert(assertion)\n    if assertion\n      puts \"Assertion passed\"\n      true\n    else\n      puts \"Assertion failed:\"\n      stack = CallerTools::Stack.new\n      failure = stack.find { |call| call.meth !~ /assert/ }\n      puts failure\n      false\n    end\n  end\n  def assert_equal(expected, actual)\n    result = assert(expected == actual)\n    puts \"(#{actual} is not #{expected})\" unless result\n    result\n  end\nend"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 217,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.inherited(c)"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".inherited(c)"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "inherited"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(c)"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "76": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".class_eval"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "class_eval"
+    }
+  ],
+  "88": [
+    {
+      "state_id": 4,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n      def self.method_added(m)\n        if m =~ /^test/\n          obj = self.new\n          if obj.methods.include?(:setup)\n            obj.setup\n          end\n          obj.send(m)\n        end\n      end\n    end"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 170,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.method_added(m)"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".method_added(m)"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "method_added"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(m)"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 238,
+      "candidate": "if _statement then end",
+      "candidate_text": "if m =~ /^test/\n          obj = self.new\n          if obj.methods.include?(:setup)\n            obj.setup\n          end\n          obj.send(m)\n        end"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 2812,
+      "candidate": "=~ _arg",
+      "candidate_text": "=~ /^test/"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 1220,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/^test/"
+    }
+  ],
+  "139": [
+    {
+      "state_id": 5048,
+      "candidate": "string_content",
+      "candidate_text": "^test"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 5167,
+      "candidate": ")",
+      "candidate_text": "/"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "obj"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= self.new"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 462,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "166": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 252,
+      "candidate": "if _statement then end",
+      "candidate_text": "if obj.methods.include?(:setup)\n            obj.setup\n          end"
+    }
+  ],
+  "184": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "obj"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".methods"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "methods"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".include?"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "include?"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:setup)"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":setup"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "obj"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".setup"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "setup"
+    }
+  ],
+  "245": [
+    {
+      "state_id": 5300,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "obj"
+    }
+  ],
+  "262": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".send"
+    }
+  ],
+  "263": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "send"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(m)"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 5300,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "297": [
+    {
+      "state_id": 5833,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "303": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def assert(assertion)"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "assert"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(assertion)"
+    }
+  ],
+  "320": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "assertion"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 238,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if assertion\n      puts \"Assertion passed\"\n      true\n    else\n      puts \"Assertion failed:\"\n      stack = CallerTools::Stack.new\n      failure = stack.find { |call| call.meth !~ /assert/ }\n      puts failure\n      false\n    end"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "assertion"
+    }
+  ],
+  "354": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "359": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Assertion passed\""
+    }
+  ],
+  "360": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Assertion passed"
+    }
+  ],
+  "376": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "384": [
+    {
+      "state_id": 252,
+      "candidate": "true",
+      "candidate_text": "true"
+    }
+  ],
+  "393": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n      puts \"Assertion failed:\""
+    }
+  ],
+  "404": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "409": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Assertion failed:\""
+    }
+  ],
+  "410": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Assertion failed:"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "435": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "stack"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= CallerTools::Stack.new"
+    }
+  ],
+  "443": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "CallerTools"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 2552,
+      "candidate": ":: constant",
+      "candidate_text": "::Stack"
+    }
+  ],
+  "456": [
+    {
+      "state_id": 3164,
+      "candidate": "constant",
+      "candidate_text": "Stack"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "failure"
+    }
+  ],
+  "480": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= stack.find { |call| call.meth !~ /assert/ }"
+    }
+  ],
+  "482": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "stack"
+    }
+  ],
+  "487": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".find"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "find"
+    }
+  ],
+  "493": [
+    {
+      "state_id": 6,
+      "candidate": "{ block_parameters block_body }",
+      "candidate_text": "{ |call| call.meth !~ /assert/ }"
+    }
+  ],
+  "495": [
+    {
+      "state_id": 254,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|call|"
+    }
+  ],
+  "496": [
+    {
+      "state_id": 4572,
+      "candidate": "identifier",
+      "candidate_text": "call"
+    }
+  ],
+  "500": [
+    {
+      "state_id": 5374,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "502": [
+    {
+      "state_id": 318,
+      "candidate": "identifier",
+      "candidate_text": "call"
+    }
+  ],
+  "506": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".meth"
+    }
+  ],
+  "507": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "meth"
+    }
+  ],
+  "512": [
+    {
+      "state_id": 2812,
+      "candidate": "!~ _arg",
+      "candidate_text": "!~ /assert/"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 1220,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/assert/"
+    }
+  ],
+  "516": [
+    {
+      "state_id": 5048,
+      "candidate": "string_content",
+      "candidate_text": "assert"
+    }
+  ],
+  "522": [
+    {
+      "state_id": 5167,
+      "candidate": ")",
+      "candidate_text": "/"
+    }
+  ],
+  "524": [
+    {
+      "state_id": 5814,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "537": [
+    {
+      "state_id": 3,
+      "candidate": "identifier",
+      "candidate_text": "failure"
+    }
+  ],
+  "551": [
+    {
+      "state_id": 252,
+      "candidate": "false",
+      "candidate_text": "false"
+    }
+  ],
+  "561": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "573": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def assert_equal(expected, actual)"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "assert_equal"
+    }
+  ],
+  "589": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(expected, actual)"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", actual"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier",
+      "candidate_text": "actual"
+    }
+  ],
+  "606": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "612": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "619": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= assert(expected == actual)"
+    }
+  ],
+  "621": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "assert"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 5,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(expected == actual)"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "637": [
+    {
+      "state_id": 3995,
+      "candidate": "== _arg",
+      "candidate_text": "== actual"
+    }
+  ],
+  "640": [
+    {
+      "state_id": 1533,
+      "candidate": "identifier",
+      "candidate_text": "actual"
+    }
+  ],
+  "646": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "652": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "657": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"(#{actual} is not #{expected})\""
+    }
+  ],
+  "658": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "("
+    }
+  ],
+  "659": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{actual}"
+    }
+  ],
+  "661": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "actual"
+    }
+  ],
+  "667": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "668": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " is not "
+    }
+  ],
+  "676": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{expected}"
+    }
+  ],
+  "678": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "687": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": ")"
+    }
+  ],
+  "688": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "690": [
+    {
+      "state_id": 4626,
+      "candidate": "unless _expression",
+      "candidate_text": "unless result"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 521,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "708": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "717": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

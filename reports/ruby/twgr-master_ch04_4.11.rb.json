@@ -1,0 +1,387 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Bicycle\n  attr_reader :gears, :wheels, :seats\n  def initialize(gears = 1)\n    @wheels = 2\n    @seats = 1\n    @gears = gears\n  end\n  def rent\n    puts \"Sorry but this model is sold out.\"\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Bicycle\n  attr_reader :gears, :wheels, :seats\n  def initialize(gears = 1)\n    @wheels = 2\n    @seats = 1\n    @gears = gears\n  end\n  def rent\n    puts \"Sorry but this model is sold out.\"\n  end\nend"
+    }
+  ],
+  "16": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "attr_reader"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":gears"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 4522,
+      "candidate": ", _argument",
+      "candidate_text": ", :wheels"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 451,
+      "candidate": "simple_symbol",
+      "candidate_text": ":wheels"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 4533,
+      "candidate": ", _argument",
+      "candidate_text": ", :seats"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 451,
+      "candidate": "simple_symbol",
+      "candidate_text": ":seats"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(gears = 1)"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(gears = 1)"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier = _arg",
+      "candidate_text": "gears = 1"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 5461,
+      "candidate": "= _arg",
+      "candidate_text": "= 1"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 1311,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@wheels"
+    }
+  ],
+  "92": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= 2"
+    }
+  ],
+  "94": [
+    {
+      "state_id": 462,
+      "candidate": "integer",
+      "candidate_text": "2"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 252,
+      "candidate": "instance_variable",
+      "candidate_text": "@seats"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= 1"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 462,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 252,
+      "candidate": "instance_variable",
+      "candidate_text": "@gears"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= gears"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "gears"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def rent"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "rent"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Sorry but this model is sold out.\""
+    }
+  ],
+  "157": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Sorry but this model is sold out."
+    }
+  ],
+  "190": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "194": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 346,
+      "candidate": "class constant superclass _terminator body_statement end",
+      "candidate_text": "class Tandem < Bicycle\n  def initialize(gears)\n    super\n    @seats = 2\n  end\n  def rent\n    puts \"This bike is available!\"\n  end\nend"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 1975,
+      "candidate": "constant superclass _terminator body_statement end",
+      "candidate_text": "Tandem < Bicycle\n  def initialize(gears)\n    super\n    @seats = 2\n  end\n  def rent\n    puts \"This bike is available!\"\n  end\nend"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 125,
+      "candidate": "< _expression",
+      "candidate_text": "< Bicycle"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 540,
+      "candidate": "constant",
+      "candidate_text": "Bicycle"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 240,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(gears)"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(gears)"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "gears"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 238,
+      "candidate": "super",
+      "candidate_text": "super"
+    }
+  ],
+  "263": [
+    {
+      "state_id": 252,
+      "candidate": "instance_variable",
+      "candidate_text": "@seats"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= 2"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 462,
+      "candidate": "integer",
+      "candidate_text": "2"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "282": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def rent"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "rent"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "300": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"This bike is available!\""
+    }
+  ],
+  "301": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "This bike is available!"
+    }
+  ],
+  "324": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "328": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "332": [
+    {
+      "state_id": 5846,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

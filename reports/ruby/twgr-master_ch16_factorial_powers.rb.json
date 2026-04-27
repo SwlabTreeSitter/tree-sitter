@@ -1,0 +1,618 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "def _method_rest",
+      "candidate_text": "def factorial_powers(pfact, size)"
+    }
+  ],
+  "4": [
+    {
+      "state_id": 2301,
+      "candidate": "identifier",
+      "candidate_text": "factorial_powers"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 4540,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(pfact, size)"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "pfact"
+    }
+  ],
+  "26": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", size"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "powers"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= -> (power) { (1..Float::INFINITY).lazy.map { |x| x**power } }"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 462,
+      "candidate": "-> method_parameters block",
+      "candidate_text": "-> (power) { (1..Float::INFINITY).lazy.map { |x| x**power } }"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 4568,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(power)"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 4616,
+      "candidate": "identifier",
+      "candidate_text": "power"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 5522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 5468,
+      "candidate": "{ block_body }",
+      "candidate_text": "{ (1..Float::INFINITY).lazy.map { |x| x**power } }"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 303,
+      "candidate": "( _statements )",
+      "candidate_text": "(1..Float::INFINITY)"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 329,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 2812,
+      "candidate": ".. _arg",
+      "candidate_text": "..Float::INFINITY"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 279,
+      "candidate": "constant",
+      "candidate_text": "Float"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 2501,
+      "candidate": ":: constant",
+      "candidate_text": "::INFINITY"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 3134,
+      "candidate": "constant",
+      "candidate_text": "INFINITY"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 5760,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".lazy"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "lazy"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".map"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "map"
+    }
+  ],
+  "88": [
+    {
+      "state_id": 4,
+      "candidate": "{ block_parameters block_body }",
+      "candidate_text": "{ |x| x**power }"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 255,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|x|"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 4572,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "92": [
+    {
+      "state_id": 5374,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "94": [
+    {
+      "state_id": 318,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "95": [
+    {
+      "state_id": 2812,
+      "candidate": "** _arg",
+      "candidate_text": "**power"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 1176,
+      "candidate": "identifier",
+      "candidate_text": "power"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 5814,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 5885,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 252,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if pfact == 1\n    Array.new(size) { |x| x + 1 }\n  else\n    [powers.call(pfact).first(size), factorial_powers(pfact - 1, size)].flatten.sum\n\n  end"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "pfact"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 2812,
+      "candidate": "== _arg",
+      "candidate_text": "== 1"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 1220,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 264,
+      "candidate": "constant",
+      "candidate_text": "Array"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(size)"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 2255,
+      "candidate": "{ block_parameters block_body }",
+      "candidate_text": "{ |x| x + 1 }"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 303,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|x|"
+    }
+  ],
+  "147": [
+    {
+      "state_id": 4572,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 5374,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "150": [
+    {
+      "state_id": 318,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 2812,
+      "candidate": "+ _arg",
+      "candidate_text": "+ 1"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 1174,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 5814,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n    [powers.call(pfact).first(size), factorial_powers(pfact - 1, size)].flatten.sum"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 289,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[powers.call(pfact).first(size), factorial_powers(pfact - 1, size)]"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 424,
+      "candidate": "identifier",
+      "candidate_text": "powers"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".call"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "call"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 37,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(pfact)"
+    }
+  ],
+  "182": [
+    {
+      "state_id": 438,
+      "candidate": "identifier",
+      "candidate_text": "pfact"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 5641,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".first"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "first"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 37,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(size)"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 438,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 5641,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", factorial_powers(pfact - 1, size)"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 432,
+      "candidate": "identifier",
+      "candidate_text": "factorial_powers"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 34,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(pfact - 1, size)"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 438,
+      "candidate": "identifier",
+      "candidate_text": "pfact"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 3995,
+      "candidate": "- _arg",
+      "candidate_text": "- 1"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 1484,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", size"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 432,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 5641,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "235": [
+    {
+      "state_id": 5827,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".flatten"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "flatten"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".sum"
+    }
+  ],
+  "245": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "sum"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "factorial_powers"
+    }
+  ],
+  "282": [
+    {
+      "state_id": 10,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(4, 3)"
+    }
+  ],
+  "283": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "4"
+    }
+  ],
+  "284": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", 3"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 432,
+      "candidate": "integer",
+      "candidate_text": "3"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

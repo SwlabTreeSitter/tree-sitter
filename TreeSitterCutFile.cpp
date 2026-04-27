@@ -1,10 +1,48 @@
+// ==========================================================
+// TreeSitterCutFile
+// ----------------------------------------------------------
+// 무엇을 하는가:
+//   소스 파일 하나를 받아서 파싱한 뒤 결과를 파일로 떨어뜨리는 CLI 도구.
+//   파이썬 스크립트(평가/수집 파이프라인)가 파일마다 이 실행 파일을 호출해서 사용한다.
+//
+// 두 가지 동작 모드:
+//   1) Collection — 파일을 끝까지 파싱하면서, 각 파서 상태에서 나타난
+//                   구조후보(candidate)들을 학습 데이터로 수집한다.
+//   2) Conversion — 커서 위치까지 파싱하고, 그 시점의 파서 상태(state path)를
+//                   추출한다. 코드 자동완성에서 다음에 올 토큰을 추천할 때 쓰인다.
+//
+// 사용법:
+//   Collection:
+//     TreeSitterCutFile.exe <lang> <lib> <file> 1
+//
+//   Conversion (커서 위치는 바이트 오프셋으로 지정):
+//     TreeSitterCutFile.exe <lang> <lib> <file> <offset> 0|2
+//       0 = 실제 자동완성 (커서 이후는 안 봄)
+//       2 = 평가용 (전체 소스를 주되 커서 위치만 따로 알려줌. 렉서가 lookahead 가능)
+//
+//   인자 설명:
+//     <lang>   : 언어 이름 ("c", "python", "haskell" 등). grammar 함수 이름에 쓰임
+//                (예: tree_sitter_python).
+//     <lib>    : 언어별 grammar 가 담긴 .so / .dll 파일 경로. 동적 로딩으로 불러온다.
+//     <file>   : 파싱할 소스 파일 경로.
+//     <offset> : 커서 위치 (파일 시작부터의 바이트 수).
+//
+// 결과물 (실행 디렉터리에 떨어짐):
+//   Test.data          — 모드별 핵심 결과
+//   logged_actions.txt — 파서가 수행한 액션 로그
+//   debug_log*.txt     — 트리시터 자체 디버그 로그
+//
+// 참고:
+//   이 도구는 표준 tree-sitter 가 아니라 자체 확장된 libtree-sitter 와 함께 빌드된다.
+//   확장된 API(ts_parser_run_collection2 등)는 lib/src/parser.c 에 정의돼 있다.
+// ==========================================================
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
 #include <sstream>
 #include <algorithm> // for std::min
-#include <limits>    // for UINT32_MAX if needed by older compilers
 #include "lib/include/tree_sitter/api.h"
 
 // ==========================================================
@@ -55,53 +93,6 @@ extern "C" {
 typedef TSLanguage *(*LanguageFunction)();
 
 
-// 헬퍼 함수: 위치 -> 바이트 오프셋
-size_t FindByteOffsetForPosition(const std::string& text, uint32_t target_row, uint32_t target_col) {
-    size_t current_offset = 0;
-    uint32_t current_row = 0; 
-    uint32_t current_col = 0; 
-    const uint32_t tab_width = 4; 
-
-    while (current_offset < text.length()) {
-        if (current_row > target_row || (current_row == target_row && current_col >= target_col)) {
-             return current_offset;
-        }
-
-        unsigned char current_char = static_cast<unsigned char>(text[current_offset]);
-
-        if (current_char == '\n') {
-            current_row++;
-            current_col = 0;
-            current_offset++;
-        } else if (current_char == '\r' && (current_offset + 1 < text.length() && text[current_offset + 1] == '\n')) {
-            if (current_row == target_row) {
-                // target이 \r\n 쌍 내부의 \n을 가리킬 수 있으므로
-                // \r을 일반 문자로 처리하여 왕복 정확성을 보장한다.
-                current_col++;
-                current_offset++;
-            } else {
-                current_row++;
-                current_col = 0;
-                current_offset += 2;
-            }
-        }
-        else if (current_char == '\t') {
-            current_col = ((current_col / tab_width) + 1) * tab_width;
-            current_offset++;
-        }
-        else {
-             current_col++;
-             current_offset++;
-             if (current_char >= 0xC0) { 
-                 while (current_offset < text.length() && (static_cast<unsigned char>(text[current_offset]) & 0xC0) == 0x80) {
-                     current_offset++; 
-                 }
-             }
-        }
-    }
-    return text.length();
-}
-
 // 로커 콜백 (트리시터 자체 로그 기록용)
 void LogToFileCallback(void *payload, TSLogType type, const char *buffer) {
     FILE *fp = (FILE *)payload;
@@ -121,34 +112,24 @@ int main(int argc, char* argv[]) {
 
     LibraryHandle library_handle = nullptr;
 
-    uint32_t stop_row = 0;
-    uint32_t stop_col = 0;
-
     int execution_mode = 0;
-    bool byte_mode = false;      // --byte 모드: 바이트 오프셋 직접 지정
+    bool byte_mode = false;      // 컨버전 모드에서 바이트 오프셋이 주어졌는지
     size_t byte_offset = 0;
 
     // ==========================================================
     // 1. 인자 파싱 및 검증
-    // 사용법 1 (컬렉션):        exe lang dll file 1
-    // 사용법 2 (컨버전 좌표):    exe lang dll file row col 0|2
-    // 사용법 3 (컨버전 바이트):  exe lang dll file --byte offset 0|2
+    // 사용법 1 (컬렉션): exe lang dll file 1
+    // 사용법 2 (컨버전): exe lang dll file <offset> 0|2
     // ==========================================================
     if (argc >= 4) {
         language_name = argv[1];
         library_path = argv[2];
         target_path = argv[3];
 
-        if (argc == 7 && std::string(argv[4]) == "--byte") {
-            // 바이트 오프셋 직접 지정 모드
+        if (argc == 6) {
             byte_mode = true;
-            byte_offset = std::stoul(argv[5]);
-            execution_mode = std::stoi(argv[6]);
-        }
-        else if (argc == 7) {
-            stop_row = std::stoul(argv[4]);
-            stop_col = std::stoul(argv[5]);
-            execution_mode = std::stoi(argv[6]);
+            byte_offset = std::stoul(argv[4]);
+            execution_mode = std::stoi(argv[5]);
         }
         else if (argc == 5) {
             execution_mode = std::stoi(argv[4]);
@@ -162,9 +143,8 @@ int main(int argc, char* argv[]) {
     } else {
     usage_error:
         std::cerr << "Usage:" << std::endl;
-        std::cerr << "  Collection:          " << argv[0] << " <lang> <dll> <file> 1" << std::endl;
-        std::cerr << "  Conversion:          " << argv[0] << " <lang> <dll> <file> <row> <col> 0|2" << std::endl;
-        std::cerr << "  Conversion (byte):   " << argv[0] << " <lang> <dll> <file> --byte <offset> 0|2" << std::endl;
+        std::cerr << "  Collection:  " << argv[0] << " <lang> <dll> <file> 1" << std::endl;
+        std::cerr << "  Conversion:  " << argv[0] << " <lang> <dll> <file> <offset> 0|2" << std::endl;
         return 1;
     }
 
@@ -207,19 +187,11 @@ int main(int argc, char* argv[]) {
         // ==========================================================
         if (execution_mode == 0 || execution_mode == 2) {
             if (byte_mode) {
-                // --byte 모드: 바이트 오프셋 직접 사용 (FindByteOffsetForPosition 불필요)
                 effective_length = (std::min)(source_code.length(), byte_offset);
                 std::cout << "--- Stop at byte offset " << effective_length << " ---" << std::endl;
-            } else {
-                // 기존 모드: (행, 열) → 바이트 변환
-                std::cout << "--- Stop position requested at row " << stop_row << ", col " << stop_col << " ---" << std::endl;
-                size_t stop_offset = FindByteOffsetForPosition(source_code, stop_row > 0 ? stop_row - 1 : 0, stop_col > 0 ? stop_col - 1 : 0);
-                effective_length = (std::min)(source_code.length(), stop_offset);
             }
             // 줄바꿈 보정 (layout 의존 언어만):
             // haskell 등에서는 \n이 layout 구분자이므로 포함해야 파싱이 올바르다.
-            // C/C++에서는 \n이 preproc_include_token2 토큰 자체이므로 넘기면 안 된다.
-            // 바이트 직접 전달 방식에서는 C/C++는 보정 불필요 (왕복 오류 없음).
             if (language_name == "haskell" && effective_length < source_code.length()) {
                 if (source_code[effective_length] == '\r' &&
                     effective_length + 1 < source_code.length() &&

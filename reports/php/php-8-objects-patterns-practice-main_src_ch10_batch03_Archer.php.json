@@ -1,0 +1,611 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch10\\batch03;"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch10\\batch03"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch10"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch10"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch03"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch03"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "83": [
+    {
+      "state_id": 157,
+      "candidate": "class name base_clause declaration_list",
+      "candidate_text": "class Archer extends Unit\n{"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 3194,
+      "candidate": "name base_clause declaration_list",
+      "candidate_text": "Archer extends Unit\n{"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 1965,
+      "candidate": "extends _name",
+      "candidate_text": "extends Unit"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 1799,
+      "candidate": "name",
+      "candidate_text": "Unit"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 2262,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n    public function addUnit(Unit $unit): void"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 1617,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function addUnit(Unit $unit): void\n    {"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "addUnit(Unit $unit): void\n    {"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter )",
+      "candidate_text": "(Unit $unit)"
+    }
+  ],
+  "139": [
+    {
+      "state_id": 969,
+      "candidate": "name",
+      "candidate_text": "Unit"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$unit"
+    }
+  ],
+  "145": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "unit"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 2434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "150": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 1590,
+      "candidate": "primitive_type_token6",
+      "candidate_text": "void"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        throw new UnitException(get_class($this) . \" is a leaf\");\n    }"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 88,
+      "candidate": "throw expression",
+      "candidate_text": "throw new UnitException(get_class($this) . \" is a leaf\")"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 431,
+      "candidate": "new _class_name_reference arguments",
+      "candidate_text": "new UnitException(get_class($this) . \" is a leaf\")"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 1258,
+      "candidate": "name",
+      "candidate_text": "UnitException"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 1294,
+      "candidate": "( argument )",
+      "candidate_text": "(get_class($this) . \" is a leaf\")"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 194,
+      "candidate": "name",
+      "candidate_text": "get_class"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 2020,
+      "candidate": "( argument )",
+      "candidate_text": "($this)"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 195,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 2452,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 1515,
+      "candidate": ". expression",
+      "candidate_text": ". \" is a leaf\""
+    }
+  ],
+  "214": [
+    {
+      "state_id": 475,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\" is a leaf\""
+    }
+  ],
+  "215": [
+    {
+      "state_id": 1713,
+      "candidate": "string_content",
+      "candidate_text": " is a leaf"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 1725,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "226": [
+    {
+      "state_id": 2584,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 1614,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function removeUnit(Unit $unit): void\n    {"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "removeUnit(Unit $unit): void\n    {"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter )",
+      "candidate_text": "(Unit $unit)"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 969,
+      "candidate": "name",
+      "candidate_text": "Unit"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$unit"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "unit"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 2434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "278": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 1590,
+      "candidate": "primitive_type_token6",
+      "candidate_text": "void"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        throw new UnitException(get_class($this) . \" is a leaf\");\n    }"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 88,
+      "candidate": "throw expression",
+      "candidate_text": "throw new UnitException(get_class($this) . \" is a leaf\")"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 431,
+      "candidate": "new _class_name_reference arguments",
+      "candidate_text": "new UnitException(get_class($this) . \" is a leaf\")"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 1258,
+      "candidate": "name",
+      "candidate_text": "UnitException"
+    }
+  ],
+  "322": [
+    {
+      "state_id": 1294,
+      "candidate": "( argument )",
+      "candidate_text": "(get_class($this) . \" is a leaf\")"
+    }
+  ],
+  "323": [
+    {
+      "state_id": 194,
+      "candidate": "name",
+      "candidate_text": "get_class"
+    }
+  ],
+  "332": [
+    {
+      "state_id": 2020,
+      "candidate": "( argument )",
+      "candidate_text": "($this)"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 195,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 2452,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "340": [
+    {
+      "state_id": 1515,
+      "candidate": ". expression",
+      "candidate_text": ". \" is a leaf\""
+    }
+  ],
+  "342": [
+    {
+      "state_id": 475,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\" is a leaf\""
+    }
+  ],
+  "343": [
+    {
+      "state_id": 1713,
+      "candidate": "string_content",
+      "candidate_text": " is a leaf"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 1725,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "354": [
+    {
+      "state_id": 2584,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "361": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 1614,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "375": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function bombardStrength(): int\n    {"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "bombardStrength(): int\n    {"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 2994,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 969,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": int"
+    }
+  ],
+  "403": [
+    {
+      "state_id": 1590,
+      "candidate": "int",
+      "candidate_text": "int"
+    }
+  ],
+  "411": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        return 4;\n    }"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 88,
+      "candidate": "return expression _semicolon",
+      "candidate_text": "return 4;"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 263,
+      "candidate": "integer",
+      "candidate_text": "4"
+    }
+  ],
+  "429": [
+    {
+      "state_id": 1479,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "437": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

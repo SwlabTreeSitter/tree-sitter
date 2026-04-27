@@ -1,0 +1,401 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "4": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".open"
+    }
+  ],
+  "5": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "open"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 11,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"records.txt\")"
+    }
+  ],
+  "10": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"records.txt\""
+    }
+  ],
+  "11": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "records.txt"
+    }
+  ],
+  "22": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "23": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "25": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |f|\n  while record = f.gets\n    name, nationality, instrument, dates = record.chomp.split(\"|\")\n    puts \"#{name} (#{dates}), who was #{nationality}, played #{instrument}. \"\n  end\nend"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|f|"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "f"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 242,
+      "candidate": "while _statement do",
+      "candidate_text": "while record = f.gets"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 410,
+      "candidate": "identifier",
+      "candidate_text": "record"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2201,
+      "candidate": "= _arg",
+      "candidate_text": "= f.gets"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 469,
+      "candidate": "identifier",
+      "candidate_text": "f"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 2968,
+      "candidate": ". identifier",
+      "candidate_text": ".gets"
+    }
+  ],
+  "51": [
+    {
+      "state_id": 3097,
+      "candidate": "identifier",
+      "candidate_text": "gets"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 360,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 2132,
+      "candidate": ", _lhs",
+      "candidate_text": ", nationality"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 1960,
+      "candidate": "identifier",
+      "candidate_text": "nationality"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 5304,
+      "candidate": ", _lhs",
+      "candidate_text": ", instrument"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 1959,
+      "candidate": "identifier",
+      "candidate_text": "instrument"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 5304,
+      "candidate": ", _lhs",
+      "candidate_text": ", dates"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 1959,
+      "candidate": "identifier",
+      "candidate_text": "dates"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 5811,
+      "candidate": "= _arg",
+      "candidate_text": "= record.chomp.split(\"|\")"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "record"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".chomp"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "chomp"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".split"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "split"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"|\")"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"|\""
+    }
+  ],
+  "119": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "|"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "121": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"#{name} (#{dates}), who was #{nationality}, played #{instrument}. \""
+    }
+  ],
+  "133": [
+    {
+      "state_id": 5084,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{name}"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "139": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " ("
+    }
+  ],
+  "142": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{dates}"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "dates"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "150": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "), who was "
+    }
+  ],
+  "161": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{nationality}"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "nationality"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": ", played "
+    }
+  ],
+  "184": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{instrument}"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "instrument"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": ". "
+    }
+  ],
+  "199": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "203": [
+    {
+      "state_id": 5954,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

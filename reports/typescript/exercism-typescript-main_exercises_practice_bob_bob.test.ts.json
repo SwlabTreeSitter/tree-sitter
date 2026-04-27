@@ -1,0 +1,5714 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { describe, it, expect, xit } from '@jest/globals'"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ describe, it, expect, xit }"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "17": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", it"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", expect"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", xit"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from '@jest/globals'"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'@jest/globals'"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "@jest/globals'"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 16,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { hey } from './bob.ts'"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier }",
+      "candidate_text": "{ hey }"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 5029,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "73": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from './bob.ts'"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'./bob.ts'"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "./bob.ts'"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('Bob', () => {"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Bob'"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Bob'"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  it('stating something', () => {"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('stating something', () => {\n    const result = hey('Tom-ay-to, tom-aaaah-to.')\n    expect(result).toEqual('Whatever.')\n  })"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 199,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'stating something'"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "stating something'"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('Tom-ay-to, tom-aaaah-to.')\n    expect(result).toEqual('Whatever.')\n  }"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('Tom-ay-to, tom-aaaah-to.')"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('Tom-ay-to, tom-aaaah-to.')"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('Tom-ay-to, tom-aaaah-to.')"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('Tom-ay-to, tom-aaaah-to.')"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Tom-ay-to, tom-aaaah-to.'"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Tom-ay-to, tom-aaaah-to.'"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "203": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whatever.')"
+    }
+  ],
+  "226": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whatever.'"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whatever.'"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('shouting', () => {\n    const result = hey('WATCH OUT!')\n    expect(result).toEqual('Whoa, chill out!')\n  })"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'shouting'"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "shouting'"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "263": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('WATCH OUT!')\n    expect(result).toEqual('Whoa, chill out!')\n  }"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('WATCH OUT!')"
+    }
+  ],
+  "281": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('WATCH OUT!')"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('WATCH OUT!')"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "293": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('WATCH OUT!')"
+    }
+  ],
+  "294": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'WATCH OUT!'"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "WATCH OUT!'"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "312": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "318": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "326": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whoa, chill out!')"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whoa, chill out!'"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whoa, chill out!'"
+    }
+  ],
+  "352": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "358": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "366": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('shouting gibberish', () => {\n    const result = hey('FCECDFCAAB')\n    expect(result).toEqual('Whoa, chill out!')\n  })"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'shouting gibberish'"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "shouting gibberish'"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "390": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "392": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('FCECDFCAAB')\n    expect(result).toEqual('Whoa, chill out!')\n  }"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('FCECDFCAAB')"
+    }
+  ],
+  "407": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('FCECDFCAAB')"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('FCECDFCAAB')"
+    }
+  ],
+  "416": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "419": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('FCECDFCAAB')"
+    }
+  ],
+  "420": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'FCECDFCAAB'"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "FCECDFCAAB'"
+    }
+  ],
+  "431": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "432": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "438": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "444": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "445": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "451": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whoa, chill out!')"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whoa, chill out!'"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whoa, chill out!'"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "479": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "483": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "492": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('asking a question', () => {\n    const result = hey('Does this cryogenic chamber make me look fat?')\n    expect(result).toEqual('Sure.')\n  })"
+    }
+  ],
+  "493": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'asking a question'"
+    }
+  ],
+  "494": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "asking a question'"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "512": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "517": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('Does this cryogenic chamber make me look fat?')\n    expect(result).toEqual('Sure.')\n  }"
+    }
+  ],
+  "526": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('Does this cryogenic chamber make me look fat?')"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('Does this cryogenic chamber make me look fat?')"
+    }
+  ],
+  "539": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('Does this cryogenic chamber make me look fat?')"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "544": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('Does this cryogenic chamber make me look fat?')"
+    }
+  ],
+  "545": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Does this cryogenic chamber make me look fat?'"
+    }
+  ],
+  "546": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Does this cryogenic chamber make me look fat?'"
+    }
+  ],
+  "591": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "604": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "605": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "611": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "612": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "620": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Sure.')"
+    }
+  ],
+  "621": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Sure.'"
+    }
+  ],
+  "622": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Sure.'"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "632": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "638": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "641": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('asking a numeric question', () => {\n    const result = hey('You are, what, like 15?')\n    expect(result).toEqual('Sure.')\n  })"
+    }
+  ],
+  "642": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'asking a numeric question'"
+    }
+  ],
+  "643": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "asking a numeric question'"
+    }
+  ],
+  "668": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "669": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "671": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "672": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "674": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "677": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('You are, what, like 15?')\n    expect(result).toEqual('Sure.')\n  }"
+    }
+  ],
+  "683": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('You are, what, like 15?')"
+    }
+  ],
+  "689": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('You are, what, like 15?')"
+    }
+  ],
+  "696": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('You are, what, like 15?')"
+    }
+  ],
+  "698": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('You are, what, like 15?')"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'You are, what, like 15?'"
+    }
+  ],
+  "703": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "You are, what, like 15?'"
+    }
+  ],
+  "726": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "727": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "733": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "739": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "740": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "746": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "747": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "748": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "755": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Sure.')"
+    }
+  ],
+  "756": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Sure.'"
+    }
+  ],
+  "757": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Sure.'"
+    }
+  ],
+  "762": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "767": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "768": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "773": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "776": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('asking gibberish', () => {\n    const result = hey('fffbbcbeab?')\n    expect(result).toEqual('Sure.')\n  })"
+    }
+  ],
+  "777": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'asking gibberish'"
+    }
+  ],
+  "778": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "asking gibberish'"
+    }
+  ],
+  "794": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "795": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "797": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "798": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "800": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "803": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('fffbbcbeab?')\n    expect(result).toEqual('Sure.')\n  }"
+    }
+  ],
+  "809": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('fffbbcbeab?')"
+    }
+  ],
+  "815": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('fffbbcbeab?')"
+    }
+  ],
+  "822": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('fffbbcbeab?')"
+    }
+  ],
+  "824": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "827": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('fffbbcbeab?')"
+    }
+  ],
+  "828": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'fffbbcbeab?'"
+    }
+  ],
+  "829": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "fffbbcbeab?'"
+    }
+  ],
+  "840": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "841": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "847": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "853": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "854": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "860": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "861": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "862": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "869": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Sure.')"
+    }
+  ],
+  "870": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Sure.'"
+    }
+  ],
+  "871": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Sure.'"
+    }
+  ],
+  "876": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "877": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "881": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "882": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "887": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "890": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('talking forcefully', () => {\n    const result = hey(\"Let's go make out behind the gym!\")\n    expect(result).toEqual('Whatever.')\n  })"
+    }
+  ],
+  "891": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'talking forcefully'"
+    }
+  ],
+  "892": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "talking forcefully'"
+    }
+  ],
+  "910": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "911": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "913": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "914": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "916": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "919": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey(\"Let's go make out behind the gym!\")\n    expect(result).toEqual('Whatever.')\n  }"
+    }
+  ],
+  "925": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey(\"Let's go make out behind the gym!\")"
+    }
+  ],
+  "931": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey(\"Let's go make out behind the gym!\")"
+    }
+  ],
+  "938": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey(\"Let's go make out behind the gym!\")"
+    }
+  ],
+  "940": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "943": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Let's go make out behind the gym!\")"
+    }
+  ],
+  "944": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Let's go make out behind the gym!\""
+    }
+  ],
+  "945": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Let's go make out behind the gym!\""
+    }
+  ],
+  "978": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "979": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "985": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "991": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "992": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "998": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "999": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1000": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1007": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whatever.')"
+    }
+  ],
+  "1008": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whatever.'"
+    }
+  ],
+  "1009": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whatever.'"
+    }
+  ],
+  "1018": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1019": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1023": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1024": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1029": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1032": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('using acronyms in regular speech', () => {\n    const result = hey(\"It's OK if you don't want to go to the DMV.\")\n    expect(result).toEqual('Whatever.')\n  })"
+    }
+  ],
+  "1033": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'using acronyms in regular speech'"
+    }
+  ],
+  "1034": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "using acronyms in regular speech'"
+    }
+  ],
+  "1066": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1067": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1069": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1070": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1072": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1075": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey(\"It's OK if you don't want to go to the DMV.\")\n    expect(result).toEqual('Whatever.')\n  }"
+    }
+  ],
+  "1081": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey(\"It's OK if you don't want to go to the DMV.\")"
+    }
+  ],
+  "1087": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey(\"It's OK if you don't want to go to the DMV.\")"
+    }
+  ],
+  "1094": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey(\"It's OK if you don't want to go to the DMV.\")"
+    }
+  ],
+  "1096": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "1099": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "(\"It's OK if you don't want to go to the DMV.\")"
+    }
+  ],
+  "1100": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"It's OK if you don't want to go to the DMV.\""
+    }
+  ],
+  "1101": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "It's OK if you don't want to go to the DMV.\""
+    }
+  ],
+  "1144": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1145": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1151": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1157": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "1158": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1164": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1165": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1166": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1173": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whatever.')"
+    }
+  ],
+  "1174": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whatever.'"
+    }
+  ],
+  "1175": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whatever.'"
+    }
+  ],
+  "1184": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1185": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1189": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1190": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1195": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1198": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('forceful question', () => {\n    const result = hey('WHAT THE HELL WERE YOU THINKING?')\n    expect(result).toEqual(\"Calm down, I know what I'm doing!\")\n  })"
+    }
+  ],
+  "1199": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'forceful question'"
+    }
+  ],
+  "1200": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "forceful question'"
+    }
+  ],
+  "1217": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1218": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1220": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1221": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1223": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1226": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('WHAT THE HELL WERE YOU THINKING?')\n    expect(result).toEqual(\"Calm down, I know what I'm doing!\")\n  }"
+    }
+  ],
+  "1232": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('WHAT THE HELL WERE YOU THINKING?')"
+    }
+  ],
+  "1238": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('WHAT THE HELL WERE YOU THINKING?')"
+    }
+  ],
+  "1245": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('WHAT THE HELL WERE YOU THINKING?')"
+    }
+  ],
+  "1247": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "1250": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('WHAT THE HELL WERE YOU THINKING?')"
+    }
+  ],
+  "1251": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'WHAT THE HELL WERE YOU THINKING?'"
+    }
+  ],
+  "1252": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "WHAT THE HELL WERE YOU THINKING?'"
+    }
+  ],
+  "1284": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1285": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1291": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1297": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "1298": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1304": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1305": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1306": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1313": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Calm down, I know what I'm doing!\")"
+    }
+  ],
+  "1314": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Calm down, I know what I'm doing!\""
+    }
+  ],
+  "1315": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Calm down, I know what I'm doing!\""
+    }
+  ],
+  "1348": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1349": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1353": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1354": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1359": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1362": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('shouting numbers', () => {\n    const result = hey('1, 2, 3 GO!')\n    expect(result).toEqual('Whoa, chill out!')\n  })"
+    }
+  ],
+  "1363": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'shouting numbers'"
+    }
+  ],
+  "1364": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "shouting numbers'"
+    }
+  ],
+  "1380": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1381": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1383": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1384": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1386": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1389": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('1, 2, 3 GO!')\n    expect(result).toEqual('Whoa, chill out!')\n  }"
+    }
+  ],
+  "1395": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('1, 2, 3 GO!')"
+    }
+  ],
+  "1401": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('1, 2, 3 GO!')"
+    }
+  ],
+  "1408": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('1, 2, 3 GO!')"
+    }
+  ],
+  "1410": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "1413": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('1, 2, 3 GO!')"
+    }
+  ],
+  "1414": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'1, 2, 3 GO!'"
+    }
+  ],
+  "1415": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "1, 2, 3 GO!'"
+    }
+  ],
+  "1426": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1427": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1433": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1439": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "1440": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1446": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1447": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1448": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1455": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whoa, chill out!')"
+    }
+  ],
+  "1456": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whoa, chill out!'"
+    }
+  ],
+  "1457": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whoa, chill out!'"
+    }
+  ],
+  "1473": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1474": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1478": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1479": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1484": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1487": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('no letters', () => {\n    const result = hey('1, 2, 3')\n    expect(result).toEqual('Whatever.')\n  })"
+    }
+  ],
+  "1488": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'no letters'"
+    }
+  ],
+  "1489": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "no letters'"
+    }
+  ],
+  "1499": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1500": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1502": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1503": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1505": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1508": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('1, 2, 3')\n    expect(result).toEqual('Whatever.')\n  }"
+    }
+  ],
+  "1514": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('1, 2, 3')"
+    }
+  ],
+  "1520": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('1, 2, 3')"
+    }
+  ],
+  "1527": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('1, 2, 3')"
+    }
+  ],
+  "1529": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "1532": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('1, 2, 3')"
+    }
+  ],
+  "1533": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'1, 2, 3'"
+    }
+  ],
+  "1534": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "1, 2, 3'"
+    }
+  ],
+  "1541": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1542": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1548": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1554": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "1555": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1561": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1562": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1563": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1570": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whatever.')"
+    }
+  ],
+  "1571": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whatever.'"
+    }
+  ],
+  "1572": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whatever.'"
+    }
+  ],
+  "1581": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1582": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1586": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1587": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1592": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1595": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('question with no letters', () => {\n    const result = hey('4?')\n    expect(result).toEqual('Sure.')\n  })"
+    }
+  ],
+  "1596": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'question with no letters'"
+    }
+  ],
+  "1597": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "question with no letters'"
+    }
+  ],
+  "1621": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1622": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1624": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1625": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1627": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1630": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('4?')\n    expect(result).toEqual('Sure.')\n  }"
+    }
+  ],
+  "1636": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('4?')"
+    }
+  ],
+  "1642": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('4?')"
+    }
+  ],
+  "1649": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('4?')"
+    }
+  ],
+  "1651": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "1654": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('4?')"
+    }
+  ],
+  "1655": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'4?'"
+    }
+  ],
+  "1656": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "4?'"
+    }
+  ],
+  "1658": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1659": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1665": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1671": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "1672": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1678": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1679": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1680": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1687": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Sure.')"
+    }
+  ],
+  "1688": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Sure.'"
+    }
+  ],
+  "1689": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Sure.'"
+    }
+  ],
+  "1694": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1695": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1699": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1700": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1705": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1708": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('shouting with special characters', () => {\n    const result = hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!')\n    expect(result).toEqual('Whoa, chill out!')\n  })"
+    }
+  ],
+  "1709": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'shouting with special characters'"
+    }
+  ],
+  "1710": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "shouting with special characters'"
+    }
+  ],
+  "1742": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1743": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1745": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1746": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1748": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1751": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!')\n    expect(result).toEqual('Whoa, chill out!')\n  }"
+    }
+  ],
+  "1757": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!')"
+    }
+  ],
+  "1763": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!')"
+    }
+  ],
+  "1770": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!')"
+    }
+  ],
+  "1772": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "1775": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!')"
+    }
+  ],
+  "1776": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!'"
+    }
+  ],
+  "1777": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!'"
+    }
+  ],
+  "1822": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1823": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1829": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1835": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "1836": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1842": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1843": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1844": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1851": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whoa, chill out!')"
+    }
+  ],
+  "1852": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whoa, chill out!'"
+    }
+  ],
+  "1853": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whoa, chill out!'"
+    }
+  ],
+  "1869": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1870": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1874": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1875": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1880": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1883": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('shouting with no exclamation mark', () => {\n    const result = hey('I HATE THE DMV')\n    expect(result).toEqual('Whoa, chill out!')\n  })"
+    }
+  ],
+  "1884": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'shouting with no exclamation mark'"
+    }
+  ],
+  "1885": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "shouting with no exclamation mark'"
+    }
+  ],
+  "1918": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1919": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1921": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1922": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1924": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1927": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('I HATE THE DMV')\n    expect(result).toEqual('Whoa, chill out!')\n  }"
+    }
+  ],
+  "1933": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('I HATE THE DMV')"
+    }
+  ],
+  "1939": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('I HATE THE DMV')"
+    }
+  ],
+  "1946": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('I HATE THE DMV')"
+    }
+  ],
+  "1948": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "1951": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('I HATE THE DMV')"
+    }
+  ],
+  "1952": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'I HATE THE DMV'"
+    }
+  ],
+  "1953": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "I HATE THE DMV'"
+    }
+  ],
+  "1967": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1968": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1974": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1980": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "1981": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1987": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1988": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1989": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1996": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whoa, chill out!')"
+    }
+  ],
+  "1997": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whoa, chill out!'"
+    }
+  ],
+  "1998": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whoa, chill out!'"
+    }
+  ],
+  "2014": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2015": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2019": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2020": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2025": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2028": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('statement containing question mark', () => {\n    const result = hey('Ending with ? means a question.')\n    expect(result).toEqual('Whatever.')\n  })"
+    }
+  ],
+  "2029": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'statement containing question mark'"
+    }
+  ],
+  "2030": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "statement containing question mark'"
+    }
+  ],
+  "2064": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2065": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2067": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2068": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2070": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2073": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('Ending with ? means a question.')\n    expect(result).toEqual('Whatever.')\n  }"
+    }
+  ],
+  "2079": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('Ending with ? means a question.')"
+    }
+  ],
+  "2085": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('Ending with ? means a question.')"
+    }
+  ],
+  "2092": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('Ending with ? means a question.')"
+    }
+  ],
+  "2094": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "2097": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('Ending with ? means a question.')"
+    }
+  ],
+  "2098": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Ending with ? means a question.'"
+    }
+  ],
+  "2099": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Ending with ? means a question.'"
+    }
+  ],
+  "2130": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2131": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2137": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2143": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "2144": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "2150": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2151": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2152": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2159": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whatever.')"
+    }
+  ],
+  "2160": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whatever.'"
+    }
+  ],
+  "2161": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whatever.'"
+    }
+  ],
+  "2170": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2171": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2175": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2176": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2181": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2184": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('prattling on', () => {\n    const result = hey('Wait! Hang on.  Are you going to be OK?')\n    expect(result).toEqual('Sure.')\n  })"
+    }
+  ],
+  "2185": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'prattling on'"
+    }
+  ],
+  "2186": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "prattling on'"
+    }
+  ],
+  "2198": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2199": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2201": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2202": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2204": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2207": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('Wait! Hang on.  Are you going to be OK?')\n    expect(result).toEqual('Sure.')\n  }"
+    }
+  ],
+  "2213": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('Wait! Hang on.  Are you going to be OK?')"
+    }
+  ],
+  "2219": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('Wait! Hang on.  Are you going to be OK?')"
+    }
+  ],
+  "2226": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('Wait! Hang on.  Are you going to be OK?')"
+    }
+  ],
+  "2228": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "2231": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('Wait! Hang on.  Are you going to be OK?')"
+    }
+  ],
+  "2232": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Wait! Hang on.  Are you going to be OK?'"
+    }
+  ],
+  "2233": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Wait! Hang on.  Are you going to be OK?'"
+    }
+  ],
+  "2272": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2273": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2279": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2285": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "2286": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "2292": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2293": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2294": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2301": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Sure.')"
+    }
+  ],
+  "2302": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Sure.'"
+    }
+  ],
+  "2303": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Sure.'"
+    }
+  ],
+  "2308": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2309": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2313": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2314": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2319": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2322": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('silence', () => {\n    const result = hey('')\n    expect(result).toEqual('Fine. Be that way!')\n  })"
+    }
+  ],
+  "2323": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'silence'"
+    }
+  ],
+  "2324": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "silence'"
+    }
+  ],
+  "2331": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2332": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2334": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2335": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2337": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2340": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('')\n    expect(result).toEqual('Fine. Be that way!')\n  }"
+    }
+  ],
+  "2346": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('')"
+    }
+  ],
+  "2352": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('')"
+    }
+  ],
+  "2359": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('')"
+    }
+  ],
+  "2361": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "2364": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('')"
+    }
+  ],
+  "2365": [
+    {
+      "state_id": 271,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "2366": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2367": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2373": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2379": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "2380": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "2386": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2387": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2388": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2395": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Fine. Be that way!')"
+    }
+  ],
+  "2396": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Fine. Be that way!'"
+    }
+  ],
+  "2397": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Fine. Be that way!'"
+    }
+  ],
+  "2415": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2416": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2420": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2421": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2426": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2429": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('prolonged silence', () => {\n    const result = hey('   ')\n    expect(result).toEqual('Fine. Be that way!')\n  })"
+    }
+  ],
+  "2430": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'prolonged silence'"
+    }
+  ],
+  "2431": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "prolonged silence'"
+    }
+  ],
+  "2448": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2449": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2451": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2452": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2454": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2457": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('   ')\n    expect(result).toEqual('Fine. Be that way!')\n  }"
+    }
+  ],
+  "2463": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('   ')"
+    }
+  ],
+  "2469": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('   ')"
+    }
+  ],
+  "2476": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('   ')"
+    }
+  ],
+  "2478": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "2481": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('   ')"
+    }
+  ],
+  "2482": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'   '"
+    }
+  ],
+  "2483": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "   '"
+    }
+  ],
+  "2486": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2487": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2493": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2499": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "2500": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "2506": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2507": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2508": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2515": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Fine. Be that way!')"
+    }
+  ],
+  "2516": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Fine. Be that way!'"
+    }
+  ],
+  "2517": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Fine. Be that way!'"
+    }
+  ],
+  "2535": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2536": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2540": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2541": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2546": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2549": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('alternate silence', () => {\n    const result = hey('\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t')\n    expect(result).toEqual('Fine. Be that way!')\n  })"
+    }
+  ],
+  "2550": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'alternate silence'"
+    }
+  ],
+  "2551": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "alternate silence'"
+    }
+  ],
+  "2568": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2569": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2571": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2572": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2574": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2577": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t')\n    expect(result).toEqual('Fine. Be that way!')\n  }"
+    }
+  ],
+  "2583": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t')"
+    }
+  ],
+  "2589": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t')"
+    }
+  ],
+  "2596": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t')"
+    }
+  ],
+  "2598": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "2601": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t')"
+    }
+  ],
+  "2602": [
+    {
+      "state_id": 271,
+      "candidate": "' string_repeat2 '",
+      "candidate_text": "'\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t'"
+    }
+  ],
+  "2603": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence escape_sequence",
+      "candidate_text": "\\t\\t"
+    }
+  ],
+  "2605": [
+    {
+      "state_id": 4381,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\t"
+    }
+  ],
+  "2607": [
+    {
+      "state_id": 4381,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\t"
+    }
+  ],
+  "2609": [
+    {
+      "state_id": 4495,
+      "candidate": "escape_sequence escape_sequence",
+      "candidate_text": "\\t\\t"
+    }
+  ],
+  "2611": [
+    {
+      "state_id": 4495,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\t"
+    }
+  ],
+  "2613": [
+    {
+      "state_id": 4495,
+      "candidate": "escape_sequence escape_sequence",
+      "candidate_text": "\\t\\t"
+    }
+  ],
+  "2615": [
+    {
+      "state_id": 4495,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\t"
+    }
+  ],
+  "2617": [
+    {
+      "state_id": 4495,
+      "candidate": "escape_sequence escape_sequence",
+      "candidate_text": "\\t\\t"
+    }
+  ],
+  "2619": [
+    {
+      "state_id": 4495,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\t"
+    }
+  ],
+  "2621": [
+    {
+      "state_id": 4381,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\t"
+    }
+  ],
+  "2623": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2624": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2630": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2636": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "2637": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "2643": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2644": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2645": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2652": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Fine. Be that way!')"
+    }
+  ],
+  "2653": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Fine. Be that way!'"
+    }
+  ],
+  "2654": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Fine. Be that way!'"
+    }
+  ],
+  "2672": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2673": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2677": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2678": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2683": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2686": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('multiple line question', () => {\n    const result = hey('\\nDoes this cryogenic chamber make me look fat?\\nNo.')\n    expect(result).toEqual('Whatever.')\n  })"
+    }
+  ],
+  "2687": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'multiple line question'"
+    }
+  ],
+  "2688": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "multiple line question'"
+    }
+  ],
+  "2710": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2711": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2713": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2714": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2716": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2719": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('\\nDoes this cryogenic chamber make me look fat?\\nNo.')\n    expect(result).toEqual('Whatever.')\n  }"
+    }
+  ],
+  "2725": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('\\nDoes this cryogenic chamber make me look fat?\\nNo.')"
+    }
+  ],
+  "2731": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('\\nDoes this cryogenic chamber make me look fat?\\nNo.')"
+    }
+  ],
+  "2738": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('\\nDoes this cryogenic chamber make me look fat?\\nNo.')"
+    }
+  ],
+  "2740": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "2743": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('\\nDoes this cryogenic chamber make me look fat?\\nNo.')"
+    }
+  ],
+  "2744": [
+    {
+      "state_id": 271,
+      "candidate": "' string_repeat2 '",
+      "candidate_text": "'\\nDoes this cryogenic chamber make me look fat?\\nNo.'"
+    }
+  ],
+  "2745": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence string_fragment",
+      "candidate_text": "\\nDoes this cryogenic chamber make me look fat?"
+    }
+  ],
+  "2747": [
+    {
+      "state_id": 4381,
+      "candidate": "string_fragment",
+      "candidate_text": "Does this cryogenic chamber make me look fat?"
+    }
+  ],
+  "2792": [
+    {
+      "state_id": 4381,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "2794": [
+    {
+      "state_id": 4381,
+      "candidate": "string_fragment",
+      "candidate_text": "No."
+    }
+  ],
+  "2797": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2798": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2804": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2810": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "2811": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "2817": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2818": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2819": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2826": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whatever.')"
+    }
+  ],
+  "2827": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whatever.'"
+    }
+  ],
+  "2828": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whatever.'"
+    }
+  ],
+  "2837": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2838": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2842": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2843": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2848": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2851": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('starting with whitespace', () => {\n    const result = hey('         hmmmmmmm...')\n    expect(result).toEqual('Whatever.')\n  })"
+    }
+  ],
+  "2852": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'starting with whitespace'"
+    }
+  ],
+  "2853": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "starting with whitespace'"
+    }
+  ],
+  "2877": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2878": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2880": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2881": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2883": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2886": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('         hmmmmmmm...')\n    expect(result).toEqual('Whatever.')\n  }"
+    }
+  ],
+  "2892": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('         hmmmmmmm...')"
+    }
+  ],
+  "2898": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('         hmmmmmmm...')"
+    }
+  ],
+  "2905": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('         hmmmmmmm...')"
+    }
+  ],
+  "2907": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "2910": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('         hmmmmmmm...')"
+    }
+  ],
+  "2911": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'         hmmmmmmm...'"
+    }
+  ],
+  "2912": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "         hmmmmmmm...'"
+    }
+  ],
+  "2932": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2933": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2939": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2945": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "2946": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "2952": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2953": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2954": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2961": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whatever.')"
+    }
+  ],
+  "2962": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whatever.'"
+    }
+  ],
+  "2963": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whatever.'"
+    }
+  ],
+  "2972": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2973": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2977": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2978": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2983": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2986": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('ending with whitespace', () => {\n    const result = hey('Okay if like my  spacebar  quite a bit?   ')\n    expect(result).toEqual('Sure.')\n  })"
+    }
+  ],
+  "2987": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'ending with whitespace'"
+    }
+  ],
+  "2988": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "ending with whitespace'"
+    }
+  ],
+  "3010": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3011": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "3013": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "3014": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3016": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "3019": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('Okay if like my  spacebar  quite a bit?   ')\n    expect(result).toEqual('Sure.')\n  }"
+    }
+  ],
+  "3025": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('Okay if like my  spacebar  quite a bit?   ')"
+    }
+  ],
+  "3031": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('Okay if like my  spacebar  quite a bit?   ')"
+    }
+  ],
+  "3038": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('Okay if like my  spacebar  quite a bit?   ')"
+    }
+  ],
+  "3040": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "3043": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('Okay if like my  spacebar  quite a bit?   ')"
+    }
+  ],
+  "3044": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Okay if like my  spacebar  quite a bit?   '"
+    }
+  ],
+  "3045": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Okay if like my  spacebar  quite a bit?   '"
+    }
+  ],
+  "3087": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3088": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3094": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "3100": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "3101": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "3107": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3108": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "3109": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "3116": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Sure.')"
+    }
+  ],
+  "3117": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Sure.'"
+    }
+  ],
+  "3118": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Sure.'"
+    }
+  ],
+  "3123": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3124": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3128": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3129": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3134": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "3137": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('other whitespace', () => {\n    const result = hey('\\n\\r \\t')\n    expect(result).toEqual('Fine. Be that way!')\n  })"
+    }
+  ],
+  "3138": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'other whitespace'"
+    }
+  ],
+  "3139": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "other whitespace'"
+    }
+  ],
+  "3155": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3156": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "3158": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "3159": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3161": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "3164": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('\\n\\r \\t')\n    expect(result).toEqual('Fine. Be that way!')\n  }"
+    }
+  ],
+  "3170": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('\\n\\r \\t')"
+    }
+  ],
+  "3176": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('\\n\\r \\t')"
+    }
+  ],
+  "3183": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('\\n\\r \\t')"
+    }
+  ],
+  "3185": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "3188": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n\\r \\t')"
+    }
+  ],
+  "3189": [
+    {
+      "state_id": 271,
+      "candidate": "' string_repeat2 '",
+      "candidate_text": "'\\n\\r \\t'"
+    }
+  ],
+  "3190": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence escape_sequence",
+      "candidate_text": "\\n\\r"
+    }
+  ],
+  "3192": [
+    {
+      "state_id": 4381,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\r"
+    }
+  ],
+  "3194": [
+    {
+      "state_id": 4381,
+      "candidate": "string_fragment",
+      "candidate_text": " "
+    }
+  ],
+  "3195": [
+    {
+      "state_id": 4381,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\t"
+    }
+  ],
+  "3197": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3198": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3204": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "3210": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "3211": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "3217": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3218": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "3219": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "3226": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Fine. Be that way!')"
+    }
+  ],
+  "3227": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Fine. Be that way!'"
+    }
+  ],
+  "3228": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Fine. Be that way!'"
+    }
+  ],
+  "3246": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3247": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3251": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3252": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3257": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "3260": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('non-question ending with whitespace', () => {\n    const result = hey('This is a statement ending with whitespace      ')\n    expect(result).toEqual('Whatever.')\n  })"
+    }
+  ],
+  "3261": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'non-question ending with whitespace'"
+    }
+  ],
+  "3262": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "non-question ending with whitespace'"
+    }
+  ],
+  "3297": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3298": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "3300": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "3301": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3303": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "3306": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const result = hey('This is a statement ending with whitespace      ')\n    expect(result).toEqual('Whatever.')\n  }"
+    }
+  ],
+  "3312": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = hey('This is a statement ending with whitespace      ')"
+    }
+  ],
+  "3318": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = hey('This is a statement ending with whitespace      ')"
+    }
+  ],
+  "3325": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= hey('This is a statement ending with whitespace      ')"
+    }
+  ],
+  "3327": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "hey"
+    }
+  ],
+  "3330": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "('This is a statement ending with whitespace      ')"
+    }
+  ],
+  "3331": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is a statement ending with whitespace      '"
+    }
+  ],
+  "3332": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is a statement ending with whitespace      '"
+    }
+  ],
+  "3380": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3381": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3387": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "3393": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "3394": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "3400": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3401": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "3402": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "3409": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('Whatever.')"
+    }
+  ],
+  "3410": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Whatever.'"
+    }
+  ],
+  "3411": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Whatever.'"
+    }
+  ],
+  "3420": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3421": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3425": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3426": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3428": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3429": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

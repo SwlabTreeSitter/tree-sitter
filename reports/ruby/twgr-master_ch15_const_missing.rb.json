@@ -1,0 +1,226 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class C\n  def self.const_missing(const)\n    puts \"#{const} is undefined. Let's set it to 1.\"\n    const_set(const,1)\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "C\n  def self.const_missing(const)\n    puts \"#{const} is undefined. Let's set it to 1.\"\n    const_set(const,1)\n  end\nend"
+    }
+  ],
+  "10": [
+    {
+      "state_id": 217,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.const_missing(const)"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "18": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".const_missing(const)"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "const_missing"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(const)"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "const"
+    }
+  ],
+  "38": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "44": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"#{const} is undefined. Let's set it to 1.\""
+    }
+  ],
+  "50": [
+    {
+      "state_id": 5084,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{const}"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "const"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " is undefined. Let's set it to 1."
+    }
+  ],
+  "91": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "97": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "const_set"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(const,1)"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "const"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ",1"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 432,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 8,
+      "candidate": "constant",
+      "candidate_text": "C"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 2721,
+      "candidate": ":: constant",
+      "candidate_text": "::A"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 3129,
+      "candidate": "constant",
+      "candidate_text": "A"
+    }
+  ],
+  "136": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 8,
+      "candidate": "constant",
+      "candidate_text": "C"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 2721,
+      "candidate": ":: constant",
+      "candidate_text": "::A"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 3129,
+      "candidate": "constant",
+      "candidate_text": "A"
+    }
+  ]
+}

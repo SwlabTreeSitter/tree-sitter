@@ -1,0 +1,297 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "prompt"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= \"\\nTell me something, and I will repeat it back to you:\""
+    }
+  ],
+  "9": [
+    {
+      "state_id": 185,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"\\nTell me something, and I will repeat it back to you:\""
+    }
+  ],
+  "10": [
+    {
+      "state_id": 1696,
+      "candidate": "escape_sequence _string_content",
+      "candidate_text": "\\nTell me something, and I will repeat it back to you:"
+    }
+  ],
+  "12": [
+    {
+      "state_id": 1807,
+      "candidate": "_string_content",
+      "candidate_text": "Tell me something, and I will repeat it back to you:"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 1713,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "66": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "prompt"
+    }
+  ],
+  "73": [
+    {
+      "state_id": 1633,
+      "candidate": "+= _right_hand_side",
+      "candidate_text": "+= \"\\nEnter 'quit' to end the program. \""
+    }
+  ],
+  "76": [
+    {
+      "state_id": 192,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"\\nEnter 'quit' to end the program. \""
+    }
+  ],
+  "77": [
+    {
+      "state_id": 1696,
+      "candidate": "escape_sequence _string_content",
+      "candidate_text": "\\nEnter 'quit' to end the program. "
+    }
+  ],
+  "79": [
+    {
+      "state_id": 1807,
+      "candidate": "_string_content",
+      "candidate_text": "Enter 'quit' to end the program. "
+    }
+  ],
+  "112": [
+    {
+      "state_id": 1713,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "115": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "active"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= True"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 185,
+      "candidate": "true",
+      "candidate_text": "True"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 69,
+      "candidate": "while expression : _indent block",
+      "candidate_text": "while active:\n    message = input(prompt)"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 584,
+      "candidate": "identifier",
+      "candidate_text": "active"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 2073,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n    message = input(prompt)"
+    }
+  ],
+  "147": [
+    {
+      "state_id": 105,
+      "candidate": "_indent block",
+      "candidate_text": "message = input(prompt)"
+    },
+    {
+      "state_id": 5,
+      "candidate": "identifier",
+      "candidate_text": "message"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= input(prompt)"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "input"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(prompt)"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "prompt"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 68,
+      "candidate": "if expression : _indent block else_clause",
+      "candidate_text": "if message == 'quit':\n        active = False\n    else:"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 601,
+      "candidate": "identifier",
+      "candidate_text": "message"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 962,
+      "candidate": "== primary_expression",
+      "candidate_text": "== 'quit'"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 936,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'quit'"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 1682,
+      "candidate": "_string_content",
+      "candidate_text": "quit"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 1684,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 2078,
+      "candidate": ": _indent block else_clause",
+      "candidate_text": ":\n        active = False\n    else:"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 111,
+      "candidate": "_indent block else_clause",
+      "candidate_text": "active = False\n    else:"
+    },
+    {
+      "state_id": 65,
+      "candidate": "identifier",
+      "candidate_text": "active"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= False"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 185,
+      "candidate": "false",
+      "candidate_text": "False"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 620,
+      "candidate": "else : _indent block",
+      "candidate_text": "else:\n        print(message)"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 2684,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n        print(message)"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 124,
+      "candidate": "_indent block",
+      "candidate_text": "print(message)"
+    },
+    {
+      "state_id": 45,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(message)"
+    }
+  ],
+  "245": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "message"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module M\n  def self.extended(obj)\n    puts \"Module #{self} is being used by #{obj}.\"\n  end\n  def an_inst_method\n    puts \"This module supplies this instance method.\"\n  end\nend"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "M\n  def self.extended(obj)\n    puts \"Module #{self} is being used by #{obj}.\"\n  end\n  def an_inst_method\n    puts \"This module supplies this instance method.\"\n  end\nend"
+    }
+  ],
+  "11": [
+    {
+      "state_id": 218,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.extended(obj)"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".extended(obj)"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "extended"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(obj)"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "obj"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "38": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Module #{self} is being used by #{obj}.\""
+    }
+  ],
+  "44": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Module "
+    }
+  ],
+  "51": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{self}"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 357,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " is being used by "
+    }
+  ],
+  "76": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{obj}"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "obj"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "."
+    }
+  ],
+  "83": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "87": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def an_inst_method"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "an_inst_method"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"This module supplies this instance method.\""
+    }
+  ],
+  "122": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "This module supplies this instance method."
+    }
+  ],
+  "164": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "168": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 346,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class C\n  include M\nend"
+    }
+  ],
+  "182": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "C\n  include M\nend"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "include"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 3,
+      "candidate": "constant",
+      "candidate_text": "M"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "my_object"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Object.new"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Object"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "223": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "my_object"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".extend"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "extend"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 11,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(M)"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 428,
+      "candidate": "constant",
+      "candidate_text": "M"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "my_object"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".an_inst_method"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "an_inst_method"
+    }
+  ]
+}

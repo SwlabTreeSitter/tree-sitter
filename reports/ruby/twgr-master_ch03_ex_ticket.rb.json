@@ -1,0 +1,1220 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Ticket\n  def initialize(venue)\n    @venue = venue\n  end\n  def venue\n    @venue\n  end\n  def date=(date)\n    year, month, day = date.split(\"-\")\n    if year.length == 4 && month.length == 2 && day.length == 2\n      @date = date\n    else\n      puts \"Please submit the date in the format 'yyyy-mm-dd'\"\n    end\n  end\n  def date\n    @date\n  end\n  def price=(amount)\n    if (amount * 100).to_i == amount * 100\n      @price = amount\n    else\n      puts \"The price seems to be malformed.\"\n    end\n  end\n  def price\n    @price\n  end\n  def discount(percent)\n    @price = @price * (100 - percent) / 100.0\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Ticket\n  def initialize(venue)\n    @venue = venue\n  end\n  def venue\n    @venue\n  end\n  def date=(date)\n    year, month, day = date.split(\"-\")\n    if year.length == 4 && month.length == 2 && day.length == 2\n      @date = date\n    else\n      puts \"Please submit the date in the format 'yyyy-mm-dd'\"\n    end\n  end\n  def date\n    @date\n  end\n  def price=(amount)\n    if (amount * 100).to_i == amount * 100\n      @price = amount\n    else\n      puts \"The price seems to be malformed.\"\n    end\n  end\n  def price\n    @price\n  end\n  def discount(percent)\n    @price = @price * (100 - percent) / 100.0\n  end\nend"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 217,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(venue)"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(venue)"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "41": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@venue"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= venue"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def venue"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@venue"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def date=(date)"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier =",
+      "candidate_text": "date="
+    }
+  ],
+  "101": [
+    {
+      "state_id": 4745,
+      "candidate": "=",
+      "candidate_text": "="
+    }
+  ],
+  "102": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(date)"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "date"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "year"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 2132,
+      "candidate": ", _lhs",
+      "candidate_text": ", month"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 1960,
+      "candidate": "identifier",
+      "candidate_text": "month"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 5304,
+      "candidate": ", _lhs",
+      "candidate_text": ", day"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 1959,
+      "candidate": "identifier",
+      "candidate_text": "day"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 5811,
+      "candidate": "= _arg",
+      "candidate_text": "= date.split(\"-\")"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "date"
+    }
+  ],
+  "136": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".split"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "split"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"-\")"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"-\""
+    }
+  ],
+  "144": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "-"
+    }
+  ],
+  "145": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "146": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 252,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if year.length == 4 && month.length == 2 && day.length == 2\n      @date = date\n    else\n      puts \"Please submit the date in the format 'yyyy-mm-dd'\"\n    end"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "year"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 2812,
+      "candidate": "== _arg",
+      "candidate_text": "== 4"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 1220,
+      "candidate": "integer",
+      "candidate_text": "4"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 2812,
+      "candidate": "&& _arg",
+      "candidate_text": "&& month.length == 2"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 1202,
+      "candidate": "identifier",
+      "candidate_text": "month"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 2501,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 3133,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 2788,
+      "candidate": "== _arg",
+      "candidate_text": "== 2"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 1220,
+      "candidate": "integer",
+      "candidate_text": "2"
+    }
+  ],
+  "193": [
+    {
+      "state_id": 2812,
+      "candidate": "&& _arg",
+      "candidate_text": "&& day.length == 2"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 1202,
+      "candidate": "identifier",
+      "candidate_text": "day"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 2501,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 3133,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 2788,
+      "candidate": "== _arg",
+      "candidate_text": "== 2"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 1220,
+      "candidate": "integer",
+      "candidate_text": "2"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 264,
+      "candidate": "instance_variable",
+      "candidate_text": "@date"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= date"
+    }
+  ],
+  "226": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "date"
+    }
+  ],
+  "235": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n      puts \"Please submit the date in the format 'yyyy-mm-dd'\""
+    }
+  ],
+  "246": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Please submit the date in the format 'yyyy-mm-dd'\""
+    }
+  ],
+  "252": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Please submit the date in the format 'yyyy-mm-dd'"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "307": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def date"
+    }
+  ],
+  "323": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "date"
+    }
+  ],
+  "332": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@date"
+    }
+  ],
+  "340": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "346": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def price=(amount)"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier =",
+      "candidate_text": "price="
+    }
+  ],
+  "355": [
+    {
+      "state_id": 4745,
+      "candidate": "=",
+      "candidate_text": "="
+    }
+  ],
+  "356": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(amount)"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "amount"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "369": [
+    {
+      "state_id": 238,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if (amount * 100).to_i == amount * 100\n      @price = amount\n    else\n      puts \"The price seems to be malformed.\"\n    end"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 406,
+      "candidate": "( _statements )",
+      "candidate_text": "(amount * 100)"
+    }
+  ],
+  "373": [
+    {
+      "state_id": 329,
+      "candidate": "identifier",
+      "candidate_text": "amount"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 2812,
+      "candidate": "* _arg",
+      "candidate_text": "* 100"
+    }
+  ],
+  "382": [
+    {
+      "state_id": 1175,
+      "candidate": "integer",
+      "candidate_text": "100"
+    }
+  ],
+  "385": [
+    {
+      "state_id": 5760,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".to_i"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "to_i"
+    }
+  ],
+  "392": [
+    {
+      "state_id": 2812,
+      "candidate": "== _arg",
+      "candidate_text": "== amount * 100"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 1220,
+      "candidate": "identifier",
+      "candidate_text": "amount"
+    }
+  ],
+  "402": [
+    {
+      "state_id": 2776,
+      "candidate": "* _arg",
+      "candidate_text": "* 100"
+    }
+  ],
+  "404": [
+    {
+      "state_id": 1175,
+      "candidate": "integer",
+      "candidate_text": "100"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 264,
+      "candidate": "instance_variable",
+      "candidate_text": "@price"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= amount"
+    }
+  ],
+  "423": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "amount"
+    }
+  ],
+  "434": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n      puts \"The price seems to be malformed.\""
+    }
+  ],
+  "445": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"The price seems to be malformed.\""
+    }
+  ],
+  "451": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "The price seems to be malformed."
+    }
+  ],
+  "483": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "489": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "495": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "501": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def price"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "price"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@price"
+    }
+  ],
+  "524": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "530": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def discount(percent)"
+    }
+  ],
+  "534": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "discount"
+    }
+  ],
+  "542": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(percent)"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "percent"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@price"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= @price * (100 - percent) / 100.0"
+    }
+  ],
+  "565": [
+    {
+      "state_id": 462,
+      "candidate": "instance_variable",
+      "candidate_text": "@price"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 2715,
+      "candidate": "* _arg",
+      "candidate_text": "* (100 - percent)"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 1252,
+      "candidate": "( _statements )",
+      "candidate_text": "(100 - percent)"
+    }
+  ],
+  "575": [
+    {
+      "state_id": 329,
+      "candidate": "integer",
+      "candidate_text": "100"
+    }
+  ],
+  "579": [
+    {
+      "state_id": 2812,
+      "candidate": "- _arg",
+      "candidate_text": "- percent"
+    }
+  ],
+  "581": [
+    {
+      "state_id": 1174,
+      "candidate": "identifier",
+      "candidate_text": "percent"
+    }
+  ],
+  "588": [
+    {
+      "state_id": 5760,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 2715,
+      "candidate": "/ _arg",
+      "candidate_text": "/ 100.0"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 1252,
+      "candidate": "float",
+      "candidate_text": "100.0"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "604": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "609": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "ticket"
+    }
+  ],
+  "616": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Ticket.new(\"Town Hall\")"
+    }
+  ],
+  "618": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Ticket"
+    }
+  ],
+  "624": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "625": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"Town Hall\")"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Town Hall\""
+    }
+  ],
+  "630": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Town Hall"
+    }
+  ],
+  "639": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "640": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "642": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "ticket"
+    }
+  ],
+  "648": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".date"
+    }
+  ],
+  "649": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "date"
+    }
+  ],
+  "654": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= \"1913-11-12\""
+    }
+  ],
+  "656": [
+    {
+      "state_id": 481,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"1913-11-12\""
+    }
+  ],
+  "657": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "1913-11-12"
+    }
+  ],
+  "667": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "669": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "ticket"
+    }
+  ],
+  "675": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".price"
+    }
+  ],
+  "676": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "price"
+    }
+  ],
+  "682": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= 63.00"
+    }
+  ],
+  "684": [
+    {
+      "state_id": 481,
+      "candidate": "float",
+      "candidate_text": "63.00"
+    }
+  ],
+  "690": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "695": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"The ticket is for an event on #{ticket.date} at #{ticket.venue}.\""
+    }
+  ],
+  "696": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "The ticket is for an event on "
+    }
+  ],
+  "726": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{ticket.date}"
+    }
+  ],
+  "728": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "ticket"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".date"
+    }
+  ],
+  "735": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "date"
+    }
+  ],
+  "739": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "740": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " at "
+    }
+  ],
+  "744": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{ticket.venue}"
+    }
+  ],
+  "746": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "ticket"
+    }
+  ],
+  "752": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".venue"
+    }
+  ],
+  "753": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "758": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "759": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "."
+    }
+  ],
+  "760": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "762": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "767": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"The ticket for #{ticket.venue} has been discounted 15% to #{ticket.discount(15)}.\""
+    }
+  ],
+  "768": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "The ticket for "
+    }
+  ],
+  "783": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{ticket.venue}"
+    }
+  ],
+  "785": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "ticket"
+    }
+  ],
+  "791": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".venue"
+    }
+  ],
+  "792": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "797": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "798": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " has been discounted 15% to "
+    }
+  ],
+  "826": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{ticket.discount(15)}"
+    }
+  ],
+  "828": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "ticket"
+    }
+  ],
+  "834": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".discount"
+    }
+  ],
+  "835": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "discount"
+    }
+  ],
+  "843": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(15)"
+    }
+  ],
+  "844": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "15"
+    }
+  ],
+  "846": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "847": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "848": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "."
+    }
+  ],
+  "849": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ]
+}

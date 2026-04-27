@@ -1,0 +1,1101 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch06\\batch03;"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch06\\batch03"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch06"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch06"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch03"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch03"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "83": [
+    {
+      "state_id": 157,
+      "candidate": "class name base_clause declaration_list",
+      "candidate_text": "class TextParamHandler extends ParamHandler\n{"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 3194,
+      "candidate": "name base_clause declaration_list",
+      "candidate_text": "TextParamHandler extends ParamHandler\n{"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 1965,
+      "candidate": "extends _name",
+      "candidate_text": "extends ParamHandler"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 1799,
+      "candidate": "name",
+      "candidate_text": "ParamHandler"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 2262,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n\n    public function write(): void"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 1617,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function write(): void\n    {"
+    }
+  ],
+  "150": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "write(): void\n    {"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 2994,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 969,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 1590,
+      "candidate": "primitive_type_token6",
+      "candidate_text": "void"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        // write text"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "// write text"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "// using $this->params"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "ing 06.06 */\n        $fh = $this->openSource('w');\n        foreach ($this->params as $key => $val) {\n            fputs($fh, \"$key:$val\\n\");\n        }\n     "
+    }
+  ],
+  "252": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$fh"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "fh"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $this->openSource('w')"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "263": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->openSource('w')"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "openSource"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "('w')"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 191,
+      "candidate": "' string_repeat1 '",
+      "candidate_text": "'w'"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 2017,
+      "candidate": "string_content_token1",
+      "candidate_text": "w"
+    }
+  ],
+  "278": [
+    {
+      "state_id": 2025,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 75,
+      "candidate": "foreach ( expression as pair ) statement",
+      "candidate_text": "foreach ($this->params as $key => $val) {"
+    }
+  ],
+  "298": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as pair ) statement",
+      "candidate_text": "($this->params as $key => $val) {"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "300": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->params"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "params"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 1541,
+      "candidate": "as pair ) statement",
+      "candidate_text": "as $key => $val) {"
+    }
+  ],
+  "316": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$key"
+    }
+  ],
+  "317": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "key"
+    }
+  ],
+  "321": [
+    {
+      "state_id": 1513,
+      "candidate": "=> _foreach_value",
+      "candidate_text": "=> $val"
+    }
+  ],
+  "324": [
+    {
+      "state_id": 256,
+      "candidate": "$ name",
+      "candidate_text": "$val"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "val"
+    }
+  ],
+  "328": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "330": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            fputs($fh, \"$key:$val\\n\");\n        }"
+    }
+  ],
+  "344": [
+    {
+      "state_id": 88,
+      "candidate": "name",
+      "candidate_text": "fputs"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 2019,
+      "candidate": "( argument arguments_repeat1 )",
+      "candidate_text": "($fh, \"$key:$val\\n\")"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$fh"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "fh"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 2543,
+      "candidate": ", argument",
+      "candidate_text": ", \"$key:$val\\n\""
+    }
+  ],
+  "355": [
+    {
+      "state_id": 207,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"$key:$val\\n\""
+    }
+  ],
+  "356": [
+    {
+      "state_id": 1713,
+      "candidate": "$ name",
+      "candidate_text": "$key"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 1963,
+      "candidate": "name",
+      "candidate_text": "key"
+    }
+  ],
+  "360": [
+    {
+      "state_id": 1783,
+      "candidate": "string_content",
+      "candidate_text": ":"
+    }
+  ],
+  "361": [
+    {
+      "state_id": 1725,
+      "candidate": "$ name",
+      "candidate_text": "$val"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 1963,
+      "candidate": "name",
+      "candidate_text": "val"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 1725,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 1725,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "368": [
+    {
+      "state_id": 2557,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "369": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "379": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 75,
+      "candidate": "name",
+      "candidate_text": "fclose"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 2019,
+      "candidate": "( argument )",
+      "candidate_text": "($fh)"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$fh"
+    }
+  ],
+  "397": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "fh"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "i"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 1614,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "440": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function read(): void\n    {"
+    }
+  ],
+  "449": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "read(): void\n    {"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 2994,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 969,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "455": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "457": [
+    {
+      "state_id": 1590,
+      "candidate": "primitive_type_token6",
+      "candidate_text": "void"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        // read text"
+    }
+  ],
+  "476": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "// read text"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "// and populate $this->params"
+    }
+  ],
+  "535": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "ing 06.06 */\n        $lines = file($this->source);\n        foreach ($lines as $line) {\n            $line = trim($line);\n            list( $key, $val ) = explode(':', $line);\n            $this->params[$key] = "
+    }
+  ],
+  "556": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$lines"
+    }
+  ],
+  "557": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "lines"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= file($this->source)"
+    }
+  ],
+  "565": [
+    {
+      "state_id": 311,
+      "candidate": "name",
+      "candidate_text": "file"
+    }
+  ],
+  "569": [
+    {
+      "state_id": 2019,
+      "candidate": "( argument )",
+      "candidate_text": "($this->source)"
+    }
+  ],
+  "570": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "571": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "575": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->source"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "source"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "594": [
+    {
+      "state_id": 75,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($lines as $line) {"
+    }
+  ],
+  "602": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($lines as $line) {"
+    }
+  ],
+  "603": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$lines"
+    }
+  ],
+  "604": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "lines"
+    }
+  ],
+  "610": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $line) {"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$line"
+    }
+  ],
+  "614": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "line"
+    }
+  ],
+  "618": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "620": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            $line = trim($line);\n            list( $key, $val ) = explode(':', $line);\n            $this->params[$key] = $val;\n        }"
+    }
+  ],
+  "634": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$line"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "line"
+    }
+  ],
+  "640": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= trim($line)"
+    }
+  ],
+  "642": [
+    {
+      "state_id": 311,
+      "candidate": "name",
+      "candidate_text": "trim"
+    }
+  ],
+  "646": [
+    {
+      "state_id": 2019,
+      "candidate": "( argument )",
+      "candidate_text": "($line)"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$line"
+    }
+  ],
+  "648": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "line"
+    }
+  ],
+  "652": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "653": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "667": [
+    {
+      "state_id": 75,
+      "candidate": "list ( _new_variable _list_destructing_repeat1 )",
+      "candidate_text": "list( $key, $val )"
+    }
+  ],
+  "671": [
+    {
+      "state_id": 3258,
+      "candidate": "( _new_variable _list_destructing_repeat1 )",
+      "candidate_text": "( $key, $val )"
+    }
+  ],
+  "673": [
+    {
+      "state_id": 225,
+      "candidate": "$ name",
+      "candidate_text": "$key"
+    }
+  ],
+  "674": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "key"
+    }
+  ],
+  "677": [
+    {
+      "state_id": 919,
+      "candidate": ", _new_variable",
+      "candidate_text": ", $val"
+    }
+  ],
+  "679": [
+    {
+      "state_id": 239,
+      "candidate": "$ name",
+      "candidate_text": "$val"
+    }
+  ],
+  "680": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "val"
+    }
+  ],
+  "684": [
+    {
+      "state_id": 2494,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 3303,
+      "candidate": "= expression",
+      "candidate_text": "= explode(':', $line)"
+    }
+  ],
+  "688": [
+    {
+      "state_id": 311,
+      "candidate": "name",
+      "candidate_text": "explode"
+    }
+  ],
+  "695": [
+    {
+      "state_id": 2019,
+      "candidate": "( argument arguments_repeat1 )",
+      "candidate_text": "(':', $line)"
+    }
+  ],
+  "696": [
+    {
+      "state_id": 191,
+      "candidate": "' string_repeat1 '",
+      "candidate_text": "':'"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 2017,
+      "candidate": "string_content_token1",
+      "candidate_text": ":"
+    }
+  ],
+  "698": [
+    {
+      "state_id": 2025,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 2543,
+      "candidate": ", argument",
+      "candidate_text": ", $line"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 207,
+      "candidate": "$ name",
+      "candidate_text": "$line"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "line"
+    }
+  ],
+  "706": [
+    {
+      "state_id": 2557,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "707": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "722": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "726": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name",
+      "candidate_text": "->params"
+    }
+  ],
+  "728": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "params"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 2314,
+      "candidate": "[ expression ]",
+      "candidate_text": "[$key]"
+    }
+  ],
+  "735": [
+    {
+      "state_id": 318,
+      "candidate": "$ name",
+      "candidate_text": "$key"
+    }
+  ],
+  "736": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "key"
+    }
+  ],
+  "739": [
+    {
+      "state_id": 1576,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "741": [
+    {
+      "state_id": 887,
+      "candidate": "= expression",
+      "candidate_text": "= $val"
+    }
+  ],
+  "743": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$val"
+    }
+  ],
+  "744": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "val"
+    }
+  ],
+  "747": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "757": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "i"
+    }
+  ],
+  "783": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "785": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

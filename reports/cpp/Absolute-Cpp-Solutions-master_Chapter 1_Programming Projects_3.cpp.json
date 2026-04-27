@@ -1,0 +1,793 @@
+{
+  "361": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "370": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "382": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "398": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "404": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "413": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    const float PAY_INCREASE = (7.6/100);\r\n    cout << \"Please enter your previous annual salary: $\";\r\n    float salary;\r\n    cin >> salary;\r\n    float retroactive_pay = (salary/12) * (7.6/100) * 6;\r\n    cout << \"Your Retroactive pay is : $\" << retroactive_pay;\r\n    cout << \"\\n..................................................\\n\";\r\n    float new_salary = salary + retroactive_pay;\r\n    cout << \"Your new salary is : $\" << new_salary;\r\n    cout << \"\\n......................................................\\n\";\r\n    cout << \"Your current monthly salary is : $\" << (new_salary/12);\r\n    cout << endl << endl;\r\n    return 0;\r\n}"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 4,
+      "candidate": "const",
+      "candidate_text": "const"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 2645,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "PAY_INCREASE"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= (7.6/100)"
+    }
+  ],
+  "448": [
+    {
+      "state_id": 1243,
+      "candidate": "( expression )",
+      "candidate_text": "(7.6/100)"
+    }
+  ],
+  "449": [
+    {
+      "state_id": 217,
+      "candidate": "number_literal",
+      "candidate_text": "7.6"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 4607,
+      "candidate": "/ expression",
+      "candidate_text": "/100"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 1269,
+      "candidate": "number_literal",
+      "candidate_text": "100"
+    }
+  ],
+  "456": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "457": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "469": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"Please enter your previous annual salary: $\""
+    }
+  ],
+  "472": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"Please enter your previous annual salary: $\""
+    }
+  ],
+  "473": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "Please enter your previous annual salary: $\""
+    }
+  ],
+  "516": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "517": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "524": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "530": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "salary"
+    }
+  ],
+  "536": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> salary"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "salary"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "569": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "retroactive_pay"
+    }
+  ],
+  "585": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= (salary/12) * (7.6/100) * 6"
+    }
+  ],
+  "587": [
+    {
+      "state_id": 1243,
+      "candidate": "( expression )",
+      "candidate_text": "(salary/12)"
+    }
+  ],
+  "588": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "salary"
+    }
+  ],
+  "594": [
+    {
+      "state_id": 4607,
+      "candidate": "/ expression",
+      "candidate_text": "/12"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 1269,
+      "candidate": "number_literal",
+      "candidate_text": "12"
+    }
+  ],
+  "597": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "599": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* (7.6/100)"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 1608,
+      "candidate": "( expression )",
+      "candidate_text": "(7.6/100)"
+    }
+  ],
+  "602": [
+    {
+      "state_id": 217,
+      "candidate": "number_literal",
+      "candidate_text": "7.6"
+    }
+  ],
+  "605": [
+    {
+      "state_id": 4607,
+      "candidate": "/ expression",
+      "candidate_text": "/100"
+    }
+  ],
+  "606": [
+    {
+      "state_id": 1269,
+      "candidate": "number_literal",
+      "candidate_text": "100"
+    }
+  ],
+  "609": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "611": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* 6"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 1608,
+      "candidate": "number_literal",
+      "candidate_text": "6"
+    }
+  ],
+  "614": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "621": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "626": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"Your Retroactive pay is : $\""
+    }
+  ],
+  "629": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"Your Retroactive pay is : $\""
+    }
+  ],
+  "630": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "Your Retroactive pay is : $\""
+    }
+  ],
+  "657": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "659": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< retroactive_pay"
+    }
+  ],
+  "662": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "retroactive_pay"
+    }
+  ],
+  "677": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "684": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "689": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\n..................................................\\n\""
+    }
+  ],
+  "692": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\n..................................................\\n\""
+    }
+  ],
+  "693": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\n.................................................."
+    }
+  ],
+  "695": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": ".................................................."
+    }
+  ],
+  "745": [
+    {
+      "state_id": 9293,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "747": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "748": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "755": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "761": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "new_salary"
+    }
+  ],
+  "772": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= salary + retroactive_pay"
+    }
+  ],
+  "774": [
+    {
+      "state_id": 1243,
+      "candidate": "identifier",
+      "candidate_text": "salary"
+    }
+  ],
+  "781": [
+    {
+      "state_id": 6771,
+      "candidate": "+ expression",
+      "candidate_text": "+ retroactive_pay"
+    }
+  ],
+  "783": [
+    {
+      "state_id": 1592,
+      "candidate": "identifier",
+      "candidate_text": "retroactive_pay"
+    }
+  ],
+  "798": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "805": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "810": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"Your new salary is : $\""
+    }
+  ],
+  "813": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"Your new salary is : $\""
+    }
+  ],
+  "814": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "Your new salary is : $\""
+    }
+  ],
+  "836": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "838": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< new_salary"
+    }
+  ],
+  "841": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "new_salary"
+    }
+  ],
+  "851": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "858": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "863": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\n......................................................\\n\""
+    }
+  ],
+  "866": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\n......................................................\\n\""
+    }
+  ],
+  "867": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\n......................................................"
+    }
+  ],
+  "869": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "......................................................"
+    }
+  ],
+  "923": [
+    {
+      "state_id": 9293,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "925": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "926": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "933": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "938": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"Your current monthly salary is : $\""
+    }
+  ],
+  "941": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"Your current monthly salary is : $\""
+    }
+  ],
+  "942": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "Your current monthly salary is : $\""
+    }
+  ],
+  "976": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "978": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< (new_salary/12)"
+    }
+  ],
+  "981": [
+    {
+      "state_id": 1631,
+      "candidate": "( expression )",
+      "candidate_text": "(new_salary/12)"
+    }
+  ],
+  "982": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "new_salary"
+    }
+  ],
+  "992": [
+    {
+      "state_id": 4607,
+      "candidate": "/ expression",
+      "candidate_text": "/12"
+    }
+  ],
+  "993": [
+    {
+      "state_id": 1269,
+      "candidate": "number_literal",
+      "candidate_text": "12"
+    }
+  ],
+  "995": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "996": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1003": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1008": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< endl"
+    }
+  ],
+  "1011": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "endl"
+    }
+  ],
+  "1016": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< endl"
+    }
+  ],
+  "1019": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "endl"
+    }
+  ],
+  "1023": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1030": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "1037": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1038": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1041": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

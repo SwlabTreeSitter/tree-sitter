@@ -1,0 +1,786 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Cookbook\n  attr_accessor :title, :author\n  def initialize\n    @recipes = []\n  end\n  def method_missing(m,*args,&block)\n    @recipes.public_send(m,*args,&block)\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Cookbook\n  attr_accessor :title, :author\n  def initialize\n    @recipes = []\n  end\n  def method_missing(m,*args,&block)\n    @recipes.public_send(m,*args,&block)\n  end\nend"
+    }
+  ],
+  "17": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "attr_accessor"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":title"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 4522,
+      "candidate": ", _argument",
+      "candidate_text": ", :author"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 451,
+      "candidate": "simple_symbol",
+      "candidate_text": ":author"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@recipes"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= []"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 462,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 424,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def method_missing(m,*args,&block)"
+    }
+  ],
+  "94": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "method_missing"
+    }
+  ],
+  "108": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(m,*args,&block)"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ",*args"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 4622,
+      "candidate": "* identifier",
+      "candidate_text": "*args"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 4759,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 5515,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ",&block"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 4622,
+      "candidate": "& identifier",
+      "candidate_text": "&block"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 5196,
+      "candidate": "identifier",
+      "candidate_text": "block"
+    }
+  ],
+  "123": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@recipes"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".public_send"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "public_send"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(m,*args,&block)"
+    }
+  ],
+  "150": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ",*args"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 432,
+      "candidate": "* _arg",
+      "candidate_text": "*args"
+    }
+  ],
+  "153": [
+    {
+      "state_id": 809,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 5467,
+      "candidate": ", _argument",
+      "candidate_text": ",&block"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 435,
+      "candidate": "& _arg",
+      "candidate_text": "&block"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 808,
+      "candidate": "identifier",
+      "candidate_text": "block"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 346,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Recipe\n  attr_accessor :main_ingredient\n  def initialize(main_ingredient)\n    @main_ingredient = main_ingredient\n  end\nend"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Recipe\n  attr_accessor :main_ingredient\n  def initialize(main_ingredient)\n    @main_ingredient = main_ingredient\n  end\nend"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "attr_accessor"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":main_ingredient"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(main_ingredient)"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(main_ingredient)"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "main_ingredient"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@main_ingredient"
+    }
+  ],
+  "278": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= main_ingredient"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "main_ingredient"
+    }
+  ],
+  "298": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "302": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "recipe_for_cake"
+    }
+  ],
+  "322": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Recipe.new(\"flour\")"
+    }
+  ],
+  "324": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Recipe"
+    }
+  ],
+  "330": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "331": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"flour\")"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"flour\""
+    }
+  ],
+  "336": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "flour"
+    }
+  ],
+  "341": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "342": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "344": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "recipe_for_chicken"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Recipe.new(\"chicken\")"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Recipe"
+    }
+  ],
+  "371": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "375": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"chicken\")"
+    }
+  ],
+  "376": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"chicken\""
+    }
+  ],
+  "377": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "chicken"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "385": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "cb"
+    }
+  ],
+  "391": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Cookbook.new"
+    }
+  ],
+  "393": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Cookbook"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "402": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "cb"
+    }
+  ],
+  "409": [
+    {
+      "state_id": 3360,
+      "candidate": "<< _arg",
+      "candidate_text": "<< recipe_for_cake"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 1697,
+      "candidate": "identifier",
+      "candidate_text": "recipe_for_cake"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "cb"
+    }
+  ],
+  "431": [
+    {
+      "state_id": 3360,
+      "candidate": "<< _arg",
+      "candidate_text": "<< recipe_for_chicken"
+    }
+  ],
+  "434": [
+    {
+      "state_id": 1697,
+      "candidate": "identifier",
+      "candidate_text": "recipe_for_chicken"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "chicken_dishes"
+    }
+  ],
+  "468": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= cb.select { |recipe| recipe.main_ingredient == \"chicken\" }"
+    }
+  ],
+  "470": [
+    {
+      "state_id": 481,
+      "candidate": "identifier",
+      "candidate_text": "cb"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".select"
+    }
+  ],
+  "473": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "select"
+    }
+  ],
+  "480": [
+    {
+      "state_id": 13,
+      "candidate": "{ block_parameters block_body }",
+      "candidate_text": "{ |recipe| recipe.main_ingredient == \"chicken\" }"
+    }
+  ],
+  "482": [
+    {
+      "state_id": 254,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|recipe|"
+    }
+  ],
+  "483": [
+    {
+      "state_id": 4572,
+      "candidate": "identifier",
+      "candidate_text": "recipe"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 5374,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "491": [
+    {
+      "state_id": 318,
+      "candidate": "identifier",
+      "candidate_text": "recipe"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".main_ingredient"
+    }
+  ],
+  "498": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "main_ingredient"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 2812,
+      "candidate": "== _arg",
+      "candidate_text": "== \"chicken\""
+    }
+  ],
+  "517": [
+    {
+      "state_id": 1220,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"chicken\""
+    }
+  ],
+  "518": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "chicken"
+    }
+  ],
+  "525": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "527": [
+    {
+      "state_id": 5814,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "529": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "chicken_dishes"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".each"
+    }
+  ],
+  "544": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "each"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 11,
+      "candidate": "{ block_parameters block_body }",
+      "candidate_text": "{ |dish| puts dish.main_ingredient }"
+    }
+  ],
+  "551": [
+    {
+      "state_id": 255,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|dish|"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 4572,
+      "candidate": "identifier",
+      "candidate_text": "dish"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 5374,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "558": [
+    {
+      "state_id": 318,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 3,
+      "candidate": "identifier",
+      "candidate_text": "dish"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 2506,
+      "candidate": ". identifier",
+      "candidate_text": ".main_ingredient"
+    }
+  ],
+  "568": [
+    {
+      "state_id": 3097,
+      "candidate": "identifier",
+      "candidate_text": "main_ingredient"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 5814,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

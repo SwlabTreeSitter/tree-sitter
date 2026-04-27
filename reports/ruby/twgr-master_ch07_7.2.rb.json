@@ -1,0 +1,247 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Bid\n  include Comparable\n  attr_accessor :estimate\n  def <=>(other_bid)\n    if self.estimate < other_bid.estimate\n      -1\n    elsif self.estimate > other_bid.estimate\n      1\n    else\n      0\n    end\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Bid\n  include Comparable\n  attr_accessor :estimate\n  def <=>(other_bid)\n    if self.estimate < other_bid.estimate\n      -1\n    elsif self.estimate > other_bid.estimate\n      1\n    else\n      0\n    end\n  end\nend"
+    }
+  ],
+  "12": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "include"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 3,
+      "candidate": "constant",
+      "candidate_text": "Comparable"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "attr_accessor"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":estimate"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def <=>(other_bid)"
+    }
+  ],
+  "63": [
+    {
+      "state_id": 2466,
+      "candidate": "<=>",
+      "candidate_text": "<=>"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(other_bid)"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "other_bid"
+    }
+  ],
+  "76": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 238,
+      "candidate": "if _statement then elsif end",
+      "candidate_text": "if self.estimate < other_bid.estimate\n      -1\n    elsif self.estimate > other_bid.estimate\n      1\n    else\n      0\n    end"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 406,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".estimate"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "estimate"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 2812,
+      "candidate": "< _arg",
+      "candidate_text": "< other_bid.estimate"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 1200,
+      "candidate": "identifier",
+      "candidate_text": "other_bid"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 2501,
+      "candidate": ". identifier",
+      "candidate_text": ".estimate"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 3133,
+      "candidate": "identifier",
+      "candidate_text": "estimate"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 264,
+      "candidate": "- _simple_numeric",
+      "candidate_text": "-1"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 5103,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 5300,
+      "candidate": "elsif _statement then else",
+      "candidate_text": "elsif self.estimate > other_bid.estimate\n      1\n    else"
+    }
+  ],
+  "139": [
+    {
+      "state_id": 411,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".estimate"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "estimate"
+    }
+  ],
+  "153": [
+    {
+      "state_id": 2812,
+      "candidate": "> _arg",
+      "candidate_text": "> other_bid.estimate"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 1200,
+      "candidate": "identifier",
+      "candidate_text": "other_bid"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 2501,
+      "candidate": ". identifier",
+      "candidate_text": ".estimate"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 3133,
+      "candidate": "identifier",
+      "candidate_text": "estimate"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 273,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 5310,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n      0"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 289,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "203": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

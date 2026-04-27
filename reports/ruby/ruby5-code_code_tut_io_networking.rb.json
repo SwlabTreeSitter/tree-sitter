@@ -1,0 +1,590 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "require"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"net/http\""
+    }
+  ],
+  "387": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "net/http"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "398": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "uri"
+    }
+  ],
+  "402": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= URI(\"https://pragprog.com/titles/ruby5/programming-ruby-3-2-5th-edition/\")"
+    }
+  ],
+  "404": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "URI"
+    }
+  ],
+  "407": [
+    {
+      "state_id": 12,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"https://pragprog.com/titles/ruby5/programming-ruby-3-2-5th-edition/\")"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"https://pragprog.com/titles/ruby5/programming-ruby-3-2-5th-edition/\""
+    }
+  ],
+  "409": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "https://pragprog.com/titles/ruby5/programming-ruby-3-2-5th-edition/"
+    }
+  ],
+  "476": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "477": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "479": [
+    {
+      "state_id": 346,
+      "candidate": "constant",
+      "candidate_text": "Net"
+    }
+  ],
+  "482": [
+    {
+      "state_id": 2860,
+      "candidate": ":: constant",
+      "candidate_text": "::HTTP"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 3088,
+      "candidate": "constant",
+      "candidate_text": "HTTP"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".start"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "start"
+    }
+  ],
+  "494": [
+    {
+      "state_id": 11,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\n  \"pragprog.com\",\n  Net::HTTP.https_default_port,\n  use_ssl: true\n)"
+    }
+  ],
+  "498": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"pragprog.com\""
+    }
+  ],
+  "499": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "pragprog.com"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "512": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ",\n  Net::HTTP.https_default_port"
+    }
+  ],
+  "516": [
+    {
+      "state_id": 432,
+      "candidate": "constant",
+      "candidate_text": "Net"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 3515,
+      "candidate": ":: constant",
+      "candidate_text": "::HTTP"
+    }
+  ],
+  "521": [
+    {
+      "state_id": 3081,
+      "candidate": "constant",
+      "candidate_text": "HTTP"
+    }
+  ],
+  "525": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".https_default_port"
+    }
+  ],
+  "526": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "https_default_port"
+    }
+  ],
+  "544": [
+    {
+      "state_id": 5467,
+      "candidate": ", _argument",
+      "candidate_text": ",\n  use_ssl: true"
+    }
+  ],
+  "548": [
+    {
+      "state_id": 435,
+      "candidate": "hash_key_symbol : _arg",
+      "candidate_text": "use_ssl: true"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 5679,
+      "candidate": ": _arg",
+      "candidate_text": ": true"
+    }
+  ],
+  "557": [
+    {
+      "state_id": 749,
+      "candidate": "true",
+      "candidate_text": "true"
+    }
+  ],
+  "562": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "564": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |http|\n  request = Net::HTTP::Get.new(uri)\n  response = http.request(request)\n  if response.code == \"200\"\n    puts response.body.scan(/<img class=\".*?\" src=\"(.*?)\"/m).uniq[0, 3]\n  end\nend"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|http|"
+    }
+  ],
+  "568": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "http"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "request"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= Net::HTTP::Get.new(uri)"
+    }
+  ],
+  "586": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "Net"
+    }
+  ],
+  "589": [
+    {
+      "state_id": 2552,
+      "candidate": ":: constant",
+      "candidate_text": "::HTTP"
+    }
+  ],
+  "591": [
+    {
+      "state_id": 3164,
+      "candidate": "constant",
+      "candidate_text": "HTTP"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 2552,
+      "candidate": ":: constant",
+      "candidate_text": "::Get"
+    }
+  ],
+  "597": [
+    {
+      "state_id": 3164,
+      "candidate": "constant",
+      "candidate_text": "Get"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "604": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(uri)"
+    }
+  ],
+  "605": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "uri"
+    }
+  ],
+  "608": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "612": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "response"
+    }
+  ],
+  "621": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= http.request(request)"
+    }
+  ],
+  "623": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "http"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".request"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "request"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(request)"
+    }
+  ],
+  "636": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "request"
+    }
+  ],
+  "643": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 252,
+      "candidate": "if _statement then end",
+      "candidate_text": "if response.code == \"200\"\n    puts response.body.scan(/<img class=\".*?\" src=\"(.*?)\"/m).uniq[0, 3]\n  end"
+    }
+  ],
+  "650": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "response"
+    }
+  ],
+  "658": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".code"
+    }
+  ],
+  "659": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "code"
+    }
+  ],
+  "664": [
+    {
+      "state_id": 2812,
+      "candidate": "== _arg",
+      "candidate_text": "== \"200\""
+    }
+  ],
+  "667": [
+    {
+      "state_id": 1220,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"200\""
+    }
+  ],
+  "668": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "200"
+    }
+  ],
+  "671": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "677": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "682": [
+    {
+      "state_id": 3,
+      "candidate": "identifier",
+      "candidate_text": "response"
+    }
+  ],
+  "690": [
+    {
+      "state_id": 2506,
+      "candidate": ". identifier",
+      "candidate_text": ".body"
+    }
+  ],
+  "691": [
+    {
+      "state_id": 3097,
+      "candidate": "identifier",
+      "candidate_text": "body"
+    }
+  ],
+  "695": [
+    {
+      "state_id": 2506,
+      "candidate": ". identifier",
+      "candidate_text": ".scan"
+    }
+  ],
+  "696": [
+    {
+      "state_id": 3097,
+      "candidate": "identifier",
+      "candidate_text": "scan"
+    }
+  ],
+  "700": [
+    {
+      "state_id": 7,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(/<img class=\".*?\" src=\"(.*?)\"/m)"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 428,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/<img class=\".*?\" src=\"(.*?)\"/m"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 5111,
+      "candidate": "string_content",
+      "candidate_text": "<img class=\".*?\" src=\"(.*?)\""
+    }
+  ],
+  "730": [
+    {
+      "state_id": 5145,
+      "candidate": ")",
+      "candidate_text": "/m"
+    }
+  ],
+  "732": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "733": [
+    {
+      "state_id": 2506,
+      "candidate": ". identifier",
+      "candidate_text": ".uniq"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 3097,
+      "candidate": "identifier",
+      "candidate_text": "uniq"
+    }
+  ],
+  "738": [
+    {
+      "state_id": 2506,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[0, 3]"
+    }
+  ],
+  "739": [
+    {
+      "state_id": 422,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "740": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", 3"
+    }
+  ],
+  "742": [
+    {
+      "state_id": 432,
+      "candidate": "integer",
+      "candidate_text": "3"
+    }
+  ],
+  "743": [
+    {
+      "state_id": 5693,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "747": [
+    {
+      "state_id": 5300,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "751": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

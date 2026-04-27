@@ -1,0 +1,765 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module CallerTools\n  class Call"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "CallerTools\n  class Call"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 218,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Call\n    CALL_RE = /(.*):(\\d+):in '(.*)'/\n    attr_reader :program, :line, :meth\n    def initialize(string)\n      @program, @line, @meth = CALL_RE.match(string).captures\n    end\n    def to_s\n      \"%30s%6s%25s\" % [program, line, meth]\n    end\n  end"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Call\n    CALL_RE = /(.*):(\\d+):in '(.*)'/\n    attr_reader :program, :line, :meth\n    def initialize(string)\n      @program, @line, @meth = CALL_RE.match(string).captures\n    end\n    def to_s\n      \"%30s%6s%25s\" % [program, line, meth]\n    end\n  end"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 217,
+      "candidate": "constant",
+      "candidate_text": "CALL_RE"
+    }
+  ],
+  "44": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= /(.*):(\\d+):in '(.*)'/"
+    }
+  ],
+  "46": [
+    {
+      "state_id": 462,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/(.*):(\\d+):in '(.*)'/"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 5048,
+      "candidate": "string_content",
+      "candidate_text": "(.*):("
+    }
+  ],
+  "53": [
+    {
+      "state_id": 5167,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\d"
+    }
+  ],
+  "55": [
+    {
+      "state_id": 5167,
+      "candidate": "string_content",
+      "candidate_text": "+):in '(.*)'"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 5167,
+      "candidate": ")",
+      "candidate_text": "/"
+    }
+  ],
+  "73": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "attr_reader"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":program"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 4522,
+      "candidate": ", _argument",
+      "candidate_text": ", :line"
+    }
+  ],
+  "95": [
+    {
+      "state_id": 451,
+      "candidate": "simple_symbol",
+      "candidate_text": ":line"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 4533,
+      "candidate": ", _argument",
+      "candidate_text": ", :meth"
+    }
+  ],
+  "102": [
+    {
+      "state_id": 451,
+      "candidate": "simple_symbol",
+      "candidate_text": ":meth"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(string)"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(string)"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@program"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 2132,
+      "candidate": ", _lhs",
+      "candidate_text": ", @line"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 1960,
+      "candidate": "instance_variable",
+      "candidate_text": "@line"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 5304,
+      "candidate": ", _lhs",
+      "candidate_text": ", @meth"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 1959,
+      "candidate": "instance_variable",
+      "candidate_text": "@meth"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 5811,
+      "candidate": "= _arg",
+      "candidate_text": "= CALL_RE.match(string).captures"
+    }
+  ],
+  "166": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "CALL_RE"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".match"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "match"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(string)"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".captures"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "captures"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def to_s"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "to_s"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 216,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"%30s%6s%25s\""
+    }
+  ],
+  "225": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "%30s%6s%25s"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "238": [
+    {
+      "state_id": 2812,
+      "candidate": "% _arg",
+      "candidate_text": "% [program, line, meth]"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 1175,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[program, line, meth]"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 424,
+      "candidate": "identifier",
+      "candidate_text": "program"
+    }
+  ],
+  "248": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", line"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 432,
+      "candidate": "identifier",
+      "candidate_text": "line"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 5467,
+      "candidate": ", _argument",
+      "candidate_text": ", meth"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 435,
+      "candidate": "identifier",
+      "candidate_text": "meth"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 5827,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 252,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Stack\n    def initialize\n      stack = caller\n      stack.shift\n      @backtrace = stack.map do |call|\n        Call.new(call)\n      end\n    end\n    def report\n      @backtrace.map do |call|\n        call.to_s\n      end\n    end\n    def find(&block)\n      @backtrace.find(&block)\n    end\n  end"
+    }
+  ],
+  "285": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Stack\n    def initialize\n      stack = caller\n      stack.shift\n      @backtrace = stack.map do |call|\n        Call.new(call)\n      end\n    end\n    def report\n      @backtrace.map do |call|\n        call.to_s\n      end\n    end\n    def find(&block)\n      @backtrace.find(&block)\n    end\n  end"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 217,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "316": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "stack"
+    }
+  ],
+  "322": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= caller"
+    }
+  ],
+  "324": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "caller"
+    }
+  ],
+  "337": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "stack"
+    }
+  ],
+  "342": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".shift"
+    }
+  ],
+  "343": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "shift"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 252,
+      "candidate": "instance_variable",
+      "candidate_text": "@backtrace"
+    }
+  ],
+  "366": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= stack.map do |call|"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "stack"
+    }
+  ],
+  "373": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".map"
+    }
+  ],
+  "374": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "map"
+    }
+  ],
+  "378": [
+    {
+      "state_id": 6,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |call|\n        Call.new(call)\n      end"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|call|"
+    }
+  ],
+  "382": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "call"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 242,
+      "candidate": "constant",
+      "candidate_text": "Call"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "404": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(call)"
+    }
+  ],
+  "405": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "call"
+    }
+  ],
+  "409": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "417": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "425": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def report"
+    }
+  ],
+  "437": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@backtrace"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".map"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "map"
+    }
+  ],
+  "465": [
+    {
+      "state_id": 4,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |call|\n        call.to_s\n      end"
+    }
+  ],
+  "468": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|call|"
+    }
+  ],
+  "469": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "call"
+    }
+  ],
+  "473": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "483": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "call"
+    }
+  ],
+  "487": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".to_s"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "to_s"
+    }
+  ],
+  "499": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "507": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def find(&block)"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "find"
+    }
+  ],
+  "523": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(&block)"
+    }
+  ],
+  "524": [
+    {
+      "state_id": 4611,
+      "candidate": "& identifier",
+      "candidate_text": "&block"
+    }
+  ],
+  "525": [
+    {
+      "state_id": 5196,
+      "candidate": "identifier",
+      "candidate_text": "block"
+    }
+  ],
+  "530": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@backtrace"
+    }
+  ],
+  "548": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".find"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "find"
+    }
+  ],
+  "553": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(&block)"
+    }
+  ],
+  "554": [
+    {
+      "state_id": 428,
+      "candidate": "& _arg",
+      "candidate_text": "&block"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 808,
+      "candidate": "identifier",
+      "candidate_text": "block"
+    }
+  ],
+  "560": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "566": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

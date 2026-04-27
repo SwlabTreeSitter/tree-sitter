@@ -1,0 +1,366 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Integer\n  def my_times\n    c = 0\n    puts \"c = 0\"\n    puts \"until c == #{self}...\"\n    until c == self\n      yield c\n      c += 1\n    end\n    self\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Integer\n  def my_times\n    c = 0\n    puts \"c = 0\"\n    puts \"until c == #{self}...\"\n    until c == self\n      yield c\n      c += 1\n    end\n    self\n  end\nend"
+    }
+  ],
+  "16": [
+    {
+      "state_id": 217,
+      "candidate": "def _method_rest",
+      "candidate_text": "def my_times"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "my_times"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= 0"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 462,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"c = 0\""
+    }
+  ],
+  "49": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "c = 0"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "60": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"until c == #{self}...\""
+    }
+  ],
+  "66": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "until c == "
+    }
+  ],
+  "77": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{self}"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 357,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "..."
+    }
+  ],
+  "87": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "93": [
+    {
+      "state_id": 252,
+      "candidate": "until _statement do",
+      "candidate_text": "until c == self"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 404,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 3520,
+      "candidate": "== _arg",
+      "candidate_text": "== self"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 1057,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 360,
+      "candidate": "yield argument_list",
+      "candidate_text": "yield c"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 51,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 2132,
+      "candidate": "+= _arg",
+      "candidate_text": "+= 1"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 493,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 5954,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 252,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "ret"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= 5.my_times {|i| puts \"I'm on iteration #{i}!\" }"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 481,
+      "candidate": "integer",
+      "candidate_text": "5"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".my_times"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "my_times"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 13,
+      "candidate": "{ block_parameters block_body }",
+      "candidate_text": "{|i| puts \"I'm on iteration #{i}!\" }"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 254,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|i|"
+    }
+  ],
+  "182": [
+    {
+      "state_id": 4572,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 5374,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "185": [
+    {
+      "state_id": 318,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"I'm on iteration #{i}!\""
+    }
+  ],
+  "191": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "I'm on iteration "
+    }
+  ],
+  "208": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{i}"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "!"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "215": [
+    {
+      "state_id": 5814,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "ret"
+    }
+  ]
+}

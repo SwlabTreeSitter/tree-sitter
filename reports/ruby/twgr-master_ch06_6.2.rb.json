@@ -1,0 +1,772 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Ticket\n  attr_accessor :venue, :date\n  def initialize(venue, date)\n    self.venue = venue\n    self.date = date\n  end\n  def ===(other_ticket)\n    self.venue == other_ticket.venue\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Ticket\n  attr_accessor :venue, :date\n  def initialize(venue, date)\n    self.venue = venue\n    self.date = date\n  end\n  def ===(other_ticket)\n    self.venue == other_ticket.venue\n  end\nend"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "attr_accessor"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":venue"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 4522,
+      "candidate": ", _argument",
+      "candidate_text": ", :date"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 451,
+      "candidate": "simple_symbol",
+      "candidate_text": ":date"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(venue, date)"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(venue, date)"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", date"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier",
+      "candidate_text": "date"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 238,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".venue"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "88": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= venue"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 252,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".date"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "date"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= date"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "date"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def ===(other_ticket)"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 2466,
+      "candidate": "===",
+      "candidate_text": "==="
+    }
+  ],
+  "132": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(other_ticket)"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "other_ticket"
+    }
+  ],
+  "145": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 238,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".venue"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 2812,
+      "candidate": "== _arg",
+      "candidate_text": "== other_ticket.venue"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 1220,
+      "candidate": "identifier",
+      "candidate_text": "other_ticket"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 2501,
+      "candidate": ". identifier",
+      "candidate_text": ".venue"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 3133,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "ticket1"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Ticket.new(\"Town Hall\", \"07/08/25\")"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Ticket"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"Town Hall\", \"07/08/25\")"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Town Hall\""
+    }
+  ],
+  "216": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Town Hall"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "226": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", \"07/08/25\""
+    }
+  ],
+  "228": [
+    {
+      "state_id": 432,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"07/08/25\""
+    }
+  ],
+  "229": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "07/08/25"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "238": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "ticket2"
+    }
+  ],
+  "248": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Ticket.new(\"Conference Center\", \"07/08/25\")"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Ticket"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"Conference Center\", \"07/08/25\")"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Conference Center\""
+    }
+  ],
+  "262": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Conference Center"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "280": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", \"07/08/25\""
+    }
+  ],
+  "282": [
+    {
+      "state_id": 432,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"07/08/25\""
+    }
+  ],
+  "283": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "07/08/25"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "292": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "294": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "ticket3"
+    }
+  ],
+  "302": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Ticket.new(\"Town Hall\", \"08/09/25\")"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Ticket"
+    }
+  ],
+  "310": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "311": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "314": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"Town Hall\", \"08/09/25\")"
+    }
+  ],
+  "315": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Town Hall\""
+    }
+  ],
+  "316": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Town Hall"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "326": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", \"08/09/25\""
+    }
+  ],
+  "328": [
+    {
+      "state_id": 432,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"08/09/25\""
+    }
+  ],
+  "329": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "08/09/25"
+    }
+  ],
+  "337": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "338": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "340": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"ticket1 is for an event at: #{ticket1.venue}.\""
+    }
+  ],
+  "346": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "ticket1 is for an event at: "
+    }
+  ],
+  "374": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{ticket1.venue}"
+    }
+  ],
+  "376": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "ticket1"
+    }
+  ],
+  "383": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".venue"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "venue"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "390": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "."
+    }
+  ],
+  "391": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "393": [
+    {
+      "state_id": 346,
+      "candidate": "case _statement _terminator case_repeat1 else end",
+      "candidate_text": "case ticket1\nwhen ticket2"
+    }
+  ],
+  "398": [
+    {
+      "state_id": 283,
+      "candidate": "identifier",
+      "candidate_text": "ticket1"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 4908,
+      "candidate": "when pattern then",
+      "candidate_text": "when ticket2"
+    }
+  ],
+  "411": [
+    {
+      "state_id": 810,
+      "candidate": "identifier",
+      "candidate_text": "ticket2"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 301,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Same location as ticket2!\""
+    }
+  ],
+  "427": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Same location as ticket2!"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "454": [
+    {
+      "state_id": 5261,
+      "candidate": "when pattern then",
+      "candidate_text": "when ticket3"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 810,
+      "candidate": "identifier",
+      "candidate_text": "ticket3"
+    }
+  ],
+  "469": [
+    {
+      "state_id": 301,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "474": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Same location as ticket3!\""
+    }
+  ],
+  "475": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Same location as ticket3!"
+    }
+  ],
+  "500": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "502": [
+    {
+      "state_id": 5261,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n  puts \"No match.\""
+    }
+  ],
+  "509": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"No match.\""
+    }
+  ],
+  "515": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "No match."
+    }
+  ],
+  "524": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "526": [
+    {
+      "state_id": 5797,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

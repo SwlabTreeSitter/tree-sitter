@@ -431,3 +431,37 @@
   Total Elapsed: 67s
   End   : 2026-04-22 17:05:40
 
+============================================================
+  Language : ruby
+  Start    : 2026-04-27 14:18:42
+============================================================
+  [Step1 learn_collect(ruby)]
+    - Skipped:   21
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/ruby/candidates.json
+
+  [Step2 collect_test(ruby)]
+[*] Completed.
+    - Success: 508
+    - Skipped: 1
+    - Total Found: 509
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/ruby/TEST_data
+
+  [Step3 make_answers(ruby)]
+[*] All done. Processed 508/508 files.
+
+  [Step4 evaluate(ruby)]
+[Global] Total Queries    : 35299
+[Global] Top-10 Count     : 31357
+[Global] Top-10 Acc       : 88.8%
+[Global] Top11~20 Count   : 2470
+[Global] CPP Fail         : 0
+[RUBY] Total Queries : 35299
+[RUBY] Found         : 35109  (99.5%)
+[RUBY] Not Found     : 190  (0.5%)
+[RUBY] Fail          : 0  (0.0%)
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/ruby/ruby_file_performance.csv
+[Saved] Coverage Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/ruby/ruby_coverage.csv
+
+  Total Elapsed: 517s
+  End   : 2026-04-27 14:27:19
+

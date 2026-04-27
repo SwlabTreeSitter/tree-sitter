@@ -1,0 +1,1386 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause ;",
+      "candidate_text": "import { City, Person, Product, Employee } from \"./dataTypes\";"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ City, Person, Product, Employee }"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "City"
+    }
+  ],
+  "13": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", Person"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "Person"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", Product"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "Product"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", Employee"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "Employee"
+    }
+  ],
+  "41": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from \"./dataTypes\""
+    }
+  ],
+  "48": [
+    {
+      "state_id": 4661,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"./dataTypes\""
+    }
+  ],
+  "49": [
+    {
+      "state_id": 4393,
+      "candidate": "string_fragment \"",
+      "candidate_text": "./dataTypes\""
+    }
+  ],
+  "60": [
+    {
+      "state_id": 4476,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "61": [
+    {
+      "state_id": 4289,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 16,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let products = [new Product(\"Running Shoes\", 100), new Product(\"Hat\", 25)];"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier _initializer",
+      "candidate_text": "products = [new Product(\"Running Shoes\", 100), new Product(\"Hat\", 25)]"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= [new Product(\"Running Shoes\", 100), new Product(\"Hat\", 25)]"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[new Product(\"Running Shoes\", 100), new Product(\"Hat\", 25)]"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 229,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Product(\"Running Shoes\", 100)"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 114,
+      "candidate": "identifier",
+      "candidate_text": "Product"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 1501,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(\"Running Shoes\", 100)"
+    }
+  ],
+  "92": [
+    {
+      "state_id": 265,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Running Shoes\""
+    }
+  ],
+  "93": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Running Shoes\""
+    }
+  ],
+  "106": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "107": [
+    {
+      "state_id": 2142,
+      "candidate": ", expression",
+      "candidate_text": ", 100"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 289,
+      "candidate": "number",
+      "candidate_text": "100"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 4647,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ", new Product(\"Hat\", 25)"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 280,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Product(\"Hat\", 25)"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 95,
+      "candidate": "identifier",
+      "candidate_text": "Product"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 1501,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(\"Hat\", 25)"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 265,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Hat\""
+    }
+  ],
+  "128": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Hat\""
+    }
+  ],
+  "131": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "132": [
+    {
+      "state_id": 2142,
+      "candidate": ", expression",
+      "candidate_text": ", 25"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 289,
+      "candidate": "number",
+      "candidate_text": "25"
+    }
+  ],
+  "136": [
+    {
+      "state_id": 4647,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 16,
+      "candidate": "type identifier = type ;",
+      "candidate_text": "type shapeType = { name: string };"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 1285,
+      "candidate": "identifier = type ;",
+      "candidate_text": "shapeType = { name: string };"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 5005,
+      "candidate": "= type ;",
+      "candidate_text": "= { name: string };"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 1010,
+      "candidate": "{ property_signature _automatic_semicolon }",
+      "candidate_text": "{ name: string }"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 1394,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 3111,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "166": [
+    {
+      "state_id": 1110,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 3844,
+      "candidate": "_automatic_semicolon }",
+      "candidate_text": "}"
+    },
+    {
+      "state_id": 1426,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 4254,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 16,
+      "candidate": "class identifier type_parameters class_body _automatic_semicolon",
+      "candidate_text": "class Collection<T extends shapeType> {"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 3290,
+      "candidate": "identifier type_parameters class_body _automatic_semicolon",
+      "candidate_text": "Collection<T extends shapeType> {"
+    }
+  ],
+  "193": [
+    {
+      "state_id": 3411,
+      "candidate": "< type_parameter >",
+      "candidate_text": "<T extends shapeType>"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 4996,
+      "candidate": "identifier constraint",
+      "candidate_text": "T extends shapeType"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 3526,
+      "candidate": "extends type",
+      "candidate_text": "extends shapeType"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 1056,
+      "candidate": "identifier",
+      "candidate_text": "shapeType"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 4908,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 3581,
+      "candidate": "{ class_body_repeat1 }",
+      "candidate_text": "{\n\n    constructor(private items: T[] = []) {}"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 1496,
+      "candidate": "identifier",
+      "candidate_text": "constructor"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 3062,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(private items: T[] = [])"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 197,
+      "candidate": "private",
+      "candidate_text": "private"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 288,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": T[]"
+    }
+  ],
+  "249": [
+    {
+      "state_id": 1006,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 4383,
+      "candidate": "= expression",
+      "candidate_text": "= []"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 412,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 234,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 3900,
+      "candidate": "{ } _automatic_semicolon",
+      "candidate_text": "{}"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 29,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 1489,
+      "candidate": "identifier",
+      "candidate_text": "add"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 3062,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(...newItems: T[])"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 197,
+      "candidate": "... identifier",
+      "candidate_text": "...newItems"
+    }
+  ],
+  "274": [
+    {
+      "state_id": 443,
+      "candidate": "identifier",
+      "candidate_text": "newItems"
+    }
+  ],
+  "282": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": T[]"
+    }
+  ],
+  "284": [
+    {
+      "state_id": 1006,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "285": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 959,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 3900,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n        this.items.push(...newItems);\n    }"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 29,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".items"
+    }
+  ],
+  "310": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "315": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".push"
+    }
+  ],
+  "316": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "push"
+    }
+  ],
+  "320": [
+    {
+      "state_id": 1902,
+      "candidate": "( spread_element )",
+      "candidate_text": "(...newItems)"
+    }
+  ],
+  "321": [
+    {
+      "state_id": 271,
+      "candidate": "... expression",
+      "candidate_text": "...newItems"
+    }
+  ],
+  "324": [
+    {
+      "state_id": 442,
+      "candidate": "identifier",
+      "candidate_text": "newItems"
+    }
+  ],
+  "332": [
+    {
+      "state_id": 4789,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "339": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "346": [
+    {
+      "state_id": 1489,
+      "candidate": "get",
+      "candidate_text": "get"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 3062,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(name: string)"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "354": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": T"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 959,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 3900,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n        return this.items.find(item => item.name === name);        \n    }"
+    }
+  ],
+  "377": [
+    {
+      "state_id": 29,
+      "candidate": "return expression ;",
+      "candidate_text": "return this.items.find(item => item.name === name);"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 297,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".items"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "394": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".find"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "find"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 1905,
+      "candidate": "( expression )",
+      "candidate_text": "(item => item.name === name)"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 271,
+      "candidate": "identifier => expression",
+      "candidate_text": "item => item.name === name"
+    }
+  ],
+  "405": [
+    {
+      "state_id": 1349,
+      "candidate": "=> expression",
+      "candidate_text": "=> item.name === name"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 332,
+      "candidate": "identifier",
+      "candidate_text": "item"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".name"
+    }
+  ],
+  "413": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "418": [
+    {
+      "state_id": 1890,
+      "candidate": "=== expression",
+      "candidate_text": "=== name"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 409,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 1905,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "448": [
+    {
+      "state_id": 1489,
+      "candidate": "get _property_name _call_signature statement_block",
+      "candidate_text": "get count(): number {"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 2401,
+      "candidate": "identifier",
+      "candidate_text": "count"
+    }
+  ],
+  "457": [
+    {
+      "state_id": 3804,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 197,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": number"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 959,
+      "candidate": "number",
+      "candidate_text": "number"
+    }
+  ],
+  "468": [
+    {
+      "state_id": 3799,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n        return this.items.length;\n    }"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 29,
+      "candidate": "return expression ;",
+      "candidate_text": "return this.items.length;"
+    }
+  ],
+  "485": [
+    {
+      "state_id": 297,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".items"
+    }
+  ],
+  "490": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "495": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "496": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "502": [
+    {
+      "state_id": 1905,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "508": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "510": [
+    {
+      "state_id": 1489,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "513": [
+    {
+      "state_id": 16,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let productCollection: Collection<Product> = new Collection(products);"
+    }
+  ],
+  "517": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "productCollection: Collection<Product> = new Collection(products)"
+    }
+  ],
+  "534": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": Collection<Product>"
+    }
+  ],
+  "536": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "Collection<Product>"
+    }
+  ],
+  "546": [
+    {
+      "state_id": 3077,
+      "candidate": "< type >",
+      "candidate_text": "<Product>"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 1001,
+      "candidate": "identifier",
+      "candidate_text": "Product"
+    }
+  ],
+  "554": [
+    {
+      "state_id": 3883,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= new Collection(products)"
+    }
+  ],
+  "558": [
+    {
+      "state_id": 423,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Collection(products)"
+    }
+  ],
+  "562": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "Collection"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 1696,
+      "candidate": "( expression )",
+      "candidate_text": "(products)"
+    }
+  ],
+  "573": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "products"
+    }
+  ],
+  "581": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "582": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "591": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(`There are ${ productCollection.count } products`)"
+    }
+  ],
+  "596": [
+    {
+      "state_id": 271,
+      "candidate": "` template_string_repeat1 `",
+      "candidate_text": "`There are ${ productCollection.count } products`"
+    }
+  ],
+  "597": [
+    {
+      "state_id": 3852,
+      "candidate": "string_fragment template_substitution",
+      "candidate_text": "There are ${ productCollection.count }"
+    }
+  ],
+  "607": [
+    {
+      "state_id": 3785,
+      "candidate": "${ expression }",
+      "candidate_text": "${ productCollection.count }"
+    }
+  ],
+  "610": [
+    {
+      "state_id": 393,
+      "candidate": "identifier",
+      "candidate_text": "productCollection"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".count"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "count"
+    }
+  ],
+  "634": [
+    {
+      "state_id": 2188,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 3785,
+      "candidate": "string_fragment",
+      "candidate_text": " products"
+    }
+  ],
+  "644": [
+    {
+      "state_id": 3785,
+      "candidate": "`",
+      "candidate_text": "`"
+    }
+  ],
+  "645": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "646": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "648": [
+    {
+      "state_id": 16,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let p = productCollection.get(\"Hat\");"
+    }
+  ],
+  "652": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier _initializer",
+      "candidate_text": "p = productCollection.get(\"Hat\")"
+    }
+  ],
+  "654": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= productCollection.get(\"Hat\")"
+    }
+  ],
+  "656": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "productCollection"
+    }
+  ],
+  "673": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".get"
+    }
+  ],
+  "674": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "get"
+    }
+  ],
+  "677": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Hat\")"
+    }
+  ],
+  "678": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Hat\""
+    }
+  ],
+  "679": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Hat\""
+    }
+  ],
+  "682": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "683": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "684": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "693": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "694": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(`Product: ${ p.name }, ${ p.price }`)"
+    }
+  ],
+  "698": [
+    {
+      "state_id": 271,
+      "candidate": "` template_string_repeat1 `",
+      "candidate_text": "`Product: ${ p.name }, ${ p.price }`"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 3852,
+      "candidate": "string_fragment template_substitution",
+      "candidate_text": "Product: ${ p.name }"
+    }
+  ],
+  "708": [
+    {
+      "state_id": 3785,
+      "candidate": "${ expression }",
+      "candidate_text": "${ p.name }"
+    }
+  ],
+  "711": [
+    {
+      "state_id": 393,
+      "candidate": "identifier",
+      "candidate_text": "p"
+    }
+  ],
+  "712": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".name"
+    }
+  ],
+  "713": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "718": [
+    {
+      "state_id": 2188,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "719": [
+    {
+      "state_id": 3785,
+      "candidate": "string_fragment",
+      "candidate_text": ", "
+    }
+  ],
+  "721": [
+    {
+      "state_id": 3785,
+      "candidate": "${ expression }",
+      "candidate_text": "${ p.price }"
+    }
+  ],
+  "724": [
+    {
+      "state_id": 393,
+      "candidate": "identifier",
+      "candidate_text": "p"
+    }
+  ],
+  "725": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".price"
+    }
+  ],
+  "726": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "price"
+    }
+  ],
+  "732": [
+    {
+      "state_id": 2188,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "733": [
+    {
+      "state_id": 3785,
+      "candidate": "`",
+      "candidate_text": "`"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "735": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

@@ -1,0 +1,422 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "count"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= 0"
+    }
+  ],
+  "8": [
+    {
+      "state_id": 481,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "10": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "total_ages"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= File.open(\"members.txt\") do |f|"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".open"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "open"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"members.txt\")"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"members.txt\""
+    }
+  ],
+  "34": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "members.txt"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "46": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |f|\n  f.inject(0) do |total, line|\n    count += 1\n    fields = line.split\n    age = fields[3].to_i\n    total + age\n  end\nend"
+    }
+  ],
+  "51": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|f|"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "f"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "f"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".inject"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "inject"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(0)"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |total, line|\n    count += 1\n    fields = line.split\n    age = fields[3].to_i\n    total + age\n  end"
+    }
+  ],
+  "72": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter parameters_repeat1 |",
+      "candidate_text": "|total, line|"
+    }
+  ],
+  "73": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "total"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 5489,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", line"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 4588,
+      "candidate": "identifier",
+      "candidate_text": "line"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 5372,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "count"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 2132,
+      "candidate": "+= _arg",
+      "candidate_text": "+= 1"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 493,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "fields"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= line.split"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "line"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".split"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "split"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "age"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= fields[3].to_i"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "fields"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 2552,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[3]"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 431,
+      "candidate": "integer",
+      "candidate_text": "3"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 5683,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".to_i"
+    }
+  ],
+  "145": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "to_i"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "total"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 2812,
+      "candidate": "+ _arg",
+      "candidate_text": "+ age"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 1174,
+      "candidate": "identifier",
+      "candidate_text": "age"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Average age of group: #{total_ages / count }.\""
+    }
+  ],
+  "182": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Average age of group: "
+    }
+  ],
+  "204": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{total_ages / count }"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "total_ages"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 2812,
+      "candidate": "/ _arg",
+      "candidate_text": "/ count"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 1175,
+      "candidate": "identifier",
+      "candidate_text": "count"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "226": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "."
+    }
+  ],
+  "227": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ]
+}

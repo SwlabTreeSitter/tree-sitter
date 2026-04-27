@@ -1,0 +1,800 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Car\n  @@makes = []\n  @@cars = {}\n  attr_reader :make\n  def self.total_count\n    @total_count ||= 0\n  end\n  def self.total_count=(n)\n    @total_count = n\n  end\n  def self.add_make(make)\n    unless @@makes.include?(make)\n      @@makes << make\n      @@cars[make] = 0\n    end\n  end\n  def initialize(make)\n    if @@makes.include?(make)\n      puts \"Creating a new #{make}!\"\n      @make = make\n      @@cars[make] += 1\n      self.class.total_count += 1\n    else\n      raise \"No such make: #{make}.\"\n    end\n  end\n  def make_mates\n    @@cars[self.make]\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Car\n  @@makes = []\n  @@cars = {}\n  attr_reader :make\n  def self.total_count\n    @total_count ||= 0\n  end\n  def self.total_count=(n)\n    @total_count = n\n  end\n  def self.add_make(make)\n    unless @@makes.include?(make)\n      @@makes << make\n      @@cars[make] = 0\n    end\n  end\n  def initialize(make)\n    if @@makes.include?(make)\n      puts \"Creating a new #{make}!\"\n      @make = make\n      @@cars[make] += 1\n      self.class.total_count += 1\n    else\n      raise \"No such make: #{make}.\"\n    end\n  end\n  def make_mates\n    @@cars[self.make]\n  end\nend"
+    }
+  ],
+  "12": [
+    {
+      "state_id": 217,
+      "candidate": "class_variable",
+      "candidate_text": "@@makes"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= []"
+    }
+  ],
+  "22": [
+    {
+      "state_id": 462,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 424,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 252,
+      "candidate": "class_variable",
+      "candidate_text": "@@cars"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= {}"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 462,
+      "candidate": "{ }",
+      "candidate_text": "{}"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 741,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "41": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "attr_reader"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":make"
+    }
+  ],
+  "61": [
+    {
+      "state_id": 252,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.total_count"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".total_count"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "total_count"
+    }
+  ],
+  "86": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@total_count"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 2132,
+      "candidate": "||= _arg",
+      "candidate_text": "||= 0"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 493,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 252,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.total_count=(n)"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".total_count=(n)"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier =",
+      "candidate_text": "total_count="
+    }
+  ],
+  "133": [
+    {
+      "state_id": 4864,
+      "candidate": "=",
+      "candidate_text": "="
+    }
+  ],
+  "134": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(n)"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "n"
+    }
+  ],
+  "136": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@total_count"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= n"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "n"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 252,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.add_make(make)"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".add_make(make)"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "add_make"
+    }
+  ],
+  "184": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(make)"
+    }
+  ],
+  "185": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 238,
+      "candidate": "unless _statement then end",
+      "candidate_text": "unless @@makes.include?(make)\n      @@makes << make\n      @@cars[make] = 0\n    end"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 409,
+      "candidate": "class_variable",
+      "candidate_text": "@@makes"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".include?"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "include?"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(make)"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "223": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 272,
+      "candidate": "class_variable",
+      "candidate_text": "@@makes"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 2812,
+      "candidate": "<< _arg",
+      "candidate_text": "<< make"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 1219,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 252,
+      "candidate": "class_variable",
+      "candidate_text": "@@cars"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 2552,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[make]"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 431,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 5683,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= 0"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 462,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "274": [
+    {
+      "state_id": 5305,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(make)"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "300": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(make)"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "311": [
+    {
+      "state_id": 238,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if @@makes.include?(make)\n      puts \"Creating a new #{make}!\"\n      @make = make\n      @@cars[make] += 1\n      self.class.total_count += 1\n    else\n      raise \"No such make: #{make}.\"\n    end"
+    }
+  ],
+  "314": [
+    {
+      "state_id": 406,
+      "candidate": "class_variable",
+      "candidate_text": "@@makes"
+    }
+  ],
+  "321": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".include?"
+    }
+  ],
+  "322": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "include?"
+    }
+  ],
+  "330": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(make)"
+    }
+  ],
+  "331": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "343": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "348": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Creating a new #{make}!\""
+    }
+  ],
+  "349": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Creating a new "
+    }
+  ],
+  "364": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{make}"
+    }
+  ],
+  "366": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "370": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "371": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "!"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "380": [
+    {
+      "state_id": 252,
+      "candidate": "instance_variable",
+      "candidate_text": "@make"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= make"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 252,
+      "candidate": "class_variable",
+      "candidate_text": "@@cars"
+    }
+  ],
+  "405": [
+    {
+      "state_id": 2552,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[make]"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 431,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "410": [
+    {
+      "state_id": 5683,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 2132,
+      "candidate": "+= _arg",
+      "candidate_text": "+= 1"
+    }
+  ],
+  "415": [
+    {
+      "state_id": 493,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "423": [
+    {
+      "state_id": 252,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".class"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "class"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".total_count"
+    }
+  ],
+  "434": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "total_count"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 2132,
+      "candidate": "+= _arg",
+      "candidate_text": "+= 1"
+    }
+  ],
+  "449": [
+    {
+      "state_id": 493,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "455": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n      raise \"No such make: #{make}.\""
+    }
+  ],
+  "466": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "raise"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"No such make: #{make}.\""
+    }
+  ],
+  "473": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "No such make: "
+    }
+  ],
+  "487": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{make}"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "493": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "494": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "."
+    }
+  ],
+  "495": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "501": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "507": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "513": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def make_mates"
+    }
+  ],
+  "517": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "make_mates"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 216,
+      "candidate": "class_variable",
+      "candidate_text": "@@cars"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 2552,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[self.make]"
+    }
+  ],
+  "539": [
+    {
+      "state_id": 431,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".make"
+    }
+  ],
+  "544": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "make"
+    }
+  ],
+  "548": [
+    {
+      "state_id": 5683,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

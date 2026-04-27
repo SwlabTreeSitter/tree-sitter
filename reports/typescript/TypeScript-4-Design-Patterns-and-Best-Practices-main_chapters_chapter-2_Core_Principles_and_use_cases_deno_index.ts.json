@@ -1,0 +1,380 @@
+{
+  "14": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause ;",
+      "candidate_text": "import { listenAndServe } from \"https://deno.land/std@0.88.0/http/server.ts\";"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier }",
+      "candidate_text": "{ listenAndServe }"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "listenAndServe"
+    }
+  ],
+  "38": [
+    {
+      "state_id": 5029,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from \"https://deno.land/std@0.88.0/http/server.ts\""
+    }
+  ],
+  "45": [
+    {
+      "state_id": 4661,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"https://deno.land/std@0.88.0/http/server.ts\""
+    }
+  ],
+  "46": [
+    {
+      "state_id": 4393,
+      "candidate": "string_fragment \"",
+      "candidate_text": "https://deno.land/std@0.88.0/http/server.ts\""
+    }
+  ],
+  "89": [
+    {
+      "state_id": 4476,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "90": [
+    {
+      "state_id": 4289,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 16,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const serverConfig = {"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "serverConfig = {"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= {"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 423,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n  port: 8000,\n}"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 1497,
+      "candidate": "identifier",
+      "candidate_text": "port"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 8000"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "8000"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 4576,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "130": [
+    {
+      "state_id": 4965,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "listenAndServe"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(serverConfig, (req) => {"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "serverConfig"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", (req) => {"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 289,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(req)"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 195,
+      "candidate": "identifier",
+      "candidate_text": "req"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 4621,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n  req.respond({ body: \"Hello World\\n\" });\n}"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "req"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".respond"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "respond"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "({ body: \"Hello World\\n\" })"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 271,
+      "candidate": "{ pair }",
+      "candidate_text": "{ body: \"Hello World\\n\" }"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 1500,
+      "candidate": "identifier",
+      "candidate_text": "body"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": \"Hello World\\n\""
+    }
+  ],
+  "196": [
+    {
+      "state_id": 278,
+      "candidate": "\" string_repeat1 \"",
+      "candidate_text": "\"Hello World\\n\""
+    }
+  ],
+  "197": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment escape_sequence",
+      "candidate_text": "Hello World\\n"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 4512,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "212": [
+    {
+      "state_id": 4721,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "221": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".info"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "info"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(`Server started at http://localhost:8000`)"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 271,
+      "candidate": "` string_fragment `",
+      "candidate_text": "`Server started at http://localhost:8000`"
+    }
+  ],
+  "235": [
+    {
+      "state_id": 3852,
+      "candidate": "string_fragment `",
+      "candidate_text": "Server started at http://localhost:8000`"
+    }
+  ],
+  "274": [
+    {
+      "state_id": 3785,
+      "candidate": "`",
+      "candidate_text": "`"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

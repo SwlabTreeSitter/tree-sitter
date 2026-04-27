@@ -1,0 +1,618 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Person\n  attr_accessor :age\n  def initialize(options)\n    self.age = options[:age]\n  end\n  def teenager?\n    (13..19) === age\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Person\n  attr_accessor :age\n  def initialize(options)\n    self.age = options[:age]\n  end\n  def teenager?\n    (13..19) === age\n  end\nend"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "attr_accessor"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":age"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(options)"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(options)"
+    }
+  ],
+  "51": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "options"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 238,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".age"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "age"
+    }
+  ],
+  "73": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= options[:age]"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "options"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 2552,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[:age]"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 431,
+      "candidate": "simple_symbol",
+      "candidate_text": ":age"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 5683,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def teenager?"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "teenager?"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 216,
+      "candidate": "( _statements )",
+      "candidate_text": "(13..19)"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 329,
+      "candidate": "integer",
+      "candidate_text": "13"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 2812,
+      "candidate": ".. _arg",
+      "candidate_text": "..19"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 279,
+      "candidate": "integer",
+      "candidate_text": "19"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 5760,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 2812,
+      "candidate": "=== _arg",
+      "candidate_text": "=== age"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 1220,
+      "candidate": "identifier",
+      "candidate_text": "age"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "people"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= 10.step(25,3).map { |i| Person.new(age: i) }"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 481,
+      "candidate": "integer",
+      "candidate_text": "10"
+    }
+  ],
+  "153": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".step"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "step"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(25,3)"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "25"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ",3"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 432,
+      "candidate": "integer",
+      "candidate_text": "3"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".map"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "map"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 13,
+      "candidate": "{ block_parameters block_body }",
+      "candidate_text": "{ |i| Person.new(age: i) }"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 254,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|i|"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 4572,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 5374,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 318,
+      "candidate": "constant",
+      "candidate_text": "Person"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "182": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "185": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(age: i)"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 428,
+      "candidate": "hash_key_symbol : _arg",
+      "candidate_text": "age: i"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 5679,
+      "candidate": ": _arg",
+      "candidate_text": ": i"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 749,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 5814,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "teens"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= people.partition { |person| person.teenager? }"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 481,
+      "candidate": "identifier",
+      "candidate_text": "people"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".partition"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "partition"
+    }
+  ],
+  "221": [
+    {
+      "state_id": 13,
+      "candidate": "{ block_parameters block_body }",
+      "candidate_text": "{ |person| person.teenager? }"
+    }
+  ],
+  "223": [
+    {
+      "state_id": 254,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|person|"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 4572,
+      "candidate": "identifier",
+      "candidate_text": "person"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 5374,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 318,
+      "candidate": "identifier",
+      "candidate_text": "person"
+    }
+  ],
+  "238": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".teenager?"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "teenager?"
+    }
+  ],
+  "249": [
+    {
+      "state_id": 5814,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"#{teens[0].size} teens; #{teens[1].size} non-teens\""
+    }
+  ],
+  "257": [
+    {
+      "state_id": 5084,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{teens[0].size}"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "teens"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 2552,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 431,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 5683,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".size"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " teens; "
+    }
+  ],
+  "281": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{teens[1].size}"
+    }
+  ],
+  "283": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "teens"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 2552,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[1]"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 431,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 5683,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".size"
+    }
+  ],
+  "292": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "296": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "297": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " non-teens"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ]
+}

@@ -1,0 +1,2088 @@
+{
+  "1187": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "1196": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "1206": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "1208": [
+    {
+      "state_id": 34,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <cstdlib>"
+    }
+  ],
+  "1217": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<cstdlib>"
+    }
+  ],
+  "1226": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "1228": [
+    {
+      "state_id": 34,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <time.h>"
+    }
+  ],
+  "1237": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<time.h>"
+    }
+  ],
+  "1245": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "1247": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "1253": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "1263": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "1266": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1269": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1273": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "sum_of_rolled"
+    }
+  ],
+  "1286": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1287": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1288": [
+    {
+      "state_id": 8018,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1291": [
+    {
+      "state_id": 34,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "1298": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "check"
+    }
+  ],
+  "1303": [
+    {
+      "state_id": 8018,
+      "candidate": "( parameter_declaration )",
+      "candidate_text": "(int sum)"
+    }
+  ],
+  "1304": [
+    {
+      "state_id": 137,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1308": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "sum"
+    }
+  ],
+  "1311": [
+    {
+      "state_id": 9742,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1312": [
+    {
+      "state_id": 8018,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1315": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1319": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "1323": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1324": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1325": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    srand(time(0));\r\n    //including 'srand(time(0)) in other function except main() function\r\n    //didn't return perfectly random number\r\n    int roll = 0;\r\n    int won = 0;\r\n    int lost = 0;\r\n    for(int i = 1; i<=10000; i++){\r\n        roll = sum_of_rolled();\r\n        string result = check(roll);\r\n        if(result == \"won\"){\r\n            won++;\r\n        }\r\n        else if(result == \"lost\"){\r\n            lost++;\r\n        }\r\n        else if(result == \"point\"){\r\n            int point = roll;\r\n            while(true){\r\n                roll = sum_of_rolled();\r\n                if(roll == point){\r\n                    won++;\r\n                    break;\r\n                }\r\n                else if(roll == 7){\r\n                    lost++;\r\n                    break;;\r\n                }\r\n            }\r\n        }\r\n    }\r\n    cout << \"The probability of winning is: \" << won << \"/\" << (won+lost)\r\n     << \" i.e. \" << won/static_cast<double>(won+lost);\r\n    cout << endl;\r\n    return 0;\r\n}"
+    }
+  ],
+  "1332": [
+    {
+      "state_id": 4,
+      "candidate": "identifier",
+      "candidate_text": "srand"
+    }
+  ],
+  "1337": [
+    {
+      "state_id": 6427,
+      "candidate": "( expression )",
+      "candidate_text": "(time(0))"
+    }
+  ],
+  "1338": [
+    {
+      "state_id": 1186,
+      "candidate": "identifier",
+      "candidate_text": "time"
+    }
+  ],
+  "1342": [
+    {
+      "state_id": 6547,
+      "candidate": "( expression )",
+      "candidate_text": "(0)"
+    }
+  ],
+  "1343": [
+    {
+      "state_id": 1186,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1344": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1345": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1346": [
+    {
+      "state_id": 6427,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1352": [
+    {
+      "state_id": 61,
+      "candidate": "declaration",
+      "candidate_text": " //including "
+    }
+  ],
+  "1427": [
+    {
+      "state_id": 61,
+      "candidate": "declaration",
+      "candidate_text": "//didn't retu"
+    }
+  ],
+  "1472": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1476": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "roll"
+    }
+  ],
+  "1481": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "1483": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1484": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1491": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1495": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "won"
+    }
+  ],
+  "1499": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "1501": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1502": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1509": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1513": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "lost"
+    }
+  ],
+  "1518": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "1520": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1521": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1528": [
+    {
+      "state_id": 61,
+      "candidate": "for ( _for_statement_body ) statement",
+      "candidate_text": "for(int i = 1; i<=10000; i++){"
+    }
+  ],
+  "1531": [
+    {
+      "state_id": 10948,
+      "candidate": "( _for_statement_body ) statement",
+      "candidate_text": "(int i = 1; i<=10000; i++){"
+    }
+  ],
+  "1532": [
+    {
+      "state_id": 124,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1536": [
+    {
+      "state_id": 6293,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1538": [
+    {
+      "state_id": 8152,
+      "candidate": "= expression",
+      "candidate_text": "= 1"
+    }
+  ],
+  "1540": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "1"
+    }
+  ],
+  "1541": [
+    {
+      "state_id": 9752,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1543": [
+    {
+      "state_id": 280,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1544": [
+    {
+      "state_id": 6784,
+      "candidate": "<= expression",
+      "candidate_text": "<=10000"
+    }
+  ],
+  "1546": [
+    {
+      "state_id": 1630,
+      "candidate": "number_literal",
+      "candidate_text": "10000"
+    }
+  ],
+  "1551": [
+    {
+      "state_id": 6784,
+      "candidate": "; expression",
+      "candidate_text": "; i++"
+    }
+  ],
+  "1553": [
+    {
+      "state_id": 1250,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1554": [
+    {
+      "state_id": 6793,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "1556": [
+    {
+      "state_id": 10810,
+      "candidate": ") statement",
+      "candidate_text": "){"
+    }
+  ],
+  "1557": [
+    {
+      "state_id": 196,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n        roll = sum_of_rolled();\r\n        string result = check(roll);\r\n        if(result == \"won\"){\r\n            won++;\r\n        }\r\n        else if(result == \"lost\"){\r\n            lost++;\r\n        }\r\n        else if(result == \"point\"){\r\n            int point = roll;\r\n            while(true){\r\n                roll = sum_of_rolled();\r\n                if(roll == point){\r\n                    won++;\r\n                    break;\r\n                }\r\n                else if(roll == 7){\r\n                    lost++;\r\n                    break;;\r\n                }\r\n            }\r\n        }\r\n    }"
+    }
+  ],
+  "1568": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "roll = sum_of_rolled()"
+    }
+  ],
+  "1573": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= sum_of_rolled()"
+    }
+  ],
+  "1575": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "sum_of_rolled"
+    }
+  ],
+  "1588": [
+    {
+      "state_id": 6387,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1589": [
+    {
+      "state_id": 1186,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1590": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1601": [
+    {
+      "state_id": 39,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "1608": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1615": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= check(roll)"
+    }
+  ],
+  "1617": [
+    {
+      "state_id": 1243,
+      "candidate": "identifier",
+      "candidate_text": "check"
+    }
+  ],
+  "1622": [
+    {
+      "state_id": 6771,
+      "candidate": "( expression )",
+      "candidate_text": "(roll)"
+    }
+  ],
+  "1623": [
+    {
+      "state_id": 1186,
+      "candidate": "identifier",
+      "candidate_text": "roll"
+    }
+  ],
+  "1627": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1628": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1639": [
+    {
+      "state_id": 39,
+      "candidate": "if condition_clause statement else_clause",
+      "candidate_text": "if(result == \"won\"){\r\n            won++;\r\n        }\r\n        else if(result == \"lost\"){"
+    }
+  ],
+  "1641": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(result == \"won\")"
+    }
+  ],
+  "1642": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1649": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== \"won\""
+    }
+  ],
+  "1652": [
+    {
+      "state_id": 1838,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"won\""
+    }
+  ],
+  "1653": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "won\""
+    }
+  ],
+  "1656": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1657": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1658": [
+    {
+      "state_id": 199,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n            won++;\r\n        }"
+    }
+  ],
+  "1673": [
+    {
+      "state_id": 38,
+      "candidate": "identifier",
+      "candidate_text": "won"
+    }
+  ],
+  "1676": [
+    {
+      "state_id": 6753,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "1678": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1689": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1700": [
+    {
+      "state_id": 543,
+      "candidate": "else statement",
+      "candidate_text": "else if(result == \"lost\"){"
+    }
+  ],
+  "1705": [
+    {
+      "state_id": 187,
+      "candidate": "if condition_clause statement else_clause",
+      "candidate_text": "if(result == \"lost\"){\r\n            lost++;\r\n        }\r\n        else if(result == \"point\"){"
+    }
+  ],
+  "1707": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(result == \"lost\")"
+    }
+  ],
+  "1708": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1715": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== \"lost\""
+    }
+  ],
+  "1718": [
+    {
+      "state_id": 1838,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"lost\""
+    }
+  ],
+  "1719": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "lost\""
+    }
+  ],
+  "1723": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1724": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1725": [
+    {
+      "state_id": 199,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n            lost++;\r\n        }"
+    }
+  ],
+  "1740": [
+    {
+      "state_id": 38,
+      "candidate": "identifier",
+      "candidate_text": "lost"
+    }
+  ],
+  "1744": [
+    {
+      "state_id": 6753,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "1746": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1757": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1768": [
+    {
+      "state_id": 543,
+      "candidate": "else statement",
+      "candidate_text": "else if(result == \"point\"){"
+    }
+  ],
+  "1773": [
+    {
+      "state_id": 187,
+      "candidate": "if condition_clause statement",
+      "candidate_text": "if(result == \"point\"){"
+    }
+  ],
+  "1775": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(result == \"point\")"
+    }
+  ],
+  "1776": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "1783": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== \"point\""
+    }
+  ],
+  "1786": [
+    {
+      "state_id": 1838,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"point\""
+    }
+  ],
+  "1787": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "point\""
+    }
+  ],
+  "1792": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1793": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1794": [
+    {
+      "state_id": 199,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n            int point = roll;\r\n            while(true){\r\n                roll = sum_of_rolled();\r\n                if(roll == point){\r\n                    won++;\r\n                    break;\r\n                }\r\n                else if(roll == 7){\r\n                    lost++;\r\n                    break;;\r\n                }\r\n            }\r\n        }"
+    }
+  ],
+  "1809": [
+    {
+      "state_id": 38,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1813": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "point"
+    }
+  ],
+  "1819": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= roll"
+    }
+  ],
+  "1821": [
+    {
+      "state_id": 1243,
+      "candidate": "identifier",
+      "candidate_text": "roll"
+    }
+  ],
+  "1825": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1840": [
+    {
+      "state_id": 39,
+      "candidate": "while condition_clause statement",
+      "candidate_text": "while(true){"
+    }
+  ],
+  "1845": [
+    {
+      "state_id": 10274,
+      "candidate": "( expression )",
+      "candidate_text": "(true)"
+    }
+  ],
+  "1846": [
+    {
+      "state_id": 128,
+      "candidate": "true",
+      "candidate_text": "true"
+    }
+  ],
+  "1850": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1851": [
+    {
+      "state_id": 161,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n                roll = sum_of_rolled();\r\n                if(roll == point){\r\n                    won++;\r\n                    break;\r\n                }\r\n                else if(roll == 7){\r\n                    lost++;\r\n                    break;;\r\n                }\r\n            }"
+    }
+  ],
+  "1870": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "roll = sum_of_rolled()"
+    }
+  ],
+  "1875": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= sum_of_rolled()"
+    }
+  ],
+  "1877": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "sum_of_rolled"
+    }
+  ],
+  "1890": [
+    {
+      "state_id": 6387,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1891": [
+    {
+      "state_id": 1186,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1892": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1911": [
+    {
+      "state_id": 39,
+      "candidate": "if condition_clause statement else_clause",
+      "candidate_text": "if(roll == point){\r\n                    won++;\r\n                    break;\r\n                }\r\n                else if(roll == 7){"
+    }
+  ],
+  "1913": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(roll == point)"
+    }
+  ],
+  "1914": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "roll"
+    }
+  ],
+  "1919": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== point"
+    }
+  ],
+  "1922": [
+    {
+      "state_id": 1838,
+      "candidate": "identifier",
+      "candidate_text": "point"
+    }
+  ],
+  "1927": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1928": [
+    {
+      "state_id": 199,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n                    won++;\r\n                    break;\r\n                }"
+    }
+  ],
+  "1951": [
+    {
+      "state_id": 38,
+      "candidate": "identifier",
+      "candidate_text": "won"
+    }
+  ],
+  "1954": [
+    {
+      "state_id": 6753,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "1956": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1979": [
+    {
+      "state_id": 39,
+      "candidate": "break ;",
+      "candidate_text": "break;"
+    }
+  ],
+  "1984": [
+    {
+      "state_id": 10484,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2003": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2022": [
+    {
+      "state_id": 543,
+      "candidate": "else statement",
+      "candidate_text": "else if(roll == 7){"
+    }
+  ],
+  "2027": [
+    {
+      "state_id": 187,
+      "candidate": "if condition_clause statement",
+      "candidate_text": "if(roll == 7){"
+    }
+  ],
+  "2029": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(roll == 7)"
+    }
+  ],
+  "2030": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "roll"
+    }
+  ],
+  "2035": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== 7"
+    }
+  ],
+  "2038": [
+    {
+      "state_id": 1838,
+      "candidate": "number_literal",
+      "candidate_text": "7"
+    }
+  ],
+  "2039": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2040": [
+    {
+      "state_id": 199,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n                    lost++;\r\n                    break;;\r\n                }"
+    }
+  ],
+  "2063": [
+    {
+      "state_id": 38,
+      "candidate": "identifier",
+      "candidate_text": "lost"
+    }
+  ],
+  "2067": [
+    {
+      "state_id": 6753,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "2069": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2092": [
+    {
+      "state_id": 39,
+      "candidate": "break ;",
+      "candidate_text": "break;"
+    }
+  ],
+  "2097": [
+    {
+      "state_id": 10484,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2098": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2117": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2132": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2143": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2150": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2157": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "2162": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"The probability of winning is: \""
+    }
+  ],
+  "2165": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"The probability of winning is: \""
+    }
+  ],
+  "2166": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "The probability of winning is: \""
+    }
+  ],
+  "2197": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "2199": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< won"
+    }
+  ],
+  "2202": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "won"
+    }
+  ],
+  "2206": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"/\""
+    }
+  ],
+  "2209": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"/\""
+    }
+  ],
+  "2210": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "/\""
+    }
+  ],
+  "2211": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "2213": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< (won+lost)"
+    }
+  ],
+  "2216": [
+    {
+      "state_id": 1631,
+      "candidate": "( expression )",
+      "candidate_text": "(won+lost)"
+    }
+  ],
+  "2217": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "won"
+    }
+  ],
+  "2220": [
+    {
+      "state_id": 4607,
+      "candidate": "+ expression",
+      "candidate_text": "+lost"
+    }
+  ],
+  "2221": [
+    {
+      "state_id": 1298,
+      "candidate": "identifier",
+      "candidate_text": "lost"
+    }
+  ],
+  "2225": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2233": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \" i.e. \""
+    }
+  ],
+  "2236": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\" i.e. \""
+    }
+  ],
+  "2237": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": " i.e. \""
+    }
+  ],
+  "2243": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "2245": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< won/static_cast<double>(won+lost)"
+    }
+  ],
+  "2248": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "won"
+    }
+  ],
+  "2251": [
+    {
+      "state_id": 6321,
+      "candidate": "/ expression",
+      "candidate_text": "/static_cast<double>(won+lost)"
+    }
+  ],
+  "2252": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier template_argument_list",
+      "candidate_text": "static_cast<double>"
+    }
+  ],
+  "2263": [
+    {
+      "state_id": 3260,
+      "candidate": "< type_descriptor >",
+      "candidate_text": "<double>"
+    }
+  ],
+  "2264": [
+    {
+      "state_id": 272,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "2270": [
+    {
+      "state_id": 9356,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "2271": [
+    {
+      "state_id": 5774,
+      "candidate": "( expression )",
+      "candidate_text": "(won+lost)"
+    }
+  ],
+  "2272": [
+    {
+      "state_id": 1186,
+      "candidate": "identifier",
+      "candidate_text": "won"
+    }
+  ],
+  "2275": [
+    {
+      "state_id": 6547,
+      "candidate": "+ expression",
+      "candidate_text": "+lost"
+    }
+  ],
+  "2276": [
+    {
+      "state_id": 1592,
+      "candidate": "identifier",
+      "candidate_text": "lost"
+    }
+  ],
+  "2280": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2281": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2288": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "2293": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< endl"
+    }
+  ],
+  "2296": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "endl"
+    }
+  ],
+  "2300": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2307": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "2314": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "2315": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2318": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2321": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "2325": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "sum_of_rolled"
+    }
+  ],
+  "2338": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2339": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2340": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    //returns the sum of two rolled dice.\r\n    int "
+    }
+  ],
+  "2346": [
+    {
+      "state_id": 4,
+      "candidate": "preproc_if_repeat1 }",
+      "candidate_text": " //returns the sum of two rolled dice.\r\n    int "
+    }
+  ],
+  "2390": [
+    {
+      "state_id": 4,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "2394": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "roll"
+    }
+  ],
+  "2399": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= rand() % 12 + 2"
+    }
+  ],
+  "2401": [
+    {
+      "state_id": 1243,
+      "candidate": "identifier",
+      "candidate_text": "rand"
+    }
+  ],
+  "2405": [
+    {
+      "state_id": 6771,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2406": [
+    {
+      "state_id": 1186,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2408": [
+    {
+      "state_id": 6771,
+      "candidate": "% expression",
+      "candidate_text": "% 12"
+    }
+  ],
+  "2410": [
+    {
+      "state_id": 1608,
+      "candidate": "number_literal",
+      "candidate_text": "12"
+    }
+  ],
+  "2413": [
+    {
+      "state_id": 6771,
+      "candidate": "+ expression",
+      "candidate_text": "+ 2"
+    }
+  ],
+  "2415": [
+    {
+      "state_id": 1592,
+      "candidate": "number_literal",
+      "candidate_text": "2"
+    }
+  ],
+  "2416": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2423": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return roll;"
+    }
+  ],
+  "2430": [
+    {
+      "state_id": 1185,
+      "candidate": "identifier",
+      "candidate_text": "roll"
+    }
+  ],
+  "2434": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2437": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2440": [
+    {
+      "state_id": 34,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "2447": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "check"
+    }
+  ],
+  "2452": [
+    {
+      "state_id": 8018,
+      "candidate": "( parameter_declaration )",
+      "candidate_text": "(int sum)"
+    }
+  ],
+  "2453": [
+    {
+      "state_id": 137,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "2457": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "sum"
+    }
+  ],
+  "2460": [
+    {
+      "state_id": 9742,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2461": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    string result = \"\";\r\n    if(sum == 7 || sum == 11){\r\n        result = \"won\";\r\n    }\r\n    else if(sum == 2 || sum == 3 || sum == 12){\r\n        result = \"lost\";\r\n    }\r\n    else{\r\n        result = \"point\";\r\n    }\r\n    return result;\r\n}"
+    }
+  ],
+  "2468": [
+    {
+      "state_id": 4,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "2475": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "2482": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= \"\""
+    }
+  ],
+  "2484": [
+    {
+      "state_id": 1243,
+      "candidate": "\" \"",
+      "candidate_text": "\"\""
+    }
+  ],
+  "2485": [
+    {
+      "state_id": 9416,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "2486": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2493": [
+    {
+      "state_id": 61,
+      "candidate": "if condition_clause statement else_clause",
+      "candidate_text": "if(sum == 7 || sum == 11){\r\n        result = \"won\";\r\n    }\r\n    else if(sum == 2 || sum == 3 || sum == 12){"
+    }
+  ],
+  "2495": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(sum == 7 || sum == 11)"
+    }
+  ],
+  "2496": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "sum"
+    }
+  ],
+  "2500": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== 7"
+    }
+  ],
+  "2503": [
+    {
+      "state_id": 1838,
+      "candidate": "number_literal",
+      "candidate_text": "7"
+    }
+  ],
+  "2505": [
+    {
+      "state_id": 6522,
+      "candidate": "|| expression",
+      "candidate_text": "|| sum == 11"
+    }
+  ],
+  "2508": [
+    {
+      "state_id": 1609,
+      "candidate": "identifier",
+      "candidate_text": "sum"
+    }
+  ],
+  "2512": [
+    {
+      "state_id": 6337,
+      "candidate": "== expression",
+      "candidate_text": "== 11"
+    }
+  ],
+  "2515": [
+    {
+      "state_id": 1838,
+      "candidate": "number_literal",
+      "candidate_text": "11"
+    }
+  ],
+  "2517": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2518": [
+    {
+      "state_id": 199,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n        result = \"won\";\r\n    }"
+    }
+  ],
+  "2529": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "result = \"won\""
+    }
+  ],
+  "2536": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= \"won\""
+    }
+  ],
+  "2538": [
+    {
+      "state_id": 1222,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"won\""
+    }
+  ],
+  "2539": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "won\""
+    }
+  ],
+  "2542": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "2543": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2550": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2557": [
+    {
+      "state_id": 543,
+      "candidate": "else statement",
+      "candidate_text": "else if(sum == 2 || sum == 3 || sum == 12){"
+    }
+  ],
+  "2562": [
+    {
+      "state_id": 187,
+      "candidate": "if condition_clause statement else_clause",
+      "candidate_text": "if(sum == 2 || sum == 3 || sum == 12){\r\n        result = \"lost\";\r\n    }\r\n    else{"
+    }
+  ],
+  "2564": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(sum == 2 || sum == 3 || sum == 12)"
+    }
+  ],
+  "2565": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "sum"
+    }
+  ],
+  "2569": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== 2"
+    }
+  ],
+  "2572": [
+    {
+      "state_id": 1838,
+      "candidate": "number_literal",
+      "candidate_text": "2"
+    }
+  ],
+  "2574": [
+    {
+      "state_id": 6522,
+      "candidate": "|| expression",
+      "candidate_text": "|| sum == 3"
+    }
+  ],
+  "2577": [
+    {
+      "state_id": 1609,
+      "candidate": "identifier",
+      "candidate_text": "sum"
+    }
+  ],
+  "2581": [
+    {
+      "state_id": 6337,
+      "candidate": "== expression",
+      "candidate_text": "== 3"
+    }
+  ],
+  "2584": [
+    {
+      "state_id": 1838,
+      "candidate": "number_literal",
+      "candidate_text": "3"
+    }
+  ],
+  "2586": [
+    {
+      "state_id": 6522,
+      "candidate": "|| expression",
+      "candidate_text": "|| sum == 12"
+    }
+  ],
+  "2589": [
+    {
+      "state_id": 1609,
+      "candidate": "identifier",
+      "candidate_text": "sum"
+    }
+  ],
+  "2593": [
+    {
+      "state_id": 6337,
+      "candidate": "== expression",
+      "candidate_text": "== 12"
+    }
+  ],
+  "2596": [
+    {
+      "state_id": 1838,
+      "candidate": "number_literal",
+      "candidate_text": "12"
+    }
+  ],
+  "2598": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2599": [
+    {
+      "state_id": 199,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n        result = \"lost\";\r\n    }"
+    }
+  ],
+  "2610": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "result = \"lost\""
+    }
+  ],
+  "2617": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= \"lost\""
+    }
+  ],
+  "2619": [
+    {
+      "state_id": 1222,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"lost\""
+    }
+  ],
+  "2620": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "lost\""
+    }
+  ],
+  "2624": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "2625": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2632": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2639": [
+    {
+      "state_id": 543,
+      "candidate": "else statement",
+      "candidate_text": "else{"
+    }
+  ],
+  "2643": [
+    {
+      "state_id": 187,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n        result = \"point\";\r\n    }"
+    }
+  ],
+  "2654": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "result = \"point\""
+    }
+  ],
+  "2661": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= \"point\""
+    }
+  ],
+  "2663": [
+    {
+      "state_id": 1222,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"point\""
+    }
+  ],
+  "2664": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "point\""
+    }
+  ],
+  "2669": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "2670": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2677": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2684": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return result;"
+    }
+  ],
+  "2691": [
+    {
+      "state_id": 1185,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "2697": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2700": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

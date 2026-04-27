@@ -1,0 +1,597 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const textStore = {"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "textStore = {"
+    }
+  ],
+  "16": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= {"
+    }
+  ],
+  "18": [
+    {
+      "state_id": 423,
+      "candidate": "{ method_definition object_repeat1 }",
+      "candidate_text": "{\n  save(data: string): void {\n    console.log(`Called 'save' from TextStore with data=${data}`);\n  },\n}"
+    }
+  ],
+  "22": [
+    {
+      "state_id": 1497,
+      "candidate": "identifier",
+      "candidate_text": "save"
+    }
+  ],
+  "26": [
+    {
+      "state_id": 3648,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(data: string)"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 199,
+      "candidate": "identifier",
+      "candidate_text": "data"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 4621,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 3806,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 963,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 5301,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    console.log(`Called 'save' from TextStore with data=${data}`);\n  }"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 26,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "61": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(`Called 'save' from TextStore with data=${data}`)"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 271,
+      "candidate": "` template_string_repeat1 `",
+      "candidate_text": "`Called 'save' from TextStore with data=${data}`"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 3852,
+      "candidate": "string_fragment template_substitution",
+      "candidate_text": "Called 'save' from TextStore with data=${data}"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 3785,
+      "candidate": "${ expression }",
+      "candidate_text": "${data}"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 393,
+      "candidate": "identifier",
+      "candidate_text": "data"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 2188,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 3785,
+      "candidate": "`",
+      "candidate_text": "`"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 14,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 4576,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "121": [
+    {
+      "state_id": 4965,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 16,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const proxyTextStore = new Proxy(textStore, {"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "proxyTextStore = new Proxy(textStore, {"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= new Proxy(textStore, {"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 423,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Proxy(textStore, {"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "Proxy"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 1696,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(textStore, {"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "textStore"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", {"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 289,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n  apply: function (target, that, args) {\n    console.log(`Called 'save' from ProxyTextStore with data=${args}`);\n    target.save(args[0]);\n  },\n}"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 1500,
+      "candidate": "identifier",
+      "candidate_text": "apply"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": function (target, that, args) {"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 278,
+      "candidate": "function _call_signature statement_block",
+      "candidate_text": "function (target, that, args) {"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 3600,
+      "candidate": "( required_parameter formal_parameters_repeat1 )",
+      "candidate_text": "(target, that, args)"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 199,
+      "candidate": "identifier",
+      "candidate_text": "target"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 4621,
+      "candidate": ", required_parameter",
+      "candidate_text": ", that"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 204,
+      "candidate": "identifier",
+      "candidate_text": "that"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 5014,
+      "candidate": ", required_parameter",
+      "candidate_text": ", args"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 196,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 5014,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 5453,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    console.log(`Called 'save' from ProxyTextStore with data=${args}`);\n    target.save(args[0]);\n  }"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 23,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "223": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(`Called 'save' from ProxyTextStore with data=${args}`)"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 271,
+      "candidate": "` template_string_repeat1 `",
+      "candidate_text": "`Called 'save' from ProxyTextStore with data=${args}`"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 3852,
+      "candidate": "string_fragment template_substitution",
+      "candidate_text": "Called 'save' from ProxyTextStore with data=${args}"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 3785,
+      "candidate": "${ expression }",
+      "candidate_text": "${args}"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 393,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 2188,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 3785,
+      "candidate": "`",
+      "candidate_text": "`"
+    }
+  ],
+  "281": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "282": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "target"
+    }
+  ],
+  "294": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".save"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "save"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(args[0])"
+    }
+  ],
+  "300": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 1515,
+      "candidate": "[ expression ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 319,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 2144,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "308": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "312": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 4721,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "315": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "316": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "317": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "proxyTextStore"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".save"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "save"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Data\")"
+    }
+  ],
+  "339": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Data\""
+    }
+  ],
+  "340": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Data\""
+    }
+  ],
+  "344": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "345": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "346": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

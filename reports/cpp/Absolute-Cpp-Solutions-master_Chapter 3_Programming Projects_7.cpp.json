@@ -1,0 +1,1080 @@
+{
+  "733": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "742": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "752": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "754": [
+    {
+      "state_id": 34,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <cmath>"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<cmath>"
+    }
+  ],
+  "770": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "772": [
+    {
+      "state_id": 34,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <cstdlib>"
+    }
+  ],
+  "781": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<cstdlib>"
+    }
+  ],
+  "790": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "792": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "798": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "808": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "811": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "814": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "bool"
+    }
+  ],
+  "819": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "check_temperature"
+    }
+  ],
+  "836": [
+    {
+      "state_id": 8018,
+      "candidate": "( parameter_declaration )",
+      "candidate_text": "(float temperature)"
+    }
+  ],
+  "837": [
+    {
+      "state_id": 137,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "843": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "854": [
+    {
+      "state_id": 9742,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "855": [
+    {
+      "state_id": 8018,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "858": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "862": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "866": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "867": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "868": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    float wind_speed, temperature;\r\n    cout << \"Enter wind speed in mph: \";\r\n    cin >> wind_speed;\r\n    cout << \"\\nEnter temperature in Fahrenheit: \";\r\n    cin >> temperature;\r\n    if(!check_temperature(temperature)){\r\n        cerr << \"\\nTemperature must be below 10C.\";\r\n        exit(1);\r\n    }\r\n    float wind_chill_index;\r\n    //wind_chill_index = 13.12 + 0.6215*temperature - 11.37 * pow(wind_speed, 0.16) + 0.3965*temperature*pow(wind_speed, 0.016);\r\n    wind_chill_index = 33 - (((10*sqrt(wind_speed) - wind_speed + 10.5) * (33-temperature))/23.1);\r\n    cout << \"----------------------------------------------------------------------\";\r\n    cout << \"\\nWind Chill index for the given data is: \" << wind_chill_index;\r\n    cout << endl;\r\n    return 0;\r\n}"
+    }
+  ],
+  "875": [
+    {
+      "state_id": 4,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "881": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "wind_speed"
+    }
+  ],
+  "891": [
+    {
+      "state_id": 7972,
+      "candidate": ", _declarator",
+      "candidate_text": ", temperature"
+    }
+  ],
+  "893": [
+    {
+      "state_id": 6272,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "904": [
+    {
+      "state_id": 9954,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "911": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "916": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"Enter wind speed in mph: \""
+    }
+  ],
+  "919": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"Enter wind speed in mph: \""
+    }
+  ],
+  "920": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "Enter wind speed in mph: \""
+    }
+  ],
+  "945": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "946": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "953": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "957": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> wind_speed"
+    }
+  ],
+  "960": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "wind_speed"
+    }
+  ],
+  "970": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "977": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "982": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter temperature in Fahrenheit: \""
+    }
+  ],
+  "985": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter temperature in Fahrenheit: \""
+    }
+  ],
+  "986": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter temperature in Fahrenheit: "
+    }
+  ],
+  "988": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter temperature in Fahrenheit: "
+    }
+  ],
+  "1021": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1022": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1029": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "1033": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> temperature"
+    }
+  ],
+  "1036": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "1047": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1054": [
+    {
+      "state_id": 61,
+      "candidate": "if condition_clause statement",
+      "candidate_text": "if(!check_temperature(temperature)){"
+    }
+  ],
+  "1056": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(!check_temperature(temperature))"
+    }
+  ],
+  "1057": [
+    {
+      "state_id": 128,
+      "candidate": "! expression",
+      "candidate_text": "!check_temperature(temperature)"
+    }
+  ],
+  "1058": [
+    {
+      "state_id": 1525,
+      "candidate": "identifier",
+      "candidate_text": "check_temperature"
+    }
+  ],
+  "1075": [
+    {
+      "state_id": 5750,
+      "candidate": "( expression )",
+      "candidate_text": "(temperature)"
+    }
+  ],
+  "1076": [
+    {
+      "state_id": 1186,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "1087": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1088": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1089": [
+    {
+      "state_id": 199,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n        cerr << \"\\nTemperature must be below 10C.\";\r\n        exit(1);\r\n    }"
+    }
+  ],
+  "1100": [
+    {
+      "state_id": 38,
+      "candidate": "identifier",
+      "candidate_text": "cerr"
+    }
+  ],
+  "1105": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nTemperature must be below 10C.\""
+    }
+  ],
+  "1108": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nTemperature must be below 10C.\""
+    }
+  ],
+  "1109": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nTemperature must be below 10C."
+    }
+  ],
+  "1111": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Temperature must be below 10C."
+    }
+  ],
+  "1141": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1142": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1153": [
+    {
+      "state_id": 39,
+      "candidate": "identifier",
+      "candidate_text": "exit"
+    }
+  ],
+  "1157": [
+    {
+      "state_id": 6753,
+      "candidate": "( expression )",
+      "candidate_text": "(1)"
+    }
+  ],
+  "1158": [
+    {
+      "state_id": 1186,
+      "candidate": "number_literal",
+      "candidate_text": "1"
+    }
+  ],
+  "1159": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1160": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1167": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1174": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "1180": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "wind_chill_index"
+    }
+  ],
+  "1196": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1202": [
+    {
+      "state_id": 41,
+      "candidate": "preproc_if_repeat1",
+      "candidate_text": " //wind_chill_index = 13.12 + 0.6215*temperature - 11.37 * pow(wind_speed, 0.16) + 0.3965*temperature*pow(wind_speed, 0.016);"
+    }
+  ],
+  "1333": [
+    {
+      "state_id": 61,
+      "candidate": "identifier = expression",
+      "candidate_text": "wind_chill_index = 33 - (((10*sqrt(wind_speed) - wind_speed + 10.5) * (33-temperature))/23.1)"
+    }
+  ],
+  "1350": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= 33 - (((10*sqrt(wind_speed) - wind_speed + 10.5) * (33-temperature))/23.1)"
+    }
+  ],
+  "1352": [
+    {
+      "state_id": 1222,
+      "candidate": "number_literal",
+      "candidate_text": "33"
+    }
+  ],
+  "1355": [
+    {
+      "state_id": 6387,
+      "candidate": "- expression",
+      "candidate_text": "- (((10*sqrt(wind_speed) - wind_speed + 10.5) * (33-temperature))/23.1)"
+    }
+  ],
+  "1357": [
+    {
+      "state_id": 1592,
+      "candidate": "( expression )",
+      "candidate_text": "(((10*sqrt(wind_speed) - wind_speed + 10.5) * (33-temperature))/23.1)"
+    }
+  ],
+  "1358": [
+    {
+      "state_id": 217,
+      "candidate": "( expression )",
+      "candidate_text": "((10*sqrt(wind_speed) - wind_speed + 10.5) * (33-temperature))"
+    }
+  ],
+  "1359": [
+    {
+      "state_id": 229,
+      "candidate": "( expression )",
+      "candidate_text": "(10*sqrt(wind_speed) - wind_speed + 10.5)"
+    }
+  ],
+  "1360": [
+    {
+      "state_id": 229,
+      "candidate": "number_literal",
+      "candidate_text": "10"
+    }
+  ],
+  "1362": [
+    {
+      "state_id": 4645,
+      "candidate": "* expression",
+      "candidate_text": "*sqrt(wind_speed)"
+    }
+  ],
+  "1363": [
+    {
+      "state_id": 1394,
+      "candidate": "identifier",
+      "candidate_text": "sqrt"
+    }
+  ],
+  "1367": [
+    {
+      "state_id": 5086,
+      "candidate": "( expression )",
+      "candidate_text": "(wind_speed)"
+    }
+  ],
+  "1368": [
+    {
+      "state_id": 1188,
+      "candidate": "identifier",
+      "candidate_text": "wind_speed"
+    }
+  ],
+  "1378": [
+    {
+      "state_id": 6559,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1380": [
+    {
+      "state_id": 4645,
+      "candidate": "- expression",
+      "candidate_text": "- wind_speed"
+    }
+  ],
+  "1382": [
+    {
+      "state_id": 1294,
+      "candidate": "identifier",
+      "candidate_text": "wind_speed"
+    }
+  ],
+  "1393": [
+    {
+      "state_id": 4645,
+      "candidate": "+ expression",
+      "candidate_text": "+ 10.5"
+    }
+  ],
+  "1395": [
+    {
+      "state_id": 1298,
+      "candidate": "number_literal",
+      "candidate_text": "10.5"
+    }
+  ],
+  "1399": [
+    {
+      "state_id": 4645,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1401": [
+    {
+      "state_id": 4645,
+      "candidate": "* expression",
+      "candidate_text": "* (33-temperature)"
+    }
+  ],
+  "1403": [
+    {
+      "state_id": 1394,
+      "candidate": "( expression )",
+      "candidate_text": "(33-temperature)"
+    }
+  ],
+  "1404": [
+    {
+      "state_id": 229,
+      "candidate": "number_literal",
+      "candidate_text": "33"
+    }
+  ],
+  "1406": [
+    {
+      "state_id": 4645,
+      "candidate": "- expression",
+      "candidate_text": "-temperature"
+    }
+  ],
+  "1407": [
+    {
+      "state_id": 1294,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "1418": [
+    {
+      "state_id": 4645,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1419": [
+    {
+      "state_id": 4645,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1420": [
+    {
+      "state_id": 4607,
+      "candidate": "/ expression",
+      "candidate_text": "/23.1"
+    }
+  ],
+  "1421": [
+    {
+      "state_id": 1269,
+      "candidate": "number_literal",
+      "candidate_text": "23.1"
+    }
+  ],
+  "1425": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1426": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1433": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1438": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"----------------------------------------------------------------------\""
+    }
+  ],
+  "1441": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"----------------------------------------------------------------------\""
+    }
+  ],
+  "1442": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "----------------------------------------------------------------------\""
+    }
+  ],
+  "1512": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1513": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1520": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1525": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nWind Chill index for the given data is: \""
+    }
+  ],
+  "1528": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nWind Chill index for the given data is: \""
+    }
+  ],
+  "1529": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nWind Chill index for the given data is: "
+    }
+  ],
+  "1531": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Wind Chill index for the given data is: "
+    }
+  ],
+  "1571": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1573": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< wind_chill_index"
+    }
+  ],
+  "1576": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "wind_chill_index"
+    }
+  ],
+  "1592": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1599": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1604": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< endl"
+    }
+  ],
+  "1607": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "endl"
+    }
+  ],
+  "1611": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1618": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "1625": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1626": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1629": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1632": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "bool"
+    }
+  ],
+  "1637": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "check_temperature"
+    }
+  ],
+  "1654": [
+    {
+      "state_id": 8018,
+      "candidate": "( parameter_declaration )",
+      "candidate_text": "(float temperature)"
+    }
+  ],
+  "1655": [
+    {
+      "state_id": 137,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "1661": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "1672": [
+    {
+      "state_id": 9742,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1673": [
+    {
+      "state_id": 8018,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n    if(temperature < 10){\r\n        return true;\r\n    }\r\n    else{\r\n        return false;\r\n    }\r\n}"
+    }
+  ],
+  "1680": [
+    {
+      "state_id": 4,
+      "candidate": "if condition_clause statement else_clause",
+      "candidate_text": "if(temperature < 10){\r\n        return true;\r\n    }\r\n    else{"
+    }
+  ],
+  "1682": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(temperature < 10)"
+    }
+  ],
+  "1683": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "1695": [
+    {
+      "state_id": 6522,
+      "candidate": "< expression",
+      "candidate_text": "< 10"
+    }
+  ],
+  "1697": [
+    {
+      "state_id": 274,
+      "candidate": "number_literal",
+      "candidate_text": "10"
+    }
+  ],
+  "1699": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1700": [
+    {
+      "state_id": 199,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n        return true;\r\n    }"
+    }
+  ],
+  "1711": [
+    {
+      "state_id": 38,
+      "candidate": "return expression ;",
+      "candidate_text": "return true;"
+    }
+  ],
+  "1718": [
+    {
+      "state_id": 1185,
+      "candidate": "true",
+      "candidate_text": "true"
+    }
+  ],
+  "1722": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1729": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1736": [
+    {
+      "state_id": 543,
+      "candidate": "else statement",
+      "candidate_text": "else{"
+    }
+  ],
+  "1740": [
+    {
+      "state_id": 187,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n        return false;\r\n    }"
+    }
+  ],
+  "1751": [
+    {
+      "state_id": 38,
+      "candidate": "return expression ;",
+      "candidate_text": "return false;"
+    }
+  ],
+  "1758": [
+    {
+      "state_id": 1185,
+      "candidate": "false",
+      "candidate_text": "false"
+    }
+  ],
+  "1763": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1770": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1773": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

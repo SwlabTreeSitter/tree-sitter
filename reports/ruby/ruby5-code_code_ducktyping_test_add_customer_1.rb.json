@@ -1,0 +1,674 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "require"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"minitest/autorun\""
+    }
+  ],
+  "387": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "minitest/autorun"
+    }
+  ],
+  "403": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "405": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "require_relative"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"add_customer\""
+    }
+  ],
+  "423": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "add_customer"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "438": [
+    {
+      "state_id": 346,
+      "candidate": "class constant superclass _terminator body_statement end",
+      "candidate_text": "class TestAddCustomer < Minitest::Test\n  def test_add\n    customer = Customer.new(\"Ima\", \"Customer\")\n    File.open(\"tmpfile\", \"w\") do |f|\n      customer.append_name_to_file(f)\n    end\n    File.open(\"tmpfile\") do |f|\n      assert_equal(\"Ima Customer\", f.gets)\n    end\n  ensure\n    File.delete(\"tmpfile\") if File.exist?(\"tmpfile\")\n  end\nend"
+    }
+  ],
+  "444": [
+    {
+      "state_id": 1975,
+      "candidate": "constant superclass _terminator body_statement end",
+      "candidate_text": "TestAddCustomer < Minitest::Test\n  def test_add\n    customer = Customer.new(\"Ima\", \"Customer\")\n    File.open(\"tmpfile\", \"w\") do |f|\n      customer.append_name_to_file(f)\n    end\n    File.open(\"tmpfile\") do |f|\n      assert_equal(\"Ima Customer\", f.gets)\n    end\n  ensure\n    File.delete(\"tmpfile\") if File.exist?(\"tmpfile\")\n  end\nend"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 125,
+      "candidate": "< _expression",
+      "candidate_text": "< Minitest::Test"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 540,
+      "candidate": "constant",
+      "candidate_text": "Minitest"
+    }
+  ],
+  "470": [
+    {
+      "state_id": 3417,
+      "candidate": ":: constant",
+      "candidate_text": "::Test"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 3135,
+      "candidate": "constant",
+      "candidate_text": "Test"
+    }
+  ],
+  "479": [
+    {
+      "state_id": 240,
+      "candidate": "def _method_rest",
+      "candidate_text": "def test_add"
+    }
+  ],
+  "483": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "test_add"
+    }
+  ],
+  "496": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "customer"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= Customer.new(\"Ima\", \"Customer\")"
+    }
+  ],
+  "507": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "Customer"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "516": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"Ima\", \"Customer\")"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Ima\""
+    }
+  ],
+  "521": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Ima"
+    }
+  ],
+  "524": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "525": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", \"Customer\""
+    }
+  ],
+  "527": [
+    {
+      "state_id": 432,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Customer\""
+    }
+  ],
+  "528": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Customer"
+    }
+  ],
+  "536": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "537": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 252,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".open"
+    }
+  ],
+  "548": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "open"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"tmpfile\", \"w\")"
+    }
+  ],
+  "553": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"tmpfile\""
+    }
+  ],
+  "554": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "tmpfile"
+    }
+  ],
+  "561": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "562": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", \"w\""
+    }
+  ],
+  "564": [
+    {
+      "state_id": 432,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"w\""
+    }
+  ],
+  "565": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "w"
+    }
+  ],
+  "566": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "567": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "569": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |f|\n      customer.append_name_to_file(f)\n    end"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|f|"
+    }
+  ],
+  "573": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "f"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "582": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "customer"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".append_name_to_file"
+    }
+  ],
+  "591": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "append_name_to_file"
+    }
+  ],
+  "610": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(f)"
+    }
+  ],
+  "611": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "f"
+    }
+  ],
+  "612": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "618": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "626": [
+    {
+      "state_id": 252,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "630": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".open"
+    }
+  ],
+  "631": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "open"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"tmpfile\")"
+    }
+  ],
+  "636": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"tmpfile\""
+    }
+  ],
+  "637": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "tmpfile"
+    }
+  ],
+  "644": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "645": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |f|\n      assert_equal(\"Ima Customer\", f.gets)\n    end"
+    }
+  ],
+  "650": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|f|"
+    }
+  ],
+  "651": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "f"
+    }
+  ],
+  "652": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "660": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "assert_equal"
+    }
+  ],
+  "672": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"Ima Customer\", f.gets)"
+    }
+  ],
+  "673": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Ima Customer\""
+    }
+  ],
+  "674": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Ima Customer"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "687": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", f.gets"
+    }
+  ],
+  "689": [
+    {
+      "state_id": 432,
+      "candidate": "identifier",
+      "candidate_text": "f"
+    }
+  ],
+  "690": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".gets"
+    }
+  ],
+  "691": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "gets"
+    }
+  ],
+  "695": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "707": [
+    {
+      "state_id": 4944,
+      "candidate": "ensure _statements",
+      "candidate_text": "ensure\n    File.delete(\"tmpfile\") if File.exist?(\"tmpfile\")"
+    }
+  ],
+  "718": [
+    {
+      "state_id": 299,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "722": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".delete"
+    }
+  ],
+  "723": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "delete"
+    }
+  ],
+  "729": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"tmpfile\")"
+    }
+  ],
+  "730": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"tmpfile\""
+    }
+  ],
+  "731": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "tmpfile"
+    }
+  ],
+  "738": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "739": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "741": [
+    {
+      "state_id": 4625,
+      "candidate": "if _expression",
+      "candidate_text": "if File.exist?(\"tmpfile\")"
+    }
+  ],
+  "744": [
+    {
+      "state_id": 520,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "748": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".exist?"
+    }
+  ],
+  "749": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "exist?"
+    }
+  ],
+  "755": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"tmpfile\")"
+    }
+  ],
+  "756": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"tmpfile\""
+    }
+  ],
+  "757": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "tmpfile"
+    }
+  ],
+  "764": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "765": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "769": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "773": [
+    {
+      "state_id": 5846,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

@@ -1,0 +1,2095 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "interface identifier object_type",
+      "candidate_text": "interface BlogPost {"
+    }
+  ],
+  "10": [
+    {
+      "state_id": 5602,
+      "candidate": "identifier object_type",
+      "candidate_text": "BlogPost {"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 3652,
+      "candidate": "{ property_signature object_type_repeat1 ; }",
+      "candidate_text": "{\n  title: string;\n  tags: string[];\n}"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 1380,
+      "candidate": "identifier",
+      "candidate_text": "title"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 3111,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 1110,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 3815,
+      "candidate": "; property_signature",
+      "candidate_text": ";\n  tags: string[]"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 1454,
+      "candidate": "identifier",
+      "candidate_text": "tags"
+    }
+  ],
+  "44": [
+    {
+      "state_id": 3111,
+      "candidate": ": type",
+      "candidate_text": ": string[]"
+    }
+  ],
+  "46": [
+    {
+      "state_id": 1110,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 3272,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 994,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 3864,
+      "candidate": "; }",
+      "candidate_text": ";\n}"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 1442,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 16,
+      "candidate": "statement",
+      "candidate_text": "//post.title = \"Welcome to Javascript\";"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 16,
+      "candidate": "statement",
+      "candidate_text": "/*"
+    }
+  ],
+  "193": [
+    {
+      "state_id": 16,
+      "candidate": "type identifier = type ;",
+      "candidate_text": "type Primitive = undefined | null | boolean | string | number | Function;"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 1285,
+      "candidate": "identifier = type ;",
+      "candidate_text": "Primitive = undefined | null | boolean | string | number | Function;"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 5005,
+      "candidate": "= type ;",
+      "candidate_text": "= undefined | null | boolean | string | number | Function;"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 1010,
+      "candidate": "undefined",
+      "candidate_text": "undefined"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 4254,
+      "candidate": "| type",
+      "candidate_text": "| null"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 1042,
+      "candidate": "null",
+      "candidate_text": "null"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 4254,
+      "candidate": "| type",
+      "candidate_text": "| boolean"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 1042,
+      "candidate": "boolean",
+      "candidate_text": "boolean"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 4254,
+      "candidate": "| type",
+      "candidate_text": "| string"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 1042,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "246": [
+    {
+      "state_id": 4254,
+      "candidate": "| type",
+      "candidate_text": "| number"
+    }
+  ],
+  "248": [
+    {
+      "state_id": 1042,
+      "candidate": "number",
+      "candidate_text": "number"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 4254,
+      "candidate": "| type",
+      "candidate_text": "| Function"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 1042,
+      "candidate": "identifier",
+      "candidate_text": "Function"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 4254,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 16,
+      "candidate": "export declaration",
+      "candidate_text": "export type DeepReadonly<T> = T extends Primitive"
+    }
+  ],
+  "274": [
+    {
+      "state_id": 696,
+      "candidate": "type identifier type_parameters = type ;",
+      "candidate_text": "type DeepReadonly<T> = T extends Primitive\n  ? T\n  : T extends Array<infer U>\n  ? ImmutableArray<U>\n  : T extends Map<infer K, infer V>\n  ? ImmutableMap<K, V>\n  : T extends Set<infer M>\n  ? ImmutableSet<M>\n  : ImmutableObject<T>;"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 4797,
+      "candidate": "identifier type_parameters = type ;",
+      "candidate_text": "DeepReadonly<T> = T extends Primitive\n  ? T\n  : T extends Array<infer U>\n  ? ImmutableArray<U>\n  : T extends Map<infer K, infer V>\n  ? ImmutableMap<K, V>\n  : T extends Set<infer M>\n  ? ImmutableSet<M>\n  : ImmutableObject<T>;"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 5005,
+      "candidate": "< type_parameter >",
+      "candidate_text": "<T>"
+    }
+  ],
+  "292": [
+    {
+      "state_id": 4996,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "293": [
+    {
+      "state_id": 4908,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 5614,
+      "candidate": "= type ;",
+      "candidate_text": "= T extends Primitive\n  ? T\n  : T extends Array<infer U>\n  ? ImmutableArray<U>\n  : T extends Map<infer K, infer V>\n  ? ImmutableMap<K, V>\n  : T extends Set<infer M>\n  ? ImmutableSet<M>\n  : ImmutableObject<T>;"
+    }
+  ],
+  "297": [
+    {
+      "state_id": 1115,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 4202,
+      "candidate": "extends type ? type : type",
+      "candidate_text": "extends Primitive\n  ? T\n  : T extends Array<infer U>"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 1146,
+      "candidate": "identifier",
+      "candidate_text": "Primitive"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 4489,
+      "candidate": "? type : type",
+      "candidate_text": "? T\n  : T extends Array<infer U>"
+    }
+  ],
+  "321": [
+    {
+      "state_id": 1071,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 4437,
+      "candidate": ": type",
+      "candidate_text": ": T extends Array<infer U>"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 1062,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 3244,
+      "candidate": "extends type ? type : type",
+      "candidate_text": "extends Array<infer U>\n  ? ImmutableArray<U>\n  : T extends Map<infer K, infer V>"
+    }
+  ],
+  "337": [
+    {
+      "state_id": 1146,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "Array<infer U>"
+    }
+  ],
+  "342": [
+    {
+      "state_id": 2923,
+      "candidate": "< type >",
+      "candidate_text": "<infer U>"
+    }
+  ],
+  "343": [
+    {
+      "state_id": 1098,
+      "candidate": "infer identifier",
+      "candidate_text": "infer U"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 5818,
+      "candidate": "identifier",
+      "candidate_text": "U"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "354": [
+    {
+      "state_id": 4489,
+      "candidate": "? type : type",
+      "candidate_text": "? ImmutableArray<U>\n  : T extends Map<infer K, infer V>"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 1071,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "ImmutableArray<U>"
+    }
+  ],
+  "370": [
+    {
+      "state_id": 2923,
+      "candidate": "< type >",
+      "candidate_text": "<U>"
+    }
+  ],
+  "371": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "U"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "376": [
+    {
+      "state_id": 4437,
+      "candidate": ": type",
+      "candidate_text": ": T extends Map<infer K, infer V>"
+    }
+  ],
+  "378": [
+    {
+      "state_id": 1062,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 3244,
+      "candidate": "extends type ? type : type",
+      "candidate_text": "extends Map<infer K, infer V>\n  ? ImmutableMap<K, V>\n  : T extends Set<infer M>"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 1146,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "Map<infer K, infer V>"
+    }
+  ],
+  "391": [
+    {
+      "state_id": 2923,
+      "candidate": "< type implements_clause_repeat1 >",
+      "candidate_text": "<infer K, infer V>"
+    }
+  ],
+  "392": [
+    {
+      "state_id": 1098,
+      "candidate": "infer identifier",
+      "candidate_text": "infer K"
+    }
+  ],
+  "398": [
+    {
+      "state_id": 5818,
+      "candidate": "identifier",
+      "candidate_text": "K"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 3775,
+      "candidate": ", type",
+      "candidate_text": ", infer V"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 989,
+      "candidate": "infer identifier",
+      "candidate_text": "infer V"
+    }
+  ],
+  "407": [
+    {
+      "state_id": 5818,
+      "candidate": "identifier",
+      "candidate_text": "V"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 4693,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 4489,
+      "candidate": "? type : type",
+      "candidate_text": "? ImmutableMap<K, V>\n  : T extends Set<infer M>"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 1071,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "ImmutableMap<K, V>"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 2923,
+      "candidate": "< type implements_clause_repeat1 >",
+      "candidate_text": "<K, V>"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "K"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 3775,
+      "candidate": ", type",
+      "candidate_text": ", V"
+    }
+  ],
+  "430": [
+    {
+      "state_id": 989,
+      "candidate": "identifier",
+      "candidate_text": "V"
+    }
+  ],
+  "431": [
+    {
+      "state_id": 4693,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 4437,
+      "candidate": ": type",
+      "candidate_text": ": T extends Set<infer M>"
+    }
+  ],
+  "437": [
+    {
+      "state_id": 1062,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "439": [
+    {
+      "state_id": 3244,
+      "candidate": "extends type ? type : type",
+      "candidate_text": "extends Set<infer M>\n  ? ImmutableSet<M>\n  : ImmutableObject<T>"
+    }
+  ],
+  "447": [
+    {
+      "state_id": 1146,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "Set<infer M>"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 2923,
+      "candidate": "< type >",
+      "candidate_text": "<infer M>"
+    }
+  ],
+  "451": [
+    {
+      "state_id": 1098,
+      "candidate": "infer identifier",
+      "candidate_text": "infer M"
+    }
+  ],
+  "457": [
+    {
+      "state_id": 5818,
+      "candidate": "identifier",
+      "candidate_text": "M"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 4489,
+      "candidate": "? type : type",
+      "candidate_text": "? ImmutableSet<M>\n  : ImmutableObject<T>"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 1071,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "ImmutableSet<M>"
+    }
+  ],
+  "476": [
+    {
+      "state_id": 2923,
+      "candidate": "< type >",
+      "candidate_text": "<M>"
+    }
+  ],
+  "477": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "M"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "482": [
+    {
+      "state_id": 4437,
+      "candidate": ": type",
+      "candidate_text": ": ImmutableObject<T>"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 1062,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "ImmutableObject<T>"
+    }
+  ],
+  "499": [
+    {
+      "state_id": 3077,
+      "candidate": "< type >",
+      "candidate_text": "<T>"
+    }
+  ],
+  "500": [
+    {
+      "state_id": 1001,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "501": [
+    {
+      "state_id": 3883,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "502": [
+    {
+      "state_id": 4202,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 16,
+      "candidate": "export declaration",
+      "candidate_text": "export type ImmutableArray<T> = ReadonlyArray<DeepReadonly<T>>;"
+    }
+  ],
+  "512": [
+    {
+      "state_id": 696,
+      "candidate": "type identifier type_parameters = type ;",
+      "candidate_text": "type ImmutableArray<T> = ReadonlyArray<DeepReadonly<T>>;"
+    }
+  ],
+  "517": [
+    {
+      "state_id": 4797,
+      "candidate": "identifier type_parameters = type ;",
+      "candidate_text": "ImmutableArray<T> = ReadonlyArray<DeepReadonly<T>>;"
+    }
+  ],
+  "531": [
+    {
+      "state_id": 5005,
+      "candidate": "< type_parameter >",
+      "candidate_text": "<T>"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 4996,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "533": [
+    {
+      "state_id": 4908,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "535": [
+    {
+      "state_id": 5614,
+      "candidate": "= type ;",
+      "candidate_text": "= ReadonlyArray<DeepReadonly<T>>;"
+    }
+  ],
+  "537": [
+    {
+      "state_id": 1115,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "ReadonlyArray<DeepReadonly<T>>"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 3077,
+      "candidate": "< type >",
+      "candidate_text": "<DeepReadonly<T>>"
+    }
+  ],
+  "551": [
+    {
+      "state_id": 1001,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "DeepReadonly<T>"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 2923,
+      "candidate": "< type >",
+      "candidate_text": "<T>"
+    }
+  ],
+  "564": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "565": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "566": [
+    {
+      "state_id": 3883,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 4202,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "569": [
+    {
+      "state_id": 16,
+      "candidate": "export declaration",
+      "candidate_text": "export type ImmutableMap<K, V> = ReadonlyMap<DeepReadonly<K>, DeepReadonly<V>>;"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 696,
+      "candidate": "type identifier type_parameters = type ;",
+      "candidate_text": "type ImmutableMap<K, V> = ReadonlyMap<DeepReadonly<K>, DeepReadonly<V>>;"
+    }
+  ],
+  "581": [
+    {
+      "state_id": 4797,
+      "candidate": "identifier type_parameters = type ;",
+      "candidate_text": "ImmutableMap<K, V> = ReadonlyMap<DeepReadonly<K>, DeepReadonly<V>>;"
+    }
+  ],
+  "593": [
+    {
+      "state_id": 5005,
+      "candidate": "< type_parameter type_parameters_repeat1 >",
+      "candidate_text": "<K, V>"
+    }
+  ],
+  "594": [
+    {
+      "state_id": 4996,
+      "candidate": "identifier",
+      "candidate_text": "K"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 4908,
+      "candidate": ", type_parameter",
+      "candidate_text": ", V"
+    }
+  ],
+  "597": [
+    {
+      "state_id": 4475,
+      "candidate": "identifier",
+      "candidate_text": "V"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 4713,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 5614,
+      "candidate": "= type ;",
+      "candidate_text": "= ReadonlyMap<DeepReadonly<K>, DeepReadonly<V>>;"
+    }
+  ],
+  "602": [
+    {
+      "state_id": 1115,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "ReadonlyMap<DeepReadonly<K>, DeepReadonly<V>>"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 3077,
+      "candidate": "< type implements_clause_repeat1 >",
+      "candidate_text": "<DeepReadonly<K>, DeepReadonly<V>>"
+    }
+  ],
+  "614": [
+    {
+      "state_id": 1001,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "DeepReadonly<K>"
+    }
+  ],
+  "626": [
+    {
+      "state_id": 2923,
+      "candidate": "< type >",
+      "candidate_text": "<K>"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "K"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 3883,
+      "candidate": ", type",
+      "candidate_text": ", DeepReadonly<V>"
+    }
+  ],
+  "631": [
+    {
+      "state_id": 983,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "DeepReadonly<V>"
+    }
+  ],
+  "643": [
+    {
+      "state_id": 2923,
+      "candidate": "< type >",
+      "candidate_text": "<V>"
+    }
+  ],
+  "644": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "V"
+    }
+  ],
+  "645": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "646": [
+    {
+      "state_id": 4542,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 4202,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "649": [
+    {
+      "state_id": 16,
+      "candidate": "export declaration",
+      "candidate_text": "export type ImmutableSet<T> = ReadonlySet<DeepReadonly<T>>;"
+    }
+  ],
+  "656": [
+    {
+      "state_id": 696,
+      "candidate": "type identifier type_parameters = type ;",
+      "candidate_text": "type ImmutableSet<T> = ReadonlySet<DeepReadonly<T>>;"
+    }
+  ],
+  "661": [
+    {
+      "state_id": 4797,
+      "candidate": "identifier type_parameters = type ;",
+      "candidate_text": "ImmutableSet<T> = ReadonlySet<DeepReadonly<T>>;"
+    }
+  ],
+  "673": [
+    {
+      "state_id": 5005,
+      "candidate": "< type_parameter >",
+      "candidate_text": "<T>"
+    }
+  ],
+  "674": [
+    {
+      "state_id": 4996,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "675": [
+    {
+      "state_id": 4908,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "677": [
+    {
+      "state_id": 5614,
+      "candidate": "= type ;",
+      "candidate_text": "= ReadonlySet<DeepReadonly<T>>;"
+    }
+  ],
+  "679": [
+    {
+      "state_id": 1115,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "ReadonlySet<DeepReadonly<T>>"
+    }
+  ],
+  "690": [
+    {
+      "state_id": 3077,
+      "candidate": "< type >",
+      "candidate_text": "<DeepReadonly<T>>"
+    }
+  ],
+  "691": [
+    {
+      "state_id": 1001,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "DeepReadonly<T>"
+    }
+  ],
+  "703": [
+    {
+      "state_id": 2923,
+      "candidate": "< type >",
+      "candidate_text": "<T>"
+    }
+  ],
+  "704": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "705": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "706": [
+    {
+      "state_id": 3883,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "707": [
+    {
+      "state_id": 4202,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "709": [
+    {
+      "state_id": 16,
+      "candidate": "export declaration",
+      "candidate_text": "export type ImmutableObject<T> = {"
+    }
+  ],
+  "716": [
+    {
+      "state_id": 696,
+      "candidate": "type identifier type_parameters = type ;",
+      "candidate_text": "type ImmutableObject<T> = {"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 4797,
+      "candidate": "identifier type_parameters = type ;",
+      "candidate_text": "ImmutableObject<T> = {"
+    }
+  ],
+  "736": [
+    {
+      "state_id": 5005,
+      "candidate": "< type_parameter >",
+      "candidate_text": "<T>"
+    }
+  ],
+  "737": [
+    {
+      "state_id": 4996,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "738": [
+    {
+      "state_id": 4908,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "740": [
+    {
+      "state_id": 5614,
+      "candidate": "= type ;",
+      "candidate_text": "= {"
+    }
+  ],
+  "742": [
+    {
+      "state_id": 1115,
+      "candidate": "{ index_signature ; }",
+      "candidate_text": "{\n  readonly [K in keyof T]: DeepReadonly<T[K]>;\n}"
+    }
+  ],
+  "746": [
+    {
+      "state_id": 1394,
+      "candidate": "readonly [ mapped_type_clause ] type_annotation",
+      "candidate_text": "readonly [K in keyof T]: DeepReadonly<T[K]>"
+    }
+  ],
+  "755": [
+    {
+      "state_id": 2244,
+      "candidate": "[ mapped_type_clause ] type_annotation",
+      "candidate_text": "[K in keyof T]: DeepReadonly<T[K]>"
+    }
+  ],
+  "756": [
+    {
+      "state_id": 353,
+      "candidate": "identifier in type",
+      "candidate_text": "K in keyof T"
+    }
+  ],
+  "758": [
+    {
+      "state_id": 1392,
+      "candidate": "in type",
+      "candidate_text": "in keyof T"
+    }
+  ],
+  "761": [
+    {
+      "state_id": 1126,
+      "candidate": "keyof primary_type",
+      "candidate_text": "keyof T"
+    }
+  ],
+  "767": [
+    {
+      "state_id": 1109,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "768": [
+    {
+      "state_id": 5605,
+      "candidate": "] type_annotation",
+      "candidate_text": "]: DeepReadonly<T[K]>"
+    }
+  ],
+  "769": [
+    {
+      "state_id": 3495,
+      "candidate": ": type",
+      "candidate_text": ": DeepReadonly<T[K]>"
+    }
+  ],
+  "771": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "DeepReadonly<T[K]>"
+    }
+  ],
+  "783": [
+    {
+      "state_id": 3077,
+      "candidate": "< type >",
+      "candidate_text": "<T[K]>"
+    }
+  ],
+  "784": [
+    {
+      "state_id": 1001,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "785": [
+    {
+      "state_id": 2981,
+      "candidate": "[ type ]",
+      "candidate_text": "[K]"
+    }
+  ],
+  "786": [
+    {
+      "state_id": 979,
+      "candidate": "identifier",
+      "candidate_text": "K"
+    }
+  ],
+  "787": [
+    {
+      "state_id": 4432,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "788": [
+    {
+      "state_id": 3883,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "789": [
+    {
+      "state_id": 3844,
+      "candidate": "; }",
+      "candidate_text": ";\n}"
+    }
+  ],
+  "791": [
+    {
+      "state_id": 1426,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "792": [
+    {
+      "state_id": 4202,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "795": [
+    {
+      "state_id": 16,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const post: DeepReadonly<BlogPost> = {"
+    }
+  ],
+  "801": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "post: DeepReadonly<BlogPost> = {"
+    }
+  ],
+  "805": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": DeepReadonly<BlogPost>"
+    }
+  ],
+  "807": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "DeepReadonly<BlogPost>"
+    }
+  ],
+  "819": [
+    {
+      "state_id": 3077,
+      "candidate": "< type >",
+      "candidate_text": "<BlogPost>"
+    }
+  ],
+  "820": [
+    {
+      "state_id": 1001,
+      "candidate": "identifier",
+      "candidate_text": "BlogPost"
+    }
+  ],
+  "828": [
+    {
+      "state_id": 3883,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "830": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= {"
+    }
+  ],
+  "832": [
+    {
+      "state_id": 423,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n  title: \"Welcome to Typescript\",\n  tags: [\"typescript\", \"learning\"],\n}"
+    }
+  ],
+  "836": [
+    {
+      "state_id": 1497,
+      "candidate": "identifier",
+      "candidate_text": "title"
+    }
+  ],
+  "841": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": \"Welcome to Typescript\""
+    }
+  ],
+  "843": [
+    {
+      "state_id": 278,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Welcome to Typescript\""
+    }
+  ],
+  "844": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Welcome to Typescript\""
+    }
+  ],
+  "865": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "866": [
+    {
+      "state_id": 4576,
+      "candidate": ", pair",
+      "candidate_text": ",\n  tags: [\"typescript\", \"learning\"]"
+    }
+  ],
+  "870": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "tags"
+    }
+  ],
+  "874": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": [\"typescript\", \"learning\"]"
+    }
+  ],
+  "876": [
+    {
+      "state_id": 672,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\"typescript\", \"learning\"]"
+    }
+  ],
+  "877": [
+    {
+      "state_id": 234,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"typescript\""
+    }
+  ],
+  "878": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "typescript\""
+    }
+  ],
+  "888": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "889": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ", \"learning\""
+    }
+  ],
+  "891": [
+    {
+      "state_id": 280,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"learning\""
+    }
+  ],
+  "892": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "learning\""
+    }
+  ],
+  "900": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "901": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "902": [
+    {
+      "state_id": 4965,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "904": [
+    {
+      "state_id": 4965,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "905": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "908": [
+    {
+      "state_id": 16,
+      "candidate": "( expression )",
+      "candidate_text": "(post.tags as string[])"
+    }
+  ],
+  "909": [
+    {
+      "state_id": 194,
+      "candidate": "identifier",
+      "candidate_text": "post"
+    }
+  ],
+  "913": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".tags"
+    }
+  ],
+  "914": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tags"
+    }
+  ],
+  "919": [
+    {
+      "state_id": 1832,
+      "candidate": "as type",
+      "candidate_text": "as string[]"
+    }
+  ],
+  "922": [
+    {
+      "state_id": 1112,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "928": [
+    {
+      "state_id": 1554,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "929": [
+    {
+      "state_id": 984,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "930": [
+    {
+      "state_id": 1832,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "931": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".push"
+    }
+  ],
+  "932": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "push"
+    }
+  ],
+  "936": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"demo\")"
+    }
+  ],
+  "937": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"demo\""
+    }
+  ],
+  "938": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "demo\""
+    }
+  ],
+  "942": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "943": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "944": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "947": [
+    {
+      "state_id": 9,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ works"
+    }
+  ],
+  "956": [
+    {
+      "state_id": 16,
+      "candidate": "import import_clause _from_clause ;",
+      "candidate_text": "import { List } from \"immutable\";"
+    }
+  ],
+  "963": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier }",
+      "candidate_text": "{ List }"
+    }
+  ],
+  "965": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "List"
+    }
+  ],
+  "970": [
+    {
+      "state_id": 5029,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "972": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from \"immutable\""
+    }
+  ],
+  "977": [
+    {
+      "state_id": 4661,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"immutable\""
+    }
+  ],
+  "978": [
+    {
+      "state_id": 4393,
+      "candidate": "string_fragment \"",
+      "candidate_text": "immutable\""
+    }
+  ],
+  "987": [
+    {
+      "state_id": 4476,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "988": [
+    {
+      "state_id": 4289,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "991": [
+    {
+      "state_id": 16,
+      "candidate": "interface identifier object_type",
+      "candidate_text": "interface ImmutableBlogPost {"
+    }
+  ],
+  "1001": [
+    {
+      "state_id": 5602,
+      "candidate": "identifier object_type",
+      "candidate_text": "ImmutableBlogPost {"
+    }
+  ],
+  "1019": [
+    {
+      "state_id": 3652,
+      "candidate": "{ property_signature object_type_repeat1 ; }",
+      "candidate_text": "{\n  title: string;\n  tags: List<string>;\n}"
+    }
+  ],
+  "1023": [
+    {
+      "state_id": 1380,
+      "candidate": "identifier",
+      "candidate_text": "title"
+    }
+  ],
+  "1028": [
+    {
+      "state_id": 3111,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "1030": [
+    {
+      "state_id": 1110,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "1036": [
+    {
+      "state_id": 3815,
+      "candidate": "; property_signature",
+      "candidate_text": ";\n  tags: List<string>"
+    }
+  ],
+  "1040": [
+    {
+      "state_id": 1454,
+      "candidate": "identifier",
+      "candidate_text": "tags"
+    }
+  ],
+  "1044": [
+    {
+      "state_id": 3111,
+      "candidate": ": type",
+      "candidate_text": ": List<string>"
+    }
+  ],
+  "1046": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "List<string>"
+    }
+  ],
+  "1050": [
+    {
+      "state_id": 3077,
+      "candidate": "< type >",
+      "candidate_text": "<string>"
+    }
+  ],
+  "1051": [
+    {
+      "state_id": 1001,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "1057": [
+    {
+      "state_id": 3883,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "1058": [
+    {
+      "state_id": 3864,
+      "candidate": "; }",
+      "candidate_text": ";\n}"
+    }
+  ],
+  "1060": [
+    {
+      "state_id": 1442,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1063": [
+    {
+      "state_id": 16,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const anotherPost: ImmutableBlogPost = {"
+    }
+  ],
+  "1069": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "anotherPost: ImmutableBlogPost = {"
+    }
+  ],
+  "1080": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": ImmutableBlogPost"
+    }
+  ],
+  "1082": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier",
+      "candidate_text": "ImmutableBlogPost"
+    }
+  ],
+  "1100": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= {"
+    }
+  ],
+  "1102": [
+    {
+      "state_id": 423,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n  title: \"Welcome to Typescript\",\n  tags: List([\"typescript\", \"learning\"]),\n}"
+    }
+  ],
+  "1106": [
+    {
+      "state_id": 1497,
+      "candidate": "identifier",
+      "candidate_text": "title"
+    }
+  ],
+  "1111": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": \"Welcome to Typescript\""
+    }
+  ],
+  "1113": [
+    {
+      "state_id": 278,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Welcome to Typescript\""
+    }
+  ],
+  "1114": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Welcome to Typescript\""
+    }
+  ],
+  "1135": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1136": [
+    {
+      "state_id": 4576,
+      "candidate": ", pair",
+      "candidate_text": ",\n  tags: List([\"typescript\", \"learning\"])"
+    }
+  ],
+  "1140": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "tags"
+    }
+  ],
+  "1144": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": List([\"typescript\", \"learning\"])"
+    }
+  ],
+  "1146": [
+    {
+      "state_id": 672,
+      "candidate": "identifier",
+      "candidate_text": "List"
+    }
+  ],
+  "1150": [
+    {
+      "state_id": 2425,
+      "candidate": "( expression )",
+      "candidate_text": "([\"typescript\", \"learning\"])"
+    }
+  ],
+  "1151": [
+    {
+      "state_id": 265,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\"typescript\", \"learning\"]"
+    }
+  ],
+  "1152": [
+    {
+      "state_id": 234,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"typescript\""
+    }
+  ],
+  "1153": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "typescript\""
+    }
+  ],
+  "1163": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1164": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ", \"learning\""
+    }
+  ],
+  "1166": [
+    {
+      "state_id": 280,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"learning\""
+    }
+  ],
+  "1167": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "learning\""
+    }
+  ],
+  "1175": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1176": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1177": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1178": [
+    {
+      "state_id": 4965,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "1180": [
+    {
+      "state_id": 4965,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1181": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1183": [
+    {
+      "state_id": 16,
+      "candidate": "( expression )",
+      "candidate_text": "(anotherPost.tags as any)"
+    }
+  ],
+  "1184": [
+    {
+      "state_id": 194,
+      "candidate": "identifier",
+      "candidate_text": "anotherPost"
+    }
+  ],
+  "1195": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".tags"
+    }
+  ],
+  "1196": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tags"
+    }
+  ],
+  "1201": [
+    {
+      "state_id": 1832,
+      "candidate": "as type",
+      "candidate_text": "as any"
+    }
+  ],
+  "1204": [
+    {
+      "state_id": 1112,
+      "candidate": "any",
+      "candidate_text": "any"
+    }
+  ],
+  "1207": [
+    {
+      "state_id": 1832,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1208": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".push"
+    }
+  ],
+  "1209": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "push"
+    }
+  ],
+  "1213": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"demo\")"
+    }
+  ],
+  "1214": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"demo\""
+    }
+  ],
+  "1215": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "demo\""
+    }
+  ],
+  "1219": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1220": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1221": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1223": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "1230": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "1231": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "1234": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(anotherPost.tags.toArray())"
+    }
+  ],
+  "1235": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "anotherPost"
+    }
+  ],
+  "1246": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".tags"
+    }
+  ],
+  "1247": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tags"
+    }
+  ],
+  "1251": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".toArray"
+    }
+  ],
+  "1252": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "toArray"
+    }
+  ],
+  "1259": [
+    {
+      "state_id": 2208,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1260": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1261": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1262": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

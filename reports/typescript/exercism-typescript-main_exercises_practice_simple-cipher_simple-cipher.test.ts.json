@@ -1,0 +1,3978 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { describe, xdescribe, it, expect, xit } from '@jest/globals'"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ describe, xdescribe, it, expect, xit }"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "17": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", xdescribe"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "xdescribe"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", it"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", expect"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", xit"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "46": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from '@jest/globals'"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'@jest/globals'"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "@jest/globals'"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 16,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { SimpleCipher } from './simple-cipher.ts'"
+    }
+  ],
+  "76": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier }",
+      "candidate_text": "{ SimpleCipher }"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "SimpleCipher"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 5029,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from './simple-cipher.ts'"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'./simple-cipher.ts'"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "./simple-cipher.ts'"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('Random key generation', () => {"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Random key generation'"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Random key generation'"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n  xit('generates keys at random', () => {\n    // Strictly speaking, this is difficult to test with 100% certainty.\n    // But, if you have a generator that generates 100-character-long\n    // strings of lowercase letters at random, the odds of two consecutively\n    // generated keys being identical are astronomically low.\n    expect(new SimpleCipher().key).not.toEqual(new SimpleCipher().key)\n  })\n}"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('generates keys at random', () => {\n    // Strictly speaking, this is difficult to test with 100% certainty.\n    // But, if you have a generator that generates 100-character-long\n    // strings of lowercase letters at random, the odds of two consecutively\n    // generated keys being identical are astronomically low.\n    expect(new SimpleCipher().key).not.toEqual(new SimpleCipher().key)\n  })"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 199,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'generates keys at random'"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "generates keys at random'"
+    }
+  ],
+  "193": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    // Strictly speaking, this is difficult to test with 100% certainty.\n "
+    }
+  ],
+  "208": [
+    {
+      "state_id": 8,
+      "candidate": "statement }",
+      "candidate_text": "// Strictly speaking, this is difficult to test with 100% certainty.\n "
+    }
+  ],
+  "281": [
+    {
+      "state_id": 8,
+      "candidate": "statement }",
+      "candidate_text": "// But, if you have a generator that generates 100-character-long"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 8,
+      "candidate": "statement }",
+      "candidate_text": "// strings of lowercase letters at random, the odds of two consecutive"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 8,
+      "candidate": "statement }",
+      "candidate_text": "// generated keys being identical are astronomically low.\n    expect(n"
+    }
+  ],
+  "490": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "496": [
+    {
+      "state_id": 3648,
+      "candidate": "( expression )",
+      "candidate_text": "(new SimpleCipher().key)"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new SimpleCipher()"
+    }
+  ],
+  "501": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "SimpleCipher"
+    }
+  ],
+  "513": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".key"
+    }
+  ],
+  "516": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 4621,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".not"
+    }
+  ],
+  "521": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "not"
+    }
+  ],
+  "524": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "525": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(new SimpleCipher().key)"
+    }
+  ],
+  "533": [
+    {
+      "state_id": 271,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new SimpleCipher()"
+    }
+  ],
+  "537": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "SimpleCipher"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "551": [
+    {
+      "state_id": 2208,
+      "candidate": ". identifier",
+      "candidate_text": ".key"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "559": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "560": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "562": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "566": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "xdescribe"
+    }
+  ],
+  "575": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('Random key cipher', () => {"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Random key cipher'"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Random key cipher'"
+    }
+  ],
+  "594": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "597": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "603": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  const simpleCipher = new SimpleCipher()"
+    }
+  ],
+  "607": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const simpleCipher = new SimpleCipher()"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "simpleCipher = new SimpleCipher()"
+    }
+  ],
+  "626": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= new SimpleCipher()"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 423,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new SimpleCipher()"
+    }
+  ],
+  "632": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "SimpleCipher"
+    }
+  ],
+  "644": [
+    {
+      "state_id": 1696,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "645": [
+    {
+      "state_id": 271,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "650": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "652": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('has a key made of letters', () => {\n    expect(simpleCipher.key).toMatch(/^[a-z]+$/)\n  })"
+    }
+  ],
+  "653": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'has a key made of letters'"
+    }
+  ],
+  "654": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "has a key made of letters'"
+    }
+  ],
+  "679": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "680": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "682": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "683": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "685": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "688": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.key).toMatch(/^[a-z]+$/)\n  }"
+    }
+  ],
+  "694": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "700": [
+    {
+      "state_id": 3648,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.key)"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "713": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".key"
+    }
+  ],
+  "714": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "717": [
+    {
+      "state_id": 4621,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "718": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toMatch"
+    }
+  ],
+  "719": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toMatch"
+    }
+  ],
+  "726": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(/^[a-z]+$/)"
+    }
+  ],
+  "727": [
+    {
+      "state_id": 271,
+      "candidate": "/ regex_pattern /",
+      "candidate_text": "/^[a-z]+$/"
+    }
+  ],
+  "728": [
+    {
+      "state_id": 5668,
+      "candidate": "regex_pattern /",
+      "candidate_text": "^[a-z]+$/"
+    }
+  ],
+  "736": [
+    {
+      "state_id": 5649,
+      "candidate": "/",
+      "candidate_text": "/"
+    }
+  ],
+  "737": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "741": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "742": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "747": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "750": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('has a key that is at least 100 characters long', () => {\n    expect(simpleCipher.key.length).toBeGreaterThanOrEqual(100)\n  })"
+    }
+  ],
+  "751": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'has a key that is at least 100 characters long'"
+    }
+  ],
+  "752": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "has a key that is at least 100 characters long'"
+    }
+  ],
+  "798": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "799": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "801": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "802": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "804": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "807": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.key.length).toBeGreaterThanOrEqual(100)\n  }"
+    }
+  ],
+  "813": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "819": [
+    {
+      "state_id": 3648,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.key.length)"
+    }
+  ],
+  "820": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "832": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".key"
+    }
+  ],
+  "833": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "836": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "837": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "843": [
+    {
+      "state_id": 4621,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "844": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBeGreaterThanOrEqual"
+    }
+  ],
+  "845": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBeGreaterThanOrEqual"
+    }
+  ],
+  "867": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(100)"
+    }
+  ],
+  "868": [
+    {
+      "state_id": 271,
+      "candidate": "number",
+      "candidate_text": "100"
+    }
+  ],
+  "871": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "875": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "876": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "880": [
+    {
+      "state_id": 22,
+      "candidate": "program_repeat1",
+      "candidate_text": " // Here we take advantage of the fact that plaintext of \"aaa...\""
+    }
+  ],
+  "948": [
+    {
+      "state_id": 22,
+      "candidate": "program_repeat1",
+      "candidate_text": "// outputs the key. This is a critical problem with shift ciphers, some"
+    }
+  ],
+  "1022": [
+    {
+      "state_id": 22,
+      "candidate": "program_repeat1",
+      "candidate_text": "// characters will always output the key verbatim."
+    }
+  ],
+  "1075": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1078": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('can encode', () => {\n    expect(simpleCipher.encode('aaaaaaaaaa')).toEqual(\n      simpleCipher.key.substring(0, 10)\n    )\n  })"
+    }
+  ],
+  "1079": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'can encode'"
+    }
+  ],
+  "1080": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "can encode'"
+    }
+  ],
+  "1090": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1091": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1093": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1094": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1096": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1099": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.encode('aaaaaaaaaa')).toEqual(\n      simpleCipher.key.substring(0, 10)\n    )\n  }"
+    }
+  ],
+  "1105": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1111": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.encode('aaaaaaaaaa'))"
+    }
+  ],
+  "1112": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1124": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".encode"
+    }
+  ],
+  "1125": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "encode"
+    }
+  ],
+  "1131": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('aaaaaaaaaa')"
+    }
+  ],
+  "1132": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'aaaaaaaaaa'"
+    }
+  ],
+  "1133": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "aaaaaaaaaa'"
+    }
+  ],
+  "1143": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1144": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1145": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1146": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1147": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1154": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      simpleCipher.key.substring(0, 10)\n    )"
+    }
+  ],
+  "1162": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1174": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".key"
+    }
+  ],
+  "1175": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "1178": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".substring"
+    }
+  ],
+  "1179": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "substring"
+    }
+  ],
+  "1188": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(0, 10)"
+    }
+  ],
+  "1189": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "1190": [
+    {
+      "state_id": 2142,
+      "candidate": ", expression",
+      "candidate_text": ", 10"
+    }
+  ],
+  "1192": [
+    {
+      "state_id": 289,
+      "candidate": "number",
+      "candidate_text": "10"
+    }
+  ],
+  "1194": [
+    {
+      "state_id": 4647,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1200": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1204": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1205": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1210": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1213": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('can decode', () => {\n    expect(simpleCipher.decode(simpleCipher.key.substring(0, 10))).toEqual(\n      'aaaaaaaaaa'\n    )\n  })"
+    }
+  ],
+  "1214": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'can decode'"
+    }
+  ],
+  "1215": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "can decode'"
+    }
+  ],
+  "1225": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1226": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1228": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1229": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1231": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1234": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.decode(simpleCipher.key.substring(0, 10))).toEqual(\n      'aaaaaaaaaa'\n    )\n  }"
+    }
+  ],
+  "1240": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1246": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.decode(simpleCipher.key.substring(0, 10)))"
+    }
+  ],
+  "1247": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1259": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".decode"
+    }
+  ],
+  "1260": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "decode"
+    }
+  ],
+  "1266": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.key.substring(0, 10))"
+    }
+  ],
+  "1267": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1279": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".key"
+    }
+  ],
+  "1280": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "1283": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".substring"
+    }
+  ],
+  "1284": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "substring"
+    }
+  ],
+  "1293": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(0, 10)"
+    }
+  ],
+  "1294": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "1295": [
+    {
+      "state_id": 2142,
+      "candidate": ", expression",
+      "candidate_text": ", 10"
+    }
+  ],
+  "1297": [
+    {
+      "state_id": 289,
+      "candidate": "number",
+      "candidate_text": "10"
+    }
+  ],
+  "1299": [
+    {
+      "state_id": 4647,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1300": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1301": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1302": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1303": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1310": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      'aaaaaaaaaa'\n    )"
+    }
+  ],
+  "1318": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'aaaaaaaaaa'"
+    }
+  ],
+  "1319": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "aaaaaaaaaa'"
+    }
+  ],
+  "1329": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1335": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1339": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1340": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1345": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1348": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('is reversible', () => {\n    const plaintext = 'abcdefghij'\n    expect(simpleCipher.decode(simpleCipher.encode(plaintext))).toEqual(\n      plaintext\n    )\n  })"
+    }
+  ],
+  "1349": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'is reversible'"
+    }
+  ],
+  "1350": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "is reversible'"
+    }
+  ],
+  "1363": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1364": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1366": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1367": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1369": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1372": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const plaintext = 'abcdefghij'\n    expect(simpleCipher.decode(simpleCipher.encode(plaintext))).toEqual(\n      plaintext\n    )\n  }"
+    }
+  ],
+  "1378": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const plaintext = 'abcdefghij'"
+    }
+  ],
+  "1384": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "plaintext = 'abcdefghij'"
+    }
+  ],
+  "1394": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 'abcdefghij'"
+    }
+  ],
+  "1396": [
+    {
+      "state_id": 423,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'abcdefghij'"
+    }
+  ],
+  "1397": [
+    {
+      "state_id": 4411,
+      "candidate": "string_fragment '",
+      "candidate_text": "abcdefghij'"
+    }
+  ],
+  "1407": [
+    {
+      "state_id": 4456,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1413": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1419": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.decode(simpleCipher.encode(plaintext)))"
+    }
+  ],
+  "1420": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1432": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".decode"
+    }
+  ],
+  "1433": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "decode"
+    }
+  ],
+  "1439": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.encode(plaintext))"
+    }
+  ],
+  "1440": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1452": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".encode"
+    }
+  ],
+  "1453": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "encode"
+    }
+  ],
+  "1459": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression )",
+      "candidate_text": "(plaintext)"
+    }
+  ],
+  "1460": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "plaintext"
+    }
+  ],
+  "1469": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1470": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1471": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1472": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1473": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1480": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      plaintext\n    )"
+    }
+  ],
+  "1488": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "plaintext"
+    }
+  ],
+  "1502": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1506": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1507": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1509": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1510": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1513": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "xdescribe"
+    }
+  ],
+  "1522": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('Substitution cipher', () => {"
+    }
+  ],
+  "1523": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Substitution cipher'"
+    }
+  ],
+  "1524": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Substitution cipher'"
+    }
+  ],
+  "1543": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1544": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1546": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1547": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1549": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1552": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  const key = 'abcdefghij'"
+    }
+  ],
+  "1556": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const key = 'abcdefghij'"
+    }
+  ],
+  "1562": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "key = 'abcdefghij'"
+    }
+  ],
+  "1566": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 'abcdefghij'"
+    }
+  ],
+  "1568": [
+    {
+      "state_id": 423,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'abcdefghij'"
+    }
+  ],
+  "1569": [
+    {
+      "state_id": 4411,
+      "candidate": "string_fragment '",
+      "candidate_text": "abcdefghij'"
+    }
+  ],
+  "1579": [
+    {
+      "state_id": 4456,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1583": [
+    {
+      "state_id": 22,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const simpleCipher = new SimpleCipher(key)"
+    }
+  ],
+  "1589": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "simpleCipher = new SimpleCipher(key)"
+    }
+  ],
+  "1602": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= new SimpleCipher(key)"
+    }
+  ],
+  "1604": [
+    {
+      "state_id": 423,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new SimpleCipher(key)"
+    }
+  ],
+  "1608": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "SimpleCipher"
+    }
+  ],
+  "1620": [
+    {
+      "state_id": 1696,
+      "candidate": "( expression )",
+      "candidate_text": "(key)"
+    }
+  ],
+  "1621": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "1624": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1629": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1632": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('keeps the submitted key', () => {\n    expect(simpleCipher.key).toEqual(key)\n  })"
+    }
+  ],
+  "1633": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'keeps the submitted key'"
+    }
+  ],
+  "1634": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "keeps the submitted key'"
+    }
+  ],
+  "1657": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1658": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1660": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1661": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1663": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1666": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.key).toEqual(key)\n  }"
+    }
+  ],
+  "1672": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1678": [
+    {
+      "state_id": 3648,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.key)"
+    }
+  ],
+  "1679": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1691": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".key"
+    }
+  ],
+  "1692": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "1695": [
+    {
+      "state_id": 4621,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1696": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1697": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1704": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(key)"
+    }
+  ],
+  "1705": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "1708": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1712": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1713": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1718": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1721": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('can encode', () => {\n    expect(simpleCipher.encode('aaaaaaaaaa')).toEqual('abcdefghij')\n  })"
+    }
+  ],
+  "1722": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'can encode'"
+    }
+  ],
+  "1723": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "can encode'"
+    }
+  ],
+  "1733": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1734": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1736": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1737": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1739": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1742": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.encode('aaaaaaaaaa')).toEqual('abcdefghij')\n  }"
+    }
+  ],
+  "1748": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1754": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.encode('aaaaaaaaaa'))"
+    }
+  ],
+  "1755": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1767": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".encode"
+    }
+  ],
+  "1768": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "encode"
+    }
+  ],
+  "1774": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('aaaaaaaaaa')"
+    }
+  ],
+  "1775": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'aaaaaaaaaa'"
+    }
+  ],
+  "1776": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "aaaaaaaaaa'"
+    }
+  ],
+  "1786": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1787": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1788": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1789": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1790": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1797": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('abcdefghij')"
+    }
+  ],
+  "1798": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'abcdefghij'"
+    }
+  ],
+  "1799": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "abcdefghij'"
+    }
+  ],
+  "1809": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1810": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1814": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1815": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1820": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1823": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('can decode', () => {\n    expect(simpleCipher.decode('abcdefghij')).toEqual('aaaaaaaaaa')\n  })"
+    }
+  ],
+  "1824": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'can decode'"
+    }
+  ],
+  "1825": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "can decode'"
+    }
+  ],
+  "1835": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1836": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1838": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1839": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1841": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1844": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.decode('abcdefghij')).toEqual('aaaaaaaaaa')\n  }"
+    }
+  ],
+  "1850": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1856": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.decode('abcdefghij'))"
+    }
+  ],
+  "1857": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1869": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".decode"
+    }
+  ],
+  "1870": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "decode"
+    }
+  ],
+  "1876": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('abcdefghij')"
+    }
+  ],
+  "1877": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'abcdefghij'"
+    }
+  ],
+  "1878": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "abcdefghij'"
+    }
+  ],
+  "1888": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1889": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1890": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1891": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1892": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1899": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('aaaaaaaaaa')"
+    }
+  ],
+  "1900": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'aaaaaaaaaa'"
+    }
+  ],
+  "1901": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "aaaaaaaaaa'"
+    }
+  ],
+  "1911": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1912": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1916": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1917": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1922": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1925": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('is reversible', () => {\n    expect(simpleCipher.decode(simpleCipher.encode('abcdefghij'))).toEqual(\n      'abcdefghij'\n    )\n  })"
+    }
+  ],
+  "1926": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'is reversible'"
+    }
+  ],
+  "1927": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "is reversible'"
+    }
+  ],
+  "1940": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1941": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1943": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1944": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1946": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1949": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.decode(simpleCipher.encode('abcdefghij'))).toEqual(\n      'abcdefghij'\n    )\n  }"
+    }
+  ],
+  "1955": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1961": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.decode(simpleCipher.encode('abcdefghij')))"
+    }
+  ],
+  "1962": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1974": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".decode"
+    }
+  ],
+  "1975": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "decode"
+    }
+  ],
+  "1981": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.encode('abcdefghij'))"
+    }
+  ],
+  "1982": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "1994": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".encode"
+    }
+  ],
+  "1995": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "encode"
+    }
+  ],
+  "2001": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression )",
+      "candidate_text": "('abcdefghij')"
+    }
+  ],
+  "2002": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'abcdefghij'"
+    }
+  ],
+  "2003": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "abcdefghij'"
+    }
+  ],
+  "2013": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2014": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2015": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2016": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2017": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2018": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2025": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      'abcdefghij'\n    )"
+    }
+  ],
+  "2033": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'abcdefghij'"
+    }
+  ],
+  "2034": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "abcdefghij'"
+    }
+  ],
+  "2044": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2050": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2054": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2055": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2060": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2063": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(': double shift encode', () => {\n    expect(new SimpleCipher('iamapandabear').encode('iamapandabear')).toEqual(\n      'qayaeaagaciai'\n    )\n  })"
+    }
+  ],
+  "2064": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "': double shift encode'"
+    }
+  ],
+  "2065": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": ": double shift encode'"
+    }
+  ],
+  "2086": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2087": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2089": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2090": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2092": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2095": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(new SimpleCipher('iamapandabear').encode('iamapandabear')).toEqual(\n      'qayaeaagaciai'\n    )\n  }"
+    }
+  ],
+  "2101": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2107": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(new SimpleCipher('iamapandabear').encode('iamapandabear'))"
+    }
+  ],
+  "2108": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new SimpleCipher('iamapandabear')"
+    }
+  ],
+  "2112": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "SimpleCipher"
+    }
+  ],
+  "2124": [
+    {
+      "state_id": 1501,
+      "candidate": "( expression )",
+      "candidate_text": "('iamapandabear')"
+    }
+  ],
+  "2125": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'iamapandabear'"
+    }
+  ],
+  "2126": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "iamapandabear'"
+    }
+  ],
+  "2139": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2140": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2141": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".encode"
+    }
+  ],
+  "2142": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "encode"
+    }
+  ],
+  "2148": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('iamapandabear')"
+    }
+  ],
+  "2149": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'iamapandabear'"
+    }
+  ],
+  "2150": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "iamapandabear'"
+    }
+  ],
+  "2163": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2164": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2165": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2166": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2167": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2174": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      'qayaeaagaciai'\n    )"
+    }
+  ],
+  "2182": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'qayaeaagaciai'"
+    }
+  ],
+  "2183": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "qayaeaagaciai'"
+    }
+  ],
+  "2196": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2202": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2206": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2207": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2212": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2215": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('can wrap on encode', () => {\n    expect(simpleCipher.encode('zzzzzzzzzz')).toEqual('zabcdefghi')\n  })"
+    }
+  ],
+  "2216": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'can wrap on encode'"
+    }
+  ],
+  "2217": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "can wrap on encode'"
+    }
+  ],
+  "2235": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2236": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2238": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2239": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2241": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2244": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.encode('zzzzzzzzzz')).toEqual('zabcdefghi')\n  }"
+    }
+  ],
+  "2250": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2256": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.encode('zzzzzzzzzz'))"
+    }
+  ],
+  "2257": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "2269": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".encode"
+    }
+  ],
+  "2270": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "encode"
+    }
+  ],
+  "2276": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('zzzzzzzzzz')"
+    }
+  ],
+  "2277": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'zzzzzzzzzz'"
+    }
+  ],
+  "2278": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "zzzzzzzzzz'"
+    }
+  ],
+  "2288": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2289": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2290": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2291": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2292": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2299": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('zabcdefghi')"
+    }
+  ],
+  "2300": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'zabcdefghi'"
+    }
+  ],
+  "2301": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "zabcdefghi'"
+    }
+  ],
+  "2311": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2312": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2316": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2317": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2322": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2325": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('can wrap on decode', () => {\n    expect(simpleCipher.decode('zabcdefghi')).toEqual('zzzzzzzzzz')\n  })"
+    }
+  ],
+  "2326": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'can wrap on decode'"
+    }
+  ],
+  "2327": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "can wrap on decode'"
+    }
+  ],
+  "2345": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2346": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2348": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2349": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2351": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2354": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(simpleCipher.decode('zabcdefghi')).toEqual('zzzzzzzzzz')\n  }"
+    }
+  ],
+  "2360": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2366": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(simpleCipher.decode('zabcdefghi'))"
+    }
+  ],
+  "2367": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "simpleCipher"
+    }
+  ],
+  "2379": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".decode"
+    }
+  ],
+  "2380": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "decode"
+    }
+  ],
+  "2386": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('zabcdefghi')"
+    }
+  ],
+  "2387": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'zabcdefghi'"
+    }
+  ],
+  "2388": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "zabcdefghi'"
+    }
+  ],
+  "2398": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2399": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2400": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2401": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2402": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2409": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('zzzzzzzzzz')"
+    }
+  ],
+  "2410": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'zzzzzzzzzz'"
+    }
+  ],
+  "2411": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "zzzzzzzzzz'"
+    }
+  ],
+  "2421": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2422": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2426": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2427": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2432": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2435": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('can encode messages longer than the key\"', () => {\n    expect(new SimpleCipher('abc').encode('iamapandabear')).toEqual(\n      'iboaqcnecbfcr'\n    )\n  })"
+    }
+  ],
+  "2436": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'can encode messages longer than the key\"'"
+    }
+  ],
+  "2437": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "can encode messages longer than the key\"'"
+    }
+  ],
+  "2477": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2478": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2480": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2481": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2483": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2486": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(new SimpleCipher('abc').encode('iamapandabear')).toEqual(\n      'iboaqcnecbfcr'\n    )\n  }"
+    }
+  ],
+  "2492": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2498": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(new SimpleCipher('abc').encode('iamapandabear'))"
+    }
+  ],
+  "2499": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new SimpleCipher('abc')"
+    }
+  ],
+  "2503": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "SimpleCipher"
+    }
+  ],
+  "2515": [
+    {
+      "state_id": 1501,
+      "candidate": "( expression )",
+      "candidate_text": "('abc')"
+    }
+  ],
+  "2516": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'abc'"
+    }
+  ],
+  "2517": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "abc'"
+    }
+  ],
+  "2520": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2521": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2522": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".encode"
+    }
+  ],
+  "2523": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "encode"
+    }
+  ],
+  "2529": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('iamapandabear')"
+    }
+  ],
+  "2530": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'iamapandabear'"
+    }
+  ],
+  "2531": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "iamapandabear'"
+    }
+  ],
+  "2544": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2545": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2546": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2547": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2548": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2555": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      'iboaqcnecbfcr'\n    )"
+    }
+  ],
+  "2563": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'iboaqcnecbfcr'"
+    }
+  ],
+  "2564": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "iboaqcnecbfcr'"
+    }
+  ],
+  "2577": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2583": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2587": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2588": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2593": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2596": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('can decode messages longer than the key', () => {\n    expect(new SimpleCipher('abc').decode('iboaqcnecbfcr')).toEqual(\n      'iamapandabear'\n    )\n  })"
+    }
+  ],
+  "2597": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'can decode messages longer than the key'"
+    }
+  ],
+  "2598": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "can decode messages longer than the key'"
+    }
+  ],
+  "2637": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2638": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2640": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2641": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2643": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2646": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(new SimpleCipher('abc').decode('iboaqcnecbfcr')).toEqual(\n      'iamapandabear'\n    )\n  }"
+    }
+  ],
+  "2652": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2658": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(new SimpleCipher('abc').decode('iboaqcnecbfcr'))"
+    }
+  ],
+  "2659": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new SimpleCipher('abc')"
+    }
+  ],
+  "2663": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "SimpleCipher"
+    }
+  ],
+  "2675": [
+    {
+      "state_id": 1501,
+      "candidate": "( expression )",
+      "candidate_text": "('abc')"
+    }
+  ],
+  "2676": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'abc'"
+    }
+  ],
+  "2677": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "abc'"
+    }
+  ],
+  "2680": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2681": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2682": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".decode"
+    }
+  ],
+  "2683": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "decode"
+    }
+  ],
+  "2689": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('iboaqcnecbfcr')"
+    }
+  ],
+  "2690": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'iboaqcnecbfcr'"
+    }
+  ],
+  "2691": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "iboaqcnecbfcr'"
+    }
+  ],
+  "2704": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2705": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2706": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2707": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2708": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2715": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      'iamapandabear'\n    )"
+    }
+  ],
+  "2723": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'iamapandabear'"
+    }
+  ],
+  "2724": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "iamapandabear'"
+    }
+  ],
+  "2737": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2743": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2747": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2748": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2750": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2751": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

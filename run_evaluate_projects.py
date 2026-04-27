@@ -287,7 +287,7 @@ def load_json(path):
 
 
 def run_at_position(lang_arg, lib, target_file, byte_offset, work_dir):
-    cmd = [EXE_PATH, lang_arg, lib, target_file, "--byte", str(byte_offset), "2"]
+    cmd = [EXE_PATH, lang_arg, lib, target_file, str(byte_offset), "2"]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True,
                                encoding="utf-8", errors="replace", cwd=work_dir)

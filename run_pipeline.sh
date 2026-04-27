@@ -11,7 +11,6 @@
 #   --skip-learn-collect   Step 1(LEARN 컬렉션) 만 건너뜀
 #   --skip-test-collect    Step 2(TEST 컬렉션) 만 건너뜀
 #   --skip-collect         Step 1 + Step 2 모두 건너뜀 (위 두 옵션의 조합)
-#   --per-project          Step 4 평가 완료 후 프로젝트별 결과도 집계하여 출력
 #
 # 지원 언어:
 #   smallbasic   sb
@@ -33,7 +32,6 @@ TS_DIR="$(cd "$(dirname "$0")" && pwd)"
 # =================[ 인자 파싱 ]=================
 SKIP_LEARN_COLLECT=false
 SKIP_TEST_COLLECT=false
-PER_PROJECT=false
 LEARN_ONLY=false
 
 _POSITIONAL=()
@@ -42,7 +40,6 @@ for arg in "$@"; do
         --skip-collect)       SKIP_LEARN_COLLECT=true; SKIP_TEST_COLLECT=true ;;
         --skip-learn-collect) SKIP_LEARN_COLLECT=true ;;
         --skip-test-collect)  SKIP_TEST_COLLECT=true ;;
-        --per-project)        PER_PROJECT=true ;;
         --learn-only)         LEARN_ONLY=true ;;
         *)                    _POSITIONAL+=("$arg") ;;
     esac
@@ -211,16 +208,13 @@ echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
 echo ""
 
 # --- Step 4: 랭크 + 커버리지 평가 (통합) ---
-# 캡처 대상: [Global] 통계 줄 / [LANG_UPPER] 통계 줄 / [Per-Project] 통계 줄 / [Saved] 줄
+# 캡처 대상: [Global] 통계 줄 / [LANG_UPPER] 통계 줄 / [Saved] 줄
 echo ">>> [Step 4/4] Evaluate (rank + coverage)"
 echo "    Script : evaluate_coverage.py  (lang=$COVERAGE_LANG)"
-[ "$PER_PROJECT" = true ] && echo "    Mode   : --per-project enabled"
 STEP_START=$(date +%s)
-EXTRA_ARGS=""
-[ "$PER_PROJECT" = true ] && EXTRA_ARGS="$EXTRA_ARGS --per-project"
 cd "$TS_DIR" && _pylog "Step4 evaluate($LANG)" \
     '^\[Global\]|\[[A-Z][A-Z0-9_-]*\] (Total Queries|Top-10 Count|Top11~20|Beyond Top|CPP Fail|Found[[:space:]]|Not Found|Fail[[:space:]]*)|\[Saved\]' \
-    "$TS_DIR/evaluate_coverage.py" "$COVERAGE_LANG" $EXTRA_ARGS
+    "$TS_DIR/evaluate_coverage.py" "$COVERAGE_LANG"
 echo "    Elapsed: $(( $(date +%s) - STEP_START ))s"
 echo ""
 

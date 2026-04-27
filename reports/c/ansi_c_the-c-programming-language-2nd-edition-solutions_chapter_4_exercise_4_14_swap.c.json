@@ -1,0 +1,464 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <stdio.h>"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 1392,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<stdio.h>"
+    }
+  ],
+  "18": [
+    {
+      "state_id": 1816,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "22": [
+    {
+      "state_id": 44,
+      "candidate": "#define identifier preproc_params preproc_arg preproc_include_token2",
+      "candidate_text": "#define swap(t, x, y) \\\r\n  {                   \\\r\n    t temp;           \\\r\n    temp = x;         \\\r\n    x = y;            \\\r\n    y = temp;         \\\r\n  };\r"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 1879,
+      "candidate": "identifier preproc_params preproc_arg preproc_include_token2",
+      "candidate_text": "swap(t, x, y) \\\r\n  {                   \\\r\n    t temp;           \\\r\n    temp = x;         \\\r\n    x = y;            \\\r\n    y = temp;         \\\r\n  };\r"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 1528,
+      "candidate": "( identifier preproc_params_repeat1 )",
+      "candidate_text": "(t, x, y)"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 1649,
+      "candidate": "identifier preproc_params_repeat1 )",
+      "candidate_text": "t, x, y)"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 1631,
+      "candidate": ", identifier",
+      "candidate_text": ", x"
+    }
+  ],
+  "38": [
+    {
+      "state_id": 1707,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 1586,
+      "candidate": ", identifier",
+      "candidate_text": ", y"
+    }
+  ],
+  "41": [
+    {
+      "state_id": 1707,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 1586,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 1684,
+      "candidate": "preproc_arg preproc_include_token2",
+      "candidate_text": "{                   \\\r\n    t temp;           \\\r\n    temp = x;         \\\r\n    x = y;            \\\r\n    y = temp;         \\\r\n  };\r"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 1784,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "180": [
+    {
+      "state_id": 44,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "184": [
+    {
+      "state_id": 1128,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 1356,
+      "candidate": "( parameter_declaration )",
+      "candidate_text": "(void)"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 624,
+      "candidate": "primitive_type",
+      "candidate_text": "void"
+    }
+  ],
+  "193": [
+    {
+      "state_id": 1598,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 1356,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n  int x = 2, y = 3;"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 23,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 1139,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 1361,
+      "candidate": "= expression",
+      "candidate_text": "= 2"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 459,
+      "candidate": "number_literal",
+      "candidate_text": "2"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 1592,
+      "candidate": ", init_declarator",
+      "candidate_text": ", y = 3"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 1148,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 1457,
+      "candidate": "= expression",
+      "candidate_text": "= 3"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 459,
+      "candidate": "number_literal",
+      "candidate_text": "3"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 1619,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 25,
+      "candidate": "identifier",
+      "candidate_text": "printf"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 1056,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(\"x: %d, y: %d\\n\", x, y)"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 451,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"x: %d, y: %d\\n\""
+    }
+  ],
+  "232": [
+    {
+      "state_id": 1531,
+      "candidate": "string_content escape_sequence",
+      "candidate_text": "x: %d, y: %d\\n"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 1547,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "246": [
+    {
+      "state_id": 1547,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "247": [
+    {
+      "state_id": 1018,
+      "candidate": ", expression",
+      "candidate_text": ", x"
+    }
+  ],
+  "249": [
+    {
+      "state_id": 476,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 1572,
+      "candidate": ", expression",
+      "candidate_text": ", y"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 476,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 1572,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 1056,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 25,
+      "candidate": "identifier",
+      "candidate_text": "swap"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 1056,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(int, x, y)"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 451,
+      "candidate": "identifier",
+      "candidate_text": "int"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 1018,
+      "candidate": ", expression",
+      "candidate_text": ", x"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 476,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 1572,
+      "candidate": ", expression",
+      "candidate_text": ", y"
+    }
+  ],
+  "274": [
+    {
+      "state_id": 476,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 1572,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 1056,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "281": [
+    {
+      "state_id": 25,
+      "candidate": "identifier",
+      "candidate_text": "printf"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 1056,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(\"x: %d, y: %d\\n\", x, y)"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 451,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"x: %d, y: %d\\n\""
+    }
+  ],
+  "289": [
+    {
+      "state_id": 1531,
+      "candidate": "string_content escape_sequence",
+      "candidate_text": "x: %d, y: %d\\n"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 1547,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "303": [
+    {
+      "state_id": 1547,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "304": [
+    {
+      "state_id": 1018,
+      "candidate": ", expression",
+      "candidate_text": ", x"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 476,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 1572,
+      "candidate": ", expression",
+      "candidate_text": ", y"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 476,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "310": [
+    {
+      "state_id": 1572,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "311": [
+    {
+      "state_id": 1056,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "318": [
+    {
+      "state_id": 25,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 475,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "326": [
+    {
+      "state_id": 1070,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 25,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

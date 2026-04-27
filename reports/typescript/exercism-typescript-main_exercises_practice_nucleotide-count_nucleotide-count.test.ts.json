@@ -1,0 +1,1808 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { describe, it, expect, xit } from '@jest/globals'"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ describe, it, expect, xit }"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "17": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", it"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", expect"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", xit"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from '@jest/globals'"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'@jest/globals'"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "@jest/globals'"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 16,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { nucleotideCounts } from './nucleotide-count.ts'"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier }",
+      "candidate_text": "{ nucleotideCounts }"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "nucleotideCounts"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 5029,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "86": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from './nucleotide-count.ts'"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'./nucleotide-count.ts'"
+    }
+  ],
+  "92": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "./nucleotide-count.ts'"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('count all nucleotides in a strand', () => {"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'count all nucleotides in a strand'"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "count all nucleotides in a strand'"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  it('empty strand', () => {"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('empty strand', () => {\n    const expected = {\n      A: 0,\n      C: 0,\n      G: 0,\n      T: 0,\n    }\n    expect(nucleotideCounts('')).toEqual(expected)\n  })"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 199,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'empty strand'"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "empty strand'"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const expected = {\n      A: 0,\n      C: 0,\n      G: 0,\n      T: 0,\n    }\n    expect(nucleotideCounts('')).toEqual(expected)\n  }"
+    }
+  ],
+  "203": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const expected = {"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "expected = {"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= {"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 423,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n      A: 0,\n      C: 0,\n      G: 0,\n      T: 0,\n    }"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 1497,
+      "candidate": "identifier",
+      "candidate_text": "A"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 4576,
+      "candidate": ", pair",
+      "candidate_text": ",\n      C: 0"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "C"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n      G: 0"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "G"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n      T: 0"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 4965,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "274": [
+    {
+      "state_id": 4965,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(nucleotideCounts(''))"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "nucleotideCounts"
+    }
+  ],
+  "303": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('')"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 265,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "308": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "316": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(expected)"
+    }
+  ],
+  "317": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "330": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('can count one nucleotide in single-character input', () => {\n    const expected = {\n      A: 0,\n      C: 0,\n      G: 1,\n      T: 0,\n    }\n    expect(nucleotideCounts('G')).toEqual(expected)\n  })"
+    }
+  ],
+  "339": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'can count one nucleotide in single-character input'"
+    }
+  ],
+  "340": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "can count one nucleotide in single-character input'"
+    }
+  ],
+  "390": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "391": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "393": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "394": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const expected = {\n      A: 0,\n      C: 0,\n      G: 1,\n      T: 0,\n    }\n    expect(nucleotideCounts('G')).toEqual(expected)\n  }"
+    }
+  ],
+  "405": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const expected = {"
+    }
+  ],
+  "411": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "expected = {"
+    }
+  ],
+  "420": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= {"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 423,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n      A: 0,\n      C: 0,\n      G: 1,\n      T: 0,\n    }"
+    }
+  ],
+  "430": [
+    {
+      "state_id": 1497,
+      "candidate": "identifier",
+      "candidate_text": "A"
+    }
+  ],
+  "431": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "434": [
+    {
+      "state_id": 4576,
+      "candidate": ", pair",
+      "candidate_text": ",\n      C: 0"
+    }
+  ],
+  "442": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "C"
+    }
+  ],
+  "443": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "445": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n      G: 1"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "G"
+    }
+  ],
+  "455": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 1"
+    }
+  ],
+  "457": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n      T: 0"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "467": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "469": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "470": [
+    {
+      "state_id": 4965,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "476": [
+    {
+      "state_id": 4965,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "482": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(nucleotideCounts('G'))"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "nucleotideCounts"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('G')"
+    }
+  ],
+  "506": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'G'"
+    }
+  ],
+  "507": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "G'"
+    }
+  ],
+  "508": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "509": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "510": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "512": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(expected)"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "528": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "533": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('strand with repeated nucleotide', () => {\n    const expected = {\n      A: 0,\n      C: 0,\n      G: 7,\n      T: 0,\n    }\n    expect(nucleotideCounts('GGGGGGG')).toEqual(expected)\n  })"
+    }
+  ],
+  "542": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'strand with repeated nucleotide'"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "strand with repeated nucleotide'"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "575": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "578": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "580": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const expected = {\n      A: 0,\n      C: 0,\n      G: 7,\n      T: 0,\n    }\n    expect(nucleotideCounts('GGGGGGG')).toEqual(expected)\n  }"
+    }
+  ],
+  "589": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const expected = {"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "expected = {"
+    }
+  ],
+  "604": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= {"
+    }
+  ],
+  "606": [
+    {
+      "state_id": 423,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n      A: 0,\n      C: 0,\n      G: 7,\n      T: 0,\n    }"
+    }
+  ],
+  "614": [
+    {
+      "state_id": 1497,
+      "candidate": "identifier",
+      "candidate_text": "A"
+    }
+  ],
+  "615": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "617": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "618": [
+    {
+      "state_id": 4576,
+      "candidate": ", pair",
+      "candidate_text": ",\n      C: 0"
+    }
+  ],
+  "626": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "C"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "630": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n      G: 7"
+    }
+  ],
+  "638": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "G"
+    }
+  ],
+  "639": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 7"
+    }
+  ],
+  "641": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "7"
+    }
+  ],
+  "642": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n      T: 0"
+    }
+  ],
+  "650": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "651": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 0"
+    }
+  ],
+  "653": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "654": [
+    {
+      "state_id": 4965,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "660": [
+    {
+      "state_id": 4965,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "666": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "672": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(nucleotideCounts('GGGGGGG'))"
+    }
+  ],
+  "673": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "nucleotideCounts"
+    }
+  ],
+  "689": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('GGGGGGG')"
+    }
+  ],
+  "690": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'GGGGGGG'"
+    }
+  ],
+  "691": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "GGGGGGG'"
+    }
+  ],
+  "698": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "700": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "709": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(expected)"
+    }
+  ],
+  "710": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "718": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "722": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "723": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "728": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "731": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('strand with multiple nucleotides', () => {\n    const expected = {\n      A: 20,\n      C: 12,\n      G: 17,\n      T: 21,\n    }\n    expect(\n      nucleotideCounts(\n        'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'\n      )\n    ).toEqual(expected)\n  })"
+    }
+  ],
+  "732": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'strand with multiple nucleotides'"
+    }
+  ],
+  "733": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "strand with multiple nucleotides'"
+    }
+  ],
+  "765": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "766": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "768": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "769": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "771": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "774": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const expected = {\n      A: 20,\n      C: 12,\n      G: 17,\n      T: 21,\n    }\n    expect(\n      nucleotideCounts(\n        'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'\n      )\n    ).toEqual(expected)\n  }"
+    }
+  ],
+  "780": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const expected = {"
+    }
+  ],
+  "786": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "expected = {"
+    }
+  ],
+  "795": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= {"
+    }
+  ],
+  "797": [
+    {
+      "state_id": 423,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n      A: 20,\n      C: 12,\n      G: 17,\n      T: 21,\n    }"
+    }
+  ],
+  "805": [
+    {
+      "state_id": 1497,
+      "candidate": "identifier",
+      "candidate_text": "A"
+    }
+  ],
+  "806": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 20"
+    }
+  ],
+  "808": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "20"
+    }
+  ],
+  "810": [
+    {
+      "state_id": 4576,
+      "candidate": ", pair",
+      "candidate_text": ",\n      C: 12"
+    }
+  ],
+  "818": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "C"
+    }
+  ],
+  "819": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 12"
+    }
+  ],
+  "821": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "12"
+    }
+  ],
+  "823": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n      G: 17"
+    }
+  ],
+  "831": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "G"
+    }
+  ],
+  "832": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 17"
+    }
+  ],
+  "834": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "17"
+    }
+  ],
+  "836": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n      T: 21"
+    }
+  ],
+  "844": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "845": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 21"
+    }
+  ],
+  "847": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "21"
+    }
+  ],
+  "849": [
+    {
+      "state_id": 4965,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "855": [
+    {
+      "state_id": 4965,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "861": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "867": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      nucleotideCounts(\n        'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'\n      )\n    )"
+    }
+  ],
+  "875": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "nucleotideCounts"
+    }
+  ],
+  "891": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(\n        'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'\n      )"
+    }
+  ],
+  "901": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'"
+    }
+  ],
+  "902": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'"
+    }
+  ],
+  "972": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "980": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "986": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "987": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "988": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "995": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(expected)"
+    }
+  ],
+  "996": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "1004": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1008": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1009": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1014": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1017": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('strand with invalid nucleotides', () => {\n    const expected = 'Invalid nucleotide in strand'\n    expect(() => {\n      nucleotideCounts('AGXXACT')\n    }).toThrow(expected)\n  })"
+    }
+  ],
+  "1018": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'strand with invalid nucleotides'"
+    }
+  ],
+  "1019": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "strand with invalid nucleotides'"
+    }
+  ],
+  "1050": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1051": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1053": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1054": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1056": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1059": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const expected = 'Invalid nucleotide in strand'\n    expect(() => {\n      nucleotideCounts('AGXXACT')\n    }).toThrow(expected)\n  }"
+    }
+  ],
+  "1065": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const expected = 'Invalid nucleotide in strand'"
+    }
+  ],
+  "1071": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "expected = 'Invalid nucleotide in strand'"
+    }
+  ],
+  "1080": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 'Invalid nucleotide in strand'"
+    }
+  ],
+  "1082": [
+    {
+      "state_id": 423,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Invalid nucleotide in strand'"
+    }
+  ],
+  "1083": [
+    {
+      "state_id": 4411,
+      "candidate": "string_fragment '",
+      "candidate_text": "Invalid nucleotide in strand'"
+    }
+  ],
+  "1111": [
+    {
+      "state_id": 4456,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1117": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1123": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(() => {\n      nucleotideCounts('AGXXACT')\n    })"
+    }
+  ],
+  "1124": [
+    {
+      "state_id": 271,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1125": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1127": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1130": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n      nucleotideCounts('AGXXACT')\n    }"
+    }
+  ],
+  "1138": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "nucleotideCounts"
+    }
+  ],
+  "1154": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('AGXXACT')"
+    }
+  ],
+  "1155": [
+    {
+      "state_id": 199,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'AGXXACT'"
+    }
+  ],
+  "1156": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "AGXXACT'"
+    }
+  ],
+  "1163": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1164": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1170": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1171": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1172": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toThrow"
+    }
+  ],
+  "1173": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toThrow"
+    }
+  ],
+  "1180": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(expected)"
+    }
+  ],
+  "1181": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "1189": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1193": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1194": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1196": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1197": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

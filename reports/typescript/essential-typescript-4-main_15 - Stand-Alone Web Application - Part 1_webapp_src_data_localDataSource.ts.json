@@ -1,0 +1,1591 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause ;",
+      "candidate_text": "import { AbstractDataSource } from \"./abstractDataSource\";"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier }",
+      "candidate_text": "{ AbstractDataSource }"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "AbstractDataSource"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 5029,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from \"./abstractDataSource\""
+    }
+  ],
+  "35": [
+    {
+      "state_id": 4661,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"./abstractDataSource\""
+    }
+  ],
+  "36": [
+    {
+      "state_id": 4393,
+      "candidate": "string_fragment \"",
+      "candidate_text": "./abstractDataSource\""
+    }
+  ],
+  "56": [
+    {
+      "state_id": 4476,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "57": [
+    {
+      "state_id": 4289,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 16,
+      "candidate": "import import_clause _from_clause ;",
+      "candidate_text": "import { Product } from \"./entities\";"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier }",
+      "candidate_text": "{ Product }"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "Product"
+    }
+  ],
+  "76": [
+    {
+      "state_id": 5029,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from \"./entities\""
+    }
+  ],
+  "83": [
+    {
+      "state_id": 4661,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"./entities\""
+    }
+  ],
+  "84": [
+    {
+      "state_id": 4393,
+      "candidate": "string_fragment \"",
+      "candidate_text": "./entities\""
+    }
+  ],
+  "94": [
+    {
+      "state_id": 4476,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "95": [
+    {
+      "state_id": 4289,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 16,
+      "candidate": "export declaration",
+      "candidate_text": "export class LocalDataSource extends AbstractDataSource {"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 696,
+      "candidate": "class identifier class_heritage class_body _automatic_semicolon",
+      "candidate_text": "class LocalDataSource extends AbstractDataSource {"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 5793,
+      "candidate": "identifier class_heritage class_body _automatic_semicolon",
+      "candidate_text": "LocalDataSource extends AbstractDataSource {"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 3441,
+      "candidate": "extends _extends_clause_single",
+      "candidate_text": "extends AbstractDataSource"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 369,
+      "candidate": "identifier",
+      "candidate_text": "AbstractDataSource"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 5219,
+      "candidate": "{ class_body_repeat1 }",
+      "candidate_text": "{\n \n        loadProducts(): Promise<Product[]> {"
+    }
+  ],
+  "166": [
+    {
+      "state_id": 1484,
+      "candidate": "identifier",
+      "candidate_text": "loadProducts"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 3062,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 197,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": Promise<Product[]>"
+    }
+  ],
+  "182": [
+    {
+      "state_id": 959,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "Promise<Product[]>"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 3129,
+      "candidate": "< type >",
+      "candidate_text": "<Product[]>"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 1014,
+      "candidate": "identifier",
+      "candidate_text": "Product"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 3768,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 3900,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n            return Promise.resolve([\n                { id: 1, name: \"P1\", category: \"Watersports\",\n                    description: \"P1 (Watersports)\", price: 3 },\n                { id: 2, name: \"P2\", category: \"Watersports\",\n                    description: \"P2 (Watersports)\", price: 4 },\n                { id: 3, name: \"P3\", category: \"Running\",\n                    description: \"P3 (Running)\", price: 5 },\n                { id: 4, name: \"P4\", category: \"Chess\",\n                    description: \"P4 (Chess)\", price: 6 },\n                { id: 5, name: \"P5\", category: \"Chess\",\n                    description: \"P6 (Chess)\", price: 7 },\n            ]);\n        }"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 29,
+      "candidate": "return expression ;",
+      "candidate_text": "return Promise.resolve([\n                { id: 1, name: \"P1\", category: \"Watersports\",\n                    description: \"P1 (Watersports)\", price: 3 },\n                { id: 2, name: \"P2\", category: \"Watersports\",\n                    description: \"P2 (Watersports)\", price: 4 },\n                { id: 3, name: \"P3\", category: \"Running\",\n                    description: \"P3 (Running)\", price: 5 },\n                { id: 4, name: \"P4\", category: \"Chess\",\n                    description: \"P4 (Chess)\", price: 6 },\n                { id: 5, name: \"P5\", category: \"Chess\",\n                    description: \"P6 (Chess)\", price: 7 },\n            ]);"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 297,
+      "candidate": "identifier",
+      "candidate_text": "Promise"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".resolve"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "resolve"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 1905,
+      "candidate": "( expression )",
+      "candidate_text": "([\n                { id: 1, name: \"P1\", category: \"Watersports\",\n                    description: \"P1 (Watersports)\", price: 3 },\n                { id: 2, name: \"P2\", category: \"Watersports\",\n                    description: \"P2 (Watersports)\", price: 4 },\n                { id: 3, name: \"P3\", category: \"Running\",\n                    description: \"P3 (Running)\", price: 5 },\n                { id: 4, name: \"P4\", category: \"Chess\",\n                    description: \"P4 (Chess)\", price: 6 },\n                { id: 5, name: \"P5\", category: \"Chess\",\n                    description: \"P6 (Chess)\", price: 7 },\n            ])"
+    }
+  ],
+  "238": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n                { id: 1, name: \"P1\", category: \"Watersports\",\n                    description: \"P1 (Watersports)\", price: 3 },\n                { id: 2, name: \"P2\", category: \"Watersports\",\n                    description: \"P2 (Watersports)\", price: 4 },\n                { id: 3, name: \"P3\", category: \"Running\",\n                    description: \"P3 (Running)\", price: 5 },\n                { id: 4, name: \"P4\", category: \"Chess\",\n                    description: \"P4 (Chess)\", price: 6 },\n                { id: 5, name: \"P5\", category: \"Chess\",\n                    description: \"P6 (Chess)\", price: 7 },\n            ]"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 234,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{ id: 1, name: \"P1\", category: \"Watersports\",\n                    description: \"P1 (Watersports)\", price: 3 }"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "id"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 1"
+    }
+  ],
+  "262": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "263": [
+    {
+      "state_id": 4721,
+      "candidate": ", pair",
+      "candidate_text": ", name: \"P1\""
+    }
+  ],
+  "265": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P1\""
+    }
+  ],
+  "271": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P1\""
+    }
+  ],
+  "272": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P1\""
+    }
+  ],
+  "274": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "275": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", category: \"Watersports\""
+    }
+  ],
+  "277": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "category"
+    }
+  ],
+  "285": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"Watersports\""
+    }
+  ],
+  "287": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Watersports\""
+    }
+  ],
+  "288": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Watersports\""
+    }
+  ],
+  "299": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "300": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ",\n                    description: \"P1 (Watersports)\""
+    }
+  ],
+  "322": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "description"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P1 (Watersports)\""
+    }
+  ],
+  "335": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P1 (Watersports)\""
+    }
+  ],
+  "336": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P1 (Watersports)\""
+    }
+  ],
+  "352": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "353": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", price: 3"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "price"
+    }
+  ],
+  "360": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 3"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "3"
+    }
+  ],
+  "364": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n                { id: 2, name: \"P2\", category: \"Watersports\","
+    }
+  ],
+  "383": [
+    {
+      "state_id": 280,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{ id: 2, name: \"P2\", category: \"Watersports\",\n                    description: \"P2 (Watersports)\", price: 4 }"
+    }
+  ],
+  "385": [
+    {
+      "state_id": 1500,
+      "candidate": "identifier",
+      "candidate_text": "id"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 2"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "2"
+    }
+  ],
+  "390": [
+    {
+      "state_id": 4721,
+      "candidate": ", pair",
+      "candidate_text": ", name: \"P2\""
+    }
+  ],
+  "392": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P2\""
+    }
+  ],
+  "398": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P2\""
+    }
+  ],
+  "399": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P2\""
+    }
+  ],
+  "401": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "402": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", category: \"Watersports\""
+    }
+  ],
+  "404": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "category"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"Watersports\""
+    }
+  ],
+  "414": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Watersports\""
+    }
+  ],
+  "415": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Watersports\""
+    }
+  ],
+  "426": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "427": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ",\n                    description: \"P2 (Watersports)\""
+    }
+  ],
+  "449": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "description"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P2 (Watersports)\""
+    }
+  ],
+  "462": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P2 (Watersports)\""
+    }
+  ],
+  "463": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P2 (Watersports)\""
+    }
+  ],
+  "479": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "480": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", price: 4"
+    }
+  ],
+  "482": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "price"
+    }
+  ],
+  "487": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 4"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "4"
+    }
+  ],
+  "491": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "492": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n                { id: 3, name: \"P3\", category: \"Running\","
+    }
+  ],
+  "510": [
+    {
+      "state_id": 280,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{ id: 3, name: \"P3\", category: \"Running\",\n                    description: \"P3 (Running)\", price: 5 }"
+    }
+  ],
+  "512": [
+    {
+      "state_id": 1500,
+      "candidate": "identifier",
+      "candidate_text": "id"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 3"
+    }
+  ],
+  "516": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "3"
+    }
+  ],
+  "517": [
+    {
+      "state_id": 4721,
+      "candidate": ", pair",
+      "candidate_text": ", name: \"P3\""
+    }
+  ],
+  "519": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "523": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P3\""
+    }
+  ],
+  "525": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P3\""
+    }
+  ],
+  "526": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P3\""
+    }
+  ],
+  "528": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "529": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", category: \"Running\""
+    }
+  ],
+  "531": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "category"
+    }
+  ],
+  "539": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"Running\""
+    }
+  ],
+  "541": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Running\""
+    }
+  ],
+  "542": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Running\""
+    }
+  ],
+  "549": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "550": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ",\n                    description: \"P3 (Running)\""
+    }
+  ],
+  "572": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "description"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P3 (Running)\""
+    }
+  ],
+  "585": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P3 (Running)\""
+    }
+  ],
+  "586": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P3 (Running)\""
+    }
+  ],
+  "598": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "599": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", price: 5"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "price"
+    }
+  ],
+  "606": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 5"
+    }
+  ],
+  "608": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "5"
+    }
+  ],
+  "610": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "611": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n                { id: 4, name: \"P4\", category: \"Chess\","
+    }
+  ],
+  "629": [
+    {
+      "state_id": 280,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{ id: 4, name: \"P4\", category: \"Chess\",\n                    description: \"P4 (Chess)\", price: 6 }"
+    }
+  ],
+  "631": [
+    {
+      "state_id": 1500,
+      "candidate": "identifier",
+      "candidate_text": "id"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 4"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "4"
+    }
+  ],
+  "636": [
+    {
+      "state_id": 4721,
+      "candidate": ", pair",
+      "candidate_text": ", name: \"P4\""
+    }
+  ],
+  "638": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "642": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P4\""
+    }
+  ],
+  "644": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P4\""
+    }
+  ],
+  "645": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P4\""
+    }
+  ],
+  "647": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "648": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", category: \"Chess\""
+    }
+  ],
+  "650": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "category"
+    }
+  ],
+  "658": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"Chess\""
+    }
+  ],
+  "660": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Chess\""
+    }
+  ],
+  "661": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Chess\""
+    }
+  ],
+  "666": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "667": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ",\n                    description: \"P4 (Chess)\""
+    }
+  ],
+  "689": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "description"
+    }
+  ],
+  "700": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P4 (Chess)\""
+    }
+  ],
+  "702": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P4 (Chess)\""
+    }
+  ],
+  "703": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P4 (Chess)\""
+    }
+  ],
+  "713": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "714": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", price: 6"
+    }
+  ],
+  "716": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "price"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 6"
+    }
+  ],
+  "723": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "6"
+    }
+  ],
+  "725": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "726": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n                { id: 5, name: \"P5\", category: \"Chess\","
+    }
+  ],
+  "744": [
+    {
+      "state_id": 280,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{ id: 5, name: \"P5\", category: \"Chess\",\n                    description: \"P6 (Chess)\", price: 7 }"
+    }
+  ],
+  "746": [
+    {
+      "state_id": 1500,
+      "candidate": "identifier",
+      "candidate_text": "id"
+    }
+  ],
+  "748": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 5"
+    }
+  ],
+  "750": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "5"
+    }
+  ],
+  "751": [
+    {
+      "state_id": 4721,
+      "candidate": ", pair",
+      "candidate_text": ", name: \"P5\""
+    }
+  ],
+  "753": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "757": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P5\""
+    }
+  ],
+  "759": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P5\""
+    }
+  ],
+  "760": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P5\""
+    }
+  ],
+  "762": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "763": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", category: \"Chess\""
+    }
+  ],
+  "765": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "category"
+    }
+  ],
+  "773": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"Chess\""
+    }
+  ],
+  "775": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Chess\""
+    }
+  ],
+  "776": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Chess\""
+    }
+  ],
+  "781": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "782": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ",\n                    description: \"P6 (Chess)\""
+    }
+  ],
+  "804": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "description"
+    }
+  ],
+  "815": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": \"P6 (Chess)\""
+    }
+  ],
+  "817": [
+    {
+      "state_id": 672,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"P6 (Chess)\""
+    }
+  ],
+  "818": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "P6 (Chess)\""
+    }
+  ],
+  "828": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "829": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ", price: 7"
+    }
+  ],
+  "831": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "price"
+    }
+  ],
+  "836": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 7"
+    }
+  ],
+  "838": [
+    {
+      "state_id": 672,
+      "candidate": "number",
+      "candidate_text": "7"
+    }
+  ],
+  "840": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "841": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "855": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "856": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "857": [
+    {
+      "state_id": 1905,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "867": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "878": [
+    {
+      "state_id": 1492,
+      "candidate": "identifier",
+      "candidate_text": "storeOrder"
+    }
+  ],
+  "888": [
+    {
+      "state_id": 3062,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "889": [
+    {
+      "state_id": 197,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "890": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": Promise<number>"
+    }
+  ],
+  "892": [
+    {
+      "state_id": 959,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "Promise<number>"
+    }
+  ],
+  "899": [
+    {
+      "state_id": 3129,
+      "candidate": "< type >",
+      "candidate_text": "<number>"
+    }
+  ],
+  "900": [
+    {
+      "state_id": 1014,
+      "candidate": "number",
+      "candidate_text": "number"
+    }
+  ],
+  "906": [
+    {
+      "state_id": 3768,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "908": [
+    {
+      "state_id": 3900,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n            console.log(\"Store Order\");\n            console.log(JSON.stringify(this.order));\n            return Promise.resolve(1);\n        }"
+    }
+  ],
+  "922": [
+    {
+      "state_id": 29,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "929": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "930": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "933": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Store Order\")"
+    }
+  ],
+  "934": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Store Order\""
+    }
+  ],
+  "935": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Store Order\""
+    }
+  ],
+  "946": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "947": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "948": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "962": [
+    {
+      "state_id": 27,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "969": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "970": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "973": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(JSON.stringify(this.order))"
+    }
+  ],
+  "974": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "JSON"
+    }
+  ],
+  "978": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".stringify"
+    }
+  ],
+  "979": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "stringify"
+    }
+  ],
+  "988": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(this.order)"
+    }
+  ],
+  "989": [
+    {
+      "state_id": 265,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "993": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".order"
+    }
+  ],
+  "994": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "order"
+    }
+  ],
+  "999": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1000": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1001": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1015": [
+    {
+      "state_id": 27,
+      "candidate": "return expression ;",
+      "candidate_text": "return Promise.resolve(1);"
+    }
+  ],
+  "1022": [
+    {
+      "state_id": 297,
+      "candidate": "identifier",
+      "candidate_text": "Promise"
+    }
+  ],
+  "1029": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".resolve"
+    }
+  ],
+  "1030": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "resolve"
+    }
+  ],
+  "1037": [
+    {
+      "state_id": 1905,
+      "candidate": "( expression )",
+      "candidate_text": "(1)"
+    }
+  ],
+  "1038": [
+    {
+      "state_id": 271,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "1039": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1040": [
+    {
+      "state_id": 1905,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1050": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "1052": [
+    {
+      "state_id": 1492,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

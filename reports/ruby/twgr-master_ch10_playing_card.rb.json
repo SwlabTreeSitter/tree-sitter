@@ -1,0 +1,807 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class PlayingCard\n  SUITS = %w(clubs diamonds hearts spades)\n  RANKS = %w(2 3 4 5 6 7 8 9 10 J Q K A)\n  class Deck\n    def cards\n      @cards.to_enum\n    end\n    def initialize(n=1)\n      @cards = []\n      SUITS.cycle(n) do |s|\n        RANKS.cycle(1) do |r|\n          @cards << \"#{r} of #{s}\"\n        end\n      end\n    end\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "PlayingCard\n  SUITS = %w(clubs diamonds hearts spades)\n  RANKS = %w(2 3 4 5 6 7 8 9 10 J Q K A)\n  class Deck\n    def cards\n      @cards.to_enum\n    end\n    def initialize(n=1)\n      @cards = []\n      SUITS.cycle(n) do |s|\n        RANKS.cycle(1) do |r|\n          @cards << \"#{r} of #{s}\"\n        end\n      end\n    end\n  end\nend"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 217,
+      "candidate": "constant",
+      "candidate_text": "SUITS"
+    }
+  ],
+  "26": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= %w(clubs diamonds hearts spades)"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 462,
+      "candidate": "%w( _literal_contents string_array_repeat1 )",
+      "candidate_text": "%w(clubs diamonds hearts spades)"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 4979,
+      "candidate": "string_content",
+      "candidate_text": "clubs"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 4887,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " diamonds"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 5209,
+      "candidate": "string_content",
+      "candidate_text": "diamonds"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " hearts"
+    }
+  ],
+  "46": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "hearts"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " spades"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "spades"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 5574,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "63": [
+    {
+      "state_id": 252,
+      "candidate": "constant",
+      "candidate_text": "RANKS"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= %w(2 3 4 5 6 7 8 9 10 J Q K A)"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 462,
+      "candidate": "%w( _literal_contents string_array_repeat1 )",
+      "candidate_text": "%w(2 3 4 5 6 7 8 9 10 J Q K A)"
+    }
+  ],
+  "74": [
+    {
+      "state_id": 4979,
+      "candidate": "string_content",
+      "candidate_text": "2"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 4887,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 3"
+    }
+  ],
+  "76": [
+    {
+      "state_id": 5209,
+      "candidate": "string_content",
+      "candidate_text": "3"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 4"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "4"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 5"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "5"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 6"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "6"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 7"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "7"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 8"
+    }
+  ],
+  "86": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "8"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 9"
+    }
+  ],
+  "88": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "9"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 10"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "10"
+    }
+  ],
+  "92": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " J"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "J"
+    }
+  ],
+  "94": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " Q"
+    }
+  ],
+  "95": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "Q"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " K"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "K"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 5574,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " A"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 5206,
+      "candidate": "string_content",
+      "candidate_text": "A"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 5574,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 252,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Deck\n    def cards\n      @cards.to_enum\n    end\n    def initialize(n=1)\n      @cards = []\n      SUITS.cycle(n) do |s|\n        RANKS.cycle(1) do |r|\n          @cards << \"#{r} of #{s}\"\n        end\n      end\n    end\n  end"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Deck\n    def cards\n      @cards.to_enum\n    end\n    def initialize(n=1)\n      @cards = []\n      SUITS.cycle(n) do |s|\n        RANKS.cycle(1) do |r|\n          @cards << \"#{r} of #{s}\"\n        end\n      end\n    end\n  end"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 217,
+      "candidate": "def _method_rest",
+      "candidate_text": "def cards"
+    }
+  ],
+  "123": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "cards"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@cards"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".to_enum"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "to_enum"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(n=1)"
+    }
+  ],
+  "166": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(n=1)"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier = _arg",
+      "candidate_text": "n=1"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 5461,
+      "candidate": "= _arg",
+      "candidate_text": "=1"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 1311,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@cards"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= []"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 462,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 424,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 252,
+      "candidate": "constant",
+      "candidate_text": "SUITS"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".cycle"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "cycle"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(n)"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "n"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "221": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |s|\n        RANKS.cycle(1) do |r|\n          @cards << \"#{r} of #{s}\"\n        end\n      end"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|s|"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "s"
+    }
+  ],
+  "226": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 242,
+      "candidate": "constant",
+      "candidate_text": "RANKS"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".cycle"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "cycle"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(1)"
+    }
+  ],
+  "248": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "249": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |r|\n          @cards << \"#{r} of #{s}\"\n        end"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|r|"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "r"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 242,
+      "candidate": "instance_variable",
+      "candidate_text": "@cards"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 2812,
+      "candidate": "<< _arg",
+      "candidate_text": "<< \"#{r} of #{s}\""
+    }
+  ],
+  "278": [
+    {
+      "state_id": 1219,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"#{r} of #{s}\""
+    }
+  ],
+  "279": [
+    {
+      "state_id": 5084,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{r}"
+    }
+  ],
+  "281": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "r"
+    }
+  ],
+  "282": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "283": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " of "
+    }
+  ],
+  "287": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{s}"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "s"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "301": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "311": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "deck"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= PlayingCard::Deck.new(2)"
+    }
+  ],
+  "340": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "PlayingCard"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 2860,
+      "candidate": ":: constant",
+      "candidate_text": "::Deck"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 3088,
+      "candidate": "constant",
+      "candidate_text": "Deck"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "358": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "361": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(2)"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "2"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "370": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "deck"
+    }
+  ],
+  "374": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".cards"
+    }
+  ],
+  "375": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "cards"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".to_a"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "to_a"
+    }
+  ],
+  "385": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".size"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ]
+}

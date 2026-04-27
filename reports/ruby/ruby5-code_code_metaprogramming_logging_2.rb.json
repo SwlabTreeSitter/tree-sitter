@@ -1,0 +1,611 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Logger\n  def self.add_logging(id_string)\n    define_method(:log) do |msg|\n      now = Time.now.strftime(\"%H:%M:%S\")\n      $stderr.puts(\"#{now}-#{id_string}: #{self} (#{msg})\")\n    end\n  end\nend"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Logger\n  def self.add_logging(id_string)\n    define_method(:log) do |msg|\n      now = Time.now.strftime(\"%H:%M:%S\")\n      $stderr.puts(\"#{now}-#{id_string}: #{self} (#{msg})\")\n    end\n  end\nend"
+    }
+  ],
+  "393": [
+    {
+      "state_id": 217,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.add_logging(id_string)"
+    }
+  ],
+  "397": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".add_logging(id_string)"
+    }
+  ],
+  "402": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "add_logging"
+    }
+  ],
+  "413": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(id_string)"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "id_string"
+    }
+  ],
+  "423": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "429": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "define_method"
+    }
+  ],
+  "442": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:log)"
+    }
+  ],
+  "443": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":log"
+    }
+  ],
+  "447": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "449": [
+    {
+      "state_id": 2257,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |msg|\n      now = Time.now.strftime(\"%H:%M:%S\")\n      $stderr.puts(\"#{now}-#{id_string}: #{self} (#{msg})\")\n    end"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|msg|"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "msg"
+    }
+  ],
+  "456": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "now"
+    }
+  ],
+  "468": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= Time.now.strftime(\"%H:%M:%S\")"
+    }
+  ],
+  "470": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "Time"
+    }
+  ],
+  "474": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".now"
+    }
+  ],
+  "475": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "now"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".strftime"
+    }
+  ],
+  "479": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "strftime"
+    }
+  ],
+  "487": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"%H:%M:%S\")"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"%H:%M:%S\""
+    }
+  ],
+  "489": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "%H:%M:%S"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "498": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "506": [
+    {
+      "state_id": 252,
+      "candidate": "global_variable",
+      "candidate_text": "$stderr"
+    }
+  ],
+  "513": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".puts"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "518": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"#{now}-#{id_string}: #{self} (#{msg})\")"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"#{now}-#{id_string}: #{self} (#{msg})\""
+    }
+  ],
+  "520": [
+    {
+      "state_id": 5207,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{now}"
+    }
+  ],
+  "522": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "now"
+    }
+  ],
+  "525": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "526": [
+    {
+      "state_id": 5038,
+      "candidate": "string_content",
+      "candidate_text": "-"
+    }
+  ],
+  "527": [
+    {
+      "state_id": 5038,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{id_string}"
+    }
+  ],
+  "529": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "id_string"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "539": [
+    {
+      "state_id": 5038,
+      "candidate": "string_content",
+      "candidate_text": ": "
+    }
+  ],
+  "541": [
+    {
+      "state_id": 5038,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{self}"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 357,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "548": [
+    {
+      "state_id": 5038,
+      "candidate": "string_content",
+      "candidate_text": " ("
+    }
+  ],
+  "550": [
+    {
+      "state_id": 5038,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{msg}"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "msg"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 5038,
+      "candidate": "string_content",
+      "candidate_text": ")"
+    }
+  ],
+  "557": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "558": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "564": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "570": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "579": [
+    {
+      "state_id": 346,
+      "candidate": "class constant superclass _terminator body_statement end",
+      "candidate_text": "class Song < Logger\n  add_logging \"Tune\"\nend"
+    }
+  ],
+  "585": [
+    {
+      "state_id": 1975,
+      "candidate": "constant superclass _terminator body_statement end",
+      "candidate_text": "Song < Logger\n  add_logging \"Tune\"\nend"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 125,
+      "candidate": "< _expression",
+      "candidate_text": "< Logger"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 540,
+      "candidate": "constant",
+      "candidate_text": "Logger"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "add_logging"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Tune\""
+    }
+  ],
+  "614": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Tune"
+    }
+  ],
+  "618": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "620": [
+    {
+      "state_id": 5846,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "625": [
+    {
+      "state_id": 346,
+      "candidate": "class constant superclass _terminator body_statement end",
+      "candidate_text": "class Album < Logger\n  add_logging \"CD\"\nend"
+    }
+  ],
+  "631": [
+    {
+      "state_id": 1975,
+      "candidate": "constant superclass _terminator body_statement end",
+      "candidate_text": "Album < Logger\n  add_logging \"CD\"\nend"
+    }
+  ],
+  "637": [
+    {
+      "state_id": 125,
+      "candidate": "< _expression",
+      "candidate_text": "< Logger"
+    }
+  ],
+  "639": [
+    {
+      "state_id": 540,
+      "candidate": "constant",
+      "candidate_text": "Logger"
+    }
+  ],
+  "648": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "add_logging"
+    }
+  ],
+  "660": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"CD\""
+    }
+  ],
+  "661": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "CD"
+    }
+  ],
+  "663": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "665": [
+    {
+      "state_id": 5846,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "670": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "song"
+    }
+  ],
+  "675": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Song.new"
+    }
+  ],
+  "677": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Song"
+    }
+  ],
+  "681": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "682": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "691": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "song"
+    }
+  ],
+  "695": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "696": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 9,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"rock on\")"
+    }
+  ],
+  "700": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"rock on\""
+    }
+  ],
+  "701": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "rock on"
+    }
+  ],
+  "708": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "709": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

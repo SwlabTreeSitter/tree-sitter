@@ -1,0 +1,765 @@
+{
+  "1486": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "1495": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "1505": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "1507": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "1513": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "1523": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "1526": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1529": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1533": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "1537": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1538": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1539": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    double months;\r\n    const double RATE = 1.5;\r\n    double cost;\r\n    double interest;\r\n    double total_interest;\r\n    double to_pay_debt;\r\n    cout << \"Enter the cost of the item: \";\r\n    cin >> cost;\r\n    double debt = cost;\r\n    while(debt > 0){\r\n        interest = debt*(RATE/100);\r\n        total_interest = interest+total_interest;\r\n        to_pay_debt = 50-interest;\r\n        debt = debt - to_pay_debt;\r\n        months++;\r\n    }\r\n    cout << \"\\nMonths: \" << months;\r\n    cout << \"\\nTotal Interest: \" << total_interest;\r\n    return 0;\r\n}"
+    }
+  ],
+  "1546": [
+    {
+      "state_id": 4,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1553": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "months"
+    }
+  ],
+  "1559": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1566": [
+    {
+      "state_id": 61,
+      "candidate": "const",
+      "candidate_text": "const"
+    }
+  ],
+  "1572": [
+    {
+      "state_id": 2645,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1579": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "RATE"
+    }
+  ],
+  "1584": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 1.5"
+    }
+  ],
+  "1586": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "1.5"
+    }
+  ],
+  "1589": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1596": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1603": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "cost"
+    }
+  ],
+  "1607": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1614": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1621": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "interest"
+    }
+  ],
+  "1629": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1636": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1643": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "total_interest"
+    }
+  ],
+  "1657": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1664": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1671": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "to_pay_debt"
+    }
+  ],
+  "1682": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1689": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1694": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"Enter the cost of the item: \""
+    }
+  ],
+  "1697": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"Enter the cost of the item: \""
+    }
+  ],
+  "1698": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "Enter the cost of the item: \""
+    }
+  ],
+  "1726": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1727": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1734": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "1738": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> cost"
+    }
+  ],
+  "1741": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "cost"
+    }
+  ],
+  "1745": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1752": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1759": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "debt"
+    }
+  ],
+  "1764": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= cost"
+    }
+  ],
+  "1766": [
+    {
+      "state_id": 1243,
+      "candidate": "identifier",
+      "candidate_text": "cost"
+    }
+  ],
+  "1770": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1777": [
+    {
+      "state_id": 61,
+      "candidate": "while condition_clause statement",
+      "candidate_text": "while(debt > 0){"
+    }
+  ],
+  "1782": [
+    {
+      "state_id": 10274,
+      "candidate": "( expression )",
+      "candidate_text": "(debt > 0)"
+    }
+  ],
+  "1783": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "debt"
+    }
+  ],
+  "1788": [
+    {
+      "state_id": 6522,
+      "candidate": "> expression",
+      "candidate_text": "> 0"
+    }
+  ],
+  "1790": [
+    {
+      "state_id": 1630,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1791": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1792": [
+    {
+      "state_id": 161,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n        interest = debt*(RATE/100);\r\n        total_interest = interest+total_interest;\r\n        to_pay_debt = 50-interest;\r\n        debt = debt - to_pay_debt;\r\n        months++;\r\n    }"
+    }
+  ],
+  "1803": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "interest = debt*(RATE/100)"
+    }
+  ],
+  "1812": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= debt*(RATE/100)"
+    }
+  ],
+  "1814": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "debt"
+    }
+  ],
+  "1818": [
+    {
+      "state_id": 6387,
+      "candidate": "* expression",
+      "candidate_text": "*(RATE/100)"
+    }
+  ],
+  "1819": [
+    {
+      "state_id": 1608,
+      "candidate": "( expression )",
+      "candidate_text": "(RATE/100)"
+    }
+  ],
+  "1820": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "RATE"
+    }
+  ],
+  "1824": [
+    {
+      "state_id": 4607,
+      "candidate": "/ expression",
+      "candidate_text": "/100"
+    }
+  ],
+  "1825": [
+    {
+      "state_id": 1269,
+      "candidate": "number_literal",
+      "candidate_text": "100"
+    }
+  ],
+  "1828": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1829": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1840": [
+    {
+      "state_id": 39,
+      "candidate": "identifier = expression",
+      "candidate_text": "total_interest = interest+total_interest"
+    }
+  ],
+  "1855": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= interest+total_interest"
+    }
+  ],
+  "1857": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "interest"
+    }
+  ],
+  "1865": [
+    {
+      "state_id": 6387,
+      "candidate": "+ expression",
+      "candidate_text": "+total_interest"
+    }
+  ],
+  "1866": [
+    {
+      "state_id": 1592,
+      "candidate": "identifier",
+      "candidate_text": "total_interest"
+    }
+  ],
+  "1880": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1891": [
+    {
+      "state_id": 39,
+      "candidate": "identifier = expression",
+      "candidate_text": "to_pay_debt = 50-interest"
+    }
+  ],
+  "1903": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= 50-interest"
+    }
+  ],
+  "1905": [
+    {
+      "state_id": 1222,
+      "candidate": "number_literal",
+      "candidate_text": "50"
+    }
+  ],
+  "1907": [
+    {
+      "state_id": 6387,
+      "candidate": "- expression",
+      "candidate_text": "-interest"
+    }
+  ],
+  "1908": [
+    {
+      "state_id": 1592,
+      "candidate": "identifier",
+      "candidate_text": "interest"
+    }
+  ],
+  "1916": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1927": [
+    {
+      "state_id": 39,
+      "candidate": "identifier = expression",
+      "candidate_text": "debt = debt - to_pay_debt"
+    }
+  ],
+  "1932": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= debt - to_pay_debt"
+    }
+  ],
+  "1934": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "debt"
+    }
+  ],
+  "1939": [
+    {
+      "state_id": 6387,
+      "candidate": "- expression",
+      "candidate_text": "- to_pay_debt"
+    }
+  ],
+  "1941": [
+    {
+      "state_id": 1592,
+      "candidate": "identifier",
+      "candidate_text": "to_pay_debt"
+    }
+  ],
+  "1952": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1963": [
+    {
+      "state_id": 39,
+      "candidate": "identifier",
+      "candidate_text": "months"
+    }
+  ],
+  "1969": [
+    {
+      "state_id": 6753,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "1971": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1978": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1985": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1990": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nMonths: \""
+    }
+  ],
+  "1993": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nMonths: \""
+    }
+  ],
+  "1994": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nMonths: "
+    }
+  ],
+  "1996": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Months: "
+    }
+  ],
+  "2004": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "2006": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< months"
+    }
+  ],
+  "2009": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "months"
+    }
+  ],
+  "2015": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2022": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "2027": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nTotal Interest: \""
+    }
+  ],
+  "2030": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nTotal Interest: \""
+    }
+  ],
+  "2031": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nTotal Interest: "
+    }
+  ],
+  "2033": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Total Interest: "
+    }
+  ],
+  "2049": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "2051": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< total_interest"
+    }
+  ],
+  "2054": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "total_interest"
+    }
+  ],
+  "2068": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2075": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "2082": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "2083": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2086": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

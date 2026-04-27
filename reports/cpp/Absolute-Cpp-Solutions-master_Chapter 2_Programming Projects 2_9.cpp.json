@@ -1,0 +1,828 @@
+{
+  "700": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "709": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "719": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "721": [
+    {
+      "state_id": 34,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <cmath>"
+    }
+  ],
+  "730": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<cmath>"
+    }
+  ],
+  "737": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "739": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "745": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "755": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "758": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "761": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "765": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "769": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "770": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "771": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    double n = 45369;\r\n    double guess;\r\n    cout << \"Enter your guess: \";\r\n    cin >> guess;\r\n    bool result = false;\r\n    double r;\r\n    double current_guess;\r\n    while(result == false){\r\n        r = n/guess;\r\n        current_guess = guess;\r\n        guess = (guess + r)/static_cast<double>(2);\r\n        if((((guess > current_guess) ? guess-current_guess : current_guess) - guess) <= 0.01*current_guess){\r\n            cout << endl << guess;\r\n            result = true;\r\n        }\r\n    }\r\n    return 0;\r\n}"
+    }
+  ],
+  "778": [
+    {
+      "state_id": 4,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "785": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "n"
+    }
+  ],
+  "787": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 45369"
+    }
+  ],
+  "789": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "45369"
+    }
+  ],
+  "794": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "801": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "808": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "guess"
+    }
+  ],
+  "813": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "820": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "825": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"Enter your guess: \""
+    }
+  ],
+  "828": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"Enter your guess: \""
+    }
+  ],
+  "829": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "Enter your guess: \""
+    }
+  ],
+  "847": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "848": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "855": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "859": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> guess"
+    }
+  ],
+  "862": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "guess"
+    }
+  ],
+  "867": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "874": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "bool"
+    }
+  ],
+  "879": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "886": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= false"
+    }
+  ],
+  "888": [
+    {
+      "state_id": 1243,
+      "candidate": "false",
+      "candidate_text": "false"
+    }
+  ],
+  "893": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "900": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "907": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "r"
+    }
+  ],
+  "908": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "915": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "922": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "current_guess"
+    }
+  ],
+  "935": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "942": [
+    {
+      "state_id": 61,
+      "candidate": "while condition_clause statement",
+      "candidate_text": "while(result == false){"
+    }
+  ],
+  "947": [
+    {
+      "state_id": 10274,
+      "candidate": "( expression )",
+      "candidate_text": "(result == false)"
+    }
+  ],
+  "948": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "955": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== false"
+    }
+  ],
+  "958": [
+    {
+      "state_id": 1838,
+      "candidate": "false",
+      "candidate_text": "false"
+    }
+  ],
+  "963": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "964": [
+    {
+      "state_id": 161,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n        r = n/guess;\r\n        current_guess = guess;\r\n        guess = (guess + r)/static_cast<double>(2);\r\n        if((((guess > current_guess) ? guess-current_guess : current_guess) - guess) <= 0.01*current_guess){\r\n            cout << endl << guess;\r\n            result = true;\r\n        }\r\n    }"
+    }
+  ],
+  "975": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "r = n/guess"
+    }
+  ],
+  "977": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= n/guess"
+    }
+  ],
+  "979": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "n"
+    }
+  ],
+  "980": [
+    {
+      "state_id": 6387,
+      "candidate": "/ expression",
+      "candidate_text": "/guess"
+    }
+  ],
+  "981": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "guess"
+    }
+  ],
+  "986": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "997": [
+    {
+      "state_id": 39,
+      "candidate": "identifier = expression",
+      "candidate_text": "current_guess = guess"
+    }
+  ],
+  "1011": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= guess"
+    }
+  ],
+  "1013": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "guess"
+    }
+  ],
+  "1018": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1029": [
+    {
+      "state_id": 39,
+      "candidate": "identifier = expression",
+      "candidate_text": "guess = (guess + r)/static_cast<double>(2)"
+    }
+  ],
+  "1035": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= (guess + r)/static_cast<double>(2)"
+    }
+  ],
+  "1037": [
+    {
+      "state_id": 1222,
+      "candidate": "( expression )",
+      "candidate_text": "(guess + r)"
+    }
+  ],
+  "1038": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "guess"
+    }
+  ],
+  "1044": [
+    {
+      "state_id": 4607,
+      "candidate": "+ expression",
+      "candidate_text": "+ r"
+    }
+  ],
+  "1046": [
+    {
+      "state_id": 1298,
+      "candidate": "identifier",
+      "candidate_text": "r"
+    }
+  ],
+  "1047": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1048": [
+    {
+      "state_id": 6387,
+      "candidate": "/ expression",
+      "candidate_text": "/static_cast<double>(2)"
+    }
+  ],
+  "1049": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier template_argument_list",
+      "candidate_text": "static_cast<double>"
+    }
+  ],
+  "1060": [
+    {
+      "state_id": 3260,
+      "candidate": "< type_descriptor >",
+      "candidate_text": "<double>"
+    }
+  ],
+  "1061": [
+    {
+      "state_id": 272,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1067": [
+    {
+      "state_id": 9356,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "1068": [
+    {
+      "state_id": 5774,
+      "candidate": "( expression )",
+      "candidate_text": "(2)"
+    }
+  ],
+  "1069": [
+    {
+      "state_id": 1186,
+      "candidate": "number_literal",
+      "candidate_text": "2"
+    }
+  ],
+  "1070": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1071": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1082": [
+    {
+      "state_id": 39,
+      "candidate": "if condition_clause statement",
+      "candidate_text": "if((((guess > current_guess) ? guess-current_guess : current_guess) - guess) <= 0.01*current_guess){"
+    }
+  ],
+  "1084": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "((((guess > current_guess) ? guess-current_guess : current_guess) - guess) <= 0.01*current_guess)"
+    }
+  ],
+  "1085": [
+    {
+      "state_id": 128,
+      "candidate": "( expression )",
+      "candidate_text": "(((guess > current_guess) ? guess-current_guess : current_guess) - guess)"
+    }
+  ],
+  "1086": [
+    {
+      "state_id": 217,
+      "candidate": "( expression )",
+      "candidate_text": "((guess > current_guess) ? guess-current_guess : current_guess)"
+    }
+  ],
+  "1087": [
+    {
+      "state_id": 229,
+      "candidate": "( expression )",
+      "candidate_text": "(guess > current_guess)"
+    }
+  ],
+  "1088": [
+    {
+      "state_id": 229,
+      "candidate": "identifier",
+      "candidate_text": "guess"
+    }
+  ],
+  "1094": [
+    {
+      "state_id": 4645,
+      "candidate": "> expression",
+      "candidate_text": "> current_guess"
+    }
+  ],
+  "1096": [
+    {
+      "state_id": 1300,
+      "candidate": "identifier",
+      "candidate_text": "current_guess"
+    }
+  ],
+  "1109": [
+    {
+      "state_id": 4645,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1111": [
+    {
+      "state_id": 4645,
+      "candidate": "? expression : expression",
+      "candidate_text": "? guess-current_guess : current_guess"
+    }
+  ],
+  "1113": [
+    {
+      "state_id": 1262,
+      "candidate": "identifier",
+      "candidate_text": "guess"
+    }
+  ],
+  "1118": [
+    {
+      "state_id": 6717,
+      "candidate": "- expression",
+      "candidate_text": "-current_guess"
+    }
+  ],
+  "1119": [
+    {
+      "state_id": 1795,
+      "candidate": "identifier",
+      "candidate_text": "current_guess"
+    }
+  ],
+  "1133": [
+    {
+      "state_id": 6717,
+      "candidate": ": expression",
+      "candidate_text": ": current_guess"
+    }
+  ],
+  "1135": [
+    {
+      "state_id": 1435,
+      "candidate": "identifier",
+      "candidate_text": "current_guess"
+    }
+  ],
+  "1148": [
+    {
+      "state_id": 4645,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1150": [
+    {
+      "state_id": 4607,
+      "candidate": "- expression",
+      "candidate_text": "- guess"
+    }
+  ],
+  "1152": [
+    {
+      "state_id": 1294,
+      "candidate": "identifier",
+      "candidate_text": "guess"
+    }
+  ],
+  "1157": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1159": [
+    {
+      "state_id": 6522,
+      "candidate": "<= expression",
+      "candidate_text": "<= 0.01*current_guess"
+    }
+  ],
+  "1162": [
+    {
+      "state_id": 1630,
+      "candidate": "number_literal",
+      "candidate_text": "0.01"
+    }
+  ],
+  "1166": [
+    {
+      "state_id": 6338,
+      "candidate": "* expression",
+      "candidate_text": "*current_guess"
+    }
+  ],
+  "1167": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "current_guess"
+    }
+  ],
+  "1180": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1181": [
+    {
+      "state_id": 199,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n            cout << endl << guess;\r\n            result = true;\r\n        }"
+    }
+  ],
+  "1196": [
+    {
+      "state_id": 38,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1201": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< endl"
+    }
+  ],
+  "1204": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "endl"
+    }
+  ],
+  "1209": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< guess"
+    }
+  ],
+  "1212": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "guess"
+    }
+  ],
+  "1217": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1232": [
+    {
+      "state_id": 39,
+      "candidate": "identifier = expression",
+      "candidate_text": "result = true"
+    }
+  ],
+  "1239": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= true"
+    }
+  ],
+  "1241": [
+    {
+      "state_id": 1222,
+      "candidate": "true",
+      "candidate_text": "true"
+    }
+  ],
+  "1245": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1256": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1263": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1270": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "1277": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1278": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1281": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

@@ -1,0 +1,541 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "t"
+    }
+  ],
+  "2": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Thread.new do"
+    }
+  ],
+  "4": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Thread"
+    }
+  ],
+  "10": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "11": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 13,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n  puts \"[Starting thread]\"\n  Thread.stop\n  puts \"[Resuming thread]\"\nend"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 170,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "25": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"[Starting thread]\""
+    }
+  ],
+  "26": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "[Starting thread]"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "47": [
+    {
+      "state_id": 252,
+      "candidate": "constant",
+      "candidate_text": "Thread"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".stop"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "stop"
+    }
+  ],
+  "61": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"[Resuming thread]\""
+    }
+  ],
+  "67": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "[Resuming thread]"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "86": [
+    {
+      "state_id": 5833,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "sleep"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 8,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Status of thread: #{t.status}\""
+    }
+  ],
+  "104": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Status of thread: "
+    }
+  ],
+  "122": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{t.status}"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "t"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".status"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "status"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "135": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Is thread stopped? #{t.stop?}\""
+    }
+  ],
+  "141": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Is thread stopped? "
+    }
+  ],
+  "160": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{t.stop?}"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "t"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".stop?"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "stop?"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "172": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Is thread alive? #{t.alive?}\""
+    }
+  ],
+  "178": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Is thread alive? "
+    }
+  ],
+  "195": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{t.alive?}"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "t"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".alive?"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "alive?"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "208": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Waking up thread and joining it...\""
+    }
+  ],
+  "219": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Waking up thread and joining it..."
+    }
+  ],
+  "253": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "255": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "t"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".wakeup"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "wakeup"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "t"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "281": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Is thread alive? #{t.alive?}\""
+    }
+  ],
+  "282": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Is thread alive? "
+    }
+  ],
+  "299": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{t.alive?}"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "t"
+    }
+  ],
+  "302": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".alive?"
+    }
+  ],
+  "303": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "alive?"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "310": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "312": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "317": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Inspect string for thread: #{t.inspect}\""
+    }
+  ],
+  "318": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Inspect string for thread: "
+    }
+  ],
+  "345": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{t.inspect}"
+    }
+  ],
+  "347": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "t"
+    }
+  ],
+  "348": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".inspect"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "inspect"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ]
+}

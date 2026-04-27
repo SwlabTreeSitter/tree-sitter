@@ -1,0 +1,814 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Person\n  attr_accessor :name, :age\n  def initialize(name, age)\n    @name, @age = name, age\n  end\n  def method_missing(m,*args,&block)\n    if /set_(.*)/.match(m)\n      self.public_send(\"#{$1}=\", *args)\n    else\n      super\n    end\n  end\n  def respond_to_missing?(m, include_private = false)\n    /set_/.match(m) || super\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Person\n  attr_accessor :name, :age\n  def initialize(name, age)\n    @name, @age = name, age\n  end\n  def method_missing(m,*args,&block)\n    if /set_(.*)/.match(m)\n      self.public_send(\"#{$1}=\", *args)\n    else\n      super\n    end\n  end\n  def respond_to_missing?(m, include_private = false)\n    /set_/.match(m) || super\n  end\nend"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "attr_accessor"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":name"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 4522,
+      "candidate": ", _argument",
+      "candidate_text": ", :age"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 451,
+      "candidate": "simple_symbol",
+      "candidate_text": ":age"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(name, age)"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(name, age)"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", age"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier",
+      "candidate_text": "age"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "73": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@name"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 2132,
+      "candidate": ", _lhs",
+      "candidate_text": ", @age"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 1960,
+      "candidate": "instance_variable",
+      "candidate_text": "@age"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 5811,
+      "candidate": "= right_assignment_list",
+      "candidate_text": "= name, age"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 2715,
+      "candidate": ", _arg",
+      "candidate_text": ", age"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 812,
+      "candidate": "identifier",
+      "candidate_text": "age"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def method_missing(m,*args,&block)"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "method_missing"
+    }
+  ],
+  "123": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(m,*args,&block)"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ",*args"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 4622,
+      "candidate": "* identifier",
+      "candidate_text": "*args"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 4759,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 5515,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ",&block"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 4622,
+      "candidate": "& identifier",
+      "candidate_text": "&block"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 5196,
+      "candidate": "identifier",
+      "candidate_text": "block"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 238,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if /set_(.*)/.match(m)\n      self.public_send(\"#{$1}=\", *args)\n    else\n      super\n    end"
+    }
+  ],
+  "147": [
+    {
+      "state_id": 406,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/set_(.*)/"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 5048,
+      "candidate": "string_content",
+      "candidate_text": "set_(.*)"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 5167,
+      "candidate": ")",
+      "candidate_text": "/"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".match"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "match"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(m)"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 264,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".public_send"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "public_send"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"#{$1}=\", *args)"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"#{$1}=\""
+    }
+  ],
+  "191": [
+    {
+      "state_id": 5207,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{$1}"
+    }
+  ],
+  "193": [
+    {
+      "state_id": 357,
+      "candidate": "global_variable",
+      "candidate_text": "$1"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 5038,
+      "candidate": "string_content",
+      "candidate_text": "="
+    }
+  ],
+  "197": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "198": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", *args"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 432,
+      "candidate": "* _arg",
+      "candidate_text": "*args"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 809,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n      super"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 289,
+      "candidate": "super",
+      "candidate_text": "super"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "238": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def respond_to_missing?(m, include_private = false)"
+    }
+  ],
+  "248": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "respond_to_missing?"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(m, include_private = false)"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", include_private = false"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier = _arg",
+      "candidate_text": "include_private = false"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 5461,
+      "candidate": "= _arg",
+      "candidate_text": "= false"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 1311,
+      "candidate": "false",
+      "candidate_text": "false"
+    }
+  ],
+  "294": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "300": [
+    {
+      "state_id": 238,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/set_/"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 5048,
+      "candidate": "string_content",
+      "candidate_text": "set_"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 5167,
+      "candidate": ")",
+      "candidate_text": "/"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".match"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "match"
+    }
+  ],
+  "312": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(m)"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "314": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "316": [
+    {
+      "state_id": 2812,
+      "candidate": "|| _arg",
+      "candidate_text": "|| super"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 1201,
+      "candidate": "super",
+      "candidate_text": "super"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "331": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "person"
+    }
+  ],
+  "343": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Person.new(\"Joe\", 37)"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Person"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "352": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"Joe\", 37)"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Joe\""
+    }
+  ],
+  "357": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Joe"
+    }
+  ],
+  "360": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "361": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", 37"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 432,
+      "candidate": "integer",
+      "candidate_text": "37"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "person"
+    }
+  ],
+  "373": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".set_age"
+    }
+  ],
+  "374": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "set_age"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 11,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(38)"
+    }
+  ],
+  "382": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "38"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "p"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "person"
+    }
+  ],
+  "394": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".age"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "age"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "p"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "person"
+    }
+  ],
+  "407": [
+    {
+      "state_id": 2721,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".respond_to?"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "respond_to?"
+    }
+  ],
+  "419": [
+    {
+      "state_id": 9,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:set_age)"
+    }
+  ],
+  "420": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":set_age"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "430": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "p"
+    }
+  ],
+  "432": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "person"
+    }
+  ],
+  "438": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".method"
+    }
+  ],
+  "439": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "method"
+    }
+  ],
+  "445": [
+    {
+      "state_id": 9,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:set_age)"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":set_age"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

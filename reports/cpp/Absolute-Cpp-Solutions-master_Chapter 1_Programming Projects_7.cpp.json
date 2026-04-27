@@ -1,0 +1,1178 @@
+{
+  "619": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "638": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "640": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "646": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "656": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "659": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "662": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "666": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "670": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "671": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "672": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    double weight;\r\n    cout << \"Enter your weight in pounds: \";\r\n    cin >> weight;\r\n    weight = weight/2.2;\r\n    double running_met, basketball_met, sleeping_met;\r\n    double running_min, basketball_min, sleeping_min;\r\n    cout << \"\\nEnter the number of MET in Running 6mph: \";\r\n    cin >> running_met;\r\n    cout << \"\\nEnter the number of minutes in Running 6mph: \";\r\n    cin >> running_min;\r\n    cout << \"\\nEnter the number of MET in Basketball: \";\r\n    cin >> basketball_met;\r\n    cout << \"\\nEnter the number of minutes in Basketball: \";\r\n    cin >> basketball_min;\r\n    cout << \"\\nEnter the number of MET in sleeping: \";\r\n    cin >> sleeping_met;\r\n    cout << \"\\nEnter the number of minutes in sleeping: \";\r\n    cin >> sleeping_min;\r\n    double calories;\r\n    double calories_from_running = 0.0175 * running_met *running_min * weight;\r\n    double calories_from_basketball = 0.0175 * basketball_met * basketball_min * weight;\r\n    double calories_from_sleeping = 0.0175 * sleeping_met * sleeping_min * weight;\r\n    calories = calories_from_running + calories_from_basketball + calories_from_sleeping;\r\n    cout << \"\\nEstimated calorie is: \" << calories;\r\n    return 0;\r\n\r\n}"
+    }
+  ],
+  "679": [
+    {
+      "state_id": 4,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "weight"
+    }
+  ],
+  "692": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "704": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"Enter your weight in pounds: \""
+    }
+  ],
+  "707": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"Enter your weight in pounds: \""
+    }
+  ],
+  "708": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "Enter your weight in pounds: \""
+    }
+  ],
+  "737": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "738": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "745": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "749": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> weight"
+    }
+  ],
+  "752": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "weight"
+    }
+  ],
+  "758": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "765": [
+    {
+      "state_id": 61,
+      "candidate": "identifier = expression",
+      "candidate_text": "weight = weight/2.2"
+    }
+  ],
+  "772": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= weight/2.2"
+    }
+  ],
+  "774": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "weight"
+    }
+  ],
+  "780": [
+    {
+      "state_id": 6387,
+      "candidate": "/ expression",
+      "candidate_text": "/2.2"
+    }
+  ],
+  "781": [
+    {
+      "state_id": 1608,
+      "candidate": "number_literal",
+      "candidate_text": "2.2"
+    }
+  ],
+  "784": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "791": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "798": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "running_met"
+    }
+  ],
+  "809": [
+    {
+      "state_id": 7972,
+      "candidate": ", _declarator",
+      "candidate_text": ", basketball_met"
+    }
+  ],
+  "811": [
+    {
+      "state_id": 6272,
+      "candidate": "identifier",
+      "candidate_text": "basketball_met"
+    }
+  ],
+  "825": [
+    {
+      "state_id": 9954,
+      "candidate": ", _declarator",
+      "candidate_text": ", sleeping_met"
+    }
+  ],
+  "827": [
+    {
+      "state_id": 6272,
+      "candidate": "identifier",
+      "candidate_text": "sleeping_met"
+    }
+  ],
+  "839": [
+    {
+      "state_id": 9954,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "846": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "853": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "running_min"
+    }
+  ],
+  "864": [
+    {
+      "state_id": 7972,
+      "candidate": ", _declarator",
+      "candidate_text": ", basketball_min"
+    }
+  ],
+  "866": [
+    {
+      "state_id": 6272,
+      "candidate": "identifier",
+      "candidate_text": "basketball_min"
+    }
+  ],
+  "880": [
+    {
+      "state_id": 9954,
+      "candidate": ", _declarator",
+      "candidate_text": ", sleeping_min"
+    }
+  ],
+  "882": [
+    {
+      "state_id": 6272,
+      "candidate": "identifier",
+      "candidate_text": "sleeping_min"
+    }
+  ],
+  "894": [
+    {
+      "state_id": 9954,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "901": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "906": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter the number of MET in Running 6mph: \""
+    }
+  ],
+  "909": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter the number of MET in Running 6mph: \""
+    }
+  ],
+  "910": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter the number of MET in Running 6mph: "
+    }
+  ],
+  "912": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter the number of MET in Running 6mph: "
+    }
+  ],
+  "953": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "954": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "961": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "965": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> running_met"
+    }
+  ],
+  "968": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "running_met"
+    }
+  ],
+  "979": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "986": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "991": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter the number of minutes in Running 6mph: \""
+    }
+  ],
+  "994": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter the number of minutes in Running 6mph: \""
+    }
+  ],
+  "995": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter the number of minutes in Running 6mph: "
+    }
+  ],
+  "997": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter the number of minutes in Running 6mph: "
+    }
+  ],
+  "1042": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1043": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1050": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "1054": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> running_min"
+    }
+  ],
+  "1057": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "running_min"
+    }
+  ],
+  "1068": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1075": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1080": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter the number of MET in Basketball: \""
+    }
+  ],
+  "1083": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter the number of MET in Basketball: \""
+    }
+  ],
+  "1084": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter the number of MET in Basketball: "
+    }
+  ],
+  "1086": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter the number of MET in Basketball: "
+    }
+  ],
+  "1125": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1126": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1133": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "1137": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> basketball_met"
+    }
+  ],
+  "1140": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "basketball_met"
+    }
+  ],
+  "1154": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1161": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1166": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter the number of minutes in Basketball: \""
+    }
+  ],
+  "1169": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter the number of minutes in Basketball: \""
+    }
+  ],
+  "1170": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter the number of minutes in Basketball: "
+    }
+  ],
+  "1172": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter the number of minutes in Basketball: "
+    }
+  ],
+  "1215": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1216": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1223": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "1227": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> basketball_min"
+    }
+  ],
+  "1230": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "basketball_min"
+    }
+  ],
+  "1244": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1251": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1256": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter the number of MET in sleeping: \""
+    }
+  ],
+  "1259": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter the number of MET in sleeping: \""
+    }
+  ],
+  "1260": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter the number of MET in sleeping: "
+    }
+  ],
+  "1262": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter the number of MET in sleeping: "
+    }
+  ],
+  "1299": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1300": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1307": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "1311": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> sleeping_met"
+    }
+  ],
+  "1314": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "sleeping_met"
+    }
+  ],
+  "1326": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1333": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1338": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter the number of minutes in sleeping: \""
+    }
+  ],
+  "1341": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter the number of minutes in sleeping: \""
+    }
+  ],
+  "1342": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter the number of minutes in sleeping: "
+    }
+  ],
+  "1344": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter the number of minutes in sleeping: "
+    }
+  ],
+  "1385": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1386": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1393": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "1397": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> sleeping_min"
+    }
+  ],
+  "1400": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "sleeping_min"
+    }
+  ],
+  "1412": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1419": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1426": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "calories"
+    }
+  ],
+  "1434": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1441": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1448": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "calories_from_running"
+    }
+  ],
+  "1470": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 0.0175 * running_met *running_min * weight"
+    }
+  ],
+  "1472": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "0.0175"
+    }
+  ],
+  "1479": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* running_met"
+    }
+  ],
+  "1481": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "running_met"
+    }
+  ],
+  "1493": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "*running_min"
+    }
+  ],
+  "1494": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "running_min"
+    }
+  ],
+  "1506": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* weight"
+    }
+  ],
+  "1508": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "weight"
+    }
+  ],
+  "1514": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1521": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1528": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "calories_from_basketball"
+    }
+  ],
+  "1553": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 0.0175 * basketball_met * basketball_min * weight"
+    }
+  ],
+  "1555": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "0.0175"
+    }
+  ],
+  "1562": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* basketball_met"
+    }
+  ],
+  "1564": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "basketball_met"
+    }
+  ],
+  "1579": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* basketball_min"
+    }
+  ],
+  "1581": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "basketball_min"
+    }
+  ],
+  "1596": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* weight"
+    }
+  ],
+  "1598": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "weight"
+    }
+  ],
+  "1604": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1611": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "1618": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "calories_from_sleeping"
+    }
+  ],
+  "1641": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 0.0175 * sleeping_met * sleeping_min * weight"
+    }
+  ],
+  "1643": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "0.0175"
+    }
+  ],
+  "1650": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* sleeping_met"
+    }
+  ],
+  "1652": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "sleeping_met"
+    }
+  ],
+  "1665": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* sleeping_min"
+    }
+  ],
+  "1667": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "sleeping_min"
+    }
+  ],
+  "1680": [
+    {
+      "state_id": 6771,
+      "candidate": "* expression",
+      "candidate_text": "* weight"
+    }
+  ],
+  "1682": [
+    {
+      "state_id": 1608,
+      "candidate": "identifier",
+      "candidate_text": "weight"
+    }
+  ],
+  "1688": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1695": [
+    {
+      "state_id": 61,
+      "candidate": "identifier = expression",
+      "candidate_text": "calories = calories_from_running + calories_from_basketball + calories_from_sleeping"
+    }
+  ],
+  "1704": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= calories_from_running + calories_from_basketball + calories_from_sleeping"
+    }
+  ],
+  "1706": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "calories_from_running"
+    }
+  ],
+  "1728": [
+    {
+      "state_id": 6387,
+      "candidate": "+ expression",
+      "candidate_text": "+ calories_from_basketball"
+    }
+  ],
+  "1730": [
+    {
+      "state_id": 1592,
+      "candidate": "identifier",
+      "candidate_text": "calories_from_basketball"
+    }
+  ],
+  "1755": [
+    {
+      "state_id": 6387,
+      "candidate": "+ expression",
+      "candidate_text": "+ calories_from_sleeping"
+    }
+  ],
+  "1757": [
+    {
+      "state_id": 1592,
+      "candidate": "identifier",
+      "candidate_text": "calories_from_sleeping"
+    }
+  ],
+  "1779": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1786": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1791": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEstimated calorie is: \""
+    }
+  ],
+  "1794": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEstimated calorie is: \""
+    }
+  ],
+  "1795": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEstimated calorie is: "
+    }
+  ],
+  "1797": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Estimated calorie is: "
+    }
+  ],
+  "1819": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1821": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< calories"
+    }
+  ],
+  "1824": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "calories"
+    }
+  ],
+  "1832": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1839": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "1846": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1847": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1852": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

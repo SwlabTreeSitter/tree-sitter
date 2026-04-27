@@ -1,0 +1,714 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "export declaration",
+      "candidate_text": "export function toRna(input: string): string {"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 696,
+      "candidate": "function identifier _call_signature statement_block _automatic_semicolon",
+      "candidate_text": "function toRna(input: string): string {"
+    }
+  ],
+  "16": [
+    {
+      "state_id": 5302,
+      "candidate": "identifier _call_signature statement_block _automatic_semicolon",
+      "candidate_text": "toRna(input: string): string {"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 4201,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(input: string)"
+    }
+  ],
+  "22": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "input"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "38": [
+    {
+      "state_id": 959,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 4250,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n  const dictionary: { [key: string]: string } = {\n    G: 'C',\n    C: 'G',\n    T: 'A',\n    A: 'U',\n  }\n  let temp = ''\n  input.split('').forEach((element) => {\n    const current = dictionary[element]\n    if (current === undefined) {\n      throw new Error('Invalid input DNA.')\n    }\n    temp += current\n  })\n  return temp\n}"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 28,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const dictionary: { [key: string]: string } = {"
+    }
+  ],
+  "55": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "dictionary: { [key: string]: string } = {"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": { [key: string]: string }"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 1110,
+      "candidate": "{ index_signature _automatic_semicolon }",
+      "candidate_text": "{ [key: string]: string }"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 1394,
+      "candidate": "[ identifier : type ] type_annotation",
+      "candidate_text": "[key: string]: string"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 334,
+      "candidate": "identifier : type ] type_annotation",
+      "candidate_text": "key: string]: string"
+    }
+  ],
+  "73": [
+    {
+      "state_id": 1388,
+      "candidate": ": type ] type_annotation",
+      "candidate_text": ": string]: string"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 1128,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 4424,
+      "candidate": "] type_annotation",
+      "candidate_text": "]: string"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 3465,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 1110,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 3844,
+      "candidate": "_automatic_semicolon }",
+      "candidate_text": "}"
+    },
+    {
+      "state_id": 1426,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= {"
+    }
+  ],
+  "95": [
+    {
+      "state_id": 423,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n    G: 'C',\n    C: 'G',\n    T: 'A',\n    A: 'U',\n  }"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 1497,
+      "candidate": "identifier",
+      "candidate_text": "G"
+    }
+  ],
+  "102": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 'C'"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 278,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'C'"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "C'"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 4576,
+      "candidate": ", pair",
+      "candidate_text": ",\n    C: 'G'"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "C"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 'G'"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 672,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'G'"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "G'"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n    T: 'A'"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 'A'"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 672,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'A'"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "A'"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 4965,
+      "candidate": ", pair",
+      "candidate_text": ",\n    A: 'U'"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "A"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": 'U'"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 672,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'U'"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "U'"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 4965,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "147": [
+    {
+      "state_id": 4965,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 15,
+      "candidate": "let variable_declarator _automatic_semicolon",
+      "candidate_text": "let temp = ''"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier _initializer",
+      "candidate_text": "temp = ''"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ''"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 423,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 4411,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 15,
+      "candidate": "identifier",
+      "candidate_text": "input"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".split"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "split"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "('')"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 271,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "182": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".forEach"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "forEach"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "((element) => {\n    const current = dictionary[element]\n    if (current === undefined) {\n      throw new Error('Invalid input DNA.')\n    }\n    temp += current\n  })"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 271,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(element)"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 195,
+      "candidate": "identifier",
+      "candidate_text": "element"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 4621,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const current = dictionary[element]\n    if (current === undefined) {\n      throw new Error('Invalid input DNA.')\n    }\n    temp += current\n  }"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const current = dictionary[element]"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "current = dictionary[element]"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= dictionary[element]"
+    }
+  ],
+  "226": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "dictionary"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 1810,
+      "candidate": "[ expression ]",
+      "candidate_text": "[element]"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 327,
+      "candidate": "identifier",
+      "candidate_text": "element"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 2225,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 22,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (current === undefined) {"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 5445,
+      "candidate": "( expression )",
+      "candidate_text": "(current === undefined)"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 335,
+      "candidate": "identifier",
+      "candidate_text": "current"
+    }
+  ],
+  "262": [
+    {
+      "state_id": 1864,
+      "candidate": "=== expression",
+      "candidate_text": "=== undefined"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 409,
+      "candidate": "undefined",
+      "candidate_text": "undefined"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 1864,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 70,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n      throw new Error('Invalid input DNA.')\n    }"
+    }
+  ],
+  "285": [
+    {
+      "state_id": 4,
+      "candidate": "throw expression _automatic_semicolon",
+      "candidate_text": "throw new Error('Invalid input DNA.')"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 345,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Error('Invalid input DNA.')"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "Error"
+    }
+  ],
+  "300": [
+    {
+      "state_id": 1696,
+      "candidate": "( expression )",
+      "candidate_text": "('Invalid input DNA.')"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Invalid input DNA.'"
+    }
+  ],
+  "302": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Invalid input DNA.'"
+    }
+  ],
+  "320": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "321": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 14,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "temp"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 3025,
+      "candidate": "+= expression",
+      "candidate_text": "+= current"
+    }
+  ],
+  "341": [
+    {
+      "state_id": 664,
+      "candidate": "identifier",
+      "candidate_text": "current"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "352": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 15,
+      "candidate": "return expression _automatic_semicolon",
+      "candidate_text": "return temp"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 297,
+      "candidate": "identifier",
+      "candidate_text": "temp"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 15,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ]
+}

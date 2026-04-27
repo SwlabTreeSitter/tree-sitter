@@ -22,8 +22,6 @@ TS_DIR = os.path.join(ROOT, "tree-sitter")
 EXE_PATH = os.path.join(TS_DIR, "TreeSitterCutFile.exe")
 CONFIG_PATH = os.path.join(TS_DIR, "lang_config.json")
 
-ARG_ROW = "2147483647"
-ARG_COL = "0"
 ARG_MODE = "1"  # Collection Mode
 
 
@@ -136,7 +134,7 @@ def main():
 
             print(f"Processing: {rel_path} ...")
 
-            cmd = [EXE_PATH, lang, cfg["lib_path"], full_source_path, ARG_ROW, ARG_COL, ARG_MODE]
+            cmd = [EXE_PATH, lang, cfg["lib_path"], full_source_path, ARG_MODE]
 
             is_skipped = False
             skip_reason = ""

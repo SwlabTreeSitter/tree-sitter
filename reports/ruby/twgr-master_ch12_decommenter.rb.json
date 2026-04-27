@@ -1,0 +1,261 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module DeCommenter\n  def self.decomment(infile, outfile, comment_re = /\\A\\s*#/)\n    infile.each do |inline|\n      outfile.print inline unless inline =~ comment_re\n    end\n  end\nend"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "DeCommenter\n  def self.decomment(infile, outfile, comment_re = /\\A\\s*#/)\n    infile.each do |inline|\n      outfile.print inline unless inline =~ comment_re\n    end\n  end\nend"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 218,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.decomment(infile, outfile, comment_re = /\\A\\s*#/)"
+    }
+  ],
+  "25": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".decomment(infile, outfile, comment_re = /\\A\\s*#/)"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "decomment"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(infile, outfile, comment_re = /\\A\\s*#/)"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "infile"
+    }
+  ],
+  "46": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", outfile"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier",
+      "candidate_text": "outfile"
+    }
+  ],
+  "55": [
+    {
+      "state_id": 5515,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", comment_re = /\\A\\s*#/"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier = _arg",
+      "candidate_text": "comment_re = /\\A\\s*#/"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 5461,
+      "candidate": "= _arg",
+      "candidate_text": "= /\\A\\s*#/"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 1311,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/\\A\\s*#/"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 5111,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\A"
+    }
+  ],
+  "73": [
+    {
+      "state_id": 5145,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\s"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 5145,
+      "candidate": "string_content",
+      "candidate_text": "*#"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 5145,
+      "candidate": ")",
+      "candidate_text": "/"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "infile"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".each"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "each"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 4,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |inline|\n      outfile.print inline unless inline =~ comment_re\n    end"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|inline|"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "inline"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "outfile"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".print"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "print"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 4,
+      "candidate": "identifier",
+      "candidate_text": "inline"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 4625,
+      "candidate": "unless _expression",
+      "candidate_text": "unless inline =~ comment_re"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 521,
+      "candidate": "identifier",
+      "candidate_text": "inline"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 2812,
+      "candidate": "=~ _arg",
+      "candidate_text": "=~ comment_re"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 1220,
+      "candidate": "identifier",
+      "candidate_text": "comment_re"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

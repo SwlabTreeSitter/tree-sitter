@@ -1,0 +1,317 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module One\n  CONST = \"Defined in One\"\n  def self.eval_block(&block)\n    instance_eval(&block)\n  end\nend"
+    }
+  ],
+  "385": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "One\n  CONST = \"Defined in One\"\n  def self.eval_block(&block)\n    instance_eval(&block)\n  end\nend"
+    }
+  ],
+  "391": [
+    {
+      "state_id": 218,
+      "candidate": "constant",
+      "candidate_text": "CONST"
+    }
+  ],
+  "397": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= \"Defined in One\""
+    }
+  ],
+  "399": [
+    {
+      "state_id": 462,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Defined in One\""
+    }
+  ],
+  "400": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Defined in One"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "418": [
+    {
+      "state_id": 252,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.eval_block(&block)"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".eval_block(&block)"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "eval_block"
+    }
+  ],
+  "437": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(&block)"
+    }
+  ],
+  "438": [
+    {
+      "state_id": 4611,
+      "candidate": "& identifier",
+      "candidate_text": "&block"
+    }
+  ],
+  "439": [
+    {
+      "state_id": 5196,
+      "candidate": "identifier",
+      "candidate_text": "block"
+    }
+  ],
+  "444": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "instance_eval"
+    }
+  ],
+  "463": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(&block)"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 428,
+      "candidate": "& _arg",
+      "candidate_text": "&block"
+    }
+  ],
+  "465": [
+    {
+      "state_id": 808,
+      "candidate": "identifier",
+      "candidate_text": "block"
+    }
+  ],
+  "470": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "474": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "483": [
+    {
+      "state_id": 346,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module Two\n  CONST = \"Defined in Two\"\n  def self.call_eval_block\n    One.eval_block do\n      CONST\n    end\n  end\nend"
+    }
+  ],
+  "490": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Two\n  CONST = \"Defined in Two\"\n  def self.call_eval_block\n    One.eval_block do\n      CONST\n    end\n  end\nend"
+    }
+  ],
+  "496": [
+    {
+      "state_id": 218,
+      "candidate": "constant",
+      "candidate_text": "CONST"
+    }
+  ],
+  "502": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= \"Defined in Two\""
+    }
+  ],
+  "504": [
+    {
+      "state_id": 462,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Defined in Two\""
+    }
+  ],
+  "505": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Defined in Two"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "523": [
+    {
+      "state_id": 252,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.call_eval_block"
+    }
+  ],
+  "527": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "531": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".call_eval_block"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "call_eval_block"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 216,
+      "candidate": "constant",
+      "candidate_text": "One"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".eval_block"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "eval_block"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 4,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n      CONST\n    end"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 170,
+      "candidate": "constant",
+      "candidate_text": "CONST"
+    }
+  ],
+  "586": [
+    {
+      "state_id": 5833,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "596": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "606": [
+    {
+      "state_id": 8,
+      "candidate": "constant",
+      "candidate_text": "Two"
+    }
+  ],
+  "609": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".call_eval_block"
+    }
+  ],
+  "610": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "call_eval_block"
+    }
+  ]
+}

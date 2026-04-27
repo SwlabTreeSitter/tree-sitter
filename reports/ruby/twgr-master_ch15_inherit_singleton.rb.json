@@ -1,0 +1,233 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class C\n  class << self\n    def self.inherited\n      puts \"Singleton class of C just got inherited!\"\n      puts \"But you'll never see this message.\"\n    end\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "C\n  class << self\n    def self.inherited\n      puts \"Singleton class of C just got inherited!\"\n      puts \"But you'll never see this message.\"\n    end\n  end\nend"
+    }
+  ],
+  "10": [
+    {
+      "state_id": 217,
+      "candidate": "class << _arg _terminator body_statement end",
+      "candidate_text": "class << self\n    def self.inherited\n      puts \"Singleton class of C just got inherited!\"\n      puts \"But you'll never see this message.\"\n    end\n  end"
+    }
+  ],
+  "16": [
+    {
+      "state_id": 1975,
+      "candidate": "<< _arg _terminator body_statement end",
+      "candidate_text": "<< self\n    def self.inherited\n      puts \"Singleton class of C just got inherited!\"\n      puts \"But you'll never see this message.\"\n    end\n  end"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 1268,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 239,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.inherited"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".inherited"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "inherited"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Singleton class of C just got inherited!\""
+    }
+  ],
+  "59": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Singleton class of C just got inherited!"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "107": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"But you'll never see this message.\""
+    }
+  ],
+  "113": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "But you'll never see this message."
+    }
+  ],
+  "147": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "153": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 5673,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 346,
+      "candidate": "class constant superclass _terminator body_statement end",
+      "candidate_text": "class D < C\n  class << self\n    puts \"D's singleton class now exists, but no callback!\"\n  end\nend"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 1975,
+      "candidate": "constant superclass _terminator body_statement end",
+      "candidate_text": "D < C\n  class << self\n    puts \"D's singleton class now exists, but no callback!\"\n  end\nend"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 125,
+      "candidate": "< _expression",
+      "candidate_text": "< C"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 540,
+      "candidate": "constant",
+      "candidate_text": "C"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 240,
+      "candidate": "class << _arg _terminator body_statement end",
+      "candidate_text": "class << self\n    puts \"D's singleton class now exists, but no callback!\"\n  end"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 1975,
+      "candidate": "<< _arg _terminator body_statement end",
+      "candidate_text": "<< self\n    puts \"D's singleton class now exists, but no callback!\"\n  end"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 1268,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 239,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"D's singleton class now exists, but no callback!\""
+    }
+  ],
+  "205": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "D's singleton class now exists, but no callback!"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "257": [
+    {
+      "state_id": 5673,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 5846,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

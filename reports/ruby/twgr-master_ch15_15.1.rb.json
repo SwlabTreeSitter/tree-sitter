@@ -1,0 +1,303 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module M\n  def self.included(cl)\n    def cl.a_class_method\n      puts \"Now the class has a new class method.\"\n    end\n  end\n  def an_inst_method\n    puts \"This module supplies this instance method.\"\n  end\nend"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "M\n  def self.included(cl)\n    def cl.a_class_method\n      puts \"Now the class has a new class method.\"\n    end\n  end\n  def an_inst_method\n    puts \"This module supplies this instance method.\"\n  end\nend"
+    }
+  ],
+  "11": [
+    {
+      "state_id": 218,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.included(cl)"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".included(cl)"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "included"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(cl)"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "cl"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 238,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def cl.a_class_method"
+    }
+  ],
+  "41": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "cl"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".a_class_method"
+    }
+  ],
+  "44": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "a_class_method"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Now the class has a new class method.\""
+    }
+  ],
+  "71": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Now the class has a new class method."
+    }
+  ],
+  "108": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "114": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def an_inst_method"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "an_inst_method"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"This module supplies this instance method.\""
+    }
+  ],
+  "155": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "This module supplies this instance method."
+    }
+  ],
+  "197": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "201": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 346,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class C\n  include M\nend"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "C\n  include M\nend"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "include"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 3,
+      "candidate": "constant",
+      "candidate_text": "M"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 346,
+      "candidate": "constant",
+      "candidate_text": "C"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".a_class_method"
+    }
+  ],
+  "235": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "a_class_method"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= C.new"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "C"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".an_inst_method"
+    }
+  ],
+  "262": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "an_inst_method"
+    }
+  ]
+}

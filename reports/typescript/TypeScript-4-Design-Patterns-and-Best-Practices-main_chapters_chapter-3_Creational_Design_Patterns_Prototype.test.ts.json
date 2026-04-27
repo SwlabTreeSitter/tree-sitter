@@ -1,0 +1,919 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause ;",
+      "candidate_text": "import { Warrior, Wizard, HeroPrototype } from \"./Prototype\";"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ Warrior, Wizard, HeroPrototype }"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "Warrior"
+    }
+  ],
+  "16": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", Wizard"
+    }
+  ],
+  "18": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "Wizard"
+    }
+  ],
+  "24": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", HeroPrototype"
+    }
+  ],
+  "26": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "HeroPrototype"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from \"./Prototype\""
+    }
+  ],
+  "47": [
+    {
+      "state_id": 4661,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"./Prototype\""
+    }
+  ],
+  "48": [
+    {
+      "state_id": 4393,
+      "candidate": "string_fragment \"",
+      "candidate_text": "./Prototype\""
+    }
+  ],
+  "59": [
+    {
+      "state_id": 4476,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "60": [
+    {
+      "state_id": 4289,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "63": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "test"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(\"it creates a Wizard from a prototype\", () => {"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"it creates a Wizard from a prototype\""
+    }
+  ],
+  "69": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "it creates a Wizard from a prototype\""
+    }
+  ],
+  "105": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "106": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "108": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  const wiz = new Wizard(\"Theo\");\n  expect(wiz.clone()).toBeInstanceOf(Wizard);\n  expect(JSON.stringify(wiz.clone())).toBe(\n    '{\"name\":\"Unknown\",\"spells\":[],\"health\":100}'\n  );\n}"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const wiz = new Wizard(\"Theo\");"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "wiz = new Wizard(\"Theo\")"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= new Wizard(\"Theo\")"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 423,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Wizard(\"Theo\")"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "Wizard"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 1696,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Theo\")"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Theo\""
+    }
+  ],
+  "142": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Theo\""
+    }
+  ],
+  "146": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "147": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(wiz.clone())"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "wiz"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".clone"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "clone"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 2208,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBeInstanceOf"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBeInstanceOf"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(Wizard)"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "Wizard"
+    }
+  ],
+  "193": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(JSON.stringify(wiz.clone()))"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "JSON"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".stringify"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "stringify"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(wiz.clone())"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "wiz"
+    }
+  ],
+  "223": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".clone"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "clone"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 2142,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "238": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n    '{\"name\":\"Unknown\",\"spells\":[],\"health\":100}'\n  )"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'{\"name\":\"Unknown\",\"spells\":[],\"health\":100}'"
+    }
+  ],
+  "245": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "{\"name\":\"Unknown\",\"spells\":[],\"health\":100}'"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "292": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "293": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "296": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "297": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "test"
+    }
+  ],
+  "303": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(\"it creates a Warrior from a prototype\", () => {"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"it creates a Warrior from a prototype\""
+    }
+  ],
+  "305": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "it creates a Warrior from a prototype\""
+    }
+  ],
+  "342": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "343": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "346": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "348": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  const war = new Warrior(\"Alex\");\n  expect(war.clone()).toBeInstanceOf(Warrior);\n  expect(JSON.stringify(war.clone())).toBe(\n    '{\"name\":\"Alex\",\"weapon\":\"Bare Hands\",\"health\":150}'\n  );\n}"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const war = new Warrior(\"Alex\");"
+    }
+  ],
+  "361": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "war = new Warrior(\"Alex\")"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= new Warrior(\"Alex\")"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 423,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Warrior(\"Alex\")"
+    }
+  ],
+  "371": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "Warrior"
+    }
+  ],
+  "378": [
+    {
+      "state_id": 1696,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Alex\")"
+    }
+  ],
+  "379": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Alex\""
+    }
+  ],
+  "380": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Alex\""
+    }
+  ],
+  "384": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "385": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "390": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(war.clone())"
+    }
+  ],
+  "397": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "war"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".clone"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "clone"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 2208,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "407": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "409": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBeInstanceOf"
+    }
+  ],
+  "410": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBeInstanceOf"
+    }
+  ],
+  "424": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(Warrior)"
+    }
+  ],
+  "425": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "Warrior"
+    }
+  ],
+  "432": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "437": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "443": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(JSON.stringify(war.clone()))"
+    }
+  ],
+  "444": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "JSON"
+    }
+  ],
+  "448": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".stringify"
+    }
+  ],
+  "449": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "stringify"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(war.clone())"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "war"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".clone"
+    }
+  ],
+  "463": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "clone"
+    }
+  ],
+  "468": [
+    {
+      "state_id": 2142,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "469": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "470": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "471": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "473": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "477": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n    '{\"name\":\"Alex\",\"weapon\":\"Bare Hands\",\"health\":150}'\n  )"
+    }
+  ],
+  "483": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'{\"name\":\"Alex\",\"weapon\":\"Bare Hands\",\"health\":150}'"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "{\"name\":\"Alex\",\"weapon\":\"Bare Hands\",\"health\":150}'"
+    }
+  ],
+  "534": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "539": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "542": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

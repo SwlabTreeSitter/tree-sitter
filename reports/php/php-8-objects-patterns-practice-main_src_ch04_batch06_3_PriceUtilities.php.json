@@ -1,0 +1,380 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch04\\batch06_3;"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch04\\batch06_3"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch04"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch04"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch06_3"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch06_3"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "95": [
+    {
+      "state_id": 157,
+      "candidate": "trait name declaration_list",
+      "candidate_text": "trait PriceUtilities\n{"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 3295,
+      "candidate": "name declaration_list",
+      "candidate_text": "PriceUtilities\n{"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 2867,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n    private int $taxrate = 20;"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 1617,
+      "candidate": "private",
+      "candidate_text": "private"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 960,
+      "candidate": "int",
+      "candidate_text": "int"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 2655,
+      "candidate": "$ name",
+      "candidate_text": "$taxrate"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 3250,
+      "candidate": "name",
+      "candidate_text": "taxrate"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 2123,
+      "candidate": "= expression",
+      "candidate_text": "= 20"
+    }
+  ],
+  "145": [
+    {
+      "state_id": 426,
+      "candidate": "integer",
+      "candidate_text": "20"
+    }
+  ],
+  "147": [
+    {
+      "state_id": 1919,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 1614,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function calculateTax(float $price): float\n    {"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "calculateTax(float $price): float\n    {"
+    }
+  ],
+  "182": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter )",
+      "candidate_text": "(float $price)"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 969,
+      "candidate": "float",
+      "candidate_text": "float"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$price"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "price"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 2434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": float"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 1590,
+      "candidate": "float",
+      "candidate_text": "float"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        return (($this->taxrate / 100) * $price);\n    }"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 88,
+      "candidate": "return expression _semicolon",
+      "candidate_text": "return (($this->taxrate / 100) * $price);"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 263,
+      "candidate": "( expression )",
+      "candidate_text": "(($this->taxrate / 100) * $price)"
+    }
+  ],
+  "226": [
+    {
+      "state_id": 175,
+      "candidate": "( expression )",
+      "candidate_text": "($this->taxrate / 100)"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 181,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->taxrate"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "taxrate"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 1568,
+      "candidate": "/ expression",
+      "candidate_text": "/ 100"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 422,
+      "candidate": "integer",
+      "candidate_text": "100"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 1568,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "249": [
+    {
+      "state_id": 1562,
+      "candidate": "* expression",
+      "candidate_text": "* $price"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 422,
+      "candidate": "$ name",
+      "candidate_text": "$price"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "price"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 1562,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 1479,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": ""
+    }
+  ],
+  "290": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

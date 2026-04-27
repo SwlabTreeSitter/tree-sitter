@@ -1,0 +1,527 @@
+{
+  "6": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "13": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "26": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch04\\batch14;"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch04\\batch14"
+    }
+  ],
+  "46": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch04"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch04"
+    }
+  ],
+  "51": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch14"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch14"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 157,
+      "candidate": "require_once expression",
+      "candidate_text": "require_once(\"vendor/autoload.php\")"
+    }
+  ],
+  "74": [
+    {
+      "state_id": 357,
+      "candidate": "( expression )",
+      "candidate_text": "(\"vendor/autoload.php\")"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 175,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"vendor/autoload.php\""
+    }
+  ],
+  "76": [
+    {
+      "state_id": 1713,
+      "candidate": "string_content",
+      "candidate_text": "vendor/autoload.php"
+    }
+  ],
+  "95": [
+    {
+      "state_id": 1725,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "96": [
+    {
+      "state_id": 1562,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 157,
+      "candidate": "use namespace_use_clause _semicolon",
+      "candidate_text": "use popp\\test\\BaseUnit;"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 1823,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\test"
+    }
+  ],
+  "108": [
+    {
+      "state_id": 1942,
+      "candidate": "\\ name",
+      "candidate_text": "\\test"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 3290,
+      "candidate": "name",
+      "candidate_text": "test"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 3112,
+      "candidate": "\\ name",
+      "candidate_text": "\\BaseUnit"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 2691,
+      "candidate": "name",
+      "candidate_text": "BaseUnit"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 2221,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 157,
+      "candidate": "class name base_clause declaration_list",
+      "candidate_text": "class Batch14Test extends BaseUnit \n{"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 3194,
+      "candidate": "name base_clause declaration_list",
+      "candidate_text": "Batch14Test extends BaseUnit \n{"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 1965,
+      "candidate": "extends _name",
+      "candidate_text": "extends BaseUnit"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 1799,
+      "candidate": "name",
+      "candidate_text": "BaseUnit"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 2262,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n\n    public function testRunner()\n    {\n        Runner::run();\n        $checkout = new Checkout();\n        $void = $checkout->totalize();\n        self::assertTrue($checkout instanceof Checkout);\n    }\n}"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 1617,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters compound_statement",
+      "candidate_text": "function testRunner()\n    {"
+    }
+  ],
+  "184": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters compound_statement",
+      "candidate_text": "testRunner()\n    {"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 2994,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 969,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 1873,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        Runner::run();\n        $checkout = new Checkout();\n        $void = $checkout->totalize();\n        self::assertTrue($checkout instanceof Checkout);\n    }"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 88,
+      "candidate": "name",
+      "candidate_text": "Runner"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 3271,
+      "candidate": ":: _member_name arguments",
+      "candidate_text": "::run()"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 1898,
+      "candidate": "name",
+      "candidate_text": "run"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 2828,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "223": [
+    {
+      "state_id": 191,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$checkout"
+    }
+  ],
+  "235": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "checkout"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= new Checkout()"
+    }
+  ],
+  "246": [
+    {
+      "state_id": 311,
+      "candidate": "new _class_name_reference arguments",
+      "candidate_text": "new Checkout()"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 1258,
+      "candidate": "name",
+      "candidate_text": "Checkout"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 1294,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 194,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$void"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "void"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $checkout->totalize()"
+    }
+  ],
+  "278": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$checkout"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "checkout"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->totalize()"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "totalize"
+    }
+  ],
+  "297": [
+    {
+      "state_id": 868,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "298": [
+    {
+      "state_id": 191,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 75,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 3271,
+      "candidate": ":: _member_name arguments",
+      "candidate_text": "::assertTrue($checkout instanceof Checkout)"
+    }
+  ],
+  "315": [
+    {
+      "state_id": 1898,
+      "candidate": "name",
+      "candidate_text": "assertTrue"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 2828,
+      "candidate": "( argument )",
+      "candidate_text": "($checkout instanceof Checkout)"
+    }
+  ],
+  "326": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$checkout"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "checkout"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 1283,
+      "candidate": "instanceof _class_name_reference",
+      "candidate_text": "instanceof Checkout"
+    }
+  ],
+  "347": [
+    {
+      "state_id": 1654,
+      "candidate": "name",
+      "candidate_text": "Checkout"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "364": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

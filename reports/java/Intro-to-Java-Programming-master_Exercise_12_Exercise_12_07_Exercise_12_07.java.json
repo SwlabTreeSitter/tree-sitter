@@ -1,0 +1,821 @@
+{
+  "415": [
+    {
+      "state_id": 1,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 727,
+      "candidate": "class identifier class_body",
+      "candidate_text": "class Exercise_12_07 {"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 1307,
+      "candidate": "identifier class_body",
+      "candidate_text": "Exercise_12_07 {"
+    }
+  ],
+  "443": [
+    {
+      "state_id": 896,
+      "candidate": "{ method_declaration }",
+      "candidate_text": "{\n\tpublic static int bin2Dec(String binaryString) throws NumberFormatException {\n\t\tint decimal = 0;\n\t\tfor (int i = 0, j = binaryString.length() - 1; \n\t\t\ti < binaryString.length(); i++, j--) {\n\t\t\tif (binaryString.charAt(i) < '0' || binaryString.charAt(i) > '1')\n\t\t\t\tthrow new NumberFormatException(\"The string is not a binary string\");\n\t\t\tdecimal += (Integer.parseInt(String.valueOf(binaryString.charAt(i)))) \n\t\t\t\t* Math.pow(2, j);\n\t\t}\n\t\treturn decimal;\n\t} \n}"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 408,
+      "candidate": "public static",
+      "candidate_text": "public static"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 505,
+      "candidate": "static",
+      "candidate_text": "static"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 698,
+      "candidate": "int",
+      "candidate_text": "int"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 784,
+      "candidate": "identifier formal_parameters",
+      "candidate_text": "bin2Dec(String binaryString)"
+    }
+  ],
+  "471": [
+    {
+      "state_id": 867,
+      "candidate": "( formal_parameter )",
+      "candidate_text": "(String binaryString)"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 471,
+      "candidate": "identifier",
+      "candidate_text": "String"
+    }
+  ],
+  "479": [
+    {
+      "state_id": 782,
+      "candidate": "identifier",
+      "candidate_text": "binaryString"
+    }
+  ],
+  "491": [
+    {
+      "state_id": 1076,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "493": [
+    {
+      "state_id": 1059,
+      "candidate": "throws _type",
+      "candidate_text": "throws NumberFormatException"
+    }
+  ],
+  "500": [
+    {
+      "state_id": 770,
+      "candidate": "identifier",
+      "candidate_text": "NumberFormatException"
+    }
+  ],
+  "522": [
+    {
+      "state_id": 1117,
+      "candidate": "{ switch_block_statement_group_repeat2 }",
+      "candidate_text": "{\n\t\tint decimal = 0;\n\t\tfor (int i = 0, j = binaryString.length() - 1; \n\t\t\ti < binaryString.length(); i++, j--) {\n\t\t\tif (binaryString.charAt(i) < '0' || binaryString.charAt(i) > '1')\n\t\t\t\tthrow new NumberFormatException(\"The string is not a binary string\");\n\t\t\tdecimal += (Integer.parseInt(String.valueOf(binaryString.charAt(i)))) \n\t\t\t\t* Math.pow(2, j);\n\t\t}\n\t\treturn decimal;\n\t}"
+    }
+  ],
+  "526": [
+    {
+      "state_id": 9,
+      "candidate": "int",
+      "candidate_text": "int"
+    }
+  ],
+  "530": [
+    {
+      "state_id": 775,
+      "candidate": "identifier",
+      "candidate_text": "decimal"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 1058,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "540": [
+    {
+      "state_id": 146,
+      "candidate": "decimal_integer_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 1369,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "545": [
+    {
+      "state_id": 8,
+      "candidate": "for ( local_variable_declaration expression ; expression for_statement_repeat2 ) statement",
+      "candidate_text": "for (int i = 0, j = binaryString.length() - 1; \n\t\t\ti < binaryString.length(); i++, j--) {"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 1376,
+      "candidate": "( local_variable_declaration expression ; expression for_statement_repeat2 ) statement",
+      "candidate_text": "(int i = 0, j = binaryString.length() - 1; \n\t\t\ti < binaryString.length(); i++, j--) {"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 120,
+      "candidate": "int",
+      "candidate_text": "int"
+    }
+  ],
+  "554": [
+    {
+      "state_id": 780,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 1066,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "558": [
+    {
+      "state_id": 146,
+      "candidate": "decimal_integer_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "559": [
+    {
+      "state_id": 1134,
+      "candidate": ", variable_declarator",
+      "candidate_text": ", j = binaryString.length() - 1"
+    }
+  ],
+  "561": [
+    {
+      "state_id": 883,
+      "candidate": "identifier",
+      "candidate_text": "j"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 1058,
+      "candidate": "= expression",
+      "candidate_text": "= binaryString.length() - 1"
+    }
+  ],
+  "565": [
+    {
+      "state_id": 146,
+      "candidate": "identifier",
+      "candidate_text": "binaryString"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 549,
+      "candidate": ". identifier argument_list",
+      "candidate_text": ".length()"
+    }
+  ],
+  "578": [
+    {
+      "state_id": 811,
+      "candidate": "identifier argument_list",
+      "candidate_text": "length()"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 429,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "585": [
+    {
+      "state_id": 155,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "587": [
+    {
+      "state_id": 668,
+      "candidate": "- expression",
+      "candidate_text": "- 1"
+    }
+  ],
+  "589": [
+    {
+      "state_id": 234,
+      "candidate": "decimal_integer_literal",
+      "candidate_text": "1"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 1368,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "596": [
+    {
+      "state_id": 182,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 750,
+      "candidate": "< expression",
+      "candidate_text": "< binaryString.length()"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 230,
+      "candidate": "identifier",
+      "candidate_text": "binaryString"
+    }
+  ],
+  "612": [
+    {
+      "state_id": 549,
+      "candidate": ". identifier argument_list",
+      "candidate_text": ".length()"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 811,
+      "candidate": "identifier argument_list",
+      "candidate_text": "length()"
+    }
+  ],
+  "619": [
+    {
+      "state_id": 429,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "620": [
+    {
+      "state_id": 155,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "621": [
+    {
+      "state_id": 750,
+      "candidate": "; expression for_statement_repeat2 ) statement",
+      "candidate_text": "; i++, j--) {"
+    }
+  ],
+  "623": [
+    {
+      "state_id": 169,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "624": [
+    {
+      "state_id": 678,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "626": [
+    {
+      "state_id": 678,
+      "candidate": ", expression",
+      "candidate_text": ", j--"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 207,
+      "candidate": "identifier",
+      "candidate_text": "j"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 697,
+      "candidate": "--",
+      "candidate_text": "--"
+    }
+  ],
+  "631": [
+    {
+      "state_id": 1141,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 70,
+      "candidate": "{ switch_block_statement_group_repeat2 }",
+      "candidate_text": "{\n\t\t\tif (binaryString.charAt(i) < '0' || binaryString.charAt(i) > '1')\n\t\t\t\tthrow new NumberFormatException(\"The string is not a binary string\");\n\t\t\tdecimal += (Integer.parseInt(String.valueOf(binaryString.charAt(i)))) \n\t\t\t\t* Math.pow(2, j);\n\t\t}"
+    }
+  ],
+  "638": [
+    {
+      "state_id": 9,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (binaryString.charAt(i) < '0' || binaryString.charAt(i) > '1')\n\t\t\t\tthrow new NumberFormatException(\"The string is not a binary string\");"
+    }
+  ],
+  "641": [
+    {
+      "state_id": 1236,
+      "candidate": "( expression )",
+      "candidate_text": "(binaryString.charAt(i) < '0' || binaryString.charAt(i) > '1')"
+    }
+  ],
+  "642": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "binaryString"
+    }
+  ],
+  "654": [
+    {
+      "state_id": 549,
+      "candidate": ". identifier argument_list",
+      "candidate_text": ".charAt(i)"
+    }
+  ],
+  "655": [
+    {
+      "state_id": 811,
+      "candidate": "identifier argument_list",
+      "candidate_text": "charAt(i)"
+    }
+  ],
+  "661": [
+    {
+      "state_id": 429,
+      "candidate": "( expression )",
+      "candidate_text": "(i)"
+    }
+  ],
+  "662": [
+    {
+      "state_id": 155,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "663": [
+    {
+      "state_id": 662,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "665": [
+    {
+      "state_id": 757,
+      "candidate": "< expression",
+      "candidate_text": "< '0'"
+    }
+  ],
+  "667": [
+    {
+      "state_id": 230,
+      "candidate": "character_literal",
+      "candidate_text": "'0'"
+    }
+  ],
+  "671": [
+    {
+      "state_id": 757,
+      "candidate": "|| expression",
+      "candidate_text": "|| binaryString.charAt(i) > '1'"
+    }
+  ],
+  "674": [
+    {
+      "state_id": 233,
+      "candidate": "identifier",
+      "candidate_text": "binaryString"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 549,
+      "candidate": ". identifier argument_list",
+      "candidate_text": ".charAt(i)"
+    }
+  ],
+  "687": [
+    {
+      "state_id": 811,
+      "candidate": "identifier argument_list",
+      "candidate_text": "charAt(i)"
+    }
+  ],
+  "693": [
+    {
+      "state_id": 429,
+      "candidate": "( expression )",
+      "candidate_text": "(i)"
+    }
+  ],
+  "694": [
+    {
+      "state_id": 155,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "695": [
+    {
+      "state_id": 662,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 625,
+      "candidate": "> expression",
+      "candidate_text": "> '1'"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 230,
+      "candidate": "character_literal",
+      "candidate_text": "'1'"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 757,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "708": [
+    {
+      "state_id": 48,
+      "candidate": "throw expression ;",
+      "candidate_text": "throw new NumberFormatException(\"The string is not a binary string\");"
+    }
+  ],
+  "714": [
+    {
+      "state_id": 193,
+      "candidate": "new identifier argument_list",
+      "candidate_text": "new NumberFormatException(\"The string is not a binary string\")"
+    }
+  ],
+  "718": [
+    {
+      "state_id": 785,
+      "candidate": "identifier argument_list",
+      "candidate_text": "NumberFormatException(\"The string is not a binary string\")"
+    }
+  ],
+  "739": [
+    {
+      "state_id": 853,
+      "candidate": "( expression )",
+      "candidate_text": "(\"The string is not a binary string\")"
+    }
+  ],
+  "740": [
+    {
+      "state_id": 155,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"The string is not a binary string\""
+    }
+  ],
+  "741": [
+    {
+      "state_id": 978,
+      "candidate": "string_fragment \"",
+      "candidate_text": "The string is not a binary string\""
+    }
+  ],
+  "774": [
+    {
+      "state_id": 962,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "775": [
+    {
+      "state_id": 662,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "776": [
+    {
+      "state_id": 731,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "781": [
+    {
+      "state_id": 8,
+      "candidate": "identifier += expression",
+      "candidate_text": "decimal += (Integer.parseInt(String.valueOf(binaryString.charAt(i)))) "
+    }
+  ],
+  "789": [
+    {
+      "state_id": 421,
+      "candidate": "+= expression",
+      "candidate_text": "+= (Integer.parseInt(String.valueOf(binaryString.charAt(i)))) "
+    }
+  ],
+  "792": [
+    {
+      "state_id": 228,
+      "candidate": "( expression )",
+      "candidate_text": "(Integer.parseInt(String.valueOf(binaryString.charAt(i))))"
+    }
+  ],
+  "793": [
+    {
+      "state_id": 115,
+      "candidate": "identifier",
+      "candidate_text": "Integer"
+    }
+  ],
+  "800": [
+    {
+      "state_id": 549,
+      "candidate": ". identifier argument_list",
+      "candidate_text": ".parseInt(String.valueOf(binaryString.charAt(i)))"
+    }
+  ],
+  "801": [
+    {
+      "state_id": 811,
+      "candidate": "identifier argument_list",
+      "candidate_text": "parseInt(String.valueOf(binaryString.charAt(i)))"
+    }
+  ],
+  "809": [
+    {
+      "state_id": 429,
+      "candidate": "( expression )",
+      "candidate_text": "(String.valueOf(binaryString.charAt(i)))"
+    }
+  ],
+  "810": [
+    {
+      "state_id": 155,
+      "candidate": "identifier",
+      "candidate_text": "String"
+    }
+  ],
+  "816": [
+    {
+      "state_id": 549,
+      "candidate": ". identifier argument_list",
+      "candidate_text": ".valueOf(binaryString.charAt(i))"
+    }
+  ],
+  "817": [
+    {
+      "state_id": 811,
+      "candidate": "identifier argument_list",
+      "candidate_text": "valueOf(binaryString.charAt(i))"
+    }
+  ],
+  "824": [
+    {
+      "state_id": 429,
+      "candidate": "( expression )",
+      "candidate_text": "(binaryString.charAt(i))"
+    }
+  ],
+  "825": [
+    {
+      "state_id": 155,
+      "candidate": "identifier",
+      "candidate_text": "binaryString"
+    }
+  ],
+  "837": [
+    {
+      "state_id": 549,
+      "candidate": ". identifier argument_list",
+      "candidate_text": ".charAt(i)"
+    }
+  ],
+  "838": [
+    {
+      "state_id": 811,
+      "candidate": "identifier argument_list",
+      "candidate_text": "charAt(i)"
+    }
+  ],
+  "844": [
+    {
+      "state_id": 429,
+      "candidate": "( expression )",
+      "candidate_text": "(i)"
+    }
+  ],
+  "845": [
+    {
+      "state_id": 155,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "846": [
+    {
+      "state_id": 662,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "847": [
+    {
+      "state_id": 662,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "848": [
+    {
+      "state_id": 662,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "849": [
+    {
+      "state_id": 757,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "856": [
+    {
+      "state_id": 618,
+      "candidate": "* expression",
+      "candidate_text": "* Math.pow(2, j)"
+    }
+  ],
+  "858": [
+    {
+      "state_id": 235,
+      "candidate": "identifier",
+      "candidate_text": "Math"
+    }
+  ],
+  "862": [
+    {
+      "state_id": 549,
+      "candidate": ". identifier argument_list",
+      "candidate_text": ".pow(2, j)"
+    }
+  ],
+  "863": [
+    {
+      "state_id": 811,
+      "candidate": "identifier argument_list",
+      "candidate_text": "pow(2, j)"
+    }
+  ],
+  "866": [
+    {
+      "state_id": 429,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(2, j)"
+    }
+  ],
+  "867": [
+    {
+      "state_id": 155,
+      "candidate": "decimal_integer_literal",
+      "candidate_text": "2"
+    }
+  ],
+  "868": [
+    {
+      "state_id": 662,
+      "candidate": ", expression",
+      "candidate_text": ", j"
+    }
+  ],
+  "870": [
+    {
+      "state_id": 199,
+      "candidate": "identifier",
+      "candidate_text": "j"
+    }
+  ],
+  "871": [
+    {
+      "state_id": 1169,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "872": [
+    {
+      "state_id": 752,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "876": [
+    {
+      "state_id": 8,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "880": [
+    {
+      "state_id": 8,
+      "candidate": "return expression ;",
+      "candidate_text": "return decimal;"
+    }
+  ],
+  "887": [
+    {
+      "state_id": 149,
+      "candidate": "identifier",
+      "candidate_text": "decimal"
+    }
+  ],
+  "894": [
+    {
+      "state_id": 729,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "897": [
+    {
+      "state_id": 8,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "900": [
+    {
+      "state_id": 410,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

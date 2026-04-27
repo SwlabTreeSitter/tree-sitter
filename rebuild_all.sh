@@ -21,7 +21,7 @@ if [ -z "$LANG" ]; then
 fi
 
 # =================[ 경로 설정 ]=================
-ROOT="/home/hyeonjin/PL"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 TS_DIR="$ROOT/tree-sitter"
 EXT_DIR="$ROOT/code-completion-extension"
 EXE_NAME="TreeSitterCutFile.exe"

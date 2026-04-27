@@ -1,0 +1,562 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "require"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"open-uri\""
+    }
+  ],
+  "387": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "open-uri"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "398": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "file_name"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= \"index.html\""
+    }
+  ],
+  "410": [
+    {
+      "state_id": 481,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"index.html\""
+    }
+  ],
+  "411": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "index.html"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "423": [
+    {
+      "state_id": 346,
+      "candidate": "constant",
+      "candidate_text": "URI"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".open"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "open"
+    }
+  ],
+  "431": [
+    {
+      "state_id": 11,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"https://pragprog.com/news/#{file_name}\")"
+    }
+  ],
+  "432": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"https://pragprog.com/news/#{file_name}\""
+    }
+  ],
+  "433": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "https://pragprog.com/news/"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 5038,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{file_name}"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "file_name"
+    }
+  ],
+  "470": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "471": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "472": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "474": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |web_page|\n  output = File.open(file_name, \"w\")\n  begin\n    while (line = web_page.gets)\n      output.puts line\n    end\n    output.close\n  rescue StandardError\n    $stderr.warn \"Failed to download #{file_name}: #{$!}\"\n    output.close\n    File.delete(file_name)\n    raise\n  end\nend"
+    }
+  ],
+  "477": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|web_page|"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "web_page"
+    }
+  ],
+  "486": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "490": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "output"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= File.open(file_name, \"w\")"
+    }
+  ],
+  "499": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "503": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".open"
+    }
+  ],
+  "504": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "open"
+    }
+  ],
+  "508": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(file_name, \"w\")"
+    }
+  ],
+  "509": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "file_name"
+    }
+  ],
+  "518": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", \"w\""
+    }
+  ],
+  "520": [
+    {
+      "state_id": 432,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"w\""
+    }
+  ],
+  "521": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "w"
+    }
+  ],
+  "522": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "523": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "527": [
+    {
+      "state_id": 252,
+      "candidate": "begin _terminator _body_statement end",
+      "candidate_text": "begin\n    while (line = web_page.gets)\n      output.puts line\n    end\n    output.close\n  rescue StandardError\n    $stderr.warn \"Failed to download #{file_name}: #{$!}\"\n    output.close\n    File.delete(file_name)\n    raise\n  end"
+    }
+  ],
+  "537": [
+    {
+      "state_id": 247,
+      "candidate": "while _statement do",
+      "candidate_text": "while (line = web_page.gets)"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 410,
+      "candidate": "( _statements )",
+      "candidate_text": "(line = web_page.gets)"
+    }
+  ],
+  "544": [
+    {
+      "state_id": 329,
+      "candidate": "identifier",
+      "candidate_text": "line"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= web_page.gets"
+    }
+  ],
+  "551": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "web_page"
+    }
+  ],
+  "559": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".gets"
+    }
+  ],
+  "560": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "gets"
+    }
+  ],
+  "564": [
+    {
+      "state_id": 5760,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 360,
+      "candidate": "identifier",
+      "candidate_text": "output"
+    }
+  ],
+  "578": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".puts"
+    }
+  ],
+  "579": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 4,
+      "candidate": "identifier",
+      "candidate_text": "line"
+    }
+  ],
+  "593": [
+    {
+      "state_id": 5954,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "output"
+    }
+  ],
+  "607": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".close"
+    }
+  ],
+  "608": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "close"
+    }
+  ],
+  "616": [
+    {
+      "state_id": 4944,
+      "candidate": "rescue exceptions then",
+      "candidate_text": "rescue StandardError"
+    }
+  ],
+  "623": [
+    {
+      "state_id": 677,
+      "candidate": "constant",
+      "candidate_text": "StandardError"
+    }
+  ],
+  "641": [
+    {
+      "state_id": 281,
+      "candidate": "global_variable",
+      "candidate_text": "$stderr"
+    }
+  ],
+  "648": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".warn"
+    }
+  ],
+  "649": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "warn"
+    }
+  ],
+  "654": [
+    {
+      "state_id": 4,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Failed to download #{file_name}: #{$!}\""
+    }
+  ],
+  "655": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Failed to download "
+    }
+  ],
+  "674": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{file_name}"
+    }
+  ],
+  "676": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "file_name"
+    }
+  ],
+  "685": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": ": "
+    }
+  ],
+  "688": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{$!}"
+    }
+  ],
+  "690": [
+    {
+      "state_id": 357,
+      "candidate": "global_variable",
+      "candidate_text": "$!"
+    }
+  ],
+  "692": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "693": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "699": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "output"
+    }
+  ],
+  "705": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".close"
+    }
+  ],
+  "706": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "close"
+    }
+  ],
+  "716": [
+    {
+      "state_id": 252,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "720": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".delete"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "delete"
+    }
+  ],
+  "727": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(file_name)"
+    }
+  ],
+  "728": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "file_name"
+    }
+  ],
+  "737": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "743": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "raise"
+    }
+  ],
+  "751": [
+    {
+      "state_id": 5983,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "755": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

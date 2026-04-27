@@ -1,0 +1,324 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class ReportCard\n  def self.issue(name, physics_grade, chemistry_grade, biology_grade)\n    puts \"Report Card for #{name}\"\n    puts\n    puts \"Physics: #{physics_grade}\"\n    puts \"Chemistry: #{chemistry_grade}\"\n    puts \"Biology: #{biology_grade}\"\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "ReportCard\n  def self.issue(name, physics_grade, chemistry_grade, biology_grade)\n    puts \"Report Card for #{name}\"\n    puts\n    puts \"Physics: #{physics_grade}\"\n    puts \"Chemistry: #{chemistry_grade}\"\n    puts \"Biology: #{biology_grade}\"\n  end\nend"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 217,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def self.issue(name, physics_grade, chemistry_grade, biology_grade)"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 2466,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 5621,
+      "candidate": ". _method_rest",
+      "candidate_text": ".issue(name, physics_grade, chemistry_grade, biology_grade)"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 2538,
+      "candidate": "identifier",
+      "candidate_text": "issue"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(name, physics_grade, chemistry_grade, biology_grade)"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "38": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", physics_grade"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier",
+      "candidate_text": "physics_grade"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 5515,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", chemistry_grade"
+    }
+  ],
+  "55": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier",
+      "candidate_text": "chemistry_grade"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 5515,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", biology_grade"
+    }
+  ],
+  "72": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier",
+      "candidate_text": "biology_grade"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Report Card for #{name}\""
+    }
+  ],
+  "97": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Report Card for "
+    }
+  ],
+  "113": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{name}"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "126": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Physics: #{physics_grade}\""
+    }
+  ],
+  "141": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Physics: "
+    }
+  ],
+  "150": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{physics_grade}"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "physics_grade"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "166": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "172": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Chemistry: #{chemistry_grade}\""
+    }
+  ],
+  "178": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Chemistry: "
+    }
+  ],
+  "189": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{chemistry_grade}"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "chemistry_grade"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "213": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Biology: #{biology_grade}\""
+    }
+  ],
+  "219": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Biology: "
+    }
+  ],
+  "228": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{biology_grade}"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "biology_grade"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "248": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

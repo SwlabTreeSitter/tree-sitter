@@ -1,0 +1,5665 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { describe, it, expect, xit } from '@jest/globals'"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ describe, it, expect, xit }"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "17": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", it"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", expect"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", xit"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from '@jest/globals'"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'@jest/globals'"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "@jest/globals'"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 16,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { Tournament } from './tournament.ts'"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier }",
+      "candidate_text": "{ Tournament }"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 5029,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from './tournament.ts'"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'./tournament.ts'"
+    }
+  ],
+  "86": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "./tournament.ts'"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('Tournament', () => {"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Tournament'"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Tournament'"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  it('just the header if no input', () => {"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "139": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('just the header if no input', () => {\n    expect(new Tournament().tally('')).toBe(\n      'Team                           | MP |  W |  D |  L |  P'\n    )\n  })"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 199,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'just the header if no input'"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "just the header if no input'"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(new Tournament().tally('')).toBe(\n      'Team                           | MP |  W |  D |  L |  P'\n    )\n  }"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(new Tournament().tally(''))"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('')"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 265,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      'Team                           | MP |  W |  D |  L |  P'\n    )"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "292": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "296": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "297": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "302": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('a win is three points, a loss is zero points', () => {\n    expect(\n      new Tournament().tally('Allegoric Alaskans;Blithering Badgers;win')\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'a win is three points, a loss is zero points'"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "a win is three points, a loss is zero points'"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "352": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "354": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "360": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally('Allegoric Alaskans;Blithering Badgers;win')\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "366": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally('Allegoric Alaskans;Blithering Badgers;win')\n    )"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "394": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "397": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "402": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('Allegoric Alaskans;Blithering Badgers;win')"
+    }
+  ],
+  "403": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "404": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "445": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0',\n      ]"
+    }
+  ],
+  "476": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "477": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "533": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3'"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3'"
+    }
+  ],
+  "544": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3'"
+    }
+  ],
+  "599": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "610": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "611": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "666": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "667": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "675": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "676": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "677": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "681": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "682": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "683": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "685": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "692": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "696": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "705": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('a win can also be expressed as a loss', () => {\n    expect(\n      new Tournament().tally('Blithering Badgers;Allegoric Alaskans;loss')\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "706": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'a win can also be expressed as a loss'"
+    }
+  ],
+  "707": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "a win can also be expressed as a loss'"
+    }
+  ],
+  "744": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "745": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "747": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "748": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "750": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "753": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally('Blithering Badgers;Allegoric Alaskans;loss')\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "759": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "765": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally('Blithering Badgers;Allegoric Alaskans;loss')\n    )"
+    }
+  ],
+  "773": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "777": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "787": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "788": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "789": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "790": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "795": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('Blithering Badgers;Allegoric Alaskans;loss')"
+    }
+  ],
+  "796": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers;Allegoric Alaskans;loss'"
+    }
+  ],
+  "797": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers;Allegoric Alaskans;loss'"
+    }
+  ],
+  "839": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "840": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "846": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "847": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "848": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "852": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "860": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0',\n      ]"
+    }
+  ],
+  "870": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "871": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "926": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "927": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3'"
+    }
+  ],
+  "937": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3'"
+    }
+  ],
+  "938": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3'"
+    }
+  ],
+  "993": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "994": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "1004": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "1005": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "1060": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1061": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "1069": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1070": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "1071": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "1075": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "1076": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "1077": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "1079": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1080": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1086": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1090": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1091": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1096": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1099": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('a different team can win', () => {\n    expect(\n      new Tournament().tally('Blithering Badgers;Allegoric Alaskans;win')\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Blithering Badgers             |  1 |  1 |  0 |  0 |  3',\n        'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "1100": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'a different team can win'"
+    }
+  ],
+  "1101": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "a different team can win'"
+    }
+  ],
+  "1125": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1126": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1128": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1129": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1131": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1134": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally('Blithering Badgers;Allegoric Alaskans;win')\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Blithering Badgers             |  1 |  1 |  0 |  0 |  3',\n        'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "1140": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1146": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally('Blithering Badgers;Allegoric Alaskans;win')\n    )"
+    }
+  ],
+  "1154": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "1158": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "1168": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1169": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1170": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "1171": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "1176": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('Blithering Badgers;Allegoric Alaskans;win')"
+    }
+  ],
+  "1177": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers;Allegoric Alaskans;win'"
+    }
+  ],
+  "1178": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers;Allegoric Alaskans;win'"
+    }
+  ],
+  "1219": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1220": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1226": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1227": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "1228": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "1232": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Blithering Badgers             |  1 |  1 |  0 |  0 |  3',\n        'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "1240": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Blithering Badgers             |  1 |  1 |  0 |  0 |  3',\n        'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0',\n      ]"
+    }
+  ],
+  "1250": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "1251": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "1306": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1307": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  1 |  1 |  0 |  0 |  3'"
+    }
+  ],
+  "1317": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  1 |  1 |  0 |  0 |  3'"
+    }
+  ],
+  "1318": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  1 |  1 |  0 |  0 |  3'"
+    }
+  ],
+  "1373": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1374": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "1384": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "1385": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "1440": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1441": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "1449": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1450": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "1451": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "1455": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "1456": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "1457": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "1459": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1460": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1466": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1470": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1471": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1476": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1479": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('a draw is one point each', () => {\n    expect(\n      new Tournament().tally('Allegoric Alaskans;Blithering Badgers;draw')\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1',\n        'Blithering Badgers             |  1 |  0 |  1 |  0 |  1',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "1480": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'a draw is one point each'"
+    }
+  ],
+  "1481": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "a draw is one point each'"
+    }
+  ],
+  "1505": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1506": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1508": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1509": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1511": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1514": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally('Allegoric Alaskans;Blithering Badgers;draw')\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1',\n        'Blithering Badgers             |  1 |  0 |  1 |  0 |  1',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "1520": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1526": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally('Allegoric Alaskans;Blithering Badgers;draw')\n    )"
+    }
+  ],
+  "1534": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "1538": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "1548": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1549": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1550": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "1551": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "1556": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "('Allegoric Alaskans;Blithering Badgers;draw')"
+    }
+  ],
+  "1557": [
+    {
+      "state_id": 265,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;draw'"
+    }
+  ],
+  "1558": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;draw'"
+    }
+  ],
+  "1600": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1601": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1607": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1608": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "1609": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "1613": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1',\n        'Blithering Badgers             |  1 |  0 |  1 |  0 |  1',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "1621": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1',\n        'Blithering Badgers             |  1 |  0 |  1 |  0 |  1',\n      ]"
+    }
+  ],
+  "1631": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "1632": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "1687": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1688": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1'"
+    }
+  ],
+  "1698": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1'"
+    }
+  ],
+  "1699": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1'"
+    }
+  ],
+  "1754": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1755": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  1 |  0 |  1 |  0 |  1'"
+    }
+  ],
+  "1765": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  1 |  0 |  1 |  0 |  1'"
+    }
+  ],
+  "1766": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  1 |  0 |  1 |  0 |  1'"
+    }
+  ],
+  "1821": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1822": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "1830": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1831": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "1832": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "1836": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "1837": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "1838": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "1840": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1841": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1847": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1851": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1852": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1857": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1860": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('There can be more than one match', () => {\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6',\n        'Blithering Badgers             |  2 |  0 |  0 |  2 |  0',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "1861": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'There can be more than one match'"
+    }
+  ],
+  "1862": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "There can be more than one match'"
+    }
+  ],
+  "1894": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1895": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1897": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1898": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1900": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1903": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6',\n        'Blithering Badgers             |  2 |  0 |  0 |  2 |  0',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "1909": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1915": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ].join('\\n')\n      )\n    )"
+    }
+  ],
+  "1923": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "1927": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "1937": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1938": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1939": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "1940": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "1945": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ].join('\\n')\n      )"
+    }
+  ],
+  "1955": [
+    {
+      "state_id": 265,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ]"
+    }
+  ],
+  "1967": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "1968": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "2009": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2010": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "2022": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "2023": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "2064": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2065": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "2075": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2076": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "2077": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "2081": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "2082": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "2083": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "2085": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2086": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2094": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2100": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2101": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "2102": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "2106": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6',\n        'Blithering Badgers             |  2 |  0 |  0 |  2 |  0',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "2114": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6',\n        'Blithering Badgers             |  2 |  0 |  0 |  2 |  0',\n      ]"
+    }
+  ],
+  "2124": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "2125": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "2180": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2181": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6'"
+    }
+  ],
+  "2191": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6'"
+    }
+  ],
+  "2192": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6'"
+    }
+  ],
+  "2247": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2248": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  2 |  0 |  0 |  2 |  0'"
+    }
+  ],
+  "2258": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  2 |  0 |  0 |  2 |  0'"
+    }
+  ],
+  "2259": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  2 |  0 |  0 |  2 |  0'"
+    }
+  ],
+  "2314": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2315": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "2323": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2324": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "2325": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "2329": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "2330": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "2331": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "2333": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2334": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2340": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2344": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2345": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2350": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2353": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('There can be more than one winner', () => {\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3',\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "2354": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'There can be more than one winner'"
+    }
+  ],
+  "2355": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "There can be more than one winner'"
+    }
+  ],
+  "2388": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2389": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2391": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2392": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2394": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2397": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3',\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "2403": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2409": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ].join('\\n')\n      )\n    )"
+    }
+  ],
+  "2417": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "2421": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "2431": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2432": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2433": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "2434": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "2439": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "(\n        [\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ].join('\\n')\n      )"
+    }
+  ],
+  "2449": [
+    {
+      "state_id": 265,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Allegoric Alaskans;Blithering Badgers;win',\n        ]"
+    }
+  ],
+  "2461": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;loss'"
+    }
+  ],
+  "2462": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;loss'"
+    }
+  ],
+  "2504": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2505": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "2517": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "2518": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "2559": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2560": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "2570": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2571": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "2572": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "2576": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "2577": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "2578": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "2580": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2581": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2589": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2595": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2596": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "2597": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "2601": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3',\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "2609": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3',\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3',\n      ]"
+    }
+  ],
+  "2619": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "2620": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "2675": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2676": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3'"
+    }
+  ],
+  "2686": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3'"
+    }
+  ],
+  "2687": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3'"
+    }
+  ],
+  "2742": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2743": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3'"
+    }
+  ],
+  "2753": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  2 |  1 |  0 |  1 |  3'"
+    }
+  ],
+  "2754": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  2 |  1 |  0 |  1 |  3'"
+    }
+  ],
+  "2809": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2810": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "2818": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2819": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "2820": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "2824": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "2825": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "2826": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "2828": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2829": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2835": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2839": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2840": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2845": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2848": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('There can be more than two teams', () => {\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Blithering Badgers;Courageous Californians;win',\n          'Courageous Californians;Allegoric Alaskans;loss',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6',\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3',\n        'Courageous Californians        |  2 |  0 |  0 |  2 |  0',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "2849": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'There can be more than two teams'"
+    }
+  ],
+  "2850": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "There can be more than two teams'"
+    }
+  ],
+  "2882": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2883": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2885": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2886": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2888": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2891": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Blithering Badgers;Courageous Californians;win',\n          'Courageous Californians;Allegoric Alaskans;loss',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6',\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3',\n        'Courageous Californians        |  2 |  0 |  0 |  2 |  0',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "2897": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2903": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Blithering Badgers;Courageous Californians;win',\n          'Courageous Californians;Allegoric Alaskans;loss',\n        ].join('\\n')\n      )\n    )"
+    }
+  ],
+  "2911": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "2915": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "2925": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2926": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2927": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "2928": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "2933": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Blithering Badgers;Courageous Californians;win',\n          'Courageous Californians;Allegoric Alaskans;loss',\n        ].join('\\n')\n      )"
+    }
+  ],
+  "2943": [
+    {
+      "state_id": 265,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Blithering Badgers;Courageous Californians;win',\n          'Courageous Californians;Allegoric Alaskans;loss',\n        ]"
+    }
+  ],
+  "2955": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "2956": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "2997": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2998": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Blithering Badgers;Courageous Californians;win'"
+    }
+  ],
+  "3010": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers;Courageous Californians;win'"
+    }
+  ],
+  "3011": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers;Courageous Californians;win'"
+    }
+  ],
+  "3057": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3058": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Courageous Californians;Allegoric Alaskans;loss'"
+    }
+  ],
+  "3070": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Courageous Californians;Allegoric Alaskans;loss'"
+    }
+  ],
+  "3071": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Courageous Californians;Allegoric Alaskans;loss'"
+    }
+  ],
+  "3118": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3119": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "3129": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3130": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "3131": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "3135": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "3136": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "3137": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "3139": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3140": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3148": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3154": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3155": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "3156": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "3160": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6',\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3',\n        'Courageous Californians        |  2 |  0 |  0 |  2 |  0',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "3168": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6',\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3',\n        'Courageous Californians        |  2 |  0 |  0 |  2 |  0',\n      ]"
+    }
+  ],
+  "3178": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "3179": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "3234": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3235": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6'"
+    }
+  ],
+  "3245": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6'"
+    }
+  ],
+  "3246": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6'"
+    }
+  ],
+  "3301": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3302": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  2 |  1 |  0 |  1 |  3'"
+    }
+  ],
+  "3312": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  2 |  1 |  0 |  1 |  3'"
+    }
+  ],
+  "3313": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  2 |  1 |  0 |  1 |  3'"
+    }
+  ],
+  "3368": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3369": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Courageous Californians        |  2 |  0 |  0 |  2 |  0'"
+    }
+  ],
+  "3379": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Courageous Californians        |  2 |  0 |  0 |  2 |  0'"
+    }
+  ],
+  "3380": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Courageous Californians        |  2 |  0 |  0 |  2 |  0'"
+    }
+  ],
+  "3435": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3436": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "3444": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3445": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "3446": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "3450": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "3451": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "3452": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "3454": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3455": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3461": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3465": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3466": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3471": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "3474": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('typical input', () => {\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Courageous Californians;draw',\n          'Devastating Donkeys;Allegoric Alaskans;win',\n          'Courageous Californians;Blithering Badgers;loss',\n          'Blithering Badgers;Devastating Donkeys;loss',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Devastating Donkeys            |  3 |  2 |  1 |  0 |  7',\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6',\n        'Blithering Badgers             |  3 |  1 |  0 |  2 |  3',\n        'Courageous Californians        |  3 |  0 |  1 |  2 |  1',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "3475": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'typical input'"
+    }
+  ],
+  "3476": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "typical input'"
+    }
+  ],
+  "3489": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3490": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "3492": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "3493": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3495": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "3498": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Courageous Californians;draw',\n          'Devastating Donkeys;Allegoric Alaskans;win',\n          'Courageous Californians;Blithering Badgers;loss',\n          'Blithering Badgers;Devastating Donkeys;loss',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Devastating Donkeys            |  3 |  2 |  1 |  0 |  7',\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6',\n        'Blithering Badgers             |  3 |  1 |  0 |  2 |  3',\n        'Courageous Californians        |  3 |  0 |  1 |  2 |  1',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "3504": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "3510": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Courageous Californians;draw',\n          'Devastating Donkeys;Allegoric Alaskans;win',\n          'Courageous Californians;Blithering Badgers;loss',\n          'Blithering Badgers;Devastating Donkeys;loss',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ].join('\\n')\n      )\n    )"
+    }
+  ],
+  "3518": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "3522": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "3532": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "3533": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3534": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "3535": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "3540": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "(\n        [\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Courageous Californians;draw',\n          'Devastating Donkeys;Allegoric Alaskans;win',\n          'Courageous Californians;Blithering Badgers;loss',\n          'Blithering Badgers;Devastating Donkeys;loss',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ].join('\\n')\n      )"
+    }
+  ],
+  "3550": [
+    {
+      "state_id": 265,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Courageous Californians;draw',\n          'Devastating Donkeys;Allegoric Alaskans;win',\n          'Courageous Californians;Blithering Badgers;loss',\n          'Blithering Badgers;Devastating Donkeys;loss',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ]"
+    }
+  ],
+  "3562": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "3563": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "3604": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3605": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Devastating Donkeys;Courageous Californians;draw'"
+    }
+  ],
+  "3617": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys;Courageous Californians;draw'"
+    }
+  ],
+  "3618": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys;Courageous Californians;draw'"
+    }
+  ],
+  "3666": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3667": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Devastating Donkeys;Allegoric Alaskans;win'"
+    }
+  ],
+  "3679": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys;Allegoric Alaskans;win'"
+    }
+  ],
+  "3680": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys;Allegoric Alaskans;win'"
+    }
+  ],
+  "3722": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3723": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Courageous Californians;Blithering Badgers;loss'"
+    }
+  ],
+  "3735": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Courageous Californians;Blithering Badgers;loss'"
+    }
+  ],
+  "3736": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Courageous Californians;Blithering Badgers;loss'"
+    }
+  ],
+  "3783": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3784": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Blithering Badgers;Devastating Donkeys;loss'"
+    }
+  ],
+  "3796": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers;Devastating Donkeys;loss'"
+    }
+  ],
+  "3797": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers;Devastating Donkeys;loss'"
+    }
+  ],
+  "3840": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3841": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Allegoric Alaskans;Courageous Californians;win'"
+    }
+  ],
+  "3853": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Courageous Californians;win'"
+    }
+  ],
+  "3854": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Courageous Californians;win'"
+    }
+  ],
+  "3900": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3901": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "3911": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3912": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "3913": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "3917": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "3918": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "3919": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "3921": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3922": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3930": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3936": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3937": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "3938": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "3942": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Devastating Donkeys            |  3 |  2 |  1 |  0 |  7',\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6',\n        'Blithering Badgers             |  3 |  1 |  0 |  2 |  3',\n        'Courageous Californians        |  3 |  0 |  1 |  2 |  1',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "3950": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Devastating Donkeys            |  3 |  2 |  1 |  0 |  7',\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6',\n        'Blithering Badgers             |  3 |  1 |  0 |  2 |  3',\n        'Courageous Californians        |  3 |  0 |  1 |  2 |  1',\n      ]"
+    }
+  ],
+  "3960": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "3961": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "4016": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4017": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Devastating Donkeys            |  3 |  2 |  1 |  0 |  7'"
+    }
+  ],
+  "4027": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys            |  3 |  2 |  1 |  0 |  7'"
+    }
+  ],
+  "4028": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys            |  3 |  2 |  1 |  0 |  7'"
+    }
+  ],
+  "4083": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4084": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6'"
+    }
+  ],
+  "4094": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6'"
+    }
+  ],
+  "4095": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6'"
+    }
+  ],
+  "4150": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4151": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  3 |  1 |  0 |  2 |  3'"
+    }
+  ],
+  "4161": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  3 |  1 |  0 |  2 |  3'"
+    }
+  ],
+  "4162": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  3 |  1 |  0 |  2 |  3'"
+    }
+  ],
+  "4217": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4218": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Courageous Californians        |  3 |  0 |  1 |  2 |  1'"
+    }
+  ],
+  "4228": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Courageous Californians        |  3 |  0 |  1 |  2 |  1'"
+    }
+  ],
+  "4229": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Courageous Californians        |  3 |  0 |  1 |  2 |  1'"
+    }
+  ],
+  "4284": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4285": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "4293": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "4294": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "4295": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "4299": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "4300": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "4301": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "4303": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4304": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4310": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4314": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "4315": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4320": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "4323": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('incomplete competition (not all pairs have played)', () => {\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;draw',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6',\n        'Blithering Badgers             |  2 |  1 |  1 |  0 |  4',\n        'Courageous Californians        |  2 |  0 |  1 |  1 |  1',\n        'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "4324": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'incomplete competition (not all pairs have played)'"
+    }
+  ],
+  "4325": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "incomplete competition (not all pairs have played)'"
+    }
+  ],
+  "4375": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4376": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "4378": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "4379": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4381": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "4384": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;draw',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6',\n        'Blithering Badgers             |  2 |  1 |  1 |  0 |  4',\n        'Courageous Californians        |  2 |  0 |  1 |  1 |  1',\n        'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "4390": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "4396": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally(\n        [\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;draw',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ].join('\\n')\n      )\n    )"
+    }
+  ],
+  "4404": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "4408": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "4418": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "4419": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4420": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "4421": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "4426": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "(\n        [\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;draw',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ].join('\\n')\n      )"
+    }
+  ],
+  "4436": [
+    {
+      "state_id": 265,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n          'Allegoric Alaskans;Blithering Badgers;loss',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;draw',\n          'Allegoric Alaskans;Courageous Californians;win',\n        ]"
+    }
+  ],
+  "4448": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;loss'"
+    }
+  ],
+  "4449": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;loss'"
+    }
+  ],
+  "4491": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4492": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Devastating Donkeys;Allegoric Alaskans;loss'"
+    }
+  ],
+  "4504": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys;Allegoric Alaskans;loss'"
+    }
+  ],
+  "4505": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys;Allegoric Alaskans;loss'"
+    }
+  ],
+  "4548": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4549": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Courageous Californians;Blithering Badgers;draw'"
+    }
+  ],
+  "4561": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Courageous Californians;Blithering Badgers;draw'"
+    }
+  ],
+  "4562": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Courageous Californians;Blithering Badgers;draw'"
+    }
+  ],
+  "4609": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4610": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Allegoric Alaskans;Courageous Californians;win'"
+    }
+  ],
+  "4622": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Courageous Californians;win'"
+    }
+  ],
+  "4623": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Courageous Californians;win'"
+    }
+  ],
+  "4669": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4670": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "4680": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "4681": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "4682": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "4686": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "4687": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "4688": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "4690": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4691": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4699": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4705": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4706": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "4707": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "4711": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6',\n        'Blithering Badgers             |  2 |  1 |  1 |  0 |  4',\n        'Courageous Californians        |  2 |  0 |  1 |  1 |  1',\n        'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "4719": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6',\n        'Blithering Badgers             |  2 |  1 |  1 |  0 |  4',\n        'Courageous Californians        |  2 |  0 |  1 |  1 |  1',\n        'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0',\n      ]"
+    }
+  ],
+  "4729": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "4730": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "4785": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4786": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6'"
+    }
+  ],
+  "4796": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6'"
+    }
+  ],
+  "4797": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6'"
+    }
+  ],
+  "4852": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4853": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  2 |  1 |  1 |  0 |  4'"
+    }
+  ],
+  "4863": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  2 |  1 |  1 |  0 |  4'"
+    }
+  ],
+  "4864": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  2 |  1 |  1 |  0 |  4'"
+    }
+  ],
+  "4919": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4920": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Courageous Californians        |  2 |  0 |  1 |  1 |  1'"
+    }
+  ],
+  "4930": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Courageous Californians        |  2 |  0 |  1 |  1 |  1'"
+    }
+  ],
+  "4931": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Courageous Californians        |  2 |  0 |  1 |  1 |  1'"
+    }
+  ],
+  "4986": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4987": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "4997": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "4998": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys            |  1 |  0 |  0 |  1 |  0'"
+    }
+  ],
+  "5053": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5054": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "5062": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "5063": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "5064": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "5068": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "5069": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "5070": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "5072": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5073": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5079": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5083": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "5084": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5089": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "5092": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('ties broken alphabetically', () => {\n    expect(\n      new Tournament().tally(\n        [\n          'Courageous Californians;Devastating Donkeys;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;draw',\n          'Allegoric Alaskans;Courageous Californians;draw',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7',\n        'Courageous Californians        |  3 |  2 |  1 |  0 |  7',\n        'Blithering Badgers             |  3 |  0 |  1 |  2 |  1',\n        'Devastating Donkeys            |  3 |  0 |  1 |  2 |  1',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "5093": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'ties broken alphabetically'"
+    }
+  ],
+  "5094": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "ties broken alphabetically'"
+    }
+  ],
+  "5120": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5121": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "5123": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "5124": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5126": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "5129": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally(\n        [\n          'Courageous Californians;Devastating Donkeys;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;draw',\n          'Allegoric Alaskans;Courageous Californians;draw',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7',\n        'Courageous Californians        |  3 |  2 |  1 |  0 |  7',\n        'Blithering Badgers             |  3 |  0 |  1 |  2 |  1',\n        'Devastating Donkeys            |  3 |  0 |  1 |  2 |  1',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "5135": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "5141": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally(\n        [\n          'Courageous Californians;Devastating Donkeys;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;draw',\n          'Allegoric Alaskans;Courageous Californians;draw',\n        ].join('\\n')\n      )\n    )"
+    }
+  ],
+  "5149": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "5153": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "5163": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "5164": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5165": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "5166": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "5171": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "(\n        [\n          'Courageous Californians;Devastating Donkeys;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;draw',\n          'Allegoric Alaskans;Courageous Californians;draw',\n        ].join('\\n')\n      )"
+    }
+  ],
+  "5181": [
+    {
+      "state_id": 265,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n          'Courageous Californians;Devastating Donkeys;win',\n          'Allegoric Alaskans;Blithering Badgers;win',\n          'Devastating Donkeys;Allegoric Alaskans;loss',\n          'Courageous Californians;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;draw',\n          'Allegoric Alaskans;Courageous Californians;draw',\n        ]"
+    }
+  ],
+  "5193": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Courageous Californians;Devastating Donkeys;win'"
+    }
+  ],
+  "5194": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Courageous Californians;Devastating Donkeys;win'"
+    }
+  ],
+  "5241": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5242": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "5254": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "5255": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Blithering Badgers;win'"
+    }
+  ],
+  "5296": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5297": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Devastating Donkeys;Allegoric Alaskans;loss'"
+    }
+  ],
+  "5309": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys;Allegoric Alaskans;loss'"
+    }
+  ],
+  "5310": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys;Allegoric Alaskans;loss'"
+    }
+  ],
+  "5353": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5354": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Courageous Californians;Blithering Badgers;win'"
+    }
+  ],
+  "5366": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Courageous Californians;Blithering Badgers;win'"
+    }
+  ],
+  "5367": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Courageous Californians;Blithering Badgers;win'"
+    }
+  ],
+  "5413": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5414": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Blithering Badgers;Devastating Donkeys;draw'"
+    }
+  ],
+  "5426": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers;Devastating Donkeys;draw'"
+    }
+  ],
+  "5427": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers;Devastating Donkeys;draw'"
+    }
+  ],
+  "5470": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5471": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Allegoric Alaskans;Courageous Californians;draw'"
+    }
+  ],
+  "5483": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans;Courageous Californians;draw'"
+    }
+  ],
+  "5484": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans;Courageous Californians;draw'"
+    }
+  ],
+  "5531": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5532": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "5542": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "5543": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "5544": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "5548": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "5549": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "5550": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "5552": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5553": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5561": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5567": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5568": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "5569": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "5573": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7',\n        'Courageous Californians        |  3 |  2 |  1 |  0 |  7',\n        'Blithering Badgers             |  3 |  0 |  1 |  2 |  1',\n        'Devastating Donkeys            |  3 |  0 |  1 |  2 |  1',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "5581": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7',\n        'Courageous Californians        |  3 |  2 |  1 |  0 |  7',\n        'Blithering Badgers             |  3 |  0 |  1 |  2 |  1',\n        'Devastating Donkeys            |  3 |  0 |  1 |  2 |  1',\n      ]"
+    }
+  ],
+  "5591": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "5592": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "5647": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5648": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7'"
+    }
+  ],
+  "5658": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7'"
+    }
+  ],
+  "5659": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7'"
+    }
+  ],
+  "5714": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5715": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Courageous Californians        |  3 |  2 |  1 |  0 |  7'"
+    }
+  ],
+  "5725": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Courageous Californians        |  3 |  2 |  1 |  0 |  7'"
+    }
+  ],
+  "5726": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Courageous Californians        |  3 |  2 |  1 |  0 |  7'"
+    }
+  ],
+  "5781": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5782": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  3 |  0 |  1 |  2 |  1'"
+    }
+  ],
+  "5792": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  3 |  0 |  1 |  2 |  1'"
+    }
+  ],
+  "5793": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  3 |  0 |  1 |  2 |  1'"
+    }
+  ],
+  "5848": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5849": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Devastating Donkeys            |  3 |  0 |  1 |  2 |  1'"
+    }
+  ],
+  "5859": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys            |  3 |  0 |  1 |  2 |  1'"
+    }
+  ],
+  "5860": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys            |  3 |  0 |  1 |  2 |  1'"
+    }
+  ],
+  "5915": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5916": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "5924": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "5925": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "5926": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "5930": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "5931": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "5932": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "5934": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5935": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5941": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5945": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "5946": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5951": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "5954": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('ensure points sorted numerically', () => {\n    expect(\n      new Tournament().tally(\n        [\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Devastating Donkeys            |  5 |  4 |  0 |  1 | 12',\n        'Blithering Badgers             |  5 |  1 |  0 |  4 |  3',\n      ].join('\\n')\n    )\n  })"
+    }
+  ],
+  "5955": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'ensure points sorted numerically'"
+    }
+  ],
+  "5956": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "ensure points sorted numerically'"
+    }
+  ],
+  "5988": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5989": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "5991": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "5992": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5994": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "5997": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n    expect(\n      new Tournament().tally(\n        [\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;win',\n        ].join('\\n')\n      )\n    ).toBe(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Devastating Donkeys            |  5 |  4 |  0 |  1 | 12',\n        'Blithering Badgers             |  5 |  1 |  0 |  4 |  3',\n      ].join('\\n')\n    )\n  }"
+    }
+  ],
+  "6003": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "6009": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      new Tournament().tally(\n        [\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;win',\n        ].join('\\n')\n      )\n    )"
+    }
+  ],
+  "6017": [
+    {
+      "state_id": 199,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Tournament()"
+    }
+  ],
+  "6021": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "Tournament"
+    }
+  ],
+  "6031": [
+    {
+      "state_id": 1501,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "6032": [
+    {
+      "state_id": 265,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "6033": [
+    {
+      "state_id": 2644,
+      "candidate": ". identifier",
+      "candidate_text": ".tally"
+    }
+  ],
+  "6034": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "tally"
+    }
+  ],
+  "6039": [
+    {
+      "state_id": 2644,
+      "candidate": "( expression )",
+      "candidate_text": "(\n        [\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;win',\n        ].join('\\n')\n      )"
+    }
+  ],
+  "6049": [
+    {
+      "state_id": 265,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Devastating Donkeys;Blithering Badgers;win',\n          'Blithering Badgers;Devastating Donkeys;win',\n        ]"
+    }
+  ],
+  "6061": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6062": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6104": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6105": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6117": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6118": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6160": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6161": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6173": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6174": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6216": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6217": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6229": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6230": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys;Blithering Badgers;win'"
+    }
+  ],
+  "6272": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6273": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n          'Blithering Badgers;Devastating Donkeys;win'"
+    }
+  ],
+  "6285": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers;Devastating Donkeys;win'"
+    }
+  ],
+  "6286": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers;Devastating Donkeys;win'"
+    }
+  ],
+  "6328": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6329": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "6339": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "6340": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "6341": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "6345": [
+    {
+      "state_id": 2142,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "6346": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "6347": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "6349": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6350": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "6358": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "6364": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "6365": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBe"
+    }
+  ],
+  "6366": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBe"
+    }
+  ],
+  "6370": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\n      [\n        'Team                           | MP |  W |  D |  L |  P',\n        'Devastating Donkeys            |  5 |  4 |  0 |  1 | 12',\n        'Blithering Badgers             |  5 |  1 |  0 |  4 |  3',\n      ].join('\\n')\n    )"
+    }
+  ],
+  "6378": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n        'Team                           | MP |  W |  D |  L |  P',\n        'Devastating Donkeys            |  5 |  4 |  0 |  1 | 12',\n        'Blithering Badgers             |  5 |  1 |  0 |  4 |  3',\n      ]"
+    }
+  ],
+  "6388": [
+    {
+      "state_id": 234,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "6389": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Team                           | MP |  W |  D |  L |  P'"
+    }
+  ],
+  "6444": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6445": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Devastating Donkeys            |  5 |  4 |  0 |  1 | 12'"
+    }
+  ],
+  "6455": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Devastating Donkeys            |  5 |  4 |  0 |  1 | 12'"
+    }
+  ],
+  "6456": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Devastating Donkeys            |  5 |  4 |  0 |  1 | 12'"
+    }
+  ],
+  "6511": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6512": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ",\n        'Blithering Badgers             |  5 |  1 |  0 |  4 |  3'"
+    }
+  ],
+  "6522": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Blithering Badgers             |  5 |  1 |  0 |  4 |  3'"
+    }
+  ],
+  "6523": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Blithering Badgers             |  5 |  1 |  0 |  4 |  3'"
+    }
+  ],
+  "6578": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6579": [
+    {
+      "state_id": 4879,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "6587": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "6588": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "6589": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "6593": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "('\\n')"
+    }
+  ],
+  "6594": [
+    {
+      "state_id": 265,
+      "candidate": "' escape_sequence '",
+      "candidate_text": "'\\n'"
+    }
+  ],
+  "6595": [
+    {
+      "state_id": 4496,
+      "candidate": "escape_sequence '",
+      "candidate_text": "\\n'"
+    }
+  ],
+  "6597": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6598": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "6604": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "6608": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "6609": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "6611": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "6612": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Student\n  def method_missing(m, *args)\n    if m.to_s.start_with?(\"grade_for_\")\n      puts \"You got an A in #{m.to_s.split(\"_\").last.capitalize}!\"\n      # return the grade\n    else\n      super\n    end\n  end\nend"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Student\n  def method_missing(m, *args)\n    if m.to_s.start_with?(\"grade_for_\")\n      puts \"You got an A in #{m.to_s.split(\"_\").last.capitalize}!\"\n      # return the grade\n    else\n      super\n    end\n  end\nend"
+    }
+  ],
+  "16": [
+    {
+      "state_id": 217,
+      "candidate": "def _method_rest",
+      "candidate_text": "def method_missing(m, *args)"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "method_missing"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(m, *args)"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", *args"
+    }
+  ],
+  "38": [
+    {
+      "state_id": 4622,
+      "candidate": "* identifier",
+      "candidate_text": "*args"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 4759,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 238,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if m.to_s.start_with?(\"grade_for_\")\n      puts \"You got an A in #{m.to_s.split(\"_\").last.capitalize}!\"\n      # return the grade\n    else\n      super\n    end"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".to_s"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "to_s"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".start_with?"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "start_with?"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"grade_for_\")"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"grade_for_\""
+    }
+  ],
+  "72": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "grade_for_"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "83": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"You got an A in #{m.to_s.split(\"_\").last.capitalize}!\""
+    }
+  ],
+  "97": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "You got an A in "
+    }
+  ],
+  "113": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{m.to_s.split(\"_\").last.capitalize}"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".to_s"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "to_s"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".split"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "split"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"_\")"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"_\""
+    }
+  ],
+  "129": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "_"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "131": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".last"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "last"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".capitalize"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "capitalize"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "!"
+    }
+  ],
+  "150": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "181": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n      super"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 289,
+      "candidate": "super",
+      "candidate_text": "super"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 346,
+      "candidate": "constant",
+      "candidate_text": "Student"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".grade_for_english"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "grade_for_english"
+    }
+  ]
+}

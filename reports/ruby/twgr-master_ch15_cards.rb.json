@@ -1,0 +1,751 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module PlayingCards\n  RANKS = %w{ 2 3 4 5 6 7 8 9 10 J Q K A }\n  SUITS = %w{ clubs diamonds hearts spades }\n  class Deck\n    def initialize\n      @cards = []\n      RANKS.each do |r|\n        SUITS.each do |s|\n          @cards << \"#{r} of #{s}\"\n        end\n      end\n        @cards.shuffle!\n    end\n    def deal(n=1)\n      @cards.pop(n)\n    end\n    def size\n      @cards.size\n    end\n  end\nend"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "PlayingCards\n  RANKS = %w{ 2 3 4 5 6 7 8 9 10 J Q K A }\n  SUITS = %w{ clubs diamonds hearts spades }\n  class Deck\n    def initialize\n      @cards = []\n      RANKS.each do |r|\n        SUITS.each do |s|\n          @cards << \"#{r} of #{s}\"\n        end\n      end\n        @cards.shuffle!\n    end\n    def deal(n=1)\n      @cards.pop(n)\n    end\n    def size\n      @cards.size\n    end\n  end\nend"
+    }
+  ],
+  "22": [
+    {
+      "state_id": 218,
+      "candidate": "constant",
+      "candidate_text": "RANKS"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= %w{ 2 3 4 5 6 7 8 9 10 J Q K A }"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 462,
+      "candidate": "%w( string_array_token1 _literal_contents string_array_repeat1 string_array_token1 )",
+      "candidate_text": "%w{ 2 3 4 5 6 7 8 9 10 J Q K A }"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 4979,
+      "candidate": "string_array_token1 _literal_contents string_array_repeat1 string_array_token1 )",
+      "candidate_text": " 2 3 4 5 6 7 8 9 10 J Q K A }"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 4982,
+      "candidate": "string_content",
+      "candidate_text": "2"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 4888,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 3"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 5203,
+      "candidate": "string_content",
+      "candidate_text": "3"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 4"
+    }
+  ],
+  "38": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "4"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 5"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "5"
+    }
+  ],
+  "41": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 6"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "6"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 7"
+    }
+  ],
+  "44": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "7"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 8"
+    }
+  ],
+  "46": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "8"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 9"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "9"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " 10"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "10"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " J"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "J"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " Q"
+    }
+  ],
+  "55": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "Q"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " K"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "K"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " A"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "A"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 )",
+      "candidate_text": " }"
+    }
+  ],
+  "61": [
+    {
+      "state_id": 5047,
+      "candidate": ")",
+      "candidate_text": "}"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 252,
+      "candidate": "constant",
+      "candidate_text": "SUITS"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= %w{ clubs diamonds hearts spades }"
+    }
+  ],
+  "73": [
+    {
+      "state_id": 462,
+      "candidate": "%w( string_array_token1 _literal_contents string_array_repeat1 string_array_token1 )",
+      "candidate_text": "%w{ clubs diamonds hearts spades }"
+    }
+  ],
+  "76": [
+    {
+      "state_id": 4979,
+      "candidate": "string_array_token1 _literal_contents string_array_repeat1 string_array_token1 )",
+      "candidate_text": " clubs diamonds hearts spades }"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 4982,
+      "candidate": "string_content",
+      "candidate_text": "clubs"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 4888,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " diamonds"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 5203,
+      "candidate": "string_content",
+      "candidate_text": "diamonds"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " hearts"
+    }
+  ],
+  "92": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "hearts"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 _literal_contents",
+      "candidate_text": " spades"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 5047,
+      "candidate": "string_content",
+      "candidate_text": "spades"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 5568,
+      "candidate": "string_array_token1 )",
+      "candidate_text": " }"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 5047,
+      "candidate": ")",
+      "candidate_text": "}"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 252,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Deck\n    def initialize\n      @cards = []\n      RANKS.each do |r|\n        SUITS.each do |s|\n          @cards << \"#{r} of #{s}\"\n        end\n      end\n        @cards.shuffle!\n    end\n    def deal(n=1)\n      @cards.pop(n)\n    end\n    def size\n      @cards.size\n    end\n  end"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Deck\n    def initialize\n      @cards = []\n      RANKS.each do |r|\n        SUITS.each do |s|\n          @cards << \"#{r} of #{s}\"\n        end\n      end\n        @cards.shuffle!\n    end\n    def deal(n=1)\n      @cards.pop(n)\n    end\n    def size\n      @cards.size\n    end\n  end"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 217,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@cards"
+    }
+  ],
+  "153": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= []"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 462,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 424,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 252,
+      "candidate": "constant",
+      "candidate_text": "RANKS"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".each"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "each"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 4,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |r|\n        SUITS.each do |s|\n          @cards << \"#{r} of #{s}\"\n        end\n      end"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|r|"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "r"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 242,
+      "candidate": "constant",
+      "candidate_text": "SUITS"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".each"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "each"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 4,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |s|\n          @cards << \"#{r} of #{s}\"\n        end"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|s|"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "s"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 242,
+      "candidate": "instance_variable",
+      "candidate_text": "@cards"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 2812,
+      "candidate": "<< _arg",
+      "candidate_text": "<< \"#{r} of #{s}\""
+    }
+  ],
+  "228": [
+    {
+      "state_id": 1219,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"#{r} of #{s}\""
+    }
+  ],
+  "229": [
+    {
+      "state_id": 5084,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{r}"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "r"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " of "
+    }
+  ],
+  "237": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{s}"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "s"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "251": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 252,
+      "candidate": "instance_variable",
+      "candidate_text": "@cards"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".shuffle!"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 3163,
+      "candidate": "_identifier_suffix",
+      "candidate_text": "shuffle!"
+    }
+  ],
+  "293": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def deal(n=1)"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "deal"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(n=1)"
+    }
+  ],
+  "310": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier = _arg",
+      "candidate_text": "n=1"
+    }
+  ],
+  "311": [
+    {
+      "state_id": 5461,
+      "candidate": "= _arg",
+      "candidate_text": "=1"
+    }
+  ],
+  "312": [
+    {
+      "state_id": 1311,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "321": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@cards"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".pop"
+    }
+  ],
+  "328": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "pop"
+    }
+  ],
+  "331": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(n)"
+    }
+  ],
+  "332": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "n"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "339": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "347": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def size"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@cards"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".size"
+    }
+  ],
+  "369": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "378": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

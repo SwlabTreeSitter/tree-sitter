@@ -1,0 +1,994 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import _import_list",
+      "candidate_text": "import requests"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2144,
+      "candidate": "identifier",
+      "candidate_text": "requests"
+    }
+  ],
+  "16": [
+    {
+      "state_id": 69,
+      "candidate": "_simple_statements",
+      "candidate_text": ""
+    }
+  ],
+  "61": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "url"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= \"https://api.github.com/search/repositories\""
+    }
+  ],
+  "67": [
+    {
+      "state_id": 185,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"https://api.github.com/search/repositories\""
+    }
+  ],
+  "68": [
+    {
+      "state_id": 1696,
+      "candidate": "_string_content",
+      "candidate_text": "https://api.github.com/search/repositories"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 1713,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "112": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "url"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 1633,
+      "candidate": "+= _right_hand_side",
+      "candidate_text": "+= \"?q=language:python+sort:stars+stars:>10000\""
+    }
+  ],
+  "119": [
+    {
+      "state_id": 192,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"?q=language:python+sort:stars+stars:>10000\""
+    }
+  ],
+  "120": [
+    {
+      "state_id": 1696,
+      "candidate": "_string_content",
+      "candidate_text": "?q=language:python+sort:stars+stars:>10000"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 1713,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "165": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "headers"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= {\"Accept\": \"application/vnd.github.v3+json\"}"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 185,
+      "candidate": "{ pair }",
+      "candidate_text": "{\"Accept\": \"application/vnd.github.v3+json\"}"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 186,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"Accept\""
+    }
+  ],
+  "177": [
+    {
+      "state_id": 1675,
+      "candidate": "_string_content",
+      "candidate_text": "Accept"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 1698,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "184": [
+    {
+      "state_id": 1669,
+      "candidate": ": expression",
+      "candidate_text": ": \"application/vnd.github.v3+json\""
+    }
+  ],
+  "186": [
+    {
+      "state_id": 487,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"application/vnd.github.v3+json\""
+    }
+  ],
+  "187": [
+    {
+      "state_id": 1675,
+      "candidate": "_string_content",
+      "candidate_text": "application/vnd.github.v3+json"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 1698,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "218": [
+    {
+      "state_id": 1847,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "r"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= requests.get(url, headers=headers)"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "requests"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 963,
+      "candidate": ". identifier",
+      "candidate_text": ".get"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 2752,
+      "candidate": "identifier",
+      "candidate_text": "get"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 963,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(url, headers=headers)"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "url"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 1725,
+      "candidate": ", keyword_argument",
+      "candidate_text": ", headers=headers"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 319,
+      "candidate": "identifier = expression",
+      "candidate_text": "headers=headers"
+    }
+  ],
+  "249": [
+    {
+      "state_id": 1345,
+      "candidate": "= expression",
+      "candidate_text": "=headers"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 510,
+      "candidate": "identifier",
+      "candidate_text": "headers"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 2469,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 69,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"Status code: {r.status_code}\")"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"Status code: {r.status_code}\""
+    }
+  ],
+  "267": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "Status code: "
+    }
+  ],
+  "280": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{r.status_code}"
+    }
+  ],
+  "281": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "r"
+    }
+  ],
+  "282": [
+    {
+      "state_id": 942,
+      "candidate": ". identifier",
+      "candidate_text": ".status_code"
+    }
+  ],
+  "283": [
+    {
+      "state_id": 2687,
+      "candidate": "identifier",
+      "candidate_text": "status_code"
+    }
+  ],
+  "294": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "296": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "298": [
+    {
+      "state_id": 71,
+      "candidate": "_simple_statements",
+      "candidate_text": ""
+    }
+  ],
+  "346": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "response_dict"
+    }
+  ],
+  "360": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= r.json()"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "r"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 963,
+      "candidate": ". identifier",
+      "candidate_text": ".json"
+    }
+  ],
+  "364": [
+    {
+      "state_id": 2752,
+      "candidate": "identifier",
+      "candidate_text": "json"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 963,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "369": [
+    {
+      "state_id": 240,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 69,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "377": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"Total repositories: {response_dict['total_count']}\")"
+    }
+  ],
+  "378": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"Total repositories: {response_dict['total_count']}\""
+    }
+  ],
+  "380": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "Total repositories: "
+    }
+  ],
+  "400": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{response_dict['total_count']}"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "response_dict"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 942,
+      "candidate": "[ expression ]",
+      "candidate_text": "['total_count']"
+    }
+  ],
+  "415": [
+    {
+      "state_id": 453,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'total_count'"
+    }
+  ],
+  "416": [
+    {
+      "state_id": 1710,
+      "candidate": "_string_content",
+      "candidate_text": "total_count"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 1711,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 1821,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "429": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "430": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "431": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 69,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "438": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"Complete results: {not response_dict['incomplete_results']}\")"
+    }
+  ],
+  "439": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"Complete results: {not response_dict['incomplete_results']}\""
+    }
+  ],
+  "441": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "Complete results: "
+    }
+  ],
+  "459": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{not response_dict['incomplete_results']}"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 227,
+      "candidate": "not expression",
+      "candidate_text": "not response_dict['incomplete_results']"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 579,
+      "candidate": "identifier",
+      "candidate_text": "response_dict"
+    }
+  ],
+  "477": [
+    {
+      "state_id": 942,
+      "candidate": "[ expression ]",
+      "candidate_text": "['incomplete_results']"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 453,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'incomplete_results'"
+    }
+  ],
+  "479": [
+    {
+      "state_id": 1710,
+      "candidate": "_string_content",
+      "candidate_text": "incomplete_results"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 1711,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "498": [
+    {
+      "state_id": 1821,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "499": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "500": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "501": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "503": [
+    {
+      "state_id": 71,
+      "candidate": "module_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "550": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "repo_dicts"
+    }
+  ],
+  "561": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= response_dict['items']"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "response_dict"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 963,
+      "candidate": "[ expression ]",
+      "candidate_text": "['items']"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 433,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'items'"
+    }
+  ],
+  "578": [
+    {
+      "state_id": 1710,
+      "candidate": "_string_content",
+      "candidate_text": "items"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 1711,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 1795,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "586": [
+    {
+      "state_id": 69,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "591": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"Repositories returned: {len(repo_dicts)}\")"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"Repositories returned: {len(repo_dicts)}\""
+    }
+  ],
+  "594": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "Repositories returned: "
+    }
+  ],
+  "617": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{len(repo_dicts)}"
+    }
+  ],
+  "618": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "len"
+    }
+  ],
+  "621": [
+    {
+      "state_id": 942,
+      "candidate": "( expression )",
+      "candidate_text": "(repo_dicts)"
+    }
+  ],
+  "622": [
+    {
+      "state_id": 254,
+      "candidate": "identifier",
+      "candidate_text": "repo_dicts"
+    }
+  ],
+  "632": [
+    {
+      "state_id": 1700,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "634": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "635": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "637": [
+    {
+      "state_id": 71,
+      "candidate": "module_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "670": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "repo_dict"
+    }
+  ],
+  "680": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= repo_dicts[0]"
+    }
+  ],
+  "682": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "repo_dicts"
+    }
+  ],
+  "692": [
+    {
+      "state_id": 963,
+      "candidate": "[ expression ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "693": [
+    {
+      "state_id": 433,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "694": [
+    {
+      "state_id": 1795,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "696": [
+    {
+      "state_id": 69,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"\\nKeys: {len(repo_dict)}\")"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"\\nKeys: {len(repo_dict)}\""
+    }
+  ],
+  "704": [
+    {
+      "state_id": 1677,
+      "candidate": "escape_sequence _string_content",
+      "candidate_text": "\\nKeys: "
+    }
+  ],
+  "706": [
+    {
+      "state_id": 1807,
+      "candidate": "_string_content",
+      "candidate_text": "Keys: "
+    }
+  ],
+  "712": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{len(repo_dict)}"
+    }
+  ],
+  "713": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "len"
+    }
+  ],
+  "716": [
+    {
+      "state_id": 942,
+      "candidate": "( expression )",
+      "candidate_text": "(repo_dict)"
+    }
+  ],
+  "717": [
+    {
+      "state_id": 254,
+      "candidate": "identifier",
+      "candidate_text": "repo_dict"
+    }
+  ],
+  "726": [
+    {
+      "state_id": 1700,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "727": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "728": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "729": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "731": [
+    {
+      "state_id": 69,
+      "candidate": "for pattern in expression : _indent block",
+      "candidate_text": "for key in sorted(repo_dict.keys()):\n  print(key)"
+    }
+  ],
+  "735": [
+    {
+      "state_id": 795,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "739": [
+    {
+      "state_id": 2412,
+      "candidate": "in expression : _indent block",
+      "candidate_text": "in sorted(repo_dict.keys()):\n  print(key)"
+    }
+  ],
+  "742": [
+    {
+      "state_id": 474,
+      "candidate": "identifier",
+      "candidate_text": "sorted"
+    }
+  ],
+  "748": [
+    {
+      "state_id": 962,
+      "candidate": "( expression )",
+      "candidate_text": "(repo_dict.keys())"
+    }
+  ],
+  "749": [
+    {
+      "state_id": 246,
+      "candidate": "identifier",
+      "candidate_text": "repo_dict"
+    }
+  ],
+  "758": [
+    {
+      "state_id": 959,
+      "candidate": ". identifier",
+      "candidate_text": ".keys"
+    }
+  ],
+  "759": [
+    {
+      "state_id": 2738,
+      "candidate": "identifier",
+      "candidate_text": "keys"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 959,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "764": [
+    {
+      "state_id": 267,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "765": [
+    {
+      "state_id": 1686,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "766": [
+    {
+      "state_id": 1851,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n  print(key)"
+    }
+  ],
+  "770": [
+    {
+      "state_id": 99,
+      "candidate": "_indent block",
+      "candidate_text": "print(key)"
+    },
+    {
+      "state_id": 13,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "775": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(key)"
+    }
+  ],
+  "776": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "key"
+    }
+  ],
+  "779": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

@@ -1,0 +1,8752 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { describe, it, expect, xit } from '@jest/globals'"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ describe, it, expect, xit }"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "17": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", it"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", expect"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", xit"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from '@jest/globals'"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'@jest/globals'"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "@jest/globals'"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 16,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { verse, verses } from './house.ts'"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ verse, verses }"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "72": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", verses"
+    }
+  ],
+  "74": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "verses"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from './house.ts'"
+    }
+  ],
+  "88": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'./house.ts'"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "./house.ts'"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "102": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('House', () => {"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'House'"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "House'"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "123": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  it('verse one - the house that jack built', () => {"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "it"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse one - the house that jack built', () => {\n    const lyrics = ['This is the house that Jack built.']\n    expect(verse(1)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 199,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse one - the house that jack built'"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse one - the house that jack built'"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = ['This is the house that Jack built.']\n    expect(verse(1)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ['This is the house that Jack built.']"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ['This is the house that Jack built.']"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ['This is the house that Jack built.']"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression ]",
+      "candidate_text": "['This is the house that Jack built.']"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the house that Jack built.'"
+    }
+  ],
+  "203": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the house that Jack built.'"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "238": [
+    {
+      "state_id": 2301,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(1))"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(1)"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "285": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse two - the malt that lay', () => {\n    const lyrics = [\n      'This is the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(2)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse two - the malt that lay'"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse two - the malt that lay'"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "320": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "322": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "323": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "328": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(2)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "340": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "347": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "349": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the malt'"
+    }
+  ],
+  "358": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the malt'"
+    }
+  ],
+  "374": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "375": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "383": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "423": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "429": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(2))"
+    }
+  ],
+  "442": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "447": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(2)"
+    }
+  ],
+  "448": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "2"
+    }
+  ],
+  "449": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "451": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "470": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "471": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "476": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "479": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse three - the rat that ate', () => {\n    const lyrics = [\n      'This is the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(3)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "480": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse three - the rat that ate'"
+    }
+  ],
+  "481": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse three - the rat that ate'"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "512": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "517": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(3)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "526": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "532": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "539": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "541": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the rat'"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the rat'"
+    }
+  ],
+  "565": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "566": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "575": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "593": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "602": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "640": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "641": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "647": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "653": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "659": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(3))"
+    }
+  ],
+  "660": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "665": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(3)"
+    }
+  ],
+  "666": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "3"
+    }
+  ],
+  "667": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "668": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "669": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "670": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "677": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "678": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "684": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "688": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "689": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "694": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse four - the cat that killed', () => {\n    const lyrics = [\n      'This is the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(4)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "698": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse four - the cat that killed'"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse four - the cat that killed'"
+    }
+  ],
+  "731": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "732": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "735": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "737": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "740": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(4)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "746": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "752": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "759": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "761": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "769": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the cat'"
+    }
+  ],
+  "770": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the cat'"
+    }
+  ],
+  "785": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "786": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "794": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "795": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "814": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "815": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "823": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "824": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "841": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "842": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "850": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "851": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "889": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "890": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "896": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "902": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "908": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(4))"
+    }
+  ],
+  "909": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "914": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(4)"
+    }
+  ],
+  "915": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "4"
+    }
+  ],
+  "916": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "917": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "918": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "919": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "926": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "927": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "933": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "937": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "938": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "943": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "946": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse five - the dog that worried', () => {\n    const lyrics = [\n      'This is the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(5)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "947": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse five - the dog that worried'"
+    }
+  ],
+  "948": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse five - the dog that worried'"
+    }
+  ],
+  "981": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "982": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "984": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "985": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "987": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "990": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(5)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "996": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "1002": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "1009": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "1011": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "1019": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the dog'"
+    }
+  ],
+  "1020": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the dog'"
+    }
+  ],
+  "1035": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1036": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "1044": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "1045": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "1065": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1066": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "1074": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "1075": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "1094": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1095": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "1103": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "1104": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "1121": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1122": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "1130": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "1131": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "1169": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1170": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "1176": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1182": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1188": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(5))"
+    }
+  ],
+  "1189": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "1194": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(5)"
+    }
+  ],
+  "1195": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "5"
+    }
+  ],
+  "1196": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1197": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1198": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1199": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1206": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "1207": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "1213": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1217": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1218": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1223": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1226": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse six - the cow with the crumpled horn', () => {\n    const lyrics = [\n      'This is the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(6)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "1227": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse six - the cow with the crumpled horn'"
+    }
+  ],
+  "1228": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse six - the cow with the crumpled horn'"
+    }
+  ],
+  "1270": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1271": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1273": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1274": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1276": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1279": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(6)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "1285": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "1291": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "1298": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "1300": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "1308": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the cow with the crumpled horn'"
+    }
+  ],
+  "1309": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the cow with the crumpled horn'"
+    }
+  ],
+  "1347": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1348": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "1356": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "1357": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "1376": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1377": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "1385": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "1386": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "1406": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1407": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "1415": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "1416": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "1435": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1436": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "1444": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "1445": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "1462": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1463": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "1471": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "1472": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "1510": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1511": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "1517": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1523": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1529": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(6))"
+    }
+  ],
+  "1530": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "1535": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(6)"
+    }
+  ],
+  "1536": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "6"
+    }
+  ],
+  "1537": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1538": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1539": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1540": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1547": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "1548": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "1554": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1558": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1559": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1564": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1567": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse seven - the maiden all forlorn', () => {\n    const lyrics = [\n      'This is the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(7)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "1568": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse seven - the maiden all forlorn'"
+    }
+  ],
+  "1569": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse seven - the maiden all forlorn'"
+    }
+  ],
+  "1605": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1606": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1608": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1609": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1611": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "1614": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(7)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "1620": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "1626": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "1633": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "1635": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "1643": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the maiden all forlorn'"
+    }
+  ],
+  "1644": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the maiden all forlorn'"
+    }
+  ],
+  "1674": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1675": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "1683": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "1684": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "1726": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1727": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "1735": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "1736": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "1755": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1756": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "1764": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "1765": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "1785": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1786": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "1794": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "1795": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "1814": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1815": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "1823": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "1824": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "1841": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1842": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "1850": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "1851": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "1889": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1890": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "1896": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1902": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "1908": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(7))"
+    }
+  ],
+  "1909": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "1914": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(7)"
+    }
+  ],
+  "1915": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "7"
+    }
+  ],
+  "1916": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1917": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1918": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "1919": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "1926": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "1927": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "1933": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1937": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1938": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1943": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "1946": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse eight - the man all tattered and torn', () => {\n    const lyrics = [\n      'This is the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(8)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "1947": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse eight - the man all tattered and torn'"
+    }
+  ],
+  "1948": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse eight - the man all tattered and torn'"
+    }
+  ],
+  "1991": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1992": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "1994": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1995": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1997": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2000": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(8)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "2006": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "2012": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "2019": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "2021": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "2029": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the man all tattered and torn'"
+    }
+  ],
+  "2030": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the man all tattered and torn'"
+    }
+  ],
+  "2067": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2068": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "2076": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "2077": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "2111": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2112": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "2120": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "2121": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "2163": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2164": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "2172": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "2173": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "2192": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2193": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "2201": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "2202": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "2222": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2223": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "2231": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "2232": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "2251": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2252": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "2260": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "2261": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "2278": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2279": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "2287": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "2288": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "2326": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2327": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "2333": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2339": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2345": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(8))"
+    }
+  ],
+  "2346": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "2351": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(8)"
+    }
+  ],
+  "2352": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "8"
+    }
+  ],
+  "2353": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2354": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2355": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2356": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2363": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "2364": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "2370": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2374": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2375": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2380": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2383": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse nine - the priest all shaven and shorn', () => {\n    const lyrics = [\n      'This is the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(9)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "2384": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse nine - the priest all shaven and shorn'"
+    }
+  ],
+  "2385": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse nine - the priest all shaven and shorn'"
+    }
+  ],
+  "2429": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2430": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2432": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2433": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2435": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2438": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(9)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "2444": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "2450": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "2457": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "2459": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "2467": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the priest all shaven and shorn'"
+    }
+  ],
+  "2468": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the priest all shaven and shorn'"
+    }
+  ],
+  "2507": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2508": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that married the man all tattered and torn'"
+    }
+  ],
+  "2516": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that married the man all tattered and torn'"
+    }
+  ],
+  "2517": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that married the man all tattered and torn'"
+    }
+  ],
+  "2559": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2560": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "2568": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "2569": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "2603": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2604": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "2612": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "2613": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "2655": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2656": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "2664": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "2665": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "2684": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2685": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "2693": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "2694": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "2714": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2715": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "2723": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "2724": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "2743": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2744": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "2752": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "2753": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "2770": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2771": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "2779": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "2780": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "2818": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2819": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "2825": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2831": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "2837": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(9))"
+    }
+  ],
+  "2838": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "2843": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(9)"
+    }
+  ],
+  "2844": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "9"
+    }
+  ],
+  "2845": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2846": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2847": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "2848": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "2855": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "2856": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "2862": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2866": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2867": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2872": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "2875": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse ten - the rooster that crowed in the morn', () => {\n    const lyrics = [\n      'This is the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(10)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "2876": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse ten - the rooster that crowed in the morn'"
+    }
+  ],
+  "2877": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse ten - the rooster that crowed in the morn'"
+    }
+  ],
+  "2924": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "2925": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "2927": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2928": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2930": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "2933": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(10)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "2939": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "2945": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "2952": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "2954": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "2962": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the rooster that crowed in the morn'"
+    }
+  ],
+  "2963": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the rooster that crowed in the morn'"
+    }
+  ],
+  "3006": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3007": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "3015": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "3016": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that woke the priest all shaven and shorn'"
+    }
+  ],
+  "3057": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3058": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that married the man all tattered and torn'"
+    }
+  ],
+  "3066": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that married the man all tattered and torn'"
+    }
+  ],
+  "3067": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that married the man all tattered and torn'"
+    }
+  ],
+  "3109": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3110": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "3118": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "3119": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "3153": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3154": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "3162": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "3163": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "3205": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3206": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "3214": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "3215": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "3234": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3235": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "3243": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "3244": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "3264": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3265": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "3273": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "3274": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "3293": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3294": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "3302": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "3303": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "3320": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3321": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "3329": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "3330": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "3368": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3369": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "3375": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3381": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "3387": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(10))"
+    }
+  ],
+  "3388": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "3393": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(10)"
+    }
+  ],
+  "3394": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "10"
+    }
+  ],
+  "3396": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3397": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3398": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "3399": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "3406": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "3407": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "3413": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3417": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3418": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3423": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "3426": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse eleven - the farmer sowing his corn', () => {\n    const lyrics = [\n      'This is the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(11)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "3427": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse eleven - the farmer sowing his corn'"
+    }
+  ],
+  "3428": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse eleven - the farmer sowing his corn'"
+    }
+  ],
+  "3469": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3470": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "3472": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "3473": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3475": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "3478": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(11)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "3484": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "3490": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "3497": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "3499": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "3507": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the farmer sowing his corn'"
+    }
+  ],
+  "3508": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the farmer sowing his corn'"
+    }
+  ],
+  "3542": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3543": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "3551": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "3552": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "3597": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3598": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "3606": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "3607": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that woke the priest all shaven and shorn'"
+    }
+  ],
+  "3648": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3649": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that married the man all tattered and torn'"
+    }
+  ],
+  "3657": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that married the man all tattered and torn'"
+    }
+  ],
+  "3658": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that married the man all tattered and torn'"
+    }
+  ],
+  "3700": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3701": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "3709": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "3710": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "3744": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3745": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "3753": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "3754": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "3796": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3797": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "3805": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "3806": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "3825": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3826": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "3834": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "3835": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "3855": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3856": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "3864": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "3865": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "3884": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3885": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "3893": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "3894": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "3911": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3912": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "3920": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "3921": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "3959": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "3960": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "3966": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3972": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "3978": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(11))"
+    }
+  ],
+  "3979": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "3984": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(11)"
+    }
+  ],
+  "3985": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "11"
+    }
+  ],
+  "3987": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3988": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3989": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "3990": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "3997": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "3998": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "4004": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4008": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "4009": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4014": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "4017": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('verse twelve - the horse and the hound and the horn', () => {\n    const lyrics = [\n      'This is the horse and the hound and the horn',\n      'that belonged to the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(12)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "4018": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'verse twelve - the horse and the hound and the horn'"
+    }
+  ],
+  "4019": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "verse twelve - the horse and the hound and the horn'"
+    }
+  ],
+  "4070": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4071": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "4073": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "4074": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4076": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "4079": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const lyrics = [\n      'This is the horse and the hound and the horn',\n      'that belonged to the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verse(12)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "4085": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "4091": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "4098": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "4100": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the horse and the hound and the horn',\n      'that belonged to the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "4108": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the horse and the hound and the horn'"
+    }
+  ],
+  "4109": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the horse and the hound and the horn'"
+    }
+  ],
+  "4153": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4154": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that belonged to the farmer sowing his corn'"
+    }
+  ],
+  "4162": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that belonged to the farmer sowing his corn'"
+    }
+  ],
+  "4163": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that belonged to the farmer sowing his corn'"
+    }
+  ],
+  "4206": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4207": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "4215": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "4216": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "4261": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4262": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "4270": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "4271": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that woke the priest all shaven and shorn'"
+    }
+  ],
+  "4312": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4313": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that married the man all tattered and torn'"
+    }
+  ],
+  "4321": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that married the man all tattered and torn'"
+    }
+  ],
+  "4322": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that married the man all tattered and torn'"
+    }
+  ],
+  "4364": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4365": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "4373": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "4374": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "4408": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4409": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "4417": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "4418": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "4460": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4461": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "4469": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "4470": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "4489": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4490": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "4498": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "4499": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "4519": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4520": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "4528": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "4529": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "4548": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4549": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "4557": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "4558": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "4575": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4576": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "4584": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "4585": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "4623": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4624": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "4630": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "4636": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "4642": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verse(12))"
+    }
+  ],
+  "4643": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verse"
+    }
+  ],
+  "4648": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression )",
+      "candidate_text": "(12)"
+    }
+  ],
+  "4649": [
+    {
+      "state_id": 265,
+      "candidate": "number",
+      "candidate_text": "12"
+    }
+  ],
+  "4651": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4652": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4653": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "4654": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "4661": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "4662": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "4668": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4672": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "4673": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4678": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "4681": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('multiple verses', () => {\n    const startVerse = 4\n    const endVerse = 8\n    const lyrics = [\n      'This is the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verses(startVerse, endVerse)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "4682": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'multiple verses'"
+    }
+  ],
+  "4683": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "multiple verses'"
+    }
+  ],
+  "4698": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4699": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "4701": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "4702": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "4704": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "4707": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const startVerse = 4\n    const endVerse = 8\n    const lyrics = [\n      'This is the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verses(startVerse, endVerse)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "4713": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const startVerse = 4"
+    }
+  ],
+  "4719": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "startVerse = 4"
+    }
+  ],
+  "4730": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 4"
+    }
+  ],
+  "4732": [
+    {
+      "state_id": 423,
+      "candidate": "number",
+      "candidate_text": "4"
+    }
+  ],
+  "4738": [
+    {
+      "state_id": 22,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const endVerse = 8"
+    }
+  ],
+  "4744": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "endVerse = 8"
+    }
+  ],
+  "4753": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 8"
+    }
+  ],
+  "4755": [
+    {
+      "state_id": 423,
+      "candidate": "number",
+      "candidate_text": "8"
+    }
+  ],
+  "4761": [
+    {
+      "state_id": 22,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "4767": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "4774": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "4776": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "4784": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the cat'"
+    }
+  ],
+  "4785": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the cat'"
+    }
+  ],
+  "4800": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4801": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "4809": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "4810": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "4829": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4830": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "4838": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "4839": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "4856": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4857": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "4865": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "4866": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "4904": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4905": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "4913": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "4914": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4915": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the dog'"
+    }
+  ],
+  "4923": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the dog'"
+    }
+  ],
+  "4924": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the dog'"
+    }
+  ],
+  "4939": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4940": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "4948": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "4949": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "4969": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4970": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "4978": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "4979": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "4998": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "4999": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "5007": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "5008": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "5025": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5026": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "5034": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "5035": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "5073": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5074": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "5082": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "5083": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5084": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the cow with the crumpled horn'"
+    }
+  ],
+  "5092": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the cow with the crumpled horn'"
+    }
+  ],
+  "5093": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the cow with the crumpled horn'"
+    }
+  ],
+  "5131": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5132": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "5140": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "5141": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "5160": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5161": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "5169": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "5170": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "5190": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5191": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "5199": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "5200": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "5219": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5220": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "5228": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "5229": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "5246": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5247": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "5255": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "5256": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "5294": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5295": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "5303": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "5304": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5305": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the maiden all forlorn'"
+    }
+  ],
+  "5313": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the maiden all forlorn'"
+    }
+  ],
+  "5314": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the maiden all forlorn'"
+    }
+  ],
+  "5344": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5345": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "5353": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "5354": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "5396": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5397": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "5405": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "5406": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "5425": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5426": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "5434": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "5435": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "5455": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5456": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "5464": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "5465": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "5484": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5485": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "5493": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "5494": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "5511": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5512": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "5520": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "5521": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "5559": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5560": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "5568": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "5569": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5570": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the man all tattered and torn'"
+    }
+  ],
+  "5578": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the man all tattered and torn'"
+    }
+  ],
+  "5579": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the man all tattered and torn'"
+    }
+  ],
+  "5616": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5617": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "5625": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "5626": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "5660": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5661": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "5669": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "5670": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "5712": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5713": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "5721": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "5722": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "5741": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5742": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "5750": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "5751": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "5771": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5772": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "5780": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "5781": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "5800": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5801": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "5809": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "5810": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "5827": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5828": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "5836": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "5837": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "5875": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5876": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "5882": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "5888": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "5894": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verses(startVerse, endVerse))"
+    }
+  ],
+  "5895": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verses"
+    }
+  ],
+  "5901": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(startVerse, endVerse)"
+    }
+  ],
+  "5902": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "startVerse"
+    }
+  ],
+  "5912": [
+    {
+      "state_id": 2142,
+      "candidate": ", expression",
+      "candidate_text": ", endVerse"
+    }
+  ],
+  "5914": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "endVerse"
+    }
+  ],
+  "5922": [
+    {
+      "state_id": 4647,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5923": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5924": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "5925": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "5932": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "5933": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "5939": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5943": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "5944": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5949": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "xit"
+    }
+  ],
+  "5952": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('full rhyme', () => {\n    const startVerse = 1\n    const endVerse = 12\n    const lyrics = [\n      'This is the house that Jack built.',\n      '',\n      'This is the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the horse and the hound and the horn',\n      'that belonged to the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verses(startVerse, endVerse)).toEqual(lyrics)\n  })"
+    }
+  ],
+  "5953": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'full rhyme'"
+    }
+  ],
+  "5954": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "full rhyme'"
+    }
+  ],
+  "5964": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "5965": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "5967": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "5968": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "5970": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "5973": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n    const startVerse = 1\n    const endVerse = 12\n    const lyrics = [\n      'This is the house that Jack built.',\n      '',\n      'This is the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the horse and the hound and the horn',\n      'that belonged to the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]\n    expect(verses(startVerse, endVerse)).toEqual(lyrics)\n  }"
+    }
+  ],
+  "5979": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const startVerse = 1"
+    }
+  ],
+  "5985": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "startVerse = 1"
+    }
+  ],
+  "5996": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 1"
+    }
+  ],
+  "5998": [
+    {
+      "state_id": 423,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "6004": [
+    {
+      "state_id": 22,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const endVerse = 12"
+    }
+  ],
+  "6010": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "endVerse = 12"
+    }
+  ],
+  "6019": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 12"
+    }
+  ],
+  "6021": [
+    {
+      "state_id": 423,
+      "candidate": "number",
+      "candidate_text": "12"
+    }
+  ],
+  "6028": [
+    {
+      "state_id": 22,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const lyrics = ["
+    }
+  ],
+  "6034": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "lyrics = ["
+    }
+  ],
+  "6041": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "6043": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n      'This is the house that Jack built.',\n      '',\n      'This is the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n      '',\n      'This is the horse and the hound and the horn',\n      'that belonged to the farmer sowing his corn',\n      'that kept the rooster that crowed in the morn',\n      'that woke the priest all shaven and shorn',\n      'that married the man all tattered and torn',\n      'that kissed the maiden all forlorn',\n      'that milked the cow with the crumpled horn',\n      'that tossed the dog',\n      'that worried the cat',\n      'that killed the rat',\n      'that ate the malt',\n      'that lay in the house that Jack built.',\n    ]"
+    }
+  ],
+  "6051": [
+    {
+      "state_id": 229,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the house that Jack built.'"
+    }
+  ],
+  "6052": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the house that Jack built.'"
+    }
+  ],
+  "6086": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6087": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "6095": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "6096": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6097": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the malt'"
+    }
+  ],
+  "6105": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the malt'"
+    }
+  ],
+  "6106": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the malt'"
+    }
+  ],
+  "6122": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6123": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "6131": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "6132": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "6170": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6171": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "6179": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "6180": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6181": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the rat'"
+    }
+  ],
+  "6189": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the rat'"
+    }
+  ],
+  "6190": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the rat'"
+    }
+  ],
+  "6205": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6206": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "6214": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "6215": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "6232": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6233": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "6241": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "6242": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "6280": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6281": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "6289": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "6290": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6291": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the cat'"
+    }
+  ],
+  "6299": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the cat'"
+    }
+  ],
+  "6300": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the cat'"
+    }
+  ],
+  "6315": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6316": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "6324": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "6325": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "6344": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6345": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "6353": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "6354": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "6371": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6372": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "6380": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "6381": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "6419": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6420": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "6428": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "6429": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6430": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the dog'"
+    }
+  ],
+  "6438": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the dog'"
+    }
+  ],
+  "6439": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the dog'"
+    }
+  ],
+  "6454": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6455": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "6463": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "6464": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "6484": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6485": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "6493": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "6494": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "6513": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6514": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "6522": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "6523": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "6540": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6541": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "6549": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "6550": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "6588": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6589": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "6597": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "6598": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6599": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the cow with the crumpled horn'"
+    }
+  ],
+  "6607": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the cow with the crumpled horn'"
+    }
+  ],
+  "6608": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the cow with the crumpled horn'"
+    }
+  ],
+  "6646": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6647": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "6655": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "6656": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "6675": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6676": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "6684": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "6685": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "6705": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6706": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "6714": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "6715": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "6734": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6735": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "6743": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "6744": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "6761": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6762": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "6770": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "6771": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "6809": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6810": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "6818": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "6819": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6820": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the maiden all forlorn'"
+    }
+  ],
+  "6828": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the maiden all forlorn'"
+    }
+  ],
+  "6829": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the maiden all forlorn'"
+    }
+  ],
+  "6859": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6860": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "6868": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "6869": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "6911": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6912": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "6920": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "6921": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "6940": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6941": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "6949": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "6950": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "6970": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "6971": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "6979": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "6980": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "6999": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7000": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "7008": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "7009": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "7026": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7027": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "7035": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "7036": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "7074": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7075": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "7083": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "7084": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7085": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the man all tattered and torn'"
+    }
+  ],
+  "7093": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the man all tattered and torn'"
+    }
+  ],
+  "7094": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the man all tattered and torn'"
+    }
+  ],
+  "7131": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7132": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "7140": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "7141": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "7175": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7176": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "7184": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "7185": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "7227": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7228": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "7236": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "7237": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "7256": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7257": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "7265": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "7266": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "7286": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7287": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "7295": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "7296": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "7315": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7316": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "7324": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "7325": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "7342": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7343": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "7351": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "7352": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "7390": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7391": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "7399": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "7400": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7401": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the priest all shaven and shorn'"
+    }
+  ],
+  "7409": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the priest all shaven and shorn'"
+    }
+  ],
+  "7410": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the priest all shaven and shorn'"
+    }
+  ],
+  "7449": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7450": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that married the man all tattered and torn'"
+    }
+  ],
+  "7458": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that married the man all tattered and torn'"
+    }
+  ],
+  "7459": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that married the man all tattered and torn'"
+    }
+  ],
+  "7501": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7502": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "7510": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "7511": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "7545": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7546": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "7554": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "7555": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "7597": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7598": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "7606": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "7607": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "7626": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7627": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "7635": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "7636": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "7656": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7657": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "7665": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "7666": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "7685": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7686": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "7694": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "7695": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "7712": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7713": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "7721": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "7722": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "7760": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7761": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "7769": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "7770": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7771": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the rooster that crowed in the morn'"
+    }
+  ],
+  "7779": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the rooster that crowed in the morn'"
+    }
+  ],
+  "7780": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the rooster that crowed in the morn'"
+    }
+  ],
+  "7823": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7824": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "7832": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "7833": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that woke the priest all shaven and shorn'"
+    }
+  ],
+  "7874": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7875": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that married the man all tattered and torn'"
+    }
+  ],
+  "7883": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that married the man all tattered and torn'"
+    }
+  ],
+  "7884": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that married the man all tattered and torn'"
+    }
+  ],
+  "7926": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7927": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "7935": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "7936": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "7970": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "7971": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "7979": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "7980": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "8022": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8023": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "8031": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "8032": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "8051": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8052": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "8060": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "8061": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "8081": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8082": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "8090": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "8091": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "8110": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8111": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "8119": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "8120": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "8137": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8138": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "8146": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "8147": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "8185": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8186": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "8194": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "8195": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8196": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the farmer sowing his corn'"
+    }
+  ],
+  "8204": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the farmer sowing his corn'"
+    }
+  ],
+  "8205": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the farmer sowing his corn'"
+    }
+  ],
+  "8239": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8240": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "8248": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "8249": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "8294": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8295": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "8303": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "8304": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that woke the priest all shaven and shorn'"
+    }
+  ],
+  "8345": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8346": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that married the man all tattered and torn'"
+    }
+  ],
+  "8354": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that married the man all tattered and torn'"
+    }
+  ],
+  "8355": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that married the man all tattered and torn'"
+    }
+  ],
+  "8397": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8398": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "8406": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "8407": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "8441": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8442": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "8450": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "8451": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "8493": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8494": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "8502": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "8503": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "8522": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8523": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "8531": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "8532": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "8552": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8553": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "8561": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "8562": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "8581": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8582": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "8590": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "8591": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "8608": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8609": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "8617": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "8618": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "8656": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8657": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      ''"
+    }
+  ],
+  "8665": [
+    {
+      "state_id": 280,
+      "candidate": "' '",
+      "candidate_text": "''"
+    }
+  ],
+  "8666": [
+    {
+      "state_id": 4496,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8667": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'This is the horse and the hound and the horn'"
+    }
+  ],
+  "8675": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'This is the horse and the hound and the horn'"
+    }
+  ],
+  "8676": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "This is the horse and the hound and the horn'"
+    }
+  ],
+  "8720": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8721": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that belonged to the farmer sowing his corn'"
+    }
+  ],
+  "8729": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that belonged to the farmer sowing his corn'"
+    }
+  ],
+  "8730": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that belonged to the farmer sowing his corn'"
+    }
+  ],
+  "8773": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8774": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "8782": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "8783": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kept the rooster that crowed in the morn'"
+    }
+  ],
+  "8828": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8829": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "8837": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that woke the priest all shaven and shorn'"
+    }
+  ],
+  "8838": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that woke the priest all shaven and shorn'"
+    }
+  ],
+  "8879": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8880": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that married the man all tattered and torn'"
+    }
+  ],
+  "8888": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that married the man all tattered and torn'"
+    }
+  ],
+  "8889": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that married the man all tattered and torn'"
+    }
+  ],
+  "8931": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8932": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that kissed the maiden all forlorn'"
+    }
+  ],
+  "8940": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that kissed the maiden all forlorn'"
+    }
+  ],
+  "8941": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that kissed the maiden all forlorn'"
+    }
+  ],
+  "8975": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "8976": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "8984": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that milked the cow with the crumpled horn'"
+    }
+  ],
+  "8985": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that milked the cow with the crumpled horn'"
+    }
+  ],
+  "9027": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "9028": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that tossed the dog'"
+    }
+  ],
+  "9036": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that tossed the dog'"
+    }
+  ],
+  "9037": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that tossed the dog'"
+    }
+  ],
+  "9056": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "9057": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that worried the cat'"
+    }
+  ],
+  "9065": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that worried the cat'"
+    }
+  ],
+  "9066": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that worried the cat'"
+    }
+  ],
+  "9086": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "9087": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that killed the rat'"
+    }
+  ],
+  "9095": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that killed the rat'"
+    }
+  ],
+  "9096": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that killed the rat'"
+    }
+  ],
+  "9115": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "9116": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that ate the malt'"
+    }
+  ],
+  "9124": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that ate the malt'"
+    }
+  ],
+  "9125": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that ate the malt'"
+    }
+  ],
+  "9142": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "9143": [
+    {
+      "state_id": 4987,
+      "candidate": ", expression",
+      "candidate_text": ",\n      'that lay in the house that Jack built.'"
+    }
+  ],
+  "9151": [
+    {
+      "state_id": 280,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'that lay in the house that Jack built.'"
+    }
+  ],
+  "9152": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "that lay in the house that Jack built.'"
+    }
+  ],
+  "9190": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "9191": [
+    {
+      "state_id": 4987,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "9197": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "9203": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "9209": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(verses(startVerse, endVerse))"
+    }
+  ],
+  "9210": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "verses"
+    }
+  ],
+  "9216": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(startVerse, endVerse)"
+    }
+  ],
+  "9217": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "startVerse"
+    }
+  ],
+  "9227": [
+    {
+      "state_id": 2142,
+      "candidate": ", expression",
+      "candidate_text": ", endVerse"
+    }
+  ],
+  "9229": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "endVerse"
+    }
+  ],
+  "9237": [
+    {
+      "state_id": 4647,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "9238": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "9239": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "9240": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "9247": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(lyrics)"
+    }
+  ],
+  "9248": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "lyrics"
+    }
+  ],
+  "9254": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "9258": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "9259": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "9261": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "9262": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

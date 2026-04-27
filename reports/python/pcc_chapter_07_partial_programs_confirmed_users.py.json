@@ -1,0 +1,509 @@
+{
+  "90": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "unconfirmed_users"
+    }
+  ],
+  "108": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= ['alice', 'brian', 'candace']"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 185,
+      "candidate": "[ _collection_elements ]",
+      "candidate_text": "['alice', 'brian', 'candace']"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 217,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'alice'"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 1691,
+      "candidate": "_string_content",
+      "candidate_text": "alice"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 1692,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 1683,
+      "candidate": ", expression",
+      "candidate_text": ", 'brian'"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 322,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'brian'"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 1710,
+      "candidate": "_string_content",
+      "candidate_text": "brian"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 1711,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 2451,
+      "candidate": ", expression",
+      "candidate_text": ", 'candace'"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 332,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'candace'"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 1710,
+      "candidate": "_string_content",
+      "candidate_text": "candace"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 1711,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 2593,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "confirmed_users"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= []"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 185,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 217,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 69,
+      "candidate": "module_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "224": [
+    {
+      "state_id": 69,
+      "candidate": "module_repeat1",
+      "candidate_text": "# Move each verified user into the list of confirmed users."
+    }
+  ],
+  "284": [
+    {
+      "state_id": 69,
+      "candidate": "while expression : _indent block",
+      "candidate_text": "while unconfirmed_users:\n    current_user = unconfirmed_users.pop()"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 584,
+      "candidate": "identifier",
+      "candidate_text": "unconfirmed_users"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 2073,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n    current_user = unconfirmed_users.pop()"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 105,
+      "candidate": "_indent block",
+      "candidate_text": "current_user = unconfirmed_users.pop()"
+    },
+    {
+      "state_id": 5,
+      "candidate": "identifier",
+      "candidate_text": "current_user"
+    }
+  ],
+  "326": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= unconfirmed_users.pop()"
+    }
+  ],
+  "328": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "unconfirmed_users"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 963,
+      "candidate": ". identifier",
+      "candidate_text": ".pop"
+    }
+  ],
+  "346": [
+    {
+      "state_id": 2752,
+      "candidate": "identifier",
+      "candidate_text": "pop"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 963,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 240,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 68,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "361": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"Verifying user: {current_user.title()}\")"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"Verifying user: {current_user.title()}\""
+    }
+  ],
+  "364": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "Verifying user: "
+    }
+  ],
+  "380": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{current_user.title()}"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "current_user"
+    }
+  ],
+  "393": [
+    {
+      "state_id": 942,
+      "candidate": ". identifier",
+      "candidate_text": ".title"
+    }
+  ],
+  "394": [
+    {
+      "state_id": 2687,
+      "candidate": "identifier",
+      "candidate_text": "title"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 942,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 254,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "402": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "403": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "409": [
+    {
+      "state_id": 68,
+      "candidate": "identifier",
+      "candidate_text": "confirmed_users"
+    }
+  ],
+  "424": [
+    {
+      "state_id": 963,
+      "candidate": ". identifier",
+      "candidate_text": ".append"
+    }
+  ],
+  "425": [
+    {
+      "state_id": 2752,
+      "candidate": "identifier",
+      "candidate_text": "append"
+    }
+  ],
+  "431": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(current_user)"
+    }
+  ],
+  "432": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "current_user"
+    }
+  ],
+  "444": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 71,
+      "candidate": "_simple_statements",
+      "candidate_text": "    "
+    }
+  ],
+  "482": [
+    {
+      "state_id": 69,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "487": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(\"\\nThe following users have been confirmed:\")"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"\\nThe following users have been confirmed:\""
+    }
+  ],
+  "489": [
+    {
+      "state_id": 1677,
+      "candidate": "escape_sequence _string_content",
+      "candidate_text": "\\nThe following users have been confirmed:"
+    }
+  ],
+  "491": [
+    {
+      "state_id": 1807,
+      "candidate": "_string_content",
+      "candidate_text": "The following users have been confirmed:"
+    }
+  ],
+  "531": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "532": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "534": [
+    {
+      "state_id": 69,
+      "candidate": "for pattern in expression : _indent block",
+      "candidate_text": "for confirmed_user in confirmed_users:\n    print(confirmed_user.title())"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 795,
+      "candidate": "identifier",
+      "candidate_text": "confirmed_user"
+    }
+  ],
+  "553": [
+    {
+      "state_id": 2412,
+      "candidate": "in expression : _indent block",
+      "candidate_text": "in confirmed_users:\n    print(confirmed_user.title())"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 474,
+      "candidate": "identifier",
+      "candidate_text": "confirmed_users"
+    }
+  ],
+  "571": [
+    {
+      "state_id": 1851,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n    print(confirmed_user.title())"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 99,
+      "candidate": "_indent block",
+      "candidate_text": "print(confirmed_user.title())"
+    },
+    {
+      "state_id": 13,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "582": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(confirmed_user.title())"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "confirmed_user"
+    }
+  ],
+  "597": [
+    {
+      "state_id": 959,
+      "candidate": ". identifier",
+      "candidate_text": ".title"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 2738,
+      "candidate": "identifier",
+      "candidate_text": "title"
+    }
+  ],
+  "603": [
+    {
+      "state_id": 959,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "604": [
+    {
+      "state_id": 267,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "605": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

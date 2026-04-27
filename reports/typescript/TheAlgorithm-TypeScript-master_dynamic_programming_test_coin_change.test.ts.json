@@ -1,0 +1,1074 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause _automatic_semicolon",
+      "candidate_text": "import { CoinChange, coinChange } from '../coin_change'"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ CoinChange, coinChange }"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "CoinChange"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", coinChange"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "coinChange"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from '../coin_change'"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 4661,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'../coin_change'"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 4396,
+      "candidate": "string_fragment '",
+      "candidate_text": "../coin_change'"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 4478,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 16,
+      "candidate": "interface identifier object_type",
+      "candidate_text": "interface TestCase {"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 5602,
+      "candidate": "identifier object_type",
+      "candidate_text": "TestCase {"
+    }
+  ],
+  "76": [
+    {
+      "state_id": 3652,
+      "candidate": "{ property_signature object_type_repeat1 _automatic_semicolon }",
+      "candidate_text": "{\n  money: number\n  coins: number[]\n  expected: CoinChange\n}"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 1380,
+      "candidate": "identifier",
+      "candidate_text": "money"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 3111,
+      "candidate": ": type",
+      "candidate_text": ": number"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 1110,
+      "candidate": "number",
+      "candidate_text": "number"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 3815,
+      "candidate": "_automatic_semicolon property_signature",
+      "candidate_text": "coins: number[]"
+    },
+    {
+      "state_id": 1454,
+      "candidate": "identifier",
+      "candidate_text": "coins"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 3111,
+      "candidate": ": type",
+      "candidate_text": ": number[]"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 1110,
+      "candidate": "number",
+      "candidate_text": "number"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 3272,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 994,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 3864,
+      "candidate": "_automatic_semicolon property_signature",
+      "candidate_text": "expected: CoinChange"
+    },
+    {
+      "state_id": 1442,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 3111,
+      "candidate": ": type",
+      "candidate_text": ": CoinChange"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier",
+      "candidate_text": "CoinChange"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 3864,
+      "candidate": "_automatic_semicolon }",
+      "candidate_text": "}"
+    },
+    {
+      "state_id": 1442,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "138": [
+    {
+      "state_id": 16,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const cases: TestCase[] = ["
+    }
+  ],
+  "144": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "cases: TestCase[] = ["
+    }
+  ],
+  "149": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": TestCase[]"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier",
+      "candidate_text": "TestCase"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 3272,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 994,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= ["
+    }
+  ],
+  "164": [
+    {
+      "state_id": 423,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\n  {\n    money: 13,\n    coins: [7, 2, 3, 6],\n    expected: {\n      minCoins: 2,\n      coins: [6, 7]\n    }\n  },\n  {\n    money: 10,\n    coins: [1, 5],\n    expected: {\n      minCoins: 2,\n      coins: [5, 5]\n    }\n  }\n]"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 229,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n    money: 13,\n    coins: [7, 2, 3, 6],\n    expected: {\n      minCoins: 2,\n      coins: [6, 7]\n    }\n  }"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "money"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 13"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "13"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 4721,
+      "candidate": ", pair",
+      "candidate_text": ",\n    coins: [7, 2, 3, 6]"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "coins"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": [7, 2, 3, 6]"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 672,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[7, 2, 3, 6]"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 234,
+      "candidate": "number",
+      "candidate_text": "7"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ", 2"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 280,
+      "candidate": "number",
+      "candidate_text": "2"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ", 3"
+    }
+  ],
+  "203": [
+    {
+      "state_id": 280,
+      "candidate": "number",
+      "candidate_text": "3"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 4879,
+      "candidate": ", expression",
+      "candidate_text": ", 6"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 280,
+      "candidate": "number",
+      "candidate_text": "6"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ",\n    expected: {"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": {"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 672,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n      minCoins: 2,\n      coins: [6, 7]\n    }"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 1500,
+      "candidate": "identifier",
+      "candidate_text": "minCoins"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 2"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "2"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 4721,
+      "candidate": ", pair",
+      "candidate_text": ",\n      coins: [6, 7]"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "coins"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": [6, 7]"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 672,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[6, 7]"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 234,
+      "candidate": "number",
+      "candidate_text": "6"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ", 7"
+    }
+  ],
+  "262": [
+    {
+      "state_id": 280,
+      "candidate": "number",
+      "candidate_text": "7"
+    }
+  ],
+  "263": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "274": [
+    {
+      "state_id": 2301,
+      "candidate": ", expression",
+      "candidate_text": ",\n  {"
+    }
+  ],
+  "278": [
+    {
+      "state_id": 280,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n    money: 10,\n    coins: [1, 5],\n    expected: {\n      minCoins: 2,\n      coins: [5, 5]\n    }\n  }"
+    }
+  ],
+  "284": [
+    {
+      "state_id": 1500,
+      "candidate": "identifier",
+      "candidate_text": "money"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 10"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "10"
+    }
+  ],
+  "293": [
+    {
+      "state_id": 4721,
+      "candidate": ", pair",
+      "candidate_text": ",\n    coins: [1, 5]"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "coins"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": [1, 5]"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 672,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[1, 5]"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 234,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "308": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ", 5"
+    }
+  ],
+  "310": [
+    {
+      "state_id": 280,
+      "candidate": "number",
+      "candidate_text": "5"
+    }
+  ],
+  "311": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "312": [
+    {
+      "state_id": 4812,
+      "candidate": ", pair",
+      "candidate_text": ",\n    expected: {"
+    }
+  ],
+  "318": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "326": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": {"
+    }
+  ],
+  "328": [
+    {
+      "state_id": 672,
+      "candidate": "{ pair object_repeat1 }",
+      "candidate_text": "{\n      minCoins: 2,\n      coins: [5, 5]\n    }"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 1500,
+      "candidate": "identifier",
+      "candidate_text": "minCoins"
+    }
+  ],
+  "344": [
+    {
+      "state_id": 3648,
+      "candidate": ": expression",
+      "candidate_text": ": 2"
+    }
+  ],
+  "346": [
+    {
+      "state_id": 278,
+      "candidate": "number",
+      "candidate_text": "2"
+    }
+  ],
+  "347": [
+    {
+      "state_id": 4721,
+      "candidate": ", pair",
+      "candidate_text": ",\n      coins: [5, 5]"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 2429,
+      "candidate": "identifier",
+      "candidate_text": "coins"
+    }
+  ],
+  "360": [
+    {
+      "state_id": 3688,
+      "candidate": ": expression",
+      "candidate_text": ": [5, 5]"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 672,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[5, 5]"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 234,
+      "candidate": "number",
+      "candidate_text": "5"
+    }
+  ],
+  "364": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ", 5"
+    }
+  ],
+  "366": [
+    {
+      "state_id": 280,
+      "candidate": "number",
+      "candidate_text": "5"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "373": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "377": [
+    {
+      "state_id": 4812,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "379": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "382": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "describe"
+    }
+  ],
+  "390": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "('Coin Change Algorithm Test', () => {"
+    }
+  ],
+  "391": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'Coin Change Algorithm Test'"
+    }
+  ],
+  "392": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "Coin Change Algorithm Test'"
+    }
+  ],
+  "418": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "419": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "424": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 333,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n  test.each(cases)(\n    'given money: $money, and coins: $coins the minimum coin change should return $expected',\n    ({ money, coins, expected }) => {\n      const result = coinChange(money, coins)\n      expect(result).toEqual(expected)\n    }\n  )\n}"
+    }
+  ],
+  "431": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "test"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".each"
+    }
+  ],
+  "436": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "each"
+    }
+  ],
+  "440": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(cases)"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "cases"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "447": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(\n    'given money: $money, and coins: $coins the minimum coin change should return $expected',\n    ({ money, coins, expected }) => {\n      const result = coinChange(money, coins)\n      expect(result).toEqual(expected)\n    }\n  )"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 271,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'given money: $money, and coins: $coins the minimum coin change should return $expected'"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "given money: $money, and coins: $coins the minimum coin change should return $expected'"
+    }
+  ],
+  "540": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ",\n    ({ money, coins, expected }) => {"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 289,
+      "candidate": "( required_parameter )",
+      "candidate_text": "({ money, coins, expected })"
+    }
+  ],
+  "548": [
+    {
+      "state_id": 195,
+      "candidate": "{ identifier object_pattern_repeat1 }",
+      "candidate_text": "{ money, coins, expected }"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier object_pattern_repeat1 }",
+      "candidate_text": "money, coins, expected }"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 3353,
+      "candidate": ", identifier",
+      "candidate_text": ", coins"
+    }
+  ],
+  "557": [
+    {
+      "state_id": 1520,
+      "candidate": "identifier",
+      "candidate_text": "coins"
+    }
+  ],
+  "562": [
+    {
+      "state_id": 4815,
+      "candidate": ", identifier",
+      "candidate_text": ", expected"
+    }
+  ],
+  "564": [
+    {
+      "state_id": 2315,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "573": [
+    {
+      "state_id": 4815,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 4621,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "579": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n      const result = coinChange(money, coins)\n      expect(result).toEqual(expected)\n    }"
+    }
+  ],
+  "587": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const result = coinChange(money, coins)"
+    }
+  ],
+  "593": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "result = coinChange(money, coins)"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= coinChange(money, coins)"
+    }
+  ],
+  "602": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "coinChange"
+    }
+  ],
+  "612": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(money, coins)"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "money"
+    }
+  ],
+  "618": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", coins"
+    }
+  ],
+  "620": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "coins"
+    }
+  ],
+  "625": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "639": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(result)"
+    }
+  ],
+  "640": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "646": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toEqual"
+    }
+  ],
+  "648": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toEqual"
+    }
+  ],
+  "655": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(expected)"
+    }
+  ],
+  "656": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "expected"
+    }
+  ],
+  "664": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "670": [
+    {
+      "state_id": 22,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "674": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "676": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "677": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

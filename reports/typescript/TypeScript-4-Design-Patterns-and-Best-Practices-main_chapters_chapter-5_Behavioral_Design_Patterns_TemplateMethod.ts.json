@@ -1,0 +1,1619 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "abstract class identifier class_body",
+      "candidate_text": "abstract class ShippingItemsTemplate {"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 5557,
+      "candidate": "class identifier class_body",
+      "candidate_text": "class ShippingItemsTemplate {"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 5782,
+      "candidate": "identifier class_body",
+      "candidate_text": "ShippingItemsTemplate {"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 3413,
+      "candidate": "{ class_body_repeat1 }",
+      "candidate_text": "{\n  shipItems(items: string[]): void {\n    this.prepareItems(items);\n    this.performShipment(items);\n    this.onItemsShipped(items);\n  }\n  protected prepareItems(items: string[]): void {\n    console.log(\"Preparing items to be shipped to destination\");\n  }\n  protected abstract performShipment(items: string[]): void;\n  protected onItemsShipped(items: string[]): void {}\n}"
+    }
+  ],
+  "41": [
+    {
+      "state_id": 1495,
+      "candidate": "identifier",
+      "candidate_text": "shipItems"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 3062,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(items: string[])"
+    }
+  ],
+  "51": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string[]"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 959,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "74": [
+    {
+      "state_id": 3900,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n    this.prepareItems(items);\n    this.performShipment(items);\n    this.onItemsShipped(items);\n  }"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 29,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".prepareItems"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "prepareItems"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(items)"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 27,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".performShipment"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "performShipment"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(items)"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "136": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 27,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "147": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".onItemsShipped"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "onItemsShipped"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(items)"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 1483,
+      "candidate": "protected",
+      "candidate_text": "protected"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 2736,
+      "candidate": "identifier",
+      "candidate_text": "prepareItems"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 3082,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(items: string[])"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string[]"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 959,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "223": [
+    {
+      "state_id": 3848,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n    console.log(\"Preparing items to be shipped to destination\");\n  }"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 29,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Preparing items to be shipped to destination\")"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Preparing items to be shipped to destination\""
+    }
+  ],
+  "242": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Preparing items to be shipped to destination\""
+    }
+  ],
+  "286": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "287": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "292": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "296": [
+    {
+      "state_id": 1483,
+      "candidate": "protected",
+      "candidate_text": "protected"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 2736,
+      "candidate": "abstract _property_name _call_signature",
+      "candidate_text": "abstract performShipment(items: string[]): void"
+    }
+  ],
+  "315": [
+    {
+      "state_id": 2781,
+      "candidate": "identifier",
+      "candidate_text": "performShipment"
+    }
+  ],
+  "330": [
+    {
+      "state_id": 3065,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(items: string[])"
+    }
+  ],
+  "331": [
+    {
+      "state_id": 198,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string[]"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "344": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "346": [
+    {
+      "state_id": 4939,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "347": [
+    {
+      "state_id": 3315,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 961,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 5021,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 1483,
+      "candidate": "protected",
+      "candidate_text": "protected"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 2736,
+      "candidate": "identifier",
+      "candidate_text": "onItemsShipped"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 3082,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(items: string[])"
+    }
+  ],
+  "382": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string[]"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "397": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "398": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 959,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "405": [
+    {
+      "state_id": 3848,
+      "candidate": "{ } _automatic_semicolon",
+      "candidate_text": "{}"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 29,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 1483,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "411": [
+    {
+      "state_id": 16,
+      "candidate": "class identifier class_heritage class_body _automatic_semicolon",
+      "candidate_text": "class AirShipment extends ShippingItemsTemplate {"
+    }
+  ],
+  "417": [
+    {
+      "state_id": 3290,
+      "candidate": "identifier class_heritage class_body _automatic_semicolon",
+      "candidate_text": "AirShipment extends ShippingItemsTemplate {"
+    }
+  ],
+  "429": [
+    {
+      "state_id": 3411,
+      "candidate": "extends _extends_clause_single",
+      "candidate_text": "extends ShippingItemsTemplate"
+    }
+  ],
+  "437": [
+    {
+      "state_id": 369,
+      "candidate": "identifier",
+      "candidate_text": "ShippingItemsTemplate"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 5397,
+      "candidate": "{ class_body_repeat1 }",
+      "candidate_text": "{\n  protected performShipment(): void {\n    console.log(\"Shipping items by Air\");\n  }\n  protected onItemsShipped(items: string[]): void {\n    console.log(\"Items shipped by Air. Expect quick arrival.\");\n  }\n}"
+    }
+  ],
+  "463": [
+    {
+      "state_id": 1496,
+      "candidate": "protected",
+      "candidate_text": "protected"
+    }
+  ],
+  "473": [
+    {
+      "state_id": 2736,
+      "candidate": "identifier",
+      "candidate_text": "performShipment"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 3082,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 197,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "490": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "492": [
+    {
+      "state_id": 959,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 3848,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n    console.log(\"Shipping items by Air\");\n  }"
+    }
+  ],
+  "503": [
+    {
+      "state_id": 29,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "510": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Shipping items by Air\")"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Shipping items by Air\""
+    }
+  ],
+  "516": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Shipping items by Air\""
+    }
+  ],
+  "537": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "538": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "539": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 1489,
+      "candidate": "protected",
+      "candidate_text": "protected"
+    }
+  ],
+  "557": [
+    {
+      "state_id": 2736,
+      "candidate": "identifier",
+      "candidate_text": "onItemsShipped"
+    }
+  ],
+  "571": [
+    {
+      "state_id": 3082,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(items: string[])"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string[]"
+    }
+  ],
+  "579": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "585": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "586": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "587": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "588": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 959,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 3848,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n    console.log(\"Items shipped by Air. Expect quick arrival.\");\n  }"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 29,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "608": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "609": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "612": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Items shipped by Air. Expect quick arrival.\")"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Items shipped by Air. Expect quick arrival.\""
+    }
+  ],
+  "614": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Items shipped by Air. Expect quick arrival.\""
+    }
+  ],
+  "657": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "658": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "659": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "663": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "665": [
+    {
+      "state_id": 1489,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "668": [
+    {
+      "state_id": 16,
+      "candidate": "class identifier class_heritage class_body _automatic_semicolon",
+      "candidate_text": "class LandShipment extends ShippingItemsTemplate {"
+    }
+  ],
+  "674": [
+    {
+      "state_id": 3290,
+      "candidate": "identifier class_heritage class_body _automatic_semicolon",
+      "candidate_text": "LandShipment extends ShippingItemsTemplate {"
+    }
+  ],
+  "687": [
+    {
+      "state_id": 3411,
+      "candidate": "extends _extends_clause_single",
+      "candidate_text": "extends ShippingItemsTemplate"
+    }
+  ],
+  "695": [
+    {
+      "state_id": 369,
+      "candidate": "identifier",
+      "candidate_text": "ShippingItemsTemplate"
+    }
+  ],
+  "717": [
+    {
+      "state_id": 5397,
+      "candidate": "{ class_body_repeat1 }",
+      "candidate_text": "{\n  protected performShipment(items: string[]): void {\n    console.log(\"Shipping items by land\");\n  }\n  protected onItemsShipped(items: string[]): void {\n    console.log(\"Items shipped by land. Expect slow arrival.\");\n  }\n}"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 1496,
+      "candidate": "protected",
+      "candidate_text": "protected"
+    }
+  ],
+  "731": [
+    {
+      "state_id": 2736,
+      "candidate": "identifier",
+      "candidate_text": "performShipment"
+    }
+  ],
+  "746": [
+    {
+      "state_id": 3082,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(items: string[])"
+    }
+  ],
+  "747": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "752": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string[]"
+    }
+  ],
+  "754": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "760": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "761": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "762": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "765": [
+    {
+      "state_id": 959,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "770": [
+    {
+      "state_id": 3848,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n    console.log(\"Shipping items by land\");\n  }"
+    }
+  ],
+  "776": [
+    {
+      "state_id": 29,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "783": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "784": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "787": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Shipping items by land\")"
+    }
+  ],
+  "788": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Shipping items by land\""
+    }
+  ],
+  "789": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Shipping items by land\""
+    }
+  ],
+  "811": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "812": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "813": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "817": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "821": [
+    {
+      "state_id": 1489,
+      "candidate": "protected",
+      "candidate_text": "protected"
+    }
+  ],
+  "831": [
+    {
+      "state_id": 2736,
+      "candidate": "identifier",
+      "candidate_text": "onItemsShipped"
+    }
+  ],
+  "845": [
+    {
+      "state_id": 3082,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(items: string[])"
+    }
+  ],
+  "846": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "items"
+    }
+  ],
+  "851": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string[]"
+    }
+  ],
+  "853": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "859": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "860": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "861": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "862": [
+    {
+      "state_id": 3330,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "864": [
+    {
+      "state_id": 959,
+      "candidate": "void",
+      "candidate_text": "void"
+    }
+  ],
+  "869": [
+    {
+      "state_id": 3848,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n    console.log(\"Items shipped by land. Expect slow arrival.\");\n  }"
+    }
+  ],
+  "875": [
+    {
+      "state_id": 29,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "882": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "883": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "886": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(\"Items shipped by land. Expect slow arrival.\")"
+    }
+  ],
+  "887": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Items shipped by land. Expect slow arrival.\""
+    }
+  ],
+  "888": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Items shipped by land. Expect slow arrival.\""
+    }
+  ],
+  "931": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "932": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "933": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "937": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "939": [
+    {
+      "state_id": 1489,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "942": [
+    {
+      "state_id": 16,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const airShipment: ShippingItemsTemplate = new AirShipment();"
+    }
+  ],
+  "948": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "airShipment: ShippingItemsTemplate = new AirShipment()"
+    }
+  ],
+  "959": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": ShippingItemsTemplate"
+    }
+  ],
+  "961": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier",
+      "candidate_text": "ShippingItemsTemplate"
+    }
+  ],
+  "983": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= new AirShipment()"
+    }
+  ],
+  "985": [
+    {
+      "state_id": 423,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new AirShipment()"
+    }
+  ],
+  "989": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "AirShipment"
+    }
+  ],
+  "1000": [
+    {
+      "state_id": 1696,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1001": [
+    {
+      "state_id": 271,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1002": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1004": [
+    {
+      "state_id": 16,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const landShipment: ShippingItemsTemplate = new LandShipment();"
+    }
+  ],
+  "1010": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "landShipment: ShippingItemsTemplate = new LandShipment()"
+    }
+  ],
+  "1022": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": ShippingItemsTemplate"
+    }
+  ],
+  "1024": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier",
+      "candidate_text": "ShippingItemsTemplate"
+    }
+  ],
+  "1046": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= new LandShipment()"
+    }
+  ],
+  "1048": [
+    {
+      "state_id": 423,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new LandShipment()"
+    }
+  ],
+  "1052": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "LandShipment"
+    }
+  ],
+  "1064": [
+    {
+      "state_id": 1696,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1065": [
+    {
+      "state_id": 271,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1066": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1068": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "airShipment"
+    }
+  ],
+  "1079": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".shipItems"
+    }
+  ],
+  "1080": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "shipItems"
+    }
+  ],
+  "1089": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "([\"Chips\", \"Motherboards\"])"
+    }
+  ],
+  "1090": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\"Chips\", \"Motherboards\"]"
+    }
+  ],
+  "1091": [
+    {
+      "state_id": 234,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Chips\""
+    }
+  ],
+  "1092": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Chips\""
+    }
+  ],
+  "1097": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1098": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ", \"Motherboards\""
+    }
+  ],
+  "1100": [
+    {
+      "state_id": 280,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Motherboards\""
+    }
+  ],
+  "1101": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Motherboards\""
+    }
+  ],
+  "1113": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1114": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1115": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1116": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1118": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "landShipment"
+    }
+  ],
+  "1130": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".shipItems"
+    }
+  ],
+  "1131": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "shipItems"
+    }
+  ],
+  "1140": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "([\"Chips\", \"Motherboards\"])"
+    }
+  ],
+  "1141": [
+    {
+      "state_id": 271,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[\"Chips\", \"Motherboards\"]"
+    }
+  ],
+  "1142": [
+    {
+      "state_id": 234,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Chips\""
+    }
+  ],
+  "1143": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Chips\""
+    }
+  ],
+  "1148": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1149": [
+    {
+      "state_id": 2126,
+      "candidate": ", expression",
+      "candidate_text": ", \"Motherboards\""
+    }
+  ],
+  "1151": [
+    {
+      "state_id": 280,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Motherboards\""
+    }
+  ],
+  "1152": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Motherboards\""
+    }
+  ],
+  "1164": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1165": [
+    {
+      "state_id": 4879,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1166": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1167": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

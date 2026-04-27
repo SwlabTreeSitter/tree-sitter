@@ -1,0 +1,4608 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "function identifier formal_parameters statement_block _automatic_semicolon",
+      "candidate_text": "function treeGraph(depth, branches) {"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 1336,
+      "candidate": "identifier formal_parameters statement_block _automatic_semicolon",
+      "candidate_text": "treeGraph(depth, branches) {"
+    }
+  ],
+  "18": [
+    {
+      "state_id": 1675,
+      "candidate": "( pattern formal_parameters_repeat1 )",
+      "candidate_text": "(depth, branches)"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "depth"
+    }
+  ],
+  "24": [
+    {
+      "state_id": 1370,
+      "candidate": ", pattern",
+      "candidate_text": ", branches"
+    }
+  ],
+  "26": [
+    {
+      "state_id": 124,
+      "candidate": "identifier",
+      "candidate_text": "branches"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 1486,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 1672,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\tlet graph = [new GraphNode()];\n\tif (depth > 1) {\n\t\tfor (let i = 0; i < branches; i++) {\n\t\t\tlet subGraph = treeGraph(depth - 1, branches);\n\t\t\tgraph[0].connect(subGraph[0]);\n\t\t\tgraph = graph.concat(subGraph);\n\t\t}\n\t}\n\treturn graph;\n}"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 23,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let graph = [new GraphNode()];"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "graph = [new GraphNode()]"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= [new GraphNode()]"
+    }
+  ],
+  "51": [
+    {
+      "state_id": 273,
+      "candidate": "[ expression ]",
+      "candidate_text": "[new GraphNode()]"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 111,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new GraphNode()"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 210,
+      "candidate": "identifier",
+      "candidate_text": "GraphNode"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 581,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 125,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 841,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 22,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (depth > 1) {"
+    }
+  ],
+  "74": [
+    {
+      "state_id": 1668,
+      "candidate": "( expression )",
+      "candidate_text": "(depth > 1)"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 195,
+      "candidate": "identifier",
+      "candidate_text": "depth"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 857,
+      "candidate": "> expression",
+      "candidate_text": "> 1"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 250,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 857,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "86": [
+    {
+      "state_id": 57,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\tfor (let i = 0; i < branches; i++) {\n\t\t\tlet subGraph = treeGraph(depth - 1, branches);\n\t\t\tgraph[0].connect(subGraph[0]);\n\t\t\tgraph = graph.concat(subGraph);\n\t\t}\n\t}"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 2,
+      "candidate": "for ( lexical_declaration expression ; expression ) statement",
+      "candidate_text": "for (let i = 0; i < branches; i++) {"
+    }
+  ],
+  "94": [
+    {
+      "state_id": 1498,
+      "candidate": "( lexical_declaration expression ; expression ) statement",
+      "candidate_text": "(let i = 0; i < branches; i++) {"
+    }
+  ],
+  "95": [
+    {
+      "state_id": 112,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let i = 0;"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 488,
+      "candidate": "identifier _initializer",
+      "candidate_text": "i = 0"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 1202,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 273,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "104": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 141,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "108": [
+    {
+      "state_id": 863,
+      "candidate": "< expression",
+      "candidate_text": "< branches"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 250,
+      "candidate": "identifier",
+      "candidate_text": "branches"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 863,
+      "candidate": "; expression ) statement",
+      "candidate_text": "; i++) {"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 149,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 831,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "123": [
+    {
+      "state_id": 831,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 47,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\t\t\tlet subGraph = treeGraph(depth - 1, branches);\n\t\t\tgraph[0].connect(subGraph[0]);\n\t\t\tgraph = graph.concat(subGraph);\n\t\t}"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 2,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let subGraph = treeGraph(depth - 1, branches);"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 370,
+      "candidate": "identifier _initializer",
+      "candidate_text": "subGraph = treeGraph(depth - 1, branches)"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= treeGraph(depth - 1, branches)"
+    }
+  ],
+  "145": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "treeGraph"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 855,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(depth - 1, branches)"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "depth"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 847,
+      "candidate": "- expression",
+      "candidate_text": "- 1"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 259,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 847,
+      "candidate": ", expression",
+      "candidate_text": ", branches"
+    }
+  ],
+  "166": [
+    {
+      "state_id": 127,
+      "candidate": "identifier",
+      "candidate_text": "branches"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 1465,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 18,
+      "candidate": "identifier",
+      "candidate_text": "graph"
+    }
+  ],
+  "185": [
+    {
+      "state_id": 686,
+      "candidate": "[ expression ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 189,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 849,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".connect"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "connect"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 823,
+      "candidate": "( expression )",
+      "candidate_text": "(subGraph[0])"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "subGraph"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 589,
+      "candidate": "[ expression ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 181,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 860,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 18,
+      "candidate": "identifier = expression",
+      "candidate_text": "graph = graph.concat(subGraph)"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 531,
+      "candidate": "= expression",
+      "candidate_text": "= graph.concat(subGraph)"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 231,
+      "candidate": "identifier",
+      "candidate_text": "graph"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".concat"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "concat"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 719,
+      "candidate": "( expression )",
+      "candidate_text": "(subGraph)"
+    }
+  ],
+  "235": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "subGraph"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "248": [
+    {
+      "state_id": 18,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 18,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 22,
+      "candidate": "return expression ;",
+      "candidate_text": "return graph;"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 142,
+      "candidate": "identifier",
+      "candidate_text": "graph"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 22,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 20,
+      "candidate": "class identifier class_body _automatic_semicolon",
+      "candidate_text": "class GraphNode {"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 1268,
+      "candidate": "identifier class_body _automatic_semicolon",
+      "candidate_text": "GraphNode {"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 1367,
+      "candidate": "{ class_body_repeat1 }",
+      "candidate_text": "{\n\tconstructor() {\n\t\tthis.pos = new Vec(Math.random() * 1000, Math.random() * 1000);\n\t\tthis.edges = [];\n\t}\n\tconnect(other) {\n\t\tthis.edges.push(other);\n\t\tother.edges.push(this);\n\t}\n\thasEdge(other) {\n\t\treturn this.edges.includes(other);\n\t}\n}"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 990,
+      "candidate": "identifier",
+      "candidate_text": "constructor"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 1228,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "302": [
+    {
+      "state_id": 126,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 1515,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\t\tthis.pos = new Vec(Math.random() * 1000, Math.random() * 1000);\n\t\tthis.edges = [];\n\t}"
+    }
+  ],
+  "308": [
+    {
+      "state_id": 27,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "312": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".pos"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "pos"
+    }
+  ],
+  "317": [
+    {
+      "state_id": 552,
+      "candidate": "= expression",
+      "candidate_text": "= new Vec(Math.random() * 1000, Math.random() * 1000)"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 231,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Vec(Math.random() * 1000, Math.random() * 1000)"
+    }
+  ],
+  "323": [
+    {
+      "state_id": 192,
+      "candidate": "identifier",
+      "candidate_text": "Vec"
+    }
+  ],
+  "326": [
+    {
+      "state_id": 657,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(Math.random() * 1000, Math.random() * 1000)"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "Math"
+    }
+  ],
+  "331": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".random"
+    }
+  ],
+  "332": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "random"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 847,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "339": [
+    {
+      "state_id": 125,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "341": [
+    {
+      "state_id": 847,
+      "candidate": "* expression",
+      "candidate_text": "* 1000"
+    }
+  ],
+  "343": [
+    {
+      "state_id": 251,
+      "candidate": "number",
+      "candidate_text": "1000"
+    }
+  ],
+  "347": [
+    {
+      "state_id": 847,
+      "candidate": ", expression",
+      "candidate_text": ", Math.random() * 1000"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 127,
+      "candidate": "identifier",
+      "candidate_text": "Math"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".random"
+    }
+  ],
+  "354": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "random"
+    }
+  ],
+  "360": [
+    {
+      "state_id": 845,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "361": [
+    {
+      "state_id": 125,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 845,
+      "candidate": "* expression",
+      "candidate_text": "* 1000"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 251,
+      "candidate": "number",
+      "candidate_text": "1000"
+    }
+  ],
+  "369": [
+    {
+      "state_id": 1465,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "370": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "374": [
+    {
+      "state_id": 26,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "378": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".edges"
+    }
+  ],
+  "379": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "edges"
+    }
+  ],
+  "385": [
+    {
+      "state_id": 552,
+      "candidate": "= expression",
+      "candidate_text": "= []"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 231,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 111,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "392": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 988,
+      "candidate": "identifier",
+      "candidate_text": "connect"
+    }
+  ],
+  "402": [
+    {
+      "state_id": 1228,
+      "candidate": "( pattern )",
+      "candidate_text": "(other)"
+    }
+  ],
+  "403": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "410": [
+    {
+      "state_id": 1515,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\t\tthis.edges.push(other);\n\t\tother.edges.push(this);\n\t}"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 27,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "418": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".edges"
+    }
+  ],
+  "419": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "edges"
+    }
+  ],
+  "424": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".push"
+    }
+  ],
+  "425": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "push"
+    }
+  ],
+  "429": [
+    {
+      "state_id": 823,
+      "candidate": "( expression )",
+      "candidate_text": "(other)"
+    }
+  ],
+  "430": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "436": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "440": [
+    {
+      "state_id": 26,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "445": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".edges"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "edges"
+    }
+  ],
+  "451": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".push"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "push"
+    }
+  ],
+  "456": [
+    {
+      "state_id": 823,
+      "candidate": "( expression )",
+      "candidate_text": "(this)"
+    }
+  ],
+  "457": [
+    {
+      "state_id": 123,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "465": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "468": [
+    {
+      "state_id": 988,
+      "candidate": "identifier",
+      "candidate_text": "hasEdge"
+    }
+  ],
+  "475": [
+    {
+      "state_id": 1228,
+      "candidate": "( pattern )",
+      "candidate_text": "(other)"
+    }
+  ],
+  "476": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "481": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "483": [
+    {
+      "state_id": 1515,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\treturn this.edges.includes(other);\n\t}"
+    }
+  ],
+  "487": [
+    {
+      "state_id": 27,
+      "candidate": "return expression ;",
+      "candidate_text": "return this.edges.includes(other);"
+    }
+  ],
+  "494": [
+    {
+      "state_id": 142,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "498": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".edges"
+    }
+  ],
+  "499": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "edges"
+    }
+  ],
+  "504": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".includes"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "includes"
+    }
+  ],
+  "513": [
+    {
+      "state_id": 822,
+      "candidate": "( expression )",
+      "candidate_text": "(other)"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "523": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "525": [
+    {
+      "state_id": 988,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "528": [
+    {
+      "state_id": 20,
+      "candidate": "class identifier class_body _automatic_semicolon",
+      "candidate_text": "class Vec {"
+    }
+  ],
+  "534": [
+    {
+      "state_id": 1268,
+      "candidate": "identifier class_body _automatic_semicolon",
+      "candidate_text": "Vec {"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 1367,
+      "candidate": "{ class_body_repeat1 }",
+      "candidate_text": "{\n\tconstructor(x, y) {\n\t\tthis.x = x;\n\t\tthis.y = y;\n\t}\n\tplus(other) {\n\t\treturn new Vec(this.x + other.x, this.y + other.y);\n\t}\n\tminus(other) {\n\t\treturn new Vec(this.x - other.x, this.y - other.y);\n\t}\n\ttimes(factor) {\n\t\treturn new Vec(this.x * factor, this.y * factor);\n\t}\n\tget length() {\n\t\treturn Math.sqrt(this.x * this.x + this.y * this.y);\n\t}\n}"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 990,
+      "candidate": "identifier",
+      "candidate_text": "constructor"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 1228,
+      "candidate": "( pattern formal_parameters_repeat1 )",
+      "candidate_text": "(x, y)"
+    }
+  ],
+  "553": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "554": [
+    {
+      "state_id": 1370,
+      "candidate": ", pattern",
+      "candidate_text": ", y"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 124,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "557": [
+    {
+      "state_id": 1486,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "559": [
+    {
+      "state_id": 1515,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\t\tthis.x = x;\n\t\tthis.y = y;\n\t}"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 27,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".x"
+    }
+  ],
+  "568": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "570": [
+    {
+      "state_id": 552,
+      "candidate": "= expression",
+      "candidate_text": "= x"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 231,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "573": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 26,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "581": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".y"
+    }
+  ],
+  "582": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 552,
+      "candidate": "= expression",
+      "candidate_text": "= y"
+    }
+  ],
+  "586": [
+    {
+      "state_id": 231,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "587": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "593": [
+    {
+      "state_id": 988,
+      "candidate": "identifier",
+      "candidate_text": "plus"
+    }
+  ],
+  "597": [
+    {
+      "state_id": 1228,
+      "candidate": "( pattern )",
+      "candidate_text": "(other)"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "603": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "605": [
+    {
+      "state_id": 1515,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\treturn new Vec(this.x + other.x, this.y + other.y);\n\t}"
+    }
+  ],
+  "609": [
+    {
+      "state_id": 27,
+      "candidate": "return expression ;",
+      "candidate_text": "return new Vec(this.x + other.x, this.y + other.y);"
+    }
+  ],
+  "616": [
+    {
+      "state_id": 142,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Vec(this.x + other.x, this.y + other.y)"
+    }
+  ],
+  "620": [
+    {
+      "state_id": 192,
+      "candidate": "identifier",
+      "candidate_text": "Vec"
+    }
+  ],
+  "623": [
+    {
+      "state_id": 657,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(this.x + other.x, this.y + other.y)"
+    }
+  ],
+  "624": [
+    {
+      "state_id": 123,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".x"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "631": [
+    {
+      "state_id": 847,
+      "candidate": "+ expression",
+      "candidate_text": "+ other.x"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 259,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "638": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".x"
+    }
+  ],
+  "639": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "640": [
+    {
+      "state_id": 847,
+      "candidate": ", expression",
+      "candidate_text": ", this.y + other.y"
+    }
+  ],
+  "642": [
+    {
+      "state_id": 127,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "646": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".y"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "649": [
+    {
+      "state_id": 845,
+      "candidate": "+ expression",
+      "candidate_text": "+ other.y"
+    }
+  ],
+  "651": [
+    {
+      "state_id": 259,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "656": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".y"
+    }
+  ],
+  "657": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "658": [
+    {
+      "state_id": 1465,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "659": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "662": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "665": [
+    {
+      "state_id": 988,
+      "candidate": "identifier",
+      "candidate_text": "minus"
+    }
+  ],
+  "670": [
+    {
+      "state_id": 1228,
+      "candidate": "( pattern )",
+      "candidate_text": "(other)"
+    }
+  ],
+  "671": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "676": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "678": [
+    {
+      "state_id": 1515,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\treturn new Vec(this.x - other.x, this.y - other.y);\n\t}"
+    }
+  ],
+  "682": [
+    {
+      "state_id": 27,
+      "candidate": "return expression ;",
+      "candidate_text": "return new Vec(this.x - other.x, this.y - other.y);"
+    }
+  ],
+  "689": [
+    {
+      "state_id": 142,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Vec(this.x - other.x, this.y - other.y)"
+    }
+  ],
+  "693": [
+    {
+      "state_id": 192,
+      "candidate": "identifier",
+      "candidate_text": "Vec"
+    }
+  ],
+  "696": [
+    {
+      "state_id": 657,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(this.x - other.x, this.y - other.y)"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 123,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".x"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "704": [
+    {
+      "state_id": 847,
+      "candidate": "- expression",
+      "candidate_text": "- other.x"
+    }
+  ],
+  "706": [
+    {
+      "state_id": 259,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "711": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".x"
+    }
+  ],
+  "712": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "713": [
+    {
+      "state_id": 847,
+      "candidate": ", expression",
+      "candidate_text": ", this.y - other.y"
+    }
+  ],
+  "715": [
+    {
+      "state_id": 127,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "719": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".y"
+    }
+  ],
+  "720": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "722": [
+    {
+      "state_id": 845,
+      "candidate": "- expression",
+      "candidate_text": "- other.y"
+    }
+  ],
+  "724": [
+    {
+      "state_id": 259,
+      "candidate": "identifier",
+      "candidate_text": "other"
+    }
+  ],
+  "729": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".y"
+    }
+  ],
+  "730": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "731": [
+    {
+      "state_id": 1465,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "732": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "735": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "738": [
+    {
+      "state_id": 988,
+      "candidate": "identifier",
+      "candidate_text": "times"
+    }
+  ],
+  "743": [
+    {
+      "state_id": 1228,
+      "candidate": "( pattern )",
+      "candidate_text": "(factor)"
+    }
+  ],
+  "744": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "factor"
+    }
+  ],
+  "750": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "752": [
+    {
+      "state_id": 1515,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\treturn new Vec(this.x * factor, this.y * factor);\n\t}"
+    }
+  ],
+  "756": [
+    {
+      "state_id": 27,
+      "candidate": "return expression ;",
+      "candidate_text": "return new Vec(this.x * factor, this.y * factor);"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 142,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new Vec(this.x * factor, this.y * factor)"
+    }
+  ],
+  "767": [
+    {
+      "state_id": 192,
+      "candidate": "identifier",
+      "candidate_text": "Vec"
+    }
+  ],
+  "770": [
+    {
+      "state_id": 657,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(this.x * factor, this.y * factor)"
+    }
+  ],
+  "771": [
+    {
+      "state_id": 123,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "775": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".x"
+    }
+  ],
+  "776": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "778": [
+    {
+      "state_id": 847,
+      "candidate": "* expression",
+      "candidate_text": "* factor"
+    }
+  ],
+  "780": [
+    {
+      "state_id": 251,
+      "candidate": "identifier",
+      "candidate_text": "factor"
+    }
+  ],
+  "786": [
+    {
+      "state_id": 847,
+      "candidate": ", expression",
+      "candidate_text": ", this.y * factor"
+    }
+  ],
+  "788": [
+    {
+      "state_id": 127,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "792": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".y"
+    }
+  ],
+  "793": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "795": [
+    {
+      "state_id": 845,
+      "candidate": "* expression",
+      "candidate_text": "* factor"
+    }
+  ],
+  "797": [
+    {
+      "state_id": 251,
+      "candidate": "identifier",
+      "candidate_text": "factor"
+    }
+  ],
+  "803": [
+    {
+      "state_id": 1465,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "804": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "807": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "810": [
+    {
+      "state_id": 988,
+      "candidate": "get _property_name formal_parameters statement_block",
+      "candidate_text": "get length() {"
+    }
+  ],
+  "814": [
+    {
+      "state_id": 1028,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "820": [
+    {
+      "state_id": 1553,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "821": [
+    {
+      "state_id": 126,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "823": [
+    {
+      "state_id": 1556,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\treturn Math.sqrt(this.x * this.x + this.y * this.y);\n\t}"
+    }
+  ],
+  "827": [
+    {
+      "state_id": 27,
+      "candidate": "return expression ;",
+      "candidate_text": "return Math.sqrt(this.x * this.x + this.y * this.y);"
+    }
+  ],
+  "834": [
+    {
+      "state_id": 142,
+      "candidate": "identifier",
+      "candidate_text": "Math"
+    }
+  ],
+  "838": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".sqrt"
+    }
+  ],
+  "839": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "sqrt"
+    }
+  ],
+  "843": [
+    {
+      "state_id": 822,
+      "candidate": "( expression )",
+      "candidate_text": "(this.x * this.x + this.y * this.y)"
+    }
+  ],
+  "844": [
+    {
+      "state_id": 123,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "848": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".x"
+    }
+  ],
+  "849": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "851": [
+    {
+      "state_id": 847,
+      "candidate": "* expression",
+      "candidate_text": "* this.x"
+    }
+  ],
+  "853": [
+    {
+      "state_id": 251,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "857": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".x"
+    }
+  ],
+  "858": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "860": [
+    {
+      "state_id": 847,
+      "candidate": "+ expression",
+      "candidate_text": "+ this.y * this.y"
+    }
+  ],
+  "862": [
+    {
+      "state_id": 259,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "866": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".y"
+    }
+  ],
+  "867": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "869": [
+    {
+      "state_id": 677,
+      "candidate": "* expression",
+      "candidate_text": "* this.y"
+    }
+  ],
+  "871": [
+    {
+      "state_id": 251,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "875": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".y"
+    }
+  ],
+  "876": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "877": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "878": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "881": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "883": [
+    {
+      "state_id": 988,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "886": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "// Since we will want to inspect the layouts our code produces, let's"
+    }
+  ],
+  "957": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ first write code to draw a graph onto a canvas. Since we don't know"
+    }
+  ],
+  "1028": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ in advance how big the graph is, the `Scale` object computes a"
+    }
+  ],
+  "1094": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ scale and offset so that all nodes fit onto the given canvas."
+    }
+  ],
+  "1159": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "// The function starts by drawing the edges, so that they appear"
+    }
+  ],
+  "1225": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ behind the nodes. Since the nodes on _both_ side of an edge refer"
+    }
+  ],
+  "1294": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ to each other, and we don't want to draw every edge twice, edges"
+    }
+  ],
+  "1362": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ are only drawn then the target comes _after_ the current node in"
+    }
+  ],
+  "1430": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ the `graph` array."
+    }
+  ],
+  "1452": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "// When the edges have been drawn, the nodes are drawn on top of them"
+    }
+  ],
+  "1523": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ as purple discs. Remember that the last argument to `arc` gives the"
+    }
+  ],
+  "1594": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ rotation, and we have to pass something bigger than 2π to get a"
+    }
+  ],
+  "1662": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ full circle."
+    }
+  ],
+  "1678": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "// Finding a scale at which to draw the graph is done by finding the"
+    }
+  ],
+  "1748": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ top left and bottom right corners of the area taken up by the"
+    }
+  ],
+  "1813": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ nodes. The offset at which nodes are drawn is based on the top left"
+    }
+  ],
+  "1884": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ corner, and the scale is based on the size of the canvas divided by"
+    }
+  ],
+  "1955": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ the distance between those corners. The function reserves space"
+    }
+  ],
+  "2022": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ along the sides of the canvas based on the `nodeSize` variable, so"
+    }
+  ],
+  "2092": [
+    {
+      "state_id": 20,
+      "candidate": "program_repeat1",
+      "candidate_text": "/ that the circles drawn around nodes’ center points don't get cut off."
+    }
+  ],
+  "2167": [
+    {
+      "state_id": 20,
+      "candidate": "class identifier class_body _automatic_semicolon",
+      "candidate_text": "class Scale {"
+    }
+  ],
+  "2173": [
+    {
+      "state_id": 1268,
+      "candidate": "identifier class_body _automatic_semicolon",
+      "candidate_text": "Scale {"
+    }
+  ],
+  "2179": [
+    {
+      "state_id": 1367,
+      "candidate": "{ class_body_repeat1 }",
+      "candidate_text": "{\n\tconstructor(graph, width, height) {"
+    }
+  ],
+  "2182": [
+    {
+      "state_id": 990,
+      "candidate": "identifier",
+      "candidate_text": "constructor"
+    }
+  ],
+  "2193": [
+    {
+      "state_id": 1228,
+      "candidate": "( pattern formal_parameters_repeat1 )",
+      "candidate_text": "(graph, width, height)"
+    }
+  ],
+  "2194": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "graph"
+    }
+  ],
+  "2199": [
+    {
+      "state_id": 1370,
+      "candidate": ", pattern",
+      "candidate_text": ", width"
+    }
+  ],
+  "2201": [
+    {
+      "state_id": 124,
+      "candidate": "identifier",
+      "candidate_text": "width"
+    }
+  ],
+  "2206": [
+    {
+      "state_id": 1486,
+      "candidate": ", pattern",
+      "candidate_text": ", height"
+    }
+  ],
+  "2208": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "height"
+    }
+  ],
+  "2214": [
+    {
+      "state_id": 1486,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2216": [
+    {
+      "state_id": 1515,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\t\tlet xs = graph.map((node) => node.pos.x);"
+    }
+  ],
+  "2220": [
+    {
+      "state_id": 27,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let xs = graph.map((node) => node.pos.x);"
+    }
+  ],
+  "2224": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "xs = graph.map((node) => node.pos.x)"
+    }
+  ],
+  "2227": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= graph.map((node) => node.pos.x)"
+    }
+  ],
+  "2229": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "graph"
+    }
+  ],
+  "2234": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".map"
+    }
+  ],
+  "2235": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "map"
+    }
+  ],
+  "2238": [
+    {
+      "state_id": 855,
+      "candidate": "( expression )",
+      "candidate_text": "((node) => node.pos.x)"
+    }
+  ],
+  "2239": [
+    {
+      "state_id": 123,
+      "candidate": "( pattern )",
+      "candidate_text": "(node)"
+    }
+  ],
+  "2240": [
+    {
+      "state_id": 120,
+      "candidate": "identifier",
+      "candidate_text": "node"
+    }
+  ],
+  "2244": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2246": [
+    {
+      "state_id": 1763,
+      "candidate": "=> expression",
+      "candidate_text": "=> node.pos.x"
+    }
+  ],
+  "2249": [
+    {
+      "state_id": 169,
+      "candidate": "identifier",
+      "candidate_text": "node"
+    }
+  ],
+  "2253": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".pos"
+    }
+  ],
+  "2254": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "pos"
+    }
+  ],
+  "2257": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".x"
+    }
+  ],
+  "2258": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "2259": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2260": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2264": [
+    {
+      "state_id": 26,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let ys = graph.map((node) => node.pos.y);"
+    }
+  ],
+  "2268": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "ys = graph.map((node) => node.pos.y)"
+    }
+  ],
+  "2271": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= graph.map((node) => node.pos.y)"
+    }
+  ],
+  "2273": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "graph"
+    }
+  ],
+  "2278": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".map"
+    }
+  ],
+  "2279": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "map"
+    }
+  ],
+  "2282": [
+    {
+      "state_id": 855,
+      "candidate": "( expression )",
+      "candidate_text": "((node) => node.pos.y)"
+    }
+  ],
+  "2283": [
+    {
+      "state_id": 123,
+      "candidate": "( pattern )",
+      "candidate_text": "(node)"
+    }
+  ],
+  "2284": [
+    {
+      "state_id": 120,
+      "candidate": "identifier",
+      "candidate_text": "node"
+    }
+  ],
+  "2288": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2290": [
+    {
+      "state_id": 1763,
+      "candidate": "=> expression",
+      "candidate_text": "=> node.pos.y"
+    }
+  ],
+  "2293": [
+    {
+      "state_id": 169,
+      "candidate": "identifier",
+      "candidate_text": "node"
+    }
+  ],
+  "2297": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".pos"
+    }
+  ],
+  "2298": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "pos"
+    }
+  ],
+  "2301": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".y"
+    }
+  ],
+  "2302": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "2303": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2304": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2308": [
+    {
+      "state_id": 26,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let minX = Math.min(...xs);"
+    }
+  ],
+  "2312": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "minX = Math.min(...xs)"
+    }
+  ],
+  "2317": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= Math.min(...xs)"
+    }
+  ],
+  "2319": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "Math"
+    }
+  ],
+  "2323": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".min"
+    }
+  ],
+  "2324": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "min"
+    }
+  ],
+  "2327": [
+    {
+      "state_id": 855,
+      "candidate": "( spread_element )",
+      "candidate_text": "(...xs)"
+    }
+  ],
+  "2328": [
+    {
+      "state_id": 123,
+      "candidate": "... expression",
+      "candidate_text": "...xs"
+    }
+  ],
+  "2331": [
+    {
+      "state_id": 314,
+      "candidate": "identifier",
+      "candidate_text": "xs"
+    }
+  ],
+  "2333": [
+    {
+      "state_id": 1480,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2334": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2338": [
+    {
+      "state_id": 26,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let minY = Math.min(...ys);"
+    }
+  ],
+  "2342": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "minY = Math.min(...ys)"
+    }
+  ],
+  "2347": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= Math.min(...ys)"
+    }
+  ],
+  "2349": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "Math"
+    }
+  ],
+  "2353": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".min"
+    }
+  ],
+  "2354": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "min"
+    }
+  ],
+  "2357": [
+    {
+      "state_id": 855,
+      "candidate": "( spread_element )",
+      "candidate_text": "(...ys)"
+    }
+  ],
+  "2358": [
+    {
+      "state_id": 123,
+      "candidate": "... expression",
+      "candidate_text": "...ys"
+    }
+  ],
+  "2361": [
+    {
+      "state_id": 314,
+      "candidate": "identifier",
+      "candidate_text": "ys"
+    }
+  ],
+  "2363": [
+    {
+      "state_id": 1480,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2364": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2368": [
+    {
+      "state_id": 26,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let maxX = Math.max(...xs);"
+    }
+  ],
+  "2372": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "maxX = Math.max(...xs)"
+    }
+  ],
+  "2377": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= Math.max(...xs)"
+    }
+  ],
+  "2379": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "Math"
+    }
+  ],
+  "2383": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".max"
+    }
+  ],
+  "2384": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "max"
+    }
+  ],
+  "2387": [
+    {
+      "state_id": 855,
+      "candidate": "( spread_element )",
+      "candidate_text": "(...xs)"
+    }
+  ],
+  "2388": [
+    {
+      "state_id": 123,
+      "candidate": "... expression",
+      "candidate_text": "...xs"
+    }
+  ],
+  "2391": [
+    {
+      "state_id": 314,
+      "candidate": "identifier",
+      "candidate_text": "xs"
+    }
+  ],
+  "2393": [
+    {
+      "state_id": 1480,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2394": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2398": [
+    {
+      "state_id": 26,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let maxY = Math.max(...ys);"
+    }
+  ],
+  "2402": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "maxY = Math.max(...ys)"
+    }
+  ],
+  "2407": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= Math.max(...ys)"
+    }
+  ],
+  "2409": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "Math"
+    }
+  ],
+  "2413": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".max"
+    }
+  ],
+  "2414": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "max"
+    }
+  ],
+  "2417": [
+    {
+      "state_id": 855,
+      "candidate": "( spread_element )",
+      "candidate_text": "(...ys)"
+    }
+  ],
+  "2418": [
+    {
+      "state_id": 123,
+      "candidate": "... expression",
+      "candidate_text": "...ys"
+    }
+  ],
+  "2421": [
+    {
+      "state_id": 314,
+      "candidate": "identifier",
+      "candidate_text": "ys"
+    }
+  ],
+  "2423": [
+    {
+      "state_id": 1480,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2424": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2429": [
+    {
+      "state_id": 26,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "2433": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".offsetX"
+    }
+  ],
+  "2434": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "offsetX"
+    }
+  ],
+  "2442": [
+    {
+      "state_id": 552,
+      "candidate": "= expression",
+      "candidate_text": "= minX"
+    }
+  ],
+  "2444": [
+    {
+      "state_id": 231,
+      "candidate": "identifier",
+      "candidate_text": "minX"
+    }
+  ],
+  "2448": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2452": [
+    {
+      "state_id": 26,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "2456": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".offsetY"
+    }
+  ],
+  "2457": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "offsetY"
+    }
+  ],
+  "2465": [
+    {
+      "state_id": 552,
+      "candidate": "= expression",
+      "candidate_text": "= minY"
+    }
+  ],
+  "2467": [
+    {
+      "state_id": 231,
+      "candidate": "identifier",
+      "candidate_text": "minY"
+    }
+  ],
+  "2471": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2475": [
+    {
+      "state_id": 26,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "2479": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".scaleX"
+    }
+  ],
+  "2480": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "scaleX"
+    }
+  ],
+  "2487": [
+    {
+      "state_id": 552,
+      "candidate": "= expression",
+      "candidate_text": "= (width - 2 * nodeSize) / (maxX - minX)"
+    }
+  ],
+  "2489": [
+    {
+      "state_id": 231,
+      "candidate": "( expression )",
+      "candidate_text": "(width - 2 * nodeSize)"
+    }
+  ],
+  "2490": [
+    {
+      "state_id": 119,
+      "candidate": "identifier",
+      "candidate_text": "width"
+    }
+  ],
+  "2496": [
+    {
+      "state_id": 875,
+      "candidate": "- expression",
+      "candidate_text": "- 2 * nodeSize"
+    }
+  ],
+  "2498": [
+    {
+      "state_id": 259,
+      "candidate": "number",
+      "candidate_text": "2"
+    }
+  ],
+  "2500": [
+    {
+      "state_id": 677,
+      "candidate": "* expression",
+      "candidate_text": "* nodeSize"
+    }
+  ],
+  "2502": [
+    {
+      "state_id": 251,
+      "candidate": "identifier",
+      "candidate_text": "nodeSize"
+    }
+  ],
+  "2510": [
+    {
+      "state_id": 875,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2512": [
+    {
+      "state_id": 719,
+      "candidate": "/ expression",
+      "candidate_text": "/ (maxX - minX)"
+    }
+  ],
+  "2514": [
+    {
+      "state_id": 233,
+      "candidate": "( expression )",
+      "candidate_text": "(maxX - minX)"
+    }
+  ],
+  "2515": [
+    {
+      "state_id": 119,
+      "candidate": "identifier",
+      "candidate_text": "maxX"
+    }
+  ],
+  "2520": [
+    {
+      "state_id": 875,
+      "candidate": "- expression",
+      "candidate_text": "- minX"
+    }
+  ],
+  "2522": [
+    {
+      "state_id": 259,
+      "candidate": "identifier",
+      "candidate_text": "minX"
+    }
+  ],
+  "2526": [
+    {
+      "state_id": 875,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2527": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2531": [
+    {
+      "state_id": 26,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "2535": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".scaleY"
+    }
+  ],
+  "2536": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "scaleY"
+    }
+  ],
+  "2543": [
+    {
+      "state_id": 552,
+      "candidate": "= expression",
+      "candidate_text": "= (height - 2 * nodeSize) / (maxY - minY)"
+    }
+  ],
+  "2545": [
+    {
+      "state_id": 231,
+      "candidate": "( expression )",
+      "candidate_text": "(height - 2 * nodeSize)"
+    }
+  ],
+  "2546": [
+    {
+      "state_id": 119,
+      "candidate": "identifier",
+      "candidate_text": "height"
+    }
+  ],
+  "2553": [
+    {
+      "state_id": 875,
+      "candidate": "- expression",
+      "candidate_text": "- 2 * nodeSize"
+    }
+  ],
+  "2555": [
+    {
+      "state_id": 259,
+      "candidate": "number",
+      "candidate_text": "2"
+    }
+  ],
+  "2557": [
+    {
+      "state_id": 677,
+      "candidate": "* expression",
+      "candidate_text": "* nodeSize"
+    }
+  ],
+  "2559": [
+    {
+      "state_id": 251,
+      "candidate": "identifier",
+      "candidate_text": "nodeSize"
+    }
+  ],
+  "2567": [
+    {
+      "state_id": 875,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2569": [
+    {
+      "state_id": 719,
+      "candidate": "/ expression",
+      "candidate_text": "/ (maxY - minY)"
+    }
+  ],
+  "2571": [
+    {
+      "state_id": 233,
+      "candidate": "( expression )",
+      "candidate_text": "(maxY - minY)"
+    }
+  ],
+  "2572": [
+    {
+      "state_id": 119,
+      "candidate": "identifier",
+      "candidate_text": "maxY"
+    }
+  ],
+  "2577": [
+    {
+      "state_id": 875,
+      "candidate": "- expression",
+      "candidate_text": "- minY"
+    }
+  ],
+  "2579": [
+    {
+      "state_id": 259,
+      "candidate": "identifier",
+      "candidate_text": "minY"
+    }
+  ],
+  "2583": [
+    {
+      "state_id": 875,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2584": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2587": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "2590": [
+    {
+      "state_id": 988,
+      "candidate": "class_body_repeat1",
+      "candidate_text": "\t// The `x` and `y` methods convert from graph coordinates into"
+    }
+  ],
+  "2655": [
+    {
+      "state_id": 988,
+      "candidate": "class_body_repeat1",
+      "candidate_text": "// canvas coordinates."
+    }
+  ],
+  "2679": [
+    {
+      "state_id": 988,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "2680": [
+    {
+      "state_id": 1228,
+      "candidate": "( pattern )",
+      "candidate_text": "(x)"
+    }
+  ],
+  "2681": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "2682": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2684": [
+    {
+      "state_id": 1515,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\treturn this.scaleX * (x - this.offsetX) + nodeSize;\n\t}"
+    }
+  ],
+  "2688": [
+    {
+      "state_id": 27,
+      "candidate": "return expression ;",
+      "candidate_text": "return this.scaleX * (x - this.offsetX) + nodeSize;"
+    }
+  ],
+  "2695": [
+    {
+      "state_id": 142,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "2699": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".scaleX"
+    }
+  ],
+  "2700": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "scaleX"
+    }
+  ],
+  "2707": [
+    {
+      "state_id": 822,
+      "candidate": "* expression",
+      "candidate_text": "* (x - this.offsetX)"
+    }
+  ],
+  "2709": [
+    {
+      "state_id": 233,
+      "candidate": "( expression )",
+      "candidate_text": "(x - this.offsetX)"
+    }
+  ],
+  "2710": [
+    {
+      "state_id": 119,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "2712": [
+    {
+      "state_id": 875,
+      "candidate": "- expression",
+      "candidate_text": "- this.offsetX"
+    }
+  ],
+  "2714": [
+    {
+      "state_id": 259,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "2718": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".offsetX"
+    }
+  ],
+  "2719": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "offsetX"
+    }
+  ],
+  "2726": [
+    {
+      "state_id": 875,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2728": [
+    {
+      "state_id": 822,
+      "candidate": "+ expression",
+      "candidate_text": "+ nodeSize"
+    }
+  ],
+  "2730": [
+    {
+      "state_id": 241,
+      "candidate": "identifier",
+      "candidate_text": "nodeSize"
+    }
+  ],
+  "2738": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2741": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "2744": [
+    {
+      "state_id": 988,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "2745": [
+    {
+      "state_id": 1228,
+      "candidate": "( pattern )",
+      "candidate_text": "(y)"
+    }
+  ],
+  "2746": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "2747": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2749": [
+    {
+      "state_id": 1515,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\treturn this.scaleY * (y - this.offsetY) + nodeSize;\n\t}"
+    }
+  ],
+  "2753": [
+    {
+      "state_id": 27,
+      "candidate": "return expression ;",
+      "candidate_text": "return this.scaleY * (y - this.offsetY) + nodeSize;"
+    }
+  ],
+  "2760": [
+    {
+      "state_id": 142,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "2764": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".scaleY"
+    }
+  ],
+  "2765": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "scaleY"
+    }
+  ],
+  "2772": [
+    {
+      "state_id": 822,
+      "candidate": "* expression",
+      "candidate_text": "* (y - this.offsetY)"
+    }
+  ],
+  "2774": [
+    {
+      "state_id": 233,
+      "candidate": "( expression )",
+      "candidate_text": "(y - this.offsetY)"
+    }
+  ],
+  "2775": [
+    {
+      "state_id": 119,
+      "candidate": "identifier",
+      "candidate_text": "y"
+    }
+  ],
+  "2777": [
+    {
+      "state_id": 875,
+      "candidate": "- expression",
+      "candidate_text": "- this.offsetY"
+    }
+  ],
+  "2779": [
+    {
+      "state_id": 259,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "2783": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".offsetY"
+    }
+  ],
+  "2784": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "offsetY"
+    }
+  ],
+  "2791": [
+    {
+      "state_id": 875,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2793": [
+    {
+      "state_id": 822,
+      "candidate": "+ expression",
+      "candidate_text": "+ nodeSize"
+    }
+  ],
+  "2795": [
+    {
+      "state_id": 241,
+      "candidate": "identifier",
+      "candidate_text": "nodeSize"
+    }
+  ],
+  "2803": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2806": [
+    {
+      "state_id": 26,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "2808": [
+    {
+      "state_id": 988,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2811": [
+    {
+      "state_id": 20,
+      "candidate": "function identifier formal_parameters statement_block _automatic_semicolon",
+      "candidate_text": "function findPath(a, b) {"
+    }
+  ],
+  "2820": [
+    {
+      "state_id": 1336,
+      "candidate": "identifier formal_parameters statement_block _automatic_semicolon",
+      "candidate_text": "findPath(a, b) {"
+    }
+  ],
+  "2828": [
+    {
+      "state_id": 1675,
+      "candidate": "( pattern formal_parameters_repeat1 )",
+      "candidate_text": "(a, b)"
+    }
+  ],
+  "2829": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "a"
+    }
+  ],
+  "2830": [
+    {
+      "state_id": 1370,
+      "candidate": ", pattern",
+      "candidate_text": ", b"
+    }
+  ],
+  "2832": [
+    {
+      "state_id": 124,
+      "candidate": "identifier",
+      "candidate_text": "b"
+    }
+  ],
+  "2833": [
+    {
+      "state_id": 1486,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2835": [
+    {
+      "state_id": 1672,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\tlet work = [[a]];\n\tfor (let path of work) {\n\t\tlet end = path[path.length - 1];\n\t\tif (end == b) return path;\n\t\tfor (let next of end.edges) {\n\t\t\tif (!work.some((path) => path[path.length - 1] == next)) {\n\t\t\t\twork.push(path.concat([next]));\n\t\t\t}\n\t\t}\n\t}\n}"
+    }
+  ],
+  "2838": [
+    {
+      "state_id": 23,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let work = [[a]];"
+    }
+  ],
+  "2842": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "work = [[a]]"
+    }
+  ],
+  "2847": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= [[a]]"
+    }
+  ],
+  "2849": [
+    {
+      "state_id": 273,
+      "candidate": "[ expression ]",
+      "candidate_text": "[[a]]"
+    }
+  ],
+  "2850": [
+    {
+      "state_id": 111,
+      "candidate": "[ expression ]",
+      "candidate_text": "[a]"
+    }
+  ],
+  "2851": [
+    {
+      "state_id": 110,
+      "candidate": "identifier",
+      "candidate_text": "a"
+    }
+  ],
+  "2852": [
+    {
+      "state_id": 858,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2853": [
+    {
+      "state_id": 841,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2854": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2857": [
+    {
+      "state_id": 22,
+      "candidate": "for _for_header statement",
+      "candidate_text": "for (let path of work) {"
+    }
+  ],
+  "2861": [
+    {
+      "state_id": 1498,
+      "candidate": "( let identifier of expression )",
+      "candidate_text": "(let path of work)"
+    }
+  ],
+  "2862": [
+    {
+      "state_id": 112,
+      "candidate": "let identifier of expression )",
+      "candidate_text": "let path of work)"
+    }
+  ],
+  "2866": [
+    {
+      "state_id": 488,
+      "candidate": "identifier of expression )",
+      "candidate_text": "path of work)"
+    }
+  ],
+  "2871": [
+    {
+      "state_id": 1202,
+      "candidate": "of expression )",
+      "candidate_text": "of work)"
+    }
+  ],
+  "2874": [
+    {
+      "state_id": 193,
+      "candidate": "identifier",
+      "candidate_text": "work"
+    }
+  ],
+  "2878": [
+    {
+      "state_id": 830,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2880": [
+    {
+      "state_id": 69,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\t\tlet end = path[path.length - 1];\n\t\tif (end == b) return path;\n\t\tfor (let next of end.edges) {\n\t\t\tif (!work.some((path) => path[path.length - 1] == next)) {\n\t\t\t\twork.push(path.concat([next]));\n\t\t\t}\n\t\t}\n\t}"
+    }
+  ],
+  "2884": [
+    {
+      "state_id": 2,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let end = path[path.length - 1];"
+    }
+  ],
+  "2888": [
+    {
+      "state_id": 370,
+      "candidate": "identifier _initializer",
+      "candidate_text": "end = path[path.length - 1]"
+    }
+  ],
+  "2892": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= path[path.length - 1]"
+    }
+  ],
+  "2894": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "2898": [
+    {
+      "state_id": 686,
+      "candidate": "[ expression ]",
+      "candidate_text": "[path.length - 1]"
+    }
+  ],
+  "2899": [
+    {
+      "state_id": 189,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "2903": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "2904": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "2911": [
+    {
+      "state_id": 849,
+      "candidate": "- expression",
+      "candidate_text": "- 1"
+    }
+  ],
+  "2913": [
+    {
+      "state_id": 259,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "2914": [
+    {
+      "state_id": 849,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2915": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2919": [
+    {
+      "state_id": 18,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (end == b) return path;"
+    }
+  ],
+  "2922": [
+    {
+      "state_id": 1668,
+      "candidate": "( expression )",
+      "candidate_text": "(end == b)"
+    }
+  ],
+  "2923": [
+    {
+      "state_id": 195,
+      "candidate": "identifier",
+      "candidate_text": "end"
+    }
+  ],
+  "2927": [
+    {
+      "state_id": 857,
+      "candidate": "== expression",
+      "candidate_text": "== b"
+    }
+  ],
+  "2930": [
+    {
+      "state_id": 261,
+      "candidate": "identifier",
+      "candidate_text": "b"
+    }
+  ],
+  "2931": [
+    {
+      "state_id": 857,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2933": [
+    {
+      "state_id": 57,
+      "candidate": "return expression ;",
+      "candidate_text": "return path;"
+    }
+  ],
+  "2940": [
+    {
+      "state_id": 142,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "2944": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2948": [
+    {
+      "state_id": 18,
+      "candidate": "for _for_header statement",
+      "candidate_text": "for (let next of end.edges) {"
+    }
+  ],
+  "2952": [
+    {
+      "state_id": 1498,
+      "candidate": "( let identifier of expression )",
+      "candidate_text": "(let next of end.edges)"
+    }
+  ],
+  "2953": [
+    {
+      "state_id": 112,
+      "candidate": "let identifier of expression )",
+      "candidate_text": "let next of end.edges)"
+    }
+  ],
+  "2957": [
+    {
+      "state_id": 488,
+      "candidate": "identifier of expression )",
+      "candidate_text": "next of end.edges)"
+    }
+  ],
+  "2962": [
+    {
+      "state_id": 1202,
+      "candidate": "of expression )",
+      "candidate_text": "of end.edges)"
+    }
+  ],
+  "2965": [
+    {
+      "state_id": 193,
+      "candidate": "identifier",
+      "candidate_text": "end"
+    }
+  ],
+  "2968": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".edges"
+    }
+  ],
+  "2969": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "edges"
+    }
+  ],
+  "2974": [
+    {
+      "state_id": 830,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2976": [
+    {
+      "state_id": 69,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\t\tif (!work.some((path) => path[path.length - 1] == next)) {\n\t\t\t\twork.push(path.concat([next]));\n\t\t\t}\n\t\t}"
+    }
+  ],
+  "2981": [
+    {
+      "state_id": 2,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (!work.some((path) => path[path.length - 1] == next)) {"
+    }
+  ],
+  "2984": [
+    {
+      "state_id": 1668,
+      "candidate": "( expression )",
+      "candidate_text": "(!work.some((path) => path[path.length - 1] == next))"
+    }
+  ],
+  "2985": [
+    {
+      "state_id": 195,
+      "candidate": "! expression",
+      "candidate_text": "!work.some((path) => path[path.length - 1] == next)"
+    }
+  ],
+  "2986": [
+    {
+      "state_id": 244,
+      "candidate": "identifier",
+      "candidate_text": "work"
+    }
+  ],
+  "2990": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".some"
+    }
+  ],
+  "2991": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "some"
+    }
+  ],
+  "2995": [
+    {
+      "state_id": 588,
+      "candidate": "( expression )",
+      "candidate_text": "((path) => path[path.length - 1] == next)"
+    }
+  ],
+  "2996": [
+    {
+      "state_id": 125,
+      "candidate": "( pattern )",
+      "candidate_text": "(path)"
+    }
+  ],
+  "2997": [
+    {
+      "state_id": 120,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "3001": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3003": [
+    {
+      "state_id": 1763,
+      "candidate": "=> expression",
+      "candidate_text": "=> path[path.length - 1] == next"
+    }
+  ],
+  "3006": [
+    {
+      "state_id": 169,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "3010": [
+    {
+      "state_id": 589,
+      "candidate": "[ expression ]",
+      "candidate_text": "[path.length - 1]"
+    }
+  ],
+  "3011": [
+    {
+      "state_id": 181,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "3015": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "3016": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "3023": [
+    {
+      "state_id": 860,
+      "candidate": "- expression",
+      "candidate_text": "- 1"
+    }
+  ],
+  "3025": [
+    {
+      "state_id": 259,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "3026": [
+    {
+      "state_id": 860,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3028": [
+    {
+      "state_id": 654,
+      "candidate": "== expression",
+      "candidate_text": "== next"
+    }
+  ],
+  "3031": [
+    {
+      "state_id": 261,
+      "candidate": "identifier",
+      "candidate_text": "next"
+    }
+  ],
+  "3035": [
+    {
+      "state_id": 859,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3036": [
+    {
+      "state_id": 857,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3038": [
+    {
+      "state_id": 57,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\t\t\twork.push(path.concat([next]));\n\t\t\t}"
+    }
+  ],
+  "3044": [
+    {
+      "state_id": 2,
+      "candidate": "identifier",
+      "candidate_text": "work"
+    }
+  ],
+  "3048": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".push"
+    }
+  ],
+  "3049": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "push"
+    }
+  ],
+  "3053": [
+    {
+      "state_id": 823,
+      "candidate": "( expression )",
+      "candidate_text": "(path.concat([next]))"
+    }
+  ],
+  "3054": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "3058": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".concat"
+    }
+  ],
+  "3059": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "concat"
+    }
+  ],
+  "3065": [
+    {
+      "state_id": 847,
+      "candidate": "( expression )",
+      "candidate_text": "([next])"
+    }
+  ],
+  "3066": [
+    {
+      "state_id": 125,
+      "candidate": "[ expression ]",
+      "candidate_text": "[next]"
+    }
+  ],
+  "3067": [
+    {
+      "state_id": 105,
+      "candidate": "identifier",
+      "candidate_text": "next"
+    }
+  ],
+  "3071": [
+    {
+      "state_id": 858,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3072": [
+    {
+      "state_id": 859,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3073": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3074": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "3079": [
+    {
+      "state_id": 18,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "3083": [
+    {
+      "state_id": 18,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "3086": [
+    {
+      "state_id": 18,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "3088": [
+    {
+      "state_id": 22,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "3091": [
+    {
+      "state_id": 20,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let graph = treeGraph(4, 4);"
+    }
+  ],
+  "3095": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "graph = treeGraph(4, 4)"
+    }
+  ],
+  "3101": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= treeGraph(4, 4)"
+    }
+  ],
+  "3103": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "treeGraph"
+    }
+  ],
+  "3112": [
+    {
+      "state_id": 855,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(4, 4)"
+    }
+  ],
+  "3113": [
+    {
+      "state_id": 123,
+      "candidate": "number",
+      "candidate_text": "4"
+    }
+  ],
+  "3114": [
+    {
+      "state_id": 847,
+      "candidate": ", expression",
+      "candidate_text": ", 4"
+    }
+  ],
+  "3116": [
+    {
+      "state_id": 127,
+      "candidate": "number",
+      "candidate_text": "4"
+    }
+  ],
+  "3117": [
+    {
+      "state_id": 1465,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3118": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "3120": [
+    {
+      "state_id": 20,
+      "candidate": "let variable_declarator variable_declaration_repeat1 ;",
+      "candidate_text": "let root = graph[0],\n\tleaf = graph[graph.length - 1];"
+    }
+  ],
+  "3124": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "root = graph[0]"
+    }
+  ],
+  "3129": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= graph[0]"
+    }
+  ],
+  "3131": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "graph"
+    }
+  ],
+  "3136": [
+    {
+      "state_id": 686,
+      "candidate": "[ expression ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "3137": [
+    {
+      "state_id": 189,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "3138": [
+    {
+      "state_id": 849,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3139": [
+    {
+      "state_id": 1385,
+      "candidate": ", variable_declarator",
+      "candidate_text": ",\n\tleaf = graph[graph.length - 1]"
+    }
+  ],
+  "3142": [
+    {
+      "state_id": 1201,
+      "candidate": "identifier _initializer",
+      "candidate_text": "leaf = graph[graph.length - 1]"
+    }
+  ],
+  "3147": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= graph[graph.length - 1]"
+    }
+  ],
+  "3149": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "graph"
+    }
+  ],
+  "3154": [
+    {
+      "state_id": 686,
+      "candidate": "[ expression ]",
+      "candidate_text": "[graph.length - 1]"
+    }
+  ],
+  "3155": [
+    {
+      "state_id": 189,
+      "candidate": "identifier",
+      "candidate_text": "graph"
+    }
+  ],
+  "3160": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "3161": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "3168": [
+    {
+      "state_id": 849,
+      "candidate": "- expression",
+      "candidate_text": "- 1"
+    }
+  ],
+  "3170": [
+    {
+      "state_id": 259,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "3171": [
+    {
+      "state_id": 849,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3172": [
+    {
+      "state_id": 1365,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "3174": [
+    {
+      "state_id": 20,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "3181": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "3182": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "3185": [
+    {
+      "state_id": 823,
+      "candidate": "( expression )",
+      "candidate_text": "(findPath(root, leaf).length)"
+    }
+  ],
+  "3186": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "findPath"
+    }
+  ],
+  "3194": [
+    {
+      "state_id": 847,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(root, leaf)"
+    }
+  ],
+  "3195": [
+    {
+      "state_id": 125,
+      "candidate": "identifier",
+      "candidate_text": "root"
+    }
+  ],
+  "3199": [
+    {
+      "state_id": 859,
+      "candidate": ", expression",
+      "candidate_text": ", leaf"
+    }
+  ],
+  "3201": [
+    {
+      "state_id": 127,
+      "candidate": "identifier",
+      "candidate_text": "leaf"
+    }
+  ],
+  "3205": [
+    {
+      "state_id": 1455,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3206": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "3207": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "3213": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3214": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "3217": [
+    {
+      "state_id": 9,
+      "candidate": "statement",
+      "candidate_text": "/ → 4"
+    }
+  ],
+  "3226": [
+    {
+      "state_id": 20,
+      "candidate": "identifier",
+      "candidate_text": "leaf"
+    }
+  ],
+  "3230": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".connect"
+    }
+  ],
+  "3231": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "connect"
+    }
+  ],
+  "3238": [
+    {
+      "state_id": 823,
+      "candidate": "( expression )",
+      "candidate_text": "(root)"
+    }
+  ],
+  "3239": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "root"
+    }
+  ],
+  "3243": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3244": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "3246": [
+    {
+      "state_id": 20,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "3253": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "3254": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "3257": [
+    {
+      "state_id": 823,
+      "candidate": "( expression )",
+      "candidate_text": "(findPath(root, leaf).length)"
+    }
+  ],
+  "3258": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "findPath"
+    }
+  ],
+  "3266": [
+    {
+      "state_id": 847,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(root, leaf)"
+    }
+  ],
+  "3267": [
+    {
+      "state_id": 125,
+      "candidate": "identifier",
+      "candidate_text": "root"
+    }
+  ],
+  "3271": [
+    {
+      "state_id": 859,
+      "candidate": ", expression",
+      "candidate_text": ", leaf"
+    }
+  ],
+  "3273": [
+    {
+      "state_id": 127,
+      "candidate": "identifier",
+      "candidate_text": "leaf"
+    }
+  ],
+  "3277": [
+    {
+      "state_id": 1455,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3278": [
+    {
+      "state_id": 589,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "3279": [
+    {
+      "state_id": 1503,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "3285": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3286": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

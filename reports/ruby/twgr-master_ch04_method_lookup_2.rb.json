@@ -1,0 +1,275 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module M\n  def report\n    puts \"'report' method in module M\"\n  end\nend"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "M\n  def report\n    puts \"'report' method in module M\"\n  end\nend"
+    }
+  ],
+  "11": [
+    {
+      "state_id": 218,
+      "candidate": "def _method_rest",
+      "candidate_text": "def report"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ],
+  "26": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"'report' method in module M\""
+    }
+  ],
+  "32": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "'report' method in module M"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "63": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 346,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class C\n  include M\n  def report\n    puts \"'report' method in class C\"\n    puts \"About to trigger the next higher-up report method...\"\n    super\n    puts \"Back from the 'super' call.\"\n  end\nend"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "C\n  include M\n  def report\n    puts \"'report' method in class C\"\n    puts \"About to trigger the next higher-up report method...\"\n    super\n    puts \"Back from the 'super' call.\"\n  end\nend"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "include"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 3,
+      "candidate": "constant",
+      "candidate_text": "M"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def report"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ],
+  "108": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"'report' method in class C\""
+    }
+  ],
+  "114": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "'report' method in class C"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "146": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"About to trigger the next higher-up report method...\""
+    }
+  ],
+  "152": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "About to trigger the next higher-up report method..."
+    }
+  ],
+  "204": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "210": [
+    {
+      "state_id": 252,
+      "candidate": "super",
+      "candidate_text": "super"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Back from the 'super' call.\""
+    }
+  ],
+  "226": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Back from the 'super' call."
+    }
+  ],
+  "253": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "257": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= C.new"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "C"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "c"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".report"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ]
+}

@@ -1,0 +1,632 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch04\\batch08;"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch04\\batch08"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch04"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch04"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch08"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch08"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "84": [
+    {
+      "state_id": 157,
+      "candidate": "class name declaration_list",
+      "candidate_text": "class Totalizer2\n{"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 3194,
+      "candidate": "name declaration_list",
+      "candidate_text": "Totalizer2\n{"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 1965,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n    public static function warnAmount($amt): callable\n    {\n        $count = 0;\n        return function ($product) use ($amt, &$count) {\n            $count += $product->price;\n            print \"   count: $count\\n\";\n            if ($count > $amt) {\n                print \"   high price reached: {$count}\\n\";\n            }\n        };\n    }\n}"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 1617,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 960,
+      "candidate": "static",
+      "candidate_text": "static"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function warnAmount($amt): callable\n    {"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "warnAmount($amt): callable\n    {"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter )",
+      "candidate_text": "($amt)"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 969,
+      "candidate": "$ name",
+      "candidate_text": "$amt"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "amt"
+    }
+  ],
+  "145": [
+    {
+      "state_id": 2434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": callable"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 1590,
+      "candidate": "primitive_type_token1",
+      "candidate_text": "callable"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        $count = 0;\n        return function ($product) use ($amt, &$count) {\n            $count += $product->price;\n            print \"   count: $count\\n\";\n            if ($count > $amt) {\n                print \"   high price reached: {$count}\\n\";\n            }\n        };\n    }"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$count"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "count"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 311,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 75,
+      "candidate": "return expression _semicolon",
+      "candidate_text": "return function ($product) use ($amt, &$count) {\n            $count += $product->price;\n            print \"   count: $count\\n\";\n            if ($count > $amt) {\n                print \"   high price reached: {$count}\\n\";\n            }\n        };"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 263,
+      "candidate": "function formal_parameters anonymous_function_use_clause",
+      "candidate_text": "function ($product) use ($amt, &$count)"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 2294,
+      "candidate": "( simple_parameter )",
+      "candidate_text": "($product)"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 973,
+      "candidate": "$ name",
+      "candidate_text": "$product"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "product"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 2410,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 2218,
+      "candidate": "use ( variable_name anonymous_function_use_clause_repeat1 )",
+      "candidate_text": "use ($amt, &$count)"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 3300,
+      "candidate": "( variable_name anonymous_function_use_clause_repeat1 )",
+      "candidate_text": "($amt, &$count)"
+    }
+  ],
+  "223": [
+    {
+      "state_id": 2287,
+      "candidate": "$ name",
+      "candidate_text": "$amt"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "amt"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 2641,
+      "candidate": ", by_ref",
+      "candidate_text": ", &$count"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 2170,
+      "candidate": "& _new_variable",
+      "candidate_text": "&$count"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 955,
+      "candidate": "$ name",
+      "candidate_text": "$count"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "count"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 2630,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "238": [
+    {
+      "state_id": 3009,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            $count += $product->price;\n            print \"   count: $count\\n\";\n            if ($count > $amt) {\n                print \"   high price reached: {$count}\\n\";\n            }\n        }"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 106,
+      "candidate": "$ name",
+      "candidate_text": "$count"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "count"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 916,
+      "candidate": "+= expression",
+      "candidate_text": "+= $product->price"
+    }
+  ],
+  "262": [
+    {
+      "state_id": 342,
+      "candidate": "$ name",
+      "candidate_text": "$product"
+    }
+  ],
+  "263": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "product"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name",
+      "candidate_text": "->price"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "price"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 107,
+      "candidate": "print expression",
+      "candidate_text": "print \"   count: $count\\n\""
+    }
+  ],
+  "297": [
+    {
+      "state_id": 449,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"   count: $count\\n\""
+    }
+  ],
+  "298": [
+    {
+      "state_id": 1721,
+      "candidate": "string_content",
+      "candidate_text": "   count: "
+    }
+  ],
+  "308": [
+    {
+      "state_id": 1730,
+      "candidate": "$ name",
+      "candidate_text": "$count"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 1963,
+      "candidate": "name",
+      "candidate_text": "count"
+    }
+  ],
+  "314": [
+    {
+      "state_id": 1730,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "316": [
+    {
+      "state_id": 1730,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "317": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "331": [
+    {
+      "state_id": 107,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if ($count > $amt) {"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 3036,
+      "candidate": "( expression )",
+      "candidate_text": "($count > $amt)"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 437,
+      "candidate": "$ name",
+      "candidate_text": "$count"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "count"
+    }
+  ],
+  "342": [
+    {
+      "state_id": 1532,
+      "candidate": "> expression",
+      "candidate_text": "> $amt"
+    }
+  ],
+  "344": [
+    {
+      "state_id": 418,
+      "candidate": "$ name",
+      "candidate_text": "$amt"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "amt"
+    }
+  ],
+  "348": [
+    {
+      "state_id": 1532,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 81,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                print \"   high price reached: {$count}\\n\";\n            }"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 88,
+      "candidate": "print expression",
+      "candidate_text": "print \"   high price reached: {$count}\\n\""
+    }
+  ],
+  "374": [
+    {
+      "state_id": 449,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"   high price reached: {$count}\\n\""
+    }
+  ],
+  "375": [
+    {
+      "state_id": 1721,
+      "candidate": "string_content",
+      "candidate_text": "   high price reached: "
+    }
+  ],
+  "398": [
+    {
+      "state_id": 1730,
+      "candidate": "{ expression }",
+      "candidate_text": "{$count}"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 430,
+      "candidate": "$ name",
+      "candidate_text": "$count"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "count"
+    }
+  ],
+  "405": [
+    {
+      "state_id": 1579,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 1730,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 1730,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "409": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "423": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 107,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "434": [
+    {
+      "state_id": 1479,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "440": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "442": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

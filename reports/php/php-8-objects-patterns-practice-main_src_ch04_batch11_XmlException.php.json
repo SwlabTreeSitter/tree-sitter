@@ -1,0 +1,800 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch04\\batch11;"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch04\\batch11"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch04"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch04"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch11"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch11"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "83": [
+    {
+      "state_id": 157,
+      "candidate": "class name base_clause declaration_list",
+      "candidate_text": "class XmlException extends \\Exception\n{"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 3194,
+      "candidate": "name base_clause declaration_list",
+      "candidate_text": "XmlException extends \\Exception\n{"
+    }
+  ],
+  "102": [
+    {
+      "state_id": 1965,
+      "candidate": "extends _name",
+      "candidate_text": "extends \\Exception"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 1799,
+      "candidate": "\\ name",
+      "candidate_text": "\\Exception"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 2389,
+      "candidate": "name",
+      "candidate_text": "Exception"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 2262,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n    public function __construct(private \\LibXmlError $error)"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 1617,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters compound_statement",
+      "candidate_text": "function __construct(private \\LibXmlError $error)\n    {"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters compound_statement",
+      "candidate_text": "__construct(private \\LibXmlError $error)\n    {"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 2994,
+      "candidate": "( property_promotion_parameter )",
+      "candidate_text": "(private \\LibXmlError $error)"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 969,
+      "candidate": "private",
+      "candidate_text": "private"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 1430,
+      "candidate": "\\ name",
+      "candidate_text": "\\LibXmlError"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 2389,
+      "candidate": "name",
+      "candidate_text": "LibXmlError"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 2258,
+      "candidate": "$ name",
+      "candidate_text": "$error"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "error"
+    }
+  ],
+  "182": [
+    {
+      "state_id": 2434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 1873,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        $shortfile = basename($error->file);\n        $msg = \"[{$shortfile}, line {$error->line}, col {$error->column}] {$error->message}\";\n        $this->error = $error;\n        parent::__construct($msg, $error->code);\n    }"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$shortfile"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "shortfile"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= basename($error->file)"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 311,
+      "candidate": "name",
+      "candidate_text": "basename"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 2019,
+      "candidate": "( argument )",
+      "candidate_text": "($error->file)"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$error"
+    }
+  ],
+  "221": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "error"
+    }
+  ],
+  "226": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->file"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "file"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$msg"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "msg"
+    }
+  ],
+  "248": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= \"[{$shortfile}, line {$error->line}, col {$error->column}] {$error->message}\""
+    }
+  ],
+  "250": [
+    {
+      "state_id": 311,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"[{$shortfile}, line {$error->line}, col {$error->column}] {$error->message}\""
+    }
+  ],
+  "251": [
+    {
+      "state_id": 1721,
+      "candidate": "string_content",
+      "candidate_text": "["
+    }
+  ],
+  "252": [
+    {
+      "state_id": 1730,
+      "candidate": "{ expression }",
+      "candidate_text": "{$shortfile}"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 430,
+      "candidate": "$ name",
+      "candidate_text": "$shortfile"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "shortfile"
+    }
+  ],
+  "263": [
+    {
+      "state_id": 1579,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 1730,
+      "candidate": "string_content",
+      "candidate_text": ", line "
+    }
+  ],
+  "271": [
+    {
+      "state_id": 1730,
+      "candidate": "{ expression }",
+      "candidate_text": "{$error->line}"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 430,
+      "candidate": "$ name",
+      "candidate_text": "$error"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "error"
+    }
+  ],
+  "278": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->line"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "line"
+    }
+  ],
+  "284": [
+    {
+      "state_id": 1579,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "285": [
+    {
+      "state_id": 1730,
+      "candidate": "string_content",
+      "candidate_text": ", col "
+    }
+  ],
+  "291": [
+    {
+      "state_id": 1730,
+      "candidate": "{ expression }",
+      "candidate_text": "{$error->column}"
+    }
+  ],
+  "292": [
+    {
+      "state_id": 430,
+      "candidate": "$ name",
+      "candidate_text": "$error"
+    }
+  ],
+  "293": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "error"
+    }
+  ],
+  "298": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->column"
+    }
+  ],
+  "300": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "column"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 1579,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 1730,
+      "candidate": "string_content",
+      "candidate_text": "] "
+    }
+  ],
+  "309": [
+    {
+      "state_id": 1730,
+      "candidate": "{ expression }",
+      "candidate_text": "{$error->message}"
+    }
+  ],
+  "310": [
+    {
+      "state_id": 430,
+      "candidate": "$ name",
+      "candidate_text": "$error"
+    }
+  ],
+  "311": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "error"
+    }
+  ],
+  "316": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->message"
+    }
+  ],
+  "318": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "message"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 1579,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "326": [
+    {
+      "state_id": 1730,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "327": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "337": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "342": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name",
+      "candidate_text": "->error"
+    }
+  ],
+  "344": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "error"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 897,
+      "candidate": "= expression",
+      "candidate_text": "= $error"
+    }
+  ],
+  "352": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$error"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "error"
+    }
+  ],
+  "358": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 75,
+      "candidate": "parent",
+      "candidate_text": "parent"
+    }
+  ],
+  "374": [
+    {
+      "state_id": 3271,
+      "candidate": ":: _member_name arguments",
+      "candidate_text": "::__construct($msg, $error->code)"
+    }
+  ],
+  "376": [
+    {
+      "state_id": 1898,
+      "candidate": "name",
+      "candidate_text": "__construct"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 2828,
+      "candidate": "( argument arguments_repeat1 )",
+      "candidate_text": "($msg, $error->code)"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$msg"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "msg"
+    }
+  ],
+  "392": [
+    {
+      "state_id": 2543,
+      "candidate": ", argument",
+      "candidate_text": ", $error->code"
+    }
+  ],
+  "394": [
+    {
+      "state_id": 207,
+      "candidate": "$ name",
+      "candidate_text": "$error"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "error"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->code"
+    }
+  ],
+  "402": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "code"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 2557,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "407": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "413": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "420": [
+    {
+      "state_id": 1614,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function getLibXmlError(): \\LibXmlError\n    {"
+    }
+  ],
+  "436": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "getLibXmlError(): \\LibXmlError\n    {"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 2994,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "451": [
+    {
+      "state_id": 969,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": \\LibXmlError"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 1590,
+      "candidate": "\\ name",
+      "candidate_text": "\\LibXmlError"
+    }
+  ],
+  "455": [
+    {
+      "state_id": 2555,
+      "candidate": "name",
+      "candidate_text": "LibXmlError"
+    }
+  ],
+  "471": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        return $this->error;\n    }"
+    }
+  ],
+  "481": [
+    {
+      "state_id": 88,
+      "candidate": "return expression _semicolon",
+      "candidate_text": "return $this->error;"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 263,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "493": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name",
+      "candidate_text": "->error"
+    }
+  ],
+  "495": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "error"
+    }
+  ],
+  "500": [
+    {
+      "state_id": 1479,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "506": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "508": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

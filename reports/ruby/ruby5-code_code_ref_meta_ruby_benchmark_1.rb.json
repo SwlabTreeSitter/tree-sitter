@@ -1,0 +1,744 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "require"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"benchmark\""
+    }
+  ],
+  "387": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "benchmark"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "398": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "405": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= \"Stormy Weather\""
+    }
+  ],
+  "407": [
+    {
+      "state_id": 481,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Stormy Weather\""
+    }
+  ],
+  "408": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Stormy Weather"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "424": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= string.method(:length)"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 481,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "434": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".method"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "method"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:length)"
+    }
+  ],
+  "442": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":length"
+    }
+  ],
+  "449": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "451": [
+    {
+      "state_id": 346,
+      "candidate": "constant",
+      "candidate_text": "Benchmark"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".bm"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "bm"
+    }
+  ],
+  "463": [
+    {
+      "state_id": 11,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(6)"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "6"
+    }
+  ],
+  "465": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "467": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |x|\n  x.report(\"direct\") { 100_000.times { string.length } }\n  x.report(\"call\") { 100_000.times { m.call } }\n  x.report(\"send\") { 100_000.times { string.send(:length) } }\n  x.report(\"eval\") { 100_000.times { eval(\"string.length\") } }\nend"
+    }
+  ],
+  "470": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|x|"
+    }
+  ],
+  "471": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "476": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "477": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".report"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"direct\")"
+    }
+  ],
+  "485": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"direct\""
+    }
+  ],
+  "486": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "direct"
+    }
+  ],
+  "492": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "493": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "495": [
+    {
+      "state_id": 2255,
+      "candidate": "{ block_body }",
+      "candidate_text": "{ 100_000.times { string.length } }"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 303,
+      "candidate": "integer",
+      "candidate_text": "100_000"
+    }
+  ],
+  "504": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".times"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "times"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 4,
+      "candidate": "{ block_body }",
+      "candidate_text": "{ string.length }"
+    }
+  ],
+  "513": [
+    {
+      "state_id": 255,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "527": [
+    {
+      "state_id": 5885,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "529": [
+    {
+      "state_id": 5885,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "533": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "534": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".report"
+    }
+  ],
+  "535": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"call\")"
+    }
+  ],
+  "542": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"call\""
+    }
+  ],
+  "543": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "call"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "548": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 2255,
+      "candidate": "{ block_body }",
+      "candidate_text": "{ 100_000.times { m.call } }"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 303,
+      "candidate": "integer",
+      "candidate_text": "100_000"
+    }
+  ],
+  "559": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".times"
+    }
+  ],
+  "560": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "times"
+    }
+  ],
+  "566": [
+    {
+      "state_id": 4,
+      "candidate": "{ block_body }",
+      "candidate_text": "{ m.call }"
+    }
+  ],
+  "568": [
+    {
+      "state_id": 255,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "569": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".call"
+    }
+  ],
+  "570": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "call"
+    }
+  ],
+  "575": [
+    {
+      "state_id": 5885,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 5885,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "581": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "582": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".report"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ],
+  "589": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"send\")"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"send\""
+    }
+  ],
+  "591": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "send"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "596": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 2255,
+      "candidate": "{ block_body }",
+      "candidate_text": "{ 100_000.times { string.send(:length) } }"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 303,
+      "candidate": "integer",
+      "candidate_text": "100_000"
+    }
+  ],
+  "607": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".times"
+    }
+  ],
+  "608": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "times"
+    }
+  ],
+  "614": [
+    {
+      "state_id": 4,
+      "candidate": "{ block_body }",
+      "candidate_text": "{ string.send(:length) }"
+    }
+  ],
+  "616": [
+    {
+      "state_id": 255,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "622": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".send"
+    }
+  ],
+  "623": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "send"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:length)"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":length"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "637": [
+    {
+      "state_id": 5885,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "639": [
+    {
+      "state_id": 5885,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "643": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "644": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".report"
+    }
+  ],
+  "645": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ],
+  "651": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"eval\")"
+    }
+  ],
+  "652": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"eval\""
+    }
+  ],
+  "653": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "eval"
+    }
+  ],
+  "657": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "658": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "660": [
+    {
+      "state_id": 2255,
+      "candidate": "{ block_body }",
+      "candidate_text": "{ 100_000.times { eval(\"string.length\") } }"
+    }
+  ],
+  "662": [
+    {
+      "state_id": 303,
+      "candidate": "integer",
+      "candidate_text": "100_000"
+    }
+  ],
+  "669": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".times"
+    }
+  ],
+  "670": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "times"
+    }
+  ],
+  "676": [
+    {
+      "state_id": 4,
+      "candidate": "{ block_body }",
+      "candidate_text": "{ eval(\"string.length\") }"
+    }
+  ],
+  "678": [
+    {
+      "state_id": 255,
+      "candidate": "identifier",
+      "candidate_text": "eval"
+    }
+  ],
+  "682": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"string.length\")"
+    }
+  ],
+  "683": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"string.length\""
+    }
+  ],
+  "684": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "string.length"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "698": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "700": [
+    {
+      "state_id": 5885,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 5885,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "704": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

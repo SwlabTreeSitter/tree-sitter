@@ -1,0 +1,1115 @@
+{
+  "710": [
+    {
+      "state_id": 1,
+      "candidate": "export declaration",
+      "candidate_text": "export const parseNestedBrackets = ("
+    }
+  ],
+  "717": [
+    {
+      "state_id": 696,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const parseNestedBrackets = ("
+    }
+  ],
+  "723": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "parseNestedBrackets = ("
+    }
+  ],
+  "743": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= ("
+    }
+  ],
+  "745": [
+    {
+      "state_id": 423,
+      "candidate": "( required_parameter formal_parameters_repeat1 )",
+      "candidate_text": "(\n  text: string,\n  openBrackets = '<',\n  closingBrackets = '>'\n)"
+    }
+  ],
+  "749": [
+    {
+      "state_id": 194,
+      "candidate": "identifier",
+      "candidate_text": "text"
+    }
+  ],
+  "753": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "755": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "761": [
+    {
+      "state_id": 4621,
+      "candidate": ", required_parameter",
+      "candidate_text": ",\n  openBrackets = '<'"
+    }
+  ],
+  "765": [
+    {
+      "state_id": 204,
+      "candidate": "identifier",
+      "candidate_text": "openBrackets"
+    }
+  ],
+  "778": [
+    {
+      "state_id": 3624,
+      "candidate": "= expression",
+      "candidate_text": "= '<'"
+    }
+  ],
+  "780": [
+    {
+      "state_id": 542,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'<'"
+    }
+  ],
+  "781": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": "<'"
+    }
+  ],
+  "782": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "783": [
+    {
+      "state_id": 5014,
+      "candidate": ", required_parameter",
+      "candidate_text": ",\n  closingBrackets = '>'"
+    }
+  ],
+  "787": [
+    {
+      "state_id": 196,
+      "candidate": "identifier",
+      "candidate_text": "closingBrackets"
+    }
+  ],
+  "803": [
+    {
+      "state_id": 3624,
+      "candidate": "= expression",
+      "candidate_text": "= '>'"
+    }
+  ],
+  "805": [
+    {
+      "state_id": 542,
+      "candidate": "' string_fragment '",
+      "candidate_text": "'>'"
+    }
+  ],
+  "806": [
+    {
+      "state_id": 4496,
+      "candidate": "string_fragment '",
+      "candidate_text": ">'"
+    }
+  ],
+  "807": [
+    {
+      "state_id": 4381,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "809": [
+    {
+      "state_id": 5014,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "811": [
+    {
+      "state_id": 5821,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "814": [
+    {
+      "state_id": 329,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n  let array: string[] = [] // The array of the tags in this present floor.\n  let prFloor = 0 // The present floor.\n  let begin = 0, // The begin index of the tag.\n    end = 0 // The end index of the tag.\n  for (let i = 0; i < text.length; i++) {\n    if (text[i] === openBrackets) {\n      prFloor++\n      if (prFloor === 1) begin = i\n    } else if (text[i] === closingBrackets) {\n      if (prFloor === 1) {\n        end = i\n        const tag = text.slice(begin + 1, end)\n        // push the tag in this present floor.\n        array.push(`${openBrackets}${tag}${closingBrackets}`)\n        // push the array of the tags in the next floor.\n        array = array.concat(\n          parseNestedBrackets(tag, openBrackets, closingBrackets)\n        )\n      }\n      prFloor--\n    }\n  }\n  return array\n}"
+    }
+  ],
+  "818": [
+    {
+      "state_id": 5,
+      "candidate": "let variable_declarator _automatic_semicolon",
+      "candidate_text": "let array: string[] = []"
+    }
+  ],
+  "822": [
+    {
+      "state_id": 1163,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "array: string[] = []"
+    }
+  ],
+  "827": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": string[]"
+    }
+  ],
+  "829": [
+    {
+      "state_id": 1110,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "835": [
+    {
+      "state_id": 3272,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "836": [
+    {
+      "state_id": 994,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "838": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= []"
+    }
+  ],
+  "840": [
+    {
+      "state_id": 423,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "841": [
+    {
+      "state_id": 229,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "893": [
+    {
+      "state_id": 18,
+      "candidate": "let variable_declarator _automatic_semicolon",
+      "candidate_text": "let prFloor = 0"
+    }
+  ],
+  "897": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier _initializer",
+      "candidate_text": "prFloor = 0"
+    }
+  ],
+  "905": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "907": [
+    {
+      "state_id": 423,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "933": [
+    {
+      "state_id": 18,
+      "candidate": "let variable_declarator variable_declaration_repeat1 _automatic_semicolon",
+      "candidate_text": "let begin = 0, // The begin index of the tag."
+    }
+  ],
+  "937": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier _initializer",
+      "candidate_text": "begin = 0"
+    }
+  ],
+  "943": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "945": [
+    {
+      "state_id": 423,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "946": [
+    {
+      "state_id": 4416,
+      "candidate": ", variable_declarator",
+      "candidate_text": ", // The begi"
+    }
+  ],
+  "952": [
+    {
+      "state_id": 3568,
+      "candidate": "variable_declarator",
+      "candidate_text": "he begi"
+    }
+  ],
+  "983": [
+    {
+      "state_id": 3568,
+      "candidate": "identifier _initializer",
+      "candidate_text": "end = 0"
+    }
+  ],
+  "987": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "989": [
+    {
+      "state_id": 423,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "1022": [
+    {
+      "state_id": 18,
+      "candidate": "for ( lexical_declaration expression ; expression ) statement",
+      "candidate_text": "for (let i = 0; i < text.length; i++) {"
+    }
+  ],
+  "1026": [
+    {
+      "state_id": 4687,
+      "candidate": "( lexical_declaration expression ; expression ) statement",
+      "candidate_text": "(let i = 0; i < text.length; i++) {"
+    }
+  ],
+  "1027": [
+    {
+      "state_id": 246,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let i = 0;"
+    }
+  ],
+  "1031": [
+    {
+      "state_id": 1204,
+      "candidate": "identifier _initializer",
+      "candidate_text": "i = 0"
+    }
+  ],
+  "1033": [
+    {
+      "state_id": 3314,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "1035": [
+    {
+      "state_id": 423,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "1036": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1038": [
+    {
+      "state_id": 299,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1040": [
+    {
+      "state_id": 2124,
+      "candidate": "< expression",
+      "candidate_text": "< text.length"
+    }
+  ],
+  "1042": [
+    {
+      "state_id": 153,
+      "candidate": "identifier",
+      "candidate_text": "text"
+    }
+  ],
+  "1046": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".length"
+    }
+  ],
+  "1047": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "length"
+    }
+  ],
+  "1053": [
+    {
+      "state_id": 2124,
+      "candidate": "; expression ) statement",
+      "candidate_text": "; i++) {"
+    }
+  ],
+  "1055": [
+    {
+      "state_id": 311,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1056": [
+    {
+      "state_id": 2329,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "1058": [
+    {
+      "state_id": 2329,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "1060": [
+    {
+      "state_id": 60,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n    if (text[i] === openBrackets) {\n      prFloor++\n      if (prFloor === 1) begin = i\n    } else if (text[i] === closingBrackets) {\n      if (prFloor === 1) {\n        end = i\n        const tag = text.slice(begin + 1, end)\n        // push the tag in this present floor.\n        array.push(`${openBrackets}${tag}${closingBrackets}`)\n        // push the array of the tags in the next floor.\n        array = array.concat(\n          parseNestedBrackets(tag, openBrackets, closingBrackets)\n        )\n      }\n      prFloor--\n    }\n  }"
+    }
+  ],
+  "1066": [
+    {
+      "state_id": 4,
+      "candidate": "if parenthesized_expression statement else_clause",
+      "candidate_text": "if (text[i] === openBrackets) {\n      prFloor++\n      if (prFloor === 1) begin = i\n    } else if (text[i] === closingBrackets) {"
+    }
+  ],
+  "1069": [
+    {
+      "state_id": 5445,
+      "candidate": "( expression )",
+      "candidate_text": "(text[i] === openBrackets)"
+    }
+  ],
+  "1070": [
+    {
+      "state_id": 335,
+      "candidate": "identifier",
+      "candidate_text": "text"
+    }
+  ],
+  "1074": [
+    {
+      "state_id": 1515,
+      "candidate": "[ expression ]",
+      "candidate_text": "[i]"
+    }
+  ],
+  "1075": [
+    {
+      "state_id": 319,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1076": [
+    {
+      "state_id": 2144,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1078": [
+    {
+      "state_id": 1864,
+      "candidate": "=== expression",
+      "candidate_text": "=== openBrackets"
+    }
+  ],
+  "1082": [
+    {
+      "state_id": 409,
+      "candidate": "identifier",
+      "candidate_text": "openBrackets"
+    }
+  ],
+  "1094": [
+    {
+      "state_id": 1864,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1096": [
+    {
+      "state_id": 70,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n      prFloor++\n      if (prFloor === 1) begin = i\n    }"
+    }
+  ],
+  "1104": [
+    {
+      "state_id": 4,
+      "candidate": "identifier",
+      "candidate_text": "prFloor"
+    }
+  ],
+  "1111": [
+    {
+      "state_id": 1902,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "1120": [
+    {
+      "state_id": 14,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (prFloor === 1) begin = i"
+    }
+  ],
+  "1123": [
+    {
+      "state_id": 5445,
+      "candidate": "( expression )",
+      "candidate_text": "(prFloor === 1)"
+    }
+  ],
+  "1124": [
+    {
+      "state_id": 335,
+      "candidate": "identifier",
+      "candidate_text": "prFloor"
+    }
+  ],
+  "1132": [
+    {
+      "state_id": 1864,
+      "candidate": "=== expression",
+      "candidate_text": "=== 1"
+    }
+  ],
+  "1136": [
+    {
+      "state_id": 409,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "1137": [
+    {
+      "state_id": 1864,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1139": [
+    {
+      "state_id": 70,
+      "candidate": "identifier = expression",
+      "candidate_text": "begin = i"
+    }
+  ],
+  "1145": [
+    {
+      "state_id": 1342,
+      "candidate": "= expression",
+      "candidate_text": "= i"
+    }
+  ],
+  "1147": [
+    {
+      "state_id": 526,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1153": [
+    {
+      "state_id": 14,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1155": [
+    {
+      "state_id": 790,
+      "candidate": "else statement",
+      "candidate_text": "else if (text[i] === closingBrackets) {"
+    }
+  ],
+  "1160": [
+    {
+      "state_id": 33,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (text[i] === closingBrackets) {"
+    }
+  ],
+  "1163": [
+    {
+      "state_id": 5445,
+      "candidate": "( expression )",
+      "candidate_text": "(text[i] === closingBrackets)"
+    }
+  ],
+  "1164": [
+    {
+      "state_id": 335,
+      "candidate": "identifier",
+      "candidate_text": "text"
+    }
+  ],
+  "1168": [
+    {
+      "state_id": 1515,
+      "candidate": "[ expression ]",
+      "candidate_text": "[i]"
+    }
+  ],
+  "1169": [
+    {
+      "state_id": 319,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1170": [
+    {
+      "state_id": 2144,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1172": [
+    {
+      "state_id": 1864,
+      "candidate": "=== expression",
+      "candidate_text": "=== closingBrackets"
+    }
+  ],
+  "1176": [
+    {
+      "state_id": 409,
+      "candidate": "identifier",
+      "candidate_text": "closingBrackets"
+    }
+  ],
+  "1191": [
+    {
+      "state_id": 1864,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1193": [
+    {
+      "state_id": 70,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n      if (prFloor === 1) {\n        end = i\n        const tag = text.slice(begin + 1, end)\n        // push the tag in this present floor.\n        array.push(`${openBrackets}${tag}${closingBrackets}`)\n        // push the array of the tags in the next floor.\n        array = array.concat(\n          parseNestedBrackets(tag, openBrackets, closingBrackets)\n        )\n      }\n      prFloor--\n    }"
+    }
+  ],
+  "1201": [
+    {
+      "state_id": 4,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (prFloor === 1) {"
+    }
+  ],
+  "1204": [
+    {
+      "state_id": 5445,
+      "candidate": "( expression )",
+      "candidate_text": "(prFloor === 1)"
+    }
+  ],
+  "1205": [
+    {
+      "state_id": 335,
+      "candidate": "identifier",
+      "candidate_text": "prFloor"
+    }
+  ],
+  "1213": [
+    {
+      "state_id": 1864,
+      "candidate": "=== expression",
+      "candidate_text": "=== 1"
+    }
+  ],
+  "1217": [
+    {
+      "state_id": 409,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "1218": [
+    {
+      "state_id": 1864,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1220": [
+    {
+      "state_id": 70,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n        end = i\n        const tag = text.slice(begin + 1, end)\n        // push the tag in this present floor.\n        array.push(`${openBrackets}${tag}${closingBrackets}`)\n        // push the array of the tags in the next floor.\n        array = array.concat(\n          parseNestedBrackets(tag, openBrackets, closingBrackets)\n        )\n      }"
+    }
+  ],
+  "1230": [
+    {
+      "state_id": 4,
+      "candidate": "identifier = expression",
+      "candidate_text": "end = i"
+    }
+  ],
+  "1234": [
+    {
+      "state_id": 1216,
+      "candidate": "= expression",
+      "candidate_text": "= i"
+    }
+  ],
+  "1236": [
+    {
+      "state_id": 420,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1246": [
+    {
+      "state_id": 14,
+      "candidate": "const variable_declarator _automatic_semicolon",
+      "candidate_text": "const tag = text.slice(begin + 1, end)"
+    }
+  ],
+  "1252": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "tag = text.slice(begin + 1, end)"
+    }
+  ],
+  "1256": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= text.slice(begin + 1, end)"
+    }
+  ],
+  "1258": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "text"
+    }
+  ],
+  "1262": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".slice"
+    }
+  ],
+  "1263": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "slice"
+    }
+  ],
+  "1268": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(begin + 1, end)"
+    }
+  ],
+  "1269": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "begin"
+    }
+  ],
+  "1275": [
+    {
+      "state_id": 2208,
+      "candidate": "+ expression",
+      "candidate_text": "+ 1"
+    }
+  ],
+  "1277": [
+    {
+      "state_id": 407,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "1278": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", end"
+    }
+  ],
+  "1280": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "end"
+    }
+  ],
+  "1283": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1293": [
+    {
+      "state_id": 14,
+      "candidate": "statement",
+      "candidate_text": "// push the tag in this present floor."
+    }
+  ],
+  "1340": [
+    {
+      "state_id": 14,
+      "candidate": "identifier",
+      "candidate_text": "array"
+    }
+  ],
+  "1345": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".push"
+    }
+  ],
+  "1346": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "push"
+    }
+  ],
+  "1350": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(`${openBrackets}${tag}${closingBrackets}`)"
+    }
+  ],
+  "1351": [
+    {
+      "state_id": 271,
+      "candidate": "` template_string_repeat1 `",
+      "candidate_text": "`${openBrackets}${tag}${closingBrackets}`"
+    }
+  ],
+  "1352": [
+    {
+      "state_id": 3852,
+      "candidate": "${ expression }",
+      "candidate_text": "${openBrackets}"
+    }
+  ],
+  "1354": [
+    {
+      "state_id": 393,
+      "candidate": "identifier",
+      "candidate_text": "openBrackets"
+    }
+  ],
+  "1366": [
+    {
+      "state_id": 2188,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1367": [
+    {
+      "state_id": 3785,
+      "candidate": "${ expression }",
+      "candidate_text": "${tag}"
+    }
+  ],
+  "1369": [
+    {
+      "state_id": 393,
+      "candidate": "identifier",
+      "candidate_text": "tag"
+    }
+  ],
+  "1372": [
+    {
+      "state_id": 2188,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1373": [
+    {
+      "state_id": 3785,
+      "candidate": "${ expression }",
+      "candidate_text": "${closingBrackets}"
+    }
+  ],
+  "1375": [
+    {
+      "state_id": 393,
+      "candidate": "identifier",
+      "candidate_text": "closingBrackets"
+    }
+  ],
+  "1390": [
+    {
+      "state_id": 2188,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1391": [
+    {
+      "state_id": 3785,
+      "candidate": "`",
+      "candidate_text": "`"
+    }
+  ],
+  "1392": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1402": [
+    {
+      "state_id": 14,
+      "candidate": "statement",
+      "candidate_text": "// push the array of the tags in the next floor."
+    }
+  ],
+  "1459": [
+    {
+      "state_id": 14,
+      "candidate": "identifier = expression",
+      "candidate_text": "array = array.concat("
+    }
+  ],
+  "1465": [
+    {
+      "state_id": 1342,
+      "candidate": "= expression",
+      "candidate_text": "= array.concat("
+    }
+  ],
+  "1467": [
+    {
+      "state_id": 526,
+      "candidate": "identifier",
+      "candidate_text": "array"
+    }
+  ],
+  "1472": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".concat"
+    }
+  ],
+  "1473": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "concat"
+    }
+  ],
+  "1479": [
+    {
+      "state_id": 1789,
+      "candidate": "( expression )",
+      "candidate_text": "(\n          parseNestedBrackets(tag, openBrackets, closingBrackets)\n        )"
+    }
+  ],
+  "1491": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "parseNestedBrackets"
+    }
+  ],
+  "1510": [
+    {
+      "state_id": 2208,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(tag, openBrackets, closingBrackets)"
+    }
+  ],
+  "1511": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "tag"
+    }
+  ],
+  "1514": [
+    {
+      "state_id": 2142,
+      "candidate": ", expression",
+      "candidate_text": ", openBrackets"
+    }
+  ],
+  "1516": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "openBrackets"
+    }
+  ],
+  "1528": [
+    {
+      "state_id": 4647,
+      "candidate": ", expression",
+      "candidate_text": ", closingBrackets"
+    }
+  ],
+  "1530": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "closingBrackets"
+    }
+  ],
+  "1545": [
+    {
+      "state_id": 4647,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1555": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1563": [
+    {
+      "state_id": 14,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "1571": [
+    {
+      "state_id": 14,
+      "candidate": "identifier",
+      "candidate_text": "prFloor"
+    }
+  ],
+  "1578": [
+    {
+      "state_id": 1902,
+      "candidate": "--",
+      "candidate_text": "--"
+    }
+  ],
+  "1585": [
+    {
+      "state_id": 14,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "1589": [
+    {
+      "state_id": 14,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "1593": [
+    {
+      "state_id": 18,
+      "candidate": "return expression _automatic_semicolon",
+      "candidate_text": "return array"
+    }
+  ],
+  "1600": [
+    {
+      "state_id": 297,
+      "candidate": "identifier",
+      "candidate_text": "array"
+    }
+  ],
+  "1606": [
+    {
+      "state_id": 18,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ]
+}

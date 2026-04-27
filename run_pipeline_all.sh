@@ -11,7 +11,6 @@
 #   ./run_pipeline_all.sh --skip-collect                    # 전체 컬렉션 스킵 (정답지+평가만)
 #   ./run_pipeline_all.sh --skip-learn-collect              # LEARN 컬렉션 스킵 (TEST 재수집+평가)
 #   ./run_pipeline_all.sh --skip-test-collect               # TEST 컬렉션 스킵 (LEARN 재수집+평가)
-#   ./run_pipeline_all.sh --per-project haskell             # 하스켈만, 프로젝트별 집계 포함
 #   ./run_pipeline_all.sh --skip-learn-collect ruby python  # LEARN 스킵, ruby+python만
 #
 # 옵션:
@@ -19,7 +18,6 @@
 #   --skip-learn-collect   Step 1(LEARN 컬렉션) 만 건너뜀
 #   --skip-test-collect    Step 2(TEST 컬렉션) 만 건너뜀
 #   --learn-only           Step 1(LEARN 컬렉션)만 실행하고 종료
-#   --per-project          Step 4 완료 후 프로젝트별 결과도 집계하여 출력/저장
 #   --build-only           빌드만 수행 후 종료 (Step 1~4 전부 건너뜀)
 # =============================================================
 
@@ -32,7 +30,6 @@ ALL_LANGUAGES=(smallbasic c haskell ruby php javascript cpp java python)
 SKIP_COLLECT_FLAG=""
 SKIP_LEARN_COLLECT_FLAG=""
 SKIP_TEST_COLLECT_FLAG=""
-PER_PROJECT_FLAG=""
 LEARN_ONLY_FLAG=""
 BUILD_ONLY=false
 LANG_ARGS=()
@@ -41,7 +38,6 @@ for arg in "$@"; do
         --skip-collect)       SKIP_COLLECT_FLAG="--skip-collect" ;;
         --skip-learn-collect) SKIP_LEARN_COLLECT_FLAG="--skip-learn-collect" ;;
         --skip-test-collect)  SKIP_TEST_COLLECT_FLAG="--skip-test-collect" ;;
-        --per-project)        PER_PROJECT_FLAG="--per-project" ;;
         --learn-only)         LEARN_ONLY_FLAG="--learn-only" ;;
         --build-only)         BUILD_ONLY=true ;;
         *)                    LANG_ARGS+=("$arg") ;;
@@ -63,7 +59,7 @@ echo "############################################################"
 echo "  run_pipeline_all.sh"
 echo "  Start   : $(date '+%Y-%m-%d %H:%M:%S')"
 echo "  Languages: ${LANGUAGES[*]}"
-_OPT_STR="${SKIP_COLLECT_FLAG:+$SKIP_COLLECT_FLAG }${SKIP_LEARN_COLLECT_FLAG:+$SKIP_LEARN_COLLECT_FLAG }${SKIP_TEST_COLLECT_FLAG:+$SKIP_TEST_COLLECT_FLAG }${LEARN_ONLY_FLAG:+$LEARN_ONLY_FLAG }${PER_PROJECT_FLAG}"
+_OPT_STR="${SKIP_COLLECT_FLAG:+$SKIP_COLLECT_FLAG }${SKIP_LEARN_COLLECT_FLAG:+$SKIP_LEARN_COLLECT_FLAG }${SKIP_TEST_COLLECT_FLAG:+$SKIP_TEST_COLLECT_FLAG }${LEARN_ONLY_FLAG}"
 echo "  Options : ${_OPT_STR:-none}"
 echo "############################################################"
 echo ""
@@ -103,7 +99,7 @@ for LANG in "${LANGUAGES[@]}"; do
         # run_pipeline.sh의 SUMMARY_LOG를 언어별 파일로 지정
         export PIPELINE_SUMMARY_LOG="$LANG_LOG"
 
-        bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG $SKIP_LEARN_COLLECT_FLAG $SKIP_TEST_COLLECT_FLAG $LEARN_ONLY_FLAG $PER_PROJECT_FLAG > /dev/null 2>&1
+        bash "$TS_DIR/run_pipeline.sh" "$LANG" $SKIP_COLLECT_FLAG $SKIP_LEARN_COLLECT_FLAG $SKIP_TEST_COLLECT_FLAG $LEARN_ONLY_FLAG > /dev/null 2>&1
         EXIT_CODE=$?
 
         LANG_ELAPSED=$(( $(date +%s) - LANG_START ))

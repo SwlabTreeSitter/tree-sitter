@@ -1,0 +1,807 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause ;",
+      "candidate_text": "import {"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 , }",
+      "candidate_text": "{\n  Weapon,\n  LongBow,\n  LongSword,\n  LongBowFactory,\n  LongSwordFactory,\n}"
+    }
+  ],
+  "11": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "Weapon"
+    }
+  ],
+  "17": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ",\n  LongBow"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "LongBow"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ",\n  LongSword"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "LongSword"
+    }
+  ],
+  "41": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ",\n  LongBowFactory"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "LongBowFactory"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ",\n  LongSwordFactory"
+    }
+  ],
+  "63": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "LongSwordFactory"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 5020,
+      "candidate": ", }",
+      "candidate_text": ",\n}"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 3295,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from \"./FactoryMethod\""
+    }
+  ],
+  "88": [
+    {
+      "state_id": 4661,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"./FactoryMethod\""
+    }
+  ],
+  "89": [
+    {
+      "state_id": 4393,
+      "candidate": "string_fragment \"",
+      "candidate_text": "./FactoryMethod\""
+    }
+  ],
+  "104": [
+    {
+      "state_id": 4476,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "105": [
+    {
+      "state_id": 4289,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "108": [
+    {
+      "state_id": 16,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let lbf: LongBowFactory;"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier type_annotation",
+      "candidate_text": "lbf: LongBowFactory"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": LongBowFactory"
+    }
+  ],
+  "117": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier",
+      "candidate_text": "LongBowFactory"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 16,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let lsf: LongSwordFactory;"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier type_annotation",
+      "candidate_text": "lsf: LongSwordFactory"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": LongSwordFactory"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier",
+      "candidate_text": "LongSwordFactory"
+    }
+  ],
+  "158": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "beforeEach"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(() => {"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 271,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  lbf = new LongBowFactory();\n  lsf = new LongSwordFactory();\n}"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 8,
+      "candidate": "identifier = expression",
+      "candidate_text": "lbf = new LongBowFactory()"
+    }
+  ],
+  "185": [
+    {
+      "state_id": 1227,
+      "candidate": "= expression",
+      "candidate_text": "= new LongBowFactory()"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 420,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new LongBowFactory()"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "LongBowFactory"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 1696,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 271,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "207": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 22,
+      "candidate": "identifier = expression",
+      "candidate_text": "lsf = new LongSwordFactory()"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 1342,
+      "candidate": "= expression",
+      "candidate_text": "= new LongSwordFactory()"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 526,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new LongSwordFactory()"
+    }
+  ],
+  "221": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "LongSwordFactory"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 1696,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "238": [
+    {
+      "state_id": 271,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "246": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "test"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(\"it creates a LongBow type using the factory\", () => {"
+    }
+  ],
+  "251": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"it creates a LongBow type using the factory\""
+    }
+  ],
+  "252": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "it creates a LongBow type using the factory\""
+    }
+  ],
+  "295": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "296": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "298": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  const weapon = lbf.create();\n  expect(weapon).toBeInstanceOf(LongBow);\n}"
+    }
+  ],
+  "308": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const weapon = lbf.create();"
+    }
+  ],
+  "314": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "weapon = lbf.create()"
+    }
+  ],
+  "321": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= lbf.create()"
+    }
+  ],
+  "323": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "lbf"
+    }
+  ],
+  "326": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".create"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "create"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 2353,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 271,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "339": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(weapon)"
+    }
+  ],
+  "346": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "weapon"
+    }
+  ],
+  "352": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBeInstanceOf"
+    }
+  ],
+  "354": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBeInstanceOf"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(LongBow)"
+    }
+  ],
+  "369": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "LongBow"
+    }
+  ],
+  "376": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "377": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "379": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 16,
+      "candidate": "identifier",
+      "candidate_text": "test"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(\"it creates a LongSword type using the factory\", () => {"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 271,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"it creates a LongSword type using the factory\""
+    }
+  ],
+  "390": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "it creates a LongSword type using the factory\""
+    }
+  ],
+  "435": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "436": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", () => {"
+    }
+  ],
+  "438": [
+    {
+      "state_id": 289,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "439": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 5558,
+      "candidate": "=> statement_block",
+      "candidate_text": "=> {"
+    }
+  ],
+  "444": [
+    {
+      "state_id": 333,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n  const weapon = lsf.create();\n  expect(weapon).toBeInstanceOf(LongSword);\n}"
+    }
+  ],
+  "448": [
+    {
+      "state_id": 8,
+      "candidate": "const variable_declarator ;",
+      "candidate_text": "const weapon = lsf.create();"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 3469,
+      "candidate": "identifier _initializer",
+      "candidate_text": "weapon = lsf.create()"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 3491,
+      "candidate": "= expression",
+      "candidate_text": "= lsf.create()"
+    }
+  ],
+  "463": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "lsf"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".create"
+    }
+  ],
+  "467": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "create"
+    }
+  ],
+  "473": [
+    {
+      "state_id": 2353,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "474": [
+    {
+      "state_id": 271,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "475": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "479": [
+    {
+      "state_id": 22,
+      "candidate": "identifier",
+      "candidate_text": "expect"
+    }
+  ],
+  "485": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(weapon)"
+    }
+  ],
+  "486": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "weapon"
+    }
+  ],
+  "492": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "493": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".toBeInstanceOf"
+    }
+  ],
+  "494": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "toBeInstanceOf"
+    }
+  ],
+  "508": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(LongSword)"
+    }
+  ],
+  "509": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "LongSword"
+    }
+  ],
+  "518": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "521": [
+    {
+      "state_id": 22,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "522": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "523": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

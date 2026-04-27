@@ -1,0 +1,499 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "word_list"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= File.open(\"wordlist\")"
+    }
+  ],
+  "390": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "394": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".open"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "open"
+    }
+  ],
+  "399": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"wordlist\")"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"wordlist\""
+    }
+  ],
+  "401": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "wordlist"
+    }
+  ],
+  "409": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "410": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "word_in_error"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= catch(:done) do"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 481,
+      "candidate": "identifier",
+      "candidate_text": "catch"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 12,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:done)"
+    }
+  ],
+  "434": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":done"
+    }
+  ],
+  "439": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 2257,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n  result = []\n  while (line = word_list.gets)\n    word = line.chomp\n    throw(:done, word) unless /^\\w+$/.match?(word)\n    result << word\n  end\n  puts result.reverse\nend"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 170,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= []"
+    }
+  ],
+  "455": [
+    {
+      "state_id": 462,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "456": [
+    {
+      "state_id": 424,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 252,
+      "candidate": "while _statement do",
+      "candidate_text": "while (line = word_list.gets)"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 410,
+      "candidate": "( _statements )",
+      "candidate_text": "(line = word_list.gets)"
+    }
+  ],
+  "467": [
+    {
+      "state_id": 329,
+      "candidate": "identifier",
+      "candidate_text": "line"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= word_list.gets"
+    }
+  ],
+  "474": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "word_list"
+    }
+  ],
+  "483": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".gets"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "gets"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 5760,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "494": [
+    {
+      "state_id": 360,
+      "candidate": "identifier",
+      "candidate_text": "word"
+    }
+  ],
+  "499": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= line.chomp"
+    }
+  ],
+  "501": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "line"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".chomp"
+    }
+  ],
+  "506": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "chomp"
+    }
+  ],
+  "516": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "throw"
+    }
+  ],
+  "521": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:done, word)"
+    }
+  ],
+  "522": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":done"
+    }
+  ],
+  "527": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", word"
+    }
+  ],
+  "529": [
+    {
+      "state_id": 432,
+      "candidate": "identifier",
+      "candidate_text": "word"
+    }
+  ],
+  "533": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "535": [
+    {
+      "state_id": 4626,
+      "candidate": "unless _expression",
+      "candidate_text": "unless /^\\w+$/.match?(word)"
+    }
+  ],
+  "542": [
+    {
+      "state_id": 521,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/^\\w+$/"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 5048,
+      "candidate": "string_content",
+      "candidate_text": "^"
+    }
+  ],
+  "544": [
+    {
+      "state_id": 5167,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\w"
+    }
+  ],
+  "546": [
+    {
+      "state_id": 5167,
+      "candidate": "string_content",
+      "candidate_text": "+$"
+    }
+  ],
+  "548": [
+    {
+      "state_id": 5167,
+      "candidate": ")",
+      "candidate_text": "/"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".match?"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "match?"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(word)"
+    }
+  ],
+  "557": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "word"
+    }
+  ],
+  "561": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 2812,
+      "candidate": "<< _arg",
+      "candidate_text": "<< word"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 1219,
+      "candidate": "identifier",
+      "candidate_text": "word"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 5954,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 3,
+      "candidate": "identifier",
+      "candidate_text": "result"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 2506,
+      "candidate": ". identifier",
+      "candidate_text": ".reverse"
+    }
+  ],
+  "602": [
+    {
+      "state_id": 3097,
+      "candidate": "identifier",
+      "candidate_text": "reverse"
+    }
+  ],
+  "610": [
+    {
+      "state_id": 5833,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "614": [
+    {
+      "state_id": 346,
+      "candidate": "if _statement then end",
+      "candidate_text": "if word_in_error\n  puts \"Failed: '#{word_in_error}' found, but a word was expected\"\nend"
+    }
+  ],
+  "617": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "word_in_error"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "638": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Failed: '#{word_in_error}' found, but a word was expected\""
+    }
+  ],
+  "639": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Failed: '"
+    }
+  ],
+  "648": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{word_in_error}"
+    }
+  ],
+  "650": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "word_in_error"
+    }
+  ],
+  "663": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "664": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": "' found, but a word was expected"
+    }
+  ],
+  "696": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "698": [
+    {
+      "state_id": 5300,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

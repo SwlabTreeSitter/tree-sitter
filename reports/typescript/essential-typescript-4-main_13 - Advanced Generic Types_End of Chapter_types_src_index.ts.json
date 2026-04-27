@@ -1,0 +1,835 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "import import_clause _from_clause ;",
+      "candidate_text": "import { City, Person, Product, Employee} from \"./dataTypes\";"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2921,
+      "candidate": "{ import_specifier named_imports_repeat1 }",
+      "candidate_text": "{ City, Person, Product, Employee}"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 3256,
+      "candidate": "identifier",
+      "candidate_text": "City"
+    }
+  ],
+  "13": [
+    {
+      "state_id": 5029,
+      "candidate": ", import_specifier",
+      "candidate_text": ", Person"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 3292,
+      "candidate": "identifier",
+      "candidate_text": "Person"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", Product"
+    }
+  ],
+  "23": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "Product"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 5020,
+      "candidate": ", import_specifier",
+      "candidate_text": ", Employee"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 3295,
+      "candidate": "identifier",
+      "candidate_text": "Employee"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 5020,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 5258,
+      "candidate": "from string",
+      "candidate_text": "from \"./dataTypes\""
+    }
+  ],
+  "47": [
+    {
+      "state_id": 4661,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"./dataTypes\""
+    }
+  ],
+  "48": [
+    {
+      "state_id": 4393,
+      "candidate": "string_fragment \"",
+      "candidate_text": "./dataTypes\""
+    }
+  ],
+  "59": [
+    {
+      "state_id": 4476,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "60": [
+    {
+      "state_id": 4289,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "63": [
+    {
+      "state_id": 16,
+      "candidate": "function identifier _call_signature statement_block _automatic_semicolon",
+      "candidate_text": "function makeObject<T extends new (...args: any) => any>\n        (constructor: T, ...args: ConstructorParameters<T>) : InstanceType<T> {"
+    }
+  ],
+  "72": [
+    {
+      "state_id": 3693,
+      "candidate": "identifier _call_signature statement_block _automatic_semicolon",
+      "candidate_text": "makeObject<T extends new (...args: any) => any>\n        (constructor: T, ...args: ConstructorParameters<T>) : InstanceType<T> {"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 3987,
+      "candidate": "< type_parameter >",
+      "candidate_text": "<T extends new (...args: any) => any>"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 4996,
+      "candidate": "identifier constraint",
+      "candidate_text": "T extends new (...args: any) => any"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 3526,
+      "candidate": "extends type",
+      "candidate_text": "extends new (...args: any) => any"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 1056,
+      "candidate": "new formal_parameters => type",
+      "candidate_text": "new (...args: any) => any"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 4413,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(...args: any)"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 199,
+      "candidate": "... identifier",
+      "candidate_text": "...args"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 443,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": any"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 1006,
+      "candidate": "any",
+      "candidate_text": "any"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 4621,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "112": [
+    {
+      "state_id": 5518,
+      "candidate": "=> type",
+      "candidate_text": "=> any"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 1096,
+      "candidate": "any",
+      "candidate_text": "any"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 4908,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 5249,
+      "candidate": "( required_parameter formal_parameters_repeat1 )",
+      "candidate_text": "(constructor: T, ...args: ConstructorParameters<T>)"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "constructor"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": T"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 1006,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 4899,
+      "candidate": ", required_parameter",
+      "candidate_text": ", ...args: ConstructorParameters<T>"
+    }
+  ],
+  "145": [
+    {
+      "state_id": 205,
+      "candidate": "... identifier",
+      "candidate_text": "...args"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 443,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": ConstructorParameters<T>"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 1006,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "ConstructorParameters<T>"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 2923,
+      "candidate": "< type >",
+      "candidate_text": "<T>"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "178": [
+    {
+      "state_id": 4869,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 3361,
+      "candidate": ": type",
+      "candidate_text": ": InstanceType<T>"
+    }
+  ],
+  "182": [
+    {
+      "state_id": 959,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "InstanceType<T>"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 3129,
+      "candidate": "< type >",
+      "candidate_text": "<T>"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 1014,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 3768,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 4355,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n    return  new constructor(...args as any[]);\n}"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 19,
+      "candidate": "return expression ;",
+      "candidate_text": "return  new constructor(...args as any[]);"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 297,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new constructor(...args as any[])"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 102,
+      "candidate": "identifier",
+      "candidate_text": "constructor"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 1696,
+      "candidate": "( spread_element )",
+      "candidate_text": "(...args as any[])"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 271,
+      "candidate": "... expression",
+      "candidate_text": "...args as any[]"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 442,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 2359,
+      "candidate": "as type",
+      "candidate_text": "as any[]"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 1112,
+      "candidate": "any",
+      "candidate_text": "any"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 1554,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 984,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 4789,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "245": [
+    {
+      "state_id": 1905,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 20,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 16,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let prod: Product = makeObject(Product, \"Kayak\", 275);"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "prod: Product = makeObject(Product, \"Kayak\", 275)"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": Product"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier",
+      "candidate_text": "Product"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= makeObject(Product, \"Kayak\", 275)"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "makeObject"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(Product, \"Kayak\", 275)"
+    }
+  ],
+  "281": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "Product"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", \"Kayak\""
+    }
+  ],
+  "290": [
+    {
+      "state_id": 289,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"Kayak\""
+    }
+  ],
+  "291": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "Kayak\""
+    }
+  ],
+  "296": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "297": [
+    {
+      "state_id": 4698,
+      "candidate": ", expression",
+      "candidate_text": ", 275"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 289,
+      "candidate": "number",
+      "candidate_text": "275"
+    }
+  ],
+  "302": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "303": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 16,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let city: City = makeObject(City, \"London\", 8136000);"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 1192,
+      "candidate": "identifier type_annotation _initializer",
+      "candidate_text": "city: City = makeObject(City, \"London\", 8136000)"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 3491,
+      "candidate": ": type",
+      "candidate_text": ": City"
+    }
+  ],
+  "315": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier",
+      "candidate_text": "City"
+    }
+  ],
+  "320": [
+    {
+      "state_id": 4338,
+      "candidate": "= expression",
+      "candidate_text": "= makeObject(City, \"London\", 8136000)"
+    }
+  ],
+  "322": [
+    {
+      "state_id": 423,
+      "candidate": "identifier",
+      "candidate_text": "makeObject"
+    }
+  ],
+  "332": [
+    {
+      "state_id": 2353,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(City, \"London\", 8136000)"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "City"
+    }
+  ],
+  "337": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", \"London\""
+    }
+  ],
+  "339": [
+    {
+      "state_id": 289,
+      "candidate": "\" string_fragment \"",
+      "candidate_text": "\"London\""
+    }
+  ],
+  "340": [
+    {
+      "state_id": 4493,
+      "candidate": "string_fragment \"",
+      "candidate_text": "London\""
+    }
+  ],
+  "346": [
+    {
+      "state_id": 4512,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "347": [
+    {
+      "state_id": 4698,
+      "candidate": ", expression",
+      "candidate_text": ", 8136000"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 289,
+      "candidate": "number",
+      "candidate_text": "8136000"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 4416,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "360": [
+    {
+      "state_id": 16,
+      "candidate": "[ expression array_repeat1 ]",
+      "candidate_text": "[prod, city]"
+    }
+  ],
+  "361": [
+    {
+      "state_id": 229,
+      "candidate": "identifier",
+      "candidate_text": "prod"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 4406,
+      "candidate": ", expression",
+      "candidate_text": ", city"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 280,
+      "candidate": "identifier",
+      "candidate_text": "city"
+    }
+  ],
+  "371": [
+    {
+      "state_id": 4987,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".forEach"
+    }
+  ],
+  "373": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "forEach"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression )",
+      "candidate_text": "(item => console.log(`Name: ${item.name}`))"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 271,
+      "candidate": "identifier => expression",
+      "candidate_text": "item => console.log(`Name: ${item.name}`)"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 1349,
+      "candidate": "=> expression",
+      "candidate_text": "=> console.log(`Name: ${item.name}`)"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 332,
+      "candidate": "identifier",
+      "candidate_text": "console"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".log"
+    }
+  ],
+  "397": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "log"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 1890,
+      "candidate": "( expression )",
+      "candidate_text": "(`Name: ${item.name}`)"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 265,
+      "candidate": "` template_string_repeat1 `",
+      "candidate_text": "`Name: ${item.name}`"
+    }
+  ],
+  "402": [
+    {
+      "state_id": 3852,
+      "candidate": "string_fragment template_substitution",
+      "candidate_text": "Name: ${item.name}"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 3785,
+      "candidate": "${ expression }",
+      "candidate_text": "${item.name}"
+    }
+  ],
+  "410": [
+    {
+      "state_id": 393,
+      "candidate": "identifier",
+      "candidate_text": "item"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".name"
+    }
+  ],
+  "415": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "419": [
+    {
+      "state_id": 2188,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "420": [
+    {
+      "state_id": 3785,
+      "candidate": "`",
+      "candidate_text": "`"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "423": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

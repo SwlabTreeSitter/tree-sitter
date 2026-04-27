@@ -1,0 +1,695 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch10\\batch05;"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch10\\batch05"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch10"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch10"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch05"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch05"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "83": [
+    {
+      "state_id": 157,
+      "candidate": "class name declaration_list",
+      "candidate_text": "class UnitScript\n{"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 3194,
+      "candidate": "name declaration_list",
+      "candidate_text": "UnitScript\n{"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 1965,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n    public static function joinExisting(\n        Unit $newUnit,\n        Unit $occupyingUnit\n    ): CompositeUnit {\n        $comp = $occupyingUnit->getComposite();\n        if (! is_null($comp)) {\n            $comp->addUnit($newUnit);\n        } else {\n            $comp = new Army();\n            $comp->addUnit($occupyingUnit);\n            $comp->addUnit($newUnit);\n        }\n        return $comp;\n    }\n}"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 1617,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 960,
+      "candidate": "static",
+      "candidate_text": "static"
+    }
+  ],
+  "120": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function joinExisting(\n        Unit $newUnit,\n        Unit $occupyingUnit\n    ): CompositeUnit {"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "joinExisting(\n        Unit $newUnit,\n        Unit $occupyingUnit\n    ): CompositeUnit {"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter formal_parameters_repeat1 )",
+      "candidate_text": "(\n        Unit $newUnit,\n        Unit $occupyingUnit\n    )"
+    }
+  ],
+  "151": [
+    {
+      "state_id": 969,
+      "candidate": "name",
+      "candidate_text": "Unit"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$newUnit"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "newUnit"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 2434,
+      "candidate": ", simple_parameter",
+      "candidate_text": ",\n        Unit $occupyingUnit"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 1008,
+      "candidate": "name",
+      "candidate_text": "Unit"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$occupyingUnit"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "occupyingUnit"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 2461,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": CompositeUnit"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 1590,
+      "candidate": "name",
+      "candidate_text": "CompositeUnit"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        $comp = $occupyingUnit->getComposite();\n        if (! is_null($comp)) {\n            $comp->addUnit($newUnit);\n        } else {\n            $comp = new Army();\n            $comp->addUnit($occupyingUnit);\n            $comp->addUnit($newUnit);\n        }\n        return $comp;\n    }"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$comp"
+    }
+  ],
+  "226": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "comp"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $occupyingUnit->getComposite()"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$occupyingUnit"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "occupyingUnit"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getComposite()"
+    }
+  ],
+  "249": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "getComposite"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 868,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "262": [
+    {
+      "state_id": 191,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "263": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 75,
+      "candidate": "if parenthesized_expression statement else_clause",
+      "candidate_text": "if (! is_null($comp)) {\n            $comp->addUnit($newUnit);\n        } else {"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 3036,
+      "candidate": "( expression )",
+      "candidate_text": "(! is_null($comp))"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 437,
+      "candidate": "! expression",
+      "candidate_text": "! is_null($comp)"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 350,
+      "candidate": "name",
+      "candidate_text": "is_null"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 2020,
+      "candidate": "( argument )",
+      "candidate_text": "($comp)"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 195,
+      "candidate": "$ name",
+      "candidate_text": "$comp"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "comp"
+    }
+  ],
+  "292": [
+    {
+      "state_id": 2452,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "293": [
+    {
+      "state_id": 1532,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 81,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            $comp->addUnit($newUnit);\n        }"
+    }
+  ],
+  "309": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$comp"
+    }
+  ],
+  "310": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "comp"
+    }
+  ],
+  "314": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->addUnit($newUnit)"
+    }
+  ],
+  "316": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "addUnit"
+    }
+  ],
+  "323": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "($newUnit)"
+    }
+  ],
+  "324": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$newUnit"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "newUnit"
+    }
+  ],
+  "332": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "343": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 529,
+      "candidate": "else statement",
+      "candidate_text": "else {"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 163,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            $comp = new Army();\n            $comp->addUnit($occupyingUnit);\n            $comp->addUnit($newUnit);\n        }"
+    }
+  ],
+  "364": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$comp"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "comp"
+    }
+  ],
+  "370": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= new Army()"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 311,
+      "candidate": "new _class_name_reference arguments",
+      "candidate_text": "new Army()"
+    }
+  ],
+  "376": [
+    {
+      "state_id": 1258,
+      "candidate": "name",
+      "candidate_text": "Army"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 1294,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 194,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "382": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$comp"
+    }
+  ],
+  "397": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "comp"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->addUnit($occupyingUnit)"
+    }
+  ],
+  "403": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "addUnit"
+    }
+  ],
+  "410": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "($occupyingUnit)"
+    }
+  ],
+  "411": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$occupyingUnit"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "occupyingUnit"
+    }
+  ],
+  "425": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "440": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$comp"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "comp"
+    }
+  ],
+  "445": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->addUnit($newUnit)"
+    }
+  ],
+  "447": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "addUnit"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "($newUnit)"
+    }
+  ],
+  "455": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$newUnit"
+    }
+  ],
+  "456": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "newUnit"
+    }
+  ],
+  "463": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "474": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 75,
+      "candidate": "return expression _semicolon",
+      "candidate_text": "return $comp;"
+    }
+  ],
+  "491": [
+    {
+      "state_id": 263,
+      "candidate": "$ name",
+      "candidate_text": "$comp"
+    }
+  ],
+  "492": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "comp"
+    }
+  ],
+  "496": [
+    {
+      "state_id": 1479,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "502": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "504": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

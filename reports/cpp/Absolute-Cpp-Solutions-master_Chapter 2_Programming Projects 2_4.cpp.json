@@ -1,0 +1,597 @@
+{
+  "694": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "703": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "713": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "715": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "731": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "737": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "741": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "745": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "746": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "747": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    for(int i=3; i<=100; i++){\r\n        bool prime = true;\r\n        for(int j=2; j<i; j++){\r\n            if((i % j) == 0){\r\n                prime = false;\r\n                break;\r\n            }\r\n        }\r\n        if(prime == true){\r\n            cout << endl << i;\r\n        }\r\n    }\r\n    return 0;\r\n}"
+    }
+  ],
+  "754": [
+    {
+      "state_id": 4,
+      "candidate": "for ( _for_statement_body ) statement",
+      "candidate_text": "for(int i=3; i<=100; i++){"
+    }
+  ],
+  "757": [
+    {
+      "state_id": 10948,
+      "candidate": "( _for_statement_body ) statement",
+      "candidate_text": "(int i=3; i<=100; i++){"
+    }
+  ],
+  "758": [
+    {
+      "state_id": 124,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "762": [
+    {
+      "state_id": 6293,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 8152,
+      "candidate": "= expression",
+      "candidate_text": "=3"
+    }
+  ],
+  "764": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "3"
+    }
+  ],
+  "765": [
+    {
+      "state_id": 9752,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "767": [
+    {
+      "state_id": 280,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "768": [
+    {
+      "state_id": 6784,
+      "candidate": "<= expression",
+      "candidate_text": "<=100"
+    }
+  ],
+  "770": [
+    {
+      "state_id": 1630,
+      "candidate": "number_literal",
+      "candidate_text": "100"
+    }
+  ],
+  "773": [
+    {
+      "state_id": 6784,
+      "candidate": "; expression",
+      "candidate_text": "; i++"
+    }
+  ],
+  "775": [
+    {
+      "state_id": 1250,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "776": [
+    {
+      "state_id": 6793,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "778": [
+    {
+      "state_id": 10810,
+      "candidate": ") statement",
+      "candidate_text": "){"
+    }
+  ],
+  "779": [
+    {
+      "state_id": 196,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n        bool prime = true;\r\n        for(int j=2; j<i; j++){\r\n            if((i % j) == 0){\r\n                prime = false;\r\n                break;\r\n            }\r\n        }\r\n        if(prime == true){\r\n            cout << endl << i;\r\n        }\r\n    }"
+    }
+  ],
+  "790": [
+    {
+      "state_id": 38,
+      "candidate": "primitive_type",
+      "candidate_text": "bool"
+    }
+  ],
+  "795": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "prime"
+    }
+  ],
+  "801": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= true"
+    }
+  ],
+  "803": [
+    {
+      "state_id": 1243,
+      "candidate": "true",
+      "candidate_text": "true"
+    }
+  ],
+  "807": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "818": [
+    {
+      "state_id": 39,
+      "candidate": "for ( _for_statement_body ) statement",
+      "candidate_text": "for(int j=2; j<i; j++){"
+    }
+  ],
+  "821": [
+    {
+      "state_id": 10948,
+      "candidate": "( _for_statement_body ) statement",
+      "candidate_text": "(int j=2; j<i; j++){"
+    }
+  ],
+  "822": [
+    {
+      "state_id": 124,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "826": [
+    {
+      "state_id": 6293,
+      "candidate": "identifier",
+      "candidate_text": "j"
+    }
+  ],
+  "827": [
+    {
+      "state_id": 8152,
+      "candidate": "= expression",
+      "candidate_text": "=2"
+    }
+  ],
+  "828": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "2"
+    }
+  ],
+  "829": [
+    {
+      "state_id": 9752,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "831": [
+    {
+      "state_id": 280,
+      "candidate": "identifier",
+      "candidate_text": "j"
+    }
+  ],
+  "832": [
+    {
+      "state_id": 6784,
+      "candidate": "< expression",
+      "candidate_text": "<i"
+    }
+  ],
+  "833": [
+    {
+      "state_id": 1630,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "834": [
+    {
+      "state_id": 6784,
+      "candidate": "; expression",
+      "candidate_text": "; j++"
+    }
+  ],
+  "836": [
+    {
+      "state_id": 1250,
+      "candidate": "identifier",
+      "candidate_text": "j"
+    }
+  ],
+  "837": [
+    {
+      "state_id": 6793,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "839": [
+    {
+      "state_id": 10810,
+      "candidate": ") statement",
+      "candidate_text": "){"
+    }
+  ],
+  "840": [
+    {
+      "state_id": 196,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n            if((i % j) == 0){\r\n                prime = false;\r\n                break;\r\n            }\r\n        }"
+    }
+  ],
+  "855": [
+    {
+      "state_id": 38,
+      "candidate": "if condition_clause statement",
+      "candidate_text": "if((i % j) == 0){"
+    }
+  ],
+  "857": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "((i % j) == 0)"
+    }
+  ],
+  "858": [
+    {
+      "state_id": 128,
+      "candidate": "( expression )",
+      "candidate_text": "(i % j)"
+    }
+  ],
+  "859": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "861": [
+    {
+      "state_id": 4607,
+      "candidate": "% expression",
+      "candidate_text": "% j"
+    }
+  ],
+  "863": [
+    {
+      "state_id": 1271,
+      "candidate": "identifier",
+      "candidate_text": "j"
+    }
+  ],
+  "864": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "866": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== 0"
+    }
+  ],
+  "869": [
+    {
+      "state_id": 1838,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "870": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "871": [
+    {
+      "state_id": 199,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n                prime = false;\r\n                break;\r\n            }"
+    }
+  ],
+  "890": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "prime = false"
+    }
+  ],
+  "896": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= false"
+    }
+  ],
+  "898": [
+    {
+      "state_id": 1222,
+      "candidate": "false",
+      "candidate_text": "false"
+    }
+  ],
+  "903": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "922": [
+    {
+      "state_id": 39,
+      "candidate": "break ;",
+      "candidate_text": "break;"
+    }
+  ],
+  "927": [
+    {
+      "state_id": 10484,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "942": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "953": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "964": [
+    {
+      "state_id": 39,
+      "candidate": "if condition_clause statement",
+      "candidate_text": "if(prime == true){"
+    }
+  ],
+  "966": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(prime == true)"
+    }
+  ],
+  "967": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "prime"
+    }
+  ],
+  "973": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== true"
+    }
+  ],
+  "976": [
+    {
+      "state_id": 1838,
+      "candidate": "true",
+      "candidate_text": "true"
+    }
+  ],
+  "980": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "981": [
+    {
+      "state_id": 199,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n            cout << endl << i;\r\n        }"
+    }
+  ],
+  "996": [
+    {
+      "state_id": 38,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1001": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< endl"
+    }
+  ],
+  "1004": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "endl"
+    }
+  ],
+  "1009": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< i"
+    }
+  ],
+  "1012": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1013": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1024": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1031": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1038": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "1045": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1046": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1049": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

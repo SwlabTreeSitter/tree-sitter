@@ -2,7 +2,7 @@
 
 set -e
 
-ROOT="/home/hyeonjin/PL"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 TS_DIR="$ROOT/tree-sitter"
 EXE_NAME="TreeSitterCutFile.exe"
 

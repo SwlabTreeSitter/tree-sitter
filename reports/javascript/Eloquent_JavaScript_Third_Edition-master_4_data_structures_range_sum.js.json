@@ -1,0 +1,737 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "function identifier formal_parameters statement_block _automatic_semicolon",
+      "candidate_text": "function range(start, end, step = 1) {"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 1336,
+      "candidate": "identifier formal_parameters statement_block _automatic_semicolon",
+      "candidate_text": "range(start, end, step = 1) {"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 1675,
+      "candidate": "( pattern formal_parameters_repeat1 )",
+      "candidate_text": "(start, end, step = 1)"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "start"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 1370,
+      "candidate": ", pattern",
+      "candidate_text": ", end"
+    }
+  ],
+  "22": [
+    {
+      "state_id": 124,
+      "candidate": "identifier",
+      "candidate_text": "end"
+    }
+  ],
+  "25": [
+    {
+      "state_id": 1486,
+      "candidate": ", assignment_pattern",
+      "candidate_text": ", step = 1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "step"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 1474,
+      "candidate": "= expression",
+      "candidate_text": "= 1"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 319,
+      "candidate": "number",
+      "candidate_text": "1"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 1486,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 1672,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\tlet array = [];\n\tif (step >= 0) {\n\t\tfor (let i = start; i < end; i += step) array.push(i);\n\t} else {\n\t\tfor (let i = start; i > end; i += step) array.push(i);\n\t}\n\treturn array;\n}"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 23,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let array = [];"
+    }
+  ],
+  "44": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "array = []"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= []"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 273,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 111,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 22,
+      "candidate": "if parenthesized_expression statement else_clause",
+      "candidate_text": "if (step >= 0) {\n\t\tfor (let i = start; i < end; i += step) array.push(i);\n\t} else {"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 1668,
+      "candidate": "( expression )",
+      "candidate_text": "(step >= 0)"
+    }
+  ],
+  "61": [
+    {
+      "state_id": 195,
+      "candidate": "identifier",
+      "candidate_text": "step"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 857,
+      "candidate": ">= expression",
+      "candidate_text": ">= 0"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 250,
+      "candidate": "number",
+      "candidate_text": "0"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 857,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "72": [
+    {
+      "state_id": 57,
+      "candidate": "{ statement }",
+      "candidate_text": "{\n\t\tfor (let i = start; i < end; i += step) array.push(i);\n\t}"
+    }
+  ],
+  "76": [
+    {
+      "state_id": 2,
+      "candidate": "for ( lexical_declaration expression ; expression ) statement",
+      "candidate_text": "for (let i = start; i < end; i += step) array.push(i);"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 1498,
+      "candidate": "( lexical_declaration expression ; expression ) statement",
+      "candidate_text": "(let i = start; i < end; i += step) array.push(i);"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 112,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let i = start;"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 488,
+      "candidate": "identifier _initializer",
+      "candidate_text": "i = start"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 1202,
+      "candidate": "= expression",
+      "candidate_text": "= start"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "start"
+    }
+  ],
+  "94": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 141,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 863,
+      "candidate": "< expression",
+      "candidate_text": "< end"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 250,
+      "candidate": "identifier",
+      "candidate_text": "end"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 863,
+      "candidate": "; expression ) statement",
+      "candidate_text": "; i += step) array.push(i);"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 149,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 1139,
+      "candidate": "+= expression",
+      "candidate_text": "+= step"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 263,
+      "candidate": "identifier",
+      "candidate_text": "step"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 831,
+      "candidate": ") statement",
+      "candidate_text": ") array.push(i);"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 47,
+      "candidate": "identifier",
+      "candidate_text": "array"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".push"
+    }
+  ],
+  "122": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "push"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 823,
+      "candidate": "( expression )",
+      "candidate_text": "(i)"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 18,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 411,
+      "candidate": "else statement",
+      "candidate_text": "else {"
+    }
+  ],
+  "139": [
+    {
+      "state_id": 42,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n\t\tfor (let i = start; i > end; i += step) array.push(i);\n\t}"
+    }
+  ],
+  "143": [
+    {
+      "state_id": 2,
+      "candidate": "for ( lexical_declaration expression ; expression ) statement",
+      "candidate_text": "for (let i = start; i > end; i += step) array.push(i);"
+    }
+  ],
+  "147": [
+    {
+      "state_id": 1498,
+      "candidate": "( lexical_declaration expression ; expression ) statement",
+      "candidate_text": "(let i = start; i > end; i += step) array.push(i);"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 112,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let i = start;"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 488,
+      "candidate": "identifier _initializer",
+      "candidate_text": "i = start"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 1202,
+      "candidate": "= expression",
+      "candidate_text": "= start"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "start"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 141,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 863,
+      "candidate": "> expression",
+      "candidate_text": "> end"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 250,
+      "candidate": "identifier",
+      "candidate_text": "end"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 863,
+      "candidate": "; expression ) statement",
+      "candidate_text": "; i += step) array.push(i);"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 149,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 1139,
+      "candidate": "+= expression",
+      "candidate_text": "+= step"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 263,
+      "candidate": "identifier",
+      "candidate_text": "step"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 831,
+      "candidate": ") statement",
+      "candidate_text": ") array.push(i);"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 47,
+      "candidate": "identifier",
+      "candidate_text": "array"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".push"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "push"
+    }
+  ],
+  "193": [
+    {
+      "state_id": 823,
+      "candidate": "( expression )",
+      "candidate_text": "(i)"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 123,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 823,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 18,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 22,
+      "candidate": "return expression ;",
+      "candidate_text": "return array;"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 142,
+      "candidate": "identifier",
+      "candidate_text": "array"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 22,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 20,
+      "candidate": "function identifier formal_parameters statement_block _automatic_semicolon",
+      "candidate_text": "function sum(array) {"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 1336,
+      "candidate": "identifier formal_parameters statement_block _automatic_semicolon",
+      "candidate_text": "sum(array) {"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 1675,
+      "candidate": "( pattern )",
+      "candidate_text": "(array)"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 126,
+      "candidate": "identifier",
+      "candidate_text": "array"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 1370,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 1672,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n\tlet sum = array.reduce((a, b) => a + b);\n\treturn sum;\n}"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 23,
+      "candidate": "let variable_declarator ;",
+      "candidate_text": "let sum = array.reduce((a, b) => a + b);"
+    }
+  ],
+  "246": [
+    {
+      "state_id": 396,
+      "candidate": "identifier _initializer",
+      "candidate_text": "sum = array.reduce((a, b) => a + b)"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 1311,
+      "candidate": "= expression",
+      "candidate_text": "= array.reduce((a, b) => a + b)"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 273,
+      "candidate": "identifier",
+      "candidate_text": "array"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 686,
+      "candidate": ". identifier",
+      "candidate_text": ".reduce"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 1507,
+      "candidate": "identifier",
+      "candidate_text": "reduce"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 855,
+      "candidate": "( expression )",
+      "candidate_text": "((a, b) => a + b)"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 123,
+      "candidate": "( pattern formal_parameters_repeat1 )",
+      "candidate_text": "(a, b)"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 120,
+      "candidate": "identifier",
+      "candidate_text": "a"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 1370,
+      "candidate": ", pattern",
+      "candidate_text": ", b"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 124,
+      "candidate": "identifier",
+      "candidate_text": "b"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 1486,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 1763,
+      "candidate": "=> expression",
+      "candidate_text": "=> a + b"
+    }
+  ],
+  "275": [
+    {
+      "state_id": 169,
+      "candidate": "identifier",
+      "candidate_text": "a"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 654,
+      "candidate": "+ expression",
+      "candidate_text": "+ b"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 259,
+      "candidate": "identifier",
+      "candidate_text": "b"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 847,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "281": [
+    {
+      "state_id": 1385,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "284": [
+    {
+      "state_id": 22,
+      "candidate": "return expression ;",
+      "candidate_text": "return sum;"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 142,
+      "candidate": "identifier",
+      "candidate_text": "sum"
+    }
+  ],
+  "294": [
+    {
+      "state_id": 822,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "296": [
+    {
+      "state_id": 22,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ]
+}

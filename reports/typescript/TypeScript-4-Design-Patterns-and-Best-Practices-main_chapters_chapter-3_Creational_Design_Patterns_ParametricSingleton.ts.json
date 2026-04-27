@@ -1,0 +1,639 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "export declaration",
+      "candidate_text": "export class ParametricSingleton {"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 696,
+      "candidate": "class identifier class_body _automatic_semicolon",
+      "candidate_text": "class ParametricSingleton {"
+    }
+  ],
+  "13": [
+    {
+      "state_id": 5793,
+      "candidate": "identifier class_body _automatic_semicolon",
+      "candidate_text": "ParametricSingleton {"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 3441,
+      "candidate": "{ class_body_repeat1 }",
+      "candidate_text": "{\n  private param: string;\n  // Stores the singletons instances\n  private static instances: Map<string, ParametricSingleton>;\n  // Prevents creation of new instances\n  private constructor(param: string) {\n    this.param = param;\n  }\n  // Method to retrieve instance\n  static getInstance(param: string) {\n    if (!ParametricSingleton.instances.has(param)) {\n      ParametricSingleton.instances.set(param, new ParametricSingleton(param));\n    }\n    return ParametricSingleton.instances.get(param);\n  }\n}"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 1484,
+      "candidate": "private",
+      "candidate_text": "private"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 2736,
+      "candidate": "identifier",
+      "candidate_text": "param"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 3082,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 1110,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 5021,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 1492,
+      "candidate": "class_body_repeat1",
+      "candidate_text": "// Stores the singletons instances"
+    }
+  ],
+  "99": [
+    {
+      "state_id": 1492,
+      "candidate": "private",
+      "candidate_text": "private"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 2736,
+      "candidate": "static _property_name type_annotation",
+      "candidate_text": "static instances: Map<string, ParametricSingleton>"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 1968,
+      "candidate": "identifier",
+      "candidate_text": "instances"
+    }
+  ],
+  "123": [
+    {
+      "state_id": 3064,
+      "candidate": ": type",
+      "candidate_text": ": Map<string, ParametricSingleton>"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 1110,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "Map<string, ParametricSingleton>"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 3077,
+      "candidate": "< type implements_clause_repeat1 >",
+      "candidate_text": "<string, ParametricSingleton>"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 1001,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 3883,
+      "candidate": ", type",
+      "candidate_text": ", ParametricSingleton"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 983,
+      "candidate": "identifier",
+      "candidate_text": "ParametricSingleton"
+    }
+  ],
+  "156": [
+    {
+      "state_id": 4542,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 5021,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 1485,
+      "candidate": "class_body_repeat1",
+      "candidate_text": "// Prevents creation of new instances"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 1492,
+      "candidate": "private",
+      "candidate_text": "private"
+    }
+  ],
+  "209": [
+    {
+      "state_id": 2736,
+      "candidate": "identifier",
+      "candidate_text": "constructor"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 3082,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(param: string)"
+    }
+  ],
+  "221": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "param"
+    }
+  ],
+  "226": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 3848,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n    this.param = param;\n  }"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 29,
+      "candidate": "this",
+      "candidate_text": "this"
+    }
+  ],
+  "246": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".param"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "param"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 1362,
+      "candidate": "= expression",
+      "candidate_text": "= param"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 526,
+      "candidate": "identifier",
+      "candidate_text": "param"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 1492,
+      "candidate": "class_body_repeat1",
+      "candidate_text": "// Method to retrieve instance"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 1492,
+      "candidate": "static _property_name _call_signature statement_block",
+      "candidate_text": "static getInstance(param: string) {"
+    }
+  ],
+  "308": [
+    {
+      "state_id": 1725,
+      "candidate": "identifier",
+      "candidate_text": "getInstance"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 3082,
+      "candidate": "( required_parameter )",
+      "candidate_text": "(param: string)"
+    }
+  ],
+  "320": [
+    {
+      "state_id": 197,
+      "candidate": "identifier",
+      "candidate_text": "param"
+    }
+  ],
+  "325": [
+    {
+      "state_id": 3624,
+      "candidate": ": type",
+      "candidate_text": ": string"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 1006,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 4899,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 3848,
+      "candidate": "{ program_repeat1 } _automatic_semicolon",
+      "candidate_text": "{\n    if (!ParametricSingleton.instances.has(param)) {\n      ParametricSingleton.instances.set(param, new ParametricSingleton(param));\n    }\n    return ParametricSingleton.instances.get(param);\n  }"
+    }
+  ],
+  "341": [
+    {
+      "state_id": 29,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (!ParametricSingleton.instances.has(param)) {"
+    }
+  ],
+  "344": [
+    {
+      "state_id": 5445,
+      "candidate": "( expression )",
+      "candidate_text": "(!ParametricSingleton.instances.has(param))"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 335,
+      "candidate": "! expression",
+      "candidate_text": "!ParametricSingleton.instances.has(param)"
+    }
+  ],
+  "346": [
+    {
+      "state_id": 424,
+      "candidate": "identifier",
+      "candidate_text": "ParametricSingleton"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".instances"
+    }
+  ],
+  "366": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "instances"
+    }
+  ],
+  "375": [
+    {
+      "state_id": 1515,
+      "candidate": ". identifier",
+      "candidate_text": ".has"
+    }
+  ],
+  "376": [
+    {
+      "state_id": 5274,
+      "candidate": "identifier",
+      "candidate_text": "has"
+    }
+  ],
+  "379": [
+    {
+      "state_id": 1960,
+      "candidate": "( expression )",
+      "candidate_text": "(param)"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "param"
+    }
+  ],
+  "385": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 1864,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 70,
+      "candidate": "{ statement } _automatic_semicolon",
+      "candidate_text": "{\n      ParametricSingleton.instances.set(param, new ParametricSingleton(param));\n    }"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 4,
+      "candidate": "identifier",
+      "candidate_text": "ParametricSingleton"
+    }
+  ],
+  "415": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".instances"
+    }
+  ],
+  "416": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "instances"
+    }
+  ],
+  "425": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".set"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "set"
+    }
+  ],
+  "429": [
+    {
+      "state_id": 1902,
+      "candidate": "( expression array_repeat1 )",
+      "candidate_text": "(param, new ParametricSingleton(param))"
+    }
+  ],
+  "430": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "param"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 2208,
+      "candidate": ", expression",
+      "candidate_text": ", new ParametricSingleton(param)"
+    }
+  ],
+  "437": [
+    {
+      "state_id": 289,
+      "candidate": "new primary_expression arguments",
+      "candidate_text": "new ParametricSingleton(param)"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 108,
+      "candidate": "identifier",
+      "candidate_text": "ParametricSingleton"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 1501,
+      "candidate": "( expression )",
+      "candidate_text": "(param)"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 265,
+      "candidate": "identifier",
+      "candidate_text": "param"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 2142,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "467": [
+    {
+      "state_id": 4698,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "468": [
+    {
+      "state_id": 1902,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "474": [
+    {
+      "state_id": 14,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "480": [
+    {
+      "state_id": 27,
+      "candidate": "return expression ;",
+      "candidate_text": "return ParametricSingleton.instances.get(param);"
+    }
+  ],
+  "487": [
+    {
+      "state_id": 297,
+      "candidate": "identifier",
+      "candidate_text": "ParametricSingleton"
+    }
+  ],
+  "506": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".instances"
+    }
+  ],
+  "507": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "instances"
+    }
+  ],
+  "516": [
+    {
+      "state_id": 1810,
+      "candidate": ". identifier",
+      "candidate_text": ".get"
+    }
+  ],
+  "517": [
+    {
+      "state_id": 5404,
+      "candidate": "identifier",
+      "candidate_text": "get"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 1905,
+      "candidate": "( expression )",
+      "candidate_text": "(param)"
+    }
+  ],
+  "521": [
+    {
+      "state_id": 271,
+      "candidate": "identifier",
+      "candidate_text": "param"
+    }
+  ],
+  "526": [
+    {
+      "state_id": 2208,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "527": [
+    {
+      "state_id": 1905,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "531": [
+    {
+      "state_id": 27,
+      "candidate": "} _automatic_semicolon",
+      "candidate_text": "}"
+    }
+  ],
+  "533": [
+    {
+      "state_id": 1492,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "536": [
+    {
+      "state_id": 16,
+      "candidate": "export default expression ;",
+      "candidate_text": "export default ParametricSingleton;"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 696,
+      "candidate": "default expression ;",
+      "candidate_text": "default ParametricSingleton;"
+    }
+  ],
+  "551": [
+    {
+      "state_id": 180,
+      "candidate": "identifier",
+      "candidate_text": "ParametricSingleton"
+    }
+  ],
+  "570": [
+    {
+      "state_id": 2441,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

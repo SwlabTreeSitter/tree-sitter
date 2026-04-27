@@ -1,0 +1,555 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "require"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"benchmark\""
+    }
+  ],
+  "387": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "benchmark"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "398": [
+    {
+      "state_id": 346,
+      "candidate": "constant",
+      "candidate_text": "Benchmark"
+    }
+  ],
+  "407": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".bmbm"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "bmbm"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 11,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(6)"
+    }
+  ],
+  "413": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "6"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "416": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |x|\n  x.report(\"all\") do\n    str = File.read(\"/usr/share/dict/words\")\n    words = str.scan(/[-\\w']+/)\n  end\n  x.report(\"lines\") do\n    words = []\n    File.foreach(\"/usr/share/dict/words\") do |line|\n      words << line.chomp\n    end\n  end\nend"
+    }
+  ],
+  "419": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|x|"
+    }
+  ],
+  "420": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "425": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".report"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"all\")"
+    }
+  ],
+  "434": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"all\""
+    }
+  ],
+  "435": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "all"
+    }
+  ],
+  "438": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "439": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 2255,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n    str = File.read(\"/usr/share/dict/words\")\n    words = str.scan(/[-\\w']+/)\n  end"
+    }
+  ],
+  "448": [
+    {
+      "state_id": 170,
+      "candidate": "identifier",
+      "candidate_text": "str"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= File.read(\"/usr/share/dict/words\")"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".read"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "read"
+    }
+  ],
+  "463": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"/usr/share/dict/words\")"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"/usr/share/dict/words\""
+    }
+  ],
+  "465": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "/usr/share/dict/words"
+    }
+  ],
+  "486": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "487": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "493": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "words"
+    }
+  ],
+  "499": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= str.scan(/[-\\w']+/)"
+    }
+  ],
+  "501": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "str"
+    }
+  ],
+  "504": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".scan"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "scan"
+    }
+  ],
+  "509": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(/[-\\w']+/)"
+    }
+  ],
+  "510": [
+    {
+      "state_id": 428,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/[-\\w']+/"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 5111,
+      "candidate": "string_content",
+      "candidate_text": "[-"
+    }
+  ],
+  "513": [
+    {
+      "state_id": 5145,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\w"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 5145,
+      "candidate": "string_content",
+      "candidate_text": "']+"
+    }
+  ],
+  "518": [
+    {
+      "state_id": 5145,
+      "candidate": ")",
+      "candidate_text": "/"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "523": [
+    {
+      "state_id": 5833,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "529": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "x"
+    }
+  ],
+  "530": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".report"
+    }
+  ],
+  "531": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "report"
+    }
+  ],
+  "537": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"lines\")"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"lines\""
+    }
+  ],
+  "539": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "lines"
+    }
+  ],
+  "544": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "545": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 2255,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n    words = []\n    File.foreach(\"/usr/share/dict/words\") do |line|\n      words << line.chomp\n    end\n  end"
+    }
+  ],
+  "554": [
+    {
+      "state_id": 170,
+      "candidate": "identifier",
+      "candidate_text": "words"
+    }
+  ],
+  "560": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= []"
+    }
+  ],
+  "562": [
+    {
+      "state_id": 462,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 424,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "569": [
+    {
+      "state_id": 252,
+      "candidate": "constant",
+      "candidate_text": "File"
+    }
+  ],
+  "573": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".foreach"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "foreach"
+    }
+  ],
+  "581": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"/usr/share/dict/words\")"
+    }
+  ],
+  "582": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"/usr/share/dict/words\""
+    }
+  ],
+  "583": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "/usr/share/dict/words"
+    }
+  ],
+  "604": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "605": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "607": [
+    {
+      "state_id": 2255,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |line|\n      words << line.chomp\n    end"
+    }
+  ],
+  "610": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|line|"
+    }
+  ],
+  "611": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "line"
+    }
+  ],
+  "615": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "623": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "words"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 2812,
+      "candidate": "<< _arg",
+      "candidate_text": "<< line.chomp"
+    }
+  ],
+  "632": [
+    {
+      "state_id": 1219,
+      "candidate": "identifier",
+      "candidate_text": "line"
+    }
+  ],
+  "636": [
+    {
+      "state_id": 2501,
+      "candidate": ". identifier",
+      "candidate_text": ".chomp"
+    }
+  ],
+  "637": [
+    {
+      "state_id": 3133,
+      "candidate": "identifier",
+      "candidate_text": "chomp"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "653": [
+    {
+      "state_id": 5833,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "657": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

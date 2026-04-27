@@ -1,0 +1,604 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module Aaagmnr\n  class Runner"
+    }
+  ],
+  "385": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Aaagmnr\n  class Runner"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 218,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Runner\n    def initialize(argv)"
+    }
+  ],
+  "401": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Runner\n    def initialize(argv)"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 217,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(argv)"
+    }
+  ],
+  "416": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(argv)"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "argv"
+    }
+  ],
+  "431": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "439": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@options"
+    }
+  ],
+  "448": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= Options.new(argv)"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "Options"
+    }
+  ],
+  "457": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(argv)"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "argv"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "481": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def run"
+    }
+  ],
+  "485": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "run"
+    }
+  ],
+  "495": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "finder"
+    }
+  ],
+  "502": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= Finder.from_file(@options.dictionary)"
+    }
+  ],
+  "504": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "Finder"
+    }
+  ],
+  "510": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".from_file"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "from_file"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(@options.dictionary)"
+    }
+  ],
+  "521": [
+    {
+      "state_id": 428,
+      "candidate": "instance_variable",
+      "candidate_text": "@options"
+    }
+  ],
+  "529": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".dictionary"
+    }
+  ],
+  "530": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "dictionary"
+    }
+  ],
+  "540": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "548": [
+    {
+      "state_id": 252,
+      "candidate": "instance_variable",
+      "candidate_text": "@options"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".words_to_find"
+    }
+  ],
+  "557": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "words_to_find"
+    }
+  ],
+  "570": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".each"
+    }
+  ],
+  "571": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "each"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 4,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |word|\n        anagrams = finder.lookup(word)\n        if anagrams\n          puts \"Anagrams of #{word}: #{anagrams.join(\", \")}\"\n        else\n          puts \"No anagrams of #{word} in #{@options.dictionary}\"\n        end\n      end"
+    }
+  ],
+  "579": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|word|"
+    }
+  ],
+  "580": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "word"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "594": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "anagrams"
+    }
+  ],
+  "603": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= finder.lookup(word)"
+    }
+  ],
+  "605": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "finder"
+    }
+  ],
+  "611": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".lookup"
+    }
+  ],
+  "612": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "lookup"
+    }
+  ],
+  "618": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(word)"
+    }
+  ],
+  "619": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "word"
+    }
+  ],
+  "623": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 252,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if anagrams\n          puts \"Anagrams of #{word}: #{anagrams.join(\", \")}\"\n        else\n          puts \"No anagrams of #{word} in #{@options.dictionary}\"\n        end"
+    }
+  ],
+  "636": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "anagrams"
+    }
+  ],
+  "655": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "660": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Anagrams of #{word}: #{anagrams.join(\", \")}\""
+    }
+  ],
+  "661": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Anagrams of "
+    }
+  ],
+  "673": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{word}"
+    }
+  ],
+  "675": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "word"
+    }
+  ],
+  "679": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "680": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": ": "
+    }
+  ],
+  "682": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{anagrams.join(\", \")}"
+    }
+  ],
+  "684": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "anagrams"
+    }
+  ],
+  "692": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".join"
+    }
+  ],
+  "693": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "join"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\", \")"
+    }
+  ],
+  "698": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\", \""
+    }
+  ],
+  "699": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": ", "
+    }
+  ],
+  "701": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "702": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "703": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "704": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "714": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n          puts \"No anagrams of #{word} in #{@options.dictionary}\""
+    }
+  ],
+  "729": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"No anagrams of #{word} in #{@options.dictionary}\""
+    }
+  ],
+  "735": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "No anagrams of "
+    }
+  ],
+  "750": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{word}"
+    }
+  ],
+  "752": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "word"
+    }
+  ],
+  "756": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "757": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": " in "
+    }
+  ],
+  "761": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{@options.dictionary}"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 357,
+      "candidate": "instance_variable",
+      "candidate_text": "@options"
+    }
+  ],
+  "771": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".dictionary"
+    }
+  ],
+  "772": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "dictionary"
+    }
+  ],
+  "782": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "783": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "793": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "803": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "811": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "817": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "821": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

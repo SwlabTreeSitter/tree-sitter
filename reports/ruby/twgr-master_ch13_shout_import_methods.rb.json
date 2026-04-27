@@ -1,0 +1,394 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module Shout \n  def shout \n    self.upcase + \"!!!\" \n  end \nend"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Shout \n  def shout \n    self.upcase + \"!!!\" \n  end \nend"
+    }
+  ],
+  "16": [
+    {
+      "state_id": 218,
+      "candidate": "def _method_rest",
+      "candidate_text": "def shout "
+    }
+  ],
+  "20": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "shout"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 216,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".upcase"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "upcase"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2812,
+      "candidate": "+ _arg",
+      "candidate_text": "+ \"!!!\""
+    }
+  ],
+  "45": [
+    {
+      "state_id": 1174,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"!!!\""
+    }
+  ],
+  "46": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "!!!"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "54": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 346,
+      "candidate": "module constant _terminator body_statement end",
+      "candidate_text": "module ApplyShoutToString\n  refine String do\n    import_methods Shout\n  end\nend"
+    }
+  ],
+  "72": [
+    {
+      "state_id": 1978,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "ApplyShoutToString\n  refine String do\n    import_methods Shout\n  end\nend"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 218,
+      "candidate": "identifier",
+      "candidate_text": "refine"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 3,
+      "candidate": "constant",
+      "candidate_text": "String"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 4466,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n    import_methods Shout\n  end"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 179,
+      "candidate": "identifier",
+      "candidate_text": "import_methods"
+    }
+  ],
+  "129": [
+    {
+      "state_id": 3,
+      "candidate": "constant",
+      "candidate_text": "Shout"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 5656,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 5805,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 346,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Person \n  attr_accessor :name "
+    }
+  ],
+  "152": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Person \n  attr_accessor :name "
+    }
+  ],
+  "162": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "attr_accessor"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":name"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "using"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 3,
+      "candidate": "constant",
+      "candidate_text": "ApplyShoutToString"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def announce "
+    }
+  ],
+  "217": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "announce"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 216,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Announcing #{name.shout}\""
+    }
+  ],
+  "237": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Announcing "
+    }
+  ],
+  "248": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{name.shout}"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".shout"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "shout"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "266": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "david"
+    }
+  ],
+  "282": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= Person.new"
+    }
+  ],
+  "284": [
+    {
+      "state_id": 481,
+      "candidate": "constant",
+      "candidate_text": "Person"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "296": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "david"
+    }
+  ],
+  "301": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".name"
+    }
+  ],
+  "302": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "name"
+    }
+  ],
+  "307": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= \"David\""
+    }
+  ],
+  "309": [
+    {
+      "state_id": 481,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"David\""
+    }
+  ],
+  "310": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "David"
+    }
+  ],
+  "315": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "318": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "david"
+    }
+  ],
+  "323": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".announce"
+    }
+  ],
+  "324": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "announce"
+    }
+  ]
+}

@@ -1,0 +1,597 @@
+{
+  "598": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "607": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "617": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "619": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "625": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "638": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "641": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "645": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "649": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "650": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "651": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    int height_in_feet;\r\n    cout << \"Enter your height in feet: \";\r\n    cin >> height_in_feet;\r\n    int additional_inches;\r\n    cout << \"\\nEnter additional height: \";\r\n    cin >> additional_inches;\r\n    double weight;\r\n    if(height_in_feet >= 5){\r\n        weight = 110;\r\n        weight = weight + additional_inches * 5;\r\n    }\r\n    else{\r\n        cout << \"\\nAt least, the height has to be 5 feet.\";\r\n    }\r\n    cout << \"\\nYour ideal weight is: \" << weight;\r\n    return 0;\r\n}"
+    }
+  ],
+  "658": [
+    {
+      "state_id": 4,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "662": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "height_in_feet"
+    }
+  ],
+  "676": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "683": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "688": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"Enter your height in feet: \""
+    }
+  ],
+  "691": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"Enter your height in feet: \""
+    }
+  ],
+  "692": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "Enter your height in feet: \""
+    }
+  ],
+  "719": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "720": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "727": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "731": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> height_in_feet"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "height_in_feet"
+    }
+  ],
+  "748": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "755": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "759": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "additional_inches"
+    }
+  ],
+  "776": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "783": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "788": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter additional height: \""
+    }
+  ],
+  "791": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter additional height: \""
+    }
+  ],
+  "792": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter additional height: "
+    }
+  ],
+  "794": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter additional height: "
+    }
+  ],
+  "819": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "820": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "827": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "831": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> additional_inches"
+    }
+  ],
+  "834": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "additional_inches"
+    }
+  ],
+  "851": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "858": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "865": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "weight"
+    }
+  ],
+  "871": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "878": [
+    {
+      "state_id": 61,
+      "candidate": "if condition_clause statement else_clause",
+      "candidate_text": "if(height_in_feet >= 5){\r\n        weight = 110;\r\n        weight = weight + additional_inches * 5;\r\n    }\r\n    else{"
+    }
+  ],
+  "880": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(height_in_feet >= 5)"
+    }
+  ],
+  "881": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "height_in_feet"
+    }
+  ],
+  "896": [
+    {
+      "state_id": 6522,
+      "candidate": ">= expression",
+      "candidate_text": ">= 5"
+    }
+  ],
+  "899": [
+    {
+      "state_id": 1630,
+      "candidate": "number_literal",
+      "candidate_text": "5"
+    }
+  ],
+  "900": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "901": [
+    {
+      "state_id": 199,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n        weight = 110;\r\n        weight = weight + additional_inches * 5;\r\n    }"
+    }
+  ],
+  "912": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "weight = 110"
+    }
+  ],
+  "919": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= 110"
+    }
+  ],
+  "921": [
+    {
+      "state_id": 1222,
+      "candidate": "number_literal",
+      "candidate_text": "110"
+    }
+  ],
+  "924": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "935": [
+    {
+      "state_id": 39,
+      "candidate": "identifier = expression",
+      "candidate_text": "weight = weight + additional_inches * 5"
+    }
+  ],
+  "942": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= weight + additional_inches * 5"
+    }
+  ],
+  "944": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "weight"
+    }
+  ],
+  "951": [
+    {
+      "state_id": 6387,
+      "candidate": "+ expression",
+      "candidate_text": "+ additional_inches * 5"
+    }
+  ],
+  "953": [
+    {
+      "state_id": 1592,
+      "candidate": "identifier",
+      "candidate_text": "additional_inches"
+    }
+  ],
+  "971": [
+    {
+      "state_id": 6391,
+      "candidate": "* expression",
+      "candidate_text": "* 5"
+    }
+  ],
+  "973": [
+    {
+      "state_id": 1608,
+      "candidate": "number_literal",
+      "candidate_text": "5"
+    }
+  ],
+  "974": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "981": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "988": [
+    {
+      "state_id": 543,
+      "candidate": "else statement",
+      "candidate_text": "else{"
+    }
+  ],
+  "992": [
+    {
+      "state_id": 187,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n        cout << \"\\nAt least, the height has to be 5 feet.\";\r\n    }"
+    }
+  ],
+  "1003": [
+    {
+      "state_id": 38,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1008": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nAt least, the height has to be 5 feet.\""
+    }
+  ],
+  "1011": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nAt least, the height has to be 5 feet.\""
+    }
+  ],
+  "1012": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nAt least, the height has to be 5 feet."
+    }
+  ],
+  "1014": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "At least, the height has to be 5 feet."
+    }
+  ],
+  "1052": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1053": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1060": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1067": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1072": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nYour ideal weight is: \""
+    }
+  ],
+  "1075": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nYour ideal weight is: \""
+    }
+  ],
+  "1076": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nYour ideal weight is: "
+    }
+  ],
+  "1078": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Your ideal weight is: "
+    }
+  ],
+  "1100": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1102": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< weight"
+    }
+  ],
+  "1105": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "weight"
+    }
+  ],
+  "1111": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1118": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "1125": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1126": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1129": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch10\\batch07;"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch10\\batch07"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch10"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch10"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch07"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch07"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "83": [
+    {
+      "state_id": 157,
+      "candidate": "class name base_clause declaration_list",
+      "candidate_text": "class MainProcess extends ProcessRequest\n{"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 3194,
+      "candidate": "name base_clause declaration_list",
+      "candidate_text": "MainProcess extends ProcessRequest\n{"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 1965,
+      "candidate": "extends _name",
+      "candidate_text": "extends ProcessRequest"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 1799,
+      "candidate": "name",
+      "candidate_text": "ProcessRequest"
+    }
+  ],
+  "124": [
+    {
+      "state_id": 2262,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n    public function process(RequestHelper $req): void\n    {\n        print __CLASS__ . \": doing something useful with request\\n\";\n    }\n}"
+    }
+  ],
+  "130": [
+    {
+      "state_id": 1617,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function process(RequestHelper $req): void\n    {"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "process(RequestHelper $req): void\n    {"
+    }
+  ],
+  "153": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter )",
+      "candidate_text": "(RequestHelper $req)"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 969,
+      "candidate": "name",
+      "candidate_text": "RequestHelper"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$req"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "req"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 2434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 1590,
+      "candidate": "primitive_type_token6",
+      "candidate_text": "void"
+    }
+  ],
+  "184": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        print __CLASS__ . \": doing something useful with request\\n\";\n    }"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 88,
+      "candidate": "print expression",
+      "candidate_text": "print __CLASS__ . \": doing something useful with request\\n\""
+    }
+  ],
+  "200": [
+    {
+      "state_id": 449,
+      "candidate": "name",
+      "candidate_text": "__CLASS__"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 1358,
+      "candidate": ". expression",
+      "candidate_text": ". \": doing something useful with request\\n\""
+    }
+  ],
+  "212": [
+    {
+      "state_id": 338,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\": doing something useful with request\\n\""
+    }
+  ],
+  "213": [
+    {
+      "state_id": 1721,
+      "candidate": "string_content",
+      "candidate_text": ": doing something useful with request"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 1730,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 1730,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "253": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "259": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

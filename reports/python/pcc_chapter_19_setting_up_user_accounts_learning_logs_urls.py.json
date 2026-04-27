@@ -1,0 +1,905 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"\"\"Defines URL patterns for learning_logs.\"\"\""
+    }
+  ],
+  "3": [
+    {
+      "state_id": 1696,
+      "candidate": "_string_content",
+      "candidate_text": "Defines URL patterns for learning_logs."
+    }
+  ],
+  "42": [
+    {
+      "state_id": 1713,
+      "candidate": "string_end",
+      "candidate_text": "\"\"\""
+    }
+  ],
+  "47": [
+    {
+      "state_id": 69,
+      "candidate": "from dotted_name import _import_list",
+      "candidate_text": "from django.urls import path"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 1835,
+      "candidate": "identifier dotted_name_repeat1",
+      "candidate_text": "django.urls"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 1783,
+      "candidate": ". identifier",
+      "candidate_text": ".urls"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 2627,
+      "candidate": "identifier",
+      "candidate_text": "urls"
+    }
+  ],
+  "64": [
+    {
+      "state_id": 2613,
+      "candidate": "import _import_list",
+      "candidate_text": "import path"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 1879,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 69,
+      "candidate": "from relative_import import _import_list",
+      "candidate_text": "from . import views"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 1835,
+      "candidate": ".",
+      "candidate_text": "."
+    }
+  ],
+  "84": [
+    {
+      "state_id": 2613,
+      "candidate": "import _import_list",
+      "candidate_text": "import views"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 1879,
+      "candidate": "identifier",
+      "candidate_text": "views"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "app_name"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= 'learning_logs'"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 185,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'learning_logs'"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 1696,
+      "candidate": "_string_content",
+      "candidate_text": "learning_logs"
+    }
+  ],
+  "123": [
+    {
+      "state_id": 1713,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "urlpatterns"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= ["
+    }
+  ],
+  "139": [
+    {
+      "state_id": 185,
+      "candidate": "[ _collection_elements ]",
+      "candidate_text": "[\n    # Home page\n    path('', views.index, name='index'),\n    # Page that shows all topics.\n    path('topics/', views.topics, name='topics'),\n    # Detail page for a single topic.\n    path('topics/<int:topic_id>/', views.topic, name='topic'),\n    # Page for adding a new topic.\n    path('new_topic/', views.new_topic, name='new_topic'),\n    # Page for adding a new entry.\n    path('new_entry/<int:topic_id>/', views.new_entry, name='new_entry'),\n    # Page for editing an entry.\n    path('edit_entry/<int:entry_id>/', views.edit_entry, name="
+    }
+  ],
+  "145": [
+    {
+      "state_id": 217,
+      "candidate": "_collection_elements ]",
+      "candidate_text": "# Home page\n    path('', views.index, name='index'),\n    # Page that shows all topics.\n    path('topics/', views.topics, name='topics'),\n    # Detail page for a single topic.\n    path('topics/<int:topic_id>/', views.topic, name='topic'),\n    # Page for adding a new topic.\n    path('new_topic/', views.new_topic, name='new_topic'),\n    # Page for adding a new entry.\n    path('new_entry/<int:topic_id>/', views.new_entry, name='new_entry'),\n    # Page for editing an entry.\n    path('edit_entry/<int:entry_id>/', views.edit_entry, name="
+    }
+  ],
+  "161": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 869,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "('', views.index, name='index')"
+    }
+  ],
+  "166": [
+    {
+      "state_id": 251,
+      "candidate": "string_start string_end",
+      "candidate_text": "''"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 1677,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 1690,
+      "candidate": ", expression",
+      "candidate_text": ", views.index"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 272,
+      "candidate": "identifier",
+      "candidate_text": "views"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 964,
+      "candidate": ". identifier",
+      "candidate_text": ".index"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 2609,
+      "candidate": "identifier",
+      "candidate_text": "index"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 2308,
+      "candidate": ", keyword_argument",
+      "candidate_text": ", name='index'"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 274,
+      "candidate": "identifier = expression",
+      "candidate_text": "name='index'"
+    }
+  ],
+  "187": [
+    {
+      "state_id": 1345,
+      "candidate": "= expression",
+      "candidate_text": "='index'"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 510,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'index'"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "index"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 2308,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 1683,
+      "candidate": ", expression",
+      "candidate_text": ",\n    # Page that shows all topics."
+    }
+  ],
+  "202": [
+    {
+      "state_id": 322,
+      "candidate": "expression",
+      "candidate_text": "# Page that shows all topics."
+    }
+  ],
+  "236": [
+    {
+      "state_id": 322,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 976,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "('topics/', views.topics, name='topics')"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 258,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'topics/'"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "topics/"
+    }
+  ],
+  "249": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 1709,
+      "candidate": ", expression",
+      "candidate_text": ", views.topics"
+    }
+  ],
+  "252": [
+    {
+      "state_id": 307,
+      "candidate": "identifier",
+      "candidate_text": "views"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 964,
+      "candidate": ". identifier",
+      "candidate_text": ".topics"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 2609,
+      "candidate": "identifier",
+      "candidate_text": "topics"
+    }
+  ],
+  "264": [
+    {
+      "state_id": 2420,
+      "candidate": ", keyword_argument",
+      "candidate_text": ", name='topics'"
+    }
+  ],
+  "266": [
+    {
+      "state_id": 309,
+      "candidate": "identifier = expression",
+      "candidate_text": "name='topics'"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 1345,
+      "candidate": "= expression",
+      "candidate_text": "='topics'"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 510,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'topics'"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "topics"
+    }
+  ],
+  "278": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "279": [
+    {
+      "state_id": 2420,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "280": [
+    {
+      "state_id": 2451,
+      "candidate": ", expression",
+      "candidate_text": ",\n    # Detail page for a single topic."
+    }
+  ],
+  "286": [
+    {
+      "state_id": 332,
+      "candidate": "expression",
+      "candidate_text": "# Detail page for a single topic."
+    }
+  ],
+  "324": [
+    {
+      "state_id": 332,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "328": [
+    {
+      "state_id": 976,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "('topics/<int:topic_id>/', views.topic, name='topic')"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 258,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'topics/<int:topic_id>/'"
+    }
+  ],
+  "330": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "topics/<int:topic_id>/"
+    }
+  ],
+  "352": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 1709,
+      "candidate": ", expression",
+      "candidate_text": ", views.topic"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 307,
+      "candidate": "identifier",
+      "candidate_text": "views"
+    }
+  ],
+  "360": [
+    {
+      "state_id": 964,
+      "candidate": ". identifier",
+      "candidate_text": ".topic"
+    }
+  ],
+  "361": [
+    {
+      "state_id": 2609,
+      "candidate": "identifier",
+      "candidate_text": "topic"
+    }
+  ],
+  "366": [
+    {
+      "state_id": 2420,
+      "candidate": ", keyword_argument",
+      "candidate_text": ", name='topic'"
+    }
+  ],
+  "368": [
+    {
+      "state_id": 309,
+      "candidate": "identifier = expression",
+      "candidate_text": "name='topic'"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 1345,
+      "candidate": "= expression",
+      "candidate_text": "='topic'"
+    }
+  ],
+  "373": [
+    {
+      "state_id": 510,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'topic'"
+    }
+  ],
+  "374": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "topic"
+    }
+  ],
+  "379": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "380": [
+    {
+      "state_id": 2420,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 2451,
+      "candidate": ", expression",
+      "candidate_text": ",\n    # Page for adding a new topic."
+    }
+  ],
+  "387": [
+    {
+      "state_id": 332,
+      "candidate": "expression",
+      "candidate_text": "# Page for adding a new topic."
+    }
+  ],
+  "422": [
+    {
+      "state_id": 332,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "426": [
+    {
+      "state_id": 976,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "('new_topic/', views.new_topic, name='new_topic')"
+    }
+  ],
+  "427": [
+    {
+      "state_id": 258,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'new_topic/'"
+    }
+  ],
+  "428": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "new_topic/"
+    }
+  ],
+  "438": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "439": [
+    {
+      "state_id": 1709,
+      "candidate": ", expression",
+      "candidate_text": ", views.new_topic"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 307,
+      "candidate": "identifier",
+      "candidate_text": "views"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 964,
+      "candidate": ". identifier",
+      "candidate_text": ".new_topic"
+    }
+  ],
+  "447": [
+    {
+      "state_id": 2609,
+      "candidate": "identifier",
+      "candidate_text": "new_topic"
+    }
+  ],
+  "456": [
+    {
+      "state_id": 2420,
+      "candidate": ", keyword_argument",
+      "candidate_text": ", name='new_topic'"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 309,
+      "candidate": "identifier = expression",
+      "candidate_text": "name='new_topic'"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 1345,
+      "candidate": "= expression",
+      "candidate_text": "='new_topic'"
+    }
+  ],
+  "463": [
+    {
+      "state_id": 510,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'new_topic'"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "new_topic"
+    }
+  ],
+  "473": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "474": [
+    {
+      "state_id": 2420,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "475": [
+    {
+      "state_id": 2451,
+      "candidate": ", expression",
+      "candidate_text": ",\n    # Page for adding a new entry."
+    }
+  ],
+  "481": [
+    {
+      "state_id": 332,
+      "candidate": "expression",
+      "candidate_text": "# Page for adding a new entry."
+    }
+  ],
+  "516": [
+    {
+      "state_id": 332,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 976,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "('new_entry/<int:topic_id>/', views.new_entry, name='new_entry')"
+    }
+  ],
+  "521": [
+    {
+      "state_id": 258,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'new_entry/<int:topic_id>/'"
+    }
+  ],
+  "522": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "new_entry/<int:topic_id>/"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "548": [
+    {
+      "state_id": 1709,
+      "candidate": ", expression",
+      "candidate_text": ", views.new_entry"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 307,
+      "candidate": "identifier",
+      "candidate_text": "views"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 964,
+      "candidate": ". identifier",
+      "candidate_text": ".new_entry"
+    }
+  ],
+  "556": [
+    {
+      "state_id": 2609,
+      "candidate": "identifier",
+      "candidate_text": "new_entry"
+    }
+  ],
+  "565": [
+    {
+      "state_id": 2420,
+      "candidate": ", keyword_argument",
+      "candidate_text": ", name='new_entry'"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 309,
+      "candidate": "identifier = expression",
+      "candidate_text": "name='new_entry'"
+    }
+  ],
+  "571": [
+    {
+      "state_id": 1345,
+      "candidate": "= expression",
+      "candidate_text": "='new_entry'"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 510,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'new_entry'"
+    }
+  ],
+  "573": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "new_entry"
+    }
+  ],
+  "582": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 2420,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 2451,
+      "candidate": ", expression",
+      "candidate_text": ",\n    # Page for editing an entry."
+    }
+  ],
+  "590": [
+    {
+      "state_id": 332,
+      "candidate": "expression",
+      "candidate_text": "# Page for editing an entry."
+    }
+  ],
+  "623": [
+    {
+      "state_id": 332,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 976,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry')"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 258,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'edit_entry/<int:entry_id>/'"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "edit_entry/<int:entry_id>/"
+    }
+  ],
+  "655": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "656": [
+    {
+      "state_id": 1709,
+      "candidate": ", expression",
+      "candidate_text": ", views.edit_entry"
+    }
+  ],
+  "658": [
+    {
+      "state_id": 307,
+      "candidate": "identifier",
+      "candidate_text": "views"
+    }
+  ],
+  "663": [
+    {
+      "state_id": 964,
+      "candidate": ". identifier",
+      "candidate_text": ".edit_entry"
+    }
+  ],
+  "664": [
+    {
+      "state_id": 2609,
+      "candidate": "identifier",
+      "candidate_text": "edit_entry"
+    }
+  ],
+  "674": [
+    {
+      "state_id": 2420,
+      "candidate": ", keyword_argument",
+      "candidate_text": ", name='edit_entry'"
+    }
+  ],
+  "676": [
+    {
+      "state_id": 309,
+      "candidate": "identifier = expression",
+      "candidate_text": "name='edit_entry'"
+    }
+  ],
+  "680": [
+    {
+      "state_id": 1345,
+      "candidate": "= expression",
+      "candidate_text": "='edit_entry'"
+    }
+  ],
+  "681": [
+    {
+      "state_id": 510,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'edit_entry'"
+    }
+  ],
+  "682": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "edit_entry"
+    }
+  ],
+  "692": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "693": [
+    {
+      "state_id": 2420,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "694": [
+    {
+      "state_id": 2451,
+      "candidate": ",",
+      "candidate_text": ","
+    }
+  ],
+  "696": [
+    {
+      "state_id": 2593,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ]
+}

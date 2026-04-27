@@ -1,0 +1,513 @@
+{
+  "2": [
+    {
+      "state_id": 1,
+      "candidate": "def _variable . _method_rest",
+      "candidate_text": "def Person.method_missing(m, *args)"
+    }
+  ],
+  "6": [
+    {
+      "state_id": 2301,
+      "candidate": "constant",
+      "candidate_text": "Person"
+    }
+  ],
+  "12": [
+    {
+      "state_id": 5604,
+      "candidate": ". _method_rest",
+      "candidate_text": ".method_missing(m, *args)"
+    }
+  ],
+  "13": [
+    {
+      "state_id": 2597,
+      "candidate": "identifier",
+      "candidate_text": "method_missing"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 4540,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(m, *args)"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", *args"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 4622,
+      "candidate": "* identifier",
+      "candidate_text": "*args"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 4759,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "36": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 238,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if m.start_with?(\"all_with_\")\n      attr = m[9..-1]\n      if Person.public_method_defined?(attr)\n        people.find_all do |person|\n          person.send(attr).include?(args[0])\n        end\n      else\n        raise ArgumentError, \"Can't find #{attr}\"\n      end\n    else\n      super\n    end"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 406,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "46": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".start_with?"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "start_with?"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"all_with_\")"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"all_with_\""
+    }
+  ],
+  "60": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "all_with_"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "70": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "attr"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= m[9..-1]"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "86": [
+    {
+      "state_id": 2552,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[9..-1]"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 431,
+      "candidate": "integer",
+      "candidate_text": "9"
+    }
+  ],
+  "88": [
+    {
+      "state_id": 3995,
+      "candidate": ".. _arg",
+      "candidate_text": "..-1"
+    }
+  ],
+  "90": [
+    {
+      "state_id": 376,
+      "candidate": "- _arg",
+      "candidate_text": "-1"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 1376,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "92": [
+    {
+      "state_id": 5683,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 252,
+      "candidate": "if _statement then else end",
+      "candidate_text": "if Person.public_method_defined?(attr)\n        people.find_all do |person|\n          person.send(attr).include?(args[0])\n        end\n      else\n        raise ArgumentError, \"Can't find #{attr}\"\n      end"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 406,
+      "candidate": "constant",
+      "candidate_text": "Person"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".public_method_defined?"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "public_method_defined?"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(attr)"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "attr"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "147": [
+    {
+      "state_id": 264,
+      "candidate": "identifier",
+      "candidate_text": "people"
+    }
+  ],
+  "153": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".find_all"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "find_all"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 4,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |person|\n          person.send(attr).include?(args[0])\n        end"
+    }
+  ],
+  "166": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|person|"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "person"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "185": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "person"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".send"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "send"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(attr)"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "attr"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 2552,
+      "candidate": ". _function_identifier",
+      "candidate_text": ".include?"
+    }
+  ],
+  "203": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier_suffix_token1",
+      "candidate_text": "include?"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(args[0])"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "args"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 3515,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 440,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 5848,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n        raise ArgumentError, \"Can't find #{attr}\""
+    }
+  ],
+  "252": [
+    {
+      "state_id": 289,
+      "candidate": "identifier",
+      "candidate_text": "raise"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 3,
+      "candidate": "constant",
+      "candidate_text": "ArgumentError"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 4522,
+      "candidate": ", _argument",
+      "candidate_text": ", \"Can't find #{attr}\""
+    }
+  ],
+  "273": [
+    {
+      "state_id": 451,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Can't find #{attr}\""
+    }
+  ],
+  "274": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Can't find "
+    }
+  ],
+  "285": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{attr}"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "attr"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "292": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "300": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "308": [
+    {
+      "state_id": 5300,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n      super"
+    }
+  ],
+  "319": [
+    {
+      "state_id": 289,
+      "candidate": "super",
+      "candidate_text": "super"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 5702,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "339": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "end"
+    }
+  ]
+}

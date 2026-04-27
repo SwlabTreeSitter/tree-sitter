@@ -1,0 +1,394 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "require"
+    }
+  ],
+  "8": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "'minitest/autorun'"
+    }
+  ],
+  "9": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "minitest/autorun"
+    }
+  ],
+  "25": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "'"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "require_relative"
+    }
+  ],
+  "44": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "'cards'"
+    }
+  ],
+  "45": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "cards"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "'"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 346,
+      "candidate": "class constant superclass _terminator body_statement end",
+      "candidate_text": "class CardTest < Minitest::Test\n  def setup\n    @deck = PlayingCards::Deck.new\n  end\n  def test_deal_one\n    @deck.deal\n    assert_equal(51, @deck.size)\n  end\n  def test_deal_many\n    @deck.deal(5)\n    assert_equal(47, @deck.size)\n  end\nend"
+    }
+  ],
+  "59": [
+    {
+      "state_id": 1975,
+      "candidate": "constant superclass _terminator body_statement end",
+      "candidate_text": "CardTest < Minitest::Test\n  def setup\n    @deck = PlayingCards::Deck.new\n  end\n  def test_deal_one\n    @deck.deal\n    assert_equal(51, @deck.size)\n  end\n  def test_deal_many\n    @deck.deal(5)\n    assert_equal(47, @deck.size)\n  end\nend"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 125,
+      "candidate": "< _expression",
+      "candidate_text": "< Minitest::Test"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 540,
+      "candidate": "constant",
+      "candidate_text": "Minitest"
+    }
+  ],
+  "78": [
+    {
+      "state_id": 3417,
+      "candidate": ":: constant",
+      "candidate_text": "::Test"
+    }
+  ],
+  "80": [
+    {
+      "state_id": 3135,
+      "candidate": "constant",
+      "candidate_text": "Test"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 240,
+      "candidate": "def _method_rest",
+      "candidate_text": "def setup"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "setup"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@deck"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= PlayingCards::Deck.new"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "PlayingCards"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 2552,
+      "candidate": ":: constant",
+      "candidate_text": "::Deck"
+    }
+  ],
+  "123": [
+    {
+      "state_id": 3164,
+      "candidate": "constant",
+      "candidate_text": "Deck"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def test_deal_one"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "test_deal_one"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@deck"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".deal"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "deal"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "assert_equal"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(51, @deck.size)"
+    }
+  ],
+  "190": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "51"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", @deck.size"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 432,
+      "candidate": "instance_variable",
+      "candidate_text": "@deck"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".size"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def test_deal_many"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "test_deal_many"
+    }
+  ],
+  "237": [
+    {
+      "state_id": 216,
+      "candidate": "instance_variable",
+      "candidate_text": "@deck"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".deal"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "deal"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(5)"
+    }
+  ],
+  "248": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "5"
+    }
+  ],
+  "249": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "assert_equal"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(47, @deck.size)"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "47"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", @deck.size"
+    }
+  ],
+  "272": [
+    {
+      "state_id": 432,
+      "candidate": "instance_variable",
+      "candidate_text": "@deck"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".size"
+    }
+  ],
+  "278": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "282": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 5785,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 5846,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

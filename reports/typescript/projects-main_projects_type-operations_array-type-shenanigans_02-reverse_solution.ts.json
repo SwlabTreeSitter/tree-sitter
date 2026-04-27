@@ -1,0 +1,240 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "export declaration",
+      "candidate_text": "export type Reverse<T extends any[]> = T extends [infer First, ...infer Rest]"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 696,
+      "candidate": "type identifier type_parameters = type ;",
+      "candidate_text": "type Reverse<T extends any[]> = T extends [infer First, ...infer Rest]\n\t? [...Reverse<Rest>, First]\n\t: T;"
+    }
+  ],
+  "12": [
+    {
+      "state_id": 4797,
+      "candidate": "identifier type_parameters = type ;",
+      "candidate_text": "Reverse<T extends any[]> = T extends [infer First, ...infer Rest]\n\t? [...Reverse<Rest>, First]\n\t: T;"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 5005,
+      "candidate": "< type_parameter >",
+      "candidate_text": "<T extends any[]>"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 4996,
+      "candidate": "identifier constraint",
+      "candidate_text": "T extends any[]"
+    }
+  ],
+  "22": [
+    {
+      "state_id": 3526,
+      "candidate": "extends type",
+      "candidate_text": "extends any[]"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 1056,
+      "candidate": "any",
+      "candidate_text": "any"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "35": [
+    {
+      "state_id": 4908,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 5614,
+      "candidate": "= type ;",
+      "candidate_text": "= T extends [infer First, ...infer Rest]\n\t? [...Reverse<Rest>, First]\n\t: T;"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 1115,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "41": [
+    {
+      "state_id": 4202,
+      "candidate": "extends type ? type : type",
+      "candidate_text": "extends [infer First, ...infer Rest]\n\t? [...Reverse<Rest>, First]\n\t: T"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 1146,
+      "candidate": "[ _tuple_type_member tuple_type_repeat1 ]",
+      "candidate_text": "[infer First, ...infer Rest]"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 805,
+      "candidate": "infer identifier",
+      "candidate_text": "infer First"
+    }
+  ],
+  "56": [
+    {
+      "state_id": 5843,
+      "candidate": "identifier",
+      "candidate_text": "First"
+    }
+  ],
+  "61": [
+    {
+      "state_id": 4568,
+      "candidate": ", rest_type",
+      "candidate_text": ", ...infer Rest"
+    }
+  ],
+  "63": [
+    {
+      "state_id": 848,
+      "candidate": "... type",
+      "candidate_text": "...infer Rest"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 159,
+      "candidate": "infer identifier",
+      "candidate_text": "infer Rest"
+    }
+  ],
+  "72": [
+    {
+      "state_id": 5818,
+      "candidate": "identifier",
+      "candidate_text": "Rest"
+    }
+  ],
+  "76": [
+    {
+      "state_id": 4649,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 4489,
+      "candidate": "? type : type",
+      "candidate_text": "? [...Reverse<Rest>, First]\n\t: T"
+    }
+  ],
+  "81": [
+    {
+      "state_id": 1071,
+      "candidate": "[ rest_type tuple_type_repeat1 ]",
+      "candidate_text": "[...Reverse<Rest>, First]"
+    }
+  ],
+  "82": [
+    {
+      "state_id": 805,
+      "candidate": "... type",
+      "candidate_text": "...Reverse<Rest>"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 159,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "Reverse<Rest>"
+    }
+  ],
+  "92": [
+    {
+      "state_id": 1280,
+      "candidate": "< type >",
+      "candidate_text": "<Rest>"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "Rest"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 3775,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "98": [
+    {
+      "state_id": 4568,
+      "candidate": ", _tuple_type_member",
+      "candidate_text": ", First"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 848,
+      "candidate": "identifier",
+      "candidate_text": "First"
+    }
+  ],
+  "105": [
+    {
+      "state_id": 4649,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "108": [
+    {
+      "state_id": 4437,
+      "candidate": ": type",
+      "candidate_text": ": T"
+    }
+  ],
+  "110": [
+    {
+      "state_id": 1062,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "111": [
+    {
+      "state_id": 4202,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

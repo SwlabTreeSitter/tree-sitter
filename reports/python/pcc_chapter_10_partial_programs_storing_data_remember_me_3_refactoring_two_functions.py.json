@@ -1,0 +1,837 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "from dotted_name import _import_list",
+      "candidate_text": "from pathlib import Path"
+    }
+  ],
+  "5": [
+    {
+      "state_id": 1835,
+      "candidate": "identifier",
+      "candidate_text": "pathlib"
+    }
+  ],
+  "13": [
+    {
+      "state_id": 2613,
+      "candidate": "import _import_list",
+      "candidate_text": "import Path"
+    }
+  ],
+  "20": [
+    {
+      "state_id": 1879,
+      "candidate": "identifier",
+      "candidate_text": "Path"
+    }
+  ],
+  "25": [
+    {
+      "state_id": 69,
+      "candidate": "import _import_list",
+      "candidate_text": "import json"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 2144,
+      "candidate": "identifier",
+      "candidate_text": "json"
+    }
+  ],
+  "39": [
+    {
+      "state_id": 69,
+      "candidate": "def identifier parameters : _indent block",
+      "candidate_text": "def get_stored_username(path):\n    \"\"\"Get stored username if available.\"\"\""
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2623,
+      "candidate": "identifier parameters : _indent block",
+      "candidate_text": "get_stored_username(path):\n    \"\"\"Get stored username if available.\"\"\""
+    }
+  ],
+  "62": [
+    {
+      "state_id": 2201,
+      "candidate": "( _parameters )",
+      "candidate_text": "(path)"
+    }
+  ],
+  "63": [
+    {
+      "state_id": 1649,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 2610,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "68": [
+    {
+      "state_id": 2519,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n    \"\"\"Get stored username if available.\"\"\""
+    }
+  ],
+  "74": [
+    {
+      "state_id": 92,
+      "candidate": "_indent block",
+      "candidate_text": "\"\"\"Get stored username if available.\"\"\""
+    },
+    {
+      "state_id": 9,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"\"\"Get stored username if available.\"\"\""
+    }
+  ],
+  "77": [
+    {
+      "state_id": 1696,
+      "candidate": "_string_content",
+      "candidate_text": "Get stored username if available."
+    }
+  ],
+  "110": [
+    {
+      "state_id": 1713,
+      "candidate": "string_end",
+      "candidate_text": "\"\"\""
+    }
+  ],
+  "118": [
+    {
+      "state_id": 68,
+      "candidate": "if expression : _indent block else_clause",
+      "candidate_text": "if path.exists():\n        contents = path.read_text()\n        username = json.loads(contents)\n        return username\n    else:"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 601,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 962,
+      "candidate": ". identifier",
+      "candidate_text": ".exists"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 2773,
+      "candidate": "identifier",
+      "candidate_text": "exists"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 962,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 246,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "134": [
+    {
+      "state_id": 2078,
+      "candidate": ": _indent block else_clause",
+      "candidate_text": ":\n        contents = path.read_text()\n        username = json.loads(contents)\n        return username\n    else:"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 111,
+      "candidate": "_indent block else_clause",
+      "candidate_text": "contents = path.read_text()\n        username = json.loads(contents)\n        return username\n    else:"
+    },
+    {
+      "state_id": 65,
+      "candidate": "identifier",
+      "candidate_text": "contents"
+    }
+  ],
+  "153": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= path.read_text()"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 963,
+      "candidate": ". identifier",
+      "candidate_text": ".read_text"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 2752,
+      "candidate": "identifier",
+      "candidate_text": "read_text"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 963,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 240,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "180": [
+    {
+      "state_id": 73,
+      "candidate": "identifier",
+      "candidate_text": "username"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= json.loads(contents)"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "json"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 963,
+      "candidate": ". identifier",
+      "candidate_text": ".loads"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 2752,
+      "candidate": "identifier",
+      "candidate_text": "loads"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(contents)"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "contents"
+    }
+  ],
+  "210": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 73,
+      "candidate": "return expression",
+      "candidate_text": "return username"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 373,
+      "candidate": "identifier",
+      "candidate_text": "username"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 620,
+      "candidate": "else : _indent block",
+      "candidate_text": "else:\n        return None"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 2684,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n        return None"
+    }
+  ],
+  "254": [
+    {
+      "state_id": 124,
+      "candidate": "_indent block",
+      "candidate_text": "return None"
+    },
+    {
+      "state_id": 45,
+      "candidate": "return expression",
+      "candidate_text": "return None"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 373,
+      "candidate": "none",
+      "candidate_text": "None"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 69,
+      "candidate": "def identifier parameters : _indent block",
+      "candidate_text": "def greet_user():\n    \"\"\"Greet the user by name.\"\"\""
+    }
+  ],
+  "271": [
+    {
+      "state_id": 2623,
+      "candidate": "identifier parameters : _indent block",
+      "candidate_text": "greet_user():\n    \"\"\"Greet the user by name.\"\"\""
+    }
+  ],
+  "281": [
+    {
+      "state_id": 2201,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "282": [
+    {
+      "state_id": 1649,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "283": [
+    {
+      "state_id": 2519,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n    \"\"\"Greet the user by name.\"\"\""
+    }
+  ],
+  "289": [
+    {
+      "state_id": 92,
+      "candidate": "_indent block",
+      "candidate_text": "\"\"\"Greet the user by name.\"\"\""
+    },
+    {
+      "state_id": 9,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"\"\"Greet the user by name.\"\"\""
+    }
+  ],
+  "292": [
+    {
+      "state_id": 1696,
+      "candidate": "_string_content",
+      "candidate_text": "Greet the user by name."
+    }
+  ],
+  "315": [
+    {
+      "state_id": 1713,
+      "candidate": "string_end",
+      "candidate_text": "\"\"\""
+    }
+  ],
+  "323": [
+    {
+      "state_id": 68,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "328": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= Path('username.json')"
+    }
+  ],
+  "330": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "Path"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "('username.json')"
+    }
+  ],
+  "335": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'username.json'"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "username.json"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 68,
+      "candidate": "identifier",
+      "candidate_text": "username"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= get_stored_username(path)"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "get_stored_username"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(path)"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "391": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "397": [
+    {
+      "state_id": 68,
+      "candidate": "if expression : _indent block else_clause",
+      "candidate_text": "if username:\n        print(f\"Welcome back, {username}!\")\n    else:"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 601,
+      "candidate": "identifier",
+      "candidate_text": "username"
+    }
+  ],
+  "408": [
+    {
+      "state_id": 2078,
+      "candidate": ": _indent block else_clause",
+      "candidate_text": ":\n        print(f\"Welcome back, {username}!\")\n    else:"
+    }
+  ],
+  "418": [
+    {
+      "state_id": 111,
+      "candidate": "_indent block else_clause",
+      "candidate_text": "print(f\"Welcome back, {username}!\")\n    else:"
+    },
+    {
+      "state_id": 65,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "423": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"Welcome back, {username}!\")"
+    }
+  ],
+  "424": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"Welcome back, {username}!\""
+    }
+  ],
+  "426": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "Welcome back, "
+    }
+  ],
+  "440": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{username}"
+    }
+  ],
+  "441": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "username"
+    }
+  ],
+  "449": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 1678,
+      "candidate": "_string_content",
+      "candidate_text": "!"
+    }
+  ],
+  "451": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "452": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 620,
+      "candidate": "else : _indent block",
+      "candidate_text": "else:\n        username = input(\"What is your name? \")"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 2684,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n        username = input(\"What is your name? \")"
+    }
+  ],
+  "472": [
+    {
+      "state_id": 124,
+      "candidate": "_indent block",
+      "candidate_text": "username = input(\"What is your name? \")"
+    },
+    {
+      "state_id": 45,
+      "candidate": "identifier",
+      "candidate_text": "username"
+    }
+  ],
+  "481": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= input(\"What is your name? \")"
+    }
+  ],
+  "483": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "input"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(\"What is your name? \")"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"What is your name? \""
+    }
+  ],
+  "490": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "What is your name? "
+    }
+  ],
+  "509": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "510": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "520": [
+    {
+      "state_id": 73,
+      "candidate": "identifier",
+      "candidate_text": "contents"
+    }
+  ],
+  "529": [
+    {
+      "state_id": 1633,
+      "candidate": "= _right_hand_side",
+      "candidate_text": "= json.dumps(username)"
+    }
+  ],
+  "531": [
+    {
+      "state_id": 185,
+      "candidate": "identifier",
+      "candidate_text": "json"
+    }
+  ],
+  "535": [
+    {
+      "state_id": 963,
+      "candidate": ". identifier",
+      "candidate_text": ".dumps"
+    }
+  ],
+  "536": [
+    {
+      "state_id": 2752,
+      "candidate": "identifier",
+      "candidate_text": "dumps"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(username)"
+    }
+  ],
+  "542": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "username"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "560": [
+    {
+      "state_id": 73,
+      "candidate": "identifier",
+      "candidate_text": "path"
+    }
+  ],
+  "564": [
+    {
+      "state_id": 963,
+      "candidate": ". identifier",
+      "candidate_text": ".write_text"
+    }
+  ],
+  "565": [
+    {
+      "state_id": 2752,
+      "candidate": "identifier",
+      "candidate_text": "write_text"
+    }
+  ],
+  "575": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(contents)"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 240,
+      "candidate": "identifier",
+      "candidate_text": "contents"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "594": [
+    {
+      "state_id": 73,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "599": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"We'll remember you when you come back, {username}!\")"
+    }
+  ],
+  "600": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"We'll remember you when you come back, {username}!\""
+    }
+  ],
+  "602": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "We'll remember you when you come back, "
+    }
+  ],
+  "641": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{username}"
+    }
+  ],
+  "642": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "username"
+    }
+  ],
+  "650": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "651": [
+    {
+      "state_id": 1678,
+      "candidate": "_string_content",
+      "candidate_text": "!"
+    }
+  ],
+  "652": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "653": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "656": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "greet_user"
+    }
+  ],
+  "666": [
+    {
+      "state_id": 963,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "667": [
+    {
+      "state_id": 240,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

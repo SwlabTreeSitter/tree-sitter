@@ -1,0 +1,478 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch04\\batch03;"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch04\\batch03"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch04"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch04"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch03"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch03"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "83": [
+    {
+      "state_id": 157,
+      "candidate": "class name base_clause declaration_list",
+      "candidate_text": "class TextProductWriter extends ShopProductWriter\n{"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 3194,
+      "candidate": "name base_clause declaration_list",
+      "candidate_text": "TextProductWriter extends ShopProductWriter\n{"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 1965,
+      "candidate": "extends _name",
+      "candidate_text": "extends ShopProductWriter"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 1799,
+      "candidate": "name",
+      "candidate_text": "ShopProductWriter"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 2262,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n    public function write(): void\n    {\n        $str = \"PRODUCTS:\\n\";\n        foreach ($this->products as $shopProduct) {\n            $str .= $shopProduct->getSummaryLine() . \"\\n\";\n        }\n        print $str;\n    }\n}"
+    }
+  ],
+  "139": [
+    {
+      "state_id": 1617,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function write(): void\n    {"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "write(): void\n    {"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 2994,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 969,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "164": [
+    {
+      "state_id": 1590,
+      "candidate": "primitive_type_token6",
+      "candidate_text": "void"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        $str = \"PRODUCTS:\\n\";\n        foreach ($this->products as $shopProduct) {\n            $str .= $shopProduct->getSummaryLine() . \"\\n\";\n        }\n        print $str;\n    }"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$str"
+    }
+  ],
+  "184": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "str"
+    }
+  ],
+  "188": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= \"PRODUCTS:\\n\""
+    }
+  ],
+  "190": [
+    {
+      "state_id": 311,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"PRODUCTS:\\n\""
+    }
+  ],
+  "191": [
+    {
+      "state_id": 1721,
+      "candidate": "string_content",
+      "candidate_text": "PRODUCTS:"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 1730,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 1730,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "203": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 75,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($this->products as $shopProduct) {"
+    }
+  ],
+  "221": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($this->products as $shopProduct) {"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "223": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->products"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "products"
+    }
+  ],
+  "238": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $shopProduct) {"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$shopProduct"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "shopProduct"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            $str .= $shopProduct->getSummaryLine() . \"\\n\";\n        }"
+    }
+  ],
+  "269": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$str"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "str"
+    }
+  ],
+  "274": [
+    {
+      "state_id": 916,
+      "candidate": ".= expression",
+      "candidate_text": ".= $shopProduct->getSummaryLine() . \"\\n\""
+    }
+  ],
+  "277": [
+    {
+      "state_id": 342,
+      "candidate": "$ name",
+      "candidate_text": "$shopProduct"
+    }
+  ],
+  "278": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "shopProduct"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getSummaryLine()"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "getSummaryLine"
+    }
+  ],
+  "305": [
+    {
+      "state_id": 868,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "306": [
+    {
+      "state_id": 191,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "308": [
+    {
+      "state_id": 1365,
+      "candidate": ". expression",
+      "candidate_text": ". \"\\n\""
+    }
+  ],
+  "310": [
+    {
+      "state_id": 338,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"\\n\""
+    }
+  ],
+  "311": [
+    {
+      "state_id": 1721,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\n"
+    }
+  ],
+  "313": [
+    {
+      "state_id": 1730,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "314": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "324": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 75,
+      "candidate": "print expression",
+      "candidate_text": "print $str"
+    }
+  ],
+  "340": [
+    {
+      "state_id": 449,
+      "candidate": "$ name",
+      "candidate_text": "$str"
+    }
+  ],
+  "341": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "str"
+    }
+  ],
+  "344": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "352": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

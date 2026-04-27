@@ -1,0 +1,940 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= \"My phone number is (123) 555-1234.\""
+    }
+  ],
+  "9": [
+    {
+      "state_id": 481,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"My phone number is (123) 555-1234.\""
+    }
+  ],
+  "10": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "My phone number is (123) 555-1234."
+    }
+  ],
+  "44": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "46": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "phone_re"
+    }
+  ],
+  "55": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= /\\((\\d{3})\\)\\s+(\\d{3})-(\\d{4})/"
+    }
+  ],
+  "57": [
+    {
+      "state_id": 481,
+      "candidate": "/ _literal_contents )",
+      "candidate_text": "/\\((\\d{3})\\)\\s+(\\d{3})-(\\d{4})/"
+    }
+  ],
+  "58": [
+    {
+      "state_id": 5048,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\("
+    }
+  ],
+  "60": [
+    {
+      "state_id": 5167,
+      "candidate": "string_content",
+      "candidate_text": "("
+    }
+  ],
+  "61": [
+    {
+      "state_id": 5167,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\d"
+    }
+  ],
+  "63": [
+    {
+      "state_id": 5167,
+      "candidate": "string_content",
+      "candidate_text": "{3})"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 5167,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\)"
+    }
+  ],
+  "69": [
+    {
+      "state_id": 5167,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\s"
+    }
+  ],
+  "71": [
+    {
+      "state_id": 5167,
+      "candidate": "string_content",
+      "candidate_text": "+("
+    }
+  ],
+  "73": [
+    {
+      "state_id": 5167,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\d"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 5167,
+      "candidate": "string_content",
+      "candidate_text": "{3})-("
+    }
+  ],
+  "81": [
+    {
+      "state_id": 5167,
+      "candidate": "escape_sequence",
+      "candidate_text": "\\d"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 5167,
+      "candidate": "string_content",
+      "candidate_text": "{4})"
+    }
+  ],
+  "87": [
+    {
+      "state_id": 5167,
+      "candidate": ")",
+      "candidate_text": "/"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "91": [
+    {
+      "state_id": 2182,
+      "candidate": "= _arg",
+      "candidate_text": "= phone_re.match(string)"
+    }
+  ],
+  "93": [
+    {
+      "state_id": 481,
+      "candidate": "identifier",
+      "candidate_text": "phone_re"
+    }
+  ],
+  "101": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".match"
+    }
+  ],
+  "102": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "match"
+    }
+  ],
+  "107": [
+    {
+      "state_id": 13,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(string)"
+    }
+  ],
+  "108": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "116": [
+    {
+      "state_id": 346,
+      "candidate": "unless _statement then end",
+      "candidate_text": "unless m\n  puts \"There was no match-sorry.\"\n  exit\nend"
+    }
+  ],
+  "123": [
+    {
+      "state_id": 409,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 272,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "132": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"There was no match-sorry.\""
+    }
+  ],
+  "133": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "There was no match-sorry."
+    }
+  ],
+  "158": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "162": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "exit"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 5305,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "171": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "print"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"The whole string we started with: \""
+    }
+  ],
+  "178": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "The whole string we started with: "
+    }
+  ],
+  "212": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "214": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "219": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".string"
+    }
+  ],
+  "221": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "string"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "print"
+    }
+  ],
+  "234": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"The entire part of the string that matched: \""
+    }
+  ],
+  "235": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "The entire part of the string that matched: "
+    }
+  ],
+  "279": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "281": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 2721,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 422,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "289": [
+    {
+      "state_id": 5693,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "296": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"the three captures: \""
+    }
+  ],
+  "297": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "the three captures: "
+    }
+  ],
+  "317": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "319": [
+    {
+      "state_id": 346,
+      "candidate": "integer",
+      "candidate_text": "3"
+    }
+  ],
+  "320": [
+    {
+      "state_id": 2860,
+      "candidate": ". identifier",
+      "candidate_text": ".times"
+    }
+  ],
+  "321": [
+    {
+      "state_id": 3136,
+      "candidate": "identifier",
+      "candidate_text": "times"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 11,
+      "candidate": "do block_parameters _terminator body_statement end",
+      "candidate_text": "do |index|\n  puts \"Capture ##{index + 1}: #{m.captures[index]}\"\nend"
+    }
+  ],
+  "330": [
+    {
+      "state_id": 147,
+      "candidate": "| _formal_parameter |",
+      "candidate_text": "|index|"
+    }
+  ],
+  "331": [
+    {
+      "state_id": 4575,
+      "candidate": "identifier",
+      "candidate_text": "index"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 5489,
+      "candidate": "|",
+      "candidate_text": "|"
+    }
+  ],
+  "340": [
+    {
+      "state_id": 242,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Capture ##{index + 1}: #{m.captures[index]}\""
+    }
+  ],
+  "346": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Capture #"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{index + 1}"
+    }
+  ],
+  "357": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "index"
+    }
+  ],
+  "363": [
+    {
+      "state_id": 2812,
+      "candidate": "+ _arg",
+      "candidate_text": "+ 1"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 1174,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "366": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 5096,
+      "candidate": "string_content",
+      "candidate_text": ": "
+    }
+  ],
+  "369": [
+    {
+      "state_id": 5096,
+      "candidate": "#{ _statements }",
+      "candidate_text": "#{m.captures[index]}"
+    }
+  ],
+  "371": [
+    {
+      "state_id": 357,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "372": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".captures"
+    }
+  ],
+  "373": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "captures"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 2552,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[index]"
+    }
+  ],
+  "382": [
+    {
+      "state_id": 431,
+      "candidate": "identifier",
+      "candidate_text": "index"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 5683,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "388": [
+    {
+      "state_id": 5807,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "389": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "391": [
+    {
+      "state_id": 5923,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "395": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "400": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Here's another way to get at the first capture:\""
+    }
+  ],
+  "401": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Here's another way to get at the first capture:"
+    }
+  ],
+  "448": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "450": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "print"
+    }
+  ],
+  "456": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Capture #1: \""
+    }
+  ],
+  "457": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Capture #1: "
+    }
+  ],
+  "469": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "471": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "476": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "477": [
+    {
+      "state_id": 2721,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[1]"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 422,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "479": [
+    {
+      "state_id": 5693,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "481": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "print"
+    }
+  ],
+  "487": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"The part of the string before the part that matched was: \""
+    }
+  ],
+  "488": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "The part of the string before the part that matched was: "
+    }
+  ],
+  "545": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "547": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "553": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".pre_match"
+    }
+  ],
+  "554": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "pre_match"
+    }
+  ],
+  "564": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "print"
+    }
+  ],
+  "570": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"The part of the string after the part that matched was: \""
+    }
+  ],
+  "571": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "The part of the string after the part that matched was: "
+    }
+  ],
+  "627": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "629": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "634": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".post_match"
+    }
+  ],
+  "636": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "post_match"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "print"
+    }
+  ],
+  "653": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"The second capture began at character \""
+    }
+  ],
+  "654": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "The second capture began at character "
+    }
+  ],
+  "692": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "694": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "700": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".begin"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "begin"
+    }
+  ],
+  "706": [
+    {
+      "state_id": 9,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(2)"
+    }
+  ],
+  "707": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "2"
+    }
+  ],
+  "708": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "710": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "print"
+    }
+  ],
+  "716": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"The third capture ended at character \""
+    }
+  ],
+  "717": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "The third capture ended at character "
+    }
+  ],
+  "754": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "756": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "761": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "m"
+    }
+  ],
+  "762": [
+    {
+      "state_id": 2721,
+      "candidate": ". identifier",
+      "candidate_text": ".end"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 3080,
+      "candidate": "identifier",
+      "candidate_text": "end"
+    }
+  ],
+  "766": [
+    {
+      "state_id": 9,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(3)"
+    }
+  ],
+  "767": [
+    {
+      "state_id": 428,
+      "candidate": "integer",
+      "candidate_text": "3"
+    }
+  ],
+  "768": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

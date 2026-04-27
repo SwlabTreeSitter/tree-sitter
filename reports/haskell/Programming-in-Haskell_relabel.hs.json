@@ -1,0 +1,2925 @@
+{
+  "144": [
+    {
+      "state_id": 1,
+      "candidate": "_cmd_layout_start declarations _cond_layout_end",
+      "candidate_text": "type State = Int"
+    },
+    {
+      "state_id": 2,
+      "candidate": "type _type_head_params = _ktype",
+      "candidate_text": "type State = Int"
+    }
+  ],
+  "149": [
+    {
+      "state_id": 7743,
+      "candidate": "name",
+      "candidate_text": "State"
+    }
+  ],
+  "155": [
+    {
+      "state_id": 8335,
+      "candidate": "= _ktype",
+      "candidate_text": "= Int"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 1229,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "162": [
+    {
+      "state_id": 9685,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "newtype ST a = S (State -> (a,State))"
+    },
+    {
+      "state_id": 12,
+      "candidate": "declaration",
+      "candidate_text": "newtype ST a = S (State -> (a,State))"
+    },
+    {
+      "state_id": 12,
+      "candidate": "newtype _type_head_params type_params _newtype",
+      "candidate_text": "newtype ST a = S (State -> (a,State))"
+    }
+  ],
+  "170": [
+    {
+      "state_id": 7764,
+      "candidate": "name",
+      "candidate_text": "ST"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 8082,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 8882,
+      "candidate": "= newtype_constructor",
+      "candidate_text": "= S (State -> (a,State))"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 9682,
+      "candidate": "name field",
+      "candidate_text": "S (State -> (a,State))"
+    }
+  ],
+  "179": [
+    {
+      "state_id": 2312,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "180": [
+    {
+      "state_id": 455,
+      "candidate": "name",
+      "candidate_text": "State"
+    }
+  ],
+  "186": [
+    {
+      "state_id": 8137,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 1529,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "190": [
+    {
+      "state_id": 433,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 10734,
+      "candidate": ", _ktype",
+      "candidate_text": ",State"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 1281,
+      "candidate": "name",
+      "candidate_text": "State"
+    }
+  ],
+  "197": [
+    {
+      "state_id": 12055,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 10240,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "201": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "app :: ST a -> State -> (a,State)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "app :: ST a -> State -> (a,State)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable :: quantified_type",
+      "candidate_text": "app :: ST a -> State -> (a,State)"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 2263,
+      "candidate": ":: quantified_type",
+      "candidate_text": ":: ST a -> State -> (a,State)"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 1462,
+      "candidate": "name",
+      "candidate_text": "ST"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 764,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 8341,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 1515,
+      "candidate": "name",
+      "candidate_text": "State"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 8173,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 1515,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "226": [
+    {
+      "state_id": 431,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 10265,
+      "candidate": ", _ktype",
+      "candidate_text": ",State"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 1281,
+      "candidate": "name",
+      "candidate_text": "State"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 11488,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "235": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "app (S st) x = st x"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "app (S st) x = st x"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable",
+      "candidate_text": "app"
+    }
+  ],
+  "239": [
+    {
+      "state_id": 2167,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "240": [
+    {
+      "state_id": 42,
+      "candidate": "name",
+      "candidate_text": "S"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 1274,
+      "candidate": "variable",
+      "candidate_text": "st"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 10383,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "246": [
+    {
+      "state_id": 350,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "248": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= st x"
+    }
+  ],
+  "250": [
+    {
+      "state_id": 1247,
+      "candidate": "variable",
+      "candidate_text": "st"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 9583,
+      "candidate": "declarations_repeat1",
+      "candidate_text": "instance Functor ST where"
+    },
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "instance Functor ST where"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "instance Functor ST where"
+    },
+    {
+      "state_id": 14,
+      "candidate": "instance _type_instance_head_params type_patterns",
+      "candidate_text": "instance Functor ST"
+    }
+  ],
+  "265": [
+    {
+      "state_id": 7677,
+      "candidate": "name",
+      "candidate_text": "Functor"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 2144,
+      "candidate": "name",
+      "candidate_text": "ST"
+    }
+  ],
+  "276": [
+    {
+      "state_id": 9285,
+      "candidate": "where instance_declarations",
+      "candidate_text": "where\n   -- fmap :: (a -> b) -> ST a -> ST b"
+    }
+  ],
+  "285": [
+    {
+      "state_id": 9393,
+      "candidate": "instance_declarations",
+      "candidate_text": "-- fmap :: (a -> b) -> ST a -> ST b"
+    },
+    {
+      "state_id": 9393,
+      "candidate": "instance_declarations",
+      "candidate_text": "-- fmap :: (a -> b) -> ST a -> ST b"
+    }
+  ],
+  "324": [
+    {
+      "state_id": 9393,
+      "candidate": "_cmd_layout_start instance_decl _cond_layout_end",
+      "candidate_text": "fmap g st = S (\\s -> let (x,s') = app st s in (g x, s'))"
+    },
+    {
+      "state_id": 1100,
+      "candidate": "instance_decl _cond_layout_end",
+      "candidate_text": "fmap g st = S (\\s -> let (x,s') = app st s in (g x, s'))"
+    },
+    {
+      "state_id": 1100,
+      "candidate": "variable",
+      "candidate_text": "fmap"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 2167,
+      "candidate": "variable",
+      "candidate_text": "g"
+    }
+  ],
+  "331": [
+    {
+      "state_id": 2011,
+      "candidate": "variable",
+      "candidate_text": "st"
+    }
+  ],
+  "334": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= S (\\s -> let (x,s') = app st s in (g x, s'))"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 1247,
+      "candidate": "name",
+      "candidate_text": "S"
+    }
+  ],
+  "338": [
+    {
+      "state_id": 180,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "339": [
+    {
+      "state_id": 376,
+      "candidate": "\\ patterns _arrow _exp",
+      "candidate_text": "\\s -> let (x,s') = app st s in (g x, s')"
+    }
+  ],
+  "340": [
+    {
+      "state_id": 2071,
+      "candidate": "variable",
+      "candidate_text": "s"
+    }
+  ],
+  "342": [
+    {
+      "state_id": 11009,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "345": [
+    {
+      "state_id": 1293,
+      "candidate": "let local_binds in _exp",
+      "candidate_text": "let (x,s') = app st s in (g x, s')"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 9844,
+      "candidate": "_cmd_layout_start_let decl _cond_layout_end",
+      "candidate_text": "(x,s') = app st s"
+    },
+    {
+      "state_id": 1838,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "350": [
+    {
+      "state_id": 37,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 10720,
+      "candidate": ", _pat",
+      "candidate_text": ",s'"
+    }
+  ],
+  "352": [
+    {
+      "state_id": 382,
+      "candidate": "variable",
+      "candidate_text": "s'"
+    }
+  ],
+  "354": [
+    {
+      "state_id": 12015,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "356": [
+    {
+      "state_id": 8950,
+      "candidate": "= _exp",
+      "candidate_text": "= app st s"
+    }
+  ],
+  "358": [
+    {
+      "state_id": 1247,
+      "candidate": "variable",
+      "candidate_text": "app"
+    }
+  ],
+  "362": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "st"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "s"
+    }
+  ],
+  "367": [
+    {
+      "state_id": 11367,
+      "candidate": "in _exp",
+      "candidate_text": "in (g x, s')"
+    }
+  ],
+  "370": [
+    {
+      "state_id": 1222,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "371": [
+    {
+      "state_id": 416,
+      "candidate": "variable",
+      "candidate_text": "g"
+    }
+  ],
+  "373": [
+    {
+      "state_id": 241,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "374": [
+    {
+      "state_id": 11068,
+      "candidate": ", _exp",
+      "candidate_text": ", s'"
+    }
+  ],
+  "376": [
+    {
+      "state_id": 945,
+      "candidate": "variable",
+      "candidate_text": "s'"
+    }
+  ],
+  "378": [
+    {
+      "state_id": 11462,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "379": [
+    {
+      "state_id": 10945,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "382": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "instance Applicative ST where"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "instance Applicative ST where"
+    },
+    {
+      "state_id": 14,
+      "candidate": "instance _type_instance_head_params type_patterns",
+      "candidate_text": "instance Applicative ST"
+    }
+  ],
+  "391": [
+    {
+      "state_id": 7677,
+      "candidate": "name",
+      "candidate_text": "Applicative"
+    }
+  ],
+  "403": [
+    {
+      "state_id": 2144,
+      "candidate": "name",
+      "candidate_text": "ST"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 9285,
+      "candidate": "where instance_declarations",
+      "candidate_text": "where\n   -- pure :: a -> ST a"
+    }
+  ],
+  "415": [
+    {
+      "state_id": 9393,
+      "candidate": "instance_declarations",
+      "candidate_text": "-- pure :: a -> ST a"
+    },
+    {
+      "state_id": 9393,
+      "candidate": "instance_declarations",
+      "candidate_text": "-- pure :: a -> ST a"
+    }
+  ],
+  "439": [
+    {
+      "state_id": 9393,
+      "candidate": "_cmd_layout_start instance_decl instance_declarations_repeat1 _cond_layout_end",
+      "candidate_text": "pure x = S (\\s -> (x,s))\n\n   -- (<*>) :: ST (a -> b) -> ST a -> ST b"
+    },
+    {
+      "state_id": 1100,
+      "candidate": "instance_decl instance_declarations_repeat1 _cond_layout_end",
+      "candidate_text": "pure x = S (\\s -> (x,s))\n\n   -- (<*>) :: ST (a -> b) -> ST a -> ST b"
+    },
+    {
+      "state_id": 1100,
+      "candidate": "variable",
+      "candidate_text": "pure"
+    }
+  ],
+  "444": [
+    {
+      "state_id": 2167,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= S (\\s -> (x,s))"
+    }
+  ],
+  "448": [
+    {
+      "state_id": 1247,
+      "candidate": "name",
+      "candidate_text": "S"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 180,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "451": [
+    {
+      "state_id": 376,
+      "candidate": "\\ patterns _arrow _exp",
+      "candidate_text": "\\s -> (x,s)"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 2071,
+      "candidate": "variable",
+      "candidate_text": "s"
+    }
+  ],
+  "454": [
+    {
+      "state_id": 11009,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "457": [
+    {
+      "state_id": 1293,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "458": [
+    {
+      "state_id": 416,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 11068,
+      "candidate": ", _exp",
+      "candidate_text": ",s"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 945,
+      "candidate": "variable",
+      "candidate_text": "s"
+    }
+  ],
+  "461": [
+    {
+      "state_id": 11462,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "462": [
+    {
+      "state_id": 10945,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "467": [
+    {
+      "state_id": 9263,
+      "candidate": "instance_declarations_repeat1 _cond_layout_end",
+      "candidate_text": " -- (<*>) :: ST (a -> b) -> ST a -> ST b"
+    },
+    {
+      "state_id": 9263,
+      "candidate": "instance_declarations_repeat1 _cond_layout_end",
+      "candidate_text": " -- (<*>) :: ST (a -> b) -> ST a -> ST b"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 9263,
+      "candidate": "_cond_layout_semicolon instance_decl",
+      "candidate_text": "stf <*> stx = S (\\s ->"
+    },
+    {
+      "state_id": 1362,
+      "candidate": "instance_decl",
+      "candidate_text": "stf <*> stx = S (\\s ->"
+    },
+    {
+      "state_id": 1362,
+      "candidate": "variable",
+      "candidate_text": "stf"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 915,
+      "candidate": "_varsym",
+      "candidate_text": "<*>"
+    }
+  ],
+  "519": [
+    {
+      "state_id": 2280,
+      "candidate": "variable",
+      "candidate_text": "stx"
+    }
+  ],
+  "523": [
+    {
+      "state_id": 8883,
+      "candidate": "= _exp",
+      "candidate_text": "= S (\\s ->"
+    }
+  ],
+  "525": [
+    {
+      "state_id": 1247,
+      "candidate": "name",
+      "candidate_text": "S"
+    }
+  ],
+  "527": [
+    {
+      "state_id": 180,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "528": [
+    {
+      "state_id": 376,
+      "candidate": "\\ patterns _arrow _exp",
+      "candidate_text": "\\s ->"
+    }
+  ],
+  "529": [
+    {
+      "state_id": 2071,
+      "candidate": "variable",
+      "candidate_text": "s"
+    }
+  ],
+  "531": [
+    {
+      "state_id": 11009,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "533": [
+    {
+      "state_id": 1293,
+      "candidate": "_exp",
+      "candidate_text": ""
+    }
+  ],
+  "540": [
+    {
+      "state_id": 1293,
+      "candidate": "let local_binds in _exp",
+      "candidate_text": "let (f,s')  = app stf s\n          (x,s'') = app stx s' in (f x, s'')"
+    }
+  ],
+  "544": [
+    {
+      "state_id": 9844,
+      "candidate": "_cmd_layout_start_let decl _let_binds_repeat2 _cond_layout_end",
+      "candidate_text": "(f,s')  = app stf s\n          (x,s'') = app stx s'"
+    },
+    {
+      "state_id": 1838,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "545": [
+    {
+      "state_id": 37,
+      "candidate": "variable",
+      "candidate_text": "f"
+    }
+  ],
+  "546": [
+    {
+      "state_id": 10720,
+      "candidate": ", _pat",
+      "candidate_text": ",s'"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 382,
+      "candidate": "variable",
+      "candidate_text": "s'"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 12015,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "552": [
+    {
+      "state_id": 8950,
+      "candidate": "= _exp",
+      "candidate_text": "= app stf s"
+    }
+  ],
+  "554": [
+    {
+      "state_id": 1247,
+      "candidate": "variable",
+      "candidate_text": "app"
+    }
+  ],
+  "558": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "stf"
+    }
+  ],
+  "562": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "s"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 9450,
+      "candidate": "_cond_layout_semicolon decl",
+      "candidate_text": "(x,s'') = app stx s'"
+    },
+    {
+      "state_id": 1862,
+      "candidate": "decl",
+      "candidate_text": "(x,s'') = app stx s'"
+    },
+    {
+      "state_id": 1862,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "575": [
+    {
+      "state_id": 37,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 10720,
+      "candidate": ", _pat",
+      "candidate_text": ",s''"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 382,
+      "candidate": "variable",
+      "candidate_text": "s''"
+    }
+  ],
+  "580": [
+    {
+      "state_id": 12015,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "582": [
+    {
+      "state_id": 8950,
+      "candidate": "= _exp",
+      "candidate_text": "= app stx s'"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 1247,
+      "candidate": "variable",
+      "candidate_text": "app"
+    }
+  ],
+  "588": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "stx"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "s'"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 11367,
+      "candidate": "in _exp",
+      "candidate_text": "in (f x, s'')"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 1222,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "599": [
+    {
+      "state_id": 416,
+      "candidate": "variable",
+      "candidate_text": "f"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 241,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "602": [
+    {
+      "state_id": 11068,
+      "candidate": ", _exp",
+      "candidate_text": ", s''"
+    }
+  ],
+  "604": [
+    {
+      "state_id": 945,
+      "candidate": "variable",
+      "candidate_text": "s''"
+    }
+  ],
+  "607": [
+    {
+      "state_id": 11462,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "608": [
+    {
+      "state_id": 10945,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "611": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "instance Monad ST where"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "instance Monad ST where"
+    },
+    {
+      "state_id": 14,
+      "candidate": "instance _type_instance_head_params type_patterns",
+      "candidate_text": "instance Monad ST"
+    }
+  ],
+  "620": [
+    {
+      "state_id": 7677,
+      "candidate": "name",
+      "candidate_text": "Monad"
+    }
+  ],
+  "626": [
+    {
+      "state_id": 2144,
+      "candidate": "name",
+      "candidate_text": "ST"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 9285,
+      "candidate": "where instance_declarations",
+      "candidate_text": "where\n   -- (>>=) :: ST a -> (a -> ST b) -> ST b"
+    }
+  ],
+  "638": [
+    {
+      "state_id": 9393,
+      "candidate": "instance_declarations",
+      "candidate_text": "-- (>>=) :: ST a -> (a -> ST b) -> ST b"
+    },
+    {
+      "state_id": 9393,
+      "candidate": "instance_declarations",
+      "candidate_text": "-- (>>=) :: ST a -> (a -> ST b) -> ST b"
+    }
+  ],
+  "681": [
+    {
+      "state_id": 9393,
+      "candidate": "_cmd_layout_start instance_decl _cond_layout_end",
+      "candidate_text": "st >>= f = S (\\s -> let (x,s') = app st s in app (f x) s')"
+    },
+    {
+      "state_id": 1100,
+      "candidate": "instance_decl _cond_layout_end",
+      "candidate_text": "st >>= f = S (\\s -> let (x,s') = app st s in app (f x) s')"
+    },
+    {
+      "state_id": 1100,
+      "candidate": "variable",
+      "candidate_text": "st"
+    }
+  ],
+  "684": [
+    {
+      "state_id": 915,
+      "candidate": "_varsym",
+      "candidate_text": ">>="
+    }
+  ],
+  "688": [
+    {
+      "state_id": 2280,
+      "candidate": "variable",
+      "candidate_text": "f"
+    }
+  ],
+  "690": [
+    {
+      "state_id": 8883,
+      "candidate": "= _exp",
+      "candidate_text": "= S (\\s -> let (x,s') = app st s in app (f x) s')"
+    }
+  ],
+  "692": [
+    {
+      "state_id": 1247,
+      "candidate": "name",
+      "candidate_text": "S"
+    }
+  ],
+  "694": [
+    {
+      "state_id": 180,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "695": [
+    {
+      "state_id": 376,
+      "candidate": "\\ patterns _arrow _exp",
+      "candidate_text": "\\s -> let (x,s') = app st s in app (f x) s'"
+    }
+  ],
+  "696": [
+    {
+      "state_id": 2071,
+      "candidate": "variable",
+      "candidate_text": "s"
+    }
+  ],
+  "698": [
+    {
+      "state_id": 11009,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 1293,
+      "candidate": "let local_binds in _exp",
+      "candidate_text": "let (x,s') = app st s in app (f x) s'"
+    }
+  ],
+  "705": [
+    {
+      "state_id": 9844,
+      "candidate": "_cmd_layout_start_let decl _cond_layout_end",
+      "candidate_text": "(x,s') = app st s"
+    },
+    {
+      "state_id": 1838,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "706": [
+    {
+      "state_id": 37,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "707": [
+    {
+      "state_id": 10720,
+      "candidate": ", _pat",
+      "candidate_text": ",s'"
+    }
+  ],
+  "708": [
+    {
+      "state_id": 382,
+      "candidate": "variable",
+      "candidate_text": "s'"
+    }
+  ],
+  "710": [
+    {
+      "state_id": 12015,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "712": [
+    {
+      "state_id": 8950,
+      "candidate": "= _exp",
+      "candidate_text": "= app st s"
+    }
+  ],
+  "714": [
+    {
+      "state_id": 1247,
+      "candidate": "variable",
+      "candidate_text": "app"
+    }
+  ],
+  "718": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "st"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "s"
+    }
+  ],
+  "723": [
+    {
+      "state_id": 11367,
+      "candidate": "in _exp",
+      "candidate_text": "in app (f x) s'"
+    }
+  ],
+  "726": [
+    {
+      "state_id": 1222,
+      "candidate": "variable",
+      "candidate_text": "app"
+    }
+  ],
+  "730": [
+    {
+      "state_id": 218,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "731": [
+    {
+      "state_id": 389,
+      "candidate": "variable",
+      "candidate_text": "f"
+    }
+  ],
+  "733": [
+    {
+      "state_id": 241,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 11068,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "736": [
+    {
+      "state_id": 218,
+      "candidate": "variable",
+      "candidate_text": "s'"
+    }
+  ],
+  "738": [
+    {
+      "state_id": 10945,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "741": [
+    {
+      "state_id": 9609,
+      "candidate": "declarations_repeat1",
+      "candidate_text": "-- Relabelling trees"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "data Tree a = Leaf a | Node (Tree a) (Tree a)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "data Tree a = Leaf a | Node (Tree a) (Tree a)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "data _data",
+      "candidate_text": "data Tree a = Leaf a | Node (Tree a) (Tree a)"
+    }
+  ],
+  "768": [
+    {
+      "state_id": 7562,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "773": [
+    {
+      "state_id": 7635,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "775": [
+    {
+      "state_id": 8276,
+      "candidate": "= data_constructors",
+      "candidate_text": "= Leaf a | Node (Tree a) (Tree a)"
+    }
+  ],
+  "777": [
+    {
+      "state_id": 7557,
+      "candidate": "name _datacon_prefix_repeat1",
+      "candidate_text": "Leaf a"
+    }
+  ],
+  "782": [
+    {
+      "state_id": 1820,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "784": [
+    {
+      "state_id": 8804,
+      "candidate": "| data_constructor",
+      "candidate_text": "| Node (Tree a) (Tree a)"
+    }
+  ],
+  "786": [
+    {
+      "state_id": 7650,
+      "candidate": "name _datacon_prefix_repeat1",
+      "candidate_text": "Node (Tree a) (Tree a)"
+    }
+  ],
+  "791": [
+    {
+      "state_id": 1820,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "792": [
+    {
+      "state_id": 456,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "797": [
+    {
+      "state_id": 524,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "798": [
+    {
+      "state_id": 10259,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "800": [
+    {
+      "state_id": 1844,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "801": [
+    {
+      "state_id": 456,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "806": [
+    {
+      "state_id": 524,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "807": [
+    {
+      "state_id": 10259,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "808": [
+    {
+      "state_id": 8958,
+      "candidate": "_data_repeat1",
+      "candidate_text": ""
+    },
+    {
+      "state_id": 8958,
+      "candidate": "_data_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "823": [
+    {
+      "state_id": 8958,
+      "candidate": "deriving constraint",
+      "candidate_text": "deriving Show"
+    }
+  ],
+  "832": [
+    {
+      "state_id": 3144,
+      "candidate": "name",
+      "candidate_text": "Show"
+    }
+  ],
+  "838": [
+    {
+      "state_id": 9609,
+      "candidate": "declarations_repeat1",
+      "candidate_text": "tree :: Tree Char"
+    },
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "tree :: Tree Char"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "tree :: Tree Char"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable :: quantified_type",
+      "candidate_text": "tree :: Tree Char"
+    }
+  ],
+  "843": [
+    {
+      "state_id": 2263,
+      "candidate": ":: quantified_type",
+      "candidate_text": ":: Tree Char"
+    }
+  ],
+  "846": [
+    {
+      "state_id": 1462,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "851": [
+    {
+      "state_id": 764,
+      "candidate": "name",
+      "candidate_text": "Char"
+    }
+  ],
+  "856": [
+    {
+      "state_id": 9609,
+      "candidate": "declarations_repeat1",
+      "candidate_text": "tree = Node (Node (Leaf 'a') (Leaf 'b')) (Leaf 'c')"
+    },
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "tree = Node (Node (Leaf 'a') (Leaf 'b')) (Leaf 'c')"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "tree = Node (Node (Leaf 'a') (Leaf 'b')) (Leaf 'c')"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable _bind_matches",
+      "candidate_text": "tree = Node (Node (Leaf 'a') (Leaf 'b')) (Leaf 'c')"
+    }
+  ],
+  "861": [
+    {
+      "state_id": 2263,
+      "candidate": "= _exp",
+      "candidate_text": "= Node (Node (Leaf 'a') (Leaf 'b')) (Leaf 'c')"
+    }
+  ],
+  "863": [
+    {
+      "state_id": 1247,
+      "candidate": "name",
+      "candidate_text": "Node"
+    }
+  ],
+  "868": [
+    {
+      "state_id": 180,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "869": [
+    {
+      "state_id": 376,
+      "candidate": "name",
+      "candidate_text": "Node"
+    }
+  ],
+  "874": [
+    {
+      "state_id": 321,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "875": [
+    {
+      "state_id": 389,
+      "candidate": "name",
+      "candidate_text": "Leaf"
+    }
+  ],
+  "880": [
+    {
+      "state_id": 241,
+      "candidate": "char",
+      "candidate_text": "'a'"
+    }
+  ],
+  "883": [
+    {
+      "state_id": 11068,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "885": [
+    {
+      "state_id": 321,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "886": [
+    {
+      "state_id": 389,
+      "candidate": "name",
+      "candidate_text": "Leaf"
+    }
+  ],
+  "891": [
+    {
+      "state_id": 241,
+      "candidate": "char",
+      "candidate_text": "'b'"
+    }
+  ],
+  "894": [
+    {
+      "state_id": 11068,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "895": [
+    {
+      "state_id": 10945,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "897": [
+    {
+      "state_id": 180,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "898": [
+    {
+      "state_id": 376,
+      "candidate": "name",
+      "candidate_text": "Leaf"
+    }
+  ],
+  "903": [
+    {
+      "state_id": 321,
+      "candidate": "char",
+      "candidate_text": "'c'"
+    }
+  ],
+  "906": [
+    {
+      "state_id": 10945,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "909": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "rlabel :: Tree a -> Int -> (Tree Int, Int)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "rlabel :: Tree a -> Int -> (Tree Int, Int)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable :: quantified_type",
+      "candidate_text": "rlabel :: Tree a -> Int -> (Tree Int, Int)"
+    }
+  ],
+  "916": [
+    {
+      "state_id": 2263,
+      "candidate": ":: quantified_type",
+      "candidate_text": ":: Tree a -> Int -> (Tree Int, Int)"
+    }
+  ],
+  "919": [
+    {
+      "state_id": 1462,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "924": [
+    {
+      "state_id": 764,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "926": [
+    {
+      "state_id": 8341,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "929": [
+    {
+      "state_id": 1515,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "933": [
+    {
+      "state_id": 8173,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "936": [
+    {
+      "state_id": 1515,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "937": [
+    {
+      "state_id": 431,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "942": [
+    {
+      "state_id": 524,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "945": [
+    {
+      "state_id": 10265,
+      "candidate": ", _ktype",
+      "candidate_text": ", Int"
+    }
+  ],
+  "947": [
+    {
+      "state_id": 1281,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "950": [
+    {
+      "state_id": 11488,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "952": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "rlabel (Leaf _)   n = (Leaf n, n+1)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "rlabel (Leaf _)   n = (Leaf n, n+1)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable",
+      "candidate_text": "rlabel"
+    }
+  ],
+  "959": [
+    {
+      "state_id": 2167,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "960": [
+    {
+      "state_id": 42,
+      "candidate": "name",
+      "candidate_text": "Leaf"
+    }
+  ],
+  "965": [
+    {
+      "state_id": 1274,
+      "candidate": "_",
+      "candidate_text": "_"
+    }
+  ],
+  "966": [
+    {
+      "state_id": 10383,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "970": [
+    {
+      "state_id": 2011,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "972": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= (Leaf n, n+1)"
+    }
+  ],
+  "974": [
+    {
+      "state_id": 1247,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "975": [
+    {
+      "state_id": 400,
+      "candidate": "name",
+      "candidate_text": "Leaf"
+    }
+  ],
+  "980": [
+    {
+      "state_id": 321,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "981": [
+    {
+      "state_id": 10945,
+      "candidate": ", _exp",
+      "candidate_text": ", n+1"
+    }
+  ],
+  "983": [
+    {
+      "state_id": 945,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "984": [
+    {
+      "state_id": 61,
+      "candidate": "_varsym",
+      "candidate_text": "+"
+    }
+  ],
+  "985": [
+    {
+      "state_id": 1457,
+      "candidate": "_integer_literal",
+      "candidate_text": "1"
+    }
+  ],
+  "986": [
+    {
+      "state_id": 11405,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "988": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "rlabel (Node l r) n = (Node l' r', n'')"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "rlabel (Node l r) n = (Node l' r', n'')"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable",
+      "candidate_text": "rlabel"
+    }
+  ],
+  "995": [
+    {
+      "state_id": 2167,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "996": [
+    {
+      "state_id": 42,
+      "candidate": "name",
+      "candidate_text": "Node"
+    }
+  ],
+  "1001": [
+    {
+      "state_id": 1274,
+      "candidate": "variable",
+      "candidate_text": "l"
+    }
+  ],
+  "1003": [
+    {
+      "state_id": 1274,
+      "candidate": "variable",
+      "candidate_text": "r"
+    }
+  ],
+  "1004": [
+    {
+      "state_id": 11218,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1006": [
+    {
+      "state_id": 350,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "1008": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= (Node l' r', n'')"
+    }
+  ],
+  "1010": [
+    {
+      "state_id": 1247,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1011": [
+    {
+      "state_id": 400,
+      "candidate": "name",
+      "candidate_text": "Node"
+    }
+  ],
+  "1016": [
+    {
+      "state_id": 321,
+      "candidate": "variable",
+      "candidate_text": "l'"
+    }
+  ],
+  "1019": [
+    {
+      "state_id": 321,
+      "candidate": "variable",
+      "candidate_text": "r'"
+    }
+  ],
+  "1021": [
+    {
+      "state_id": 10945,
+      "candidate": ", _exp",
+      "candidate_text": ", n''"
+    }
+  ],
+  "1023": [
+    {
+      "state_id": 945,
+      "candidate": "variable",
+      "candidate_text": "n''"
+    }
+  ],
+  "1026": [
+    {
+      "state_id": 11405,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1027": [
+    {
+      "state_id": 9088,
+      "candidate": "_where_binds",
+      "candidate_text": ""
+    },
+    {
+      "state_id": 9088,
+      "candidate": "_where_binds",
+      "candidate_text": ""
+    }
+  ],
+  "1050": [
+    {
+      "state_id": 9088,
+      "candidate": "where local_binds",
+      "candidate_text": "where\n                         (l',n')  = rlabel l n"
+    }
+  ],
+  "1081": [
+    {
+      "state_id": 9367,
+      "candidate": "_cmd_layout_start decl local_binds_repeat1 _cond_layout_end",
+      "candidate_text": "(l',n')  = rlabel l n\n                         (r',n'') = rlabel r n'"
+    },
+    {
+      "state_id": 1334,
+      "candidate": "decl local_binds_repeat1 _cond_layout_end",
+      "candidate_text": "(l',n')  = rlabel l n\n                         (r',n'') = rlabel r n'"
+    },
+    {
+      "state_id": 1334,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1082": [
+    {
+      "state_id": 37,
+      "candidate": "variable",
+      "candidate_text": "l'"
+    }
+  ],
+  "1084": [
+    {
+      "state_id": 10720,
+      "candidate": ", _pat",
+      "candidate_text": ",n'"
+    }
+  ],
+  "1085": [
+    {
+      "state_id": 382,
+      "candidate": "variable",
+      "candidate_text": "n'"
+    }
+  ],
+  "1087": [
+    {
+      "state_id": 12015,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1090": [
+    {
+      "state_id": 8950,
+      "candidate": "= _exp",
+      "candidate_text": "= rlabel l n"
+    }
+  ],
+  "1092": [
+    {
+      "state_id": 1247,
+      "candidate": "variable",
+      "candidate_text": "rlabel"
+    }
+  ],
+  "1099": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "l"
+    }
+  ],
+  "1101": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "1128": [
+    {
+      "state_id": 9366,
+      "candidate": "_cond_layout_semicolon decl",
+      "candidate_text": "(r',n'') = rlabel r n'"
+    },
+    {
+      "state_id": 1767,
+      "candidate": "decl",
+      "candidate_text": "(r',n'') = rlabel r n'"
+    },
+    {
+      "state_id": 1767,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1129": [
+    {
+      "state_id": 37,
+      "candidate": "variable",
+      "candidate_text": "r'"
+    }
+  ],
+  "1131": [
+    {
+      "state_id": 10720,
+      "candidate": ", _pat",
+      "candidate_text": ",n''"
+    }
+  ],
+  "1132": [
+    {
+      "state_id": 382,
+      "candidate": "variable",
+      "candidate_text": "n''"
+    }
+  ],
+  "1135": [
+    {
+      "state_id": 12015,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1137": [
+    {
+      "state_id": 8950,
+      "candidate": "= _exp",
+      "candidate_text": "= rlabel r n'"
+    }
+  ],
+  "1139": [
+    {
+      "state_id": 1247,
+      "candidate": "variable",
+      "candidate_text": "rlabel"
+    }
+  ],
+  "1146": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "r"
+    }
+  ],
+  "1148": [
+    {
+      "state_id": 180,
+      "candidate": "variable",
+      "candidate_text": "n'"
+    }
+  ],
+  "1152": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "fresh :: ST Int"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "fresh :: ST Int"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable :: quantified_type",
+      "candidate_text": "fresh :: ST Int"
+    }
+  ],
+  "1158": [
+    {
+      "state_id": 2263,
+      "candidate": ":: quantified_type",
+      "candidate_text": ":: ST Int"
+    }
+  ],
+  "1161": [
+    {
+      "state_id": 1462,
+      "candidate": "name",
+      "candidate_text": "ST"
+    }
+  ],
+  "1164": [
+    {
+      "state_id": 764,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "1168": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "fresh = S (\\n -> (n, n+1))"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "fresh = S (\\n -> (n, n+1))"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable _bind_matches",
+      "candidate_text": "fresh = S (\\n -> (n, n+1))"
+    }
+  ],
+  "1174": [
+    {
+      "state_id": 2263,
+      "candidate": "= _exp",
+      "candidate_text": "= S (\\n -> (n, n+1))"
+    }
+  ],
+  "1176": [
+    {
+      "state_id": 1247,
+      "candidate": "name",
+      "candidate_text": "S"
+    }
+  ],
+  "1178": [
+    {
+      "state_id": 180,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1179": [
+    {
+      "state_id": 376,
+      "candidate": "\\ patterns _arrow _exp",
+      "candidate_text": "\\n -> (n, n+1)"
+    }
+  ],
+  "1180": [
+    {
+      "state_id": 2071,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "1182": [
+    {
+      "state_id": 11009,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "1185": [
+    {
+      "state_id": 1293,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1186": [
+    {
+      "state_id": 416,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "1187": [
+    {
+      "state_id": 11068,
+      "candidate": ", _exp",
+      "candidate_text": ", n+1"
+    }
+  ],
+  "1189": [
+    {
+      "state_id": 945,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "1190": [
+    {
+      "state_id": 61,
+      "candidate": "_varsym",
+      "candidate_text": "+"
+    }
+  ],
+  "1191": [
+    {
+      "state_id": 1457,
+      "candidate": "_integer_literal",
+      "candidate_text": "1"
+    }
+  ],
+  "1192": [
+    {
+      "state_id": 11462,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1193": [
+    {
+      "state_id": 10945,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1196": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "alabel :: Tree a -> ST (Tree Int)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "alabel :: Tree a -> ST (Tree Int)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable :: quantified_type",
+      "candidate_text": "alabel :: Tree a -> ST (Tree Int)"
+    }
+  ],
+  "1203": [
+    {
+      "state_id": 2263,
+      "candidate": ":: quantified_type",
+      "candidate_text": ":: Tree a -> ST (Tree Int)"
+    }
+  ],
+  "1206": [
+    {
+      "state_id": 1462,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "1211": [
+    {
+      "state_id": 764,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "1213": [
+    {
+      "state_id": 8341,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "1216": [
+    {
+      "state_id": 1515,
+      "candidate": "name",
+      "candidate_text": "ST"
+    }
+  ],
+  "1219": [
+    {
+      "state_id": 764,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1220": [
+    {
+      "state_id": 431,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "1225": [
+    {
+      "state_id": 524,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "1228": [
+    {
+      "state_id": 10265,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1230": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "alabel (Leaf _)   = Leaf <$> fresh"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "alabel (Leaf _)   = Leaf <$> fresh"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable",
+      "candidate_text": "alabel"
+    }
+  ],
+  "1237": [
+    {
+      "state_id": 2167,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1238": [
+    {
+      "state_id": 42,
+      "candidate": "name",
+      "candidate_text": "Leaf"
+    }
+  ],
+  "1243": [
+    {
+      "state_id": 1274,
+      "candidate": "_",
+      "candidate_text": "_"
+    }
+  ],
+  "1244": [
+    {
+      "state_id": 10383,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1248": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= Leaf <$> fresh"
+    }
+  ],
+  "1250": [
+    {
+      "state_id": 1247,
+      "candidate": "name",
+      "candidate_text": "Leaf"
+    }
+  ],
+  "1255": [
+    {
+      "state_id": 180,
+      "candidate": "_varsym",
+      "candidate_text": "<$>"
+    }
+  ],
+  "1259": [
+    {
+      "state_id": 1395,
+      "candidate": "variable",
+      "candidate_text": "fresh"
+    }
+  ],
+  "1265": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "alabel (Node l r) = Node <$> alabel l <*> alabel r"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "alabel (Node l r) = Node <$> alabel l <*> alabel r"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable",
+      "candidate_text": "alabel"
+    }
+  ],
+  "1272": [
+    {
+      "state_id": 2167,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1273": [
+    {
+      "state_id": 42,
+      "candidate": "name",
+      "candidate_text": "Node"
+    }
+  ],
+  "1278": [
+    {
+      "state_id": 1274,
+      "candidate": "variable",
+      "candidate_text": "l"
+    }
+  ],
+  "1280": [
+    {
+      "state_id": 1274,
+      "candidate": "variable",
+      "candidate_text": "r"
+    }
+  ],
+  "1281": [
+    {
+      "state_id": 11218,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1283": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= Node <$> alabel l <*> alabel r"
+    }
+  ],
+  "1285": [
+    {
+      "state_id": 1247,
+      "candidate": "name",
+      "candidate_text": "Node"
+    }
+  ],
+  "1290": [
+    {
+      "state_id": 180,
+      "candidate": "_varsym",
+      "candidate_text": "<$>"
+    }
+  ],
+  "1294": [
+    {
+      "state_id": 1395,
+      "candidate": "variable",
+      "candidate_text": "alabel"
+    }
+  ],
+  "1301": [
+    {
+      "state_id": 221,
+      "candidate": "variable",
+      "candidate_text": "l"
+    }
+  ],
+  "1303": [
+    {
+      "state_id": 221,
+      "candidate": "_varsym",
+      "candidate_text": "<*>"
+    }
+  ],
+  "1307": [
+    {
+      "state_id": 1395,
+      "candidate": "variable",
+      "candidate_text": "alabel"
+    }
+  ],
+  "1314": [
+    {
+      "state_id": 221,
+      "candidate": "variable",
+      "candidate_text": "r"
+    }
+  ],
+  "1317": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "mlabel :: Tree a -> ST (Tree Int)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "mlabel :: Tree a -> ST (Tree Int)"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable :: quantified_type",
+      "candidate_text": "mlabel :: Tree a -> ST (Tree Int)"
+    }
+  ],
+  "1324": [
+    {
+      "state_id": 2263,
+      "candidate": ":: quantified_type",
+      "candidate_text": ":: Tree a -> ST (Tree Int)"
+    }
+  ],
+  "1327": [
+    {
+      "state_id": 1462,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "1332": [
+    {
+      "state_id": 764,
+      "candidate": "variable",
+      "candidate_text": "a"
+    }
+  ],
+  "1334": [
+    {
+      "state_id": 8341,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "1337": [
+    {
+      "state_id": 1515,
+      "candidate": "name",
+      "candidate_text": "ST"
+    }
+  ],
+  "1340": [
+    {
+      "state_id": 764,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1341": [
+    {
+      "state_id": 431,
+      "candidate": "name",
+      "candidate_text": "Tree"
+    }
+  ],
+  "1346": [
+    {
+      "state_id": 524,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "1349": [
+    {
+      "state_id": 10265,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1351": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "mlabel (Leaf _)   = do n <- fresh"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "mlabel (Leaf _)   = do n <- fresh"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable",
+      "candidate_text": "mlabel"
+    }
+  ],
+  "1358": [
+    {
+      "state_id": 2167,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1359": [
+    {
+      "state_id": 42,
+      "candidate": "name",
+      "candidate_text": "Leaf"
+    }
+  ],
+  "1364": [
+    {
+      "state_id": 1274,
+      "candidate": "_",
+      "candidate_text": "_"
+    }
+  ],
+  "1365": [
+    {
+      "state_id": 10383,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1369": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= do n <- fresh"
+    }
+  ],
+  "1371": [
+    {
+      "state_id": 1247,
+      "candidate": "do _statements",
+      "candidate_text": "do n <- fresh"
+    }
+  ],
+  "1374": [
+    {
+      "state_id": 11149,
+      "candidate": "_cmd_layout_start_do statement _statements_repeat1 _cond_layout_end",
+      "candidate_text": "n <- fresh\n                       return (Leaf n)"
+    },
+    {
+      "state_id": 62,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "1376": [
+    {
+      "state_id": 11002,
+      "candidate": "<- _exp",
+      "candidate_text": "<- fresh"
+    }
+  ],
+  "1379": [
+    {
+      "state_id": 1327,
+      "candidate": "variable",
+      "candidate_text": "fresh"
+    }
+  ],
+  "1408": [
+    {
+      "state_id": 9187,
+      "candidate": "_cond_layout_semicolon statement",
+      "candidate_text": "return (Leaf n)"
+    },
+    {
+      "state_id": 165,
+      "candidate": "statement",
+      "candidate_text": "return (Leaf n)"
+    },
+    {
+      "state_id": 165,
+      "candidate": "variable",
+      "candidate_text": "return"
+    }
+  ],
+  "1415": [
+    {
+      "state_id": 262,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1416": [
+    {
+      "state_id": 399,
+      "candidate": "name",
+      "candidate_text": "Leaf"
+    }
+  ],
+  "1421": [
+    {
+      "state_id": 229,
+      "candidate": "variable",
+      "candidate_text": "n"
+    }
+  ],
+  "1422": [
+    {
+      "state_id": 11218,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1424": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "mlabel (Node l r) = do l' <- mlabel l"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "mlabel (Node l r) = do l' <- mlabel l"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable",
+      "candidate_text": "mlabel"
+    }
+  ],
+  "1431": [
+    {
+      "state_id": 2167,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1432": [
+    {
+      "state_id": 42,
+      "candidate": "name",
+      "candidate_text": "Node"
+    }
+  ],
+  "1437": [
+    {
+      "state_id": 1274,
+      "candidate": "variable",
+      "candidate_text": "l"
+    }
+  ],
+  "1439": [
+    {
+      "state_id": 1274,
+      "candidate": "variable",
+      "candidate_text": "r"
+    }
+  ],
+  "1440": [
+    {
+      "state_id": 11218,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "1442": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= do l' <- mlabel l"
+    }
+  ],
+  "1444": [
+    {
+      "state_id": 1247,
+      "candidate": "do _statements",
+      "candidate_text": "do l' <- mlabel l"
+    }
+  ],
+  "1447": [
+    {
+      "state_id": 11149,
+      "candidate": "_cmd_layout_start_do statement _statements_repeat1 _cond_layout_end",
+      "candidate_text": "l' <- mlabel l\n                       r' <- mlabel r"
+    },
+    {
+      "state_id": 62,
+      "candidate": "variable",
+      "candidate_text": "l'"
+    }
+  ],
+  "1450": [
+    {
+      "state_id": 11002,
+      "candidate": "<- _exp",
+      "candidate_text": "<- mlabel l"
+    }
+  ],
+  "1453": [
+    {
+      "state_id": 1327,
+      "candidate": "variable",
+      "candidate_text": "mlabel"
+    }
+  ],
+  "1460": [
+    {
+      "state_id": 262,
+      "candidate": "variable",
+      "candidate_text": "l"
+    }
+  ],
+  "1485": [
+    {
+      "state_id": 9187,
+      "candidate": "_cond_layout_semicolon statement",
+      "candidate_text": "r' <- mlabel r"
+    },
+    {
+      "state_id": 165,
+      "candidate": "statement",
+      "candidate_text": "r' <- mlabel r"
+    },
+    {
+      "state_id": 165,
+      "candidate": "variable",
+      "candidate_text": "r'"
+    }
+  ],
+  "1488": [
+    {
+      "state_id": 11002,
+      "candidate": "<- _exp",
+      "candidate_text": "<- mlabel r"
+    }
+  ],
+  "1491": [
+    {
+      "state_id": 1327,
+      "candidate": "variable",
+      "candidate_text": "mlabel"
+    }
+  ],
+  "1498": [
+    {
+      "state_id": 262,
+      "candidate": "variable",
+      "candidate_text": "r"
+    }
+  ],
+  "1523": [
+    {
+      "state_id": 9192,
+      "candidate": "_cond_layout_semicolon statement",
+      "candidate_text": "return (Node l' r')"
+    },
+    {
+      "state_id": 170,
+      "candidate": "statement",
+      "candidate_text": "return (Node l' r')"
+    },
+    {
+      "state_id": 170,
+      "candidate": "variable",
+      "candidate_text": "return"
+    }
+  ],
+  "1530": [
+    {
+      "state_id": 262,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "1531": [
+    {
+      "state_id": 399,
+      "candidate": "name",
+      "candidate_text": "Node"
+    }
+  ],
+  "1536": [
+    {
+      "state_id": 229,
+      "candidate": "variable",
+      "candidate_text": "l'"
+    }
+  ],
+  "1539": [
+    {
+      "state_id": 229,
+      "candidate": "variable",
+      "candidate_text": "r'"
+    }
+  ],
+  "1541": [
+    {
+      "state_id": 11218,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ]
+}

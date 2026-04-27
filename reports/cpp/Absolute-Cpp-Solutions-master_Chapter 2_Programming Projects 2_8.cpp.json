@@ -1,0 +1,625 @@
+{
+  "498": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "507": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "517": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "519": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "525": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "535": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "545": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "551": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    int fahrenheit;\r\n    int celcius = 100;\r\n    int temperature = 0;\r\n    bool found = false;\r\n    while(found == false){\r\n        fahrenheit = ((9/static_cast<double>(5))*celcius)+32;\r\n        if(fahrenheit == celcius){\r\n            found = true;\r\n            temperature = temperature + celcius;\r\n            break;\r\n        }\r\n        celcius--;\r\n    }\r\n    cout << temperature;\r\n    return 0;\r\n}"
+    }
+  ],
+  "558": [
+    {
+      "state_id": 4,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "562": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "fahrenheit"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "579": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "celcius"
+    }
+  ],
+  "591": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 100"
+    }
+  ],
+  "593": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "100"
+    }
+  ],
+  "596": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "603": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "607": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "619": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= 0"
+    }
+  ],
+  "621": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "622": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "bool"
+    }
+  ],
+  "634": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "found"
+    }
+  ],
+  "640": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= false"
+    }
+  ],
+  "642": [
+    {
+      "state_id": 1243,
+      "candidate": "false",
+      "candidate_text": "false"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "654": [
+    {
+      "state_id": 61,
+      "candidate": "while condition_clause statement",
+      "candidate_text": "while(found == false){"
+    }
+  ],
+  "659": [
+    {
+      "state_id": 10274,
+      "candidate": "( expression )",
+      "candidate_text": "(found == false)"
+    }
+  ],
+  "660": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "found"
+    }
+  ],
+  "666": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== false"
+    }
+  ],
+  "669": [
+    {
+      "state_id": 1838,
+      "candidate": "false",
+      "candidate_text": "false"
+    }
+  ],
+  "674": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "675": [
+    {
+      "state_id": 161,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n        fahrenheit = ((9/static_cast<double>(5))*celcius)+32;\r\n        if(fahrenheit == celcius){\r\n            found = true;\r\n            temperature = temperature + celcius;\r\n            break;\r\n        }\r\n        celcius--;\r\n    }"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "fahrenheit = ((9/static_cast<double>(5))*celcius)+32"
+    }
+  ],
+  "697": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= ((9/static_cast<double>(5))*celcius)+32"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 1222,
+      "candidate": "( expression )",
+      "candidate_text": "((9/static_cast<double>(5))*celcius)"
+    }
+  ],
+  "700": [
+    {
+      "state_id": 217,
+      "candidate": "( expression )",
+      "candidate_text": "(9/static_cast<double>(5))"
+    }
+  ],
+  "701": [
+    {
+      "state_id": 229,
+      "candidate": "number_literal",
+      "candidate_text": "9"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 4645,
+      "candidate": "/ expression",
+      "candidate_text": "/static_cast<double>(5)"
+    }
+  ],
+  "703": [
+    {
+      "state_id": 1269,
+      "candidate": "identifier template_argument_list",
+      "candidate_text": "static_cast<double>"
+    }
+  ],
+  "714": [
+    {
+      "state_id": 3537,
+      "candidate": "< type_descriptor >",
+      "candidate_text": "<double>"
+    }
+  ],
+  "715": [
+    {
+      "state_id": 276,
+      "candidate": "primitive_type",
+      "candidate_text": "double"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 9478,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "722": [
+    {
+      "state_id": 5086,
+      "candidate": "( expression )",
+      "candidate_text": "(5)"
+    }
+  ],
+  "723": [
+    {
+      "state_id": 1188,
+      "candidate": "number_literal",
+      "candidate_text": "5"
+    }
+  ],
+  "724": [
+    {
+      "state_id": 6559,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "725": [
+    {
+      "state_id": 4645,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "726": [
+    {
+      "state_id": 4607,
+      "candidate": "* expression",
+      "candidate_text": "*celcius"
+    }
+  ],
+  "727": [
+    {
+      "state_id": 1394,
+      "candidate": "identifier",
+      "candidate_text": "celcius"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "735": [
+    {
+      "state_id": 6387,
+      "candidate": "+ expression",
+      "candidate_text": "+32"
+    }
+  ],
+  "736": [
+    {
+      "state_id": 1592,
+      "candidate": "number_literal",
+      "candidate_text": "32"
+    }
+  ],
+  "738": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "749": [
+    {
+      "state_id": 39,
+      "candidate": "if condition_clause statement",
+      "candidate_text": "if(fahrenheit == celcius){"
+    }
+  ],
+  "751": [
+    {
+      "state_id": 9693,
+      "candidate": "( expression )",
+      "candidate_text": "(fahrenheit == celcius)"
+    }
+  ],
+  "752": [
+    {
+      "state_id": 128,
+      "candidate": "identifier",
+      "candidate_text": "fahrenheit"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 6522,
+      "candidate": "== expression",
+      "candidate_text": "== celcius"
+    }
+  ],
+  "766": [
+    {
+      "state_id": 1838,
+      "candidate": "identifier",
+      "candidate_text": "celcius"
+    }
+  ],
+  "773": [
+    {
+      "state_id": 6522,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "774": [
+    {
+      "state_id": 199,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n            found = true;\r\n            temperature = temperature + celcius;\r\n            break;\r\n        }"
+    }
+  ],
+  "789": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "found = true"
+    }
+  ],
+  "795": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= true"
+    }
+  ],
+  "797": [
+    {
+      "state_id": 1222,
+      "candidate": "true",
+      "candidate_text": "true"
+    }
+  ],
+  "801": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "816": [
+    {
+      "state_id": 39,
+      "candidate": "identifier = expression",
+      "candidate_text": "temperature = temperature + celcius"
+    }
+  ],
+  "828": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= temperature + celcius"
+    }
+  ],
+  "830": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "842": [
+    {
+      "state_id": 6387,
+      "candidate": "+ expression",
+      "candidate_text": "+ celcius"
+    }
+  ],
+  "844": [
+    {
+      "state_id": 1592,
+      "candidate": "identifier",
+      "candidate_text": "celcius"
+    }
+  ],
+  "851": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "866": [
+    {
+      "state_id": 39,
+      "candidate": "break ;",
+      "candidate_text": "break;"
+    }
+  ],
+  "871": [
+    {
+      "state_id": 10484,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "882": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "893": [
+    {
+      "state_id": 39,
+      "candidate": "identifier",
+      "candidate_text": "celcius"
+    }
+  ],
+  "900": [
+    {
+      "state_id": 6753,
+      "candidate": "--",
+      "candidate_text": "--"
+    }
+  ],
+  "902": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "909": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "916": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "921": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< temperature"
+    }
+  ],
+  "924": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "temperature"
+    }
+  ],
+  "935": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "942": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "949": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "950": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "953": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

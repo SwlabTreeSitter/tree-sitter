@@ -1,0 +1,439 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "def identifier parameters : _indent block",
+      "candidate_text": "def make_pizza(size, *toppings):\n    \"\"\"Summarize the pizza we are about to make.\"\"\""
+    }
+  ],
+  "4": [
+    {
+      "state_id": 2623,
+      "candidate": "identifier parameters : _indent block",
+      "candidate_text": "make_pizza(size, *toppings):\n    \"\"\"Summarize the pizza we are about to make.\"\"\""
+    }
+  ],
+  "14": [
+    {
+      "state_id": 2201,
+      "candidate": "( _parameters )",
+      "candidate_text": "(size, *toppings)"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 1649,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "19": [
+    {
+      "state_id": 2306,
+      "candidate": ", parameter",
+      "candidate_text": ", *toppings"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 1651,
+      "candidate": "* identifier",
+      "candidate_text": "*toppings"
+    }
+  ],
+  "22": [
+    {
+      "state_id": 854,
+      "candidate": "identifier",
+      "candidate_text": "toppings"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 2610,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 2519,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n    \"\"\"Summarize the pizza we are about to make.\"\"\""
+    }
+  ],
+  "37": [
+    {
+      "state_id": 92,
+      "candidate": "_indent block",
+      "candidate_text": "\"\"\"Summarize the pizza we are about to make.\"\"\""
+    },
+    {
+      "state_id": 9,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "\"\"\"Summarize the pizza we are about to make.\"\"\""
+    }
+  ],
+  "40": [
+    {
+      "state_id": 1696,
+      "candidate": "_string_content",
+      "candidate_text": "Summarize the pizza we are about to make."
+    }
+  ],
+  "81": [
+    {
+      "state_id": 1713,
+      "candidate": "string_end",
+      "candidate_text": "\"\"\""
+    }
+  ],
+  "89": [
+    {
+      "state_id": 68,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "94": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"\\nMaking a {size}-inch pizza with the following toppings:\")"
+    }
+  ],
+  "95": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"\\nMaking a {size}-inch pizza with the following toppings:\""
+    }
+  ],
+  "97": [
+    {
+      "state_id": 1677,
+      "candidate": "escape_sequence _string_content",
+      "candidate_text": "\\nMaking a "
+    }
+  ],
+  "99": [
+    {
+      "state_id": 1807,
+      "candidate": "_string_content",
+      "candidate_text": "Making a "
+    }
+  ],
+  "108": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{size}"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "size"
+    }
+  ],
+  "113": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 1678,
+      "candidate": "_string_content",
+      "candidate_text": "-inch pizza with the following toppings:"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "155": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 68,
+      "candidate": "for pattern in expression : _indent block",
+      "candidate_text": "for topping in toppings:\n        print(f\"- {topping}\")"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 845,
+      "candidate": "identifier",
+      "candidate_text": "topping"
+    }
+  ],
+  "173": [
+    {
+      "state_id": 2488,
+      "candidate": "in expression : _indent block",
+      "candidate_text": "in toppings:\n        print(f\"- {topping}\")"
+    }
+  ],
+  "176": [
+    {
+      "state_id": 476,
+      "candidate": "identifier",
+      "candidate_text": "toppings"
+    }
+  ],
+  "184": [
+    {
+      "state_id": 1869,
+      "candidate": ": _indent block",
+      "candidate_text": ":\n        print(f\"- {topping}\")"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 123,
+      "candidate": "_indent block",
+      "candidate_text": "print(f\"- {topping}\")"
+    },
+    {
+      "state_id": 44,
+      "candidate": "print",
+      "candidate_text": "print"
+    }
+  ],
+  "199": [
+    {
+      "state_id": 963,
+      "candidate": "( expression )",
+      "candidate_text": "(f\"- {topping}\")"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 240,
+      "candidate": "string_start string_repeat1 string_end",
+      "candidate_text": "f\"- {topping}\""
+    }
+  ],
+  "202": [
+    {
+      "state_id": 1677,
+      "candidate": "_string_content",
+      "candidate_text": "- "
+    }
+  ],
+  "204": [
+    {
+      "state_id": 1678,
+      "candidate": "{ _f_expression }",
+      "candidate_text": "{topping}"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 227,
+      "candidate": "identifier",
+      "candidate_text": "topping"
+    }
+  ],
+  "212": [
+    {
+      "state_id": 2103,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 1678,
+      "candidate": "string_end",
+      "candidate_text": "\""
+    }
+  ],
+  "214": [
+    {
+      "state_id": 1725,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "217": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "make_pizza"
+    }
+  ],
+  "227": [
+    {
+      "state_id": 963,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(16, 'pepperoni')"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 240,
+      "candidate": "integer",
+      "candidate_text": "16"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 1725,
+      "candidate": ", expression",
+      "candidate_text": ", 'pepperoni'"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 319,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'pepperoni'"
+    }
+  ],
+  "233": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "pepperoni"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 2469,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "245": [
+    {
+      "state_id": 69,
+      "candidate": "identifier",
+      "candidate_text": "make_pizza"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 963,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(12, 'mushrooms', 'green peppers', 'extra cheese')"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 240,
+      "candidate": "integer",
+      "candidate_text": "12"
+    }
+  ],
+  "258": [
+    {
+      "state_id": 1725,
+      "candidate": ", expression",
+      "candidate_text": ", 'mushrooms'"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 319,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'mushrooms'"
+    }
+  ],
+  "261": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "mushrooms"
+    }
+  ],
+  "270": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 2469,
+      "candidate": ", expression",
+      "candidate_text": ", 'green peppers'"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 276,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'green peppers'"
+    }
+  ],
+  "274": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "green peppers"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "288": [
+    {
+      "state_id": 2469,
+      "candidate": ", expression",
+      "candidate_text": ", 'extra cheese'"
+    }
+  ],
+  "290": [
+    {
+      "state_id": 276,
+      "candidate": "string_start string_content string_end",
+      "candidate_text": "'extra cheese'"
+    }
+  ],
+  "291": [
+    {
+      "state_id": 1706,
+      "candidate": "_string_content",
+      "candidate_text": "extra cheese"
+    }
+  ],
+  "303": [
+    {
+      "state_id": 1707,
+      "candidate": "string_end",
+      "candidate_text": "'"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 2469,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

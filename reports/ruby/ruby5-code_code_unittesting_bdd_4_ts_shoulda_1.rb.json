@@ -1,0 +1,933 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "identifier",
+      "candidate_text": "require"
+    }
+  ],
+  "386": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "'test/unit'"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "test/unit"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "'"
+    }
+  ],
+  "398": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "require"
+    }
+  ],
+  "406": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "'shoulda'"
+    }
+  ],
+  "407": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "shoulda"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "'"
+    }
+  ],
+  "416": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "require_relative"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 8,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "'tennis_scorer.rb'"
+    }
+  ],
+  "434": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "tennis_scorer.rb"
+    }
+  ],
+  "450": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "'"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 346,
+      "candidate": "class constant superclass _terminator body_statement end",
+      "candidate_text": "class TennisScorerTest < Test::Unit::TestCase\n  def assert_score(target)\n    assert_equal(target, @ts.score)\n  end\n  context \"Tennis scores\" do\n    setup do\n      @ts = TennisScorer.new\n    end\n    should \"start with a score of 0-0\" do\n      assert_score(\"0-0\")\n    end\n    context \"where the server wins a point\" do \n      setup do\n        @ts.give_point_to(:server)\n      end\n      should \"be 15-0\" do\n        assert_score(\"15-0\")\n      end\n      context \"and the oponent wins a point\" do\n        setup do\n          @ts.give_point_to(:receiver)\n        end\n        should \"be 15-15\" do\n          assert_score(\"15-15\") \n        end\n      end\n    end\n    should \"be 0-15 if the receiver wins a point\" do\n      @ts.give_point_to(:receiver)\n      assert_score(\"0-15\")\n    end\n  end\nend"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 1975,
+      "candidate": "constant superclass _terminator body_statement end",
+      "candidate_text": "TennisScorerTest < Test::Unit::TestCase\n  def assert_score(target)\n    assert_equal(target, @ts.score)\n  end\n  context \"Tennis scores\" do\n    setup do\n      @ts = TennisScorer.new\n    end\n    should \"start with a score of 0-0\" do\n      assert_score(\"0-0\")\n    end\n    context \"where the server wins a point\" do \n      setup do\n        @ts.give_point_to(:server)\n      end\n      should \"be 15-0\" do\n        assert_score(\"15-0\")\n      end\n      context \"and the oponent wins a point\" do\n        setup do\n          @ts.give_point_to(:receiver)\n        end\n        should \"be 15-15\" do\n          assert_score(\"15-15\") \n        end\n      end\n    end\n    should \"be 0-15 if the receiver wins a point\" do\n      @ts.give_point_to(:receiver)\n      assert_score(\"0-15\")\n    end\n  end\nend"
+    }
+  ],
+  "476": [
+    {
+      "state_id": 125,
+      "candidate": "< _expression",
+      "candidate_text": "< Test::Unit::TestCase"
+    }
+  ],
+  "478": [
+    {
+      "state_id": 540,
+      "candidate": "constant",
+      "candidate_text": "Test"
+    }
+  ],
+  "482": [
+    {
+      "state_id": 3417,
+      "candidate": ":: constant",
+      "candidate_text": "::Unit"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 3135,
+      "candidate": "constant",
+      "candidate_text": "Unit"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 3417,
+      "candidate": ":: constant",
+      "candidate_text": "::TestCase"
+    }
+  ],
+  "490": [
+    {
+      "state_id": 3135,
+      "candidate": "constant",
+      "candidate_text": "TestCase"
+    }
+  ],
+  "501": [
+    {
+      "state_id": 240,
+      "candidate": "def _method_rest",
+      "candidate_text": "def assert_score(target)"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "assert_score"
+    }
+  ],
+  "517": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(target)"
+    }
+  ],
+  "518": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "target"
+    }
+  ],
+  "524": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "530": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "assert_equal"
+    }
+  ],
+  "542": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(target, @ts.score)"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 428,
+      "candidate": "identifier",
+      "candidate_text": "target"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", @ts.score"
+    }
+  ],
+  "551": [
+    {
+      "state_id": 432,
+      "candidate": "instance_variable",
+      "candidate_text": "@ts"
+    }
+  ],
+  "554": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".score"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "score"
+    }
+  ],
+  "560": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "564": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "570": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "context"
+    }
+  ],
+  "578": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Tennis scores\""
+    }
+  ],
+  "579": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "Tennis scores"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "594": [
+    {
+      "state_id": 4466,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n    setup do\n      @ts = TennisScorer.new\n    end\n    should \"start with a score of 0-0\" do\n      assert_score(\"0-0\")\n    end\n    context \"where the server wins a point\" do \n      setup do\n        @ts.give_point_to(:server)\n      end\n      should \"be 15-0\" do\n        assert_score(\"15-0\")\n      end\n      context \"and the oponent wins a point\" do\n        setup do\n          @ts.give_point_to(:receiver)\n        end\n        should \"be 15-15\" do\n          assert_score(\"15-15\") \n        end\n      end\n    end\n    should \"be 0-15 if the receiver wins a point\" do\n      @ts.give_point_to(:receiver)\n      assert_score(\"0-15\")\n    end\n  end"
+    }
+  ],
+  "601": [
+    {
+      "state_id": 179,
+      "candidate": "identifier",
+      "candidate_text": "setup"
+    }
+  ],
+  "607": [
+    {
+      "state_id": 3,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n      @ts = TennisScorer.new\n    end"
+    }
+  ],
+  "616": [
+    {
+      "state_id": 170,
+      "candidate": "instance_variable",
+      "candidate_text": "@ts"
+    }
+  ],
+  "620": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= TennisScorer.new"
+    }
+  ],
+  "622": [
+    {
+      "state_id": 462,
+      "candidate": "constant",
+      "candidate_text": "TennisScorer"
+    }
+  ],
+  "634": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "643": [
+    {
+      "state_id": 5833,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "651": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "should"
+    }
+  ],
+  "658": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"start with a score of 0-0\""
+    }
+  ],
+  "659": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "start with a score of 0-0"
+    }
+  ],
+  "684": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "686": [
+    {
+      "state_id": 4466,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n      assert_score(\"0-0\")\n    end"
+    }
+  ],
+  "695": [
+    {
+      "state_id": 179,
+      "candidate": "identifier",
+      "candidate_text": "assert_score"
+    }
+  ],
+  "707": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"0-0\")"
+    }
+  ],
+  "708": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"0-0\""
+    }
+  ],
+  "709": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "0-0"
+    }
+  ],
+  "712": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "713": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "719": [
+    {
+      "state_id": 5656,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "727": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "context"
+    }
+  ],
+  "735": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"where the server wins a point\""
+    }
+  ],
+  "736": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "where the server wins a point"
+    }
+  ],
+  "765": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "767": [
+    {
+      "state_id": 4466,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do \n      setup do\n        @ts.give_point_to(:server)\n      end\n      should \"be 15-0\" do\n        assert_score(\"15-0\")\n      end\n      context \"and the oponent wins a point\" do\n        setup do\n          @ts.give_point_to(:receiver)\n        end\n        should \"be 15-15\" do\n          assert_score(\"15-15\") \n        end\n      end\n    end"
+    }
+  ],
+  "777": [
+    {
+      "state_id": 179,
+      "candidate": "identifier",
+      "candidate_text": "setup"
+    }
+  ],
+  "783": [
+    {
+      "state_id": 3,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n        @ts.give_point_to(:server)\n      end"
+    }
+  ],
+  "794": [
+    {
+      "state_id": 170,
+      "candidate": "instance_variable",
+      "candidate_text": "@ts"
+    }
+  ],
+  "797": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".give_point_to"
+    }
+  ],
+  "798": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "give_point_to"
+    }
+  ],
+  "811": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:server)"
+    }
+  ],
+  "812": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":server"
+    }
+  ],
+  "819": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "827": [
+    {
+      "state_id": 5833,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "837": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "should"
+    }
+  ],
+  "844": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"be 15-0\""
+    }
+  ],
+  "845": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "be 15-0"
+    }
+  ],
+  "852": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "854": [
+    {
+      "state_id": 4466,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n        assert_score(\"15-0\")\n      end"
+    }
+  ],
+  "865": [
+    {
+      "state_id": 179,
+      "candidate": "identifier",
+      "candidate_text": "assert_score"
+    }
+  ],
+  "877": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"15-0\")"
+    }
+  ],
+  "878": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"15-0\""
+    }
+  ],
+  "879": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "15-0"
+    }
+  ],
+  "883": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "884": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "892": [
+    {
+      "state_id": 5656,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "902": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "context"
+    }
+  ],
+  "910": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"and the oponent wins a point\""
+    }
+  ],
+  "911": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "and the oponent wins a point"
+    }
+  ],
+  "939": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "941": [
+    {
+      "state_id": 4466,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n        setup do\n          @ts.give_point_to(:receiver)\n        end\n        should \"be 15-15\" do\n          assert_score(\"15-15\") \n        end\n      end"
+    }
+  ],
+  "952": [
+    {
+      "state_id": 179,
+      "candidate": "identifier",
+      "candidate_text": "setup"
+    }
+  ],
+  "958": [
+    {
+      "state_id": 3,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n          @ts.give_point_to(:receiver)\n        end"
+    }
+  ],
+  "971": [
+    {
+      "state_id": 170,
+      "candidate": "instance_variable",
+      "candidate_text": "@ts"
+    }
+  ],
+  "974": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".give_point_to"
+    }
+  ],
+  "975": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "give_point_to"
+    }
+  ],
+  "988": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:receiver)"
+    }
+  ],
+  "989": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":receiver"
+    }
+  ],
+  "998": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1008": [
+    {
+      "state_id": 5833,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "1020": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "should"
+    }
+  ],
+  "1027": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"be 15-15\""
+    }
+  ],
+  "1028": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "be 15-15"
+    }
+  ],
+  "1036": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "1038": [
+    {
+      "state_id": 4466,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n          assert_score(\"15-15\") \n        end"
+    }
+  ],
+  "1051": [
+    {
+      "state_id": 179,
+      "candidate": "identifier",
+      "candidate_text": "assert_score"
+    }
+  ],
+  "1063": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"15-15\")"
+    }
+  ],
+  "1064": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"15-15\""
+    }
+  ],
+  "1065": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "15-15"
+    }
+  ],
+  "1070": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "1071": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1082": [
+    {
+      "state_id": 5656,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "1092": [
+    {
+      "state_id": 5656,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "1100": [
+    {
+      "state_id": 5656,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "1108": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "should"
+    }
+  ],
+  "1115": [
+    {
+      "state_id": 3,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"be 0-15 if the receiver wins a point\""
+    }
+  ],
+  "1116": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "be 0-15 if the receiver wins a point"
+    }
+  ],
+  "1152": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "1154": [
+    {
+      "state_id": 4466,
+      "candidate": "do _terminator body_statement end",
+      "candidate_text": "do\n      @ts.give_point_to(:receiver)\n      assert_score(\"0-15\")\n    end"
+    }
+  ],
+  "1163": [
+    {
+      "state_id": 179,
+      "candidate": "instance_variable",
+      "candidate_text": "@ts"
+    }
+  ],
+  "1166": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".give_point_to"
+    }
+  ],
+  "1167": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "give_point_to"
+    }
+  ],
+  "1180": [
+    {
+      "state_id": 4,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(:receiver)"
+    }
+  ],
+  "1181": [
+    {
+      "state_id": 428,
+      "candidate": "simple_symbol",
+      "candidate_text": ":receiver"
+    }
+  ],
+  "1190": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1198": [
+    {
+      "state_id": 252,
+      "candidate": "identifier",
+      "candidate_text": "assert_score"
+    }
+  ],
+  "1210": [
+    {
+      "state_id": 3,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(\"0-15\")"
+    }
+  ],
+  "1211": [
+    {
+      "state_id": 428,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"0-15\""
+    }
+  ],
+  "1212": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "0-15"
+    }
+  ],
+  "1216": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "1217": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1223": [
+    {
+      "state_id": 5656,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "1229": [
+    {
+      "state_id": 5656,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "1233": [
+    {
+      "state_id": 5846,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ]
+}

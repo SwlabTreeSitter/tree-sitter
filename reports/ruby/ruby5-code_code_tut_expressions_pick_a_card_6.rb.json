@@ -1,0 +1,821 @@
+{
+  "378": [
+    {
+      "state_id": 1,
+      "candidate": "class constant _terminator body_statement end",
+      "candidate_text": "class Card\n  attr_accessor :rank, :suit"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 1975,
+      "candidate": "constant _terminator body_statement end",
+      "candidate_text": "Card\n  attr_accessor :rank, :suit"
+    }
+  ],
+  "391": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "attr_accessor"
+    }
+  ],
+  "405": [
+    {
+      "state_id": 3,
+      "candidate": "simple_symbol",
+      "candidate_text": ":rank"
+    }
+  ],
+  "410": [
+    {
+      "state_id": 4522,
+      "candidate": ", _argument",
+      "candidate_text": ", :suit"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 451,
+      "candidate": "simple_symbol",
+      "candidate_text": ":suit"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 252,
+      "candidate": "def _method_rest",
+      "candidate_text": "def initialize(rank, suit)"
+    }
+  ],
+  "425": [
+    {
+      "state_id": 2466,
+      "candidate": "identifier",
+      "candidate_text": "initialize"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 4557,
+      "candidate": "( _formal_parameter parameters_repeat1 )",
+      "candidate_text": "(rank, suit)"
+    }
+  ],
+  "436": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "rank"
+    }
+  ],
+  "440": [
+    {
+      "state_id": 5499,
+      "candidate": ", _formal_parameter",
+      "candidate_text": ", suit"
+    }
+  ],
+  "442": [
+    {
+      "state_id": 4622,
+      "candidate": "identifier",
+      "candidate_text": "suit"
+    }
+  ],
+  "446": [
+    {
+      "state_id": 5515,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 238,
+      "candidate": "instance_variable",
+      "candidate_text": "@rank"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= rank"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "rank"
+    }
+  ],
+  "469": [
+    {
+      "state_id": 252,
+      "candidate": "instance_variable",
+      "candidate_text": "@suit"
+    }
+  ],
+  "475": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= suit"
+    }
+  ],
+  "477": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "suit"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 5828,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "493": [
+    {
+      "state_id": 346,
+      "candidate": "def _method_rest",
+      "candidate_text": "def pick_a_card(cards)"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 2301,
+      "candidate": "identifier",
+      "candidate_text": "pick_a_card"
+    }
+  ],
+  "508": [
+    {
+      "state_id": 4540,
+      "candidate": "( _formal_parameter )",
+      "candidate_text": "(cards)"
+    }
+  ],
+  "509": [
+    {
+      "state_id": 4611,
+      "candidate": "identifier",
+      "candidate_text": "cards"
+    }
+  ],
+  "514": [
+    {
+      "state_id": 5499,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "518": [
+    {
+      "state_id": 238,
+      "candidate": "identifier",
+      "candidate_text": "cards"
+    }
+  ],
+  "524": [
+    {
+      "state_id": 2132,
+      "candidate": "= _arg",
+      "candidate_text": "= cards.sort_by(&:rank)"
+    }
+  ],
+  "526": [
+    {
+      "state_id": 462,
+      "candidate": "identifier",
+      "candidate_text": "cards"
+    }
+  ],
+  "531": [
+    {
+      "state_id": 2552,
+      "candidate": ". identifier",
+      "candidate_text": ".sort_by"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 3163,
+      "candidate": "identifier",
+      "candidate_text": "sort_by"
+    }
+  ],
+  "539": [
+    {
+      "state_id": 6,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(&:rank)"
+    }
+  ],
+  "540": [
+    {
+      "state_id": 428,
+      "candidate": "& _arg",
+      "candidate_text": "&:rank"
+    }
+  ],
+  "541": [
+    {
+      "state_id": 808,
+      "candidate": "simple_symbol",
+      "candidate_text": ":rank"
+    }
+  ],
+  "546": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "550": [
+    {
+      "state_id": 252,
+      "candidate": "case _statement _terminator case_match_repeat1 else end",
+      "candidate_text": "case cards\n  in [{rank:}, {rank: ^(rank + 1)}, {rank: ^(rank+ 2)}] if rank > 6\n    \"You have three consecutive high cards\"\n  else\n    \"You have no interesting cards,\"\n  end"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 283,
+      "candidate": "identifier",
+      "candidate_text": "cards"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 4908,
+      "candidate": "in _pattern_top_expr_body _guard then",
+      "candidate_text": "in [{rank:}, {rank: ^(rank + 1)}, {rank: ^(rank+ 2)}] if rank > 6"
+    }
+  ],
+  "566": [
+    {
+      "state_id": 2019,
+      "candidate": "[ _array_pattern_body ]",
+      "candidate_text": "[{rank:}, {rank: ^(rank + 1)}, {rank: ^(rank+ 2)}]"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 2071,
+      "candidate": "{ _hash_pattern_body }",
+      "candidate_text": "{rank:}"
+    }
+  ],
+  "568": [
+    {
+      "state_id": 4614,
+      "candidate": "identifier :",
+      "candidate_text": "rank:"
+    }
+  ],
+  "572": [
+    {
+      "state_id": 5892,
+      "candidate": ":",
+      "candidate_text": ":"
+    }
+  ],
+  "573": [
+    {
+      "state_id": 5701,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "574": [
+    {
+      "state_id": 5423,
+      "candidate": ", _array_pattern_n",
+      "candidate_text": ", {rank: ^(rank + 1)}, {rank: ^(rank+ 2)}"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 2045,
+      "candidate": "{ _hash_pattern_body }",
+      "candidate_text": "{rank: ^(rank + 1)}"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 4614,
+      "candidate": "identifier : _pattern_expr",
+      "candidate_text": "rank: ^(rank + 1)"
+    }
+  ],
+  "581": [
+    {
+      "state_id": 5892,
+      "candidate": ": _pattern_expr",
+      "candidate_text": ": ^(rank + 1)"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 2060,
+      "candidate": "^ ( _expression )",
+      "candidate_text": "^(rank + 1)"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 5235,
+      "candidate": "( _expression )",
+      "candidate_text": "(rank + 1)"
+    }
+  ],
+  "585": [
+    {
+      "state_id": 620,
+      "candidate": "identifier",
+      "candidate_text": "rank"
+    }
+  ],
+  "590": [
+    {
+      "state_id": 4147,
+      "candidate": "+ _arg",
+      "candidate_text": "+ 1"
+    }
+  ],
+  "592": [
+    {
+      "state_id": 1560,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "593": [
+    {
+      "state_id": 5507,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "594": [
+    {
+      "state_id": 5701,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 4964,
+      "candidate": ", _pattern_expr",
+      "candidate_text": ", {rank: ^(rank+ 2)}"
+    }
+  ],
+  "597": [
+    {
+      "state_id": 2045,
+      "candidate": "{ _hash_pattern_body }",
+      "candidate_text": "{rank: ^(rank+ 2)}"
+    }
+  ],
+  "598": [
+    {
+      "state_id": 4614,
+      "candidate": "identifier : _pattern_expr",
+      "candidate_text": "rank: ^(rank+ 2)"
+    }
+  ],
+  "602": [
+    {
+      "state_id": 5892,
+      "candidate": ": _pattern_expr",
+      "candidate_text": ": ^(rank+ 2)"
+    }
+  ],
+  "604": [
+    {
+      "state_id": 2060,
+      "candidate": "^ ( _expression )",
+      "candidate_text": "^(rank+ 2)"
+    }
+  ],
+  "605": [
+    {
+      "state_id": 5235,
+      "candidate": "( _expression )",
+      "candidate_text": "(rank+ 2)"
+    }
+  ],
+  "606": [
+    {
+      "state_id": 620,
+      "candidate": "identifier",
+      "candidate_text": "rank"
+    }
+  ],
+  "610": [
+    {
+      "state_id": 4147,
+      "candidate": "+ _arg",
+      "candidate_text": "+ 2"
+    }
+  ],
+  "612": [
+    {
+      "state_id": 1560,
+      "candidate": "integer",
+      "candidate_text": "2"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 5507,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "614": [
+    {
+      "state_id": 5701,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "615": [
+    {
+      "state_id": 5909,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "617": [
+    {
+      "state_id": 4828,
+      "candidate": "if _expression",
+      "candidate_text": "if rank > 6"
+    }
+  ],
+  "620": [
+    {
+      "state_id": 519,
+      "candidate": "identifier",
+      "candidate_text": "rank"
+    }
+  ],
+  "625": [
+    {
+      "state_id": 4008,
+      "candidate": "> _arg",
+      "candidate_text": "> 6"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 950,
+      "candidate": "integer",
+      "candidate_text": "6"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 298,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"You have three consecutive high cards\""
+    }
+  ],
+  "634": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "You have three consecutive high cards"
+    }
+  ],
+  "671": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "675": [
+    {
+      "state_id": 5262,
+      "candidate": "else _terminator _statements",
+      "candidate_text": "else\n    \"You have no interesting cards,\""
+    }
+  ],
+  "684": [
+    {
+      "state_id": 289,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"You have no interesting cards,\""
+    }
+  ],
+  "685": [
+    {
+      "state_id": 5084,
+      "candidate": "string_content",
+      "candidate_text": "You have no interesting cards,"
+    }
+  ],
+  "715": [
+    {
+      "state_id": 5096,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "719": [
+    {
+      "state_id": 5819,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "723": [
+    {
+      "state_id": 5810,
+      "candidate": "end",
+      "candidate_text": "end"
+    }
+  ],
+  "728": [
+    {
+      "state_id": 346,
+      "candidate": "identifier",
+      "candidate_text": "puts"
+    }
+  ],
+  "733": [
+    {
+      "state_id": 8,
+      "candidate": "identifier",
+      "candidate_text": "pick_a_card"
+    }
+  ],
+  "744": [
+    {
+      "state_id": 10,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(["
+    }
+  ],
+  "745": [
+    {
+      "state_id": 428,
+      "candidate": "[ _argument_list_with_trailing_comma ]",
+      "candidate_text": "[\n  Card.new(7, \"Hearts\"),\n  Card.new(8, \"Diamonds\"),\n  Card.new(9, \"Clubs\")\n]"
+    }
+  ],
+  "749": [
+    {
+      "state_id": 430,
+      "candidate": "constant",
+      "candidate_text": "Card"
+    }
+  ],
+  "753": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "754": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "757": [
+    {
+      "state_id": 37,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(7, \"Hearts\")"
+    }
+  ],
+  "758": [
+    {
+      "state_id": 438,
+      "candidate": "integer",
+      "candidate_text": "7"
+    }
+  ],
+  "759": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", \"Hearts\""
+    }
+  ],
+  "761": [
+    {
+      "state_id": 432,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Hearts\""
+    }
+  ],
+  "762": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Hearts"
+    }
+  ],
+  "768": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "769": [
+    {
+      "state_id": 5641,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "770": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ",\n  Card.new(8, \"Diamonds\")"
+    }
+  ],
+  "774": [
+    {
+      "state_id": 432,
+      "candidate": "constant",
+      "candidate_text": "Card"
+    }
+  ],
+  "778": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "779": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "782": [
+    {
+      "state_id": 37,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(8, \"Diamonds\")"
+    }
+  ],
+  "783": [
+    {
+      "state_id": 438,
+      "candidate": "integer",
+      "candidate_text": "8"
+    }
+  ],
+  "784": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", \"Diamonds\""
+    }
+  ],
+  "786": [
+    {
+      "state_id": 432,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Diamonds\""
+    }
+  ],
+  "787": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Diamonds"
+    }
+  ],
+  "795": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "796": [
+    {
+      "state_id": 5641,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "797": [
+    {
+      "state_id": 5467,
+      "candidate": ", _argument",
+      "candidate_text": ",\n  Card.new(9, \"Clubs\")"
+    }
+  ],
+  "801": [
+    {
+      "state_id": 435,
+      "candidate": "constant",
+      "candidate_text": "Card"
+    }
+  ],
+  "805": [
+    {
+      "state_id": 3515,
+      "candidate": ". identifier",
+      "candidate_text": ".new"
+    }
+  ],
+  "806": [
+    {
+      "state_id": 3143,
+      "candidate": "identifier",
+      "candidate_text": "new"
+    }
+  ],
+  "809": [
+    {
+      "state_id": 37,
+      "candidate": "( _argument_list_with_trailing_comma )",
+      "candidate_text": "(9, \"Clubs\")"
+    }
+  ],
+  "810": [
+    {
+      "state_id": 438,
+      "candidate": "integer",
+      "candidate_text": "9"
+    }
+  ],
+  "811": [
+    {
+      "state_id": 5442,
+      "candidate": ", _argument",
+      "candidate_text": ", \"Clubs\""
+    }
+  ],
+  "813": [
+    {
+      "state_id": 432,
+      "candidate": "\" _literal_contents )",
+      "candidate_text": "\"Clubs\""
+    }
+  ],
+  "814": [
+    {
+      "state_id": 5207,
+      "candidate": "string_content",
+      "candidate_text": "Clubs"
+    }
+  ],
+  "819": [
+    {
+      "state_id": 5038,
+      "candidate": ")",
+      "candidate_text": "\""
+    }
+  ],
+  "820": [
+    {
+      "state_id": 5641,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "822": [
+    {
+      "state_id": 5926,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "823": [
+    {
+      "state_id": 5815,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ]
+}

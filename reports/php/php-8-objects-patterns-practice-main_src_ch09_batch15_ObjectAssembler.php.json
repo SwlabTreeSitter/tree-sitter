@@ -1,0 +1,4167 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "declare ( declare_directive ) _semicolon",
+      "candidate_text": "declare(strict_types=1);"
+    }
+  ],
+  "14": [
+    {
+      "state_id": 3358,
+      "candidate": "( declare_directive ) _semicolon",
+      "candidate_text": "(strict_types=1);"
+    }
+  ],
+  "15": [
+    {
+      "state_id": 2251,
+      "candidate": "strict_types = literal",
+      "candidate_text": "strict_types=1"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3334,
+      "candidate": "= literal",
+      "candidate_text": "=1"
+    }
+  ],
+  "28": [
+    {
+      "state_id": 1667,
+      "candidate": "integer",
+      "candidate_text": "1"
+    }
+  ],
+  "29": [
+    {
+      "state_id": 3226,
+      "candidate": ") _semicolon",
+      "candidate_text": ");"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 39,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "33": [
+    {
+      "state_id": 157,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch09\\batch15;"
+    }
+  ],
+  "43": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch09\\batch15"
+    }
+  ],
+  "47": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch09"
+    }
+  ],
+  "48": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch09"
+    }
+  ],
+  "52": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch15"
+    }
+  ],
+  "53": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch15"
+    }
+  ],
+  "60": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "62": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": ""
+    }
+  ],
+  "83": [
+    {
+      "state_id": 157,
+      "candidate": "program_repeat1",
+      "candidate_text": "/* listing 09.65 */"
+    }
+  ],
+  "103": [
+    {
+      "state_id": 157,
+      "candidate": "class name declaration_list",
+      "candidate_text": "class ObjectAssembler\n{"
+    }
+  ],
+  "109": [
+    {
+      "state_id": 3194,
+      "candidate": "name declaration_list",
+      "candidate_text": "ObjectAssembler\n{"
+    }
+  ],
+  "125": [
+    {
+      "state_id": 1965,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n    private array $components = [];"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 1617,
+      "candidate": "private",
+      "candidate_text": "private"
+    }
+  ],
+  "139": [
+    {
+      "state_id": 960,
+      "candidate": "array",
+      "candidate_text": "array"
+    }
+  ],
+  "145": [
+    {
+      "state_id": 2655,
+      "candidate": "$ name",
+      "candidate_text": "$components"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 3250,
+      "candidate": "name",
+      "candidate_text": "components"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 2123,
+      "candidate": "= expression",
+      "candidate_text": "= []"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 426,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "160": [
+    {
+      "state_id": 187,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 1919,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 1614,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "175": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters compound_statement",
+      "candidate_text": "function __construct(string $conf)\n    {"
+    }
+  ],
+  "184": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters compound_statement",
+      "candidate_text": "__construct(string $conf)\n    {"
+    }
+  ],
+  "195": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter )",
+      "candidate_text": "(string $conf)"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 969,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "203": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$conf"
+    }
+  ],
+  "204": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "conf"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 2434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "214": [
+    {
+      "state_id": 1873,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        $this->configure($conf);\n    }"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "229": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->configure($conf)"
+    }
+  ],
+  "231": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "configure"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "($conf)"
+    }
+  ],
+  "241": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$conf"
+    }
+  ],
+  "242": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "conf"
+    }
+  ],
+  "246": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "247": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "253": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "260": [
+    {
+      "state_id": 1614,
+      "candidate": "private",
+      "candidate_text": "private"
+    }
+  ],
+  "268": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function configure(string $conf): void\n    {"
+    }
+  ],
+  "277": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "configure(string $conf): void\n    {"
+    }
+  ],
+  "286": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter )",
+      "candidate_text": "(string $conf)"
+    }
+  ],
+  "287": [
+    {
+      "state_id": 969,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "294": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$conf"
+    }
+  ],
+  "295": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "conf"
+    }
+  ],
+  "299": [
+    {
+      "state_id": 2434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "300": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": void"
+    }
+  ],
+  "302": [
+    {
+      "state_id": 1590,
+      "candidate": "primitive_type_token6",
+      "candidate_text": "void"
+    }
+  ],
+  "311": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        $data = simplexml_load_file($conf);\n        foreach ($data->class as $class) {\n            $args = [];\n            $name = (string)$class['name'];\n            $resolvedname = $name;\n            foreach ($class->arg as $arg) {\n                $argclass = (string)$arg['inst'];\n                $args[(int)$arg['num']] = $argclass;\n            }\n            if (isset($class->instance)) {\n                if (isset($class->instance[0]['inst'])) {\n                    $resolvedname = (string)$class->instance[0]['inst'];\n                }\n            }\n            ksort($args);\n            $this->components[$name] = function () use ($resolvedname, $args) {\n                $expandedargs = [];\n                foreach ($args as $arg) {\n                    $expandedargs[] = $this->getComponent($arg);\n                }\n                $rclass = new \\ReflectionClass($resolvedname);\n                return $rclass->newInstanceArgs($expandedargs);\n            };\n        }\n    }"
+    }
+  ],
+  "321": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$data"
+    }
+  ],
+  "322": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "data"
+    }
+  ],
+  "327": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= simplexml_load_file($conf)"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 311,
+      "candidate": "name",
+      "candidate_text": "simplexml_load_file"
+    }
+  ],
+  "348": [
+    {
+      "state_id": 2019,
+      "candidate": "( argument )",
+      "candidate_text": "($conf)"
+    }
+  ],
+  "349": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$conf"
+    }
+  ],
+  "350": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "conf"
+    }
+  ],
+  "354": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "355": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "365": [
+    {
+      "state_id": 75,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($data->class as $class) {"
+    }
+  ],
+  "373": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($data->class as $class) {"
+    }
+  ],
+  "374": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$data"
+    }
+  ],
+  "375": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "data"
+    }
+  ],
+  "379": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->class"
+    }
+  ],
+  "381": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "387": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $class) {"
+    }
+  ],
+  "390": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "391": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "396": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "398": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            $args = [];\n            $name = (string)$class['name'];\n            $resolvedname = $name;\n            foreach ($class->arg as $arg) {\n                $argclass = (string)$arg['inst'];\n                $args[(int)$arg['num']] = $argclass;\n            }\n            if (isset($class->instance)) {\n                if (isset($class->instance[0]['inst'])) {\n                    $resolvedname = (string)$class->instance[0]['inst'];\n                }\n            }\n            ksort($args);\n            $this->components[$name] = function () use ($resolvedname, $args) {\n                $expandedargs = [];\n                foreach ($args as $arg) {\n                    $expandedargs[] = $this->getComponent($arg);\n                }\n                $rclass = new \\ReflectionClass($resolvedname);\n                return $rclass->newInstanceArgs($expandedargs);\n            };\n        }"
+    }
+  ],
+  "412": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$args"
+    }
+  ],
+  "413": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "args"
+    }
+  ],
+  "418": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= []"
+    }
+  ],
+  "420": [
+    {
+      "state_id": 311,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "421": [
+    {
+      "state_id": 187,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "422": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "436": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$name"
+    }
+  ],
+  "437": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "name"
+    }
+  ],
+  "442": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= (string)$class['name']"
+    }
+  ],
+  "444": [
+    {
+      "state_id": 311,
+      "candidate": "( cast_type ) _unary_expression",
+      "candidate_text": "(string)$class['name']"
+    }
+  ],
+  "445": [
+    {
+      "state_id": 175,
+      "candidate": "cast_type_token11",
+      "candidate_text": "string"
+    }
+  ],
+  "451": [
+    {
+      "state_id": 3092,
+      "candidate": ") _unary_expression",
+      "candidate_text": ")$class['name']"
+    }
+  ],
+  "452": [
+    {
+      "state_id": 521,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "453": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "458": [
+    {
+      "state_id": 2314,
+      "candidate": "[ expression ]",
+      "candidate_text": "['name']"
+    }
+  ],
+  "459": [
+    {
+      "state_id": 318,
+      "candidate": "' string_repeat1 '",
+      "candidate_text": "'name'"
+    }
+  ],
+  "460": [
+    {
+      "state_id": 2017,
+      "candidate": "string_content_token1",
+      "candidate_text": "name"
+    }
+  ],
+  "464": [
+    {
+      "state_id": 2025,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "465": [
+    {
+      "state_id": 1576,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "480": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$resolvedname"
+    }
+  ],
+  "481": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "resolvedname"
+    }
+  ],
+  "494": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $name"
+    }
+  ],
+  "496": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$name"
+    }
+  ],
+  "497": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "name"
+    }
+  ],
+  "501": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "515": [
+    {
+      "state_id": 75,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($class->arg as $arg) {"
+    }
+  ],
+  "523": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($class->arg as $arg) {"
+    }
+  ],
+  "524": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "525": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "530": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->arg"
+    }
+  ],
+  "532": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "arg"
+    }
+  ],
+  "536": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $arg) {"
+    }
+  ],
+  "539": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$arg"
+    }
+  ],
+  "540": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "arg"
+    }
+  ],
+  "543": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "545": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                $argclass = (string)$arg['inst'];\n                $args[(int)$arg['num']] = $argclass;\n            }"
+    }
+  ],
+  "563": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$argclass"
+    }
+  ],
+  "564": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "argclass"
+    }
+  ],
+  "573": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= (string)$arg['inst']"
+    }
+  ],
+  "575": [
+    {
+      "state_id": 311,
+      "candidate": "( cast_type ) _unary_expression",
+      "candidate_text": "(string)$arg['inst']"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 175,
+      "candidate": "cast_type_token11",
+      "candidate_text": "string"
+    }
+  ],
+  "582": [
+    {
+      "state_id": 3092,
+      "candidate": ") _unary_expression",
+      "candidate_text": ")$arg['inst']"
+    }
+  ],
+  "583": [
+    {
+      "state_id": 521,
+      "candidate": "$ name",
+      "candidate_text": "$arg"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "arg"
+    }
+  ],
+  "587": [
+    {
+      "state_id": 2314,
+      "candidate": "[ expression ]",
+      "candidate_text": "['inst']"
+    }
+  ],
+  "588": [
+    {
+      "state_id": 318,
+      "candidate": "' string_repeat1 '",
+      "candidate_text": "'inst'"
+    }
+  ],
+  "589": [
+    {
+      "state_id": 2017,
+      "candidate": "string_content_token1",
+      "candidate_text": "inst"
+    }
+  ],
+  "593": [
+    {
+      "state_id": 2025,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "594": [
+    {
+      "state_id": 1576,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "613": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$args"
+    }
+  ],
+  "614": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "args"
+    }
+  ],
+  "618": [
+    {
+      "state_id": 2314,
+      "candidate": "[ expression ]",
+      "candidate_text": "[(int)$arg['num']]"
+    }
+  ],
+  "619": [
+    {
+      "state_id": 318,
+      "candidate": "( cast_type ) _unary_expression",
+      "candidate_text": "(int)$arg['num']"
+    }
+  ],
+  "620": [
+    {
+      "state_id": 183,
+      "candidate": "cast_type_token7",
+      "candidate_text": "int"
+    }
+  ],
+  "623": [
+    {
+      "state_id": 3084,
+      "candidate": ") _unary_expression",
+      "candidate_text": ")$arg['num']"
+    }
+  ],
+  "624": [
+    {
+      "state_id": 523,
+      "candidate": "$ name",
+      "candidate_text": "$arg"
+    }
+  ],
+  "625": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "arg"
+    }
+  ],
+  "628": [
+    {
+      "state_id": 2363,
+      "candidate": "[ expression ]",
+      "candidate_text": "['num']"
+    }
+  ],
+  "629": [
+    {
+      "state_id": 317,
+      "candidate": "' string_repeat1 '",
+      "candidate_text": "'num'"
+    }
+  ],
+  "630": [
+    {
+      "state_id": 2017,
+      "candidate": "string_content_token1",
+      "candidate_text": "num"
+    }
+  ],
+  "633": [
+    {
+      "state_id": 2025,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "634": [
+    {
+      "state_id": 1527,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "635": [
+    {
+      "state_id": 1576,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "637": [
+    {
+      "state_id": 887,
+      "candidate": "= expression",
+      "candidate_text": "= $argclass"
+    }
+  ],
+  "639": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$argclass"
+    }
+  ],
+  "640": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "argclass"
+    }
+  ],
+  "648": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "662": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "676": [
+    {
+      "state_id": 75,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (isset($class->instance)) {"
+    }
+  ],
+  "679": [
+    {
+      "state_id": 3036,
+      "candidate": "( expression )",
+      "candidate_text": "(isset($class->instance))"
+    }
+  ],
+  "680": [
+    {
+      "state_id": 437,
+      "candidate": "name",
+      "candidate_text": "isset"
+    }
+  ],
+  "685": [
+    {
+      "state_id": 2020,
+      "candidate": "( argument )",
+      "candidate_text": "($class->instance)"
+    }
+  ],
+  "686": [
+    {
+      "state_id": 195,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "687": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "692": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->instance"
+    }
+  ],
+  "694": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "instance"
+    }
+  ],
+  "702": [
+    {
+      "state_id": 2452,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "703": [
+    {
+      "state_id": 1532,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "705": [
+    {
+      "state_id": 81,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                if (isset($class->instance[0]['inst'])) {\n                    $resolvedname = (string)$class->instance[0]['inst'];\n                }\n            }"
+    }
+  ],
+  "723": [
+    {
+      "state_id": 88,
+      "candidate": "if parenthesized_expression statement",
+      "candidate_text": "if (isset($class->instance[0]['inst'])) {"
+    }
+  ],
+  "726": [
+    {
+      "state_id": 3036,
+      "candidate": "( expression )",
+      "candidate_text": "(isset($class->instance[0]['inst']))"
+    }
+  ],
+  "727": [
+    {
+      "state_id": 437,
+      "candidate": "name",
+      "candidate_text": "isset"
+    }
+  ],
+  "732": [
+    {
+      "state_id": 2020,
+      "candidate": "( argument )",
+      "candidate_text": "($class->instance[0]['inst'])"
+    }
+  ],
+  "733": [
+    {
+      "state_id": 195,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "734": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "739": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->instance"
+    }
+  ],
+  "741": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "instance"
+    }
+  ],
+  "749": [
+    {
+      "state_id": 2363,
+      "candidate": "[ expression ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "750": [
+    {
+      "state_id": 317,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "751": [
+    {
+      "state_id": 1527,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "752": [
+    {
+      "state_id": 2363,
+      "candidate": "[ expression ]",
+      "candidate_text": "['inst']"
+    }
+  ],
+  "753": [
+    {
+      "state_id": 317,
+      "candidate": "' string_repeat1 '",
+      "candidate_text": "'inst'"
+    }
+  ],
+  "754": [
+    {
+      "state_id": 2017,
+      "candidate": "string_content_token1",
+      "candidate_text": "inst"
+    }
+  ],
+  "758": [
+    {
+      "state_id": 2025,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "759": [
+    {
+      "state_id": 1527,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "760": [
+    {
+      "state_id": 2452,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "761": [
+    {
+      "state_id": 1532,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "763": [
+    {
+      "state_id": 81,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                    $resolvedname = (string)$class->instance[0]['inst'];\n                }"
+    }
+  ],
+  "785": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$resolvedname"
+    }
+  ],
+  "786": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "resolvedname"
+    }
+  ],
+  "799": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= (string)$class->instance[0]['inst']"
+    }
+  ],
+  "801": [
+    {
+      "state_id": 311,
+      "candidate": "( cast_type ) _unary_expression",
+      "candidate_text": "(string)$class->instance[0]['inst']"
+    }
+  ],
+  "802": [
+    {
+      "state_id": 175,
+      "candidate": "cast_type_token11",
+      "candidate_text": "string"
+    }
+  ],
+  "808": [
+    {
+      "state_id": 3092,
+      "candidate": ") _unary_expression",
+      "candidate_text": ")$class->instance[0]['inst']"
+    }
+  ],
+  "809": [
+    {
+      "state_id": 521,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "810": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "815": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name",
+      "candidate_text": "->instance"
+    }
+  ],
+  "817": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "instance"
+    }
+  ],
+  "825": [
+    {
+      "state_id": 2314,
+      "candidate": "[ expression ]",
+      "candidate_text": "[0]"
+    }
+  ],
+  "826": [
+    {
+      "state_id": 318,
+      "candidate": "integer",
+      "candidate_text": "0"
+    }
+  ],
+  "827": [
+    {
+      "state_id": 1576,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "828": [
+    {
+      "state_id": 2314,
+      "candidate": "[ expression ]",
+      "candidate_text": "['inst']"
+    }
+  ],
+  "829": [
+    {
+      "state_id": 318,
+      "candidate": "' string_repeat1 '",
+      "candidate_text": "'inst'"
+    }
+  ],
+  "830": [
+    {
+      "state_id": 2017,
+      "candidate": "string_content_token1",
+      "candidate_text": "inst"
+    }
+  ],
+  "834": [
+    {
+      "state_id": 2025,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "835": [
+    {
+      "state_id": 1576,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "836": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "854": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "868": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "882": [
+    {
+      "state_id": 75,
+      "candidate": "name",
+      "candidate_text": "ksort"
+    }
+  ],
+  "887": [
+    {
+      "state_id": 2019,
+      "candidate": "( argument )",
+      "candidate_text": "($args)"
+    }
+  ],
+  "888": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$args"
+    }
+  ],
+  "889": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "args"
+    }
+  ],
+  "893": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "894": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "908": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "909": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "913": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name",
+      "candidate_text": "->components"
+    }
+  ],
+  "915": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "components"
+    }
+  ],
+  "925": [
+    {
+      "state_id": 2314,
+      "candidate": "[ expression ]",
+      "candidate_text": "[$name]"
+    }
+  ],
+  "926": [
+    {
+      "state_id": 318,
+      "candidate": "$ name",
+      "candidate_text": "$name"
+    }
+  ],
+  "927": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "name"
+    }
+  ],
+  "931": [
+    {
+      "state_id": 1576,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "933": [
+    {
+      "state_id": 887,
+      "candidate": "= expression",
+      "candidate_text": "= function () use ($resolvedname, $args) {"
+    }
+  ],
+  "935": [
+    {
+      "state_id": 311,
+      "candidate": "function formal_parameters anonymous_function_use_clause",
+      "candidate_text": "function () use ($resolvedname, $args)"
+    }
+  ],
+  "944": [
+    {
+      "state_id": 2294,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "945": [
+    {
+      "state_id": 973,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "947": [
+    {
+      "state_id": 2218,
+      "candidate": "use ( variable_name anonymous_function_use_clause_repeat1 )",
+      "candidate_text": "use ($resolvedname, $args)"
+    }
+  ],
+  "951": [
+    {
+      "state_id": 3300,
+      "candidate": "( variable_name anonymous_function_use_clause_repeat1 )",
+      "candidate_text": "($resolvedname, $args)"
+    }
+  ],
+  "952": [
+    {
+      "state_id": 2287,
+      "candidate": "$ name",
+      "candidate_text": "$resolvedname"
+    }
+  ],
+  "953": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "resolvedname"
+    }
+  ],
+  "965": [
+    {
+      "state_id": 2641,
+      "candidate": ", variable_name",
+      "candidate_text": ", $args"
+    }
+  ],
+  "967": [
+    {
+      "state_id": 2170,
+      "candidate": "$ name",
+      "candidate_text": "$args"
+    }
+  ],
+  "968": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "args"
+    }
+  ],
+  "972": [
+    {
+      "state_id": 2630,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "974": [
+    {
+      "state_id": 3009,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                $expandedargs = [];\n                foreach ($args as $arg) {\n                    $expandedargs[] = $this->getComponent($arg);\n                }\n                $rclass = new \\ReflectionClass($resolvedname);\n                return $rclass->newInstanceArgs($expandedargs);\n            }"
+    }
+  ],
+  "992": [
+    {
+      "state_id": 106,
+      "candidate": "$ name",
+      "candidate_text": "$expandedargs"
+    }
+  ],
+  "993": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "expandedargs"
+    }
+  ],
+  "1006": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= []"
+    }
+  ],
+  "1008": [
+    {
+      "state_id": 311,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "1009": [
+    {
+      "state_id": 187,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1010": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1028": [
+    {
+      "state_id": 107,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($args as $arg) {"
+    }
+  ],
+  "1036": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($args as $arg) {"
+    }
+  ],
+  "1037": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$args"
+    }
+  ],
+  "1038": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "args"
+    }
+  ],
+  "1043": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $arg) {"
+    }
+  ],
+  "1046": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$arg"
+    }
+  ],
+  "1047": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "arg"
+    }
+  ],
+  "1050": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "1052": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                    $expandedargs[] = $this->getComponent($arg);\n                }"
+    }
+  ],
+  "1074": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$expandedargs"
+    }
+  ],
+  "1075": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "expandedargs"
+    }
+  ],
+  "1087": [
+    {
+      "state_id": 2314,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "1088": [
+    {
+      "state_id": 318,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1090": [
+    {
+      "state_id": 887,
+      "candidate": "= expression",
+      "candidate_text": "= $this->getComponent($arg)"
+    }
+  ],
+  "1092": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "1093": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "1097": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getComponent($arg)"
+    }
+  ],
+  "1099": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "getComponent"
+    }
+  ],
+  "1111": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "($arg)"
+    }
+  ],
+  "1112": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$arg"
+    }
+  ],
+  "1113": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "arg"
+    }
+  ],
+  "1116": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1117": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1135": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1153": [
+    {
+      "state_id": 107,
+      "candidate": "$ name",
+      "candidate_text": "$rclass"
+    }
+  ],
+  "1154": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "rclass"
+    }
+  ],
+  "1161": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= new \\ReflectionClass($resolvedname)"
+    }
+  ],
+  "1163": [
+    {
+      "state_id": 311,
+      "candidate": "new _class_name_reference arguments",
+      "candidate_text": "new \\ReflectionClass($resolvedname)"
+    }
+  ],
+  "1167": [
+    {
+      "state_id": 1258,
+      "candidate": "\\ name",
+      "candidate_text": "\\ReflectionClass"
+    }
+  ],
+  "1168": [
+    {
+      "state_id": 2518,
+      "candidate": "name",
+      "candidate_text": "ReflectionClass"
+    }
+  ],
+  "1183": [
+    {
+      "state_id": 1294,
+      "candidate": "( argument )",
+      "candidate_text": "($resolvedname)"
+    }
+  ],
+  "1184": [
+    {
+      "state_id": 194,
+      "candidate": "$ name",
+      "candidate_text": "$resolvedname"
+    }
+  ],
+  "1185": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "resolvedname"
+    }
+  ],
+  "1197": [
+    {
+      "state_id": 2584,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1198": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1216": [
+    {
+      "state_id": 107,
+      "candidate": "return expression _semicolon",
+      "candidate_text": "return $rclass->newInstanceArgs($expandedargs);"
+    }
+  ],
+  "1223": [
+    {
+      "state_id": 263,
+      "candidate": "$ name",
+      "candidate_text": "$rclass"
+    }
+  ],
+  "1224": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "rclass"
+    }
+  ],
+  "1230": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->newInstanceArgs($expandedargs)"
+    }
+  ],
+  "1232": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "newInstanceArgs"
+    }
+  ],
+  "1247": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "($expandedargs)"
+    }
+  ],
+  "1248": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$expandedargs"
+    }
+  ],
+  "1249": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "expandedargs"
+    }
+  ],
+  "1261": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1262": [
+    {
+      "state_id": 1479,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1276": [
+    {
+      "state_id": 107,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1277": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1287": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1293": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1299": [
+    {
+      "state_id": 1611,
+      "candidate": "declaration_list_repeat1",
+      "candidate_text": "listing 09.70 */"
+    }
+  ],
+  "1320": [
+    {
+      "state_id": 1614,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "1327": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters _return_type compound_statement",
+      "candidate_text": "function getComponent(string $class): object\n    {"
+    }
+  ],
+  "1336": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters _return_type compound_statement",
+      "candidate_text": "getComponent(string $class): object\n    {"
+    }
+  ],
+  "1348": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter )",
+      "candidate_text": "(string $class)"
+    }
+  ],
+  "1349": [
+    {
+      "state_id": 969,
+      "candidate": "string",
+      "candidate_text": "string"
+    }
+  ],
+  "1356": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "1357": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "1362": [
+    {
+      "state_id": 2434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1363": [
+    {
+      "state_id": 1873,
+      "candidate": ": type",
+      "candidate_text": ": object"
+    }
+  ],
+  "1365": [
+    {
+      "state_id": 1590,
+      "candidate": "object",
+      "candidate_text": "object"
+    }
+  ],
+  "1376": [
+    {
+      "state_id": 2142,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        // create $inst -- our object instance"
+    }
+  ],
+  "1386": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "// create $inst -- our object instance"
+    }
+  ],
+  "1433": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "// and a list of \\ReflectionMethod objects"
+    }
+  ],
+  "1484": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "ting 09.70 */"
+    }
+  ],
+  "1506": [
+    {
+      "state_id": 88,
+      "candidate": "if parenthesized_expression statement else_clause",
+      "candidate_text": "if (isset($this->components[$class])) {\n            // instance found in config\n            $inst = $this->components[$class]();\n            $rclass = new \\ReflectionClass($inst::class);\n            $methods = $rclass->getMethods();\n        } else {"
+    }
+  ],
+  "1509": [
+    {
+      "state_id": 3036,
+      "candidate": "( expression )",
+      "candidate_text": "(isset($this->components[$class]))"
+    }
+  ],
+  "1510": [
+    {
+      "state_id": 437,
+      "candidate": "name",
+      "candidate_text": "isset"
+    }
+  ],
+  "1515": [
+    {
+      "state_id": 2020,
+      "candidate": "( argument )",
+      "candidate_text": "($this->components[$class])"
+    }
+  ],
+  "1516": [
+    {
+      "state_id": 195,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "1517": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "1521": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name",
+      "candidate_text": "->components"
+    }
+  ],
+  "1523": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "components"
+    }
+  ],
+  "1533": [
+    {
+      "state_id": 2363,
+      "candidate": "[ expression ]",
+      "candidate_text": "[$class]"
+    }
+  ],
+  "1534": [
+    {
+      "state_id": 317,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "1535": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "1540": [
+    {
+      "state_id": 1527,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1541": [
+    {
+      "state_id": 2452,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1542": [
+    {
+      "state_id": 1532,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1544": [
+    {
+      "state_id": 81,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            // instance found in config"
+    }
+  ],
+  "1558": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": "// instance found in config"
+    }
+  ],
+  "1598": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$inst"
+    }
+  ],
+  "1599": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "inst"
+    }
+  ],
+  "1604": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $this->components[$class]()"
+    }
+  ],
+  "1606": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "1607": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "1611": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name",
+      "candidate_text": "->components"
+    }
+  ],
+  "1613": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "components"
+    }
+  ],
+  "1623": [
+    {
+      "state_id": 2314,
+      "candidate": "[ expression ]",
+      "candidate_text": "[$class]"
+    }
+  ],
+  "1624": [
+    {
+      "state_id": 318,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "1625": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "1630": [
+    {
+      "state_id": 1576,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "1631": [
+    {
+      "state_id": 2795,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1632": [
+    {
+      "state_id": 191,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1633": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1647": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$rclass"
+    }
+  ],
+  "1648": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "rclass"
+    }
+  ],
+  "1655": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= new \\ReflectionClass($inst::class)"
+    }
+  ],
+  "1657": [
+    {
+      "state_id": 311,
+      "candidate": "new _class_name_reference arguments",
+      "candidate_text": "new \\ReflectionClass($inst::class)"
+    }
+  ],
+  "1661": [
+    {
+      "state_id": 1258,
+      "candidate": "\\ name",
+      "candidate_text": "\\ReflectionClass"
+    }
+  ],
+  "1662": [
+    {
+      "state_id": 2518,
+      "candidate": "name",
+      "candidate_text": "ReflectionClass"
+    }
+  ],
+  "1677": [
+    {
+      "state_id": 1294,
+      "candidate": "( argument )",
+      "candidate_text": "($inst::class)"
+    }
+  ],
+  "1678": [
+    {
+      "state_id": 194,
+      "candidate": "$ name",
+      "candidate_text": "$inst"
+    }
+  ],
+  "1679": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "inst"
+    }
+  ],
+  "1683": [
+    {
+      "state_id": 3252,
+      "candidate": ":: name",
+      "candidate_text": "::class"
+    }
+  ],
+  "1685": [
+    {
+      "state_id": 1833,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "1690": [
+    {
+      "state_id": 2584,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1691": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1705": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$methods"
+    }
+  ],
+  "1706": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "methods"
+    }
+  ],
+  "1714": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $rclass->getMethods()"
+    }
+  ],
+  "1716": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$rclass"
+    }
+  ],
+  "1717": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "rclass"
+    }
+  ],
+  "1723": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getMethods()"
+    }
+  ],
+  "1725": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "getMethods"
+    }
+  ],
+  "1735": [
+    {
+      "state_id": 868,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1736": [
+    {
+      "state_id": 191,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1737": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1747": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1749": [
+    {
+      "state_id": 529,
+      "candidate": "else statement",
+      "candidate_text": "else {"
+    }
+  ],
+  "1754": [
+    {
+      "state_id": 163,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n/* listing 09.66 */"
+    }
+  ],
+  "1769": [
+    {
+      "state_id": 88,
+      "candidate": "program_repeat1 }",
+      "candidate_text": ".66 */"
+    }
+  ],
+  "1789": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$rclass"
+    }
+  ],
+  "1790": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "rclass"
+    }
+  ],
+  "1797": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= new \\ReflectionClass($class)"
+    }
+  ],
+  "1799": [
+    {
+      "state_id": 311,
+      "candidate": "new _class_name_reference arguments",
+      "candidate_text": "new \\ReflectionClass($class)"
+    }
+  ],
+  "1803": [
+    {
+      "state_id": 1258,
+      "candidate": "\\ name",
+      "candidate_text": "\\ReflectionClass"
+    }
+  ],
+  "1804": [
+    {
+      "state_id": 2518,
+      "candidate": "name",
+      "candidate_text": "ReflectionClass"
+    }
+  ],
+  "1819": [
+    {
+      "state_id": 1294,
+      "candidate": "( argument )",
+      "candidate_text": "($class)"
+    }
+  ],
+  "1820": [
+    {
+      "state_id": 194,
+      "candidate": "$ name",
+      "candidate_text": "$class"
+    }
+  ],
+  "1821": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "1826": [
+    {
+      "state_id": 2584,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1827": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1841": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$methods"
+    }
+  ],
+  "1842": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "methods"
+    }
+  ],
+  "1850": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $rclass->getMethods()"
+    }
+  ],
+  "1852": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$rclass"
+    }
+  ],
+  "1853": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "rclass"
+    }
+  ],
+  "1859": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getMethods()"
+    }
+  ],
+  "1861": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "getMethods"
+    }
+  ],
+  "1871": [
+    {
+      "state_id": 868,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "1872": [
+    {
+      "state_id": 191,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1873": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1887": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$injectconstructor"
+    }
+  ],
+  "1888": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "injectconstructor"
+    }
+  ],
+  "1906": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= null"
+    }
+  ],
+  "1908": [
+    {
+      "state_id": 311,
+      "candidate": "_argument_name_token1",
+      "candidate_text": "null"
+    }
+  ],
+  "1912": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1926": [
+    {
+      "state_id": 75,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($methods as $method) {"
+    }
+  ],
+  "1934": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($methods as $method) {"
+    }
+  ],
+  "1935": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$methods"
+    }
+  ],
+  "1936": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "methods"
+    }
+  ],
+  "1944": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $method) {"
+    }
+  ],
+  "1947": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$method"
+    }
+  ],
+  "1948": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "method"
+    }
+  ],
+  "1954": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "1956": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                foreach ($method->getAttributes(InjectConstructor::class) as $attribute) {\n                    $injectconstructor = $attribute;\n                    break;\n                }\n            }"
+    }
+  ],
+  "1974": [
+    {
+      "state_id": 88,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($method->getAttributes(InjectConstructor::class) as $attribute) {"
+    }
+  ],
+  "1982": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($method->getAttributes(InjectConstructor::class) as $attribute) {"
+    }
+  ],
+  "1983": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$method"
+    }
+  ],
+  "1984": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "method"
+    }
+  ],
+  "1990": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getAttributes(InjectConstructor::class)"
+    }
+  ],
+  "1992": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "getAttributes"
+    }
+  ],
+  "2005": [
+    {
+      "state_id": 838,
+      "candidate": "( argument )",
+      "candidate_text": "(InjectConstructor::class)"
+    }
+  ],
+  "2006": [
+    {
+      "state_id": 195,
+      "candidate": "name",
+      "candidate_text": "InjectConstructor"
+    }
+  ],
+  "2023": [
+    {
+      "state_id": 3252,
+      "candidate": ":: name",
+      "candidate_text": "::class"
+    }
+  ],
+  "2025": [
+    {
+      "state_id": 1833,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "2030": [
+    {
+      "state_id": 2452,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2032": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $attribute) {"
+    }
+  ],
+  "2035": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$attribute"
+    }
+  ],
+  "2036": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "attribute"
+    }
+  ],
+  "2045": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "2047": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                    $injectconstructor = $attribute;\n                    break;\n                }"
+    }
+  ],
+  "2069": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$injectconstructor"
+    }
+  ],
+  "2070": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "injectconstructor"
+    }
+  ],
+  "2088": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $attribute"
+    }
+  ],
+  "2090": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$attribute"
+    }
+  ],
+  "2091": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "attribute"
+    }
+  ],
+  "2100": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2122": [
+    {
+      "state_id": 75,
+      "candidate": "break _semicolon",
+      "candidate_text": "break;"
+    }
+  ],
+  "2127": [
+    {
+      "state_id": 279,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2145": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2159": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2173": [
+    {
+      "state_id": 75,
+      "candidate": "if parenthesized_expression statement else_clause",
+      "candidate_text": "if (is_null($injectconstructor)) {\n                $inst = $rclass->newInstance();\n            } else {"
+    }
+  ],
+  "2176": [
+    {
+      "state_id": 3036,
+      "candidate": "( expression )",
+      "candidate_text": "(is_null($injectconstructor))"
+    }
+  ],
+  "2177": [
+    {
+      "state_id": 437,
+      "candidate": "name",
+      "candidate_text": "is_null"
+    }
+  ],
+  "2184": [
+    {
+      "state_id": 2020,
+      "candidate": "( argument )",
+      "candidate_text": "($injectconstructor)"
+    }
+  ],
+  "2185": [
+    {
+      "state_id": 195,
+      "candidate": "$ name",
+      "candidate_text": "$injectconstructor"
+    }
+  ],
+  "2186": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "injectconstructor"
+    }
+  ],
+  "2203": [
+    {
+      "state_id": 2452,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2204": [
+    {
+      "state_id": 1532,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2206": [
+    {
+      "state_id": 81,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                $inst = $rclass->newInstance();\n            }"
+    }
+  ],
+  "2224": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$inst"
+    }
+  ],
+  "2225": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "inst"
+    }
+  ],
+  "2230": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $rclass->newInstance()"
+    }
+  ],
+  "2232": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$rclass"
+    }
+  ],
+  "2233": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "rclass"
+    }
+  ],
+  "2239": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->newInstance()"
+    }
+  ],
+  "2241": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "newInstance"
+    }
+  ],
+  "2252": [
+    {
+      "state_id": 868,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2253": [
+    {
+      "state_id": 191,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2254": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2268": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2270": [
+    {
+      "state_id": 529,
+      "candidate": "else statement",
+      "candidate_text": "else {"
+    }
+  ],
+  "2275": [
+    {
+      "state_id": 163,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                $constructorargs = [];\n                foreach ($injectconstructor->getArguments() as $arg) {\n                    $constructorargs[] = $this->getComponent($arg);\n                }\n                $inst = $rclass->newInstanceArgs($constructorargs);\n            }"
+    }
+  ],
+  "2293": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$constructorargs"
+    }
+  ],
+  "2294": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "constructorargs"
+    }
+  ],
+  "2310": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= []"
+    }
+  ],
+  "2312": [
+    {
+      "state_id": 311,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "2313": [
+    {
+      "state_id": 187,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2314": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2332": [
+    {
+      "state_id": 75,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($injectconstructor->getArguments() as $arg) {"
+    }
+  ],
+  "2340": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($injectconstructor->getArguments() as $arg) {"
+    }
+  ],
+  "2341": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$injectconstructor"
+    }
+  ],
+  "2342": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "injectconstructor"
+    }
+  ],
+  "2359": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getArguments()"
+    }
+  ],
+  "2361": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "getArguments"
+    }
+  ],
+  "2373": [
+    {
+      "state_id": 838,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "2374": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2376": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $arg) {"
+    }
+  ],
+  "2379": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$arg"
+    }
+  ],
+  "2380": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "arg"
+    }
+  ],
+  "2383": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "2385": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                    $constructorargs[] = $this->getComponent($arg);\n                }"
+    }
+  ],
+  "2407": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$constructorargs"
+    }
+  ],
+  "2408": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "constructorargs"
+    }
+  ],
+  "2423": [
+    {
+      "state_id": 2314,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "2424": [
+    {
+      "state_id": 318,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2426": [
+    {
+      "state_id": 887,
+      "candidate": "= expression",
+      "candidate_text": "= $this->getComponent($arg)"
+    }
+  ],
+  "2428": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "2429": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "2433": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getComponent($arg)"
+    }
+  ],
+  "2435": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "getComponent"
+    }
+  ],
+  "2447": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "($arg)"
+    }
+  ],
+  "2448": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$arg"
+    }
+  ],
+  "2449": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "arg"
+    }
+  ],
+  "2452": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2453": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2471": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2489": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$inst"
+    }
+  ],
+  "2490": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "inst"
+    }
+  ],
+  "2495": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $rclass->newInstanceArgs($constructorargs)"
+    }
+  ],
+  "2497": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$rclass"
+    }
+  ],
+  "2498": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "rclass"
+    }
+  ],
+  "2504": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->newInstanceArgs($constructorargs)"
+    }
+  ],
+  "2506": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "newInstanceArgs"
+    }
+  ],
+  "2521": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "($constructorargs)"
+    }
+  ],
+  "2522": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$constructorargs"
+    }
+  ],
+  "2523": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "constructorargs"
+    }
+  ],
+  "2538": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2539": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2553": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2563": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "i"
+    }
+  ],
+  "2584": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2594": [
+    {
+      "state_id": 75,
+      "candidate": "program_repeat1",
+      "candidate_text": "ing 09.70 */"
+    }
+  ],
+  "2615": [
+    {
+      "state_id": 75,
+      "candidate": "program_repeat1",
+      "candidate_text": "ing 09.65 */"
+    }
+  ],
+  "2636": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "2637": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "2641": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->injectMethods($inst, $methods)"
+    }
+  ],
+  "2643": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "injectMethods"
+    }
+  ],
+  "2656": [
+    {
+      "state_id": 868,
+      "candidate": "( argument arguments_repeat1 )",
+      "candidate_text": "($inst, $methods)"
+    }
+  ],
+  "2657": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$inst"
+    }
+  ],
+  "2658": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "inst"
+    }
+  ],
+  "2662": [
+    {
+      "state_id": 2543,
+      "candidate": ", argument",
+      "candidate_text": ", $methods"
+    }
+  ],
+  "2664": [
+    {
+      "state_id": 207,
+      "candidate": "$ name",
+      "candidate_text": "$methods"
+    }
+  ],
+  "2665": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "methods"
+    }
+  ],
+  "2672": [
+    {
+      "state_id": 2557,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2673": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2683": [
+    {
+      "state_id": 75,
+      "candidate": "program_repeat1",
+      "candidate_text": "ng 09.65 */"
+    }
+  ],
+  "2703": [
+    {
+      "state_id": 75,
+      "candidate": "return expression _semicolon",
+      "candidate_text": "return $inst;"
+    }
+  ],
+  "2710": [
+    {
+      "state_id": 263,
+      "candidate": "$ name",
+      "candidate_text": "$inst"
+    }
+  ],
+  "2711": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "inst"
+    }
+  ],
+  "2715": [
+    {
+      "state_id": 1479,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2721": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "2727": [
+    {
+      "state_id": 1614,
+      "candidate": "declaration_list_repeat1",
+      "candidate_text": "/listing 09.65 */"
+    }
+  ],
+  "2749": [
+    {
+      "state_id": 1614,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "2756": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters compound_statement",
+      "candidate_text": "function injectMethods(object $inst, array $methods)\n    {"
+    }
+  ],
+  "2765": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters compound_statement",
+      "candidate_text": "injectMethods(object $inst, array $methods)\n    {"
+    }
+  ],
+  "2778": [
+    {
+      "state_id": 2994,
+      "candidate": "( simple_parameter formal_parameters_repeat1 )",
+      "candidate_text": "(object $inst, array $methods)"
+    }
+  ],
+  "2779": [
+    {
+      "state_id": 969,
+      "candidate": "object",
+      "candidate_text": "object"
+    }
+  ],
+  "2786": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$inst"
+    }
+  ],
+  "2787": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "inst"
+    }
+  ],
+  "2791": [
+    {
+      "state_id": 2434,
+      "candidate": ", simple_parameter",
+      "candidate_text": ", array $methods"
+    }
+  ],
+  "2793": [
+    {
+      "state_id": 1008,
+      "candidate": "array",
+      "candidate_text": "array"
+    }
+  ],
+  "2799": [
+    {
+      "state_id": 2071,
+      "candidate": "$ name",
+      "candidate_text": "$methods"
+    }
+  ],
+  "2800": [
+    {
+      "state_id": 3190,
+      "candidate": "name",
+      "candidate_text": "methods"
+    }
+  ],
+  "2807": [
+    {
+      "state_id": 2461,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2813": [
+    {
+      "state_id": 1873,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        foreach ($methods as $method) {\n            foreach ($method->getAttributes(Inject::class) as $attribute) {\n                $args = [];\n                foreach ($attribute->getArguments() as $argstring) {\n                    $args[] = $this->getComponent($argstring);\n                }\n                $method->invokeArgs($inst, $args);\n            }\n        }\n    }"
+    }
+  ],
+  "2823": [
+    {
+      "state_id": 88,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($methods as $method) {"
+    }
+  ],
+  "2831": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($methods as $method) {"
+    }
+  ],
+  "2832": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$methods"
+    }
+  ],
+  "2833": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "methods"
+    }
+  ],
+  "2841": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $method) {"
+    }
+  ],
+  "2844": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$method"
+    }
+  ],
+  "2845": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "method"
+    }
+  ],
+  "2851": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "2853": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            foreach ($method->getAttributes(Inject::class) as $attribute) {\n                $args = [];\n                foreach ($attribute->getArguments() as $argstring) {\n                    $args[] = $this->getComponent($argstring);\n                }\n                $method->invokeArgs($inst, $args);\n            }\n        }"
+    }
+  ],
+  "2867": [
+    {
+      "state_id": 88,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($method->getAttributes(Inject::class) as $attribute) {"
+    }
+  ],
+  "2875": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($method->getAttributes(Inject::class) as $attribute) {"
+    }
+  ],
+  "2876": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$method"
+    }
+  ],
+  "2877": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "method"
+    }
+  ],
+  "2883": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getAttributes(Inject::class)"
+    }
+  ],
+  "2885": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "getAttributes"
+    }
+  ],
+  "2898": [
+    {
+      "state_id": 838,
+      "candidate": "( argument )",
+      "candidate_text": "(Inject::class)"
+    }
+  ],
+  "2899": [
+    {
+      "state_id": 195,
+      "candidate": "name",
+      "candidate_text": "Inject"
+    }
+  ],
+  "2905": [
+    {
+      "state_id": 3252,
+      "candidate": ":: name",
+      "candidate_text": "::class"
+    }
+  ],
+  "2907": [
+    {
+      "state_id": 1833,
+      "candidate": "name",
+      "candidate_text": "class"
+    }
+  ],
+  "2912": [
+    {
+      "state_id": 2452,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "2914": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $attribute) {"
+    }
+  ],
+  "2917": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$attribute"
+    }
+  ],
+  "2918": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "attribute"
+    }
+  ],
+  "2927": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "2929": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                $args = [];\n                foreach ($attribute->getArguments() as $argstring) {\n                    $args[] = $this->getComponent($argstring);\n                }\n                $method->invokeArgs($inst, $args);\n            }"
+    }
+  ],
+  "2947": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$args"
+    }
+  ],
+  "2948": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "args"
+    }
+  ],
+  "2953": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= []"
+    }
+  ],
+  "2955": [
+    {
+      "state_id": 311,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "2956": [
+    {
+      "state_id": 187,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "2957": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "2975": [
+    {
+      "state_id": 75,
+      "candidate": "foreach ( expression as _foreach_value ) statement",
+      "candidate_text": "foreach ($attribute->getArguments() as $argstring) {"
+    }
+  ],
+  "2983": [
+    {
+      "state_id": 3280,
+      "candidate": "( expression as _foreach_value ) statement",
+      "candidate_text": "($attribute->getArguments() as $argstring) {"
+    }
+  ],
+  "2984": [
+    {
+      "state_id": 346,
+      "candidate": "$ name",
+      "candidate_text": "$attribute"
+    }
+  ],
+  "2985": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "attribute"
+    }
+  ],
+  "2994": [
+    {
+      "state_id": 2363,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getArguments()"
+    }
+  ],
+  "2996": [
+    {
+      "state_id": 1834,
+      "candidate": "name",
+      "candidate_text": "getArguments"
+    }
+  ],
+  "3008": [
+    {
+      "state_id": 838,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "3009": [
+    {
+      "state_id": 195,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3011": [
+    {
+      "state_id": 1541,
+      "candidate": "as _foreach_value ) statement",
+      "candidate_text": "as $argstring) {"
+    }
+  ],
+  "3014": [
+    {
+      "state_id": 234,
+      "candidate": "$ name",
+      "candidate_text": "$argstring"
+    }
+  ],
+  "3015": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "argstring"
+    }
+  ],
+  "3024": [
+    {
+      "state_id": 3108,
+      "candidate": ") statement",
+      "candidate_text": ") {"
+    }
+  ],
+  "3026": [
+    {
+      "state_id": 7,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n                    $args[] = $this->getComponent($argstring);\n                }"
+    }
+  ],
+  "3048": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$args"
+    }
+  ],
+  "3049": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "args"
+    }
+  ],
+  "3053": [
+    {
+      "state_id": 2314,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "3054": [
+    {
+      "state_id": 318,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "3056": [
+    {
+      "state_id": 887,
+      "candidate": "= expression",
+      "candidate_text": "= $this->getComponent($argstring)"
+    }
+  ],
+  "3058": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "3059": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "3063": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->getComponent($argstring)"
+    }
+  ],
+  "3065": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "getComponent"
+    }
+  ],
+  "3077": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "($argstring)"
+    }
+  ],
+  "3078": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$argstring"
+    }
+  ],
+  "3079": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "argstring"
+    }
+  ],
+  "3088": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3089": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "3107": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3125": [
+    {
+      "state_id": 75,
+      "candidate": "$ name",
+      "candidate_text": "$method"
+    }
+  ],
+  "3126": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "method"
+    }
+  ],
+  "3132": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->invokeArgs($inst, $args)"
+    }
+  ],
+  "3134": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "invokeArgs"
+    }
+  ],
+  "3144": [
+    {
+      "state_id": 868,
+      "candidate": "( argument arguments_repeat1 )",
+      "candidate_text": "($inst, $args)"
+    }
+  ],
+  "3145": [
+    {
+      "state_id": 191,
+      "candidate": "$ name",
+      "candidate_text": "$inst"
+    }
+  ],
+  "3146": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "inst"
+    }
+  ],
+  "3150": [
+    {
+      "state_id": 2543,
+      "candidate": ", argument",
+      "candidate_text": ", $args"
+    }
+  ],
+  "3152": [
+    {
+      "state_id": 207,
+      "candidate": "$ name",
+      "candidate_text": "$args"
+    }
+  ],
+  "3153": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "args"
+    }
+  ],
+  "3157": [
+    {
+      "state_id": 2557,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "3158": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "3172": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3182": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3188": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "3190": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "/"
+    }
+  ],
+  "3210": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "/"
+    }
+  ],
+  "3231": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

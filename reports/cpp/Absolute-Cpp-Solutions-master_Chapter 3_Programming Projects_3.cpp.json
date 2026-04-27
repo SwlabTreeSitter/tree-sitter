@@ -1,0 +1,1794 @@
+{
+  "462": [
+    {
+      "state_id": 1,
+      "candidate": "#include system_lib_string preproc_include_token2",
+      "candidate_text": "#include <iostream>"
+    }
+  ],
+  "471": [
+    {
+      "state_id": 8864,
+      "candidate": "system_lib_string preproc_include_token2",
+      "candidate_text": "<iostream>"
+    }
+  ],
+  "481": [
+    {
+      "state_id": 11404,
+      "candidate": "preproc_include_token2",
+      "candidate_text": ""
+    }
+  ],
+  "483": [
+    {
+      "state_id": 34,
+      "candidate": "using namespace identifier ;",
+      "candidate_text": "using namespace std;"
+    }
+  ],
+  "489": [
+    {
+      "state_id": 8420,
+      "candidate": "namespace identifier ;",
+      "candidate_text": "namespace std;"
+    }
+  ],
+  "499": [
+    {
+      "state_id": 8600,
+      "candidate": "identifier ;",
+      "candidate_text": "std;"
+    }
+  ],
+  "502": [
+    {
+      "state_id": 9376,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "505": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "511": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "rate_of_inflation"
+    }
+  ],
+  "528": [
+    {
+      "state_id": 8018,
+      "candidate": "( parameter_declaration parameter_list_repeat1 )",
+      "candidate_text": "(float price_before, float price_after)"
+    }
+  ],
+  "529": [
+    {
+      "state_id": 137,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "535": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "price_before"
+    }
+  ],
+  "547": [
+    {
+      "state_id": 9742,
+      "candidate": ", parameter_declaration",
+      "candidate_text": ", float price_after"
+    }
+  ],
+  "549": [
+    {
+      "state_id": 2241,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "555": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "566": [
+    {
+      "state_id": 9942,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "567": [
+    {
+      "state_id": 8018,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "570": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "576": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "estimation"
+    }
+  ],
+  "586": [
+    {
+      "state_id": 8018,
+      "candidate": "( parameter_declaration parameter_list_repeat1 )",
+      "candidate_text": "(int year, float price_after, float rate)"
+    }
+  ],
+  "587": [
+    {
+      "state_id": 137,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "591": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "year"
+    }
+  ],
+  "595": [
+    {
+      "state_id": 9742,
+      "candidate": ", parameter_declaration",
+      "candidate_text": ", float price_after"
+    }
+  ],
+  "597": [
+    {
+      "state_id": 2241,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "603": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "614": [
+    {
+      "state_id": 9942,
+      "candidate": ", parameter_declaration",
+      "candidate_text": ", float rate"
+    }
+  ],
+  "616": [
+    {
+      "state_id": 2241,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "622": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "rate"
+    }
+  ],
+  "626": [
+    {
+      "state_id": 9942,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "627": [
+    {
+      "state_id": 8018,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "630": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "634": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "main"
+    }
+  ],
+  "638": [
+    {
+      "state_id": 8018,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "639": [
+    {
+      "state_id": 137,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "640": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    cout.setf(ios::fixed);\r\n    cout.setf(ios::showpoint);\r\n    cout.precision(3);\r\n    char ans;\r\n    do{\r\n        cout << \"\\nEnter the price of an item one year ago: \";\r\n        float price_before, price_after;\r\n        cin >> price_before;\r\n        cout << \"\\nEnter the price of the item after one year: \";\r\n        cin >> price_after;\r\n        float rate = rate_of_inflation(price_before, price_after);\r\n        cout << \"\\nThe rate of inflation is : \" << rate << \"%\";\r\n        cout << \"\\nAfter 1 year, the estimated price is: \" << estimation(1, price_after, rate);\r\n        cout << \"\\nAfter 2 years, the estimated price is: \" << estimation(2, price_after, rate);\r\n        cout << \"\\nWant to run the program again? \";\r\n        cin >> ans;\r\n    }while(ans == 'y' || ans == 'Y');\r\n    cout << \"\\nThank You!\";\r\n    return 0;\r\n}"
+    }
+  ],
+  "647": [
+    {
+      "state_id": 4,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "651": [
+    {
+      "state_id": 6427,
+      "candidate": ". identifier",
+      "candidate_text": ".setf"
+    }
+  ],
+  "652": [
+    {
+      "state_id": 8043,
+      "candidate": "identifier",
+      "candidate_text": "setf"
+    }
+  ],
+  "656": [
+    {
+      "state_id": 6427,
+      "candidate": "( expression )",
+      "candidate_text": "(ios::fixed)"
+    }
+  ],
+  "657": [
+    {
+      "state_id": 1186,
+      "candidate": "identifier ::",
+      "candidate_text": "ios::"
+    }
+  ],
+  "660": [
+    {
+      "state_id": 3260,
+      "candidate": "::",
+      "candidate_text": "::"
+    }
+  ],
+  "662": [
+    {
+      "state_id": 7797,
+      "candidate": "identifier",
+      "candidate_text": "fixed"
+    }
+  ],
+  "667": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "668": [
+    {
+      "state_id": 6427,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "675": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "679": [
+    {
+      "state_id": 6753,
+      "candidate": ". identifier",
+      "candidate_text": ".setf"
+    }
+  ],
+  "680": [
+    {
+      "state_id": 8043,
+      "candidate": "identifier",
+      "candidate_text": "setf"
+    }
+  ],
+  "684": [
+    {
+      "state_id": 6753,
+      "candidate": "( expression )",
+      "candidate_text": "(ios::showpoint)"
+    }
+  ],
+  "685": [
+    {
+      "state_id": 1186,
+      "candidate": "identifier ::",
+      "candidate_text": "ios::"
+    }
+  ],
+  "688": [
+    {
+      "state_id": 3260,
+      "candidate": "::",
+      "candidate_text": "::"
+    }
+  ],
+  "690": [
+    {
+      "state_id": 7797,
+      "candidate": "identifier",
+      "candidate_text": "showpoint"
+    }
+  ],
+  "699": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "700": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "707": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "711": [
+    {
+      "state_id": 6753,
+      "candidate": ". identifier",
+      "candidate_text": ".precision"
+    }
+  ],
+  "712": [
+    {
+      "state_id": 8043,
+      "candidate": "identifier",
+      "candidate_text": "precision"
+    }
+  ],
+  "721": [
+    {
+      "state_id": 6753,
+      "candidate": "( expression )",
+      "candidate_text": "(3)"
+    }
+  ],
+  "722": [
+    {
+      "state_id": 1186,
+      "candidate": "number_literal",
+      "candidate_text": "3"
+    }
+  ],
+  "723": [
+    {
+      "state_id": 6547,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "724": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "731": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "char"
+    }
+  ],
+  "736": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "ans"
+    }
+  ],
+  "739": [
+    {
+      "state_id": 7972,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "746": [
+    {
+      "state_id": 61,
+      "candidate": "do statement while parenthesized_expression ;",
+      "candidate_text": "do{\r\n        cout << \"\\nEnter the price of an item one year ago: \";\r\n        float price_before, price_after;\r\n        cin >> price_before;\r\n        cout << \"\\nEnter the price of the item after one year: \";\r\n        cin >> price_after;\r\n        float rate = rate_of_inflation(price_before, price_after);\r\n        cout << \"\\nThe rate of inflation is : \" << rate << \"%\";\r\n        cout << \"\\nAfter 1 year, the estimated price is: \" << estimation(1, price_after, rate);\r\n        cout << \"\\nAfter 2 years, the estimated price is: \" << estimation(2, price_after, rate);\r\n        cout << \"\\nWant to run the program again? \";\r\n        cin >> ans;\r\n    }while(ans == 'y' || ans == 'Y');"
+    }
+  ],
+  "748": [
+    {
+      "state_id": 209,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n        cout << \"\\nEnter the price of an item one year ago: \";\r\n        float price_before, price_after;\r\n        cin >> price_before;\r\n        cout << \"\\nEnter the price of the item after one year: \";\r\n        cin >> price_after;\r\n        float rate = rate_of_inflation(price_before, price_after);\r\n        cout << \"\\nThe rate of inflation is : \" << rate << \"%\";\r\n        cout << \"\\nAfter 1 year, the estimated price is: \" << estimation(1, price_after, rate);\r\n        cout << \"\\nAfter 2 years, the estimated price is: \" << estimation(2, price_after, rate);\r\n        cout << \"\\nWant to run the program again? \";\r\n        cin >> ans;\r\n    }"
+    }
+  ],
+  "759": [
+    {
+      "state_id": 43,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "764": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter the price of an item one year ago: \""
+    }
+  ],
+  "767": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter the price of an item one year ago: \""
+    }
+  ],
+  "768": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter the price of an item one year ago: "
+    }
+  ],
+  "770": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter the price of an item one year ago: "
+    }
+  ],
+  "811": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "812": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "823": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "829": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "price_before"
+    }
+  ],
+  "841": [
+    {
+      "state_id": 7972,
+      "candidate": ", _declarator",
+      "candidate_text": ", price_after"
+    }
+  ],
+  "843": [
+    {
+      "state_id": 6272,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "854": [
+    {
+      "state_id": 9954,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "865": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "869": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> price_before"
+    }
+  ],
+  "872": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "price_before"
+    }
+  ],
+  "884": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "895": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "900": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nEnter the price of the item after one year: \""
+    }
+  ],
+  "903": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nEnter the price of the item after one year: \""
+    }
+  ],
+  "904": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nEnter the price of the item after one year: "
+    }
+  ],
+  "906": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Enter the price of the item after one year: "
+    }
+  ],
+  "950": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "951": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "962": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "966": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> price_after"
+    }
+  ],
+  "969": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "980": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "991": [
+    {
+      "state_id": 61,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "997": [
+    {
+      "state_id": 6309,
+      "candidate": "identifier",
+      "candidate_text": "rate"
+    }
+  ],
+  "1002": [
+    {
+      "state_id": 7972,
+      "candidate": "= expression",
+      "candidate_text": "= rate_of_inflation(price_before, price_after)"
+    }
+  ],
+  "1004": [
+    {
+      "state_id": 1243,
+      "candidate": "identifier",
+      "candidate_text": "rate_of_inflation"
+    }
+  ],
+  "1021": [
+    {
+      "state_id": 6771,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(price_before, price_after)"
+    }
+  ],
+  "1022": [
+    {
+      "state_id": 1186,
+      "candidate": "identifier",
+      "candidate_text": "price_before"
+    }
+  ],
+  "1034": [
+    {
+      "state_id": 6547,
+      "candidate": ", expression",
+      "candidate_text": ", price_after"
+    }
+  ],
+  "1036": [
+    {
+      "state_id": 1203,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "1047": [
+    {
+      "state_id": 10041,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1048": [
+    {
+      "state_id": 9805,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1059": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1064": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nThe rate of inflation is : \""
+    }
+  ],
+  "1067": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nThe rate of inflation is : \""
+    }
+  ],
+  "1068": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nThe rate of inflation is : "
+    }
+  ],
+  "1070": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "The rate of inflation is : "
+    }
+  ],
+  "1097": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1099": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< rate"
+    }
+  ],
+  "1102": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "rate"
+    }
+  ],
+  "1107": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"%\""
+    }
+  ],
+  "1110": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_content \"",
+      "candidate_text": "\"%\""
+    }
+  ],
+  "1111": [
+    {
+      "state_id": 9416,
+      "candidate": "string_content \"",
+      "candidate_text": "%\""
+    }
+  ],
+  "1112": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1113": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1124": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1129": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nAfter 1 year, the estimated price is: \""
+    }
+  ],
+  "1132": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nAfter 1 year, the estimated price is: \""
+    }
+  ],
+  "1133": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nAfter 1 year, the estimated price is: "
+    }
+  ],
+  "1135": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "After 1 year, the estimated price is: "
+    }
+  ],
+  "1173": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1175": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< estimation(1, price_after, rate)"
+    }
+  ],
+  "1178": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "estimation"
+    }
+  ],
+  "1188": [
+    {
+      "state_id": 6321,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(1, price_after, rate)"
+    }
+  ],
+  "1189": [
+    {
+      "state_id": 1186,
+      "candidate": "number_literal",
+      "candidate_text": "1"
+    }
+  ],
+  "1190": [
+    {
+      "state_id": 6547,
+      "candidate": ", expression",
+      "candidate_text": ", price_after"
+    }
+  ],
+  "1192": [
+    {
+      "state_id": 1203,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "1203": [
+    {
+      "state_id": 10041,
+      "candidate": ", expression",
+      "candidate_text": ", rate"
+    }
+  ],
+  "1205": [
+    {
+      "state_id": 1203,
+      "candidate": "identifier",
+      "candidate_text": "rate"
+    }
+  ],
+  "1209": [
+    {
+      "state_id": 10041,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1210": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1221": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1226": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nAfter 2 years, the estimated price is: \""
+    }
+  ],
+  "1229": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nAfter 2 years, the estimated price is: \""
+    }
+  ],
+  "1230": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nAfter 2 years, the estimated price is: "
+    }
+  ],
+  "1232": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "After 2 years, the estimated price is: "
+    }
+  ],
+  "1271": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1273": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< estimation(2, price_after, rate)"
+    }
+  ],
+  "1276": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "estimation"
+    }
+  ],
+  "1286": [
+    {
+      "state_id": 6321,
+      "candidate": "( expression argument_list_repeat1 )",
+      "candidate_text": "(2, price_after, rate)"
+    }
+  ],
+  "1287": [
+    {
+      "state_id": 1186,
+      "candidate": "number_literal",
+      "candidate_text": "2"
+    }
+  ],
+  "1288": [
+    {
+      "state_id": 6547,
+      "candidate": ", expression",
+      "candidate_text": ", price_after"
+    }
+  ],
+  "1290": [
+    {
+      "state_id": 1203,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "1301": [
+    {
+      "state_id": 10041,
+      "candidate": ", expression",
+      "candidate_text": ", rate"
+    }
+  ],
+  "1303": [
+    {
+      "state_id": 1203,
+      "candidate": "identifier",
+      "candidate_text": "rate"
+    }
+  ],
+  "1307": [
+    {
+      "state_id": 10041,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1308": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1319": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1324": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nWant to run the program again? \""
+    }
+  ],
+  "1327": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nWant to run the program again? \""
+    }
+  ],
+  "1328": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nWant to run the program again? "
+    }
+  ],
+  "1330": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Want to run the program again? "
+    }
+  ],
+  "1361": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1362": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1373": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cin"
+    }
+  ],
+  "1377": [
+    {
+      "state_id": 6753,
+      "candidate": ">> expression",
+      "candidate_text": ">> ans"
+    }
+  ],
+  "1380": [
+    {
+      "state_id": 1631,
+      "candidate": "identifier",
+      "candidate_text": "ans"
+    }
+  ],
+  "1383": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1390": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1391": [
+    {
+      "state_id": 10959,
+      "candidate": "while parenthesized_expression ;",
+      "candidate_text": "while(ans == 'y' || ans == 'Y');"
+    }
+  ],
+  "1396": [
+    {
+      "state_id": 10339,
+      "candidate": "( expression )",
+      "candidate_text": "(ans == 'y' || ans == 'Y')"
+    }
+  ],
+  "1397": [
+    {
+      "state_id": 1170,
+      "candidate": "identifier",
+      "candidate_text": "ans"
+    }
+  ],
+  "1401": [
+    {
+      "state_id": 5244,
+      "candidate": "== expression",
+      "candidate_text": "== 'y'"
+    }
+  ],
+  "1404": [
+    {
+      "state_id": 1587,
+      "candidate": "' character '",
+      "candidate_text": "'y'"
+    }
+  ],
+  "1405": [
+    {
+      "state_id": 9840,
+      "candidate": "character '",
+      "candidate_text": "y'"
+    }
+  ],
+  "1406": [
+    {
+      "state_id": 9391,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1408": [
+    {
+      "state_id": 5244,
+      "candidate": "|| expression",
+      "candidate_text": "|| ans == 'Y'"
+    }
+  ],
+  "1411": [
+    {
+      "state_id": 1582,
+      "candidate": "identifier",
+      "candidate_text": "ans"
+    }
+  ],
+  "1415": [
+    {
+      "state_id": 4576,
+      "candidate": "== expression",
+      "candidate_text": "== 'Y'"
+    }
+  ],
+  "1418": [
+    {
+      "state_id": 1587,
+      "candidate": "' character '",
+      "candidate_text": "'Y'"
+    }
+  ],
+  "1419": [
+    {
+      "state_id": 9840,
+      "candidate": "character '",
+      "candidate_text": "Y'"
+    }
+  ],
+  "1420": [
+    {
+      "state_id": 9391,
+      "candidate": "'",
+      "candidate_text": "'"
+    }
+  ],
+  "1421": [
+    {
+      "state_id": 5244,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1422": [
+    {
+      "state_id": 11507,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1429": [
+    {
+      "state_id": 61,
+      "candidate": "identifier",
+      "candidate_text": "cout"
+    }
+  ],
+  "1434": [
+    {
+      "state_id": 6753,
+      "candidate": "<< expression",
+      "candidate_text": "<< \"\\nThank You!\""
+    }
+  ],
+  "1437": [
+    {
+      "state_id": 1631,
+      "candidate": "\" string_literal_repeat1 \"",
+      "candidate_text": "\"\\nThank You!\""
+    }
+  ],
+  "1438": [
+    {
+      "state_id": 9416,
+      "candidate": "escape_sequence string_content",
+      "candidate_text": "\\nThank You!"
+    }
+  ],
+  "1440": [
+    {
+      "state_id": 9293,
+      "candidate": "string_content",
+      "candidate_text": "Thank You!"
+    }
+  ],
+  "1450": [
+    {
+      "state_id": 9293,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "1451": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1458": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return 0;"
+    }
+  ],
+  "1465": [
+    {
+      "state_id": 1185,
+      "candidate": "number_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "1466": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1469": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1472": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "1478": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "rate_of_inflation"
+    }
+  ],
+  "1495": [
+    {
+      "state_id": 8018,
+      "candidate": "( parameter_declaration parameter_list_repeat1 )",
+      "candidate_text": "(float price_before, float price_after)"
+    }
+  ],
+  "1496": [
+    {
+      "state_id": 137,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "1502": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "price_before"
+    }
+  ],
+  "1514": [
+    {
+      "state_id": 9742,
+      "candidate": ", parameter_declaration",
+      "candidate_text": ", float price_after"
+    }
+  ],
+  "1516": [
+    {
+      "state_id": 2241,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "1522": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "1533": [
+    {
+      "state_id": 9942,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1534": [
+    {
+      "state_id": 8018,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n    return ((price_after - price_before)/price_before)*100;\r\n}"
+    }
+  ],
+  "1541": [
+    {
+      "state_id": 4,
+      "candidate": "return expression ;",
+      "candidate_text": "return ((price_after - price_before)/price_before)*100;"
+    }
+  ],
+  "1548": [
+    {
+      "state_id": 1185,
+      "candidate": "( expression )",
+      "candidate_text": "((price_after - price_before)/price_before)"
+    }
+  ],
+  "1549": [
+    {
+      "state_id": 217,
+      "candidate": "( expression )",
+      "candidate_text": "(price_after - price_before)"
+    }
+  ],
+  "1550": [
+    {
+      "state_id": 229,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "1562": [
+    {
+      "state_id": 4645,
+      "candidate": "- expression",
+      "candidate_text": "- price_before"
+    }
+  ],
+  "1564": [
+    {
+      "state_id": 1294,
+      "candidate": "identifier",
+      "candidate_text": "price_before"
+    }
+  ],
+  "1576": [
+    {
+      "state_id": 4645,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1577": [
+    {
+      "state_id": 4607,
+      "candidate": "/ expression",
+      "candidate_text": "/price_before"
+    }
+  ],
+  "1578": [
+    {
+      "state_id": 1269,
+      "candidate": "identifier",
+      "candidate_text": "price_before"
+    }
+  ],
+  "1590": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1591": [
+    {
+      "state_id": 6692,
+      "candidate": "* expression",
+      "candidate_text": "*100"
+    }
+  ],
+  "1592": [
+    {
+      "state_id": 1608,
+      "candidate": "number_literal",
+      "candidate_text": "100"
+    }
+  ],
+  "1595": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1598": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1601": [
+    {
+      "state_id": 34,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "1607": [
+    {
+      "state_id": 6284,
+      "candidate": "identifier",
+      "candidate_text": "estimation"
+    }
+  ],
+  "1617": [
+    {
+      "state_id": 8018,
+      "candidate": "( parameter_declaration parameter_list_repeat1 )",
+      "candidate_text": "(int year, float price_after, float rate)"
+    }
+  ],
+  "1618": [
+    {
+      "state_id": 137,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1622": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "year"
+    }
+  ],
+  "1626": [
+    {
+      "state_id": 9742,
+      "candidate": ", parameter_declaration",
+      "candidate_text": ", float price_after"
+    }
+  ],
+  "1628": [
+    {
+      "state_id": 2241,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "1634": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "1645": [
+    {
+      "state_id": 9942,
+      "candidate": ", parameter_declaration",
+      "candidate_text": ", float rate"
+    }
+  ],
+  "1647": [
+    {
+      "state_id": 2241,
+      "candidate": "primitive_type",
+      "candidate_text": "float"
+    }
+  ],
+  "1653": [
+    {
+      "state_id": 5283,
+      "candidate": "identifier",
+      "candidate_text": "rate"
+    }
+  ],
+  "1657": [
+    {
+      "state_id": 9942,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1658": [
+    {
+      "state_id": 8018,
+      "candidate": "{ preproc_if_repeat1 }",
+      "candidate_text": "{\r\n    for (int i=1; i<=year; i++){\r\n        price_after = price_after + (price_after*(rate/100));\r\n    }\r\n    return price_after;\r\n}"
+    }
+  ],
+  "1665": [
+    {
+      "state_id": 4,
+      "candidate": "for ( _for_statement_body ) statement",
+      "candidate_text": "for (int i=1; i<=year; i++){"
+    }
+  ],
+  "1669": [
+    {
+      "state_id": 10948,
+      "candidate": "( _for_statement_body ) statement",
+      "candidate_text": "(int i=1; i<=year; i++){"
+    }
+  ],
+  "1670": [
+    {
+      "state_id": 124,
+      "candidate": "primitive_type",
+      "candidate_text": "int"
+    }
+  ],
+  "1674": [
+    {
+      "state_id": 6293,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1675": [
+    {
+      "state_id": 8152,
+      "candidate": "= expression",
+      "candidate_text": "=1"
+    }
+  ],
+  "1676": [
+    {
+      "state_id": 1243,
+      "candidate": "number_literal",
+      "candidate_text": "1"
+    }
+  ],
+  "1677": [
+    {
+      "state_id": 9752,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1679": [
+    {
+      "state_id": 280,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1680": [
+    {
+      "state_id": 6784,
+      "candidate": "<= expression",
+      "candidate_text": "<=year"
+    }
+  ],
+  "1682": [
+    {
+      "state_id": 1630,
+      "candidate": "identifier",
+      "candidate_text": "year"
+    }
+  ],
+  "1686": [
+    {
+      "state_id": 6784,
+      "candidate": "; expression",
+      "candidate_text": "; i++"
+    }
+  ],
+  "1688": [
+    {
+      "state_id": 1250,
+      "candidate": "identifier",
+      "candidate_text": "i"
+    }
+  ],
+  "1689": [
+    {
+      "state_id": 6793,
+      "candidate": "++",
+      "candidate_text": "++"
+    }
+  ],
+  "1691": [
+    {
+      "state_id": 10810,
+      "candidate": ") statement",
+      "candidate_text": "){"
+    }
+  ],
+  "1692": [
+    {
+      "state_id": 196,
+      "candidate": "{ statement }",
+      "candidate_text": "{\r\n        price_after = price_after + (price_after*(rate/100));\r\n    }"
+    }
+  ],
+  "1703": [
+    {
+      "state_id": 38,
+      "candidate": "identifier = expression",
+      "candidate_text": "price_after = price_after + (price_after*(rate/100))"
+    }
+  ],
+  "1715": [
+    {
+      "state_id": 1047,
+      "candidate": "= expression",
+      "candidate_text": "= price_after + (price_after*(rate/100))"
+    }
+  ],
+  "1717": [
+    {
+      "state_id": 1222,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "1729": [
+    {
+      "state_id": 6387,
+      "candidate": "+ expression",
+      "candidate_text": "+ (price_after*(rate/100))"
+    }
+  ],
+  "1731": [
+    {
+      "state_id": 1592,
+      "candidate": "( expression )",
+      "candidate_text": "(price_after*(rate/100))"
+    }
+  ],
+  "1732": [
+    {
+      "state_id": 217,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "1743": [
+    {
+      "state_id": 4607,
+      "candidate": "* expression",
+      "candidate_text": "*(rate/100)"
+    }
+  ],
+  "1744": [
+    {
+      "state_id": 1394,
+      "candidate": "( expression )",
+      "candidate_text": "(rate/100)"
+    }
+  ],
+  "1745": [
+    {
+      "state_id": 229,
+      "candidate": "identifier",
+      "candidate_text": "rate"
+    }
+  ],
+  "1749": [
+    {
+      "state_id": 4645,
+      "candidate": "/ expression",
+      "candidate_text": "/100"
+    }
+  ],
+  "1750": [
+    {
+      "state_id": 1269,
+      "candidate": "number_literal",
+      "candidate_text": "100"
+    }
+  ],
+  "1753": [
+    {
+      "state_id": 4645,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1754": [
+    {
+      "state_id": 4607,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "1755": [
+    {
+      "state_id": 6753,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1762": [
+    {
+      "state_id": 39,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "1769": [
+    {
+      "state_id": 61,
+      "candidate": "return expression ;",
+      "candidate_text": "return price_after;"
+    }
+  ],
+  "1776": [
+    {
+      "state_id": 1185,
+      "candidate": "identifier",
+      "candidate_text": "price_after"
+    }
+  ],
+  "1787": [
+    {
+      "state_id": 6692,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "1790": [
+    {
+      "state_id": 61,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

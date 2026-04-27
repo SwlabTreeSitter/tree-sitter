@@ -1,0 +1,275 @@
+{
+  "0": [
+    {
+      "state_id": 1,
+      "candidate": "export declaration",
+      "candidate_text": "export type FilteredArrayItems<T, Filter> = T extends (infer Item)[]"
+    }
+  ],
+  "7": [
+    {
+      "state_id": 696,
+      "candidate": "type identifier type_parameters = type ;",
+      "candidate_text": "type FilteredArrayItems<T, Filter> = T extends (infer Item)[]\n\t? Item extends Filter\n\t\t? FilteredArrayItems<Item, Filter>\n\t\t: never\n\t: T extends Filter\n\t\t? T\n\t\t: never;"
+    }
+  ],
+  "12": [
+    {
+      "state_id": 4797,
+      "candidate": "identifier type_parameters = type ;",
+      "candidate_text": "FilteredArrayItems<T, Filter> = T extends (infer Item)[]\n\t? Item extends Filter\n\t\t? FilteredArrayItems<Item, Filter>\n\t\t: never\n\t: T extends Filter\n\t\t? T\n\t\t: never;"
+    }
+  ],
+  "30": [
+    {
+      "state_id": 5005,
+      "candidate": "< type_parameter type_parameters_repeat1 >",
+      "candidate_text": "<T, Filter>"
+    }
+  ],
+  "31": [
+    {
+      "state_id": 4996,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "32": [
+    {
+      "state_id": 4908,
+      "candidate": ", type_parameter",
+      "candidate_text": ", Filter"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 4475,
+      "candidate": "identifier",
+      "candidate_text": "Filter"
+    }
+  ],
+  "40": [
+    {
+      "state_id": 4713,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "42": [
+    {
+      "state_id": 5614,
+      "candidate": "= type ;",
+      "candidate_text": "= T extends (infer Item)[]\n\t? Item extends Filter\n\t\t? FilteredArrayItems<Item, Filter>\n\t\t: never\n\t: T extends Filter\n\t\t? T\n\t\t: never;"
+    }
+  ],
+  "44": [
+    {
+      "state_id": 1115,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "46": [
+    {
+      "state_id": 4202,
+      "candidate": "extends type ? type : type",
+      "candidate_text": "extends (infer Item)[]\n\t? Item extends Filter\n\t\t? FilteredArrayItems<Item, Filter>\n\t\t: never\n\t: T extends Filter"
+    }
+  ],
+  "54": [
+    {
+      "state_id": 1146,
+      "candidate": "( type )",
+      "candidate_text": "(infer Item)"
+    }
+  ],
+  "55": [
+    {
+      "state_id": 91,
+      "candidate": "infer identifier",
+      "candidate_text": "infer Item"
+    }
+  ],
+  "61": [
+    {
+      "state_id": 5818,
+      "candidate": "identifier",
+      "candidate_text": "Item"
+    }
+  ],
+  "65": [
+    {
+      "state_id": 4434,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "66": [
+    {
+      "state_id": 2981,
+      "candidate": "[ ]",
+      "candidate_text": "[]"
+    }
+  ],
+  "67": [
+    {
+      "state_id": 979,
+      "candidate": "]",
+      "candidate_text": "]"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 4489,
+      "candidate": "? type : type",
+      "candidate_text": "? Item extends Filter\n\t\t? FilteredArrayItems<Item, Filter>\n\t\t: never\n\t: T extends Filter"
+    }
+  ],
+  "72": [
+    {
+      "state_id": 1071,
+      "candidate": "identifier",
+      "candidate_text": "Item"
+    }
+  ],
+  "77": [
+    {
+      "state_id": 4437,
+      "candidate": "extends type ? type : type",
+      "candidate_text": "extends Filter\n\t\t? FilteredArrayItems<Item, Filter>\n\t\t: never"
+    }
+  ],
+  "85": [
+    {
+      "state_id": 1091,
+      "candidate": "identifier",
+      "candidate_text": "Filter"
+    }
+  ],
+  "94": [
+    {
+      "state_id": 4420,
+      "candidate": "? type : type",
+      "candidate_text": "? FilteredArrayItems<Item, Filter>\n\t\t: never"
+    }
+  ],
+  "96": [
+    {
+      "state_id": 1004,
+      "candidate": "identifier type_arguments",
+      "candidate_text": "FilteredArrayItems<Item, Filter>"
+    }
+  ],
+  "114": [
+    {
+      "state_id": 2923,
+      "candidate": "< type implements_clause_repeat1 >",
+      "candidate_text": "<Item, Filter>"
+    }
+  ],
+  "115": [
+    {
+      "state_id": 1098,
+      "candidate": "identifier",
+      "candidate_text": "Item"
+    }
+  ],
+  "119": [
+    {
+      "state_id": 3775,
+      "candidate": ", type",
+      "candidate_text": ", Filter"
+    }
+  ],
+  "121": [
+    {
+      "state_id": 989,
+      "candidate": "identifier",
+      "candidate_text": "Filter"
+    }
+  ],
+  "127": [
+    {
+      "state_id": 4693,
+      "candidate": ">",
+      "candidate_text": ">"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 4433,
+      "candidate": ": type",
+      "candidate_text": ": never"
+    }
+  ],
+  "133": [
+    {
+      "state_id": 1104,
+      "candidate": "never",
+      "candidate_text": "never"
+    }
+  ],
+  "140": [
+    {
+      "state_id": 4437,
+      "candidate": ": type",
+      "candidate_text": ": T extends Filter"
+    }
+  ],
+  "142": [
+    {
+      "state_id": 1062,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 3244,
+      "candidate": "extends type ? type : type",
+      "candidate_text": "extends Filter\n\t\t? T\n\t\t: never"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 1146,
+      "candidate": "identifier",
+      "candidate_text": "Filter"
+    }
+  ],
+  "161": [
+    {
+      "state_id": 4489,
+      "candidate": "? type : type",
+      "candidate_text": "? T\n\t\t: never"
+    }
+  ],
+  "163": [
+    {
+      "state_id": 1071,
+      "candidate": "identifier",
+      "candidate_text": "T"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 4437,
+      "candidate": ": type",
+      "candidate_text": ": never"
+    }
+  ],
+  "169": [
+    {
+      "state_id": 1062,
+      "candidate": "never",
+      "candidate_text": "never"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 4202,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ]
+}

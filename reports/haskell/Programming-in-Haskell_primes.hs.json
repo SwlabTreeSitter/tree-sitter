@@ -1,0 +1,364 @@
+{
+  "121": [
+    {
+      "state_id": 1,
+      "candidate": "_cmd_layout_start declarations _cond_layout_end",
+      "candidate_text": "primes :: [Int]"
+    },
+    {
+      "state_id": 2,
+      "candidate": "variable :: quantified_type",
+      "candidate_text": "primes :: [Int]"
+    }
+  ],
+  "128": [
+    {
+      "state_id": 2263,
+      "candidate": ":: quantified_type",
+      "candidate_text": ":: [Int]"
+    }
+  ],
+  "131": [
+    {
+      "state_id": 1462,
+      "candidate": "[ _cmd_texp_start",
+      "candidate_text": "["
+    }
+  ],
+  "132": [
+    {
+      "state_id": 1104,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 10287,
+      "candidate": "] _cmd_texp_end",
+      "candidate_text": "]"
+    }
+  ],
+  "137": [
+    {
+      "state_id": 9685,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "primes = sieve [2..]"
+    },
+    {
+      "state_id": 12,
+      "candidate": "declaration",
+      "candidate_text": "primes = sieve [2..]"
+    },
+    {
+      "state_id": 12,
+      "candidate": "variable _bind_matches",
+      "candidate_text": "primes = sieve [2..]"
+    }
+  ],
+  "144": [
+    {
+      "state_id": 2263,
+      "candidate": "= _exp",
+      "candidate_text": "= sieve [2..]"
+    }
+  ],
+  "146": [
+    {
+      "state_id": 1247,
+      "candidate": "variable",
+      "candidate_text": "sieve"
+    }
+  ],
+  "152": [
+    {
+      "state_id": 180,
+      "candidate": "[ _cmd_texp_start",
+      "candidate_text": "["
+    }
+  ],
+  "153": [
+    {
+      "state_id": 1108,
+      "candidate": "_integer_literal",
+      "candidate_text": "2"
+    }
+  ],
+  "154": [
+    {
+      "state_id": 9039,
+      "candidate": "_cond_dotdot ..",
+      "candidate_text": ".."
+    },
+    {
+      "state_id": 12358,
+      "candidate": "..",
+      "candidate_text": ".."
+    }
+  ],
+  "156": [
+    {
+      "state_id": 1114,
+      "candidate": "] _cmd_texp_end",
+      "candidate_text": "]"
+    }
+  ],
+  "159": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "sieve :: [Int] -> [Int]"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "sieve :: [Int] -> [Int]"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable :: quantified_type",
+      "candidate_text": "sieve :: [Int] -> [Int]"
+    }
+  ],
+  "165": [
+    {
+      "state_id": 2263,
+      "candidate": ":: quantified_type",
+      "candidate_text": ":: [Int] -> [Int]"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 1462,
+      "candidate": "[ _cmd_texp_start",
+      "candidate_text": "["
+    }
+  ],
+  "169": [
+    {
+      "state_id": 1104,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "172": [
+    {
+      "state_id": 10287,
+      "candidate": "] _cmd_texp_end",
+      "candidate_text": "]"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 8341,
+      "candidate": "->",
+      "candidate_text": "->"
+    }
+  ],
+  "177": [
+    {
+      "state_id": 1515,
+      "candidate": "[ _cmd_texp_start",
+      "candidate_text": "["
+    }
+  ],
+  "178": [
+    {
+      "state_id": 1104,
+      "candidate": "name",
+      "candidate_text": "Int"
+    }
+  ],
+  "181": [
+    {
+      "state_id": 10287,
+      "candidate": "] _cmd_texp_end",
+      "candidate_text": "]"
+    }
+  ],
+  "183": [
+    {
+      "state_id": 9583,
+      "candidate": "_cond_layout_semicolon declaration",
+      "candidate_text": "sieve (p:xs) = p : sieve [x | x <- xs, x `mod` p /= 0]"
+    },
+    {
+      "state_id": 14,
+      "candidate": "declaration",
+      "candidate_text": "sieve (p:xs) = p : sieve [x | x <- xs, x `mod` p /= 0]"
+    },
+    {
+      "state_id": 14,
+      "candidate": "variable",
+      "candidate_text": "sieve"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 2167,
+      "candidate": "( _cmd_texp_start",
+      "candidate_text": "("
+    }
+  ],
+  "190": [
+    {
+      "state_id": 42,
+      "candidate": "variable",
+      "candidate_text": "p"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 1274,
+      "candidate": "_consym",
+      "candidate_text": ":"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 1524,
+      "candidate": "variable",
+      "candidate_text": "xs"
+    }
+  ],
+  "194": [
+    {
+      "state_id": 11218,
+      "candidate": ") _cmd_texp_end",
+      "candidate_text": ")"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 8888,
+      "candidate": "= _exp",
+      "candidate_text": "= p : sieve [x | x <- xs, x `mod` p /= 0]"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 1247,
+      "candidate": "variable",
+      "candidate_text": "p"
+    }
+  ],
+  "200": [
+    {
+      "state_id": 180,
+      "candidate": "_consym",
+      "candidate_text": ":"
+    }
+  ],
+  "202": [
+    {
+      "state_id": 1395,
+      "candidate": "variable",
+      "candidate_text": "sieve"
+    }
+  ],
+  "208": [
+    {
+      "state_id": 221,
+      "candidate": "[ _cmd_texp_start",
+      "candidate_text": "["
+    }
+  ],
+  "209": [
+    {
+      "state_id": 1108,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "211": [
+    {
+      "state_id": 9039,
+      "candidate": "| qualifiers",
+      "candidate_text": "| x <- xs, x `mod` p /= 0"
+    }
+  ],
+  "213": [
+    {
+      "state_id": 232,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 11074,
+      "candidate": "<- _exp",
+      "candidate_text": "<- xs"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 1235,
+      "candidate": "variable",
+      "candidate_text": "xs"
+    }
+  ],
+  "220": [
+    {
+      "state_id": 10548,
+      "candidate": ", qualifier",
+      "candidate_text": ", x `mod` p /= 0"
+    }
+  ],
+  "222": [
+    {
+      "state_id": 254,
+      "candidate": "variable",
+      "candidate_text": "x"
+    }
+  ],
+  "224": [
+    {
+      "state_id": 285,
+      "candidate": "` variable `",
+      "candidate_text": "`mod`"
+    }
+  ],
+  "225": [
+    {
+      "state_id": 8974,
+      "candidate": "variable `",
+      "candidate_text": "mod`"
+    }
+  ],
+  "228": [
+    {
+      "state_id": 12551,
+      "candidate": "`",
+      "candidate_text": "`"
+    }
+  ],
+  "230": [
+    {
+      "state_id": 1406,
+      "candidate": "variable",
+      "candidate_text": "p"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 319,
+      "candidate": "_varsym",
+      "candidate_text": "/="
+    }
+  ],
+  "235": [
+    {
+      "state_id": 1406,
+      "candidate": "_integer_literal",
+      "candidate_text": "0"
+    }
+  ],
+  "236": [
+    {
+      "state_id": 10841,
+      "candidate": "] _cmd_texp_end",
+      "candidate_text": "]"
+    }
+  ]
+}

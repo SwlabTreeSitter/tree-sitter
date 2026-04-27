@@ -1,0 +1,723 @@
+{
+  "7": [
+    {
+      "state_id": 82,
+      "candidate": "namespace namespace_name _semicolon",
+      "candidate_text": "namespace popp\\ch10\\batch07;"
+    }
+  ],
+  "17": [
+    {
+      "state_id": 2219,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\ch10\\batch07"
+    }
+  ],
+  "21": [
+    {
+      "state_id": 2168,
+      "candidate": "\\ name",
+      "candidate_text": "\\ch10"
+    }
+  ],
+  "22": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "ch10"
+    }
+  ],
+  "26": [
+    {
+      "state_id": 2157,
+      "candidate": "\\ name",
+      "candidate_text": "\\batch07"
+    }
+  ],
+  "27": [
+    {
+      "state_id": 3072,
+      "candidate": "name",
+      "candidate_text": "batch07"
+    }
+  ],
+  "34": [
+    {
+      "state_id": 2171,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "37": [
+    {
+      "state_id": 157,
+      "candidate": "require_once expression",
+      "candidate_text": "require_once(\"vendor/autoload.php\")"
+    }
+  ],
+  "49": [
+    {
+      "state_id": 357,
+      "candidate": "( expression )",
+      "candidate_text": "(\"vendor/autoload.php\")"
+    }
+  ],
+  "50": [
+    {
+      "state_id": 175,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"vendor/autoload.php\""
+    }
+  ],
+  "51": [
+    {
+      "state_id": 1713,
+      "candidate": "string_content",
+      "candidate_text": "vendor/autoload.php"
+    }
+  ],
+  "70": [
+    {
+      "state_id": 1725,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "71": [
+    {
+      "state_id": 1562,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "72": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "75": [
+    {
+      "state_id": 157,
+      "candidate": "use namespace_use_clause _semicolon",
+      "candidate_text": "use popp\\test\\BaseUnit;"
+    }
+  ],
+  "79": [
+    {
+      "state_id": 1823,
+      "candidate": "name namespace_name_repeat1",
+      "candidate_text": "popp\\test"
+    }
+  ],
+  "83": [
+    {
+      "state_id": 1942,
+      "candidate": "\\ name",
+      "candidate_text": "\\test"
+    }
+  ],
+  "84": [
+    {
+      "state_id": 3290,
+      "candidate": "name",
+      "candidate_text": "test"
+    }
+  ],
+  "88": [
+    {
+      "state_id": 3112,
+      "candidate": "\\ name",
+      "candidate_text": "\\BaseUnit"
+    }
+  ],
+  "89": [
+    {
+      "state_id": 2691,
+      "candidate": "name",
+      "candidate_text": "BaseUnit"
+    }
+  ],
+  "97": [
+    {
+      "state_id": 2221,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "100": [
+    {
+      "state_id": 157,
+      "candidate": "class name base_clause declaration_list",
+      "candidate_text": "class Batch07Test extends BaseUnit\n{"
+    }
+  ],
+  "106": [
+    {
+      "state_id": 3194,
+      "candidate": "name base_clause declaration_list",
+      "candidate_text": "Batch07Test extends BaseUnit\n{"
+    }
+  ],
+  "118": [
+    {
+      "state_id": 1965,
+      "candidate": "extends _name",
+      "candidate_text": "extends BaseUnit"
+    }
+  ],
+  "126": [
+    {
+      "state_id": 1799,
+      "candidate": "name",
+      "candidate_text": "BaseUnit"
+    }
+  ],
+  "135": [
+    {
+      "state_id": 2262,
+      "candidate": "{ declaration_list_repeat1 }",
+      "candidate_text": "{\n    public function testRunner()\n    {\n        $val = $this->capture(function () {\n            Runner::run();\n        });\n        self::assertMatchesRegularExpression(\"/authenticating request/\", $val);\n        self::assertMatchesRegularExpression(\"/structuring request data/\", $val);\n        self::assertMatchesRegularExpression(\"/logging request/\", $val);\n        self::assertMatchesRegularExpression(\"/doing something useful with request/\", $val);\n    }\n}"
+    }
+  ],
+  "141": [
+    {
+      "state_id": 1617,
+      "candidate": "public",
+      "candidate_text": "public"
+    }
+  ],
+  "148": [
+    {
+      "state_id": 960,
+      "candidate": "function name formal_parameters compound_statement",
+      "candidate_text": "function testRunner()\n    {"
+    }
+  ],
+  "157": [
+    {
+      "state_id": 2652,
+      "candidate": "name formal_parameters compound_statement",
+      "candidate_text": "testRunner()\n    {"
+    }
+  ],
+  "167": [
+    {
+      "state_id": 2994,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "168": [
+    {
+      "state_id": 969,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "174": [
+    {
+      "state_id": 1873,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n        $val = $this->capture(function () {\n            Runner::run();\n        });\n        self::assertMatchesRegularExpression(\"/authenticating request/\", $val);\n        self::assertMatchesRegularExpression(\"/structuring request data/\", $val);\n        self::assertMatchesRegularExpression(\"/logging request/\", $val);\n        self::assertMatchesRegularExpression(\"/doing something useful with request/\", $val);\n    }"
+    }
+  ],
+  "184": [
+    {
+      "state_id": 88,
+      "candidate": "$ name",
+      "candidate_text": "$val"
+    }
+  ],
+  "185": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "val"
+    }
+  ],
+  "189": [
+    {
+      "state_id": 916,
+      "candidate": "= expression",
+      "candidate_text": "= $this->capture(function () {"
+    }
+  ],
+  "191": [
+    {
+      "state_id": 311,
+      "candidate": "$ name",
+      "candidate_text": "$this"
+    }
+  ],
+  "192": [
+    {
+      "state_id": 1997,
+      "candidate": "name",
+      "candidate_text": "this"
+    }
+  ],
+  "196": [
+    {
+      "state_id": 2314,
+      "candidate": "-> _member_name arguments",
+      "candidate_text": "->capture(function () {"
+    }
+  ],
+  "198": [
+    {
+      "state_id": 1913,
+      "candidate": "name",
+      "candidate_text": "capture"
+    }
+  ],
+  "205": [
+    {
+      "state_id": 868,
+      "candidate": "( argument )",
+      "candidate_text": "(function () {\n            Runner::run();\n        })"
+    }
+  ],
+  "206": [
+    {
+      "state_id": 191,
+      "candidate": "function formal_parameters",
+      "candidate_text": "function ()"
+    }
+  ],
+  "215": [
+    {
+      "state_id": 2192,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "216": [
+    {
+      "state_id": 973,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "218": [
+    {
+      "state_id": 2852,
+      "candidate": "{ program_repeat1 }",
+      "candidate_text": "{\n            Runner::run();\n        }"
+    }
+  ],
+  "232": [
+    {
+      "state_id": 83,
+      "candidate": "name",
+      "candidate_text": "Runner"
+    }
+  ],
+  "238": [
+    {
+      "state_id": 3271,
+      "candidate": ":: _member_name arguments",
+      "candidate_text": "::run()"
+    }
+  ],
+  "240": [
+    {
+      "state_id": 1898,
+      "candidate": "name",
+      "candidate_text": "run"
+    }
+  ],
+  "243": [
+    {
+      "state_id": 2828,
+      "candidate": "( )",
+      "candidate_text": "()"
+    }
+  ],
+  "244": [
+    {
+      "state_id": 191,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "245": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "255": [
+    {
+      "state_id": 84,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "256": [
+    {
+      "state_id": 2543,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "257": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "267": [
+    {
+      "state_id": 75,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "271": [
+    {
+      "state_id": 3271,
+      "candidate": ":: _member_name arguments",
+      "candidate_text": "::assertMatchesRegularExpression(\"/authenticating request/\", $val)"
+    }
+  ],
+  "273": [
+    {
+      "state_id": 1898,
+      "candidate": "name",
+      "candidate_text": "assertMatchesRegularExpression"
+    }
+  ],
+  "303": [
+    {
+      "state_id": 2828,
+      "candidate": "( argument arguments_repeat1 )",
+      "candidate_text": "(\"/authenticating request/\", $val)"
+    }
+  ],
+  "304": [
+    {
+      "state_id": 191,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"/authenticating request/\""
+    }
+  ],
+  "305": [
+    {
+      "state_id": 1713,
+      "candidate": "string_content",
+      "candidate_text": "/authenticating request/"
+    }
+  ],
+  "329": [
+    {
+      "state_id": 1725,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "330": [
+    {
+      "state_id": 2543,
+      "candidate": ", argument",
+      "candidate_text": ", $val"
+    }
+  ],
+  "332": [
+    {
+      "state_id": 207,
+      "candidate": "$ name",
+      "candidate_text": "$val"
+    }
+  ],
+  "333": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "val"
+    }
+  ],
+  "336": [
+    {
+      "state_id": 2557,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "337": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "347": [
+    {
+      "state_id": 75,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "351": [
+    {
+      "state_id": 3271,
+      "candidate": ":: _member_name arguments",
+      "candidate_text": "::assertMatchesRegularExpression(\"/structuring request data/\", $val)"
+    }
+  ],
+  "353": [
+    {
+      "state_id": 1898,
+      "candidate": "name",
+      "candidate_text": "assertMatchesRegularExpression"
+    }
+  ],
+  "383": [
+    {
+      "state_id": 2828,
+      "candidate": "( argument arguments_repeat1 )",
+      "candidate_text": "(\"/structuring request data/\", $val)"
+    }
+  ],
+  "384": [
+    {
+      "state_id": 191,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"/structuring request data/\""
+    }
+  ],
+  "385": [
+    {
+      "state_id": 1713,
+      "candidate": "string_content",
+      "candidate_text": "/structuring request data/"
+    }
+  ],
+  "411": [
+    {
+      "state_id": 1725,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "412": [
+    {
+      "state_id": 2543,
+      "candidate": ", argument",
+      "candidate_text": ", $val"
+    }
+  ],
+  "414": [
+    {
+      "state_id": 207,
+      "candidate": "$ name",
+      "candidate_text": "$val"
+    }
+  ],
+  "415": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "val"
+    }
+  ],
+  "418": [
+    {
+      "state_id": 2557,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "419": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "429": [
+    {
+      "state_id": 75,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "433": [
+    {
+      "state_id": 3271,
+      "candidate": ":: _member_name arguments",
+      "candidate_text": "::assertMatchesRegularExpression(\"/logging request/\", $val)"
+    }
+  ],
+  "435": [
+    {
+      "state_id": 1898,
+      "candidate": "name",
+      "candidate_text": "assertMatchesRegularExpression"
+    }
+  ],
+  "465": [
+    {
+      "state_id": 2828,
+      "candidate": "( argument arguments_repeat1 )",
+      "candidate_text": "(\"/logging request/\", $val)"
+    }
+  ],
+  "466": [
+    {
+      "state_id": 191,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"/logging request/\""
+    }
+  ],
+  "467": [
+    {
+      "state_id": 1713,
+      "candidate": "string_content",
+      "candidate_text": "/logging request/"
+    }
+  ],
+  "484": [
+    {
+      "state_id": 1725,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "485": [
+    {
+      "state_id": 2543,
+      "candidate": ", argument",
+      "candidate_text": ", $val"
+    }
+  ],
+  "487": [
+    {
+      "state_id": 207,
+      "candidate": "$ name",
+      "candidate_text": "$val"
+    }
+  ],
+  "488": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "val"
+    }
+  ],
+  "491": [
+    {
+      "state_id": 2557,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "492": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "502": [
+    {
+      "state_id": 75,
+      "candidate": "self",
+      "candidate_text": "self"
+    }
+  ],
+  "506": [
+    {
+      "state_id": 3271,
+      "candidate": ":: _member_name arguments",
+      "candidate_text": "::assertMatchesRegularExpression(\"/doing something useful with request/\", $val)"
+    }
+  ],
+  "508": [
+    {
+      "state_id": 1898,
+      "candidate": "name",
+      "candidate_text": "assertMatchesRegularExpression"
+    }
+  ],
+  "538": [
+    {
+      "state_id": 2828,
+      "candidate": "( argument arguments_repeat1 )",
+      "candidate_text": "(\"/doing something useful with request/\", $val)"
+    }
+  ],
+  "539": [
+    {
+      "state_id": 191,
+      "candidate": "\" _interpolated_string_body \"",
+      "candidate_text": "\"/doing something useful with request/\""
+    }
+  ],
+  "540": [
+    {
+      "state_id": 1713,
+      "candidate": "string_content",
+      "candidate_text": "/doing something useful with request/"
+    }
+  ],
+  "577": [
+    {
+      "state_id": 1725,
+      "candidate": "\"",
+      "candidate_text": "\""
+    }
+  ],
+  "578": [
+    {
+      "state_id": 2543,
+      "candidate": ", argument",
+      "candidate_text": ", $val"
+    }
+  ],
+  "580": [
+    {
+      "state_id": 207,
+      "candidate": "$ name",
+      "candidate_text": "$val"
+    }
+  ],
+  "581": [
+    {
+      "state_id": 2018,
+      "candidate": "name",
+      "candidate_text": "val"
+    }
+  ],
+  "584": [
+    {
+      "state_id": 2557,
+      "candidate": ")",
+      "candidate_text": ")"
+    }
+  ],
+  "585": [
+    {
+      "state_id": 1495,
+      "candidate": ";",
+      "candidate_text": ";"
+    }
+  ],
+  "591": [
+    {
+      "state_id": 75,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ],
+  "593": [
+    {
+      "state_id": 1614,
+      "candidate": "}",
+      "candidate_text": "}"
+    }
+  ]
+}

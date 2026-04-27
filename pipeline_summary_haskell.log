@@ -415,3 +415,37 @@
   Total Elapsed: 501s
   End   : 2026-04-22 17:12:54
 
+============================================================
+  Language : haskell
+  Start    : 2026-04-27 14:18:42
+============================================================
+  [Step1 learn_collect(haskell)]
+    - Skipped:   0
+[*] Done! JSON saved to: /home/hyeonjin/PL/code-completion-extension/resources/haskell/candidates.json
+
+  [Step2 collect_test(haskell)]
+[*] Completed.
+    - Success: 155
+    - Skipped: 0
+    - Total Found: 155
+[*] Results are in: /home/hyeonjin/PL/benchmarks_collection/haskell/TEST_data
+
+  [Step3 make_answers(haskell)]
+[*] All done. Processed 155/155 files.
+
+  [Step4 evaluate(haskell)]
+[Global] Total Queries    : 62169
+[Global] Top-10 Count     : 58215
+[Global] Top-10 Acc       : 93.6%
+[Global] Top11~20 Count   : 3261
+[Global] CPP Fail         : 0
+[HASKELL] Total Queries : 62169
+[HASKELL] Found         : 62111  (99.9%)
+[HASKELL] Not Found     : 58  (0.1%)
+[HASKELL] Fail          : 0  (0.0%)
+[Saved] File Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/haskell/haskell_file_performance.csv
+[Saved] Coverage Report (CSV) -> /home/hyeonjin/PL/tree-sitter/reports/haskell/haskell_coverage.csv
+
+  Total Elapsed: 832s
+  End   : 2026-04-27 14:32:34
+
