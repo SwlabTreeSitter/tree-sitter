@@ -3184,6 +3184,7 @@ typedef struct {
     uint32_t byte_offset;   // 현재 커서 위치 (Bytes)
     TSPoint point_offset;   // 현재 커서 위치 (Row, Col)
     const ShiftStateArray *shift_state_map;  // [collection_mode] (byte_offset → S2) 매핑
+    bool emit_lexeme;       // true: @<off>: <lex> 출력 (TEST). false: @<off> 만 출력 (LEARN).
 } CollectionContext;
 
 // [Helper] shift_state_map에서 byte_offset으로 S2를 조회 (이진 탐색)
@@ -3253,15 +3254,24 @@ void dump_lexemes(CollectionContext *ctx, Subtree node) {
   uint32_t start_byte = ctx->byte_offset + padding.bytes;
   uint32_t length_byte = size.bytes;
 
-  // 3. 출력: 바이트 오프셋 + 해당 구간의 원본 lexeme 텍스트
+  // 3. 출력: 바이트 오프셋 + (emit_lexeme 시) 해당 구간의 원본 lexeme 텍스트
   // zero-width 토큰(외부 스캐너의 _line_break, _newline, _dedent 등)은
   // 컨버전이 해당 위치에서 멈출 수 없어 평가 포인트로 부적합하므로 제외
+  //
+  // emit_lexeme:
+  //   true  (TEST 컬렉션) — @<off>: <lex> 형태. lex 길이로 candidate_text 산출 가능.
+  //   false (LEARN 컬렉션) — @<off> 형태. lex 본문 미출력 → multi-line 노드의 source
+  //                          이 .data 라인 경계를 깨뜨릴 가능성이 원천 봉쇄됨.
   if (length_byte > 0 && start_byte < ctx->source_len) {
     uint32_t safe_len = length_byte;
     if (start_byte + safe_len > ctx->source_len) {
       safe_len = ctx->source_len - start_byte;
     }
-    fprintf(ctx->file, "  @%u: %.*s\n", start_byte, (int)safe_len, ctx->source + start_byte);
+    if (ctx->emit_lexeme) {
+      fprintf(ctx->file, "  @%u: %.*s\n", start_byte, (int)safe_len, ctx->source + start_byte);
+    } else {
+      fprintf(ctx->file, "  @%u\n", start_byte);
+    }
   }
 
   // 4. 다음 형제를 위해 임시 컨텍스트의 커서를 이동시킴
@@ -3456,7 +3466,8 @@ bool ts_parser_run_collection2 (
   TSTree *tree,
   const char *source_code,
   uint32_t length,
-  FILE *file
+  FILE *file,
+  bool emit_lexeme
 ) {
 
   if (!tree) { fprintf(stderr, "[ERROR] Tree is NULL\n"); return false; }
@@ -3474,7 +3485,8 @@ bool ts_parser_run_collection2 (
       .lang = ts_tree_language(tree),
       .byte_offset = 0,
       .point_offset = {0, 0},
-      .shift_state_map = (self && self->shift_state_map.size > 0) ? &self->shift_state_map : NULL
+      .shift_state_map = (self && self->shift_state_map.size > 0) ? &self->shift_state_map : NULL,
+      .emit_lexeme = emit_lexeme
   };
 
   collect_recursive(&ctx, root);

@@ -77,15 +77,16 @@ def main():
     for file_path in data_files:
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                for line in f:
-                    line = line.strip()
-                    if not line:
+                for raw in f:
+                    # 줄바꿈만 제거하고 들여쓰기는 보존한다.
+                    # 컬렉션 라이터가 multi-line 비단말 노드의 source 를 escape 없이 덤프하므로
+                    # .data 안에 raw 소스 라인이 섞여 들어올 수 있다. 그 라인들은 들여쓰기를 갖고 있어
+                    # 컬럼 0 이 숫자가 아니므로 여기서 자동 거부된다.
+                    line = raw.rstrip("\r\n")
+                    if not line or not line[0].isdigit():
                         continue
 
                     parts = line.split(maxsplit=1)
-                    if not parts[0].isdigit():
-                        continue
-
                     state_id = int(parts[0])
                     pattern = parts[1].strip() if len(parts) > 1 else ""
 

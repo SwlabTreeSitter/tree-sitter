@@ -18,6 +18,13 @@ JSON 포맷:
     ...
   ]
 }
+
+NOTE — candidate_text 는 디버깅/표시용 필드.
+  - 평가 파이프라인(evaluate_coverage.py)은 키(byte offset)와 candidate(symbol 시퀀스)만 사용한다.
+  - 컬렉션 라이터(lib/src/parser.c:dump_lexemes)가 multi-line 비단말 노드의 source 텍스트를 escape 없이
+    덤프하기 때문에, 그 노드를 포함하는 entry 의 candidate_text 는 첫 줄까지만 잡혀 잘릴 수 있다.
+  - 즉 candidate_text 가 잘린 형태로 보이더라도 평가 결과에는 영향 없음. 사람이 JSON 을 직접 읽거나
+    별도 분석 스크립트가 텍스트 전체를 필요로 할 때만 신뢰성에 주의.
 """
 
 import sys

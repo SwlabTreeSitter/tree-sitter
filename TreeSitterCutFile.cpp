@@ -8,12 +8,17 @@
 // 두 가지 동작 모드:
 //   1) Collection — 파일을 끝까지 파싱하면서, 각 파서 상태에서 나타난
 //                   구조후보(candidate)들을 학습 데이터로 수집한다.
+//                   TEST(=1) 와 LEARN(=3) 두 변종 — TEST 는 정답지용으로 lexeme 텍스트를
+//                   같이 적고, LEARN 은 통계 집계용이라 lexeme 을 적지 않는다.
 //   2) Conversion — 커서 위치까지 파싱하고, 그 시점의 파서 상태(state path)를
 //                   추출한다. 코드 자동완성에서 다음에 올 토큰을 추천할 때 쓰인다.
 //
 // 사용법:
-//   Collection:
+//   Collection (TEST,  lexeme 포함):
 //     TreeSitterCutFile.exe <lang> <lib> <file> 1
+//
+//   Collection (LEARN, lexeme 미포함):
+//     TreeSitterCutFile.exe <lang> <lib> <file> 3
 //
 //   Conversion (커서 위치는 바이트 오프셋으로 지정):
 //     TreeSitterCutFile.exe <lang> <lib> <file> <offset> 0|2
@@ -79,8 +84,8 @@ extern "C" {
     TSStatePath ts_parser_parse_string_for_conversion_with_lookahead(TSParser *self, const TSTree *old_tree, const char *string, uint32_t full_length, uint32_t cursor_byte);
     void ts_parser_write_conversion_result(TSParser *self, TSStatePath *path, FILE *fp);
 
-    // 컬렉션
-    bool ts_parser_run_collection2(TSParser *self, TSTree *tree, const char *source_code, uint32_t length, FILE *OutputFile);
+    // 컬렉션 (emit_lexeme=true: TEST 용 @<off>: <lex>, false: LEARN 용 @<off> 만)
+    bool ts_parser_run_collection2(TSParser *self, TSTree *tree, const char *source_code, uint32_t length, FILE *OutputFile, bool emit_lexeme);
 
     // 컬렉션 모드 설정
     void ts_parser_set_collection_mode(TSParser *self, bool enabled);
@@ -118,8 +123,9 @@ int main(int argc, char* argv[]) {
 
     // ==========================================================
     // 1. 인자 파싱 및 검증
-    // 사용법 1 (컬렉션): exe lang dll file 1
-    // 사용법 2 (컨버전): exe lang dll file <offset> 0|2
+    // 사용법 1 (TEST collection,  lexeme 포함): exe lang dll file 1
+    // 사용법 2 (Conversion):                    exe lang dll file <offset> 0|2
+    // 사용법 3 (LEARN collection, lexeme 미포함): exe lang dll file 3
     // ==========================================================
     if (argc >= 4) {
         language_name = argv[1];
@@ -143,8 +149,9 @@ int main(int argc, char* argv[]) {
     } else {
     usage_error:
         std::cerr << "Usage:" << std::endl;
-        std::cerr << "  Collection:  " << argv[0] << " <lang> <dll> <file> 1" << std::endl;
-        std::cerr << "  Conversion:  " << argv[0] << " <lang> <dll> <file> <offset> 0|2" << std::endl;
+        std::cerr << "  Collection (TEST):  " << argv[0] << " <lang> <dll> <file> 1" << std::endl;
+        std::cerr << "  Collection (LEARN): " << argv[0] << " <lang> <dll> <file> 3" << std::endl;
+        std::cerr << "  Conversion:         " << argv[0] << " <lang> <dll> <file> <offset> 0|2" << std::endl;
         return 1;
     }
 
@@ -220,8 +227,9 @@ int main(int argc, char* argv[]) {
             ts_parser_set_logger(parser, logger);
         }
 
-        // 컬렉션 모드일 때: SHIFT 시 리프에 reduce 후 GOTO 상태(S2)를 저장
-        if (execution_mode == 1) {
+        // 컬렉션 모드일 때 (TEST=1, LEARN=3): SHIFT 시 리프에 reduce 후 GOTO 상태(S2)를 저장
+        bool is_collection = (execution_mode == 1 || execution_mode == 3);
+        if (is_collection) {
             ts_parser_set_collection_mode(parser, true);
         }
 
@@ -236,7 +244,7 @@ int main(int argc, char* argv[]) {
         std::cout << "DEBUG: Parsing finished." << std::endl;
 
         // 컬렉션 모드 해제
-        if (execution_mode == 1) {
+        if (is_collection) {
             ts_parser_set_collection_mode(parser, false);
         }
 
@@ -252,22 +260,25 @@ int main(int argc, char* argv[]) {
         // ==========================================================
         // 5. 모드별 후처리 로직 분기
         // ==========================================================
-            if (execution_mode == 1) {
+            if (is_collection) {
                 // ------------------------------------------------------
-                // [모드 1] Collection
+                // [모드 1] Collection (TEST: lexeme 포함)
+                // [모드 3] Collection (LEARN: lexeme 미포함)
                 // ------------------------------------------------------
-                std::cout << "DEBUG: Running Collection..." << std::endl;
+                bool emit_lexeme = (execution_mode == 1);
+                std::cout << "DEBUG: Running Collection ("
+                          << (emit_lexeme ? "TEST/with lexeme" : "LEARN/no lexeme")
+                          << ")..." << std::endl;
 
                 // smallbasic: 최종 파스트리에 ERROR 노드가 하나라도 있으면 파일 전체를 skip
                 // (Python 측 LitDev 필터 통과 후 남은 파일에 대해서만 적용됨)
-                // smallbasic: 최종 파스트리에 ERROR 노드가 하나라도 있으면 파일 전체를 skip
                 if (language_name == "smallbasic" && tree && ts_node_has_error(ts_tree_root_node(tree))) {
                     std::cerr << "[SKIP] Parse error in smallbasic file: " << target_path << std::endl;
                     std::cout << "WARNING: Collection skipped (smallbasic whole-file skip policy)." << std::endl;
                 } else {
                     FILE *collection_fp = fopen("Test.data", "w");
                     if (collection_fp) {
-                        bool is_success = ts_parser_run_collection2(parser, tree, source_code.c_str(), static_cast<uint32_t>(effective_length), collection_fp);
+                        bool is_success = ts_parser_run_collection2(parser, tree, source_code.c_str(), static_cast<uint32_t>(effective_length), collection_fp, emit_lexeme);
                         fclose(collection_fp);
 
                         if (!is_success) {

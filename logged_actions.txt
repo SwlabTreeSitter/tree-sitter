@@ -1,27 +1,19 @@
-[SHIFT] State 1 -> 1, symbol: comment (107, #---)
-[SHIFT] State 1 -> 1, symbol: comment (107, # Excerpted from "Programming Ruby 3.2",)
-[SHIFT] State 1 -> 1, symbol: comment (107, # published by The Pragmatic Bookshelf.)
-[SHIFT] State 1 -> 1, symbol: comment (107, # Copyrights apply to this code. It may not be used to create training material,)
-[SHIFT] State 1 -> 1, symbol: comment (107, # courses, books, articles, and the like. Contact us if you are in doubt.)
-[SHIFT] State 1 -> 1, symbol: comment (107, # We make no guarantees that this code is fit for any purpose.)
-[SHIFT] State 1 -> 1, symbol: comment (107, # Visit https://pragprog.com/titles/ruby5 for more book information.)
-[SHIFT] State 1 -> 1, symbol: comment (107, #---)
-[SHIFT] State: 1 -> 2301, symbol: def (8)
-[SHIFT] State 2301 -> 4745, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 4745 -> GOTO 4540, symbol: _method_name, child 1 { 'identifier(UNKNOWN)' }
-[SHIFT] State 4540 -> 2041, symbol: _line_break (128, UNKNOWN)
+[SHIFT] State: 1 -> 1975, symbol: class (25)
+[SHIFT] State 1975 -> 125, symbol: constant (117, M)
+[SHIFT] State 125 -> 2041, symbol: _line_break (128, UNKNOWN)
+[REDUCE] State 2041 -> GOTO 217, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
+[SHIFT] State: 217 -> 2466, symbol: def (8)
+[SHIFT] State 2466 -> 4745, symbol: identifier (1, UNKNOWN)
+[REDUCE] State 4745 -> GOTO 4557, symbol: _method_name, child 1 { 'identifier(UNKNOWN)' }
+[SHIFT] State 4557 -> 2041, symbol: _line_break (128, UNKNOWN)
 [REDUCE] State 2041 -> GOTO 216, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
-[SHIFT] State 216 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 3 -> GOTO 2132, symbol: _lhs, child 1 { '_variable' }
-[SHIFT] State: 2132 -> 462, symbol: = (15)
-[SHIFT] State: 462 -> 741, symbol: { (5)
-[SHIFT] State: 741 -> 2391, symbol: } (6)
-[REDUCE] State 2391 -> GOTO 2376, symbol: hash, child 2 { '{' '}' }
-[REDUCE] State 2376 -> GOTO 2552, symbol: _primary, child 1 { 'hash' }
-[REDUCE] State 2552 -> GOTO 2715, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 2715 -> GOTO 2547, symbol: assignment, child 3 { '_lhs' '=' '_arg' }
-[REDUCE] State 2547 -> GOTO 2812, symbol: _arg, child 1 { 'assignment' }
+[SHIFT] State 216 -> 2226, symbol: integer (108, 0)
+[SHIFT] State 2226 -> 2226, symbol: comment (107, # leak source)
+[REDUCE] State 2226 -> GOTO 2286, symbol: _simple_numeric, child 1 { 'comment(# leak source)' }
+[REDUCE] State 2286 -> GOTO 2380, symbol: _numeric, child 1 { '_simple_numeric' }
+[REDUCE] State 2380 -> GOTO 2376, symbol: _literal, child 1 { '_numeric' }
+[REDUCE] State 2376 -> GOTO 2552, symbol: _primary, child 1 { '_literal' }
+[REDUCE] State 2552 -> GOTO 2812, symbol: _arg, child 1 { '_primary' }
 [REDUCE] State 2812 -> GOTO 4589, symbol: _expression, child 1 { '_arg' }
 [REDUCE] State 4589 -> GOTO 4625, symbol: _statement, child 1 { '_expression' }
 [SHIFT] State 4625 -> 2041, symbol: _line_break (128, UNKNOWN)
@@ -29,313 +21,40 @@
 [REDUCE] State 2053 -> GOTO 252, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
 [SHIFT] State 252 -> 1909, symbol: identifier (1, UNKNOWN)
 [REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[SHIFT] State: 3 -> 5084, symbol: " (131)
-[SHIFT] State 5084 -> 5307, symbol: string_content (138, File            Line  Source Line)
-[REDUCE] State 5307 -> GOTO 5096, symbol: _literal_contents, child 1 { 'string_content(File            Line  Source Line)' }
-[SHIFT] State 5096 -> 2259, symbol: ) (140, ")
-[REDUCE] State 2259 -> GOTO 2254, symbol: string, child 3 { '"' '_literal_contents' ')(")' }
-[REDUCE] State 2254 -> GOTO 2506, symbol: _primary, child 1 { 'string' }
-[REDUCE] State 2506 -> GOTO 2696, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 2696 -> GOTO 4482, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 4482 -> GOTO 4522, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 4522 -> GOTO 4466, symbol: argument_list, child 1 { '_argument' }
-[REDUCE] State 4466 -> GOTO 4515, symbol: call, child 2 { '_variable' 'argument_list' }
-[REDUCE] State 4515 -> GOTO 4589, symbol: _expression, child 1 { 'call' }
-[REDUCE] State 4589 -> GOTO 4626, symbol: _statement, child 1 { '_expression' }
-[SHIFT] State 4626 -> 2041, symbol: _line_break (128, UNKNOWN)
-[REDUCE] State 2041 -> GOTO 2053, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
-[REDUCE] State 2053 -> GOTO 257, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
-[REDUCE] State 257 -> GOTO 252, symbol: _statements_repeat1, child 2 { '_statements_repeat1' '_statements_repeat1' }
-[SHIFT] State 252 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[SHIFT] State: 3 -> 5084, symbol: " (131)
-[SHIFT] State 5084 -> 5307, symbol: string_content (138, ---------------+----+------------)
-[REDUCE] State 5307 -> GOTO 5096, symbol: _literal_contents, child 1 { 'string_content(---------------+----+------------)' }
-[SHIFT] State 5096 -> 2259, symbol: ) (140, ")
-[REDUCE] State 2259 -> GOTO 2254, symbol: string, child 3 { '"' '_literal_contents' ')(")' }
-[REDUCE] State 2254 -> GOTO 2506, symbol: _primary, child 1 { 'string' }
-[REDUCE] State 2506 -> GOTO 2696, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 2696 -> GOTO 4482, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 4482 -> GOTO 4522, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 4522 -> GOTO 4466, symbol: argument_list, child 1 { '_argument' }
-[REDUCE] State 4466 -> GOTO 4515, symbol: call, child 2 { '_variable' 'argument_list' }
-[REDUCE] State 4515 -> GOTO 4589, symbol: _expression, child 1 { 'call' }
-[REDUCE] State 4589 -> GOTO 4626, symbol: _statement, child 1 { '_expression' }
-[SHIFT] State 4626 -> 2041, symbol: _line_break (128, UNKNOWN)
-[REDUCE] State 2041 -> GOTO 2053, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
-[REDUCE] State 2053 -> GOTO 257, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
-[REDUCE] State 257 -> GOTO 252, symbol: _statements_repeat1, child 2 { '_statements_repeat1' '_statements_repeat1' }
-[SHIFT] State 252 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
 [REDUCE] State 3 -> GOTO 2132, symbol: _lhs, child 1 { '_variable' }
 [REDUCE] State 2132 -> GOTO 2552, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 2552 -> 3163, symbol: . (11)
-[SHIFT] State 3163 -> 1911, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1911 -> GOTO 4, symbol: _call, child 3 { '_primary' '.' 'identifier(UNKNOWN)' }
-[SHIFT] State: 4 -> 147, symbol: do (40)
-[SHIFT] State: 147 -> 4575, symbol: | (17)
-[SHIFT] State 4575 -> 5315, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 5315 -> GOTO 5245, symbol: _simple_formal_parameter, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 5245 -> GOTO 5489, symbol: _formal_parameter, child 1 { '_simple_formal_parameter' }
-[SHIFT] State: 5489 -> 2118, symbol: | (17)
-[REDUCE] State 2118 -> GOTO 194, symbol: block_parameters, child 3 { '|' '_formal_parameter' '|' }
-[SHIFT] State 194 -> 2041, symbol: _line_break (128, UNKNOWN)
-[REDUCE] State 2041 -> GOTO 242, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
-[SHIFT] State 242 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 3 -> GOTO 2132, symbol: _lhs, child 1 { '_variable' }
-[SHIFT] State: 2132 -> 462, symbol: = (15)
-[SHIFT] State 462 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 5, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 5 -> GOTO 2130, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2130 -> GOTO 2552, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 2552 -> 3163, symbol: . (11)
-[SHIFT] State 3163 -> 1911, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1911 -> GOTO 6, symbol: _call, child 3 { '_primary' '.' 'identifier(UNKNOWN)' }
-[SHIFT] State: 6 -> 428, symbol: ( (47)
-[SHIFT] State: 428 -> 5111, symbol: / (134)
-[SHIFT] State 5111 -> 5307, symbol: escape_sequence (126, \A)
-[REDUCE] State 5307 -> GOTO 5145, symbol: _literal_contents, child 1 { 'escape_sequence(\A)' }
-[SHIFT] State 5145 -> 5307, symbol: string_content (138, (.*?):()
-[REDUCE] State 5307 -> GOTO 5177, symbol: _literal_contents, child 1 { 'string_content((.*?):()' }
-[REDUCE] State 5177 -> GOTO 5145, symbol: _literal_contents, child 2 { '_literal_contents' '_literal_contents' }
-[SHIFT] State 5145 -> 5307, symbol: escape_sequence (126, \d)
-[REDUCE] State 5307 -> GOTO 5177, symbol: _literal_contents, child 1 { 'escape_sequence(\d)' }
-[REDUCE] State 5177 -> GOTO 5145, symbol: _literal_contents, child 2 { '_literal_contents' '_literal_contents' }
-[SHIFT] State 5145 -> 5307, symbol: string_content (138, +))
-[REDUCE] State 5307 -> GOTO 5177, symbol: _literal_contents, child 1 { 'string_content(+))' }
-[REDUCE] State 5177 -> GOTO 5145, symbol: _literal_contents, child 2 { '_literal_contents' '_literal_contents' }
-[SHIFT] State 5145 -> 2951, symbol: ) (140, /)
-[REDUCE] State 2951 -> GOTO 3027, symbol: regex, child 3 { '/' '_literal_contents' ')(/)' }
-[REDUCE] State 3027 -> GOTO 3515, symbol: _primary, child 1 { 'regex' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5442, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5442 -> GOTO 5815, symbol: _argument_list_with_trailing_comma, child 1 { '_argument' }
-[SHIFT] State: 5815 -> 2455, symbol: ) (10)
-[REDUCE] State 2455 -> GOTO 2255, symbol: argument_list, child 3 { '(' '_argument_list_with_trailing_comma' ')' }
-[REDUCE] State 2255 -> GOTO 2376, symbol: call, child 2 { '_call' 'argument_list' }
-[REDUCE] State 2376 -> GOTO 2552, symbol: _primary, child 1 { 'call' }
-[REDUCE] State 2552 -> GOTO 2715, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 2715 -> GOTO 2547, symbol: assignment, child 3 { '_lhs' '=' '_arg' }
-[REDUCE] State 2547 -> GOTO 2812, symbol: _arg, child 1 { 'assignment' }
+[REDUCE] State 2552 -> GOTO 2812, symbol: _arg, child 1 { '_primary' }
+[REDUCE] State 2812 -> GOTO 4589, symbol: _expression, child 1 { '_arg' }
+[REDUCE] State 4589 -> GOTO 4626, symbol: _statement, child 1 { '_expression' }
+[SHIFT] State 4626 -> 2041, symbol: _line_break (128, UNKNOWN)
+[REDUCE] State 2041 -> GOTO 2053, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
+[REDUCE] State 2053 -> GOTO 257, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
+[REDUCE] State 257 -> GOTO 252, symbol: _statements_repeat1, child 2 { '_statements_repeat1' '_statements_repeat1' }
+[REDUCE] State 252 -> GOTO 4944, symbol: _statements, child 1 { '_statements_repeat1' }
+[REDUCE] State 4944 -> GOTO 5777, symbol: _body_statement, child 1 { '_statements' }
+[REDUCE] State 5777 -> GOTO 5785, symbol: body_statement, child 1 { '_body_statement' }
+[SHIFT] State: 5785 -> 2304, symbol: end (13)
+[REDUCE] State 2304 -> GOTO 2287, symbol: _method_rest, child 4 { '_terminator' 'integer(0)' 'body_statement' 'end' }
+[REDUCE] State 2287 -> GOTO 2376, symbol: method, child 2 { '_method_name' '_method_rest' }
+[REDUCE] State 2376 -> GOTO 2552, symbol: _primary, child 1 { 'method' }
+[REDUCE] State 2552 -> GOTO 2812, symbol: _arg, child 1 { '_primary' }
 [REDUCE] State 2812 -> GOTO 4589, symbol: _expression, child 1 { '_arg' }
 [REDUCE] State 4589 -> GOTO 4625, symbol: _statement, child 1 { '_expression' }
 [SHIFT] State 4625 -> 2041, symbol: _line_break (128, UNKNOWN)
 [REDUCE] State 2041 -> GOTO 2053, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
 [REDUCE] State 2053 -> GOTO 252, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
-[SHIFT] State: 252 -> 50, symbol: next (31)
-[REDUCE] State 50 -> GOTO 2376, symbol: next, child 1 { 'next' }
-[REDUCE] State 2376 -> GOTO 2552, symbol: _primary, child 1 { 'next' }
-[REDUCE] State 2552 -> GOTO 2812, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 2812 -> GOTO 4589, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 4589 -> GOTO 4626, symbol: _statement, child 1 { '_expression' }
-[SHIFT] State: 4626 -> 520, symbol: if (34)
-[SHIFT] State 520 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 3 -> GOTO 2132, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2132 -> GOTO 2552, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 2552 -> 3163, symbol: . (11)
-[SHIFT] State 3163 -> 1915, symbol: identifier_suffix_token1 (119, nil?)
-[REDUCE] State 1915 -> GOTO 1914, symbol: hash_key_symbol, child 1 { 'identifier_suffix_token1(nil?)' }
-[REDUCE] State 1914 -> GOTO 1911, symbol: _function_identifier, child 1 { 'hash_key_symbol' }
-[REDUCE] State 1911 -> GOTO 4, symbol: _call, child 3 { '_primary' '.' '_function_identifier' }
-[REDUCE] State 4 -> GOTO 2132, symbol: _lhs, child 1 { '_call' }
-[REDUCE] State 2132 -> GOTO 2552, symbol: _primary, child 1 { '_lhs' }
-[REDUCE] State 2552 -> GOTO 2812, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 2812 -> GOTO 4594, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 4594 -> GOTO 4579, symbol: if_modifier, child 3 { '_statement' 'if' '_expression' }
-[REDUCE] State 4579 -> GOTO 4626, symbol: _statement, child 1 { 'if_modifier' }
-[SHIFT] State 4626 -> 2041, symbol: _line_break (128, UNKNOWN)
-[REDUCE] State 2041 -> GOTO 2053, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
-[REDUCE] State 2053 -> GOTO 257, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
-[REDUCE] State 257 -> GOTO 252, symbol: _statements_repeat1, child 2 { '_statements_repeat1' '_statements_repeat1' }
-[SHIFT] State 252 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 3 -> GOTO 2132, symbol: _lhs, child 1 { '_variable' }
-[SHIFT] State: 2132 -> 462, symbol: = (15)
-[SHIFT] State 462 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 5, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 5 -> GOTO 2130, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2130 -> GOTO 2552, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 2552 -> 431, symbol: [ (155)
-[SHIFT] State 431 -> 2813, symbol: integer (108, 1)
-[REDUCE] State 2813 -> GOTO 3068, symbol: _simple_numeric, child 1 { 'integer(1)' }
-[REDUCE] State 3068 -> GOTO 3026, symbol: _numeric, child 1 { '_simple_numeric' }
-[REDUCE] State 3026 -> GOTO 3027, symbol: _literal, child 1 { '_numeric' }
-[REDUCE] State 3027 -> GOTO 3515, symbol: _primary, child 1 { '_literal' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5442, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5442 -> GOTO 5683, symbol: _argument_list_with_trailing_comma, child 1 { '_argument' }
-[SHIFT] State: 5683 -> 2061, symbol: ] (45)
-[REDUCE] State 2061 -> GOTO 2108, symbol: element_reference, child 4 { '_primary' '[' '_argument_list_with_trailing_comma' ']' }
-[REDUCE] State 2108 -> GOTO 2130, symbol: _lhs, child 1 { 'element_reference' }
-[REDUCE] State 2130 -> GOTO 2552, symbol: _primary, child 1 { '_lhs' }
-[REDUCE] State 2552 -> GOTO 2715, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 2715 -> GOTO 2547, symbol: assignment, child 3 { '_lhs' '=' '_arg' }
-[REDUCE] State 2547 -> GOTO 2812, symbol: _arg, child 1 { 'assignment' }
-[REDUCE] State 2812 -> GOTO 4589, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 4589 -> GOTO 4626, symbol: _statement, child 1 { '_expression' }
-[SHIFT] State 4626 -> 2041, symbol: _line_break (128, UNKNOWN)
-[REDUCE] State 2041 -> GOTO 2053, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
-[REDUCE] State 2053 -> GOTO 257, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
-[REDUCE] State 257 -> GOTO 252, symbol: _statements_repeat1, child 2 { '_statements_repeat1' '_statements_repeat1' }
-[SHIFT] State 252 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 3 -> GOTO 2132, symbol: _lhs, child 1 { '_variable' }
-[SHIFT] State: 2132 -> 462, symbol: = (15)
-[SHIFT] State 462 -> 1909, symbol: constant (117, Integer)
-[REDUCE] State 1909 -> GOTO 5, symbol: _variable, child 1 { 'constant(Integer)' }
-[SHIFT] State: 5 -> 428, symbol: ( (47)
-[SHIFT] State 428 -> 1951, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1951 -> GOTO 34, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 34 -> GOTO 2499, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 3515 -> 440, symbol: [ (155)
-[SHIFT] State 440 -> 2813, symbol: integer (108, 2)
-[REDUCE] State 2813 -> GOTO 3068, symbol: _simple_numeric, child 1 { 'integer(2)' }
-[REDUCE] State 3068 -> GOTO 3026, symbol: _numeric, child 1 { '_simple_numeric' }
-[REDUCE] State 3026 -> GOTO 3027, symbol: _literal, child 1 { '_numeric' }
-[REDUCE] State 3027 -> GOTO 3515, symbol: _primary, child 1 { '_literal' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5442, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5442 -> GOTO 5848, symbol: _argument_list_with_trailing_comma, child 1 { '_argument' }
-[SHIFT] State: 5848 -> 2191, symbol: ] (45)
-[REDUCE] State 2191 -> GOTO 2221, symbol: element_reference, child 4 { '_primary' '[' '_argument_list_with_trailing_comma' ']' }
-[REDUCE] State 2221 -> GOTO 2499, symbol: _lhs, child 1 { 'element_reference' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5442, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5442 -> GOTO 5815, symbol: _argument_list_with_trailing_comma, child 1 { '_argument' }
-[SHIFT] State: 5815 -> 2455, symbol: ) (10)
-[REDUCE] State 2455 -> GOTO 2257, symbol: argument_list, child 3 { '(' '_argument_list_with_trailing_comma' ')' }
-[REDUCE] State 2257 -> GOTO 2376, symbol: call, child 2 { '_variable' 'argument_list' }
-[REDUCE] State 2376 -> GOTO 2552, symbol: _primary, child 1 { 'call' }
-[REDUCE] State 2552 -> GOTO 2715, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 2715 -> GOTO 2547, symbol: assignment, child 3 { '_lhs' '=' '_arg' }
-[REDUCE] State 2547 -> GOTO 2812, symbol: _arg, child 1 { 'assignment' }
-[REDUCE] State 2812 -> GOTO 4589, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 4589 -> GOTO 4626, symbol: _statement, child 1 { '_expression' }
-[SHIFT] State 4626 -> 2041, symbol: _line_break (128, UNKNOWN)
-[REDUCE] State 2041 -> GOTO 2053, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
-[REDUCE] State 2053 -> GOTO 257, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
-[REDUCE] State 257 -> GOTO 252, symbol: _statements_repeat1, child 2 { '_statements_repeat1' '_statements_repeat1' }
-[SHIFT] State 252 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 3 -> GOTO 2132, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2132 -> GOTO 2552, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 2552 -> 431, symbol: [ (155)
-[SHIFT] State 431 -> 1951, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1951 -> GOTO 34, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 34 -> GOTO 2499, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5442, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5442 -> GOTO 5683, symbol: _argument_list_with_trailing_comma, child 1 { '_argument' }
-[SHIFT] State: 5683 -> 2061, symbol: ] (45)
-[REDUCE] State 2061 -> GOTO 2108, symbol: element_reference, child 4 { '_primary' '[' '_argument_list_with_trailing_comma' ']' }
-[REDUCE] State 2108 -> GOTO 2132, symbol: _lhs, child 1 { 'element_reference' }
-[SHIFT] State: 2132 -> 493, symbol: ||= (65)
-[SHIFT] State 493 -> 1909, symbol: constant (117, File)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'constant(File)' }
-[REDUCE] State 3 -> GOTO 2132, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2132 -> GOTO 2552, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 2552 -> 3163, symbol: . (11)
-[SHIFT] State 3163 -> 1911, symbol: identifier (1, r)
-[REDUCE] State 1911 -> GOTO 4, symbol: _call, child 3 { '_primary' '.' 'identifier(r)' }
-[SHIFT] State: 4 -> 428, symbol: ( (47)
-[SHIFT] State 428 -> 1951, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1951 -> GOTO 34, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 34 -> GOTO 2499, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5442, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5442 -> GOTO 5815, symbol: _argument_list_with_trailing_comma, child 1 { '_argument' }
-[SHIFT] State: 5815 -> 2455, symbol: ) (10)
-[REDUCE] State 2455 -> GOTO 2255, symbol: argument_list, child 3 { '(' '_argument_list_with_trailing_comma' ')' }
-[REDUCE] State 2255 -> GOTO 2376, symbol: call, child 2 { '_call' 'argument_list' }
-[REDUCE] State 2376 -> GOTO 2552, symbol: _primary, child 1 { 'call' }
-[REDUCE] State 2552 -> GOTO 2779, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 2779 -> GOTO 2547, symbol: operator_assignment, child 3 { '_lhs' '||=' '_arg' }
-[REDUCE] State 2547 -> GOTO 2812, symbol: _arg, child 1 { 'operator_assignment' }
-[REDUCE] State 2812 -> GOTO 4589, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 4589 -> GOTO 4626, symbol: _statement, child 1 { '_expression' }
-[SHIFT] State 4626 -> 2041, symbol: _line_break (128, UNKNOWN)
-[REDUCE] State 2041 -> GOTO 2053, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
-[REDUCE] State 2053 -> GOTO 257, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
-[REDUCE] State 257 -> GOTO 252, symbol: _statements_repeat1, child 2 { '_statements_repeat1' '_statements_repeat1' }
-[SHIFT] State 252 -> 1909, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1909 -> GOTO 3, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[SHIFT] State: 3 -> 428, symbol: ( (47)
-[SHIFT] State: 428 -> 5207, symbol: " (131)
-[SHIFT] State 5207 -> 5307, symbol: string_content (138, %-15s:%3d - %s)
-[REDUCE] State 5307 -> GOTO 5038, symbol: _literal_contents, child 1 { 'string_content(%-15s:%3d - %s)' }
-[SHIFT] State 5038 -> 2835, symbol: ) (140, ")
-[REDUCE] State 2835 -> GOTO 3184, symbol: string, child 3 { '"' '_literal_contents' ')(")' }
-[REDUCE] State 3184 -> GOTO 3515, symbol: _primary, child 1 { 'string' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5442, symbol: _argument, child 1 { '_expression' }
-[SHIFT] State: 5442 -> 432, symbol: , (16)
-[SHIFT] State 432 -> 1951, symbol: constant (117, File)
-[REDUCE] State 1951 -> GOTO 34, symbol: _variable, child 1 { 'constant(File)' }
-[REDUCE] State 34 -> GOTO 2499, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 3515 -> 3143, symbol: . (11)
-[SHIFT] State 3143 -> 1947, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1947 -> GOTO 37, symbol: _call, child 3 { '_primary' '.' 'identifier(UNKNOWN)' }
-[SHIFT] State: 37 -> 438, symbol: ( (47)
-[SHIFT] State 438 -> 1951, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1951 -> GOTO 34, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 34 -> GOTO 2499, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5442, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5442 -> GOTO 5641, symbol: _argument_list_with_trailing_comma, child 1 { '_argument' }
-[SHIFT] State: 5641 -> 2873, symbol: ) (10)
-[REDUCE] State 2873 -> GOTO 2823, symbol: argument_list, child 3 { '(' '_argument_list_with_trailing_comma' ')' }
-[REDUCE] State 2823 -> GOTO 3027, symbol: call, child 2 { '_call' 'argument_list' }
-[REDUCE] State 3027 -> GOTO 3515, symbol: _primary, child 1 { 'call' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5018, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5018 -> GOTO 5467, symbol: command_argument_list_repeat1, child 2 { ',' '_argument' }
-[SHIFT] State: 5467 -> 435, symbol: , (16)
-[SHIFT] State 435 -> 1951, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1951 -> GOTO 34, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 34 -> GOTO 2499, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5018, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5018 -> GOTO 5351, symbol: command_argument_list_repeat1, child 2 { ',' '_argument' }
-[REDUCE] State 5351 -> GOTO 5467, symbol: command_argument_list_repeat1, child 2 { 'command_argument_list_repeat1' 'command_argument_list_repeat1' }
-[SHIFT] State: 5467 -> 435, symbol: , (16)
-[SHIFT] State 435 -> 1951, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1951 -> GOTO 34, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 34 -> GOTO 2499, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 3515 -> 440, symbol: [ (155)
-[SHIFT] State 440 -> 1951, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1951 -> GOTO 34, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[REDUCE] State 34 -> GOTO 2499, symbol: _lhs, child 1 { '_variable' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[REDUCE] State 3515 -> GOTO 3995, symbol: _arg, child 1 { '_primary' }
-[REDUCE] State 3995 -> GOTO 5317, symbol: _expression, child 1 { '_arg' }
-[REDUCE] State 5317 -> GOTO 5442, symbol: _argument, child 1 { '_expression' }
-[REDUCE] State 5442 -> GOTO 5848, symbol: _argument_list_with_trailing_comma, child 1 { '_argument' }
-[SHIFT] State: 5848 -> 2191, symbol: ] (45)
-[REDUCE] State 2191 -> GOTO 2221, symbol: element_reference, child 4 { '_primary' '[' '_argument_list_with_trailing_comma' ']' }
-[REDUCE] State 2221 -> GOTO 2499, symbol: _lhs, child 1 { 'element_reference' }
-[REDUCE] State 2499 -> GOTO 3515, symbol: _primary, child 1 { '_lhs' }
-[SHIFT] State: 3515 -> 440, symbol: [ (155)
-[SHIFT] State 440 -> 1951, symbol: identifier (1, UNKNOWN)
-[REDUCE] State 1951 -> GOTO 34, symbol: _variable, child 1 { 'identifier(UNKNOWN)' }
-[SHIFT] State: 34 -> 562, symbol: - (145)
-[RECOVER] State 0, symbol: end, Row: 22, Column:33
+[REDUCE] State 252 -> GOTO 4944, symbol: _statements, child 1 { '_statements_repeat1' }
+[REDUCE] State 4944 -> GOTO 5777, symbol: _body_statement, child 1 { '_statements' }
+[REDUCE] State 5777 -> GOTO 5828, symbol: body_statement, child 1 { '_body_statement' }
+[SHIFT] State: 5828 -> 2311, symbol: end (13)
+[REDUCE] State 2311 -> GOTO 2376, symbol: class, child 5 { 'constant(M)' '_terminator' 'def' 'body_statement' 'end' }
+[REDUCE] State 2376 -> GOTO 2860, symbol: _primary, child 1 { 'class' }
+[REDUCE] State 2860 -> GOTO 3360, symbol: _arg, child 1 { '_primary' }
+[REDUCE] State 3360 -> GOTO 4770, symbol: _expression, child 1 { '_arg' }
+[REDUCE] State 4770 -> GOTO 4861, symbol: _statement, child 1 { '_expression' }
+[SHIFT] State 4861 -> 2142, symbol: _line_break (128, UNKNOWN)
+[REDUCE] State 2142 -> GOTO 2145, symbol: _terminator, child 1 { '_line_break(UNKNOWN)' }
+[REDUCE] State 2145 -> GOTO 346, symbol: _statements_repeat1, child 2 { '_statement' '_terminator' }
+[REDUCE] State 346 -> GOTO 5593, symbol: _statements, child 1 { '_statements_repeat1' }
+[REDUCE] State 5593 -> GOTO 5883, symbol: program, child 1 { '_statements' }
+[ACCEPT] State 5883

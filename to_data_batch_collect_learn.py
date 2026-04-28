@@ -22,7 +22,7 @@ TS_DIR = os.path.join(ROOT, "tree-sitter")
 EXE_PATH = os.path.join(TS_DIR, "TreeSitterCutFile.exe")
 CONFIG_PATH = os.path.join(TS_DIR, "lang_config.json")
 
-ARG_MODE = "1"  # Collection Mode
+ARG_MODE = "3"  # Collection Mode (LEARN: lexeme 미포함)
 
 
 def load_config(lang):
