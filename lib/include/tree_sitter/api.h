@@ -34,7 +34,6 @@ extern "C" {
  */
 #define TREE_SITTER_MIN_COMPATIBLE_LANGUAGE_VERSION 13
 
-#define MAX_PATH_SIZE 128
 /*******************/
 /* Section - Types */
 /*******************/
@@ -186,14 +185,6 @@ typedef struct TSQueryCursorOptions {
   bool (*progress_callback)(TSQueryCursorState *state);
 } TSQueryCursorOptions;
 
-// ==================================================================
-// 컨버전 리턴값
-typedef struct {
-  TSStateId states[MAX_PATH_SIZE];  // 찾은 상태들 담을 배열
-  uint32_t count;
-} TSStatePath;
-// ==================================================================
-
 /**
  * The metadata associated with a language.
  *
@@ -238,15 +229,6 @@ const TSLanguage *ts_parser_language(const TSParser *self);
  * [`TREE_SITTER_MIN_COMPATIBLE_LANGUAGE_VERSION`] constants.
  */
 bool ts_parser_set_language(TSParser *self, const TSLanguage *language);
-
-/**
- * Set collection mode. When enabled, SHIFT operations store the
- * post-reduce GOTO state in leaf parse_state instead of the lex-time state.
- * This makes leaf_parse_state usable for collection's running_state recovery.
- * Only enable this for collection-purpose parsing; the resulting tree
- * should not be used for incremental parsing.
- */
-void ts_parser_set_collection_mode(TSParser *self, bool enabled);
 
 /**
  * Set the ranges of text that the parser should include when parsing.
@@ -380,14 +362,6 @@ TSTree *ts_parser_parse_string_encoding(
   TSInputEncoding encoding
 );
 
-// custom
-TSStatePath ts_parser_parse_string_return_stack(
-  TSParser *self,
-  const TSTree *old_tree,
-  const char *string,
-  uint32_t length
-);
-
 /**
  * Instruct the parser to start the next parse from the beginning.
  *
@@ -416,11 +390,6 @@ void ts_parser_set_timeout_micros(TSParser *self, uint64_t timeout_micros);
  * Get the duration in microseconds that parsing is allowed to take.
  */
 uint64_t ts_parser_timeout_micros(const TSParser *self);
-
-// ==================================================================
-void ts_parser_set_cursor_position(TSParser *self, TSPoint stop_point);
-
-// ==================================================================
 
 /**
  * @deprecated use [`ts_parser_parse_with_options`] and pass in a callback instead, this will be removed in 0.26.
@@ -1497,6 +1466,71 @@ void ts_set_allocator(
 	void *(*new_realloc)(void *, size_t),
 	void (*new_free)(void *)
 );
+
+
+// ============================= Custom =============================
+//
+// fork 한 tree-sitter 에 추가한 커스텀 API
+// parser.c / stack.c 의 conversion / collection 로직을 구성
+#include <stdio.h>   // FILE *
+#define MAX_PATH_SIZE 256
+
+// 컨버전 결과: 도달 가능한 파서 state 들의 합집합 (커서 시점)
+typedef struct {
+  TSStateId states[MAX_PATH_SIZE];   // state IDs
+  uint32_t count;                    // state 개수
+} TSStatePath;
+
+// --- for Collection ---
+
+// SHIFT 시 leaf 의 parse_state 에 reduce 후 GOTO 상태(S2) 를 저장하도록 활성화
+// collect_recursive 의 running_state 복구용. 컬렉션 파싱 시에만 켤 것
+// 이때 만들어진 트리는 incremental parsing 에 재사용하지 말 것
+void ts_parser_set_collection_mode(TSParser *self, bool enabled);
+
+// 파싱된 최종 트리를 재귀 순회하며 각 state 에서 등장한 구조후보를 .data 파일로 출력
+// 반환: NULL 인자 시 false, 그 외 true
+bool ts_parser_run_collection2(
+  TSParser *self,
+  TSTree *tree,
+  const char *source_code,
+  uint32_t length,
+  FILE *output_file,
+  bool emit_lexeme
+);
+
+// --- for Conversion ---
+
+// 잘린 소스를 받아 끝(EOF)까지 파싱, 컨버전 알고리즘 적용
+// 반환: 도달 가능한 state 들의 합집합
+TSStatePath ts_parser_parse_string_for_conversion(
+  TSParser *self,
+  const TSTree *old_tree,
+  const char *string,
+  uint32_t length
+);
+
+// 전체 소스를 받아 cursor_byte 까지 파싱, 컨버전 알고리즘 적용
+// 외부 스캐너가 cursor 너머를 lookahead 로 활용 가능 -> 잘린 소스의 강제 EOF 회피
+// 반환: 도달 가능한 state 들의 합집합
+TSStatePath ts_parser_parse_string_for_conversion_with_lookahead(
+  TSParser *self,
+  const TSTree *old_tree,
+  const char *string,
+  uint32_t full_length,
+  uint32_t cursor_byte
+);
+
+// TSStatePath 결과를 파일에 출력
+void ts_state_path_write(TSStatePath *path, FILE *fp);
+
+// --- Debug helpers ---
+
+// 파싱 중 기록된 logged_actions 배열을 파일에 출력
+// SHIFT/REDUCE/ACCEPT/RECOVER (가상 액션은 V- 접두). 디버깅 전용
+void ts_parser_write_logged_actions(TSParser *self, const char *filename);
+
+// ============================= End Custom =============================
 
 #ifdef __cplusplus
 }

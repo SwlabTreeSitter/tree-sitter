@@ -123,10 +123,7 @@ struct TSParser {
   TSWasmStore *wasm_store;
   ReduceActionSet reduce_actions;
 
-  TSLoggedActionArray logged_actions; // 파싱 로그 저장 자료구조 
-  uint32_t cursor_row;   // 커서 위치
-  uint32_t cursor_col;
-  bool bIsCollectionOrParseStateID; // 컨버전, 컬렉션 모드 설정 변수
+  TSLoggedActionArray logged_actions; // 파싱 로그 저장 자료구조
   bool collection_mode;             // 컬렉션 모드 플래그
   ShiftStateArray shift_state_map;  // [collection_mode] (byte_offset → S2) 매핑
 
@@ -2819,15 +2816,10 @@ TSParser *ts_parser_new(void) {
   array_reserve(&self->reduce_actions, 4);
   
   // -----------------------------------------------------
-  // 커서 위치 초기화
-  self->cursor_row = UINT32_MAX;
-  self->cursor_col = UINT32_MAX;
-
   array_init(&self->logged_actions);
   array_reserve(&self->logged_actions, 2048);
 
   // 동작 모드 설정 (default: 컨버전)
-  self->bIsCollectionOrParseStateID = false;
   self->collection_mode = false;
   array_init(&self->shift_state_map);
   // -----------------------------------------------------
@@ -2976,12 +2968,6 @@ const TSRange *ts_parser_included_ranges(const TSParser *self, uint32_t *count) 
 
 // [custom] TSParser 초기화 함수
 void ts_parser_reset(TSParser *self) {
-  // -----------------------------------------------------
-  // 커서 위치 초기화
-  self->cursor_row = UINT32_MAX;
-  self->cursor_col = UINT32_MAX;
-  // -----------------------------------------------------
-
   ts_parser__external_scanner_destroy(self);
   if (self->wasm_store) {
     ts_wasm_store_reset(self->wasm_store);
@@ -3006,14 +2992,6 @@ void ts_parser_reset(TSParser *self) {
   self->canceled_balancing = false;
   self->parse_options = (TSParseOptions) {0};
   self->parse_state = (TSParseState) {0};
-}
-
-// [new] 커서 위치 설정 함수
-void ts_parser_set_cursor_position(TSParser *self, TSPoint cursor_point) {
-  if (self) {
-    self->cursor_row = cursor_point.row;
-    self->cursor_col = cursor_point.column;
-  }
 }
 
 // [new] 파싱 중에 수집된 모든 액션을 파일로 덤프하는 함수 (디버깅용)
@@ -3154,9 +3132,8 @@ void ts_parser_write_logged_actions(
   fclose(ActionFile);
 }
 
-// [new] 컨버전 결과 출력 함수
-void ts_parser_write_conversion_result(
-  TSParser *self,
+// [new] TSStatePath 직렬화 헬퍼
+void ts_state_path_write(
   TSStatePath *path,
   FILE *fp
 ) {
@@ -3204,43 +3181,6 @@ static TSStateId lookup_shift_state(const ShiftStateArray *map, uint32_t byte_of
     return map->contents[lo].shift_state;
   }
   return 0;  // 매칭 없음 (S1 == S2였던 경우)
-}
-
-// [Helper] 바이트 오프셋 → 시각적 행/열 좌표 변환 (collection2에서 사용)
-static void get_visual_position_from_offset(const char *text, uint32_t target_offset, uint32_t *out_row, uint32_t *out_col) {
-    uint32_t current_offset = 0;
-    uint32_t current_row = 0;
-    uint32_t current_col = 0;
-    const uint32_t tab_width = 4;
-
-    if (!text) { *out_row = 0; *out_col = 0; return; }
-
-    while (text[current_offset] != '\0' && current_offset < target_offset) {
-        unsigned char current_char = (unsigned char)text[current_offset];
-        if (current_char == '\n') {
-            current_row++; current_col = 0; current_offset++;
-        } else if (current_char == '\r' && text[current_offset + 1] == '\n') {
-            if (current_offset + 1 == target_offset) {
-                // target이 \r\n 쌍의 \n을 가리키는 경우:
-                // \r을 현재 행의 일반 문자로 처리하여 왕복 정확성을 보장한다.
-                current_col++; current_offset++;
-            } else {
-                current_row++; current_col = 0; current_offset += 2;
-            }
-        } else if (current_char == '\t') {
-            current_col = ((current_col / tab_width) + 1) * tab_width; current_offset++;
-        } else {
-            current_col++; current_offset++;
-            if (current_char >= 0xC0) {
-                while (text[current_offset] != '\0' && current_offset < target_offset &&
-                      ((unsigned char)text[current_offset] & 0xC0) == 0x80) {
-                    current_offset++;
-                }
-            }
-        }
-    }
-    *out_row = current_row;
-    *out_col = current_col;
 }
 
 // [new]
@@ -3516,7 +3456,6 @@ TSStatePath ts_parser_parse_for_conversion(
   TSStatePath empty_result = {0};
   TSStatePath final_union = {0};
 
-  TSTree *result = NULL;
   if (!self->language || !input.read) return empty_result;
 
   if (ts_language_is_wasm(self->language)) {

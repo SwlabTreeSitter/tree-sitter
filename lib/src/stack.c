@@ -951,14 +951,10 @@ static void add_state_tagged(TSStatePath *union_path, TSStateId state, const cha
   for (uint32_t i = 0; i < union_path->count; i++) {
     if (union_path->states[i] == state) return;
   }
-  if (union_path->count < 256) {
+  if (union_path->count < MAX_PATH_SIZE) {
     union_path->states[union_path->count++] = state;
     SIMLOG("[SIM ADD] state=%u  via %s  (idx=%u)\n", state, tag ? tag : "?", union_path->count - 1);
   }
-}
-
-static void add_state(TSStatePath *union_path, TSStateId state) {
-  add_state_tagged(union_path, state, "add_state");
 }
 
 // 전방 선언
