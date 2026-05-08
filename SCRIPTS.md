@@ -89,9 +89,6 @@ run_pipeline_all.sh
 | `generate_project_performance.py` | 전체 언어 - 프로젝트별 성능 및 loc 리포트 |
 | `run_evaluate_projects.py` | 특정 프로젝트만 파이프라인 재실행 |
 
-> 프로젝트 단위의 file_performance CSV 는 **`evaluate_coverage.py` 가 직접 출력**합니다 (Step 4).
-> 별도 집계 스크립트 없이 평가 1회로 언어 전체 + 프로젝트별 CSV 가 동시에 생성됨.
-
 ---
 
 ## 4. 통계 / 시각화 (3개)
@@ -118,29 +115,39 @@ VS Code extension repo 안 (별도 저장소):
 
 ## 실험 재현 워크플로우
 
-### 전체 언어 한 번에
+### 기본 실행 순서
+
 ```bash
-./run_pipeline_all.sh                     # 9개 언어 병렬, 전체 4단계
-./run_pipeline_all.sh --build-only        # 빌드만 (양 repo 검증용)
-./run_pipeline_all.sh --skip-collect      # 컬렉션 skip, 평가만 재실행
+# 1. 평가 파이프라인 실행 (9개 언어)
+./run_pipeline_all.sh
+
+# 2. 리포트 / 집계
+python3 rq1_three_metrics.py              # 평가 결과 → 논문 지표
+python3 generate_project_performance.py   # 전체 언어 - 프로젝트별 성능 및 loc 리포트
 ```
 
-### 단일 언어
+### 옵션 / 부분 실행
+
+빌드만 검증:
 ```bash
-./run_pipeline.sh python                  # python 4단계 전체
-./run_pipeline.sh haskell --learn-only    # LEARN 만 (Step 1 만)
-./run_pipeline.sh c --skip-test-collect   # TEST 컬렉션 skip, Step 3,4 만
+./run_pipeline_all.sh --build-only
 ```
 
-### 코어 빌드만 (parser.c 등 수정 후)
+특정 단계 skip (시간 절약):
 ```bash
-./rebuild_ts_and_exe.sh                   # cargo build + lib.c + TreeSitterCutFile.exe
+./run_pipeline_all.sh --skip-collect       # 컬렉션 skip, 평가만 재실행
+./run_pipeline.sh haskell --learn-only     # 단일 언어 LEARN 만
+./run_pipeline.sh c --skip-test-collect    # 단일 언어 TEST 컬렉션 skip
 ```
 
-### 리포트 / 집계
+코어 빌드만 (parser.c 등 수정 후):
 ```bash
-python3 rq1_three_metrics.py
-python3 generate_project_performance.py
+./rebuild_ts_and_exe.sh
+```
+
+특정 프로젝트만 재평가:
+```bash
+python3 run_evaluate_projects.py haskell LPFP
 ```
 
 ## 산출물 위치
