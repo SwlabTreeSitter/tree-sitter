@@ -1,6 +1,6 @@
 # Scripts
 
-이 디렉토리의 Python / Shell 스크립트 17개의 역할 목록.
+이 디렉토리의 Python / Shell 스크립트 역할 목록.
 파이프라인을 처음 보는 사람은 [실험 재현 워크플로우](#실험-재현-워크플로우) 부터 보는 게 빠름.
 
 ## Quick reference (4 카테고리)
@@ -22,9 +22,11 @@
 | 파일 | 역할 |
 |---|---|
 | `run_pipeline_all.sh` | 모든 언어 병렬 실행. `--build-only`, `--skip-collect`, `--learn-only` 등 옵션 |
-| `run_pipeline.sh` | 단일 언어 4단계 파이프라인 (LEARN → TEST → answers → evaluate) |
+| `run_pipeline.sh` | 단일 언어 4단계 파이프라인 (LEARN -> TEST -> answers -> evaluate) |
 | `rebuild_all.sh` | 단일 언어 빌드 + LEARN 컬렉션 (run_pipeline.sh Step 1 내부에서 호출) |
 | `rebuild_ts_and_exe.sh` | tree-sitter 코어 + TreeSitterCutFile.exe 만 (언어 무관) |
+
+> Windows 환경용 동등 포트 2개 (`rebuild_ts_and_exe.ps1`, `build_extension.ps1`) 도 존재. sh 가 메인.
 
 **호출 관계**:
 ```
@@ -50,11 +52,11 @@ run_pipeline_all.sh
 
 | 파일 | 단계 | 역할 |
 |---|---|---|
-| `to_data_batch_collect_learn.py` | Step 1 | LEARN 세트 → TreeSitterCutFile mode 3 → Test.data 들 |
-| `to_json_aggregate.py` | Step 1 | Test.data 들 → `candidates.json` (state→후보 DB) |
-| `to_data_batch_collect_test.py` | Step 2 | TEST 세트 → TreeSitterCutFile mode 1 → 평가 입력 |
-| `to_json_per_file_test.py` | Step 3 | TEST 데이터 → 정답지 JSON (커서별 정답) |
-| `evaluate_coverage.py` | Step 4 | 정답지 + candidates.json → 랭크 + 커버리지 측정. CSV 산출 |
+| `to_data_batch_collect_learn.py` | Step 1 | LEARN 세트 -> TreeSitterCutFile mode 3 -> Test.data 들 |
+| `to_json_aggregate.py` | Step 1 | Test.data 들 -> `candidates.json` (state->후보 DB) |
+| `to_data_batch_collect_test.py` | Step 2 | TEST 세트 -> TreeSitterCutFile mode 1 -> 평가 입력 |
+| `to_json_per_file_test.py` | Step 3 | TEST 데이터 -> 정답지 JSON (커서별 정답) |
+| `evaluate_coverage.py` | Step 4 | 정답지 + candidates.json -> 랭크 + 커버리지 측정. CSV 산출 |
 
 **데이터 흐름**:
 ```
@@ -118,12 +120,15 @@ VS Code extension repo 안 (별도 저장소):
 ### 기본 실행 순서
 
 ```bash
-# 1. 평가 파이프라인 실행 (9개 언어)
+# 0. (TEST 세트 변경 시 한 번만) LOC 통계
+./count_loc.sh                            # -> loc_report.csv 생성
+
+# 1. 평가 파이프라인 실행 (9개 언어, 4단계)
 ./run_pipeline_all.sh
 
 # 2. 리포트 / 집계
-python3 rq1_three_metrics.py              # 평가 결과 → 논문 지표
-python3 generate_project_performance.py   # 전체 언어 - 프로젝트별 성능 및 loc 리포트
+python3 rq1_three_metrics.py              # 평가 결과 -> 논문 지표
+python3 generate_project_performance.py   # 전체 언어 - 프로젝트별 성능 및 LOC 통합 표
 ```
 
 ### 옵션 / 부분 실행
@@ -159,11 +164,13 @@ tree-sitter/
 │   │   ├── <lang>_file_performance.csv               (Step 4 핵심 결과 — 언어 전체)
 │   │   ├── <lang>_file_performance_<project>.csv     (프로젝트별, evaluate_coverage 가 같이 출력)
 │   │   └── debug_coverage_<lang>/*.csv               (per-file 상세)
-│   └── (전역 집계 CSV 들, 리포트 단계 산출물)
-├── pipeline_summary_<lang>.log               (각 언어 실행 요약)
-└── codecompletion_benchmarks/<lang>/         (입력 코퍼스, 별도)
-    ├── LEARN/
-    └── TEST/
+│   │
+│   ├── all_project_performance.csv                   (generate_project_performance.py)
+│   ├── rq1_three_metrics.csv                         (rq1_three_metrics.py)
+│   └── rq1_three_metrics.md                          (rq1_three_metrics.py, 논문 표 형식)
+│
+├── loc_report.csv                            (count_loc.sh 출력, generate_project_performance 입력)
+└── pipeline_summary_<lang>.log               (각 언어 실행 요약)
 ```
 
 ## 주의사항
