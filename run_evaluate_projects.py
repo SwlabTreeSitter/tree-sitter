@@ -61,7 +61,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/cpp/candidates.json",
         "ext":       ".cpp",
         "skip_dirs": {".git", "build", "vendor"},
-        "exercism":  ("cpp-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("example.cpp", "exemplar.cpp")),
     },
     "java": {
         "lang_arg":  "java",
@@ -73,7 +72,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/java/candidates.json",
         "ext":       ".java",
         "skip_dirs": {".git", "build", "target"},
-        "exercism":  ("java-main", lambda p: "/.meta/src/reference/java/" in p),
     },
     "javascript": {
         "lang_arg":  "javascript",
@@ -85,7 +83,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/javascript/candidates.json",
         "ext":       ".js",
         "skip_dirs": {".git", "node_modules", "vendor"},
-        "exercism":  ("javascript-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("proof.ci.js", "exemplar.js")),
     },
     "python": {
         "lang_arg":  "python",
@@ -97,7 +94,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/python/candidates.json",
         "ext":       ".py",
         "skip_dirs": {".git", "build", "__pycache__"},
-        "exercism":  ("python-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("example.py", "exemplar.py")),
     },
     "php": {
         "lang_arg":  "php",
@@ -109,7 +105,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/php/candidates.json",
         "ext":       ".php",
         "skip_dirs": {".git", "vendor", "node_modules"},
-        "exercism":  ("php-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("example.php", "exemplar.php")),
     },
     "ruby": {
         "lang_arg":  "ruby",

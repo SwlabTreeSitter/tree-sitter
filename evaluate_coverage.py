@@ -20,7 +20,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/smallbasic/candidates.json",
         "ext":       ".sb",
         "walk":      False,  # glob (flat)
-        "exercism":  None,
     },
     "c": {
         "lib":       "/home/hyeonjin/PL/tree-sitter-c/c.so",
@@ -30,7 +29,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/c/candidates.json",
         "ext":       ".c",
         "walk":      True,
-        "exercism":  None,
     },
     "cpp": {
         "lib":       "/home/hyeonjin/PL/tree-sitter-cpp/cpp.so",
@@ -40,7 +38,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/cpp/candidates.json",
         "ext":       [".cpp", ".cc", ".cxx"],
         "walk":      True,
-        "exercism":  ("cpp-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("example.cpp", "exemplar.cpp")),
         "skip_dirs": {".git", "build", "vendor"},
     },
     "java": {
@@ -51,7 +48,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/java/candidates.json",
         "ext":       ".java",
         "walk":      True,
-        "exercism":  ("java-main", lambda p: "/.meta/src/reference/java/" in p),
         "skip_dirs": {".git", "build", "target"},
     },
     "javascript": {
@@ -62,7 +58,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/javascript/candidates.json",
         "ext":       ".js",
         "walk":      True,
-        "exercism":  ("javascript-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("proof.ci.js", "exemplar.js")),
         "skip_dirs": {".git", "node_modules", "vendor"},
     },
     "python": {
@@ -73,7 +68,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/python/candidates.json",
         "ext":       ".py",
         "walk":      True,
-        "exercism":  ("python-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("example.py", "exemplar.py")),
         "skip_dirs": {".git", "build", "__pycache__"},
     },
     "typescript": {
@@ -95,7 +89,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/php/candidates.json",
         "ext":       ".php",
         "walk":      True,
-        "exercism":  ("php-main", lambda p: p.split("/")[-2] == ".meta" and p.split("/")[-1] in ("example.php", "exemplar.php")),
         "skip_dirs": {".git", "vendor", "node_modules"},
     },
     "ruby": {
@@ -106,7 +99,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/ruby/candidates.json",
         "ext":       ".rb",
         "walk":      True,
-        "exercism":  None,
         "skip_dirs": {".git", "vendor", "node_modules"},
     },
     "haskell": {
@@ -117,7 +109,6 @@ LANG_CONFIGS = {
         "db":        "/home/hyeonjin/PL/code-completion-extension/resources/haskell/candidates.json",
         "ext":       ".hs",
         "walk":      True,
-        "exercism":  None,
         "skip_dirs": {".git", "build", "dist", "dist-newstyle", ".stack-work"},
     },
 }
@@ -155,6 +146,7 @@ class EvaluationReporter:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
+    # TreeSitterCutFile.exe 를 mode 2 로 호출 + @@PREDICT 라인 파싱 -> state list 반환
     def _run_at_position(self, target_file, byte_offset):
         cmd = [EXE_PATH, self.lang, self.cfg["lib"], target_file, str(byte_offset), str(self.eval_mode)]
         try:
@@ -182,8 +174,8 @@ class EvaluationReporter:
         except Exception:
             return []
 
+    # state list -> candidates.json 조회 -> 점수 합산 후 (key, score) 정렬된 리스트 반환
     def _lookup_db_ranked(self, states):
-        """Top-N 랭크 계산용: 점수 내림차순 정렬된 (key, score) 리스트 반환."""
         merged = defaultdict(int)
         for state in states:
             s_key = str(state)
@@ -192,6 +184,7 @@ class EvaluationReporter:
                     merged[item["key"]] += item["value"]
         return sorted(merged.items(), key=lambda x: x[1], reverse=True)
 
+    # 후보 리스트 안에서 정답의 rank 찾기 (없으면 0)
     def _get_rank(self, candidates, ground_truth):
         gt_clean = ground_truth.replace(" ", "")
         for rank, (key, _) in enumerate(candidates, 1):
@@ -199,6 +192,7 @@ class EvaluationReporter:
                 return rank
         return 0
 
+    # TEST 세트에서 평가 대상 파일 수집
     def _collect_files(self):
         cfg = self.cfg
         src = cfg["src"]
@@ -238,6 +232,7 @@ class EvaluationReporter:
             rel = os.path.basename(target_file)
         return rel.replace(os.path.sep, "_").replace("..", "")
 
+    # 한 파일의 모든 커서 위치 평가 루프
     def evaluate_file(self, target_file):
         safe_name = self._safe_name(target_file)
         json_path = os.path.join(self.cfg["answer"], safe_name + ".json")
@@ -274,7 +269,6 @@ class EvaluationReporter:
             except ValueError:
                 continue
 
-            # gt_data는 [{"state_id": int, "candidate": str}, ...] ���스트
             if not gt_data:
                 continue
 
@@ -336,6 +330,7 @@ class EvaluationReporter:
 
         self._save_debug_log(safe_name, debug_logs)
 
+    # 한 파일의 평가 상세 로그를 debug_coverage_<lang>/<safe_name>.csv 로 저장
     def _save_debug_log(self, safe_name, log_data):
         debug_dir = os.path.join(self.cfg["report"], f"debug_coverage_{self.lang}")
         os.makedirs(debug_dir, exist_ok=True)
@@ -345,19 +340,16 @@ class EvaluationReporter:
             writer.writerow(["Location", "Ground_Truth", "State_List", "Coverage_Result", "Rank"])
             writer.writerows(log_data)
 
-    def save_report(self):
-        report_dir = self.cfg["report"]
-
-        # 파일별 성능 리포트 (랭크 + 커버리지 통합)
-        perf_path = os.path.join(report_dir, f"{self.lang}_file_performance.csv")
-        with open(perf_path, "w", newline="", encoding="utf-8") as f:
+    # file_performance CSV 파일 작성
+    def _write_file_performance_csv(self, path, reports):
+        with open(path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow([
                 "File Name", "Total",
                 "Top-1 Acc (%)", "Top-3 Acc (%)", "Top-5 Acc (%)", "Top-10 Acc (%)", "Top-20 Acc (%)",
                 "Found", "Found (%)", "Not Found", "Not Found (%)", "Fail", "Fail (%)"
             ])
-            for r in self.file_reports:
+            for r in reports:
                 total = r["total"]
                 def pct(n): return round(n / total * 100, 2) if total > 0 else 0.0
                 writer.writerow([
@@ -367,28 +359,32 @@ class EvaluationReporter:
                     r["not_found"], pct(r["not_found"]),
                     r["fail"],      pct(r["fail"]),
                 ])
-        print(f"[Saved] File Report (CSV) -> {perf_path}")
 
-        # 커버리지 전용 리포트 (기존 형식 유지)
-        cov_path = os.path.join(report_dir, f"{self.lang}_coverage.csv")
-        with open(cov_path, "w", newline="", encoding="utf-8") as f:
-            writer = csv.writer(f)
-            writer.writerow([
-                "File Name", "Total",
-                "Found", "Found (%)",
-                "Not Found", "Not Found (%)",
-                "Fail", "Fail (%)"
-            ])
-            for r in self.file_reports:
-                total = r["total"]
-                def pct(n): return round(n / total * 100, 2) if total > 0 else 0.0
-                writer.writerow([
-                    r["name"], total,
-                    r["found"],     pct(r["found"]),
-                    r["not_found"], pct(r["not_found"]),
-                    r["fail"],      pct(r["fail"]),
-                ])
-        print(f"[Saved] Coverage Report (CSV) -> {cov_path}")
+    # <lang>_file_performance.csv (언어 전체) + <lang>_file_performance_<project>.csv (프로젝트별)
+    def save_report(self):
+        report_dir = self.cfg["report"]
+
+        # 1. 언어 전체
+        perf_path = os.path.join(report_dir, f"{self.lang}_file_performance.csv")
+        self._write_file_performance_csv(perf_path, self.file_reports)
+        print(f"[Saved] {perf_path}")
+
+        # 2. 프로젝트별
+        src_dir = self.cfg["src"]
+        if not os.path.isdir(src_dir):
+            return
+        projects = sorted(
+            e for e in os.listdir(src_dir)
+            if os.path.isdir(os.path.join(src_dir, e))
+        )
+        for project in projects:
+            prefix = project + "_"
+            proj_reports = [r for r in self.file_reports if r["name"].startswith(prefix)]
+            if not proj_reports:
+                continue
+            proj_path = os.path.join(report_dir, f"{self.lang}_file_performance_{project}.csv")
+            self._write_file_performance_csv(proj_path, proj_reports)
+            print(f"[Saved] {proj_path}")
 
     def run(self):
         files = self._collect_files()
