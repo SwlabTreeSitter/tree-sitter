@@ -1,5 +1,9 @@
-[SHIFT] State 1 -> 1, symbol: Comment (39, ' SmallBasic Version 1.0)
-[SHIFT] State 1 -> 1, symbol: Comment (39, ' Program: PersonalHelpSystem (by Ur lil helpa))
-[SHIFT] State 1 -> 1, symbol: Comment (39, ' Changelog: )
-[SHIFT] State 1 -> 1, symbol: Comment (39, ' Author: Pap)
+[SHIFT] State 1 -> 188, symbol: ID (34, TextW)
+[RECOVER] State 0, symbol: end, Row: 1, Column:6
+[V-SHIFT] State 188 -> 171, symbol: : (4, virtual)
+[V-REDUCE] State 171 -> GOTO 164, symbol: Stmt, child 2 { 'ID(TextW)' ':(virtual)' }
+[V-REDUCE] State 164 -> GOTO 159, symbol: MoreThanOneStmt, child 1 { 'Stmt' }
+[V-REDUCE] State 159 -> GOTO 97, symbol: Prog, child 1 { 'MoreThanOneStmt' }
+[REDUCE] State 97 -> GOTO 241, symbol: Start, child 1 { 'Prog' }
+[ACCEPT] State 241
 [REDUCE] State 1 -> GOTO 241, symbol: Start, child 0[ACCEPT] State 241

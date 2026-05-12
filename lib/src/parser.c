@@ -2103,7 +2103,7 @@ static bool conv__has_action_for_symbol(
 }
 
 
-// [custom]
+// [new]
 static bool ts_parser__advance_for_conversion(
   TSParser *self,
   StackVersion version,
@@ -2159,7 +2159,7 @@ static bool ts_parser__advance_for_conversion(
       lookahead = ts_parser__lex(self, version, state);  // Lexer 실행
       if (self->has_scanner_error) return false;
 
-      // [LEXDBG] 렉싱 결과와 ext_scan_fail_max_position 추적 (무조건)
+      // [LEXDBG] 렉싱 결과와 ext_scan_fail_max_position 추적
       fprintf(stderr, "[LEXDBG] state=%u pos=%u target=%u ext_fail=%u lk=%s has_ext=%d sym=%u sz=%u\n",
               state, position, target_length,
               self->ext_scan_fail_max_position,
@@ -2168,9 +2168,9 @@ static bool ts_parser__advance_for_conversion(
               lookahead.ptr ? (unsigned)ts_subtree_symbol(lookahead) : 0u,
               lookahead.ptr ? ts_subtree_total_size(lookahead).bytes : 0u);
 
-      // =====================================
-      //  lookahead 토큰 확보 후 커서 경계 검사
-      // =====================================
+      // =====================================================================
+      //  Lookahead 토큰 확보 후 커서 경계 검사 (CONVERSION.md 부록 A 참조)
+      // =====================================================================
 
       // [외부 스캐너 read-ahead 실패 감지]
       //
@@ -3599,7 +3599,7 @@ TSStatePath ts_parser_parse_for_conversion(
     }
 
     // condense 전에 halted 버전들의 상태를 final_union에 미리 저장
-    // ts_parser__condense_stack은 halted 버전을 무조건 제거(line 2468-2471)하므로
+    // ts_parser__condense_stack은 halted 버전을 무조건 제거하므로
     // advance_for_conversion에서 token_end==target 경우로 만든 halted copy가
     // condense 후 소멸되기 전에 시뮬레이션 결과를 보존해야 한다.
     // 예) "3,6": state:2263에서 _cond_layout_end(size:1, token_end=31=target) →
