@@ -1,7 +1,7 @@
 # tree-sitter fork — code completion 연구
 
 > 본 저장소는 [tree-sitter](https://tree-sitter.github.io) 의 fork 로, *parse_state 기반 코드 자동완성 DB* 와 *커서 시점 state 변환* 을 위한 커스텀 기능이 추가됨.  
-> tree-sitter 본 README 는 [README.legacy.md](README.legacy.md).
+> 예전 tree-sitter README 는 [README.legacy.md](README.legacy.md).
 
 ---
 
@@ -47,8 +47,8 @@
 | **[SCRIPTS.md](SCRIPTS.md)** | 파이프라인 (LEARN/TEST/평가) 의 스크립트 구성 + 실행 순서 | *돌리고 싶을 때* — 어떤 명령 어떤 순서로 |
 | **[COLLECTION.md](COLLECTION.md)** | 구조후보 DB 빌드 알고리즘 (`parser.c` 의 `collect_recursive`) | *DB 가 어떻게 만들어지는가* |
 | **[CONVERSION.md](CONVERSION.md)** | 커서 → parse_state 합집합 알고리즘 (`parser.c` 의 `parse_for_conversion`) | *VS Code 자동완성의 진입 단계* |
-| `code-completion-extension/README.md` | VS Code extension 사용법 + LLM 통합 | *extension 개발/디버깅* |
-| **[README.legacy.md](README.legacy.md)** | tree-sitter 본 README + 초기 아키텍처 설명 | *tree-sitter 기본 개념 / 본 fork 의 초기 노트* |
+| **`code-completion-extension/README.md`** | VS Code extension 사용법 + LLM 통합 | *extension 개발/디버깅* |
+| [README.legacy.md](README.legacy.md) | tree-sitter 예전 README | *tree-sitter 초기 노트* |
 
 ---
 
@@ -61,6 +61,10 @@
    - DB 빌드 → **[COLLECTION.md](COLLECTION.md)**
    - VS Code 자동완성 → **[CONVERSION.md](CONVERSION.md)**
 4. VS Code 통합 → **`code-completion-extension/README.md`**
+
+혹은 역으로 
+1. **`code-completion-extension/README.md`** 부터 시스템 동작 파악 후
+2. **이 README**로 실험 재현 / 세부적인 트리시터 내용 접근
 
 빠른 실행 예 (모든 언어 파이프라인):
 ```bash
@@ -106,7 +110,7 @@ tree-sitter/
   - *Collection mode* — 파싱 중 *S2 (shift 시점 state) 보강 자료* 누적 → `collect_recursive` 가 트리 순회로 (state, 구조후보) 추출
   - *Conversion mode* — `parse_for_conversion` + `advance_for_conversion` (커서 시점 state 합집합 추출)
 - **`stack.c`** 에:
-  - `ts_stack_simulate_conversion` — Algorithm 2 의 GLR 적응 + 0-byte external 토큰 확장
+  - `ts_stack_simulate_conversion`
 - **`api.h`** 의 `Custom` 블록 — 위 기능들의 공개 API
 
 자세한 알고리즘은 [COLLECTION.md](COLLECTION.md), [CONVERSION.md](CONVERSION.md).
@@ -116,6 +120,7 @@ tree-sitter/
 ## 7. Todo List
 
 - 컨버전 알고리즘 검증: 보완 로직이 적절한지
+  - vs code extension에서 직접 커서 위치마다 실행해보며 디버깅하는 방법: ![README-부록](https://github.com/chaendaya/code-completion-extension/tree/main)
 
 - Top-10 구조후보 정확도 실험 9개 언어로 재연 및 결과 분석
 
