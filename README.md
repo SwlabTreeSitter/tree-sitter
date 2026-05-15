@@ -2,6 +2,8 @@
 
 > 본 저장소는 [tree-sitter](https://tree-sitter.github.io) 의 fork 로, *parse_state 기반 코드 자동완성 DB* 와 *커서 시점 state 변환* 을 위한 커스텀 기능이 추가됨.  
 > 예전 tree-sitter README 는 [README.legacy.md](README.legacy.md).
+> 
+> 2026.05.15 update / contatct: wisetreasurelee@gmail.com
 
 ---
 
@@ -107,8 +109,8 @@ tree-sitter/
 원본 tree-sitter 대비 *추가된 기능* 요약:
 
 - **`parser.c`** 에:
-  - *Collection mode* — 파싱 중 *S2 (shift 시점 state) 보강 자료* 누적 → `collect_recursive` 가 트리 순회로 (state, 구조후보) 추출
-  - *Conversion mode* — `parse_for_conversion` + `advance_for_conversion` (커서 시점 state 합집합 추출)
+  - *Collection mode* — `collect_recursive` 가 트리 순회로 (state, 구조후보) 추출
+  - *Conversion mode* — 커서 시점 state 합집합 추출
 - **`stack.c`** 에:
   - `ts_stack_simulate_conversion`
 - **`api.h`** 의 `Custom` 블록 — 위 기능들의 공개 API
