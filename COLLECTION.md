@@ -17,7 +17,7 @@ LEARN 세트의 소스 파일들을 파싱하면서, *"파서가 어떤 LR state
 
 **입력**
 - LEARN 세트:   `codecompletion_benchmarks/<lang>/LEARN/` (각 언어별)
-  - codecompletion_benchmarks: https://drive.google.com/file/d/1meFP8pqWRsqentsmW9dwSSeCT1DsSVu-/view?usp=sharing
+  - codecompletion_benchmarks: https://drive.google.com/drive/folders/1MzcVv3Rjh2RO0kUzF2toZnFP_2yh1ry1?usp=sharing
 - 언어 grammar: `tree-sitter-<lang>/<lang>.so`
 
 **중간 산출물** (per-file)
