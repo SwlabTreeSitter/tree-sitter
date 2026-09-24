@@ -104,13 +104,7 @@
 │
 │
 ├── tree-sitter-c/                       ← tree-sitter-<lang> (언어별 Tree-sitter grammar repository)
-│   ├── src/
-│   └── ...
-│
 ├── tree-sitter-cpp/
-│   ├── src/
-│   └── ...
-│
 ├── ...
 │
 │
