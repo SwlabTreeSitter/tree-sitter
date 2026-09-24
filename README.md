@@ -80,27 +80,68 @@
 ## 5. 디렉토리 구조
 
 ```
-tree-sitter/
-├── README.md                       ← 이 문서 (프로젝트 entry point)
-├── README.legacy.md                ← tree-sitter 본 README + 초기 노트
-├── SCRIPTS.md                      ← 파이프라인 스크립트 가이드
-├── COLLECTION.md                   ← DB 빌드 알고리즘
-├── CONVERSION.md                   ← 커서 → state 알고리즘
+/home/hyeonjin/PL/                       ← script에 하드 코딩된 것 수정 필요
 │
-├── lib/                            ← tree-sitter 코어 (fork 된 parser.c, stack.c 포함)
-├── tree-sitter-<lang>/             ← 각 언어 grammar (smallbasic, c, cpp, java, ...)
-├── codecompletion_benchmarks/      ← LEARN/TEST 세트 (각 언어별)
-├── code-completion-extension/      ← VS Code extension (별도 repo, sibling)
+├── tree-sitter/                         ← 현재 repo
+│   ├── README.md
+│   ├── README.legacy.md
+│   ├── SCRIPTS.md
+│   ├── COLLECTION.md
+│   ├── CONVERSION.md
+│   ├── lang_config.json
+│   │
+│   ├── lib/                              ← tree-sitter 코어 (fork 된 parser.c, stack.c 포함)
+│   ├── reports/                          ← 평가 결과 CSV/MD              
+│   ├── images/
+│   │
+│   ├── TreeSitterCutFile.cpp
+│   ├── TreeSitterCutFile.exe
+│   │
+│   ├── to_data_batch_collect_*.py
+│   ├── to_json_aggregate.py
+│   ├── evaluate_coverage.py
+│   └── run_pipeline_all.sh
 │
-├── reports/                        ← 평가 결과 CSV/MD
-├── images/                         ← doc 첨부 이미지
 │
-├── TreeSitterCutFile.cpp           ← C++ 실행파일 (collection/conversion 모드)
-├── to_data_batch_collect_*.py      ← LEARN/TEST 데이터 생성
-├── to_json_aggregate.py            ← DB 집계
-├── evaluate_coverage.py            ← Stage 3 평가
-└── run_pipeline_all.sh             ← 전체 파이프라인 진입점
+├── tree-sitter-c/                       ← tree-sitter-<lang> (언어별 Tree-sitter grammar repository)
+│   ├── src/
+│   └── ...
+│
+├── tree-sitter-cpp/
+│   ├── src/
+│   └── ...
+│
+├── ...
+│
+│
+├── codecompletion_benchmarks/
+│   ├── c/
+│   │   ├── LEARN/
+│   │   └── TEST/
+│   ├── cpp/
+│   │   ├── LEARN/
+│   │   └── TEST/
+│   └── ...
+│
+├── benchmarks_collection/               ← script 산출물
+│   ├── c/
+│   │   └── LEARN_data/
+│   ├── cpp/
+│   │   └── LEARN_data/
+│   └── ...
+│
+│
+└── code-completion-extension/           ← 별도 repo
 ```
+
+
+-  tree-sitter : https://github.com/SwlabTreeSitter/tree-sitter/tree/Candidate_Collection
+-  tree-sitter-``<lang>`` (지원 언어)
+    - small basic : https://github.com/chaendaya/tree-sitter-smallbasic
+    - 그 외 : https://github.com/tree-sitter/tree-sitter/wiki/List-of-parsers 에서 지원 언어 검색하여 다운로드
+- codecompletion_benchmarks : https://drive.google.com/drive/folders/1MzcVv3Rjh2RO0kUzF2toZnFP_2yh1ry1?usp=sharing
+- code-completion-extension : https://github.com/chaendaya/code-completion-extension
+
 
 ---
 
