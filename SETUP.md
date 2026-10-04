@@ -75,14 +75,14 @@ cd tree-sitter
 ```
 
 1. **DB 구축**: 도구 빌드 → LEARN Collection → `candidates.json` 생성, `code-completion-extension/resources/smallbasic`에 결과를 저장합니다.
-    - 콘솔 출력
-    ![learn_output](images/learn_output.png)
+- 콘솔 출력
+  ![learn_output](images/learn_output.png)
 
 <br>
 
 2. **TEST 평가**: 만들어진 DB로 TEST 27개를 평가해 `reports/smallbasic/`에 결과를 저장합니다.
-    - 콘솔 출력 <br>
-    ![test_output](images/test_output.png)
+- 콘솔 출력 <br>
+  ![test_output](images/test_output.png)
 
 <br>
 
