@@ -13,7 +13,9 @@ smallbasic 1개 언어로 **LEARN → DB 구축 → TEST 평가** 전체 흐름�
 | 구조후보 | 특정 parse state에서 이어질 수 있는 심볼 시퀀스 |
 | Top-K | 정답이 빈도 상위 K개 후보 안에 들어 있는 비율 |
 
-## 2. 준비물
+<br>
+
+## 2. 환경 세팅
 
 Ubuntu 22.04 기준,
 다음 도구가 설치되어 있어야 합니다.
@@ -23,6 +25,8 @@ Ubuntu 22.04 기준,
 - Rust (cargo)
 - Python 3
 - Node.js / npm
+
+<br>
 
 ## 3. 저장소와 데이터 배치
 
@@ -45,6 +49,7 @@ Ubuntu 22.04 기준,
 - codecompletion_benchmarks : https://drive.google.com/drive/folders/1MzcVv3Rjh2RO0kUzF2toZnFP_2yh1ry1?usp=sharing
 - code-completion-extension : https://github.com/chaendaya/code-completion-extension
 
+<br>
 
 ## 4. 경로 설정 (필수)
 
@@ -58,6 +63,8 @@ Ubuntu 22.04 기준,
 
 `run_pipeline*.sh`, `rebuild_*.sh`는 수정할 필요가 없지만, §3의 폴더 배치를 전제로 합니다.
 
+<br>
+
 ## 5. 실행 및 결과
 
 ```bash
@@ -68,14 +75,19 @@ cd tree-sitter
 ```
 
 1. **DB 구축**: 도구 빌드 → LEARN Collection → `candidates.json` 생성, `code-completion-extension/resources/smallbasic`에 결과를 저장합니다.
-  - 콘솔 출력
-    ![learn_output](images/learn_output.png)
-2. **TEST 평가**: 만들어진 DB로 TEST 27개를 평가해 `reports/smallbasic/`에 결과를 저장합니다.
     - 콘솔 출력
-      ![test_output](images/test_output.png)
+    ![learn_output](images/learn_output.png)
+
+<br>
+
+2. **TEST 평가**: 만들어진 DB로 TEST 27개를 평가해 `reports/smallbasic/`에 결과를 저장합니다.
+    - 콘솔 출력 <br>
+    ![test_output](images/test_output.png)
+
+<br>
 
 ## 6. 주의 사항과 다른 언어
 
 - 산출물(`candidates.json`, `reports/`)은 실행할 때마다 덮어써집니다.
-- 다른 언어를 추가할 때, grammar 저장소와 벤치마크를 배치한 후 `run_pipeline.sh <언어>`로 **언어 하나씩** 진행하세요.
-- 9개 언어가 모두 준비되었을 때, `run_pipeline_all.sh`을 사용하면 모든 언어를 병렬 실행해 빠르게 진행할 수 있습니다.
+- 다른 언어를 추가할 때, grammar 저장소와 벤치마크를 배치한 후 `run_pipeline.sh <언어>`로 **언어 하나씩** 진행하세요. [grammar 저장소와 벤치마크](https://github.com/SwlabTreeSitter/tree-sitter/tree/Candidate_Collection#5-%EC%A0%84%EC%B2%B4-%ED%95%B5%EC%8B%AC-%EA%B5%AC%EC%A1%B0)
+- 9개 언어가 모두 준비되었을 때, `run_pipeline_all.sh`을 사용하면 모든 언어를 병렬 실행해 빠르게 진행할 수 있습니다. [스크립트 구조](https://github.com/SwlabTreeSitter/tree-sitter/blob/Candidate_Collection/SCRIPTS.md#1-%EC%98%A4%EC%BC%80%EC%8A%A4%ED%8A%B8%EB%A0%88%EC%9D%B4%ED%84%B0-shell-4%EA%B0%9C)
