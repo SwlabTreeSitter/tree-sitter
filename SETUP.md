@@ -54,7 +54,44 @@ Ubuntu 22.04 기준,
 ## 4. 경로 설정 (필수)
 
 스크립트에 작성자의 경로 `/home/hyeonjin/PL`이 하드코딩되어 있습니다.
-**사용자명과 폴더 위치 모두 자신의 환경에 맞게 바꿔야 합니다.**
+**실행 전에 자신의 환경에 맞는 프로젝트 루트 경로로 반드시 수정해야 합니다.**
+
+현재 자신의 프로젝트 위치를 먼저 확인합니다.
+
+```bash
+cd ~/PL/tree-sitter
+pwd
+```
+
+예를 들어 프로젝트 루트가 `/home/tester/PL`이라면, 기존의
+
+```text
+/home/hyeonjin/PL
+```
+
+을
+
+```text
+/home/tester/PL
+```
+
+로 변경합니다.
+
+> **주의:** 파일마다 경로가 작성된 방식이 다릅니다.
+> 어떤 파일은 `ROOT` 변수 하나만 수정하면 되지만, `evaluate_coverage.py`처럼 언어별 설정에 `/home/hyeonjin/PL/...` 경로가 직접 작성된 파일도 있습니다. 따라서 **단순히 `ROOT` 변수만 수정하지 말고, 각 파일에서 `/home/hyeonjin/PL`이 남아 있는지 반드시 확인하십시오.**
+
+현재 경로가 올바르게 수정되었는지 다음 명령어로 확인할 수 있습니다.
+
+```bash
+grep -Rni "/home/hyeonjin/PL" \
+    to_data_batch_collect_learn.py \
+    to_data_batch_collect_test.py \
+    to_json_aggregate.py \
+    to_json_per_file_test.py \
+    evaluate_coverage.py
+```
+
+**아무것도 출력되지 않으면 해당 파일들에서 기존 작성자의 경로가 모두 제거된 것입니다.**
 
 | 구분 | 파일 |
 |---|---|
@@ -62,6 +99,23 @@ Ubuntu 22.04 기준,
 | 리포트·보조용 | `rq1_three_metrics.py`, `plot_rank_distribution.py`, `generate_project_performance.py`, `run_evaluate_projects.py`, `count_loc.sh` |
 
 `run_pipeline*.sh`, `rebuild_*.sh`는 수정할 필요가 없지만, §3의 폴더 배치를 전제로 합니다.
+
+
+#### 파일별 수정 방법
+
+* `to_data_batch_collect_learn.py`
+
+* `to_data_batch_collect_test.py`
+
+* `to_json_aggregate.py`
+
+* `to_json_per_file_test.py`
+
+  → `ROOT = "/home/hyeonjin/PL"`처럼 되어 있다면 **`ROOT`만 자신의 프로젝트 루트로 수정**합니다.
+
+* `evaluate_coverage.py`
+
+  → `LANG_CONFIGS` 내부의 `/home/hyeonjin/PL/...` 경로와 `EXE_PATH` 등 **직접 작성된 모든 경로를 자신의 프로젝트 루트에 맞게 수정**합니다.
 
 <br>
 
